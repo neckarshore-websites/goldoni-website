@@ -44,9 +44,7 @@ export function Footer() {
                 {SITE.address.postalCode} {SITE.address.city}
               </address>
               <a
-                href={`https://maps.google.com/?q=${encodeURIComponent(
-                  `${SITE.address.street}, ${SITE.address.postalCode} ${SITE.address.city}`
-                )}`}
+                href="https://maps.app.goo.gl/u3PAUvKHqcANve797"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-3 inline-block text-sm hover:underline"
