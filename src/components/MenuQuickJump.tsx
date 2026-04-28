@@ -156,10 +156,13 @@ export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
       top: Math.max(0, targetY),
       behavior: "smooth",
     });
-    if (typeof history !== "undefined" && history.replaceState) {
-      history.replaceState(null, "", `#${id}`);
-    }
-    // Optimistic — the scroll listener confirms once scroll settles.
+    // Intentionally NOT updating window.location.hash via replaceState —
+    // doing so left the URL as `/menu#birra` and confused Next App Router's
+    // cross-page scroll restoration on the next nav-link click (clicking
+    // "Feiern" landed scroll-position somewhere mid-page instead of 0).
+    // The pill highlight + smooth scroll already give the user enough
+    // feedback; persistent deep-linking to a section is not a current
+    // requirement.
     setActiveId(id);
   };
 

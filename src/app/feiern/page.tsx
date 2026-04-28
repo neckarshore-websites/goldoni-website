@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
+import { FeiernForm } from "@/components/forms/FeiernForm";
 
 export const metadata: Metadata = {
   title: "Feiern bei Goldoni — Private Anlaesse in Stuttgart",
   description:
-    "Hochzeiten, Geburtstage, Taufen, Firmenfeiern. Im Ristorante Goldoni richten wir Ihren privaten Anlass aus &mdash; mit individueller Karte und der Aufmerksamkeit, die er verdient.",
+    "Hochzeiten, Geburtstage, Taufen, Firmenfeiern. Im Ristorante Goldoni richten wir Ihren privaten Anlass aus — mit individueller Karte und der Aufmerksamkeit, die er verdient.",
 };
 
 export default function FeiernPage() {
@@ -40,10 +41,7 @@ export default function FeiernPage() {
         </h2>
         <ul className="space-y-3" style={{ color: "var(--color-text)" }}>
           <li className="flex gap-3">
-            <span
-              aria-hidden
-              style={{ color: "var(--color-accent)" }}
-            >
+            <span aria-hidden style={{ color: "var(--color-accent)" }}>
               &bull;
             </span>
             <span>
@@ -74,54 +72,67 @@ export default function FeiernPage() {
               &bull;
             </span>
             <span>
-              <strong>Persoenliche Beratung</strong> &mdash; rufen Sie uns
-              an, wir besprechen alles im Detail
+              <strong>Persoenliche Beratung</strong> &mdash; Anfrage
+              senden oder direkt anrufen
             </span>
           </li>
         </ul>
 
-        <div
-          className="mt-12 rounded-lg border p-8"
+        {/* Feieranfrage form — primary path. Phone fallback below. */}
+        <section
+          className="mt-12 rounded-lg border p-6 sm:p-8"
           style={{
             borderColor: "var(--color-border)",
             backgroundColor: "var(--color-bg-muted)",
           }}
+          aria-labelledby="feiern-form-heading"
         >
-          <h2
-            className="mb-4 text-xl"
-            style={{ color: "var(--color-text)" }}
+          <p
+            className="mb-2 text-xs uppercase tracking-[0.2em]"
+            style={{ color: "var(--color-brand-olive)" }}
           >
-            Anfragen
+            Unverbindlich anfragen
+          </p>
+          <h2
+            id="feiern-form-heading"
+            className="mb-2 text-2xl sm:text-3xl"
+            style={{ color: "var(--color-heading-italian)" }}
+          >
+            Feieranfrage
           </h2>
           <p
-            className="mb-4"
+            className="mb-6"
             style={{ color: "var(--color-text-muted)" }}
           >
-            Am einfachsten ueber das Telefon &mdash; so klaeren wir Datum,
-            Anzahl und Wuensche direkt.
+            Datum, Anlass und Gaesteanzahl reichen fuer den ersten
+            Aufschlag &mdash; wir rufen zurueck und besprechen Karte und
+            Details persoenlich.
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <a
-              href={`tel:${SITE.phone}`}
-              className="rounded-md px-5 py-3 text-base font-medium"
-              style={{
-                backgroundColor: "var(--color-accent)",
-                color: "var(--color-bg)",
-              }}
-            >
-              {SITE.phoneDisplay}
-            </a>
-            <a
-              href={`mailto:${SITE.email}?subject=Anfrage%20Feier`}
-              className="rounded-md border px-5 py-3 text-base font-medium"
-              style={{
-                borderColor: "var(--color-border-strong)",
-                color: "var(--color-text)",
-              }}
-            >
-              {SITE.email}
-            </a>
-          </div>
+          <FeiernForm />
+        </section>
+
+        {/* Phone fallback for visitors who prefer voice contact */}
+        <div
+          className="mt-8 flex flex-col gap-3 rounded-lg border p-6 sm:flex-row sm:items-center sm:justify-between"
+          style={{
+            borderColor: "var(--color-border)",
+            backgroundColor: "var(--color-bg)",
+          }}
+        >
+          <p style={{ color: "var(--color-text-muted)" }}>
+            Lieber direkt am Telefon? Auch gerne &mdash; wir besprechen
+            alles im Detail.
+          </p>
+          <a
+            href={`tel:${SITE.phone}`}
+            className="rounded-md px-5 py-3 text-base font-medium"
+            style={{
+              backgroundColor: "var(--color-accent)",
+              color: "#FAFAFA",
+            }}
+          >
+            {SITE.phoneDisplay}
+          </a>
         </div>
       </div>
     </main>
