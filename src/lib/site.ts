@@ -43,8 +43,11 @@ export const SITE = {
       tagline: "Bestellen auf Wolt",
     },
     {
+      // Hash-ID is Uber's permanent restaurant identifier (verified 2026-04-28:
+      // path with ID returns 200, path without ID returns 404).
+      // Query params like ?diningMode=DELIVERY are UI-state tracking, stripped.
       name: "Uber Eats",
-      url: "https://www.ubereats.com/de/store/ristorante-goldoni/b6ZSgAthWcC5UJSAaK97mA?diningMode=DELIVERY",
+      url: "https://www.ubereats.com/de/store/ristorante-goldoni/b6ZSgAthWcC5UJSAaK97mA",
       tagline: "Bestellen auf Uber Eats",
     },
   ],
