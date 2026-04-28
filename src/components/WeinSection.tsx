@@ -64,16 +64,18 @@ function WineRow({ wine }: { wine: Wine }) {
 }
 
 function WineGroup({
+  id,
   label,
   dot,
   wines,
 }: {
+  id?: string;
   label: string;
   dot: string;
   wines: Wine[];
 }) {
   return (
-    <div>
+    <div id={id}>
       {/* Group header */}
       <div className="mb-1 flex items-center gap-3">
         <span
@@ -131,11 +133,13 @@ export function WeinSection() {
 
       <div className="flex flex-col gap-8">
         <WineGroup
+          id="weine-weiss"
           label="Weißweine"
           dot="#D4C060"
           wines={weinData.weiss as Wine[]}
         />
         <WineGroup
+          id="weine-rot"
           label="Rotweine"
           dot="#8E2800"
           wines={weinData.rot as Wine[]}

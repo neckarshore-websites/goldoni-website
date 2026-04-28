@@ -31,10 +31,19 @@ import type { MenuCategory } from "@/lib/menu";
  * mobile — sat entirely *behind* the sticky pill bar, so no section
  * ever registered as intersecting. Now the active state is derived
  * from real geometry, every scroll frame.
+ *
+ * extraPills: optional additional pills appended after menu categories.
+ * Used on /empfehlungen to add Weiß / Rot wine-section anchors without
+ * coupling WeinSection into the menu data model.
  */
 const ROW_DESKTOP = 7;
 const ROW_MOBILE = 3;
 const BREATHING_PX = 16;
+
+export interface ExtraPill {
+  id: string;
+  name: string;
+}
 
 function chunkRows<T>(items: T[], size: number): T[][] {
   const out: T[][] = [];
@@ -44,17 +53,32 @@ function chunkRows<T>(items: T[], size: number): T[][] {
   return out;
 }
 
-export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
-  const [activeId, setActiveId] = useState<string>(categories[0]?.id ?? "");
+export function MenuQuickJump({
+  categories,
+  extraPills = [],
+}: {
+  categories: MenuCategory[];
+  extraPills?: ExtraPill[];
+}) {
+  // Unified pill list — categories first, extra pills appended.
+  const allPills = useMemo<ExtraPill[]>(
+    () => [
+      ...categories.map((c) => ({ id: c.id, name: c.name })),
+      ...extraPills,
+    ],
+    [categories, extraPills],
+  );
+
+  const [activeId, setActiveId] = useState<string>(allPills[0]?.id ?? "");
   const barRef = useRef<HTMLDivElement>(null);
 
   const rowsDesktop = useMemo(
-    () => chunkRows(categories, ROW_DESKTOP),
-    [categories],
+    () => chunkRows(allPills, ROW_DESKTOP),
+    [allPills],
   );
   const rowsMobile = useMemo(
-    () => chunkRows(categories, ROW_MOBILE),
-    [categories],
+    () => chunkRows(allPills, ROW_MOBILE),
+    [allPills],
   );
 
   // Returns the y-coordinate (in viewport space) just below the
@@ -68,7 +92,7 @@ export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
     return headerBottom + barH;
   };
 
-  // Active-highlight: rAF-throttled scroll listener. Walks categories in
+  // Active-highlight: rAF-throttled scroll listener. Walks all pills in
   // order; the LAST one whose top is at-or-above the sticky bottom is
   // the section currently sitting at the top of the visible content area.
   useEffect(() => {
@@ -79,14 +103,14 @@ export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
         const stickyBottom = getStickyBottom();
-        let active = categories[0]?.id ?? "";
-        for (const cat of categories) {
-          const el = document.getElementById(cat.id);
+        let active = allPills[0]?.id ?? "";
+        for (const pill of allPills) {
+          const el = document.getElementById(pill.id);
           if (!el) continue;
           const top = el.getBoundingClientRect().top;
           // Section's top has crossed under (or is right below) the sticky bar.
           if (top - stickyBottom <= BREATHING_PX + 16) {
-            active = cat.id;
+            active = pill.id;
           } else {
             break;
           }
@@ -103,7 +127,7 @@ export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };
-  }, [categories]);
+  }, [allPills]);
 
   // ResizeObserver — keep --goldoni-header-h / --goldoni-pills-h vars
   // in sync with reality. Used by the sticky `top` and as a
@@ -166,15 +190,15 @@ export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
     setActiveId(id);
   };
 
-  const renderPill = (cat: MenuCategory) => {
-    const isActive = cat.id === activeId;
+  const renderPill = (pill: ExtraPill) => {
+    const isActive = pill.id === activeId;
     return (
       <a
-        key={cat.id}
-        href={`#${cat.id}`}
-        data-id={cat.id}
+        key={pill.id}
+        href={`#${pill.id}`}
+        data-id={pill.id}
         aria-current={isActive ? "true" : undefined}
-        onClick={(e) => onPillClick(e, cat.id)}
+        onClick={(e) => onPillClick(e, pill.id)}
         className="whitespace-nowrap rounded-full border px-3 py-1 text-sm transition-colors"
         style={{
           borderColor: isActive
@@ -184,7 +208,7 @@ export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
           backgroundColor: isActive ? "var(--color-accent)" : "transparent",
         }}
       >
-        {cat.name}
+        {pill.name}
       </a>
     );
   };
