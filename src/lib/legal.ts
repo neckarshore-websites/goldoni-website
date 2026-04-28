@@ -98,6 +98,44 @@ export const LEGAL = {
   },
 
   /**
+   * Datenschutz-spezifische Stammdaten — werden auf /datenschutz gerendert.
+   *
+   * Wenn Hoster oder Mail-Provider gewechselt werden, hier anpassen.
+   */
+  dataProtection: {
+    /**
+     * Aufsichtsbehörde nach Art. 51 DSGVO für Sitz Stuttgart.
+     */
+    supervisoryAuthority: {
+      name: "Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg",
+      street: "Lautenschlagerstraße 20",
+      postalCode: "70173",
+      city: "Stuttgart",
+      phone: "+49 711 615541-0",
+      email: "poststelle@lfdi.bwl.de",
+      url: "https://www.baden-wuerttemberg.datenschutz.de",
+    },
+    /**
+     * Hosting-Provider (Auftragsverarbeiter nach Art. 28 DSGVO).
+     */
+    hoster: {
+      name: "Vercel Inc.",
+      address: "340 S Lemon Ave #4133, Walnut, CA 91789, USA",
+      privacyUrl: "https://vercel.com/legal/privacy-policy",
+      dpaUrl: "https://vercel.com/legal/dpa",
+    },
+    /**
+     * E-Mail-Versand für Formularanfragen (Auftragsverarbeiter).
+     */
+    mailService: {
+      name: "Resend (Resend, Inc.)",
+      address: "2261 Market Street #5039, San Francisco, CA 94114, USA",
+      privacyUrl: "https://resend.com/legal/privacy-policy",
+      dpaUrl: "https://resend.com/legal/dpa",
+    },
+  },
+
+  /**
    * Letzte redaktionelle Aktualisierung dieses Impressums (ISO 8601).
    * Nicht gesetzlich vorgeschrieben, aber gute Praxis und hilft bei
    * späteren Audits.
