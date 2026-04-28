@@ -26,7 +26,7 @@ const ASSETS: AssetEntry[] = [
   {
     id: "hero-empfehlungen",
     context: "Empfehlungskarte — Hero",
-    target: "public/images/hero-empfehlungen.webp",
+    target: "public/images/empfehlungen-tagliatelle-tartufo-kerze.png",
     prompt:
       "A wide-format cinematic food photography scene for an Italian restaurant weekly specials menu. A rustic wooden table with a single elegantly plated seasonal pasta dish — perhaps pappardelle with wild mushrooms and truffle — on a simple white ceramic plate. Soft candlelight from the left, a glass of deep red wine slightly out of focus in the background, linen napkin folded beside the plate. Warm espresso and amber tones, shallow depth of field, muted highlights. No text, no people. Style: editorial Italian trattoria, moody and intimate, shot on film. Aspect ratio 16:9.",
   },
@@ -42,14 +42,14 @@ const ASSETS: AssetEntry[] = [
   {
     id: "feiern-service",
     context: "Feiern — Hero Variante 1 (Service-Moment)",
-    target: "public/images/hero-feiern-v2.webp",
+    target: "public/images/feiern-service-fine-dining-tafel.png",
     prompt:
       "Real food photography, no filters. A hand placing an elegantly plated Italian main course — white fish or meat with a dark reduction sauce and fresh microgreens — onto a large white round plate, at a long dark wooden restaurant table. Crystal wine glasses with white wine in the foreground, slightly out of focus. Bread basket, silverware and multiple place settings visible in the background. Cool to neutral ambient restaurant lighting, no orange or amber tones. Shallow depth of field, sharp on the plate. Documentary restaurant photography style, shot at table level. Aspect ratio 16:9.",
   },
   {
     id: "feiern-table",
     context: "Feiern — Hero Variante 2 (Volle Tafel)",
-    target: "public/images/hero-feiern-v3.webp",
+    target: "public/images/feiern-private-dinner-gesellschaft.png",
     prompt:
       "Real food photography, no post-processing filters. A long Italian restaurant table set for a private dinner celebration. Multiple large white ceramic plates with Italian dishes, crystal wine glasses with white and red wine, dark wooden table, linen napkins, silverware. Guests' hands and forearms slightly visible at the edges, faces out of frame. Cool natural indoor restaurant lighting, realistic colors. Shallow depth of field — centerplate sharp, background softly blurred. Wide shot showing the full table. Aspect ratio 16:9.",
   },
@@ -58,21 +58,21 @@ const ASSETS: AssetEntry[] = [
   {
     id: "fine-dining-1",
     context: "Fine Dining — Amuse-bouche",
-    target: "public/images/fine-dining-amuse.webp",
+    target: "public/images/fine-dining-amuse-bouche-schieferplatte.png",
     prompt:
       "Real food photography, natural colors, no warm filter. A single small fine dining amuse-bouche on a dark slate plate — a precise bite-sized Italian appetizer with microgreens and drops of reduction sauce. Shot from directly above, extreme close-up. White marble surface, a silver spoon beside the plate. Soft diffused daylight from the left. Neutral to cool tones. No people, no clutter. Aspect ratio 16:9.",
   },
   {
     id: "fine-dining-2",
     context: "Fine Dining — Pasta Tartufo",
-    target: "public/images/fine-dining-pasta.webp",
+    target: "public/images/fine-dining-pasta-tartufo-teller.png",
     prompt:
       "Real restaurant food photography. A perfect plate of fresh handmade pasta — tagliatelle with truffle shavings — on a wide white ceramic plate, shot from a 45-degree angle at table height. Crystal water glass and a small bread roll visible out of focus. Dark wooden table, white linen napkin folded to the left. Soft indoor ambient light, neutral colors, no orange tones. Shallow depth of field. Aspect ratio 16:9.",
   },
   {
     id: "fine-dining-3",
     context: "Fine Dining — Dessert Panna Cotta",
-    target: "public/images/fine-dining-dessert.webp",
+    target: "public/images/panna-cotta-beerensosse-dessert.png",
     prompt:
       "Real food photography, no filters. A fine Italian dessert — panna cotta with berry coulis and a sprig of mint — on a white plate, shot from slightly above. Long dining table with soft bokeh candlelight and empty wine glasses in the background, completely out of focus. Neutral evening restaurant light, cool shadows, clean whites. Aspect ratio 16:9.",
   },
@@ -88,28 +88,28 @@ const ASSETS: AssetEntry[] = [
   {
     id: "lasagne",
     context: "Gericht — Lasagne al Forno",
-    target: "public/images/dish-lasagne.webp",
+    target: "public/images/lasagne-al-forno-hausgemacht.png",
     prompt:
       "Real food photography, natural colors, no warm filter. A single generous portion of classic Italian lasagne al forno, freshly cut, served on a wide white ceramic plate — visible layers of pasta, meat ragù and béchamel, golden-brown cheese crust on top. Shot from a 45-degree angle at table height. Dark wooden table, a small sprig of fresh basil beside the plate. Soft diffused indoor light, neutral tones, slight steam rising. Shallow depth of field, sharp on the lasagne. Aspect ratio 16:9.",
   },
   {
     id: "pizza-salami",
     context: "Gericht — Pizza Salami, Rucola, Parmesan",
-    target: "public/images/dish-pizza-salami.webp",
+    target: "public/images/pizza-salami-rucola-parmesan.png",
     prompt:
       "Real food photography, natural colors, no warm filter. A freshly baked Neapolitan-style pizza on a dark wooden board — thin crispy crust with leopard char spots, topped with spicy Italian salami curling at the edges, a generous handful of fresh rucola piled in the center, and large thin shavings of aged Parmesan on top. Shot from slightly above, full pizza visible. Neutral accurate colors, soft diffused light from the left. No people, no props. Aspect ratio 16:9.",
   },
   {
     id: "pizza-patate",
     context: "Gericht — Pizza Patate, Prosciutto, Scamorza",
-    target: "public/images/dish-pizza-patate.webp",
+    target: "public/images/pizza-patate-prosciutto-scamorza.png",
     prompt:
       "Real food photography, natural colors, no warm filter. A freshly baked Neapolitan-style pizza on a dark wooden board — thin crispy crust with leopard char spots, topped with thinly sliced roasted rosemary potatoes, generous pieces of melted scamorza cheese pulling slightly, and slices of Italian prosciutto cotto. Fresh rosemary sprigs scattered on top. Shot from slightly above at a gentle angle, full pizza visible. Soft diffused light from the left, neutral accurate colors, no orange tones. No people, no extra props. Aspect ratio 16:9.",
   },
   {
     id: "tagliata",
     context: "Gericht — Tagliata di filetto «Simmentaler» alla toscana",
-    target: "public/images/dish-tagliata.webp",
+    target: "public/images/tagliata-rinderfilet-rucola-grana-padano.png",
     prompt:
       "Real food photography, natural colors, no warm filter. A classic Italian tagliata: thinly sliced medium-rare Simmentaler beef fillet, fanned out slightly, served on a bed of fresh rucola leaves on a large white ceramic plate. Generous shavings of aged Grana Padano scattered over the meat and salad. The beef has visible lava stone grill marks and a deep brown crust with a pink interior. A small side dish — roasted potatoes or seasonal vegetables — placed neatly beside the plate. Shot from a 45-degree angle at table height. Soft diffused indoor restaurant light, neutral to slightly warm on the meat only, cool white plate. Shallow depth of field, sharp focus on the sliced beef. No people. Aspect ratio 16:9.",
   },
@@ -118,14 +118,14 @@ const ASSETS: AssetEntry[] = [
   {
     id: "caffe",
     context: "Getränke — Caffè (Espresso, Cappuccino, Espressino, Corretto)",
-    target: "public/images/drinks-caffe.webp",
+    target: "public/images/caffe-espresso-cappuccino-italianisch.png",
     prompt:
       "Real food photography, natural colors, no warm filter. A tasteful flat-lay arrangement of four Italian coffee drinks on a dark wooden café table: a classic espresso in a small white ceramic cup with a rich golden crema, a cappuccino with latte art in a wider white cup, an espressino with a small layer of frothed milk, and an espresso corretto with a tiny glass of grappa beside it. Each cup on a matching white saucer with a small spoon. Shot from directly above, evenly spaced, soft diffused natural daylight. Neutral accurate colors — deep brown espresso, white foam, white porcelain. No people, no text, no labels, no prices. Clean composition. Aspect ratio 16:9.",
   },
   {
     id: "aperitivi",
     context: "Getränke — Aperitivi (Prosecco, Aperol, Campari, Kir Royal, Negroni)",
-    target: "public/images/drinks-aperitivi.webp",
+    target: "public/images/aperitivi-prosecco-aperol-campari-negroni.png",
     prompt:
       "Real food photography, natural colors, no warm filter. A stylish flat-lay of classic Italian aperitivo drinks on a dark marble or wooden bar surface: a Prosecco flute with fine bubbles, an Aperol Spritz in a round wine glass with an orange slice, a deep red Campari over ice in a short glass, a Kir Royal in a champagne flute with a hint of dark berry color, and a Negroni in a lowball glass with an orange peel twist. Each glass clean and elegant, no garnish clutter. Shot from directly above or slight 30-degree angle, evenly composed. Soft diffused bar lighting, rich accurate colors — amber, deep red, pale gold, blush pink. No people, no text, no prices, no labels. Aspect ratio 16:9.",
   },
@@ -139,7 +139,7 @@ const ASSETS: AssetEntry[] = [
   {
     id: "analcolici",
     context: "Getränke — Analcolici (Softdrinks, San Pellegrino, Aqua Panna)",
-    target: "public/images/drinks-analcolici.webp",
+    target: "public/images/analcolici-softdrinks-wasser-saft.png",
     prompt:
       "Real food photography, natural colors, no warm filter. A clean flat-lay of classic Italian non-alcoholic drinks on a light marble or white stone surface: a tall glass of Coca-Cola with ice and condensation, a bright orange Fanta in a glass, a green Sprite over ice, a small glass of fresh orange juice, a bottle of San Pellegrino sparkling water with a filled glass beside it, and a bottle of Acqua Panna still water. Each drink clearly distinct by color — deep brown, bright orange, pale yellow, golden juice. Shot from directly above, evenly spaced, soft natural daylight. No people, no text, no labels, no prices. Aspect ratio 16:9.",
   },
