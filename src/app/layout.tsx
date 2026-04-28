@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ScrollRestore } from "@/components/ScrollRestore";
 import "./globals.css";
 
 const inter = localFont({
@@ -68,6 +69,7 @@ export default function RootLayout({
         <Script src="/theme-init.js" strategy="beforeInteractive" />
       </head>
       <body>
+        <ScrollRestore />
         <Header />
         {children}
         <Footer />

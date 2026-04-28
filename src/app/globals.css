@@ -131,9 +131,11 @@
   color-scheme: dark;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* No global `scroll-behavior: smooth` — cross-page Next navigation
+   should land at scroll 0 instantly. The MenuQuickJump pill click
+   handler does its own programmatic smooth scroll where it actually
+   matters; everything else stays instant so route changes don't fight
+   with mid-flight smooth-scroll animations. */
 
 body {
   font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
