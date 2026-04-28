@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV_LINKS = [
   { href: "/", label: "Start" },
@@ -53,30 +54,33 @@ export function Header() {
           ))}
         </ul>
 
-        {/* Mobile: phone link as primary action (no JS burger needed) */}
-        <a
-          href={`tel:${SITE.phone}`}
-          className="md:hidden rounded-md px-3 py-2 text-sm font-medium"
-          style={{
-            backgroundColor: "var(--color-accent)",
-            color: "var(--color-bg)",
-          }}
-          aria-label={`Anrufen: ${SITE.phoneDisplay}`}
-        >
-          Anrufen
-        </a>
+        {/* Right cluster */}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
 
-        {/* Desktop CTA */}
-        <a
-          href={`tel:${SITE.phone}`}
-          className="hidden md:inline-block rounded-md px-4 py-2 text-sm font-medium transition-colors"
-          style={{
-            backgroundColor: "var(--color-accent)",
-            color: "var(--color-bg)",
-          }}
-        >
-          Reservieren
-        </a>
+          {/* Mobile: phone-CTA (compact). Desktop: Reservieren-CTA. */}
+          <a
+            href={`tel:${SITE.phone}`}
+            className="md:hidden rounded-md px-3 py-2 text-sm font-medium"
+            style={{
+              backgroundColor: "var(--color-accent)",
+              color: "var(--color-bg)",
+            }}
+            aria-label={`Anrufen: ${SITE.phoneDisplay}`}
+          >
+            Anrufen
+          </a>
+          <a
+            href={`tel:${SITE.phone}`}
+            className="hidden md:inline-block rounded-md px-4 py-2 text-sm font-medium transition-colors"
+            style={{
+              backgroundColor: "var(--color-accent)",
+              color: "var(--color-bg)",
+            }}
+          >
+            Reservieren
+          </a>
+        </div>
       </nav>
 
       {/* Mobile sub-nav */}

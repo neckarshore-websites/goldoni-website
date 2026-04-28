@@ -1,4 +1,7 @@
 import type { Menu, MenuCategory, MenuItem } from "@/lib/menu";
+import { LMIV_ALLERGENS, ZZULV_ADDITIVES, HOUSE_CODES } from "@/lib/codes";
+import type { Code } from "@/lib/codes";
+import { MenuQuickJump } from "@/components/MenuQuickJump";
 
 const DIET_LABEL: Record<NonNullable<MenuItem["diet"]>[number], string> = {
   vegetarian: "veg",
@@ -73,7 +76,7 @@ function MenuItemRow({ item }: { item: MenuItem }) {
 
 function CategoryBlock({ category }: { category: MenuCategory }) {
   return (
-    <section id={category.id} className="scroll-mt-24">
+    <section id={category.id} className="scroll-mt-32">
       <header className="mb-4">
         <h2 className="text-3xl" style={{ color: "var(--color-text)" }}>
           {category.name}
@@ -101,6 +104,35 @@ function CategoryBlock({ category }: { category: MenuCategory }) {
   );
 }
 
+function CodeLegend({ title, codes }: { title: string; codes: Code[] }) {
+  return (
+    <div>
+      <h3
+        className="mb-3 text-xs font-medium uppercase tracking-[0.2em]"
+        style={{ color: "var(--color-brand-olive)" }}
+      >
+        {title}
+      </h3>
+      <dl
+        className="grid grid-cols-[2.25rem_1fr] gap-x-3 gap-y-1.5 text-sm"
+        style={{ color: "var(--color-text-muted)" }}
+      >
+        {codes.map((c) => (
+          <div key={c.code} className="contents">
+            <dt
+              className="font-mono font-medium tabular-nums"
+              style={{ color: "var(--color-text)" }}
+            >
+              {c.code}
+            </dt>
+            <dd>{c.name}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
 export function MenuSection({ menu }: { menu: Menu }) {
   return (
     <div>
@@ -113,26 +145,7 @@ export function MenuSection({ menu }: { menu: Menu }) {
         </p>
       ) : null}
 
-      {/* Category quick-jump */}
-      <nav
-        className="sticky top-[6rem] z-10 mb-10 -mx-2 flex gap-2 overflow-x-auto px-2 py-3"
-        style={{ backgroundColor: "var(--color-bg)" }}
-        aria-label="Kategorien"
-      >
-        {menu.categories.map((cat) => (
-          <a
-            key={cat.id}
-            href={`#${cat.id}`}
-            className="whitespace-nowrap rounded-full border px-3 py-1 text-sm transition-colors"
-            style={{
-              borderColor: "var(--color-border-strong)",
-              color: "var(--color-text)",
-            }}
-          >
-            {cat.name}
-          </a>
-        ))}
-      </nav>
+      <MenuQuickJump categories={menu.categories} />
 
       <div className="space-y-16">
         {menu.categories.map((cat) => (
@@ -140,21 +153,33 @@ export function MenuSection({ menu }: { menu: Menu }) {
         ))}
       </div>
 
-      {menu.footnote ? (
-        <footer
-          className="mt-16 border-t pt-6 text-xs leading-relaxed"
-          style={{
-            borderColor: "var(--color-border)",
-            color: "var(--color-text-subtle)",
-          }}
-        >
-          {menu.footnote}
-        </footer>
-      ) : null}
+      {/* Structured legend — replaces the inline footnote prose */}
+      <footer
+        className="mt-16 border-t pt-8"
+        style={{ borderColor: "var(--color-border)" }}
+      >
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <CodeLegend title="Allergene (LMIV)" codes={LMIV_ALLERGENS} />
+          <CodeLegend title="Zusatzstoffe (ZZulV)" codes={ZZULV_ADDITIVES} />
+          <CodeLegend title="Hauseigene Codes" codes={HOUSE_CODES} />
+        </div>
 
-      <p className="mt-6 text-xs" style={{ color: "var(--color-text-subtle)" }}>
-        Stand: {menu.updated}
-      </p>
+        {menu.footnote ? (
+          <p
+            className="mt-8 text-xs leading-relaxed"
+            style={{ color: "var(--color-text-subtle)" }}
+          >
+            {menu.footnote}
+          </p>
+        ) : null}
+
+        <p
+          className="mt-3 text-xs"
+          style={{ color: "var(--color-text-subtle)" }}
+        >
+          Stand: {menu.updated}
+        </p>
+      </footer>
     </div>
   );
 }

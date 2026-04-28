@@ -1,6 +1,6 @@
 {
   "title": "Speisekarte",
-  "intro": "Italienisch verliebte Kueche — frische Zutaten, mit Liebe gemacht. Antipasti, Pasta, Carne e Pesce, Dolci, Cafeteria und unsere Getraenkekarte. Pizze ergaenzen wir separat.",
+  "intro": "Italienisch verliebte Kueche — frische Zutaten, mit Liebe gemacht. Antipasti, Pasta, Pizze, Carne e Pesce, Dolci, Cafeteria und die Getraenkekarte.",
   "updated": "2026-04-28",
   "categories": [
     {
@@ -97,6 +97,86 @@
           "description": "Kartoffelgnocchi in frischer Tomatensauce mit Mozzarellastreifen",
           "price": "15.50",
           "diet": ["vegetarian"]
+        }
+      ]
+    },
+    {
+      "id": "pizze",
+      "name": "Pizze",
+      "subtitle": "Aus dem Steinofen",
+      "items": [
+        {
+          "name": "Pizza Margherita fatta con amore",
+          "description": "Pizza mit Mozzarella Fior di Latte und Basilikum",
+          "price": "10.50",
+          "allergens": ["A", "G"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Pizza in crema di pistacchio, carciofi di Bronte, mortadella e bufala",
+          "description": "Pizza an Pistazien-Artischocken-Creme, Mortadella, Bueffelmozzarella",
+          "price": "16.50",
+          "allergens": ["A", "G", "H", "1", "2"]
+        },
+        {
+          "name": "Pizza Salami",
+          "description": "Pizza mit Salami",
+          "price": "12.00",
+          "allergens": ["A", "G", "1", "2", "3"]
+        },
+        {
+          "name": "Pizza con patate al rosmarino, prosciutto cotto e scamorza",
+          "description": "Pizza mit Hinterschinken, Scamorza-Kaese und Rosmarin-Kartoffeln",
+          "price": "14.50",
+          "allergens": ["A", "G", "1", "2", "3", "4", "9"]
+        },
+        {
+          "name": "Pizza con pomodorini e rucola",
+          "description": "Pizza mit frischen Kirschtomaten und Rucola",
+          "price": "12.00",
+          "allergens": ["A", "G"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Pizza Tonno e cipolla rossa di Tropea",
+          "description": "Pizza mit Thunfisch und roten Zwiebeln aus Tropea",
+          "price": "14.00",
+          "allergens": ["A", "G", "D", "1", "2", "3"]
+        },
+        {
+          "name": "Pizza Laura",
+          "description": "Pizza mit pikanter Salami, Rucola und Grana-Padano-Raspeln",
+          "price": "14.50"
+        },
+        {
+          "name": "Pizza Verdura",
+          "description": "Pizza mit gegrilltem Gemuese — taeglich frisch vom Markt",
+          "price": "14.50",
+          "allergens": ["A", "G"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Pizza Quattro Stagioni",
+          "description": "Pizza «vier Jahreszeiten» — Schinken, Champignons, Artischocken, Oliven",
+          "price": "14.50",
+          "allergens": ["A", "G", "1", "2", "3", "4", "9"]
+        },
+        {
+          "name": "Pizza col prosciutto crudo, rucola e Grana",
+          "description": "Pizza mit Rohschinken, Rucola und Granakaese",
+          "price": "15.50",
+          "allergens": ["A", "G", "1", "2", "3"]
+        },
+        {
+          "name": "Pizza Golosa con gorgonzola e pancetta del Sud Tirolo",
+          "description": "Pizza mit Gorgonzola und Suedtiroler Speck",
+          "price": "14.50",
+          "allergens": ["A", "G", "2", "3"]
+        },
+        {
+          "name": "Pizza bianca con bufala, zucchini e scampi sgusciati",
+          "description": "Pizza «bianca» mit Bueffelmozzarella, Zucchini und geschaelten Scampi",
+          "price": "15.50"
         }
       ]
     },
@@ -414,5 +494,5 @@
       ]
     }
   ],
-  "footnote": "Allergene nach LMIV: A Gluten · B Krebstiere · C Eier · D Fische · E Erdnuesse · F Sojabohnen · G Milch · H Schalenfruechte · L Sellerie · M Senf · N Sesam · O Schwefeldioxid/Sulfite · P Lupinen · R Weichtiere. Zusatzstoffe nach ZZulV: 1 mit Farbstoff · 2 mit Konservierungsstoff · 3 mit Antioxidationsmittel · 4 mit Geschmacksverstaerker · 5 geschwefelt · 6 geschwaerzt · 7 gewachst · 8 mit Phosphat · 9 mit Suessungsmittel · 10 mit Phenylalaninquelle · 11 mit Suessungsmittel und Zucker · 12 chininhaltig · 13 coffeinhaltig. Hauseigene Codes (I, J, S): Bedeutung wird ergaenzt. Allergene zu allen Speisen erhalten Sie auf Wunsch beim Service. Aenderungen vorbehalten. Alle Preise in EUR inkl. MwSt."
+  "footnote": "Allergene zu allen Speisen erhalten Sie auf Wunsch beim Service. Aenderungen vorbehalten. Alle Preise in EUR inkl. MwSt."
 }

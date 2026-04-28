@@ -88,17 +88,19 @@ export function Footer() {
               Folgen &amp; Bestellen
             </h3>
             <ul className="space-y-1">
-              <li>
-                <a
-                  href={SITE.social.wolt}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  Lieferung via Wolt
-                </a>
-              </li>
+              {SITE.delivery.map((partner) => (
+                <li key={partner.name}>
+                  <a
+                    href={partner.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    Lieferung via {partner.name}
+                  </a>
+                </li>
+              ))}
               <li>
                 <a
                   href={SITE.social.facebook}
@@ -109,6 +111,23 @@ export function Footer() {
                 >
                   Facebook
                 </a>
+              </li>
+            </ul>
+
+            {/* Internal — separated by hairline, muted styling */}
+            <ul
+              className="mt-4 space-y-1 border-t pt-4 text-sm"
+              style={{ borderColor: "var(--color-border)" }}
+            >
+              <li>
+                <Link
+                  href="/style-guide"
+                  className="hover:underline"
+                  style={{ color: "var(--color-text-subtle)" }}
+                >
+                  Style Guide{" "}
+                  <span className="text-xs">(intern)</span>
+                </Link>
               </li>
             </ul>
           </div>

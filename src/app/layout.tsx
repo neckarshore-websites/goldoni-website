@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
@@ -53,12 +54,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // suppressHydrationWarning because the theme-init script mutates
+    // data-theme before React hydrates; this is expected.
     <html
       lang="de"
       className={`${inter.variable} ${playfair.variable}`}
       data-theme="light"
       suppressHydrationWarning
     >
+      <head>
+        {/* Anti-flash: runs before first paint. Trusted static asset
+            from /public — no user input, no XSS vector. */}
+        <Script src="/theme-init.js" strategy="beforeInteractive" />
+      </head>
       <body>
         <Header />
         {children}
