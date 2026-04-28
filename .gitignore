@@ -24,15 +24,14 @@ pnpm-debug.log*
 out/
 build/
 dist/
+
+# TypeScript
 *.tsbuildinfo
 next-env.d.ts
 
 # Env
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*.local
 
 # Logs
 *.log
@@ -45,7 +44,9 @@ coverage/
 # Vercel
 .vercel
 
-# Playwright / Lighthouse
+# Lighthouse (local only)
+/.lighthouse/
+
+# Playwright (local only)
 test-results/
 playwright-report/
-lighthouse-reports/
