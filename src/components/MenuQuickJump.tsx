@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { MenuCategory } from "@/lib/menu";
 
 /**
@@ -8,11 +8,25 @@ import type { MenuCategory } from "@/lib/menu";
  *
  * Uses IntersectionObserver to detect which `<section id="...">` is in
  * view; the matching pill gets the accent background. Touch-friendly on
- * mobile (75% of Goldoni traffic). Hidden scrollbar — fade-edge gradients
- * hint that more pills exist off-screen.
+ * mobile (75% of Goldoni traffic).
+ *
+ * Layout: pills are centered and split into rows of at most ROW_SIZE
+ * (currently 7) so the long Speisekarte (10 categories) breaks 7+3
+ * instead of an awkward 8+2. On narrow viewports each row wraps further
+ * naturally — flex-wrap handles the mobile case without extra logic.
  */
+const ROW_SIZE = 7;
+
 export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
   const [activeId, setActiveId] = useState<string>(categories[0]?.id ?? "");
+
+  const rows = useMemo(() => {
+    const chunks: MenuCategory[][] = [];
+    for (let i = 0; i < categories.length; i += ROW_SIZE) {
+      chunks.push(categories.slice(i, i + ROW_SIZE));
+    }
+    return chunks;
+  }, [categories]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -51,32 +65,39 @@ export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
       }}
     >
       <nav
-        className="flex flex-wrap gap-2 px-2 py-3"
+        className="flex flex-col gap-2 px-2 py-3"
         aria-label="Kategorien"
       >
-        {categories.map((cat) => {
-          const isActive = cat.id === activeId;
-          return (
-            <a
-              key={cat.id}
-              href={`#${cat.id}`}
-              data-id={cat.id}
-              aria-current={isActive ? "true" : undefined}
-              className="whitespace-nowrap rounded-full border px-3 py-1 text-sm transition-colors"
-              style={{
-                borderColor: isActive
-                  ? "var(--color-accent)"
-                  : "var(--color-border-strong)",
-                color: isActive ? "var(--color-bg)" : "var(--color-text)",
-                backgroundColor: isActive
-                  ? "var(--color-accent)"
-                  : "transparent",
-              }}
-            >
-              {cat.name}
-            </a>
-          );
-        })}
+        {rows.map((row, idx) => (
+          <div
+            key={idx}
+            className="flex flex-wrap justify-center gap-2"
+          >
+            {row.map((cat) => {
+              const isActive = cat.id === activeId;
+              return (
+                <a
+                  key={cat.id}
+                  href={`#${cat.id}`}
+                  data-id={cat.id}
+                  aria-current={isActive ? "true" : undefined}
+                  className="whitespace-nowrap rounded-full border px-3 py-1 text-sm transition-colors"
+                  style={{
+                    borderColor: isActive
+                      ? "var(--color-accent)"
+                      : "var(--color-border-strong)",
+                    color: isActive ? "var(--color-bg)" : "var(--color-text)",
+                    backgroundColor: isActive
+                      ? "var(--color-accent)"
+                      : "transparent",
+                  }}
+                >
+                  {cat.name}
+                </a>
+              );
+            })}
+          </div>
+        ))}
       </nav>
     </div>
   );

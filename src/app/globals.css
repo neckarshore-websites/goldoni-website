@@ -43,6 +43,21 @@
   --color-brand-olive: #746B03;   /* tavola.olive — eyebrow, section-labels */
   --color-brand-cream: #FEF1A5;   /* tavola.parmigiano — diet-pill bg */
 
+  /* Editorial colour fields — full-bleed sections on the landing page.
+     Use deep Tavola hues (marinara/olive) with mozzarella text so the
+     palette actually shows up instead of staying cream-on-cream. */
+  --color-bg-marinara: #8E2800;       /* tavola.marinara — dramatic editorial bg */
+  --color-bg-olive:    #746B03;       /* tavola.olive — warm celebratory bg */
+  --color-bg-parmigiano: #FEF1A5;     /* tavola.parmigiano — soft cream block */
+  --color-on-marinara: #FAFAFA;       /* mozzarella text on marinara */
+  --color-on-olive:    #FAFAFA;       /* mozzarella text on olive */
+  --color-on-marinara-muted: #FEF1A5; /* parmigiano eyebrow on marinara */
+  --color-on-olive-muted: #FEF1A5;    /* parmigiano eyebrow on olive */
+
+  /* Italian-restaurant heading colour — light: marinara, dark: salmon
+     (lifted for AA-compliant contrast on espresso bg). */
+  --color-heading-italian: #8E2800;   /* tavola.marinara */
+
   /* Typography */
   --font-sans: var(--font-inter);
   --font-display: var(--font-playfair);
@@ -72,6 +87,20 @@
   --color-accent-hover: #8E2800;  /* tavola.marinara */
   --color-brand-olive: #A69B02;   /* tavola.lime — lifted for dark contrast */
   --color-brand-cream: #3A350A;   /* dark olive — pill bg in dark mode */
+
+  /* Editorial fields stay vivid in dark mode — same hues, same text colour.
+     Marinara/Olive bg + mozzarella text continues to read well on espresso
+     surroundings (the colour blocks effectively become the contrast). */
+  --color-bg-marinara: #8E2800;
+  --color-bg-olive:    #746B03;
+  --color-bg-parmigiano: #3A350A;     /* dark olive — keeps the soft-cream block grounded on espresso */
+  --color-on-marinara: #FAFAFA;
+  --color-on-olive:    #FAFAFA;
+  --color-on-marinara-muted: #FEF1A5;
+  --color-on-olive-muted: #FEF1A5;
+
+  /* Heading red lifts to salmon in dark mode for AA contrast on espresso. */
+  --color-heading-italian: #B64926;   /* tavola.salmon */
 }
 
 /* color-scheme hint for browser UI (scrollbars, form controls) */

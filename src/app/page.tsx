@@ -67,49 +67,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Philosophie — Plutarch quote, classic Trattoria voice */}
+      {/* Philosophie — Plutarch quote on a deep Marinara field. The
+          editorial colour block carries the brand: red is the dominant
+          colour of the restaurant interior (velvet wall, sugo, tomato),
+          and a full-bleed section makes it actually visible on the
+          homepage instead of cream-on-cream. */}
       <section
-        className="border-y px-6 py-20 sm:px-12 sm:py-24"
+        className="px-6 py-24 sm:px-12 sm:py-28"
         style={{
-          borderColor: "var(--color-border)",
-          backgroundColor: "var(--color-bg-muted)",
+          backgroundColor: "var(--color-bg-marinara)",
+          color: "var(--color-on-marinara)",
         }}
       >
         <div className="mx-auto max-w-3xl text-center">
-          <h2
-            className="mb-6 text-3xl sm:text-4xl"
-            style={{ color: "var(--color-text)" }}
+          <p
+            className="mb-4 text-xs uppercase tracking-[0.25em]"
+            style={{ color: "var(--color-on-marinara-muted)" }}
           >
-            Brot und Speisen
-          </h2>
-          <blockquote
-            className="font-display text-lg italic leading-relaxed sm:text-xl"
-            style={{ color: "var(--color-text-muted)" }}
-          >
+            Tischgespräche
+          </p>
+          <h2 className="mb-8 text-3xl sm:text-4xl">Brot und Speisen</h2>
+          <blockquote className="font-display text-xl italic leading-relaxed sm:text-2xl">
             «Der Mensch teilt nicht nur Leben und Heim mit anderen, sondern
             auch Brot und Speisen.»
           </blockquote>
           <cite
-            className="mt-4 block text-sm not-italic"
-            style={{ color: "var(--color-text-subtle)" }}
+            className="mt-6 block text-sm not-italic"
+            style={{ color: "var(--color-on-marinara-muted)" }}
           >
             &mdash; Plutarch, Tischgespräche
           </cite>
         </div>
       </section>
 
-      {/* Empfehlungskarte teaser — pointer to weekly recommendations */}
-      <section className="px-6 py-20 sm:px-12 sm:py-24" style={{ backgroundColor: "var(--color-bg)" }}>
+      {/* Empfehlungskarte teaser — Parmigiano-cream block sits between
+          the two deep colour bands above (Marinara) and below (Olive).
+          The cream-yellow gives the page a third colour beat without
+          shouting. */}
+      <section
+        className="px-6 py-20 sm:px-12 sm:py-24"
+        style={{
+          backgroundColor: "var(--color-bg-parmigiano)",
+          color: "var(--color-text)",
+        }}
+      >
         <div className="mx-auto max-w-3xl text-center">
           <p
-            className="mb-3 text-xs uppercase tracking-[0.2em]"
+            className="mb-3 text-xs uppercase tracking-[0.25em]"
             style={{ color: "var(--color-brand-olive)" }}
           >
             Diese Woche
           </p>
           <h2
             className="mb-6 text-3xl sm:text-4xl"
-            style={{ color: "var(--color-text)" }}
+            style={{ color: "var(--color-heading-italian)" }}
           >
             Aktuelle Empfehlungen
           </h2>
@@ -122,10 +133,10 @@ export default function Home() {
           </p>
           <Link
             href="/empfehlungen"
-            className="inline-block border-b-2 pb-1 text-base font-medium transition-colors"
+            className="inline-block rounded-md px-6 py-3 text-base font-medium transition-opacity hover:opacity-90"
             style={{
-              borderColor: "var(--color-accent)",
-              color: "var(--color-accent)",
+              backgroundColor: "var(--color-accent)",
+              color: "#FAFAFA",
             }}
           >
             Zu den Empfehlungen &rarr;
@@ -133,41 +144,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Feiern teaser */}
+      {/* Feiern teaser — Olive field for the celebration message.
+          Warm, grounded, and unmistakably restaurant-not-tech. */}
       <section
-        className="border-t px-6 py-20 sm:px-12 sm:py-24"
+        className="px-6 py-24 sm:px-12 sm:py-28"
         style={{
-          borderColor: "var(--color-border)",
-          backgroundColor: "var(--color-bg-muted)",
+          backgroundColor: "var(--color-bg-olive)",
+          color: "var(--color-on-olive)",
         }}
       >
         <div className="mx-auto max-w-3xl text-center">
           <p
-            className="mb-3 text-xs uppercase tracking-[0.2em]"
-            style={{ color: "var(--color-brand-olive)" }}
+            className="mb-3 text-xs uppercase tracking-[0.25em]"
+            style={{ color: "var(--color-on-olive-muted)" }}
           >
             Privat &amp; Feierlich
           </p>
-          <h2
-            className="mb-6 text-3xl sm:text-4xl"
-            style={{ color: "var(--color-text)" }}
-          >
-            Feiern Sie bei uns
-          </h2>
-          <p
-            className="mx-auto mb-8 max-w-xl"
-            style={{ color: "var(--color-text-muted)" }}
-          >
+          <h2 className="mb-6 text-3xl sm:text-4xl">Feiern Sie bei uns</h2>
+          <p className="mx-auto mb-8 max-w-xl opacity-90">
             Hochzeiten, Geburtstage, Taufen, Firmenfeiern. Wir richten Ihren
             Anlass aus &mdash; mit individueller Karte und der Aufmerksamkeit,
             die er verdient.
           </p>
           <Link
             href="/feiern"
-            className="inline-block border-b-2 pb-1 text-base font-medium transition-colors"
+            className="inline-block rounded-md border-2 px-6 py-3 text-base font-medium transition-colors"
             style={{
-              borderColor: "var(--color-accent)",
-              color: "var(--color-accent)",
+              borderColor: "var(--color-on-olive-muted)",
+              color: "var(--color-on-olive)",
             }}
           >
             Mehr über Feiern &rarr;
