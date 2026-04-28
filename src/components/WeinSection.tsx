@@ -104,7 +104,7 @@ function WineGroup({
 
 export function WeinSection() {
   return (
-    <section className="mt-14">
+    <section id="weinempfehlungen" className="mt-14">
       {/* Section heading */}
       <div
         className="mb-6 border-t pt-10"
