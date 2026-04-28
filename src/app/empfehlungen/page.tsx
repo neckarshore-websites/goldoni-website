@@ -38,9 +38,8 @@ export default function EmpfehlungenPage() {
             menu={menu}
             hideLegend
             extraPills={[
-              { id: "weinempfehlungen", name: "Weinempfehlungen" },
-              { id: "weine-weiss", name: "Weiß" },
-              { id: "weine-rot", name: "Rot" },
+              { id: "weine-weiss", name: "Weißweine" },
+              { id: "weine-rot", name: "Rotweine" },
             ]}
           />
           <WeinSection />
