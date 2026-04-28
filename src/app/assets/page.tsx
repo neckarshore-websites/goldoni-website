@@ -25,7 +25,14 @@ const ASSETS: AssetEntry[] = [
   },
   {
     id: "hero-empfehlungen",
-    context: "Empfehlungskarte — Hero",
+    context: "Empfehlungskarte — Hero (aktiv)",
+    target: "public/images/hero-empfehlungen-overhead-tafel.png",
+    prompt:
+      "Real food photography, natural colors. Overhead flat-lay of a full Italian restaurant table: Pappardelle al ragù, Risotto ai funghi e tartufo, Burrata e prosciutto crudo, olive oil, sea salt, white wine glass, two red wine glasses, water glasses, linen napkins, silver cutlery, bread with grissini on a wooden board. Dark walnut table, soft diffused natural light. Editorial, no people. Aspect ratio 16:9.",
+  },
+  {
+    id: "hero-empfehlungen-alt",
+    context: "Empfehlungskarte — Hero (Alternative, ungenutzt)",
     target: "public/images/empfehlungen-tagliatelle-tartufo-kerze.png",
     prompt:
       "A wide-format cinematic food photography scene for an Italian restaurant weekly specials menu. A rustic wooden table with a single elegantly plated seasonal pasta dish — perhaps pappardelle with wild mushrooms and truffle — on a simple white ceramic plate. Soft candlelight from the left, a glass of deep red wine slightly out of focus in the background, linen napkin folded beside the plate. Warm espresso and amber tones, shallow depth of field, muted highlights. No text, no people. Style: editorial Italian trattoria, moody and intimate, shot on film. Aspect ratio 16:9.",
@@ -155,7 +162,7 @@ const ASSETS: AssetEntry[] = [
 ];
 
 const GROUPS = [
-  { label: "Hero-Images", ids: ["hero-menu", "hero-empfehlungen", "hero-menu-classic"] },
+  { label: "Hero-Images", ids: ["hero-menu", "hero-empfehlungen", "hero-empfehlungen-alt", "hero-menu-classic"] },
   { label: "Feiern", ids: ["feiern-service", "feiern-table"] },
   { label: "Fine Dining", ids: ["fine-dining-1", "fine-dining-2", "fine-dining-3", "fine-dining-4"] },
   { label: "Gerichte", ids: ["lasagne", "pizza-salami", "pizza-patate", "tagliata"] },
