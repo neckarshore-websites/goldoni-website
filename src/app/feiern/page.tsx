@@ -125,7 +125,7 @@ export default function FeiernPage() {
           </p>
           <a
             href={`tel:${SITE.phone}`}
-            className="rounded-md px-5 py-3 text-base font-medium"
+            className="shrink-0 whitespace-nowrap rounded-md px-5 py-3 text-base font-medium"
             style={{
               backgroundColor: "var(--color-accent)",
               color: "#FAFAFA",

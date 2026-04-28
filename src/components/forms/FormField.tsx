@@ -60,6 +60,26 @@ const baseControlStyle = {
   padding: "0.625rem 0.75rem",
 } as const;
 
+// Chevron SVG encoded as data URI (espresso #1A1612 on cream).
+// appearance:none strips the browser-default select widget so the height
+// and padding match plain <input> elements exactly.
+const CHEVRON =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%231A1612' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E";
+
+const selectControlStyle = {
+  ...baseControlStyle,
+  // Remove native widget so height is driven by padding alone (same as input).
+  appearance: "none" as const,
+  WebkitAppearance: "none" as const,
+  // Room for the custom chevron on the right.
+  paddingRight: "2.25rem",
+  backgroundImage: `url("${CHEVRON}")`,
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "right 0.625rem center",
+  backgroundSize: "1.125rem 1.125rem",
+  cursor: "pointer",
+};
+
 export function FormField(props: FormFieldProps) {
   const id = `field-${props.name}`;
   const errId = props.error ? `${id}-err` : undefined;
@@ -89,7 +109,7 @@ export function FormField(props: FormFieldProps) {
         defaultValue={props.defaultValue ?? ""}
         aria-invalid={props.error ? true : undefined}
         aria-describedby={describedBy}
-        style={baseControlStyle}
+        style={selectControlStyle}
       >
         {props.placeholder ? (
           <option value="" disabled>
