@@ -86,7 +86,7 @@ export function FeiernForm() {
         required
         autoComplete="tel"
         inputMode="tel"
-        hint="Wir rufen kurz zurueck, um Details zu klaeren."
+        hint="Wir rufen kurz zurück, um Details zu klären."
         error={state.fieldErrors?.phone}
       />
 
@@ -97,17 +97,16 @@ export function FeiernForm() {
           label="Anlass"
           required
           options={OCCASIONS}
-          placeholder="Bitte auswaehlen"
+          placeholder="Bitte auswählen"
           error={state.fieldErrors?.occasion}
         />
         <FormField
           name="guestCount"
-          type="number"
-          label="Gaesteanzahl"
+          type="text"
+          label="Gästeanzahl"
           required
           inputMode="numeric"
-          min={1}
-          max={120}
+          pattern="[0-9]*"
           error={state.fieldErrors?.guestCount}
         />
       </div>
@@ -134,7 +133,7 @@ export function FeiernForm() {
         name="message"
         label="Anmerkungen (optional)"
         rows={4}
-        hint="Allergien, Menue-Vorlieben, Besonderheiten?"
+        hint="Allergien, Menü-Vorlieben, Besonderheiten?"
         error={state.fieldErrors?.message}
       />
 
