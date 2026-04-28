@@ -40,9 +40,9 @@ const ASSETS: AssetEntry[] = [
   {
     id: "hero-menu-classic",
     context: "Speisekarte — Hero (Alternative)",
-    target: "public/images/hero-menu-classic.webp",
+    target: "public/images/hero-menu-classic.png",
     prompt:
-      "A wide-format cinematic scene of a classic Italian restaurant table setting. A worn leather-bound menu resting on a crisp white tablecloth, a single lit candle in a wine bottle, two empty wine glasses catching the warm light. Rustic wooden chairs slightly visible in the background, soft bokeh of a dimly lit dining room. Warm amber and deep espresso tones, no bright colors. The atmosphere is intimate and timeless — a traditional Italian trattoria that has been open for decades. No text visible on the menu. No people. Shot from a slight overhead angle. Style: analog film, editorial, warm and moody. Aspect ratio 16:9.",
+      "Real restaurant photography, natural colors, no warm filter. A close-up of a worn leather-bound menu lying closed on a dark wooden table — the cover slightly textured, corners softened from use. Beside it: a single unlit or softly lit white pillar candle, two empty crystal wine glasses with clean reflections. Background: soft out-of-focus restaurant interior — dark wood paneling, dim ambient light. Neutral to cool tones — deep browns from the wood, clear glass, muted leather. No orange, no amber glow, no film grain. No text on the menu cover. No people. Shot from a 30-degree angle. Editorial, modern restaurant photography. Aspect ratio 16:9.",
   },
 
   // ── Feiern ───────────────────────────────────────────────────────────────
@@ -86,9 +86,9 @@ const ASSETS: AssetEntry[] = [
   {
     id: "fine-dining-4",
     context: "Fine Dining — Tisch Overhead",
-    target: "public/images/fine-dining-overhead.webp",
+    target: "public/images/fine-dining-overhead.png",
     prompt:
-      "Overhead flat-lay food photography. A full Italian fine dining table set for two — starter plate, pasta bowl, wine glasses with red and white wine, bread, olive oil in a small ceramic dish, linen napkins, silver cutlery — all on a dark walnut table. Even soft studio lighting, no shadows, natural accurate colors. Editorial style, no people. Aspect ratio 16:9.",
+      "Real food photography, natural colors, no warm filter, no post-processing. Overhead flat-lay shot directly from above. A fine Italian dining table set for two on a dark walnut surface. Left cover: carpaccio di manzo on a wide white plate — thin slices, pale rose-pink (not deep red), dressed with lemon oil, capers, microgreens and shaved Parmesan. Two forks and a knife to the left, neatly placed. A folded linen napkin beside the cutlery. Right cover: tagliatelle al ragù in a wide white bowl, dusted with Parmigiano. Knife and spoon to the right. A second folded linen napkin, slightly more casually placed. Center of table between the two covers: a small white ceramic dish with olive oil and a drizzle of balsamic, a tall wooden pepper mill, a small pinch bowl with sea salt flakes. One glass of white wine (pale golden, condensation on the outside) to the upper left, one glass of Bordeaux-red wine (deep ruby, clear) to the upper right. Soft even diffused studio light from above — no orange glow, no candle warmth, no shadows. Neutral to cool tones throughout. True whites on plates and napkins. Dark walnut table as base. No people. Aspect ratio 16:9.",
   },
 
   // ── Gerichte ─────────────────────────────────────────────────────────────

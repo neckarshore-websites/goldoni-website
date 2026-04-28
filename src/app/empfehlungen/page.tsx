@@ -34,7 +34,14 @@ export default function EmpfehlungenPage() {
           >
             {menu.title}
           </h1>
-          <MenuSection menu={menu} hideLegend />
+          <MenuSection
+            menu={menu}
+            hideLegend
+            extraPills={[
+              { id: "weine-weiss", name: "Weißweine" },
+              { id: "weine-rot", name: "Rotweine" },
+            ]}
+          />
           <WeinSection />
           <MenuLegend menu={menu} />
         </div>

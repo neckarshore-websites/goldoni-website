@@ -1,7 +1,7 @@
 import type { Menu, MenuCategory, MenuItem } from "@/lib/menu";
 import { LMIV_ALLERGENS, ZZULV_ADDITIVES, HOUSE_CODES } from "@/lib/codes";
 import type { Code } from "@/lib/codes";
-import { MenuQuickJump } from "@/components/MenuQuickJump";
+import { MenuQuickJump, type ExtraPill } from "@/components/MenuQuickJump";
 
 const DIET_LABEL: Record<NonNullable<MenuItem["diet"]>[number], string> = {
   vegetarian: "veg",
@@ -182,9 +182,11 @@ export function MenuLegend({ menu }: { menu: Menu }) {
 export function MenuSection({
   menu,
   hideLegend = false,
+  extraPills = [],
 }: {
   menu: Menu;
   hideLegend?: boolean;
+  extraPills?: ExtraPill[];
 }) {
   return (
     <div>
@@ -197,7 +199,7 @@ export function MenuSection({
         </p>
       ) : null}
 
-      <MenuQuickJump categories={menu.categories} />
+      <MenuQuickJump categories={menu.categories} extraPills={extraPills} />
 
       <div className="space-y-16">
         {menu.categories.map((cat) => (
