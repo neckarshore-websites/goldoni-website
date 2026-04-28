@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Feiern bei Goldoni — Private Anlaesse in Stuttgart",
   description:
     "Hochzeiten, Geburtstage, Taufen, Firmenfeiern. Im Ristorante Goldoni richten wir Ihren privaten Anlass aus — mit individueller Karte und der Aufmerksamkeit, die er verdient.",
+  alternates: { canonical: "/feiern" },
 };
 
 export default function FeiernPage() {

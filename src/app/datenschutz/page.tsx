@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "Informationen zur Verarbeitung personenbezogener Daten gemaess Art. 13 DSGVO.",
   robots: { index: true, follow: false },
+  alternates: { canonical: "/datenschutz" },
 };
 
 export default function DatenschutzPage() {

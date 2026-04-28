@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Impressum — Ristorante Goldoni",
   description: "Anbieterkennzeichnung gemaess § 5 DDG.",
   robots: { index: true, follow: false },
+  alternates: { canonical: "/impressum" },
 };
 
 export default function ImpressumPage() {

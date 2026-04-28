@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Kontakt — Ristorante Goldoni",
   description:
     "Fragen, Sonderwünsche oder eine kurze Nachricht — schreiben Sie uns direkt. Das Ristorante Goldoni antwortet so schnell wie möglich.",
+  alternates: { canonical: "/kontakt" },
 };
 
 export default function KontaktPage() {

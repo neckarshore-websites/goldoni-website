@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Speisekarte — Ristorante Goldoni",
   description:
     "Antipasti, Pasta, Pizze, Hauptgerichte und Dolci im Ristorante Goldoni in Stuttgart. Italienisch verliebte Küche, frische Zutaten.",
+  alternates: { canonical: "/menu" },
 };
 
 export default function MenuPage() {
