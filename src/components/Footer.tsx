@@ -38,7 +38,7 @@ export function Footer() {
               className="mb-3 text-xs font-medium uppercase tracking-[0.2em]"
               style={{ color: "var(--color-brand-olive)" }}
             >
-              Oeffnungszeiten
+              Öffnungszeiten
             </h3>
             <ul style={{ color: "var(--color-text)" }}>
               {SITE.hours.map((row) => (

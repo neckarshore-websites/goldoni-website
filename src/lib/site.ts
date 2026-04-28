@@ -8,7 +8,7 @@ export const SITE = {
   name: "Ristorante Goldoni",
   tagline: "Bella Italia in Stuttgart",
   description:
-    "Italienisch verliebte Kueche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht.",
+    "Italienisch verliebte Küche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht.",
   url: "https://ristorante-goldoni.de",
 
   // Contact

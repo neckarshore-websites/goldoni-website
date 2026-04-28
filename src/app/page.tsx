@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { DeliveryBanner } from "@/components/DeliveryBanner";
@@ -8,51 +9,59 @@ export default function Home() {
       {/* Delivery banner — first impression, points to Wolt + Uber Eats */}
       <DeliveryBanner />
 
-      {/* Hero */}
-      <section
-        className="px-6 py-24 sm:px-12 sm:py-32 lg:py-40"
-        style={{ backgroundColor: "var(--color-bg)" }}
-      >
-        <div className="mx-auto max-w-4xl text-center">
-          <p
-            className="mb-4 text-sm uppercase tracking-[0.2em]"
-            style={{ color: "var(--color-brand-olive)" }}
-          >
-            {SITE.tagline}
-          </p>
-          <h1
-            className="mb-6 text-5xl leading-tight sm:text-6xl lg:text-7xl"
-            style={{ color: "var(--color-text)" }}
-          >
-            Ristorante <span style={{ color: "var(--color-accent)" }}>Goldoni</span>
-          </h1>
-          <p
-            className="mx-auto mb-10 max-w-2xl text-lg sm:text-xl"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            {SITE.description}
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/menu"
-              className="rounded-md px-6 py-3 text-base font-medium transition-colors"
-              style={{
-                backgroundColor: "var(--color-accent)",
-                color: "var(--color-bg)",
-              }}
+      {/* Hero — restaurant wall sign on red velvet, brand-defining photo */}
+      <section className="relative isolate overflow-hidden">
+        <div className="relative h-[70vh] min-h-[480px] w-full sm:h-[80vh]">
+          <Image
+            src="/images/hero-goldoni-velvet.webp"
+            alt="Ristorante Goldoni — Wandschild im Innenraum, gold auf rotem Samt"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          {/* Gradient overlay for CTA legibility (bottom-aligned) */}
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(26,22,18,0.15) 0%, rgba(26,22,18,0.05) 50%, rgba(26,22,18,0.75) 100%)",
+            }}
+          />
+          {/* Foreground — tagline + CTAs */}
+          <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-6 pb-12 text-center sm:pb-16 sm:px-12">
+            {/* H1 is rendered for SEO + a11y; visually the wall sign in the
+                photo carries the brand. */}
+            <h1 className="sr-only">{SITE.name}</h1>
+            <p
+              className="mb-6 max-w-2xl text-base text-white/95 sm:text-lg"
+              style={{ textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}
             >
-              Unsere Karte
-            </Link>
-            <a
-              href={`tel:${SITE.phone}`}
-              className="rounded-md border px-6 py-3 text-base font-medium transition-colors"
-              style={{
-                borderColor: "var(--color-border-strong)",
-                color: "var(--color-text)",
-              }}
-            >
-              Tisch reservieren · {SITE.phoneDisplay}
-            </a>
+              {SITE.description}
+            </p>
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+              <Link
+                href="/menu"
+                className="rounded-md px-6 py-3 text-base font-medium transition-opacity hover:opacity-90"
+                style={{
+                  backgroundColor: "var(--tavola-salmon)",
+                  color: "#FAFAFA",
+                }}
+              >
+                Unsere Karte
+              </Link>
+              <a
+                href={`tel:${SITE.phone}`}
+                className="rounded-md border-2 px-6 py-3 text-base font-medium text-white transition-colors backdrop-blur-sm"
+                style={{
+                  borderColor: "rgba(255,255,255,0.6)",
+                  backgroundColor: "rgba(255,255,255,0.08)",
+                }}
+              >
+                Tisch reservieren · {SITE.phoneDisplay}
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -76,19 +85,19 @@ export default function Home() {
             className="font-display text-lg italic leading-relaxed sm:text-xl"
             style={{ color: "var(--color-text-muted)" }}
           >
-            &laquo;Der Mensch teilt nicht nur Leben und Heim mit anderen, sondern
-            auch Brot und Speisen.&raquo;
+            «Der Mensch teilt nicht nur Leben und Heim mit anderen, sondern
+            auch Brot und Speisen.»
           </blockquote>
           <cite
             className="mt-4 block text-sm not-italic"
             style={{ color: "var(--color-text-subtle)" }}
           >
-            &mdash; Plutarch, Tischgespraeche
+            &mdash; Plutarch, Tischgespräche
           </cite>
         </div>
       </section>
 
-      {/* Empfehlungskarte teaser — placeholder until skill/data is wired */}
+      {/* Empfehlungskarte teaser — pointer to weekly recommendations */}
       <section className="px-6 py-20 sm:px-12 sm:py-24" style={{ backgroundColor: "var(--color-bg)" }}>
         <div className="mx-auto max-w-3xl text-center">
           <p
@@ -107,8 +116,8 @@ export default function Home() {
             className="mx-auto mb-8 max-w-xl"
             style={{ color: "var(--color-text-muted)" }}
           >
-            Saisonale Gerichte, Wochenangebote und Wein-Tipps &mdash; was die
-            Kueche heute besonders empfiehlt.
+            Saisonale Gerichte, Wochenangebote und Wein-Tipps — was die
+            Küche heute besonders empfiehlt.
           </p>
           <Link
             href="/empfehlungen"
@@ -160,7 +169,7 @@ export default function Home() {
               color: "var(--color-accent)",
             }}
           >
-            Mehr ueber Feiern &rarr;
+            Mehr über Feiern &rarr;
           </Link>
         </div>
       </section>
