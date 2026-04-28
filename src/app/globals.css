@@ -27,6 +27,26 @@
   --tavola-salmon:      #B64926;  /* terracotta-salmon */
   --tavola-marinara:    #8E2800;  /* deep red */
   --tavola-espresso:    #1A1612;  /* warm dark, not pure black */
+
+  /* Noir / Blanc — theme-fixed (identical in light + dark mode).
+     Used by the global Header (always black/espresso) and the Footer's
+     two halves (top = noir, copyright row = blanc). The page bg shifts
+     between mozzarella and espresso per theme; these don't.
+
+     Why theme-fixed? The shell of the site (header at the top, footer
+     at the bottom) is intentionally a constant editorial frame — like
+     a magazine cover wrap — so the brand reads the same regardless of
+     whether the reader is in light or dark mode. */
+  --color-noir-bg:        #1A1612;  /* tavola.espresso */
+  --color-noir-text:      #FAFAFA;  /* tavola.mozzarella */
+  --color-noir-text-muted:#C9BD8A;  /* warm cream-tan */
+  --color-noir-eyebrow:   #FEF1A5;  /* tavola.parmigiano */
+  --color-noir-border:    #3A2D1F;  /* dark warm-brown — hairline delineation */
+
+  --color-blanc-bg:       #FAFAFA;  /* tavola.mozzarella */
+  --color-blanc-text:     #1A1612;  /* tavola.espresso */
+  --color-blanc-text-muted:#5C5240; /* warm dark-tan */
+  --color-blanc-border:   #EAE0C5;  /* very light parmigiano-tan */
 }
 
 @theme {
