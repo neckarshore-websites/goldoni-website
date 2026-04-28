@@ -155,7 +155,7 @@ const ASSETS: AssetEntry[] = [
   {
     id: "dolci",
     context: "Desserts — Dolci (Panna Cotta, Tiramisù, Tartufo, Cassata, Sorbetto, Formaggio)",
-    target: "public/images/dish-dolci.webp",
+    target: "public/images/dish-dolci.png",
     prompt:
       "Real food photography, natural colors, no warm filter. An elegant flat-lay of classic Italian desserts on a dark wooden restaurant table: a smooth panna cotta with a drizzle of berry coulis, a generous portion of tiramisù dusted with cocoa powder in a small dish, a dark chocolate tartufo and a white tartufo side by side, a slice of Cassata Siciliana with visible candied fruit, a whole lemon filled with lemon sorbet, and a small wooden board with a selection of Italian cheeses and a few grapes. Each dessert on its own white plate or small dish, evenly spaced. Shot from a slight overhead angle, soft diffused natural light, neutral accurate colors. No people, no text, no prices. Aspect ratio 16:9.",
   },
