@@ -43,6 +43,17 @@ export function Footer() {
                 <br />
                 {SITE.address.postalCode} {SITE.address.city}
               </address>
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent(
+                  `${SITE.address.street}, ${SITE.address.postalCode} ${SITE.address.city}`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block text-sm hover:underline"
+                style={{ color: "var(--color-noir-text-muted)" }}
+              >
+                Route planen →
+              </a>
             </div>
 
             {/* Hours */}
