@@ -35,6 +35,20 @@ export const SITE = {
     wolt: "https://wolt.com/de/deu/stuttgart/restaurant/goldoni",
   },
 
+  // Delivery partners — used by the homepage delivery banner + footer.
+  delivery: [
+    {
+      name: "Wolt",
+      url: "https://wolt.com/de/deu/stuttgart/restaurant/goldoni",
+      tagline: "Bestellen auf Wolt",
+    },
+    {
+      name: "Uber Eats",
+      url: "https://www.ubereats.com/de/store/ristorante-goldoni/b6ZSgAthWcC5UJSAaK97mA?diningMode=DELIVERY",
+      tagline: "Bestellen auf Uber Eats",
+    },
+  ],
+
   // Founded — TODO: confirm with owner
   founded: 0, // 0 = unknown / not yet confirmed
 } as const;

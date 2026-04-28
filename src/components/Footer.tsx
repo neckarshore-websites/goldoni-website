@@ -88,17 +88,19 @@ export function Footer() {
               Folgen &amp; Bestellen
             </h3>
             <ul className="space-y-1">
-              <li>
-                <a
-                  href={SITE.social.wolt}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                  style={{ color: "var(--color-text)" }}
-                >
-                  Lieferung via Wolt
-                </a>
-              </li>
+              {SITE.delivery.map((partner) => (
+                <li key={partner.name}>
+                  <a
+                    href={partner.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    Lieferung via {partner.name}
+                  </a>
+                </li>
+              ))}
               <li>
                 <a
                   href={SITE.social.facebook}

@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
+import { DeliveryBanner } from "@/components/DeliveryBanner";
 
 export default function Home() {
   return (
     <main>
+      {/* Delivery banner — first impression, points to Wolt + Uber Eats */}
+      <DeliveryBanner />
+
       {/* Hero */}
       <section
         className="px-6 py-24 sm:px-12 sm:py-32 lg:py-40"
