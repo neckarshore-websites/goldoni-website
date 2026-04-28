@@ -68,7 +68,7 @@ function MenuItemRow({ item }: { item: MenuItem }) {
         className="shrink-0 font-medium tabular-nums"
         style={{ color: "var(--color-text)" }}
       >
-        {item.price}&nbsp;&euro;
+        {item.price.replace(".", ",")}&nbsp;&euro;
       </div>
     </li>
   );
