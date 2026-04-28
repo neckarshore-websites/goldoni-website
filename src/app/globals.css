@@ -97,6 +97,16 @@ h1, h2, .font-display {
   color: var(--color-bg);
 }
 
+/* Hide scrollbar on the menu category quick-jump bar — the fade-edge
+   gradient already signals horizontal scrolling on mobile. */
+.menu-quickjump-scroll {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE / old Edge */
+}
+.menu-quickjump-scroll::-webkit-scrollbar {
+  display: none;                /* Chromium, Safari, Webkit */
+}
+
 /* Theme toggle icons — DOM-driven, both rendered, CSS hides inactive */
 .theme-icon {
   display: none;
