@@ -38,9 +38,13 @@ export const SITE = {
   // Delivery partners — used by the homepage delivery banner + footer.
   delivery: [
     {
+      // Tagline matches the visible "Bestellen mit" composite text on the
+      // Wolt tile + the Uber Eats brand-portal asset, ensuring the link's
+      // accessible name (aria-label) matches its visible text content
+      // (WCAG 2.5.3 Label in Name).
       name: "Wolt",
       url: "https://wolt.com/de/deu/stuttgart/restaurant/goldoni",
-      tagline: "Bestellen auf Wolt",
+      tagline: "Bestellen mit Wolt",
     },
     {
       // Hash-ID is Uber's permanent restaurant identifier (verified 2026-04-28:
@@ -48,7 +52,7 @@ export const SITE = {
       // Query params like ?diningMode=DELIVERY are UI-state tracking, stripped.
       name: "Uber Eats",
       url: "https://www.ubereats.com/de/store/ristorante-goldoni/b6ZSgAthWcC5UJSAaK97mA",
-      tagline: "Bestellen auf Uber Eats",
+      tagline: "Bestellen mit Uber Eats",
     },
   ],
 

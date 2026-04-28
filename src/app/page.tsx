@@ -17,6 +17,7 @@ export default function Home() {
             alt="Ristorante Goldoni — Wandschild im Innenraum, gold auf rotem Samt"
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover"
           />
