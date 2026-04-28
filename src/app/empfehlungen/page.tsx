@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+import { MenuSection } from "@/components/MenuSection";
+import empfehlungskarte from "@/data/empfehlungskarte.json";
+import type { Menu } from "@/lib/menu";
+
+const menu = empfehlungskarte as Menu;
 
 export const metadata: Metadata = {
-  title: "Empfehlungen — Ristorante Goldoni",
+  title: "Empfehlungskarte — Ristorante Goldoni",
   description:
-    "Aktuelle Empfehlungskarte: saisonale Gerichte, Wochenangebote und Wein-Tipps aus der Kueche.",
+    "Saisonale Gerichte, Wochenangebote und Wein-Tipps aus der Kueche im Ristorante Goldoni in Stuttgart.",
 };
 
 export default function EmpfehlungenPage() {
@@ -17,35 +22,12 @@ export default function EmpfehlungenPage() {
           Diese Woche
         </p>
         <h1
-          className="mb-6 text-4xl sm:text-5xl"
+          className="mb-10 text-4xl sm:text-5xl"
           style={{ color: "var(--color-text)" }}
         >
-          Aktuelle Empfehlungen
+          {menu.title}
         </h1>
-        <p
-          className="mb-8 text-lg"
-          style={{ color: "var(--color-text-muted)" }}
-        >
-          Was die Kueche diese Woche besonders empfiehlt &mdash; saisonal,
-          frisch, und nicht jede Woche das Gleiche.
-        </p>
-
-        <div
-          className="rounded-lg border p-8 sm:p-10"
-          style={{
-            borderColor: "var(--color-border)",
-            backgroundColor: "var(--color-bg-muted)",
-          }}
-        >
-          <p
-            className="text-base"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            Die aktuelle Empfehlungskarte folgt in Kuerze. Bis dahin: rufen
-            Sie uns an &mdash; wir erzaehlen gerne, was heute auf den Tisch
-            kommt.
-          </p>
-        </div>
+        <MenuSection menu={menu} />
       </div>
     </main>
   );

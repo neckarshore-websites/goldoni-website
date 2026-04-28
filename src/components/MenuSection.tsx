@@ -23,6 +23,14 @@ function MenuItemRow({ item }: { item: MenuItem }) {
           >
             {item.name}
           </h3>
+          {item.volume ? (
+            <span
+              className="text-xs"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              {item.volume}
+            </span>
+          ) : null}
           {item.allergens && item.allergens.length > 0 ? (
             <span
               className="text-xs"

@@ -12,23 +12,14 @@
  *   E Erdnuesse   F Sojabohnen   G Milch (Laktose)   H Schalenfruechte
  *   L Sellerie   M Senf   N Sesam   O Schwefeldioxid/Sulfite
  *   P Lupinen   R Weichtiere
+ *
+ * Restaurants sometimes use additional house-codes alongside LMIV
+ * (e.g. "I" or "S" — needs clarification per restaurant). We therefore
+ * type the allergen field as plain string and document the meaning in
+ * the menu's `footnote` field.
  */
 
-export type AllergenCode =
-  | "A"
-  | "B"
-  | "C"
-  | "D"
-  | "E"
-  | "F"
-  | "G"
-  | "H"
-  | "L"
-  | "M"
-  | "N"
-  | "O"
-  | "P"
-  | "R";
+export type AllergenCode = string;
 
 export type DietTag = "vegetarian" | "vegan" | "spicy";
 
@@ -37,9 +28,11 @@ export interface MenuItem {
   name: string;
   /** Optional short German description / ingredients line. */
   description?: string;
+  /** Optional serving volume / size — e.g. "0,3 l", "4 cl". Rendered next to name. */
+  volume?: string;
   /** Price as decimal-string for stable formatting (e.g. "12.50"). */
   price: string;
-  /** LMIV allergen codes. Empty array if none / not yet captured. */
+  /** Allergen / additive codes. Empty array if none / not yet captured. */
   allergens?: AllergenCode[];
   /** Diet markers — additive, an item can be both vegetarian and spicy. */
   diet?: DietTag[];
