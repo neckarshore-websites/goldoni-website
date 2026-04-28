@@ -11,7 +11,7 @@ export default function Home() {
 
       {/* Hero — restaurant wall sign on red velvet, brand-defining photo */}
       <section className="relative isolate overflow-hidden">
-        <div className="relative h-[50vh] min-h-[336px] w-full sm:h-[56vh]">
+        <div className="relative h-[34vh] min-h-[240px] w-full sm:h-[38vh]">
           <HeroSlideshow />
           {/* Gradient overlay for CTA legibility (bottom-aligned) */}
           <div
@@ -19,11 +19,11 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to bottom, rgba(26,22,18,0.15) 0%, rgba(26,22,18,0.05) 50%, rgba(26,22,18,0.75) 100%)",
+                "linear-gradient(to bottom, rgba(26,22,18,0.10) 0%, rgba(26,22,18,0.30) 55%, rgba(26,22,18,0.88) 100%)",
             }}
           />
           {/* Foreground — tagline + CTAs */}
-          <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-6 pb-12 text-center sm:pb-16 sm:px-12">
+          <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-6 pb-8 text-center sm:pb-10 sm:px-12">
             {/* H1 is rendered for SEO + a11y; visually the wall sign in the
                 photo carries the brand. */}
             <h1 className="sr-only">{SITE.name}</h1>
