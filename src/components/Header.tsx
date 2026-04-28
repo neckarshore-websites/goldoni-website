@@ -4,8 +4,8 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV_LINKS = [
   { href: "/", label: "Start", featured: false },
+  { href: "/empfehlungen", label: "Empfehlungskarte", featured: true },
   { href: "/menu", label: "Menü", featured: false },
-  { href: "/empfehlungen", label: "Empfehlungen", featured: true },
   { href: "/feiern", label: "Feiern", featured: false },
   { href: "/kontakt", label: "Kontakt", featured: false },
 ] as const;

@@ -26,7 +26,7 @@ export default function MenuPage() {
           className="mb-6 text-4xl sm:text-5xl"
           style={{ color: "var(--color-text)" }}
         >
-          {menu.title}
+          Speisekarten
         </h1>
 
         {/* Empfehlungs-Banner — leitet auf die wechselnde Empfehlungskarte */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import type { MenuCategory } from "@/lib/menu";
 
 /**
@@ -13,7 +13,6 @@ import type { MenuCategory } from "@/lib/menu";
  */
 export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
   const [activeId, setActiveId] = useState<string>(categories[0]?.id ?? "");
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -43,29 +42,6 @@ export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
     return () => observer.disconnect();
   }, [categories]);
 
-  // Scroll the active pill into view inside the horizontal bar
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    const activePill = container.querySelector<HTMLAnchorElement>(
-      `a[data-id="${activeId}"]`,
-    );
-    if (activePill) {
-      const pillRect = activePill.getBoundingClientRect();
-      const containerRect = container.getBoundingClientRect();
-      if (
-        pillRect.left < containerRect.left ||
-        pillRect.right > containerRect.right
-      ) {
-        activePill.scrollIntoView({
-          behavior: "smooth",
-          inline: "center",
-          block: "nearest",
-        });
-      }
-    }
-  }, [activeId]);
-
   return (
     <div
       className="menu-quickjump sticky top-[5.5rem] z-10 -mx-2 mb-10 md:top-[4.5rem]"
@@ -75,8 +51,7 @@ export function MenuQuickJump({ categories }: { categories: MenuCategory[] }) {
       }}
     >
       <nav
-        ref={containerRef}
-        className="menu-quickjump-scroll flex gap-2 overflow-x-auto px-2 py-3"
+        className="flex flex-wrap gap-2 px-2 py-3"
         aria-label="Kategorien"
       >
         {categories.map((cat) => {
