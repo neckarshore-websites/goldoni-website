@@ -154,6 +154,16 @@ export function Footer() {
                     <span className="text-xs">(intern)</span>
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/assets"
+                    className="hover:underline"
+                    style={{ color: "var(--color-noir-text-muted)" }}
+                  >
+                    Assets{" "}
+                    <span className="text-xs">(intern)</span>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
