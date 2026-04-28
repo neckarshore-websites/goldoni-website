@@ -147,7 +147,45 @@ function CodeLegend({ title, codes }: { title: string; codes: Code[] }) {
   );
 }
 
-export function MenuSection({ menu }: { menu: Menu }) {
+/** Standalone legend footer — exported so pages can place it after other sections. */
+export function MenuLegend({ menu }: { menu: Menu }) {
+  return (
+    <footer
+      className="mt-16 border-t pt-8"
+      style={{ borderColor: "var(--color-border)" }}
+    >
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <CodeLegend title="Allergene (LMIV)" codes={LMIV_ALLERGENS} />
+        <CodeLegend title="Zusatzstoffe (ZZulV)" codes={ZZULV_ADDITIVES} />
+        <CodeLegend title="Hauseigene Codes" codes={HOUSE_CODES} />
+      </div>
+
+      {menu.footnote ? (
+        <p
+          className="mt-8 text-xs leading-relaxed"
+          style={{ color: "var(--color-text-subtle)" }}
+        >
+          {menu.footnote}
+        </p>
+      ) : null}
+
+      <p
+        className="mt-3 text-xs"
+        style={{ color: "var(--color-text-subtle)" }}
+      >
+        Stand: {menu.updated}
+      </p>
+    </footer>
+  );
+}
+
+export function MenuSection({
+  menu,
+  hideLegend = false,
+}: {
+  menu: Menu;
+  hideLegend?: boolean;
+}) {
   return (
     <div>
       {menu.intro ? (
@@ -167,33 +205,7 @@ export function MenuSection({ menu }: { menu: Menu }) {
         ))}
       </div>
 
-      {/* Structured legend — replaces the inline footnote prose */}
-      <footer
-        className="mt-16 border-t pt-8"
-        style={{ borderColor: "var(--color-border)" }}
-      >
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <CodeLegend title="Allergene (LMIV)" codes={LMIV_ALLERGENS} />
-          <CodeLegend title="Zusatzstoffe (ZZulV)" codes={ZZULV_ADDITIVES} />
-          <CodeLegend title="Hauseigene Codes" codes={HOUSE_CODES} />
-        </div>
-
-        {menu.footnote ? (
-          <p
-            className="mt-8 text-xs leading-relaxed"
-            style={{ color: "var(--color-text-subtle)" }}
-          >
-            {menu.footnote}
-          </p>
-        ) : null}
-
-        <p
-          className="mt-3 text-xs"
-          style={{ color: "var(--color-text-subtle)" }}
-        >
-          Stand: {menu.updated}
-        </p>
-      </footer>
+      {!hideLegend && <MenuLegend menu={menu} />}
     </div>
   );
 }

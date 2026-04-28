@@ -25,7 +25,14 @@ const ASSETS: AssetEntry[] = [
   },
   {
     id: "hero-empfehlungen",
-    context: "Empfehlungskarte — Hero",
+    context: "Empfehlungskarte — Hero (aktiv)",
+    target: "public/images/hero-empfehlungen-overhead-tafel.png",
+    prompt:
+      "Real food photography, natural colors. Overhead flat-lay of a full Italian restaurant table: Pappardelle al ragù, Risotto ai funghi e tartufo, Burrata e prosciutto crudo, olive oil, sea salt, white wine glass, two red wine glasses, water glasses, linen napkins, silver cutlery, bread with grissini on a wooden board. Dark walnut table, soft diffused natural light. Editorial, no people. Aspect ratio 16:9.",
+  },
+  {
+    id: "hero-empfehlungen-alt",
+    context: "Empfehlungskarte — Hero (Alternative, ungenutzt)",
     target: "public/images/empfehlungen-tagliatelle-tartufo-kerze.png",
     prompt:
       "A wide-format cinematic food photography scene for an Italian restaurant weekly specials menu. A rustic wooden table with a single elegantly plated seasonal pasta dish — perhaps pappardelle with wild mushrooms and truffle — on a simple white ceramic plate. Soft candlelight from the left, a glass of deep red wine slightly out of focus in the background, linen napkin folded beside the plate. Warm espresso and amber tones, shallow depth of field, muted highlights. No text, no people. Style: editorial Italian trattoria, moody and intimate, shot on film. Aspect ratio 16:9.",
@@ -132,7 +139,7 @@ const ASSETS: AssetEntry[] = [
   {
     id: "digestivi",
     context: "Getränke — Digestivi (Averna, Ramazzotti, Cynar, Amaro, Sambuca, Fernet)",
-    target: "public/images/drinks-digestivi.webp",
+    target: "public/images/drinks-digestivi.png",
     prompt:
       "Real food photography, natural colors, no warm filter. A close-up arrangement of classic Italian digestivi on a dark wooden bar surface: small short glasses (4 cl pour) of deep amber Averna, dark brown Ramazzotti, earthy green-brown Cynar, golden Amaro del Capo, crystal-clear Sambuca with a coffee bean resting on top, and a dark Fernet in a small glass. Each glass a slightly different shade — from near-black to deep amber to clear. Shot from a low 30-degree angle, glasses grouped naturally, soft warm bar backlight creating depth through the liquid colors. No people, no text, no labels, no prices. Aspect ratio 16:9.",
   },
@@ -148,14 +155,14 @@ const ASSETS: AssetEntry[] = [
   {
     id: "dolci",
     context: "Desserts — Dolci (Panna Cotta, Tiramisù, Tartufo, Cassata, Sorbetto, Formaggio)",
-    target: "public/images/dish-dolci.webp",
+    target: "public/images/dish-dolci.png",
     prompt:
       "Real food photography, natural colors, no warm filter. An elegant flat-lay of classic Italian desserts on a dark wooden restaurant table: a smooth panna cotta with a drizzle of berry coulis, a generous portion of tiramisù dusted with cocoa powder in a small dish, a dark chocolate tartufo and a white tartufo side by side, a slice of Cassata Siciliana with visible candied fruit, a whole lemon filled with lemon sorbet, and a small wooden board with a selection of Italian cheeses and a few grapes. Each dessert on its own white plate or small dish, evenly spaced. Shot from a slight overhead angle, soft diffused natural light, neutral accurate colors. No people, no text, no prices. Aspect ratio 16:9.",
   },
 ];
 
 const GROUPS = [
-  { label: "Hero-Images", ids: ["hero-menu", "hero-empfehlungen", "hero-menu-classic"] },
+  { label: "Hero-Images", ids: ["hero-menu", "hero-empfehlungen", "hero-empfehlungen-alt", "hero-menu-classic"] },
   { label: "Feiern", ids: ["feiern-service", "feiern-table"] },
   { label: "Fine Dining", ids: ["fine-dining-1", "fine-dining-2", "fine-dining-3", "fine-dining-4"] },
   { label: "Gerichte", ids: ["lasagne", "pizza-salami", "pizza-patate", "tagliata"] },
