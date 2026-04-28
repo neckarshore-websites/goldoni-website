@@ -11,7 +11,7 @@ export default function Home() {
 
       {/* Hero — restaurant wall sign on red velvet, brand-defining photo */}
       <section className="relative isolate overflow-hidden">
-        <div className="relative h-[70vh] min-h-[480px] w-full sm:h-[80vh]">
+        <div className="relative h-[50vh] min-h-[336px] w-full sm:h-[56vh]">
           <Image
             src="/images/hero-goldoni-velvet.webp"
             alt="Ristorante Goldoni — Wandschild im Innenraum, gold auf rotem Samt"
