@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
 import { FeiernForm } from "@/components/forms/FeiernForm";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Feiern bei Goldoni — Private Anlaesse in Stuttgart",
@@ -10,7 +11,12 @@ export const metadata: Metadata = {
 
 export default function FeiernPage() {
   return (
-    <main className="px-6 py-20 sm:px-12 sm:py-24">
+    <main>
+      <PageHero
+        src="/images/hero-feiern-essen.webp"
+        alt="Eleganter Teller mit einem Gericht, Weingläser und ein festlich gedeckter Tisch — perfekt für Ihre Feier"
+      />
+      <div className="px-6 pb-20 pt-12 sm:px-12 sm:pb-24">
       <div className="mx-auto max-w-3xl">
         <p
           className="mb-3 text-xs uppercase tracking-[0.2em]"
@@ -134,6 +140,7 @@ export default function FeiernPage() {
             {SITE.phoneDisplay}
           </a>
         </div>
+      </div>
       </div>
     </main>
   );

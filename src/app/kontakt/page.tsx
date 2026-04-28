@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Kontakt — Ristorante Goldoni",
@@ -9,7 +10,12 @@ export const metadata: Metadata = {
 
 export default function KontaktPage() {
   return (
-    <main className="px-6 py-20 sm:px-12 sm:py-24">
+    <main>
+      <PageHero
+        src="/images/hero-kontakt-pizzo.webp"
+        alt="Küstenstadt Pizzo in Kalabrien — Italiens Süden, Inspirationsquelle der Goldoni-Küche"
+      />
+      <div className="px-6 pb-20 pt-12 sm:px-12 sm:pb-24">
       <div className="mx-auto max-w-3xl">
         <p
           className="mb-3 text-xs uppercase tracking-[0.2em]"
@@ -69,6 +75,7 @@ export default function KontaktPage() {
           </p>
           <ContactForm />
         </section>
+      </div>
       </div>
     </main>
   );
