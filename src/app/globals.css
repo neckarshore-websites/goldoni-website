@@ -3,26 +3,45 @@
 /* ===================================================================
    Goldoni — Design Tokens
    ------------------------------------------------------------------
-   Brand: Bella Italia ohne Kitsch. Warm Erdtoene, Trattoria-Atmosphere.
-   Default = LIGHT (Restaurant-warmth). Dark mode applies via
-   :root[data-theme="dark"] override for night-time browsers.
-   Theme values are Tailwind theme tokens via @theme (NOT @theme inline),
-   so they are emitted as CSS variables and can be overridden at runtime.
+   Two layers:
+
+   1. Tavola palette — extracted from a photo of the actual restaurant
+      interior. Italian-food-themed names. Source of truth for brand
+      colour. Defined as plain CSS custom properties so any component
+      can reference them directly via var(--tavola-*).
+
+   2. Semantic tokens — Tailwind theme tokens (@theme) emitted as the
+      utility CSS variables (--color-bg, --color-text, etc.). These map
+      onto Tavola swatches and are what components should use day-to-day.
+
+   Default theme = LIGHT (Restaurant warmth). Dark mode applies via
+   :root[data-theme="dark"] override.
    =================================================================== */
 
+:root {
+  /* Tavola — Italian-food palette extracted from restaurant photo */
+  --tavola-mozzarella: #FAFAFA;  /* white, soft cream */
+  --tavola-parmigiano: #FEF1A5;  /* pale yellow */
+  --tavola-lime:        #A69B02;  /* mustard-lime */
+  --tavola-olive:       #746B03;  /* dark olive */
+  --tavola-salmon:      #B64926;  /* terracotta-salmon */
+  --tavola-marinara:    #8E2800;  /* deep red */
+  --tavola-espresso:    #1A1612;  /* warm dark, not pure black */
+}
+
 @theme {
-  /* Default = LIGHT (matches SSR <html data-theme="light">) */
-  --color-text: #2A1F17;          /* tiefes Espresso-braun */
-  --color-text-muted: #6B5A4C;    /* warm grau-braun */
-  --color-text-subtle: #8B7B6E;
-  --color-border: #E8DDC9;
-  --color-border-strong: #D4C5AC;
-  --color-bg: #FAF6EF;            /* Cremeweiss */
-  --color-bg-muted: #F0E9DD;      /* heller Sand */
-  --color-accent: #C25B43;        /* Terrakotta — Primary CTA, Focus-Ring */
-  --color-accent-hover: #9F4634;  /* dunkler Terrakotta */
-  --color-brand-olive: #5C6B3D;   /* gedaempftes Olivgruen — Headline-Akzent */
-  --color-brand-cream: #E8DDC9;   /* warmes Creme — Section-Hintergrund */
+  /* Default = LIGHT (matches SSR <html data-theme="light">) — Tavola-mapped */
+  --color-text: #1A1612;          /* tavola.espresso */
+  --color-text-muted: #5C5240;    /* warmer dark-tan, between olive + espresso */
+  --color-text-subtle: #8B7E5C;   /* mid olive-tan */
+  --color-border: #EAE0C5;        /* very light parmigiano-tan */
+  --color-border-strong: #D4C7A5; /* mid olive-tan */
+  --color-bg: #FAFAFA;            /* tavola.mozzarella */
+  --color-bg-muted: #F5EDD8;      /* between mozzarella + parmigiano */
+  --color-accent: #B64926;        /* tavola.salmon — Primary CTA */
+  --color-accent-hover: #8E2800;  /* tavola.marinara — pressed / hover */
+  --color-brand-olive: #746B03;   /* tavola.olive — eyebrow, section-labels */
+  --color-brand-cream: #FEF1A5;   /* tavola.parmigiano — diet-pill bg */
 
   /* Typography */
   --font-sans: var(--font-inter);
@@ -42,17 +61,17 @@
 
 /* Dark-Mode override — warm Trattoria, kein cold-tech */
 :root[data-theme="dark"] {
-  --color-text: #F5EBDB;          /* warmes Cream */
-  --color-text-muted: #B8A88E;
-  --color-text-subtle: #9E8E76;
-  --color-border: #3A2D1F;
-  --color-border-strong: #4F3F2D;
-  --color-bg: #1F1813;            /* tiefes Espresso */
-  --color-bg-muted: #2A2018;
-  --color-accent: #E07658;        /* Terrakotta heller fuer Dark */
-  --color-accent-hover: #C25B43;
-  --color-brand-olive: #8FA063;
-  --color-brand-cream: #2A2018;
+  --color-text: #FAFAFA;          /* tavola.mozzarella */
+  --color-text-muted: #C9BD8A;    /* warm cream-tan, readable on espresso */
+  --color-text-subtle: #9C9061;
+  --color-border: #3A2D1F;        /* dark warm-brown */
+  --color-border-strong: #5A4830;
+  --color-bg: #1A1612;            /* tavola.espresso */
+  --color-bg-muted: #26201A;      /* slightly lifted espresso */
+  --color-accent: #B64926;        /* tavola.salmon — same hue, works on dark */
+  --color-accent-hover: #8E2800;  /* tavola.marinara */
+  --color-brand-olive: #A69B02;   /* tavola.lime — lifted for dark contrast */
+  --color-brand-cream: #3A350A;   /* dark olive — pill bg in dark mode */
 }
 
 /* color-scheme hint for browser UI (scrollbars, form controls) */
@@ -84,14 +103,14 @@ h1, h2, .font-display {
   letter-spacing: -0.01em;
 }
 
-/* Focus state — Terrakotta accent ring */
+/* Focus state — Salmon accent ring */
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* Selection — warm cream highlight */
+/* Selection — warm olive highlight */
 ::selection {
   background-color: var(--color-brand-olive);
   color: var(--color-bg);

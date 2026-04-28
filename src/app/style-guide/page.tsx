@@ -18,6 +18,58 @@ export const metadata: Metadata = {
   alternates: { canonical: "/style-guide" },
 };
 
+type TavolaSwatch = {
+  token: string;
+  name: string;
+  hex: string;
+  origin: string;
+};
+
+const TAVOLA_PALETTE: TavolaSwatch[] = [
+  {
+    token: "--tavola-mozzarella",
+    name: "Mozzarella",
+    hex: "#FAFAFA",
+    origin: "Bueffelmozzarella — hellster Ton (Weiss-Erweiterung).",
+  },
+  {
+    token: "--tavola-parmigiano",
+    name: "Parmigiano",
+    hex: "#FEF1A5",
+    origin: "Pale yellow vom Parmesan-Spaeneglanz im Restaurant.",
+  },
+  {
+    token: "--tavola-lime",
+    name: "Lime",
+    hex: "#A69B02",
+    origin: "Mustard-Lime der gruenen Pflanzen im Eingangsbereich.",
+  },
+  {
+    token: "--tavola-olive",
+    name: "Olive",
+    hex: "#746B03",
+    origin: "Tiefes Olivgruen — Pflanzen, Kraeuter, Flaschenetiketten.",
+  },
+  {
+    token: "--tavola-salmon",
+    name: "Salmon",
+    hex: "#B64926",
+    origin: "Terrakotta-Salmon der Wandfarbe / Sugo / Hauptwaerme.",
+  },
+  {
+    token: "--tavola-marinara",
+    name: "Marinara",
+    hex: "#8E2800",
+    origin: "Tiefer Tomatensauce-Ton — pressed-State, dunkler Akzent.",
+  },
+  {
+    token: "--tavola-espresso",
+    name: "Espresso",
+    hex: "#1A1612",
+    origin: "Warmer Espresso — Schwarz-Erweiterung, Body-Text auf Light.",
+  },
+];
+
 type ColorToken = {
   token: string;
   name: string;
@@ -30,79 +82,79 @@ const COLOR_TOKENS: ColorToken[] = [
   {
     token: "--color-bg",
     name: "Background",
-    light: "#FAF6EF",
-    dark: "#1F1813",
-    usage: "Page background. Hero, card surfaces, hero-section.",
+    light: "#FAFAFA",
+    dark: "#1A1612",
+    usage: "Page background. Tavola: mozzarella (light) / espresso (dark).",
   },
   {
     token: "--color-bg-muted",
     name: "Background Muted",
-    light: "#F0E9DD",
-    dark: "#2A2018",
+    light: "#F5EDD8",
+    dark: "#26201A",
     usage: "Secondary surface — alternating section, footer, info-boxes.",
   },
   {
     token: "--color-text",
     name: "Text",
-    light: "#2A1F17",
-    dark: "#F5EBDB",
-    usage: "Primary body and heading text.",
+    light: "#1A1612",
+    dark: "#FAFAFA",
+    usage: "Primary body and heading text. Tavola: espresso / mozzarella inverted.",
   },
   {
     token: "--color-text-muted",
     name: "Text Muted",
-    light: "#6B5A4C",
-    dark: "#B8A88E",
+    light: "#5C5240",
+    dark: "#C9BD8A",
     usage: "Secondary text — descriptions, caption, helper-copy.",
   },
   {
     token: "--color-text-subtle",
     name: "Text Subtle",
-    light: "#8B7B6E",
-    dark: "#9E8E76",
+    light: "#8B7E5C",
+    dark: "#9C9061",
     usage: "Tertiary — footnotes, allergen-codes, small print.",
   },
   {
     token: "--color-border",
     name: "Border",
-    light: "#E8DDC9",
+    light: "#EAE0C5",
     dark: "#3A2D1F",
     usage: "Hairlines, dividers, default input borders.",
   },
   {
     token: "--color-border-strong",
     name: "Border Strong",
-    light: "#D4C5AC",
-    dark: "#4F3F2D",
+    light: "#D4C7A5",
+    dark: "#5A4830",
     usage: "Outline buttons, emphasised cards, focus secondary.",
   },
   {
     token: "--color-accent",
-    name: "Accent — Terrakotta",
-    light: "#C25B43",
-    dark: "#E07658",
-    usage: "Primary CTA background, focus ring, highlights.",
+    name: "Accent — Salmon",
+    light: "#B64926",
+    dark: "#B64926",
+    usage: "Primary CTA background, focus ring, highlights. Tavola: salmon.",
   },
   {
     token: "--color-accent-hover",
-    name: "Accent Hover",
-    light: "#9F4634",
-    dark: "#C25B43",
-    usage: "CTA hover, pressed-state.",
+    name: "Accent Hover — Marinara",
+    light: "#8E2800",
+    dark: "#8E2800",
+    usage: "CTA hover, pressed-state. Tavola: marinara.",
   },
   {
     token: "--color-brand-olive",
     name: "Brand Olive",
-    light: "#5C6B3D",
-    dark: "#8FA063",
-    usage: "Section labels, eyebrow text, link underline-accent.",
+    light: "#746B03",
+    dark: "#A69B02",
+    usage: "Section labels, eyebrow text. Tavola: olive (light) / lime (dark).",
   },
   {
     token: "--color-brand-cream",
     name: "Brand Cream",
-    light: "#E8DDC9",
-    dark: "#2A2018",
-    usage: "Diet-tag pill background (veg / vegan / scharf).",
+    light: "#FEF1A5",
+    dark: "#3A350A",
+    usage: "Diet-tag pill bg (veg / vegan / scharf). Tavola: parmigiano / dark-olive.",
   },
 ];
 
@@ -179,14 +231,86 @@ export default function StyleGuidePage() {
           und Dunkel umschalten — alle Werte aktualisieren sich live.
         </p>
 
-        {/* Colors */}
+        {/* Tavola — brand palette extracted from restaurant photo */}
         <section className="mb-16">
           <h2
-            className="mb-6 text-2xl"
+            className="mb-2 text-2xl"
             style={{ color: "var(--color-text)" }}
           >
-            Farben
+            Tavola
           </h2>
+          <p
+            className="mb-6 max-w-2xl"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            Brand-Palette, abgeleitet aus einer Aufnahme des Restaurant-Innenraums.
+            Italian-food-themed Namen. Source-of-truth fuer alle Farben — die
+            semantischen Tokens unten mappen auf diese Layer.
+          </p>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {TAVOLA_PALETTE.map((s) => (
+              <div
+                key={s.token}
+                className="overflow-hidden rounded-lg border"
+                style={{ borderColor: "var(--color-border)" }}
+              >
+                <div
+                  className="h-24"
+                  style={{ backgroundColor: s.hex }}
+                  aria-label={`${s.name} swatch`}
+                />
+                <div
+                  className="border-t p-3"
+                  style={{
+                    borderColor: "var(--color-border)",
+                    backgroundColor: "var(--color-bg)",
+                  }}
+                >
+                  <p
+                    className="text-sm font-medium"
+                    style={{ color: "var(--color-text)" }}
+                  >
+                    {s.name}
+                  </p>
+                  <p
+                    className="mt-0.5 font-mono text-xs"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
+                    {s.hex}
+                  </p>
+                  <p
+                    className="mt-0.5 font-mono text-xs"
+                    style={{ color: "var(--color-text-subtle)" }}
+                  >
+                    {s.token}
+                  </p>
+                  <p
+                    className="mt-2 text-xs"
+                    style={{ color: "var(--color-text-subtle)" }}
+                  >
+                    {s.origin}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Semantic colors — what components actually use */}
+        <section className="mb-16">
+          <h2
+            className="mb-2 text-2xl"
+            style={{ color: "var(--color-text)" }}
+          >
+            Semantische Tokens
+          </h2>
+          <p
+            className="mb-6 max-w-2xl"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            Was Komponenten taeglich nutzen — gemappt auf die Tavola-Palette
+            oben. Diese Werte aendern sich je Theme (Hell / Dunkel).
+          </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {COLOR_TOKENS.map((token) => (
               <ColorSwatch key={token.token} token={token} />
