@@ -132,7 +132,7 @@ const ASSETS: AssetEntry[] = [
   {
     id: "digestivi",
     context: "Getränke — Digestivi (Averna, Ramazzotti, Cynar, Amaro, Sambuca, Fernet)",
-    target: "public/images/drinks-digestivi.webp",
+    target: "public/images/drinks-digestivi.png",
     prompt:
       "Real food photography, natural colors, no warm filter. A close-up arrangement of classic Italian digestivi on a dark wooden bar surface: small short glasses (4 cl pour) of deep amber Averna, dark brown Ramazzotti, earthy green-brown Cynar, golden Amaro del Capo, crystal-clear Sambuca with a coffee bean resting on top, and a dark Fernet in a small glass. Each glass a slightly different shade — from near-black to deep amber to clear. Shot from a low 30-degree angle, glasses grouped naturally, soft warm bar backlight creating depth through the liquid colors. No people, no text, no labels, no prices. Aspect ratio 16:9.",
   },
