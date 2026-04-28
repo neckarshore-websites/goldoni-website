@@ -19,7 +19,7 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to bottom, rgba(26,22,18,0.15) 0%, rgba(26,22,18,0.05) 50%, rgba(26,22,18,0.75) 100%)",
+                "linear-gradient(to bottom, rgba(26,22,18,0.10) 0%, rgba(26,22,18,0.30) 55%, rgba(26,22,18,0.88) 100%)",
             }}
           />
           {/* Foreground — tagline + CTAs */}
