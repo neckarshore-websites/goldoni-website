@@ -33,7 +33,7 @@
   /* Default = LIGHT (matches SSR <html data-theme="light">) — Tavola-mapped */
   --color-text: #1A1612;          /* tavola.espresso */
   --color-text-muted: #5C5240;    /* warmer dark-tan, between olive + espresso */
-  --color-text-subtle: #8B7E5C;   /* mid olive-tan */
+  --color-text-subtle: #6B5E3E;   /* darker olive-tan — WCAG AA 5.16:1 on bg-muted */
   --color-border: #EAE0C5;        /* very light parmigiano-tan */
   --color-border-strong: #D4C7A5; /* mid olive-tan */
   --color-bg: #FAFAFA;            /* tavola.mozzarella */

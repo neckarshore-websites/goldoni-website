@@ -97,8 +97,12 @@ export function DeliveryBanner() {
                       height={96}
                       className="block h-14 w-14 sm:h-16 sm:w-16"
                     />
+                    {/* Dark-on-cyan label — Wolt's brand portal allows
+                        both white and dark variants; dark passes WCAG
+                        contrast (7.94:1 vs. 2.13:1 for white-on-cyan). */}
                     <span
-                      className="mt-0.5 text-[9px] font-semibold uppercase tracking-wide text-white sm:text-[10px]"
+                      className="mt-0.5 text-[9px] font-semibold uppercase tracking-wide sm:text-[10px]"
+                      style={{ color: "var(--color-text)" }}
                     >
                       Bestellen mit
                     </span>
