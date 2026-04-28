@@ -1,0 +1,109 @@
+{
+  "title": "Empfehlungskarte",
+  "intro": "Saisonal und frisch — was die Kueche derzeit besonders empfiehlt. Die Karte aendert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
+  "updated": "2026-04-28",
+  "categories": [
+    {
+      "id": "antipasti",
+      "name": "Antipasti",
+      "subtitle": "Vorspeisen",
+      "items": [
+        {
+          "name": "Carpaccio di porchetta con spinaci freschi e provolone piccante",
+          "description": "Spanferkel-Carpaccio mit Babyspinat und leicht scharfen Provolonekaese-Scheiben",
+          "price": "15.00",
+          "allergens": ["A", "G"]
+        },
+        {
+          "name": "Antipasto di funghi di paglia con pomodorini e scaglie di grana",
+          "description": "Vorspeise von gegrillten Austernpilzen, Kirschtomaten und Granakaese",
+          "price": "14.00"
+        },
+        {
+          "name": "Zuppetta con moscardini al pomodoro e pane tostato",
+          "description": "Baby-Oktopoden in Tomatensauce, dazu geroestetes Brot",
+          "price": "15.50"
+        },
+        {
+          "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
+          "description": "Frittierte Auberginentuermchen mit geraeuchertem Scamorzakaese und Mozzarella",
+          "price": "15.00",
+          "diet": ["vegetarian"]
+        }
+      ]
+    },
+    {
+      "id": "primi-pizze",
+      "name": "Primi & Pizze",
+      "subtitle": "Pasta & Pizza",
+      "items": [
+        {
+          "name": "Tortelloni ripieni di tartufo in crema di burro e Grana Padano",
+          "description": "Nudeln mit Trueffelfuellung an Butter-Granakaese-Creme",
+          "price": "18.50",
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Gnocchi di patate con cosce di pollo «Bio» al sugo di pomodoro",
+          "description": "Kartoffelgnocchi mit Bio-Haehnchenunterkeulen in Tomatensauce",
+          "price": "19.00"
+        },
+        {
+          "name": "Linguine con le cicale di mare e baccala alla pizzaiola",
+          "description": "Hausgemachte Linguine mit Stockfisch-Stueckchen und Heuschreckenkrebsen (nicht geschaelt) mit Oliven und Kapern nach Pizzaiola-Art",
+          "price": "23.00"
+        },
+        {
+          "name": "Pizza con salsiccia calabrese e spinaci freschi",
+          "description": "Pizza mit kalabrischer Bratwurst und frischem Spinat",
+          "price": "16.50"
+        }
+      ]
+    },
+    {
+      "id": "secondi",
+      "name": "Secondi Piatti",
+      "subtitle": "Hauptgerichte",
+      "items": [
+        {
+          "name": "Tagliata di Entrecôte ai ferri con rucola e Grana Padano",
+          "description": "Gegrillte Entrecôte-Scheiben auf Rucola-Bett mit Granakaese-Raspeln, dazu Beilage",
+          "price": "32.00"
+        },
+        {
+          "name": "Saltimbocca alla romana",
+          "description": "Kalbsschnitzel an Weisswein-Sauce mit Parmaschinken und Salbei, dazu Beilage",
+          "price": "30.00"
+        },
+        {
+          "name": "Trancie di pescespada alla griglia lavica",
+          "description": "Schwertfischsteak vom Lavastein-Grill, dazu Beilage",
+          "price": "35.00"
+        },
+        {
+          "name": "Dal mare Mediterraneo: Rana pescatrice in crema di limone e menta",
+          "description": "Seeteufel-Medaillons an Zitronen-Minze-Creme, dazu Beilage",
+          "price": "35.00"
+        }
+      ]
+    },
+    {
+      "id": "dolci",
+      "name": "Dolci",
+      "subtitle": "Desserts",
+      "items": [
+        {
+          "name": "Schokoladen-Souffle",
+          "description": "Mit einer Kugel Vanilleeis",
+          "price": "8.50"
+        },
+        {
+          "name": "Pistazieneis mit Mandeln",
+          "description": "Pistazieneis umhuellt mit gehackten Mandeln",
+          "price": "9.00"
+        }
+      ]
+    }
+  ],
+  "footnote": "Allergene nach LMIV: A Gluten · B Krebstiere · C Eier · D Fische · E Erdnuesse · F Sojabohnen · G Milch · H Schalenfruechte · L Sellerie · M Senf · N Sesam · O Schwefeldioxid/Sulfite · P Lupinen · R Weichtiere. Zusatzstoffe und hauseigene Codes erklaeren wir auf Wunsch beim Service. Aenderungen vorbehalten. Alle Preise in EUR inkl. MwSt."
+}

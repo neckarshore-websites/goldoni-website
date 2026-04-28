@@ -1,6 +1,6 @@
 {
   "title": "Speisekarte",
-  "intro": "Italienisch verliebte Kueche — frische Zutaten, mit Liebe gemacht. Die folgende Karte ist ein Beispiel-Stand und wird durch die finale Karte des Hauses ersetzt.",
+  "intro": "Italienisch verliebte Kueche — frische Zutaten, mit Liebe gemacht. Antipasti, Pasta, Carne e Pesce, Dolci, Cafeteria und unsere Getraenkekarte. Pizze ergaenzen wir separat.",
   "updated": "2026-04-28",
   "categories": [
     {
@@ -9,111 +9,125 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Bruschetta al Pomodoro",
-          "description": "Geroestetes Brot mit Tomaten, Knoblauch, Basilikum",
+          "name": "Insalata Mista",
+          "description": "Gemischter Salat, mariniert mit Balsamico-Essig aus Modena und Extra Virgin Olivenoel",
+          "price": "16.00",
+          "allergens": ["S"]
+        },
+        {
+          "name": "Vitello tonnato alla piemontese",
+          "description": "Duenn geschnittenes Kalbsfleisch mit Thunfischsauce und Kapern",
+          "price": "16.00",
+          "allergens": ["D", "C", "G", "J", "S", "2", "3", "6"]
+        },
+        {
+          "name": "Insalata di pomodoro e mozzarella di bufala",
+          "description": "Bueffelmozzarella und Tomatenscheiben",
+          "price": "12.50",
+          "allergens": ["G"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Carpaccio di barbabietola rossa con caprino, noci e miele",
+          "description": "Rote-Bete-Carpaccio mit Ziegenkaese, Walnuss und Akazienbluetenhonig",
+          "price": "14.00",
+          "allergens": ["A", "G", "H"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Insalata Casa",
+          "description": "Salat nach Art des Hauses (mit Rohschinken und Mozzarella oder mit Thunfisch)",
+          "price": "15.50",
+          "allergens": ["D", "G", "S", "2", "3", "6"]
+        },
+        {
+          "name": "Crema di pomodoro",
+          "description": "Tomatensuppe nach Art des Hauses",
           "price": "8.50",
-          "allergens": ["A"],
-          "diet": ["vegan"]
+          "allergens": ["2", "3"]
+        },
+        {
+          "name": "Antipasto misto della Casa",
+          "description": "Gemischte Vorspeisen nach Art des Hauses",
+          "price": "16.50",
+          "allergens": ["A", "G", "H", "2", "3"]
+        },
+        {
+          "name": "Antipasto di verdura grigliata",
+          "description": "Gegrilltes Gemuese — taeglich frisch vom Markt",
+          "price": "15.50",
+          "diet": ["vegetarian"]
         },
         {
           "name": "Carpaccio di Manzo",
-          "description": "Hauchduenn aufgeschnittenes Rinderfilet mit Parmesan und Rucola",
-          "price": "14.50",
-          "allergens": ["G"]
-        },
-        {
-          "name": "Caprese",
-          "description": "Bueffelmozzarella, Tomaten, Basilikum, Olivenoel",
-          "price": "11.50",
-          "allergens": ["G"],
-          "diet": ["vegetarian"]
+          "description": "Duenn geschnittenes rohes Rinderfilet mit Rucola und Granakaese",
+          "price": "16.00"
         }
       ]
     },
     {
       "id": "primi",
       "name": "Primi Piatti",
-      "subtitle": "Pasta & Risotto",
+      "subtitle": "Pasta",
       "items": [
         {
-          "name": "Spaghetti alle Vongole",
-          "description": "Spaghetti mit Venusmuscheln, Knoblauch, Petersilie, Weisswein",
-          "price": "16.50",
-          "allergens": ["A", "C", "R", "O"]
-        },
-        {
-          "name": "Tagliatelle al Tartufo",
-          "description": "Hausgemachte Tagliatelle mit Trueffel, Butter, Parmesan",
-          "price": "19.50",
-          "allergens": ["A", "C", "G"],
-          "diet": ["vegetarian"]
-        },
-        {
-          "name": "Risotto ai Funghi Porcini",
-          "description": "Cremiges Risotto mit Steinpilzen, Petersilie, Parmesan",
+          "name": "Lasagna fatta in casa con ragù di carne mista locale",
+          "description": "Hausgemachte Lasagne mit regionalem Fleisch (Rind, Kalb, Schwein)",
           "price": "17.50",
-          "allergens": ["G"],
+          "allergens": ["A", "C", "G", "I", "S"]
+        },
+        {
+          "name": "Ravioli ripieni di spinaci e ricotta in crema di burro-salvia",
+          "description": "Gefuellte Ravioli mit Ricotta und Spinat in Butter-Salbei-Sauce",
+          "price": "17.00",
           "diet": ["vegetarian"]
         },
         {
-          "name": "Penne all'Arrabbiata",
-          "description": "Penne in scharfer Tomatensauce mit Knoblauch und Chili",
-          "price": "12.50",
-          "allergens": ["A"],
-          "diet": ["vegan", "spicy"]
-        }
-      ]
-    },
-    {
-      "id": "secondi",
-      "name": "Secondi Piatti",
-      "subtitle": "Hauptgerichte",
-      "items": [
-        {
-          "name": "Saltimbocca alla Romana",
-          "description": "Kalbsschnitzel mit Parmaschinken und Salbei in Weisswein",
-          "price": "24.50",
-          "allergens": ["A", "G", "O"]
+          "name": "Tagliatelle con salmone fresco e zucchine",
+          "description": "Hausgemachte Bandnudeln mit Wildfang-Lachsfilet und Zucchini",
+          "price": "18.50"
         },
         {
-          "name": "Branzino al Sale",
-          "description": "Wolfsbarsch in Salzkruste mit mediterranem Gemuese",
-          "price": "27.50",
-          "allergens": ["D"]
+          "name": "Calamarata alla pescatora",
+          "description": "Kurze, breite Nudel mit aromatischen Meeresfruechten aus 5 Fischsorten — frische Ware",
+          "price": "19.50"
         },
         {
-          "name": "Pollo al Limone",
-          "description": "Haehnchenbrust mit Zitrone, Kapern, Petersilie",
-          "price": "19.50",
-          "allergens": ["G"]
-        }
-      ]
-    },
-    {
-      "id": "pizze",
-      "name": "Pizze",
-      "subtitle": "Aus dem Steinofen",
-      "items": [
-        {
-          "name": "Margherita",
-          "description": "Tomaten, Mozzarella, Basilikum",
-          "price": "11.50",
-          "allergens": ["A", "G"],
-          "diet": ["vegetarian"]
-        },
-        {
-          "name": "Diavola",
-          "description": "Tomaten, Mozzarella, scharfe Salami, Chili",
-          "price": "14.50",
-          "allergens": ["A", "G"],
-          "diet": ["spicy"]
-        },
-        {
-          "name": "Quattro Formaggi",
-          "description": "Mozzarella, Gorgonzola, Parmesan, Pecorino",
+          "name": "Gnocchi alla sorrentina",
+          "description": "Kartoffelgnocchi in frischer Tomatensauce mit Mozzarellastreifen",
           "price": "15.50",
-          "allergens": ["A", "G"],
           "diet": ["vegetarian"]
+        }
+      ]
+    },
+    {
+      "id": "carne-pesce",
+      "name": "Carne e Pesce",
+      "subtitle": "Fleisch & Fisch",
+      "items": [
+        {
+          "name": "Tagliata di filetto di manzo «Simmentaler» alla toscana",
+          "description": "Simmentaler Rinderfilet-Scheiben vom Lavastein-Grill auf Rucola-Salat und Granakaese-Raspeln, dazu Beilage",
+          "price": "42.00",
+          "allergens": ["A", "C", "G", "I", "S"]
+        },
+        {
+          "name": "Costolette di agnello ai ferri",
+          "description": "Gegrillte Lammkoteletts, dazu Beilage",
+          "price": "34.00",
+          "allergens": ["G"]
+        },
+        {
+          "name": "Salmone selvaggio in crema di menta e pistacchio di Bronte",
+          "description": "Wildlachs an Minze-Pistazien-Creme aus Bronte, dazu Beilage",
+          "price": "30.00",
+          "allergens": ["A", "D", "H"]
+        },
+        {
+          "name": "Gamberoni alla griglia",
+          "description": "Gegrillte Riesengarnelen, dazu Beilage",
+          "price": "32.00",
+          "allergens": ["A", "D", "H"]
         }
       ]
     },
@@ -123,21 +137,282 @@
       "subtitle": "Desserts",
       "items": [
         {
-          "name": "Tiramisu",
-          "description": "Hausgemacht — Mascarpone, Espresso, Amaretto",
-          "price": "7.50",
-          "allergens": ["A", "C", "G", "O"],
-          "diet": ["vegetarian"]
+          "name": "Panna cotta",
+          "description": "Hausgemacht",
+          "price": "7.50"
         },
         {
-          "name": "Panna Cotta ai Frutti di Bosco",
-          "description": "Sahnedessert mit Waldbeeren",
+          "name": "Tiramisù",
+          "description": "Hausgemacht nach Goldoni-Art, ohne Ei",
+          "price": "7.50",
+          "allergens": ["A", "G", "H", "9"]
+        },
+        {
+          "name": "Tartufo Nero / Bianco",
+          "description": "Schwarzes oder weisses Trueffeleis",
           "price": "7.00",
-          "allergens": ["G"],
-          "diet": ["vegetarian"]
+          "allergens": ["2", "3", "C", "G", "H", "S"]
+        },
+        {
+          "name": "Cassata Siciliana",
+          "description": "Typisch sizilianisch: halbgefrorenes Eis mit kandierten Fruechten",
+          "price": "8.00",
+          "allergens": ["2", "3", "C", "G", "H"]
+        },
+        {
+          "name": "Sorbetto al Limone",
+          "description": "Zitrone gefuellt mit Zitroneneis",
+          "price": "7.00",
+          "allergens": ["2", "3"]
+        },
+        {
+          "name": "Formaggio Misto",
+          "description": "Gemischter Kaeseteller",
+          "price": "9.50",
+          "allergens": ["A", "G", "2", "3"]
+        }
+      ]
+    },
+    {
+      "id": "cafeteria",
+      "name": "Cafeteria",
+      "subtitle": "Kaffee",
+      "items": [
+        {
+          "name": "Espresso Dersut «Optimum»",
+          "description": "60% Arabica, 40% Robusta",
+          "price": "2.50",
+          "allergens": ["9"]
+        },
+        {
+          "name": "Espresso Dersut «Deca light»",
+          "description": "Entkoffeiniert",
+          "price": "2.50"
+        },
+        {
+          "name": "Espressino",
+          "description": "Mit Milchschaum",
+          "price": "3.00"
+        },
+        {
+          "name": "Espresso Corretto",
+          "description": "Mit Schuss",
+          "price": "3.50"
+        },
+        {
+          "name": "Cappuccino",
+          "price": "4.00"
+        }
+      ]
+    },
+    {
+      "id": "benvenuti",
+      "name": "Benvenuti",
+      "subtitle": "Aperitivi",
+      "items": [
+        {
+          "name": "Prosecco oder Prosecco Aperol",
+          "volume": "0,1 l",
+          "price": "7.50",
+          "allergens": ["S", "1", "3"]
+        },
+        {
+          "name": "Kir Royal",
+          "volume": "0,1 l",
+          "price": "7.00",
+          "allergens": ["S", "1"]
+        },
+        {
+          "name": "Campari Orange oder Soda",
+          "volume": "5 cl",
+          "price": "8.00",
+          "allergens": ["S", "1"]
+        },
+        {
+          "name": "Campari",
+          "volume": "4 cl",
+          "price": "6.50",
+          "allergens": ["S", "1", "3"]
+        },
+        {
+          "name": "Martini Bianco, Rosso oder Dry",
+          "volume": "4 cl",
+          "price": "6.50",
+          "allergens": ["S", "1", "3"]
+        },
+        {
+          "name": "Negroni",
+          "volume": "4 cl",
+          "price": "9.00",
+          "allergens": ["S", "1", "3"]
+        },
+        {
+          "name": "Aperol Spritz oder Sauer",
+          "volume": "5 cl",
+          "price": "9.50",
+          "allergens": ["S", "1", "3"]
+        },
+        {
+          "name": "Limoncello Spritz",
+          "volume": "5 cl",
+          "price": "9.50",
+          "allergens": ["S", "1", "3"]
+        },
+        {
+          "name": "Martini Floreale",
+          "description": "Alkoholfrei",
+          "volume": "5 cl",
+          "price": "6.50",
+          "allergens": ["S", "1", "3"]
+        },
+        {
+          "name": "Cordino",
+          "description": "Alkoholfrei",
+          "volume": "1 cl",
+          "price": "6.00",
+          "allergens": ["1", "3", "10"]
+        }
+      ]
+    },
+    {
+      "id": "analcolici",
+      "name": "Analcolici",
+      "subtitle": "Alkoholfreie Getraenke",
+      "items": [
+        {
+          "name": "Coca-Cola",
+          "volume": "0,3 l",
+          "price": "3.80",
+          "allergens": ["1", "2", "3", "9", "11"]
+        },
+        {
+          "name": "Fanta",
+          "volume": "0,3 l",
+          "price": "3.80",
+          "allergens": ["1", "2", "3", "11"]
+        },
+        {
+          "name": "Spezi",
+          "volume": "0,3 l",
+          "price": "3.80",
+          "allergens": ["1", "2", "3", "9", "11"]
+        },
+        {
+          "name": "Sprite",
+          "volume": "0,3 l",
+          "price": "3.80",
+          "allergens": ["1", "3", "11"]
+        },
+        {
+          "name": "Orangensaft",
+          "volume": "0,2 l",
+          "price": "3.80",
+          "allergens": ["2", "3"]
+        },
+        {
+          "name": "Apfelsaftschorle",
+          "volume": "0,3 l",
+          "price": "3.50",
+          "allergens": ["2", "3"]
+        },
+        {
+          "name": "Bitter Lemon",
+          "volume": "0,2 l",
+          "price": "3.50",
+          "allergens": ["2", "3", "10"]
+        },
+        {
+          "name": "Tonic Water",
+          "volume": "0,2 l",
+          "price": "3.50",
+          "allergens": ["2", "3", "10"]
+        },
+        {
+          "name": "Kirschnektar",
+          "volume": "0,2 l",
+          "price": "3.80",
+          "allergens": ["1", "2", "3", "11"]
+        },
+        {
+          "name": "Sanpellegrino",
+          "volume": "0,75 l",
+          "price": "7.50"
+        },
+        {
+          "name": "Aqua Panna",
+          "volume": "0,75 l",
+          "price": "7.50"
+        }
+      ]
+    },
+    {
+      "id": "birra",
+      "name": "Birra",
+      "subtitle": "Bier",
+      "items": [
+        {
+          "name": "Pils",
+          "volume": "0,33 l",
+          "price": "4.00",
+          "allergens": ["2", "A"]
+        },
+        {
+          "name": "Italienisches Bier",
+          "volume": "0,33 l",
+          "price": "4.50",
+          "allergens": ["2", "A"]
+        },
+        {
+          "name": "Hefeweizen Hell",
+          "volume": "0,5 l",
+          "price": "4.90",
+          "allergens": ["2", "A"]
+        },
+        {
+          "name": "Kristallweizen",
+          "volume": "0,5 l",
+          "price": "4.90",
+          "allergens": ["2", "A"]
+        }
+      ]
+    },
+    {
+      "id": "alcolici",
+      "name": "Alcolici",
+      "subtitle": "Spirituosen — Digestivi",
+      "items": [
+        {
+          "name": "Averna",
+          "volume": "4 cl",
+          "price": "5.50"
+        },
+        {
+          "name": "Ramazzotti",
+          "volume": "4 cl",
+          "price": "5.50"
+        },
+        {
+          "name": "Cynar",
+          "volume": "4 cl",
+          "price": "5.50"
+        },
+        {
+          "name": "Amaro del Capo",
+          "volume": "4 cl",
+          "price": "5.50"
+        },
+        {
+          "name": "Sambuca Molinari",
+          "volume": "4 cl",
+          "price": "5.50"
+        },
+        {
+          "name": "Fernet",
+          "volume": "4 cl",
+          "price": "5.50"
         }
       ]
     }
   ],
-  "footnote": "Allergene nach LMIV: A Gluten · B Krebstiere · C Eier · D Fische · E Erdnuesse · F Sojabohnen · G Milch · H Schalenfruechte · L Sellerie · M Senf · N Sesam · O Schwefeldioxid/Sulfite · P Lupinen · R Weichtiere. Aenderungen vorbehalten. Alle Preise in EUR inkl. MwSt."
+  "footnote": "Allergene nach LMIV: A Gluten · B Krebstiere · C Eier · D Fische · E Erdnuesse · F Sojabohnen · G Milch · H Schalenfruechte · L Sellerie · M Senf · N Sesam · O Schwefeldioxid/Sulfite · P Lupinen · R Weichtiere. Zusatzstoffe nach ZZulV: 1 mit Farbstoff · 2 mit Konservierungsstoff · 3 mit Antioxidationsmittel · 4 mit Geschmacksverstaerker · 5 geschwefelt · 6 geschwaerzt · 7 gewachst · 8 mit Phosphat · 9 mit Suessungsmittel · 10 mit Phenylalaninquelle · 11 mit Suessungsmittel und Zucker · 12 chininhaltig · 13 coffeinhaltig. Hauseigene Codes (I, J, S): Bedeutung wird ergaenzt. Allergene zu allen Speisen erhalten Sie auf Wunsch beim Service. Aenderungen vorbehalten. Alle Preise in EUR inkl. MwSt."
 }
