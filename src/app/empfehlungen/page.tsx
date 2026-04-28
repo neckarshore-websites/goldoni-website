@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { MenuSection } from "@/components/MenuSection";
+import { WeinSection } from "@/components/WeinSection";
 import empfehlungskarte from "@/data/empfehlungskarte.json";
 import type { Menu } from "@/lib/menu";
 
@@ -28,6 +29,7 @@ export default function EmpfehlungenPage() {
           {menu.title}
         </h1>
         <MenuSection menu={menu} />
+        <WeinSection />
       </div>
     </main>
   );

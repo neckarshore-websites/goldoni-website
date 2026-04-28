@@ -34,34 +34,34 @@ export default function MenuPage() {
           href="/empfehlungen"
           className="mb-12 flex items-center justify-between gap-4 rounded-lg border p-5 transition-opacity hover:opacity-90"
           style={{
-            backgroundColor: "var(--color-brand-cream)",
-            borderColor: "var(--color-brand-olive)",
+            backgroundColor: "#A69B00",
+            borderColor: "#8A8100",
           }}
         >
           <div>
             <p
               className="mb-1 text-xs font-medium uppercase tracking-[0.2em]"
-              style={{ color: "var(--color-brand-olive)" }}
+              style={{ color: "rgba(255,255,255,0.75)" }}
             >
               Diese Woche
             </p>
             <p
               className="font-medium"
-              style={{ color: "var(--color-text)" }}
+              style={{ color: "#FAFAFA" }}
             >
               Aktuelle Empfehlungskarte ansehen
             </p>
             <p
               className="mt-1 text-sm"
-              style={{ color: "var(--color-text-muted)" }}
+              style={{ color: "rgba(255,255,255,0.75)" }}
             >
-              Saisonale Gerichte aus der Küche &mdash; wechselt regelmäßig.
+              Saisonale Gerichte aus der Küche &mdash; wechselt wöchentlich.
             </p>
           </div>
           <span
             aria-hidden
             className="text-2xl"
-            style={{ color: "var(--color-accent)" }}
+            style={{ color: "#FAFAFA" }}
           >
             &rarr;
           </span>

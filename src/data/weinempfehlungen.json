@@ -1,0 +1,66 @@
+{
+  "weiss": [
+    {
+      "name": "Mare Chiaro",
+      "producer": "Ippolito",
+      "classification": "DOC",
+      "year": 2024,
+      "region": "Kalabrien",
+      "grapes": "100 % Greco Bianco",
+      "priceBottle": "28,–",
+      "priceGlass": "7,50"
+    },
+    {
+      "name": "Gavi",
+      "producer": "Luca Bosio",
+      "classification": "DOC",
+      "year": 2024,
+      "region": "Piemont",
+      "grapes": "100 % Cortese",
+      "priceBottle": "30,–",
+      "priceGlass": "8,50"
+    },
+    {
+      "name": "Villa Angela",
+      "producer": "Velenosi",
+      "classification": "DOC",
+      "year": 2024,
+      "region": "Marken",
+      "grapes": "100 % Verdicchio di Jesi",
+      "priceBottle": "30,–",
+      "priceGlass": "8,50"
+    }
+  ],
+  "rot": [
+    {
+      "name": "Bracciarolo Rosso P.",
+      "producer": "Velenosi",
+      "classification": "DOC",
+      "year": 2022,
+      "region": "Marken",
+      "grapes": "Cuvée Montepulciano & Sangiovese",
+      "priceBottle": "30,–",
+      "priceGlass": "8,50"
+    },
+    {
+      "name": "Costera",
+      "producer": "Argiolas",
+      "classification": null,
+      "year": 2020,
+      "region": "Sardinien",
+      "grapes": "100 % Cannonau",
+      "priceBottle": "32,–",
+      "priceGlass": "9,–"
+    },
+    {
+      "name": "Villa Antinori",
+      "producer": "Antinori",
+      "classification": "IGT",
+      "year": 2023,
+      "region": "Toskana",
+      "grapes": "Sangiovese, Syrah, Cabernet, Merlot",
+      "priceBottle": "40,–",
+      "priceGlass": "14,–"
+    }
+  ]
+}

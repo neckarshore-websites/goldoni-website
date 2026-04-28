@@ -56,6 +56,13 @@ export const SITE = {
     },
   ],
 
+  // Public transport — Bus 92 stops directly in front of the restaurant.
+  transit: {
+    type: "Bus",
+    line: "92",
+    note: "Haltestelle direkt vor der Tür",
+  },
+
   // Founded — TODO: confirm with owner
   founded: 0, // 0 = unknown / not yet confirmed
 } as const;
