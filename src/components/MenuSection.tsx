@@ -76,7 +76,18 @@ function MenuItemRow({ item }: { item: MenuItem }) {
 
 function CategoryBlock({ category }: { category: MenuCategory }) {
   return (
-    <section id={category.id} className="scroll-mt-32">
+    <section
+      id={category.id}
+      // scroll-margin = sticky-header-bottom + sticky-pill-bar-bottom + 1rem
+      // breathing. Both heights are written to :root by MenuQuickJump's
+      // ResizeObserver effect so this stays correct across viewport changes
+      // (mobile sub-nav row, mobile 3-row pill stack, desktop 1-row, …).
+      // SSR fallback: 8rem (matches the previous static value).
+      style={{
+        scrollMarginTop:
+          "calc(var(--goldoni-header-h, 4.5rem) + var(--goldoni-pills-h, 3rem) + 1rem)",
+      }}
+    >
       <header className="mb-4">
         <h2
           className="text-3xl"
