@@ -1,0 +1,143 @@
+{
+  "title": "Speisekarte",
+  "intro": "Italienisch verliebte Kueche — frische Zutaten, mit Liebe gemacht. Die folgende Karte ist ein Beispiel-Stand und wird durch die finale Karte des Hauses ersetzt.",
+  "updated": "2026-04-28",
+  "categories": [
+    {
+      "id": "antipasti",
+      "name": "Antipasti",
+      "subtitle": "Vorspeisen",
+      "items": [
+        {
+          "name": "Bruschetta al Pomodoro",
+          "description": "Geroestetes Brot mit Tomaten, Knoblauch, Basilikum",
+          "price": "8.50",
+          "allergens": ["A"],
+          "diet": ["vegan"]
+        },
+        {
+          "name": "Carpaccio di Manzo",
+          "description": "Hauchduenn aufgeschnittenes Rinderfilet mit Parmesan und Rucola",
+          "price": "14.50",
+          "allergens": ["G"]
+        },
+        {
+          "name": "Caprese",
+          "description": "Bueffelmozzarella, Tomaten, Basilikum, Olivenoel",
+          "price": "11.50",
+          "allergens": ["G"],
+          "diet": ["vegetarian"]
+        }
+      ]
+    },
+    {
+      "id": "primi",
+      "name": "Primi Piatti",
+      "subtitle": "Pasta & Risotto",
+      "items": [
+        {
+          "name": "Spaghetti alle Vongole",
+          "description": "Spaghetti mit Venusmuscheln, Knoblauch, Petersilie, Weisswein",
+          "price": "16.50",
+          "allergens": ["A", "C", "R", "O"]
+        },
+        {
+          "name": "Tagliatelle al Tartufo",
+          "description": "Hausgemachte Tagliatelle mit Trueffel, Butter, Parmesan",
+          "price": "19.50",
+          "allergens": ["A", "C", "G"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Risotto ai Funghi Porcini",
+          "description": "Cremiges Risotto mit Steinpilzen, Petersilie, Parmesan",
+          "price": "17.50",
+          "allergens": ["G"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Penne all'Arrabbiata",
+          "description": "Penne in scharfer Tomatensauce mit Knoblauch und Chili",
+          "price": "12.50",
+          "allergens": ["A"],
+          "diet": ["vegan", "spicy"]
+        }
+      ]
+    },
+    {
+      "id": "secondi",
+      "name": "Secondi Piatti",
+      "subtitle": "Hauptgerichte",
+      "items": [
+        {
+          "name": "Saltimbocca alla Romana",
+          "description": "Kalbsschnitzel mit Parmaschinken und Salbei in Weisswein",
+          "price": "24.50",
+          "allergens": ["A", "G", "O"]
+        },
+        {
+          "name": "Branzino al Sale",
+          "description": "Wolfsbarsch in Salzkruste mit mediterranem Gemuese",
+          "price": "27.50",
+          "allergens": ["D"]
+        },
+        {
+          "name": "Pollo al Limone",
+          "description": "Haehnchenbrust mit Zitrone, Kapern, Petersilie",
+          "price": "19.50",
+          "allergens": ["G"]
+        }
+      ]
+    },
+    {
+      "id": "pizze",
+      "name": "Pizze",
+      "subtitle": "Aus dem Steinofen",
+      "items": [
+        {
+          "name": "Margherita",
+          "description": "Tomaten, Mozzarella, Basilikum",
+          "price": "11.50",
+          "allergens": ["A", "G"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Diavola",
+          "description": "Tomaten, Mozzarella, scharfe Salami, Chili",
+          "price": "14.50",
+          "allergens": ["A", "G"],
+          "diet": ["spicy"]
+        },
+        {
+          "name": "Quattro Formaggi",
+          "description": "Mozzarella, Gorgonzola, Parmesan, Pecorino",
+          "price": "15.50",
+          "allergens": ["A", "G"],
+          "diet": ["vegetarian"]
+        }
+      ]
+    },
+    {
+      "id": "dolci",
+      "name": "Dolci",
+      "subtitle": "Desserts",
+      "items": [
+        {
+          "name": "Tiramisu",
+          "description": "Hausgemacht — Mascarpone, Espresso, Amaretto",
+          "price": "7.50",
+          "allergens": ["A", "C", "G", "O"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Panna Cotta ai Frutti di Bosco",
+          "description": "Sahnedessert mit Waldbeeren",
+          "price": "7.00",
+          "allergens": ["G"],
+          "diet": ["vegetarian"]
+        }
+      ]
+    }
+  ],
+  "footnote": "Allergene nach LMIV: A Gluten · B Krebstiere · C Eier · D Fische · E Erdnuesse · F Sojabohnen · G Milch · H Schalenfruechte · L Sellerie · M Senf · N Sesam · O Schwefeldioxid/Sulfite · P Lupinen · R Weichtiere. Aenderungen vorbehalten. Alle Preise in EUR inkl. MwSt."
+}

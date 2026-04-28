@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { SITE } from "@/lib/site";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main>
       {/* Hero */}
       <section
         className="px-6 py-24 sm:px-12 sm:py-32 lg:py-40"
@@ -28,7 +29,7 @@ export default function Home() {
             {SITE.description}
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
+            <Link
               href="/menu"
               className="rounded-md px-6 py-3 text-base font-medium transition-colors"
               style={{
@@ -37,7 +38,7 @@ export default function Home() {
               }}
             >
               Unsere Karte
-            </a>
+            </Link>
             <a
               href={`tel:${SITE.phone}`}
               className="rounded-md border px-6 py-3 text-base font-medium transition-colors"
@@ -52,62 +53,113 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Hours + Address — quick info row */}
+      {/* Philosophie — Plutarch quote, classic Trattoria voice */}
       <section
-        className="border-y px-6 py-12 sm:px-12"
+        className="border-y px-6 py-20 sm:px-12 sm:py-24"
         style={{
           borderColor: "var(--color-border)",
           backgroundColor: "var(--color-bg-muted)",
         }}
       >
-        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 text-center sm:grid-cols-2">
-          <div>
-            <h2
-              className="mb-3 text-lg font-medium uppercase tracking-wider"
-              style={{ color: "var(--color-brand-olive)" }}
-            >
-              Oeffnungszeiten
-            </h2>
-            <ul className="space-y-1" style={{ color: "var(--color-text)" }}>
-              {SITE.hours.map((row) => (
-                <li key={row.days}>
-                  <span className="font-medium">{row.days}</span>
-                  <span style={{ color: "var(--color-text-muted)" }}> · {row.time}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2
-              className="mb-3 text-lg font-medium uppercase tracking-wider"
-              style={{ color: "var(--color-brand-olive)" }}
-            >
-              Adresse
-            </h2>
-            <p style={{ color: "var(--color-text)" }}>
-              {SITE.address.street}
-              <br />
-              {SITE.address.postalCode} {SITE.address.city}
-            </p>
-          </div>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2
+            className="mb-6 text-3xl sm:text-4xl"
+            style={{ color: "var(--color-text)" }}
+          >
+            Brot und Speisen
+          </h2>
+          <blockquote
+            className="font-display text-lg italic leading-relaxed sm:text-xl"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            &laquo;Der Mensch teilt nicht nur Leben und Heim mit anderen, sondern
+            auch Brot und Speisen.&raquo;
+          </blockquote>
+          <cite
+            className="mt-4 block text-sm not-italic"
+            style={{ color: "var(--color-text-subtle)" }}
+          >
+            &mdash; Plutarch, Tischgespraeche
+          </cite>
         </div>
       </section>
 
-      {/* Footer placeholder */}
-      <footer
-        className="px-6 py-12 text-center text-sm sm:px-12"
-        style={{ color: "var(--color-text-muted)" }}
+      {/* Empfehlungskarte teaser — placeholder until skill/data is wired */}
+      <section className="px-6 py-20 sm:px-12 sm:py-24" style={{ backgroundColor: "var(--color-bg)" }}>
+        <div className="mx-auto max-w-3xl text-center">
+          <p
+            className="mb-3 text-xs uppercase tracking-[0.2em]"
+            style={{ color: "var(--color-brand-olive)" }}
+          >
+            Diese Woche
+          </p>
+          <h2
+            className="mb-6 text-3xl sm:text-4xl"
+            style={{ color: "var(--color-text)" }}
+          >
+            Aktuelle Empfehlungen
+          </h2>
+          <p
+            className="mx-auto mb-8 max-w-xl"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            Saisonale Gerichte, Wochenangebote und Wein-Tipps &mdash; was die
+            Kueche heute besonders empfiehlt.
+          </p>
+          <Link
+            href="/empfehlungen"
+            className="inline-block border-b-2 pb-1 text-base font-medium transition-colors"
+            style={{
+              borderColor: "var(--color-accent)",
+              color: "var(--color-accent)",
+            }}
+          >
+            Zu den Empfehlungen &rarr;
+          </Link>
+        </div>
+      </section>
+
+      {/* Feiern teaser */}
+      <section
+        className="border-t px-6 py-20 sm:px-12 sm:py-24"
+        style={{
+          borderColor: "var(--color-border)",
+          backgroundColor: "var(--color-bg-muted)",
+        }}
       >
-        <p>
-          &copy; {new Date().getFullYear()} {SITE.name} ·{" "}
-          <a href={`mailto:${SITE.email}`} className="underline">
-            {SITE.email}
-          </a>
-        </p>
-        <p className="mt-2 text-xs" style={{ color: "var(--color-text-subtle)" }}>
-          Impressum &middot; Datenschutz folgen
-        </p>
-      </footer>
+        <div className="mx-auto max-w-3xl text-center">
+          <p
+            className="mb-3 text-xs uppercase tracking-[0.2em]"
+            style={{ color: "var(--color-brand-olive)" }}
+          >
+            Privat &amp; Feierlich
+          </p>
+          <h2
+            className="mb-6 text-3xl sm:text-4xl"
+            style={{ color: "var(--color-text)" }}
+          >
+            Feiern Sie bei uns
+          </h2>
+          <p
+            className="mx-auto mb-8 max-w-xl"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            Hochzeiten, Geburtstage, Taufen, Firmenfeiern. Wir richten Ihren
+            Anlass aus &mdash; mit individueller Karte und der Aufmerksamkeit,
+            die er verdient.
+          </p>
+          <Link
+            href="/feiern"
+            className="inline-block border-b-2 pb-1 text-base font-medium transition-colors"
+            style={{
+              borderColor: "var(--color-accent)",
+              color: "var(--color-accent)",
+            }}
+          >
+            Mehr ueber Feiern &rarr;
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }
