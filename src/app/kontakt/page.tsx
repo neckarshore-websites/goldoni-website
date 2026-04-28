@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
+import { ContactForm } from "@/components/forms/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Kontakt &amp; Reservierung — Ristorante Goldoni",
+  title: "Kontakt & Reservierung — Ristorante Goldoni",
   description:
-    "Tisch reservieren oder Frage stellen. Telefon, E-Mail oder Anfahrt &mdash; alle Wege zum Ristorante Goldoni in Stuttgart.",
+    "Tisch reservieren oder Frage stellen. Telefon, E-Mail oder Anfahrt — alle Wege zum Ristorante Goldoni in Stuttgart.",
 };
 
 export default function KontaktPage() {
@@ -29,7 +30,7 @@ export default function KontaktPage() {
         >
           Am schnellsten geht es per Telefon. Fuer alles andere &mdash;
           Anfragen zu Feiern, Sonderwuenschen, Allergien &mdash; freuen wir
-          uns ueber eine E-Mail.
+          uns ueber eine E-Mail oder direkt das Formular unten.
         </p>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -132,18 +133,45 @@ export default function KontaktPage() {
           </div>
         </div>
 
-        {/* Reservation form placeholder */}
-        <div
-          className="mt-10 rounded-lg border-2 border-dashed p-8 text-center"
-          style={{ borderColor: "var(--color-border)" }}
+        {/* Contact form — short, free-form inquiry. Feiern bookings are
+            steered to /feiern via the link below the heading. */}
+        <section
+          className="mt-12 rounded-lg border p-6 sm:p-8"
+          style={{
+            borderColor: "var(--color-border)",
+            backgroundColor: "var(--color-bg-muted)",
+          }}
+          aria-labelledby="kontakt-form-heading"
         >
           <p
-            className="text-sm"
+            className="mb-2 text-xs uppercase tracking-[0.2em]"
+            style={{ color: "var(--color-brand-olive)" }}
+          >
+            Schreiben Sie uns
+          </p>
+          <h2
+            id="kontakt-form-heading"
+            className="mb-2 text-2xl sm:text-3xl"
+            style={{ color: "var(--color-heading-italian)" }}
+          >
+            Nachricht
+          </h2>
+          <p
+            className="mb-6"
             style={{ color: "var(--color-text-muted)" }}
           >
-            Reservierungsformular folgt &mdash; bis dahin Anrufen oder Mail.
+            Fuer eine Feieranfrage finden Sie auf der Seite{" "}
+            <a
+              href="/feiern"
+              className="underline"
+              style={{ color: "var(--color-accent)" }}
+            >
+              Feiern
+            </a>{" "}
+            ein passenderes Formular mit Datum und Gaesteanzahl.
           </p>
-        </div>
+          <ContactForm />
+        </section>
       </div>
     </main>
   );
