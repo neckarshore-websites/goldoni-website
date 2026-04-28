@@ -29,13 +29,25 @@ function PhoneIcon() {
   );
 }
 
+/**
+ * Site Header — theme-fixed noir (espresso/black) in both light and dark.
+ *
+ * The shell of the site (Header + Footer-top + Footer-copyright) acts as
+ * an editorial frame around the page; its colour identity does not flip
+ * with the user's theme. Tokens come from globals.css `--color-noir-*`.
+ *
+ * Mobile: two-row Header (main nav + sub-nav of secondary links).
+ * Desktop: single-row Header with full nav inline.
+ */
 export function Header() {
   return (
     <header
       className="sticky top-0 z-40 border-b backdrop-blur-md"
       style={{
-        backgroundColor: "color-mix(in oklab, var(--color-bg-muted) 92%, transparent)",
-        borderColor: "var(--color-brand-olive)",
+        backgroundColor:
+          "color-mix(in oklab, var(--color-noir-bg) 92%, transparent)",
+        borderColor: "var(--color-noir-border)",
+        color: "var(--color-noir-text)",
       }}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 sm:px-12">
@@ -50,13 +62,13 @@ export function Header() {
             className="inline-block h-2 w-2 rounded-full sm:h-2.5 sm:w-2.5"
             style={{ backgroundColor: "var(--color-accent)" }}
           />
-          <span style={{ color: "var(--color-text)" }}>
+          <span style={{ color: "var(--color-noir-text)" }}>
             {SITE.name.replace("Ristorante ", "")}
           </span>
           <span
             className="hidden text-xs font-normal uppercase tracking-[0.2em] sm:inline"
             style={{
-              color: "var(--color-brand-olive)",
+              color: "var(--color-noir-eyebrow)",
               fontFamily: "var(--font-sans)",
             }}
           >
@@ -77,11 +89,12 @@ export function Header() {
                 style={
                   link.featured
                     ? {
-                        color: "var(--color-brand-olive)",
-                        backgroundColor: "var(--color-brand-cream)",
+                        // Parmigiano pill stays — pops on noir, pops on cream page.
+                        color: "var(--color-blanc-text)",
+                        backgroundColor: "var(--color-noir-eyebrow)",
                         fontWeight: 500,
                       }
-                    : { color: "var(--color-text)" }
+                    : { color: "var(--color-noir-text)" }
                 }
               >
                 {link.label}
@@ -100,7 +113,8 @@ export function Header() {
             className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium md:hidden"
             style={{
               backgroundColor: "var(--color-accent)",
-              color: "var(--color-bg)",
+              // Salmon-on-noir; CTA text reads on the salmon swatch directly.
+              color: "var(--color-blanc-bg)",
             }}
             aria-label={`Anrufen: ${SITE.phoneDisplay}`}
           >
@@ -112,7 +126,7 @@ export function Header() {
             className="hidden md:inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors"
             style={{
               backgroundColor: "var(--color-accent)",
-              color: "var(--color-bg)",
+              color: "var(--color-blanc-bg)",
             }}
           >
             <PhoneIcon />
@@ -125,7 +139,7 @@ export function Header() {
       <ul
         className="flex justify-center gap-2 border-t px-4 py-2 text-sm md:hidden"
         style={{
-          borderColor: "var(--color-border)",
+          borderColor: "var(--color-noir-border)",
           fontFamily: "var(--font-sans)",
         }}
       >
@@ -137,11 +151,11 @@ export function Header() {
               style={
                 link.featured
                   ? {
-                      color: "var(--color-brand-olive)",
-                      backgroundColor: "var(--color-brand-cream)",
+                      color: "var(--color-blanc-text)",
+                      backgroundColor: "var(--color-noir-eyebrow)",
                       fontWeight: 500,
                     }
-                  : { color: "var(--color-text)" }
+                  : { color: "var(--color-noir-text)" }
               }
             >
               {link.label}

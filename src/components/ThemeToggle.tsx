@@ -32,7 +32,9 @@ export function ThemeToggle() {
       aria-label="Theme wechseln (Hell / Dunkel)"
       title="Theme wechseln"
       className="inline-flex h-11 w-11 items-center justify-center rounded-md transition-colors"
-      style={{ color: "var(--color-text-muted)" }}
+      // Header is theme-fixed noir; icon uses noir-muted (warm cream-tan)
+      // so it sits readable on espresso bg in both light + dark modes.
+      style={{ color: "var(--color-noir-text-muted)" }}
     >
       {/* Sun — visible in DARK mode, hidden in light */}
       <svg
