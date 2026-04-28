@@ -78,7 +78,10 @@ function CategoryBlock({ category }: { category: MenuCategory }) {
   return (
     <section id={category.id} className="scroll-mt-32">
       <header className="mb-4">
-        <h2 className="text-3xl" style={{ color: "var(--color-text)" }}>
+        <h2
+          className="text-3xl"
+          style={{ color: "var(--color-heading-italian)" }}
+        >
           {category.name}
         </h2>
         {category.subtitle ? (
