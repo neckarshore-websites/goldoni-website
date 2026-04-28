@@ -96,3 +96,18 @@ h1, h2, .font-display {
   background-color: var(--color-brand-olive);
   color: var(--color-bg);
 }
+
+/* Theme toggle icons — DOM-driven, both rendered, CSS hides inactive */
+.theme-icon {
+  display: none;
+}
+:root .theme-icon-moon,
+:root[data-theme="light"] .theme-icon-moon {
+  display: block;
+}
+:root[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+:root[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}

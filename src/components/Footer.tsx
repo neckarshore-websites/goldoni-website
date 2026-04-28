@@ -111,6 +111,23 @@ export function Footer() {
                 </a>
               </li>
             </ul>
+
+            {/* Internal — separated by hairline, muted styling */}
+            <ul
+              className="mt-4 space-y-1 border-t pt-4 text-sm"
+              style={{ borderColor: "var(--color-border)" }}
+            >
+              <li>
+                <Link
+                  href="/style-guide"
+                  className="hover:underline"
+                  style={{ color: "var(--color-text-subtle)" }}
+                >
+                  Style Guide{" "}
+                  <span className="text-xs">(intern)</span>
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
