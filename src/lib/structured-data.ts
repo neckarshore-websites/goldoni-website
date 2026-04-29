@@ -21,6 +21,7 @@
  */
 
 import { SITE } from "./site";
+import type { Menu, MenuItem, MenuCategory, DietTag } from "./menu";
 
 const DAY_MAP: Record<string, string[]> = {
   Mo: ["Monday"],
@@ -136,5 +137,91 @@ export function breadcrumbJsonLd(
       name: entry.name,
       item: `${SITE.url}${entry.path === "/" ? "" : entry.path}`,
     })),
+  };
+}
+
+/**
+ * Maps our internal DietTag to Schema.org's RestrictedDiet enum URLs.
+ * Items can carry multiple tags; only mappable ones are emitted, so
+ * "spicy" silently drops out (no Schema.org equivalent).
+ */
+const DIET_MAP: Partial<Record<DietTag, string>> = {
+  vegetarian: "https://schema.org/VegetarianDiet",
+  vegan: "https://schema.org/VeganDiet",
+};
+
+/**
+ * Build the Schema.org MenuItem node for a single dish.
+ * Volume (e.g. "0,3 l" for drinks) is appended to the description so
+ * it appears in rich-results previews; we don't lose data by omitting
+ * Schema.org's missing servingSize property.
+ */
+function menuItemJsonLd(item: MenuItem): Record<string, unknown> {
+  const desc = item.volume
+    ? [item.description, item.volume].filter(Boolean).join(" · ")
+    : item.description;
+
+  const node: Record<string, unknown> = {
+    "@type": "MenuItem",
+    name: item.name,
+    offers: {
+      "@type": "Offer",
+      price: item.price,
+      priceCurrency: "EUR",
+    },
+  };
+
+  if (desc) node.description = desc;
+
+  const diets = (item.diet ?? [])
+    .map((d) => DIET_MAP[d])
+    .filter((v): v is string => Boolean(v));
+  if (diets.length === 1) {
+    node.suitableForDiet = diets[0];
+  } else if (diets.length > 1) {
+    node.suitableForDiet = diets;
+  }
+
+  return node;
+}
+
+function menuSectionJsonLd(category: MenuCategory): Record<string, unknown> {
+  const node: Record<string, unknown> = {
+    "@type": "MenuSection",
+    name: category.name,
+    hasMenuItem: category.items.map(menuItemJsonLd),
+  };
+
+  // Subtitle/description provide search-result context — include both
+  // when present, joined for a single richer description line.
+  const desc = [category.subtitle, category.description]
+    .filter(Boolean)
+    .join(" — ");
+  if (desc) node.description = desc;
+
+  return node;
+}
+
+/**
+ * Menu — the full Schema.org `Menu` node for the /menu page.
+ *
+ * `isPartOf` references the Restaurant node by @id (set on the root
+ * layout's Restaurant JSON-LD). This lets Google connect the menu to
+ * the restaurant entity without duplicating NAP data here.
+ *
+ * `inLanguage: "de"` is the page language, not the cuisine language —
+ * dish names stay Italian inside the items.
+ */
+export function menuJsonLd(menu: Menu, path: string): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    name: menu.title,
+    description: menu.intro,
+    inLanguage: "de",
+    mainEntityOfPage: `${SITE.url}${path}`,
+    isPartOf: { "@id": `${SITE.url}/#restaurant` },
+    dateModified: menu.updated,
+    hasMenuSection: menu.categories.map(menuSectionJsonLd),
   };
 }

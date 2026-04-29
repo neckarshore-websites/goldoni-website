@@ -4,7 +4,7 @@ import { WeinSection } from "@/components/WeinSection";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
 import empfehlungskarte from "@/data/empfehlungskarte.json";
-import { breadcrumbJsonLd } from "@/lib/structured-data";
+import { breadcrumbJsonLd, menuJsonLd } from "@/lib/structured-data";
 import type { Menu } from "@/lib/menu";
 
 const menu = empfehlungskarte as Menu;
@@ -24,6 +24,7 @@ export default function EmpfehlungenPage() {
           { name: "Empfehlungen", path: "/empfehlungen" },
         ])}
       />
+      <StructuredData data={menuJsonLd(menu, "/empfehlungen")} />
       <PageHero
         src="/images/hero-empfehlungen-overhead-tafel.png"
         alt="Gedeckter Tisch von oben: Pappardelle, Risotto ai funghi e tartufo, Burrata e prosciutto, Weingläser und Brot — wöchentliche Empfehlungen im Ristorante Goldoni"
