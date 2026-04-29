@@ -29,7 +29,7 @@ const SLIDES = [
     alt: "Goldoni Visitenkarte vor goldener Engelsfigur auf einem Tisch",
     // Shift crop ~150 px upward so the angel's head + wings are centred
     // rather than the arm/card being clipped at the bottom edge.
-    objectPosition: "center 20%",
+    objectPosition: "center 80%",
   },
   {
     src: "/images/hero-goldoni-interior.webp",
