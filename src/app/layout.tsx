@@ -34,7 +34,10 @@ export const metadata: Metadata = {
     title: "Ristorante Goldoni — Bella Italia in Stuttgart",
     description:
       "Italienisch verliebte Kueche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht.",
-    url: "https://ristorante-goldoni.de",
+    // Relative URL — Next resolves it against `metadataBase` so the
+    // domain isn't duplicated in code. Per-page metadata can override
+    // this with its own canonical-shaped relative URL.
+    url: "/",
     siteName: "Ristorante Goldoni",
     locale: "de_DE",
     type: "website",
