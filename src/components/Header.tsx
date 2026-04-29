@@ -1,14 +1,7 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
+import { NavLinks } from "@/components/NavLinks";
 import { ThemeToggle } from "@/components/ThemeToggle";
-
-const NAV_LINKS = [
-  { href: "/", label: "Start", featured: false },
-  { href: "/empfehlungen", label: "Empfehlungskarte", featured: true },
-  { href: "/menu", label: "Menü", featured: false },
-  { href: "/feiern", label: "Feiern", featured: false },
-  { href: "/kontakt", label: "Kontakt", featured: false },
-] as const;
 
 /** Inline phone icon — same stroke style as ThemeToggle. */
 function PhoneIcon() {
@@ -76,32 +69,11 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <ul
+        {/* Desktop nav — active link wears its brand colour as a pill. */}
+        <NavLinks
           className="hidden items-center gap-2 md:flex"
-          style={{ fontFamily: "var(--font-sans)" }}
-        >
-          {NAV_LINKS.slice(1).map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="rounded-full px-3 py-1.5 text-sm transition-colors"
-                style={
-                  link.featured
-                    ? {
-                        // Parmigiano pill stays — pops on noir, pops on cream page.
-                        color: "var(--color-blanc-text)",
-                        backgroundColor: "var(--color-noir-eyebrow)",
-                        fontWeight: 500,
-                      }
-                    : { color: "var(--color-noir-text)" }
-                }
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+          linkClassName="px-3 py-1.5 text-sm"
+        />
 
         {/* Right cluster */}
         <div className="flex items-center gap-2">
@@ -135,34 +107,16 @@ export function Header() {
         </div>
       </nav>
 
-      {/* Mobile sub-nav */}
-      <ul
-        className="flex justify-center gap-2 border-t px-4 py-2 text-sm md:hidden"
-        style={{
-          borderColor: "var(--color-noir-border)",
-          fontFamily: "var(--font-sans)",
-        }}
+      {/* Mobile sub-nav — same brand-pill logic, smaller pills. */}
+      <div
+        className="border-t px-4 py-2 md:hidden"
+        style={{ borderColor: "var(--color-noir-border)" }}
       >
-        {NAV_LINKS.slice(1).map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              className="inline-block rounded-full px-2.5 py-1 transition-colors"
-              style={
-                link.featured
-                  ? {
-                      color: "var(--color-blanc-text)",
-                      backgroundColor: "var(--color-noir-eyebrow)",
-                      fontWeight: 500,
-                    }
-                  : { color: "var(--color-noir-text)" }
-              }
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
+        <NavLinks
+          className="flex justify-center gap-2 text-sm"
+          linkClassName="inline-block px-2.5 py-1"
+        />
+      </div>
     </header>
   );
 }
