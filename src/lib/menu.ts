@@ -7,16 +7,23 @@
  * The Empfehlungskarte (weekly recommendations) is a separate stream that
  * may later be filled by a photo-to-markdown skill — same MenuItem shape.
  *
- * Allergen codes follow German LMIV (Lebensmittel-Informationsverordnung):
- *   A Glutenhaltiges Getreide   B Krebstiere   C Eier   D Fische
- *   E Erdnuesse   F Sojabohnen   G Milch (Laktose)   H Schalenfruechte
- *   L Sellerie   M Senf   N Sesam   O Schwefeldioxid/Sulfite
- *   P Lupinen   R Weichtiere
+ * Allergen codes follow German LMIV (Lebensmittel-Informationsverordnung).
+ * Goldoni uses three Goldoni-house letters (I/J/S) instead of the
+ * branchen-typical L/M/O for Sellerie/Senf/Sulfite — the codes the
+ * Inhaber actually prints on the Karte. The full mapping lives in
+ * `src/lib/codes.ts` (LMIV_ALLERGENS + HOUSE_CODES + ZZULV_ADDITIVES);
+ * `MenuLegend` in `src/components/MenuSection.tsx` renders them grouped.
  *
- * Restaurants sometimes use additional house-codes alongside LMIV
- * (e.g. "I" or "S" — needs clarification per restaurant). We therefore
- * type the allergen field as plain string and document the meaning in
- * the menu's `footnote` field.
+ *   LMIV (Goldoni-used):  A Glutenhaltiges Getreide   B Krebstiere
+ *                         C Eier   D Fische   E Erdnuesse   F Sojabohnen
+ *                         G Milch (Laktose)   H Schalenfruechte
+ *                         N Sesam   P Lupinen   R Weichtiere
+ *   Goldoni-house:        I Sellerie   J Senf   S Sulfite
+ *   ZZulV (additives):    1-13 (Farbstoff, Konservierung, … see codes.ts)
+ *
+ * The allergen field is typed as plain string so future codes (or
+ * restaurant-specific overrides) can be added in `codes.ts` without
+ * a type change here.
  */
 
 export type AllergenCode = string;
