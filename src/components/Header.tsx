@@ -76,17 +76,14 @@ export function Header() {
           linkClassName="px-3 py-1.5 text-sm"
         />
 
-        {/* Right cluster */}
+        {/* Right cluster — order: Reservieren | Spotify | ThemeToggle (far right) */}
         <div className="flex items-center gap-2">
-          <ThemeToggle />
-
           {/* Mobile: phone-CTA (compact). Desktop: Reservieren-CTA. */}
           <a
             href={`tel:${SITE.phone}`}
             className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium md:hidden"
             style={{
               backgroundColor: "var(--color-accent)",
-              // Salmon-on-noir; CTA text reads on the salmon swatch directly.
               color: "var(--color-blanc-bg)",
             }}
             aria-label={`Anrufen: ${SITE.phoneDisplay}`}
@@ -105,9 +102,12 @@ export function Header() {
             <PhoneIcon />
             <span>Reservieren</span>
           </a>
-          {/* Hausplaylist — sits at the far right, monochrome by
-              default, lights up Spotify-green on hover. */}
+
+          {/* Hausplaylist — monochrome by default, lights up Spotify-green on hover */}
           <SpotifyLink variant="icon" />
+
+          {/* ThemeToggle — always at the absolute far right */}
+          <ThemeToggle />
         </div>
       </nav>
 
