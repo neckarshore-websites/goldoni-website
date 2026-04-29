@@ -1,6 +1,7 @@
 "use server";
 
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
+import type SMTPTransport from "nodemailer/lib/smtp-transport";
 
 /**
  * Inquiry Server Action — handles both /kontakt and /feiern submissions.
@@ -12,14 +13,24 @@ import { Resend } from "resend";
  * including hidden inputs; humans don't see it. If filled, we silently
  * return success without sending mail.
  *
- * Env vars (all optional during development):
- *   RESEND_API_KEY    — Resend API key. Without it, the action logs the
- *                       payload and returns success (dry-run mode for
- *                       previews / local dev).
- *   RESEND_FROM       — From-address. Default uses Resend's onboarding
- *                       sandbox; set to a verified domain for prod.
- *   INQUIRY_EMAIL_TO  — Recipient. Default during owner-test phase is
- *                       german@rauhut.com.
+ * Mail transport: SMTP (DomainFactory) via nodemailer.
+ *
+ * Env vars (all required in production; missing in production → hard error):
+ *   SMTP_HOST          — DomainFactory SMTP host, e.g. `sslout.df.eu`
+ *   SMTP_PORT          — `465` for SSL/TLS (default), `587` for STARTTLS
+ *   SMTP_USER          — full mailbox address, e.g. `info@goldoni-online.de`
+ *   SMTP_PASS          — mailbox password
+ *   SMTP_FROM          — From-header, e.g. `Goldoni <info@goldoni-online.de>`.
+ *                        The user-part MUST be a real account on the
+ *                        authenticated mailbox; otherwise DomainFactory
+ *                        rejects with `550 sender not allowed`.
+ *   INQUIRY_EMAIL_TO   — recipient mailbox (where the owner reads inquiries)
+ *
+ * In development (`NODE_ENV !== "production"`) the action falls back to a
+ * dry-run that logs the would-be mail and returns success — useful for
+ * local dev and Vercel previews without a real mailbox. In production a
+ * missing config is treated as an outage and the user gets an honest
+ * error message asking them to call instead.
  */
 
 export type InquiryType = "kontakt" | "feiern";
@@ -36,10 +47,42 @@ const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const MAX_MESSAGE_LEN = 4000;
 const MAX_FIELD_LEN = 200;
 
+const TRANSPORT_FAILURE_MESSAGE =
+  "Wir koennen Ihre Anfrage gerade nicht digital uebermitteln. Bitte rufen Sie uns kurz an — die Telefonnummer finden Sie auf der Kontaktseite.";
+
 function clean(formData: FormData, key: string, max = MAX_FIELD_LEN): string {
   return String(formData.get(key) ?? "")
     .trim()
     .slice(0, max);
+}
+
+interface SmtpConfig {
+  host: string;
+  port: number;
+  user: string;
+  pass: string;
+  from: string;
+  to: string;
+}
+
+/**
+ * Read SMTP config from env. Returns null if any required value is
+ * missing (caller decides how to handle: dry-run in dev, error in prod).
+ */
+function readSmtpConfig(): SmtpConfig | null {
+  const host = process.env.SMTP_HOST;
+  const portRaw = process.env.SMTP_PORT;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  const from = process.env.SMTP_FROM;
+  const to = process.env.INQUIRY_EMAIL_TO;
+
+  if (!host || !portRaw || !user || !pass || !from || !to) return null;
+
+  const port = Number(portRaw);
+  if (!Number.isFinite(port) || port <= 0 || port > 65535) return null;
+
+  return { host, port, user, pass, from, to };
 }
 
 export async function sendInquiry(
@@ -103,10 +146,7 @@ export async function sendInquiry(
     ? `Feieranfrage: ${occasion} (${name})`
     : `Kontaktanfrage von ${name}`;
 
-  const lines: string[] = [
-    `Name: ${name}`,
-    `E-Mail: ${email}`,
-  ];
+  const lines: string[] = [`Name: ${name}`, `E-Mail: ${email}`];
   if (phone) lines.push(`Telefon: ${phone}`);
   if (isFeiern) {
     lines.push(`Anlass: ${occasion}`);
@@ -122,44 +162,59 @@ export async function sendInquiry(
   const body = lines.join("\n");
 
   // ----- Send -------------------------------------------------------
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.INQUIRY_EMAIL_TO ?? "german@rauhut.com";
-  const from =
-    process.env.RESEND_FROM ?? "Goldoni <onboarding@resend.dev>";
+  const config = readSmtpConfig();
+  const isProd = process.env.NODE_ENV === "production";
 
-  if (!apiKey) {
-    // Dev / preview without configured key → log and pretend success.
+  if (!config) {
+    if (isProd) {
+      // In production a missing SMTP config means real customer inquiries
+      // would silently disappear — that's worse than a visible outage.
+      // Tell the user to call. Owner sees the env-var gap on next deploy
+      // log.
+      console.error(
+        "[Goldoni Inquiry] SMTP not configured in production — " +
+          "set SMTP_HOST/SMTP_PORT/SMTP_USER/SMTP_PASS/SMTP_FROM/INQUIRY_EMAIL_TO",
+      );
+      return { status: "error", message: TRANSPORT_FAILURE_MESSAGE };
+    }
+    // Dev / preview without configured SMTP → log and pretend success.
     console.log(
-      `[Goldoni Inquiry / dry-run no RESEND_API_KEY]\n` +
-        `To: ${to}\nFrom: ${from}\nSubject: ${subject}\n\n${body}`,
+      `[Goldoni Inquiry / dry-run no SMTP config]\n` +
+        `From: <not-configured>\nSubject: ${subject}\n\n${body}`,
     );
     return { status: "success" };
   }
 
+  // Pin to the SMTPTransport.Options overload of createTransport — the
+  // generic last-overload otherwise picks `TransportOptions` which lacks
+  // host/port/secure.
+  const transportOptions: SMTPTransport.Options = {
+    host: config.host,
+    port: config.port,
+    // Port 465 is implicit-SSL; 587 starts plain and upgrades via STARTTLS.
+    secure: config.port === 465,
+    auth: { user: config.user, pass: config.pass },
+  };
+  const transporter = nodemailer.createTransport(transportOptions);
+
   try {
-    const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
-      from,
-      to,
+    const info = await transporter.sendMail({
+      from: config.from,
+      to: config.to,
       replyTo: email,
       subject,
       text: body,
     });
-    if (error) {
-      console.error("[Goldoni Inquiry] resend returned error", error);
-      return {
-        status: "error",
-        message:
-          "Bei der Uebermittlung ist ein Fehler aufgetreten. Bitte rufen Sie uns kurz an.",
-      };
+    if (info.rejected.length > 0) {
+      console.error(
+        "[Goldoni Inquiry] SMTP rejected recipient(s)",
+        info.rejected,
+      );
+      return { status: "error", message: TRANSPORT_FAILURE_MESSAGE };
     }
     return { status: "success" };
   } catch (err) {
-    console.error("[Goldoni Inquiry] send threw", err);
-    return {
-      status: "error",
-      message:
-        "Bei der Uebermittlung ist ein Fehler aufgetreten. Bitte rufen Sie uns kurz an.",
-    };
+    console.error("[Goldoni Inquiry] SMTP send threw", err);
+    return { status: "error", message: TRANSPORT_FAILURE_MESSAGE };
   }
 }
