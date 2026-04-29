@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Kueche derzeit besonders empfiehlt. Die Karte aendert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-04-28",
+  "updated": "2026-04-29",
   "categories": [
     {
       "id": "antipasti",
@@ -9,26 +9,17 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Carpaccio di porchetta con spinaci freschi e provolone piccante",
-          "description": "Spanferkel-Carpaccio mit Babyspinat und leicht scharfen Provolonekaese-Scheiben",
-          "price": "15.00",
-          "allergens": ["A", "G"]
-        },
-        {
-          "name": "Antipasto di funghi di paglia con pomodorini e scaglie di grana",
-          "description": "Vorspeise von gegrillten Austernpilzen, Kirschtomaten und Granakaese",
-          "price": "14.00"
-        },
-        {
-          "name": "Zuppetta con moscardini al pomodoro e pane tostato",
-          "description": "Baby-Oktopoden in Tomatensauce, dazu geroestetes Brot",
-          "price": "15.50"
-        },
-        {
           "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
           "description": "Frittierte Auberginentuermchen mit geraeuchertem Scamorzakaese und Mozzarella",
           "price": "15.00",
+          "allergens": ["A", "G", "2", "3", "5"],
           "diet": ["vegetarian"]
+        },
+        {
+          "name": "Carpaccio di spada marinato agli agrumi calabresi su cicoria rossa",
+          "description": "Mariniertes Schwertfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoreebett",
+          "price": "15.50",
+          "allergens": ["D", "H"]
         }
       ]
     },
@@ -38,25 +29,28 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Tortelloni ripieni di tartufo in crema di burro e Grana Padano",
-          "description": "Nudeln mit Trueffelfuellung an Butter-Granakaese-Creme",
+          "name": "Quadrati ripieni con cacio e pere in crema di asparagi verdi",
+          "description": "Nudeln mit Birne-Kaesefuellung an gruener Spargel-Creme",
           "price": "18.50",
-          "diet": ["vegetarian"]
+          "allergens": ["A", "D", "G", "I", "J", "N", "B", "S", "F", "H"]
         },
         {
-          "name": "Gnocchi di patate con cosce di pollo «Bio» al sugo di pomodoro",
-          "description": "Kartoffelgnocchi mit Bio-Haehnchenunterkeulen in Tomatensauce",
-          "price": "19.00"
+          "name": "Linguine con mezzo astice",
+          "description": "Hausgemachte Linguine mit halbem Hummer und Kirschtomaten",
+          "price": "24.00",
+          "allergens": ["A", "D", "B"]
         },
         {
-          "name": "Linguine con le cicale di mare e baccala alla pizzaiola",
-          "description": "Hausgemachte Linguine mit Stockfisch-Stueckchen und Heuschreckenkrebsen (nicht geschaelt) mit Oliven und Kapern nach Pizzaiola-Art",
-          "price": "23.00"
+          "name": "Strozzapreti con straccetti di Entrecote ed asparagi verdi al vino rosso",
+          "description": "Priesterwuerger mit Entrecote-Scheiben und gruenem Spargel in einer Rotweinsosse",
+          "price": "19.00",
+          "allergens": ["A", "C", "I"]
         },
         {
-          "name": "Pizza con salsiccia calabrese e spinaci freschi",
-          "description": "Pizza mit kalabrischer Bratwurst und frischem Spinat",
-          "price": "16.50"
+          "name": "Pizza con creme fraiche, salmone affumicato su letto di valeriana",
+          "description": "Pizza mit geraeuchertem Lachs, Ackersalat und Creme Fraiche",
+          "price": "17.50",
+          "allergens": ["A", "D", "G", "1", "2"]
         }
       ]
     },
@@ -66,24 +60,29 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Tagliata di Entrecôte ai ferri con rucola e Grana Padano",
-          "description": "Gegrillte Entrecôte-Scheiben auf Rucola-Bett mit Granakaese-Raspeln, dazu Beilage",
-          "price": "32.00"
+          "name": "Petto di anitra all'arancia",
+          "description": "Entenbrust aus der Pfanne an Orangensosse, dazu Beilage",
+          "price": "26.00",
+          "allergens": ["A"]
         },
         {
-          "name": "Saltimbocca alla romana",
-          "description": "Kalbsschnitzel an Weisswein-Sauce mit Parmaschinken und Salbei, dazu Beilage",
-          "price": "30.00"
+          "name": "Bistecca grigliata tipo fiorentina alla toscana",
+          "description": "T-Bone-Steak (ca. 1 kg fuer 2 Personen) nach toskanischer Art vom Lavastein-Grill — pro Person 25,- €",
+          "volume": "ca. 1 kg / 2 Personen",
+          "price": "50.00",
+          "allergens": ["G"]
         },
         {
-          "name": "Trancie di pescespada alla griglia lavica",
-          "description": "Schwertfischsteak vom Lavastein-Grill, dazu Beilage",
-          "price": "35.00"
+          "name": "Dal mare Mediterraneo: Filetti di spigola alla plancia",
+          "description": "Gegrillte Loup-de-Mer-Filets, mit Beilage",
+          "price": "34.00",
+          "allergens": ["D", "1", "2", "3"]
         },
         {
-          "name": "Dal mare Mediterraneo: Rana pescatrice in crema di limone e menta",
-          "description": "Seeteufel-Medaillons an Zitronen-Minze-Creme, dazu Beilage",
-          "price": "35.00"
+          "name": "Trancie di pescespada alla pizzaiola",
+          "description": "Schwertfischsteak mit Oliven und Kapern in einer Tomatensosse, dazu Nudeln",
+          "price": "35.00",
+          "allergens": ["A", "D", "1", "2", "3"]
         }
       ]
     },
@@ -93,14 +92,94 @@
       "subtitle": "Desserts",
       "items": [
         {
-          "name": "Schokoladen-Souffle",
-          "description": "Mit einer Kugel Vanilleeis",
-          "price": "8.50"
+          "name": "Heisses Schokoladentoertchen mit fluessigem Kern",
+          "description": "Serviert mit Vanilleeis",
+          "price": "8.50",
+          "allergens": ["A", "C", "G", "H"]
         },
         {
           "name": "Pistazieneis mit Mandeln",
           "description": "Pistazieneis umhuellt mit gehackten Mandeln",
-          "price": "9.00"
+          "price": "9.00",
+          "allergens": ["A", "C", "G", "H"]
+        }
+      ]
+    },
+    {
+      "id": "vini-consigliati",
+      "name": "Weinempfehlung",
+      "subtitle": "Vini Consigliati",
+      "description": "Alle Weine enthalten Sulfite (S). Flasche 0,75 l und Glas 0,2 l, jeweils einzeln gefuehrt.",
+      "items": [
+        {
+          "name": "Bianco — Tasca d'Almerita DOC 2024 (Sizilien)",
+          "description": "Inzolia · Cataratto · Grecanico",
+          "volume": "0,75 l",
+          "price": "30.00",
+          "allergens": ["S"]
+        },
+        {
+          "name": "Bianco — Tasca d'Almerita DOC 2024 (Sizilien)",
+          "description": "Inzolia · Cataratto · Grecanico",
+          "volume": "0,2 l",
+          "price": "8.50",
+          "allergens": ["S"]
+        },
+        {
+          "name": "Bianco — Villa Angela Velenosi DOC 2024 (Marken)",
+          "description": "100 % Verdicchio di Jesi",
+          "volume": "0,75 l",
+          "price": "30.00",
+          "allergens": ["S"]
+        },
+        {
+          "name": "Bianco — Villa Angela Velenosi DOC 2024 (Marken)",
+          "description": "100 % Verdicchio di Jesi",
+          "volume": "0,2 l",
+          "price": "8.50",
+          "allergens": ["S"]
+        },
+        {
+          "name": "Rosso — Bracciarolo Rosso P. Velenosi DOC 2022 (Marken)",
+          "description": "Cuvee aus Montepulciano und Sangiovese",
+          "volume": "0,75 l",
+          "price": "30.00",
+          "allergens": ["S"]
+        },
+        {
+          "name": "Rosso — Bracciarolo Rosso P. Velenosi DOC 2022 (Marken)",
+          "description": "Cuvee aus Montepulciano und Sangiovese",
+          "volume": "0,2 l",
+          "price": "8.50",
+          "allergens": ["S"]
+        },
+        {
+          "name": "Rosso — Costera Argiolas 2020 (Sardinien)",
+          "description": "100 % Cannonau",
+          "volume": "0,75 l",
+          "price": "32.00",
+          "allergens": ["S"]
+        },
+        {
+          "name": "Rosso — Costera Argiolas 2020 (Sardinien)",
+          "description": "100 % Cannonau",
+          "volume": "0,2 l",
+          "price": "9.00",
+          "allergens": ["S"]
+        },
+        {
+          "name": "Rosso — Villa Antinori IGT 2023 (Toskana)",
+          "description": "Sangiovese · Syrah · Cabernet · Merlot",
+          "volume": "0,75 l",
+          "price": "40.00",
+          "allergens": ["S"]
+        },
+        {
+          "name": "Rosso — Villa Antinori IGT 2023 (Toskana)",
+          "description": "Sangiovese · Syrah · Cabernet · Merlot",
+          "volume": "0,2 l",
+          "price": "14.00",
+          "allergens": ["S"]
         }
       ]
     }
