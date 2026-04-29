@@ -218,6 +218,19 @@ export function Footer() {
           <p>
             &copy; {new Date().getFullYear()} {SITE.name}
           </p>
+          {/* Attribution — centred on desktop between © and legal links */}
+          <p style={{ color: "var(--color-blanc-text-muted)" }}>
+            Webseite by{" "}
+            <a
+              href="https://neckarshore.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+              style={{ color: "var(--color-blanc-text-muted)" }}
+            >
+              neckarshore.ai
+            </a>
+          </p>
           <ul className="flex gap-6">
             <li>
               <Link
