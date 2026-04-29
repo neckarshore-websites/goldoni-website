@@ -99,6 +99,11 @@ export function restaurantJsonLd(): Record<string, unknown> {
       addressLocality: SITE.address.city,
       addressCountry: SITE.address.country,
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: SITE.coordinates.lat,
+      longitude: SITE.coordinates.lng,
+    },
     areaServed: {
       "@type": "City",
       name: "Stuttgart",
