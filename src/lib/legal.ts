@@ -124,20 +124,29 @@ export const LEGAL = {
       dpaUrl: "https://vercel.com/legal/dpa",
     },
     /**
-     * E-Mail-Versand für Formularanfragen (Auftragsverarbeiter).
+     * E-Mail-Versand für Formularanfragen.
+     *
+     * Routing läuft über das bestehende DomainFactory-SMTP-Postfach des
+     * Inhabers (kein zusätzlicher US-Auftragsverarbeiter, kein Drittland-
+     * Transfer für den Mail-Pfad). DomainFactory ist bereits als Hoster
+     * der Mail-Infrastruktur vertraglich gebunden — DSGVO-Vertrag liegt
+     * über das Hosting-Konto vor.
      */
     mailService: {
-      name: "Resend (Resend, Inc.)",
-      address: "2261 Market Street #5039, San Francisco, CA 94114, USA",
-      privacyUrl: "https://resend.com/legal/privacy-policy",
-      dpaUrl: "https://resend.com/legal/dpa",
+      name: "DomainFactory GmbH",
+      address: "Oskar-Messter-Str. 33, 85737 Ismaning, Deutschland",
+      privacyUrl: "https://www.df.eu/de/datenschutz/",
+      dpaUrl: "https://www.df.eu/de/agb/",
     },
   },
 
   /**
-   * Letzte redaktionelle Aktualisierung dieses Impressums (ISO 8601).
+   * Letzte redaktionelle Aktualisierung dieses Impressums + Datenschutz (ISO 8601).
    * Nicht gesetzlich vorgeschrieben, aber gute Praxis und hilft bei
    * späteren Audits.
+   *
+   * 2026-04-29: USt-IdNr ergänzt (PR #25), E-Mail-Versand-Abschnitt von
+   * Resend auf DomainFactory-SMTP umgestellt (PR-30).
    */
   lastUpdated: "2026-04-29",
 } as const;

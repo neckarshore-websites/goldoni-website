@@ -221,29 +221,26 @@ export default function DatenschutzPage() {
             </p>
           </Section>
 
-          {/* 5. E-Mail-Versand via Resend */}
-          <Section title="5. E-Mail-Versand über Resend">
+          {/* 5. E-Mail-Versand der Formular-Eingaben */}
+          <Section title="5. E-Mail-Versand der Formular-Eingaben">
             <p>
               Für den technischen Versand der Formular-Eingaben an unser
-              Postfach setzen wir den Dienst{" "}
+              Postfach nutzen wir den E-Mail-Dienst von{" "}
               <strong>{LEGAL.dataProtection.mailService.name}</strong>,{" "}
-              {LEGAL.dataProtection.mailService.address} ein.
-            </p>
-            <p className="mt-3">
-              Die im Formular eingegebenen Daten werden zu diesem Zweck an
-              Resend übermittelt und dort kurzfristig zur Zustellung der
-              E-Mail verarbeitet. Mit Resend besteht ein Vertrag zur
-              Auftragsverarbeitung nach Art. 28 DSGVO.
+              {LEGAL.dataProtection.mailService.address}. Die Übermittlung
+              erfolgt verschlüsselt (SMTP über TLS) an unser bei
+              DomainFactory gehostetes Postfach und wird dort zur
+              Bearbeitung Ihrer Anfrage gespeichert.
             </p>
             <p className="mt-3">
               <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b bzw.
               lit. f DSGVO (siehe oben).
             </p>
             <p className="mt-3">
-              <strong>Drittlandübermittlung:</strong> Resend hat seinen Sitz
-              in den USA. Die Übermittlung erfolgt auf Grundlage von
-              Standardvertragsklauseln nach Art. 46 DSGVO sowie ergänzender
-              Sicherheitsmaßnahmen. Datenschutzhinweise:{" "}
+              <strong>Standort der Verarbeitung:</strong> Die DomainFactory
+              GmbH ist ein deutsches Unternehmen mit Sitz in Ismaning. Eine
+              Drittlandübermittlung findet beim E-Mail-Versand selbst nicht
+              statt. Datenschutzhinweise des E-Mail-Anbieters:{" "}
               <a
                 href={LEGAL.dataProtection.mailService.privacyUrl}
                 className="underline"
