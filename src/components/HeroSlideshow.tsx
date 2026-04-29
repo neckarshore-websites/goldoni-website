@@ -20,7 +20,9 @@ const SLIDES = [
   {
     src: "/images/hero-goldoni-velvet.webp",
     alt: "Ristorante Goldoni — Wandschild im Innenraum, gold auf rotem Samt",
-    // Default center crop works well for the velvet sign.
+    // Slight downward shift so both the GOLDONI lettering (top) and the
+    // fireplace mantel (bottom) fit inside the taller hero container.
+    objectPosition: "center 40%",
   },
   {
     src: "/images/hero-goldoni-angel.webp",

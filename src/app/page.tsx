@@ -16,7 +16,7 @@ export default function Home() {
 
       {/* Hero — restaurant wall sign on red velvet, brand-defining photo */}
       <section className="relative isolate overflow-hidden">
-        <div className="relative h-[34vh] min-h-[240px] w-full sm:h-[38vh]">
+        <div className="relative h-[52vh] min-h-[320px] w-full sm:h-[58vh]">
           <HeroSlideshow />
           {/* Gradient overlay for CTA legibility (bottom-aligned).
               z-index: 2 keeps it above the active slide (z-index: 1) so the
