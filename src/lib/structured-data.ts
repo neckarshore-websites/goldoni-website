@@ -22,6 +22,7 @@
 
 import { SITE } from "./site";
 import type { Menu, MenuItem, MenuCategory, DietTag } from "./menu";
+import type { Faq } from "@/data/faqs";
 
 const DAY_MAP: Record<string, string[]> = {
   Mo: ["Monday"],
@@ -223,5 +224,29 @@ export function menuJsonLd(menu: Menu, path: string): Record<string, unknown> {
     isPartOf: { "@id": `${SITE.url}/#restaurant` },
     dateModified: menu.updated,
     hasMenuSection: menu.categories.map(menuSectionJsonLd),
+  };
+}
+
+/**
+ * FAQPage — eligible for the FAQ rich result on Google. Helps the
+ * site appear for question-shaped queries ("Wann hat Goldoni
+ * geöffnet?", "Liefert Goldoni nach Hause?") in both classic SERPs
+ * and AI-generated answers (ChatGPT, Perplexity, Gemini).
+ *
+ * The FAQs themselves live in `src/data/faqs.ts` so non-developers
+ * can edit them with a one-file PR.
+ */
+export function faqJsonLd(faqs: readonly Faq[]): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
   };
 }
