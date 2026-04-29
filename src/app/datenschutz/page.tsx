@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { StructuredData } from "@/components/StructuredData";
 import { LEGAL } from "@/lib/legal";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklaerung — Ristorante Goldoni",
@@ -12,6 +14,11 @@ export const metadata: Metadata = {
 export default function DatenschutzPage() {
   return (
     <main className="px-6 py-20 sm:px-12 sm:py-24">
+      <StructuredData
+        data={breadcrumbJsonLd([
+          { name: "Datenschutz", path: "/datenschutz" },
+        ])}
+      />
       <div className="mx-auto max-w-3xl">
         <p
           className="mb-3 text-xs uppercase tracking-[0.2em]"

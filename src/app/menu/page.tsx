@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MenuSection } from "@/components/MenuSection";
 import { PageHero } from "@/components/PageHero";
+import { StructuredData } from "@/components/StructuredData";
 import speisekarte from "@/data/speisekarte.json";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 import type { Menu } from "@/lib/menu";
 
 const menu = speisekarte as Menu;
@@ -17,6 +19,9 @@ export const metadata: Metadata = {
 export default function MenuPage() {
   return (
     <main>
+      <StructuredData
+        data={breadcrumbJsonLd([{ name: "Speisekarte", path: "/menu" }])}
+      />
       <PageHero
         src="/images/hero-menu-dishes.png"
         alt="Auswahl italienischer Gerichte im Ristorante Goldoni — Carpaccio, Pasta und Burrata von oben"

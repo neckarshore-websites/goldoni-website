@@ -110,3 +110,31 @@ export function restaurantJsonLd(): Record<string, unknown> {
     sameAs: [SITE.social.facebook],
   };
 }
+
+/**
+ * BreadcrumbList — tells Google the page's place in the site
+ * hierarchy. Shows up as the "site > section > page" trail above
+ * the title in search results.
+ *
+ * Pass the trail in left-to-right order; the helper assigns positions.
+ * Always start with Home (the helper adds it automatically), so
+ * callers only need to pass the leaf page's `{ name, path }`.
+ *
+ * Path is relative ("/menu"); the helper resolves it against SITE.url.
+ */
+export function breadcrumbJsonLd(
+  trail: { name: string; path: string }[],
+): Record<string, unknown> {
+  const items = [{ name: "Start", path: "/" }, ...trail];
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((entry, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: entry.name,
+      item: `${SITE.url}${entry.path === "/" ? "" : entry.path}`,
+    })),
+  };
+}

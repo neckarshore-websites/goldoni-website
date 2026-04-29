@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
+import { StructuredData } from "@/components/StructuredData";
 import { LEGAL } from "@/lib/legal";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Impressum — Ristorante Goldoni",
@@ -12,6 +14,9 @@ export const metadata: Metadata = {
 export default function ImpressumPage() {
   return (
     <main>
+      <StructuredData
+        data={breadcrumbJsonLd([{ name: "Impressum", path: "/impressum" }])}
+      />
       <PageHero
         src="/images/hero-impressum-trauben.webp"
         alt="Hände halten frisch geerntete dunkle Weintrauben — Symbol für italienische Gastfreundschaft"
