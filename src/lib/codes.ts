@@ -11,7 +11,14 @@ export interface Code {
   name: string;
 }
 
-/** LMIV — Lebensmittel-Informationsverordnung (DE), 14 mandatory allergens. */
+/**
+ * LMIV — Lebensmittel-Informationsverordnung (DE), 14 mandatory allergens.
+ *
+ * Goldoni verwendet auf der Karte für Sellerie/Senf/Sulfite eigene Codes
+ * (I/J/S statt der branchenüblichen L/M/O). Diese drei Einträge sind
+ * deshalb hier NICHT enthalten und in HOUSE_CODES geführt — sonst
+ * würden Gäste zwei Codes für dasselbe Allergen in der Legende sehen.
+ */
 export const LMIV_ALLERGENS: Code[] = [
   { code: "A", name: "Glutenhaltiges Getreide" },
   { code: "B", name: "Krebstiere" },
@@ -21,10 +28,7 @@ export const LMIV_ALLERGENS: Code[] = [
   { code: "F", name: "Sojabohnen" },
   { code: "G", name: "Milch (Laktose)" },
   { code: "H", name: "Schalenfruechte (Nuesse)" },
-  { code: "L", name: "Sellerie" },
-  { code: "M", name: "Senf" },
   { code: "N", name: "Sesam" },
-  { code: "O", name: "Schwefeldioxid / Sulfite" },
   { code: "P", name: "Lupinen" },
   { code: "R", name: "Weichtiere" },
 ];
@@ -46,9 +50,16 @@ export const ZZULV_ADDITIVES: Code[] = [
   { code: "13", name: "Coffeinhaltig" },
 ];
 
-/** House codes — Restaurant-eigene Kennzeichnungen, Bedeutung pending. */
+/**
+ * Hauseigene Allergen-Codes — Goldoni verwendet für drei LMIV-Allergene
+ * eigene Buchstaben statt der branchenüblichen L/M/O. Inhaltlich identisch
+ * mit den entsprechenden LMIV-Allergenen, deshalb hier statt in
+ * LMIV_ALLERGENS gepflegt — vermeidet doppelte Auflösungen in der Legende.
+ *
+ * Auflösung vom Inhaber bestätigt 2026-04-29 (Linus Session d).
+ */
 export const HOUSE_CODES: Code[] = [
-  { code: "I", name: "Hauseigener Code (Bedeutung folgt)" },
-  { code: "J", name: "Hauseigener Code (Bedeutung folgt)" },
-  { code: "S", name: "Hauseigener Code (Bedeutung folgt)" },
+  { code: "I", name: "Sellerie" },
+  { code: "J", name: "Senf" },
+  { code: "S", name: "Sulfite" },
 ];

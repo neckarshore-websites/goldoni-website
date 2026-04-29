@@ -9,12 +9,11 @@
  *
  * Update here, propagates to /impressum and /datenschutz.
  *
- * STATUS 2026-04-29:
- * - ustId leer → Zeile wird nicht gerendert. Vor Live-Gang vom Inhaber einholen
- *   und prüfen, ob das Restaurant umsatzsteuerpflichtig ist (Kleinunternehmer
- *   nach § 19 UStG hätte keine USt-IdNr. — dann bleibt das Feld korrekt leer).
- *   Auf der alten WordPress-Site stand "DE 123 456 789", das ist ein
- *   offensichtlicher Platzhalter und darf nicht übernommen werden.
+ * STATUS 2026-04-29 (Linus Session d):
+ * - ustId vom Inhaber bestätigt (DE363209537) und gesetzt. Restaurant ist
+ *   umsatzsteuerpflichtig (kein Kleinunternehmer nach § 19 UStG).
+ *   Die alte WordPress-Site zeigte "DE 123 456 789" als offensichtlichen
+ *   Platzhalter — dieser ist hier durch die echte Nummer ersetzt.
  */
 
 export const LEGAL = {
@@ -24,7 +23,7 @@ export const LEGAL = {
    * zusätzlich Vertretungsberechtigte. Hier: Einzelunternehmen.
    */
   owner: {
-    legalForm: "Einzelunternehmen",
+    legalForm: "Einzelunternehmer",
     name: "Silvio Brunetti",
     tradeName: "Ristorante Goldoni",
     street: "Reinsburgstraße 151",
@@ -48,7 +47,7 @@ export const LEGAL = {
    * "soweit vorhanden". Wenn leer, wird die Zeile im Impressum nicht
    * gerendert (Kleinunternehmer nach § 19 UStG haben keine).
    */
-  ustId: "",
+  ustId: "DE363209537",
 
   /**
    * § 5 Abs. 1 Nr. 3 DDG — Zuständige Aufsichtsbehörde, soweit die Tätigkeit
