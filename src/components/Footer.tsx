@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { SpotifyLink } from "@/components/SpotifyLink";
+import { SocialIconLink } from "@/components/SocialIconLink";
 
 /**
  * Footer — two stacked bands, theme-fixed (same in light + dark):
@@ -73,6 +74,22 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
+              {/* Feiertags-Hinweis — aktuelle Zeiten immer auf Google Maps */}
+              <p
+                className="mt-3 text-sm leading-snug"
+                style={{ color: "var(--color-noir-text-muted)" }}
+              >
+                An Feiertagen können die Zeiten abweichen.{" "}
+                <a
+                  href="https://maps.app.goo.gl/u3PAUvKHqcANve797"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:no-underline"
+                  style={{ color: "var(--color-noir-text-muted)" }}
+                >
+                  Aktuelle Zeiten auf Google Maps
+                </a>
+              </p>
             </div>
 
             {/* Contact */}
@@ -95,11 +112,20 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    href={`mailto:${SITE.email}`}
+                    href={SITE.emailMailto}
                     className="hover:underline"
                     style={{ color: "var(--color-noir-text)" }}
                   >
                     {SITE.email}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/kontakt"
+                    className="hover:underline text-sm"
+                    style={{ color: "var(--color-noir-text-muted)" }}
+                  >
+                    Kontaktformular →
                   </a>
                 </li>
               </ul>
@@ -128,20 +154,24 @@ export function Footer() {
                   </li>
                 ))}
                 <li>
-                  <a
+                  {/* Facebook — icon mark + wordmark, monochrome, hover → Facebook blue */}
+                  <SocialIconLink
+                    platform="facebook"
                     href={SITE.social.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                    style={{ color: "var(--color-noir-text)" }}
-                  >
-                    Facebook
-                  </a>
+                  />
                 </li>
+                {SITE.social.instagram && (
+                  <li>
+                    {/* Instagram — only rendered once the URL is configured in site.ts */}
+                    <SocialIconLink
+                      platform="instagram"
+                      href={SITE.social.instagram}
+                    />
+                  </li>
+                )}
                 <li>
-                  {/* Hausplaylist — small Spotify mark + wordmark, sits
-                      naturally with the other follow links. */}
-                  <SpotifyLink variant="logo" className="hover:underline" />
+                  {/* Hausplaylist — Spotify mark + wordmark, hover → Spotify green */}
+                  <SpotifyLink variant="logo" />
                 </li>
               </ul>
 
