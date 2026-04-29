@@ -1,0 +1,5 @@
+# Raw scan output (regenerable, megabytes of HTML/JSON)
+*.html
+lh-*.json
+audit-data.json
+smoke-tests.txt
