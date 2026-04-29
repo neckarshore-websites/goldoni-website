@@ -42,31 +42,32 @@ export default function MenuPage() {
           Speisekarten
         </h1>
 
-        {/* Empfehlungs-Banner — leitet auf die wechselnde Empfehlungskarte */}
+        {/* Empfehlungs-Banner — leitet auf die wechselnde Empfehlungskarte.
+            Tokens (--color-bg-olive + --color-on-olive*) ensure WCAG AA
+            contrast in both light and dark themes; previous hardcoded
+            #A69B00 was the dark-mode olive used in light-mode bg, which
+            failed the 4.5 contrast ratio against #FAFAFA. */}
         <Link
           href="/empfehlungen"
-          className="mb-12 flex items-center justify-between gap-4 rounded-lg border p-5 transition-opacity hover:opacity-90"
+          className="mb-12 flex items-center justify-between gap-4 rounded-lg p-5 transition-opacity hover:opacity-90"
           style={{
-            backgroundColor: "#A69B00",
-            borderColor: "#8A8100",
+            backgroundColor: "var(--color-bg-olive)",
+            color: "var(--color-on-olive)",
           }}
         >
           <div>
             <p
               className="mb-1 text-xs font-medium uppercase tracking-[0.2em]"
-              style={{ color: "rgba(255,255,255,0.75)" }}
+              style={{ color: "var(--color-on-olive-muted)" }}
             >
               Diese Woche
             </p>
-            <p
-              className="font-medium"
-              style={{ color: "#FAFAFA" }}
-            >
+            <p className="font-medium">
               Aktuelle Empfehlungskarte ansehen
             </p>
             <p
               className="mt-1 text-sm"
-              style={{ color: "rgba(255,255,255,0.75)" }}
+              style={{ color: "var(--color-on-olive-muted)" }}
             >
               Saisonale Gerichte aus der Küche &mdash; wechselt wöchentlich.
             </p>
