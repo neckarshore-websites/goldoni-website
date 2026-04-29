@@ -1,4 +1,4 @@
-# Raw HTML snapshots (regenerable)
+# Raw audit snapshots (regenerable — keep only *.md reports)
 *.html
-headers.txt
 *.xml
+*.txt
