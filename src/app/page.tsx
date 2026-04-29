@@ -18,17 +18,20 @@ export default function Home() {
       <section className="relative isolate overflow-hidden">
         <div className="relative h-[34vh] min-h-[240px] w-full sm:h-[38vh]">
           <HeroSlideshow />
-          {/* Gradient overlay for CTA legibility (bottom-aligned) */}
+          {/* Gradient overlay for CTA legibility (bottom-aligned).
+              z-index: 2 keeps it above the active slide (z-index: 1) so the
+              gradient and CTA are never occluded during crossfade transitions. */}
           <div
             aria-hidden
             className="absolute inset-0"
             style={{
+              zIndex: 2,
               background:
                 "linear-gradient(to bottom, rgba(26,22,18,0.10) 0%, rgba(26,22,18,0.30) 55%, rgba(26,22,18,0.88) 100%)",
             }}
           />
-          {/* Foreground — tagline + CTAs */}
-          <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-6 pb-8 text-center sm:pb-10 sm:px-12">
+          {/* Foreground — tagline + CTAs. z-index: 3 sits above gradient. */}
+          <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-6 pb-8 text-center sm:pb-10 sm:px-12" style={{ zIndex: 3 }}>
             {/* H1 is rendered for SEO + a11y; visually the wall sign in the
                 photo carries the brand. */}
             <h1 className="sr-only">{SITE.name}</h1>

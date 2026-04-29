@@ -20,16 +20,21 @@ const SLIDES = [
   {
     src: "/images/hero-goldoni-velvet.webp",
     alt: "Ristorante Goldoni — Wandschild im Innenraum, gold auf rotem Samt",
+    // Default center crop works well for the velvet sign.
   },
   {
     src: "/images/hero-goldoni-angel.webp",
     alt: "Goldoni Visitenkarte vor goldener Engelsfigur auf einem Tisch",
+    // Shift crop ~150 px upward so the angel's head + wings are centred
+    // rather than the arm/card being clipped at the bottom edge.
+    objectPosition: "center 20%",
   },
   {
     src: "/images/hero-goldoni-interior.webp",
     alt: "Ristorante Goldoni Innenraum — gedeckte Tische im warmen Abendlicht",
+    // Default center crop works well for the interior shot.
   },
-] as const;
+] satisfies Array<{ src: string; alt: string; objectPosition?: string }>;
 
 const INTERVAL_MS = 15_000;
 const FADE_MS = 2_000;
@@ -70,6 +75,7 @@ export function HeroSlideshow() {
             loading={i === 0 ? "eager" : "eager"}
             sizes="100vw"
             className="object-cover"
+            style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
           />
         </div>
       ))}
