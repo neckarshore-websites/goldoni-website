@@ -1,0 +1,22 @@
+# Ristorante Goldoni
+
+> Italienisches Restaurant im Stuttgarter Westen, seit Jahrzehnten Familienbetrieb. Italienisch verliebte Küche mit frischen Zutaten — Antipasti, Pasta, Pizze, Carne e Pesce, Dolci. Mittwoch bis Sonntag, 18:00–23:00 Uhr.
+
+Adresse: Reinsburgstrasse 151, 70197 Stuttgart, Deutschland.
+Telefon: +49 711 6599889.
+E-Mail: info@goldoni-online.de.
+Lieferung: Wolt und Uber Eats.
+ÖPNV: Bus 92 hält direkt vor der Tür.
+
+## Hauptseiten
+
+- [Startseite](https://ristorante-goldoni.de/): Überblick, Öffnungszeiten, Lieferpartner, häufige Fragen.
+- [Speisekarte](https://ristorante-goldoni.de/menu): Vollständige Karte mit Antipasti, Pasta, Pizze, Hauptgerichten, Dolci und Getränken — inklusive Preise und LMIV-Allergenkennzeichnung.
+- [Empfehlungen](https://ristorante-goldoni.de/empfehlungen): Wöchentlich wechselnde Spezialitäten und Wein-Tipps der Küche.
+- [Feiern](https://ristorante-goldoni.de/feiern): Private Anlässe — Hochzeiten, Geburtstage, Taufen, Firmenfeiern. Mit Anfrageformular.
+- [Kontakt](https://ristorante-goldoni.de/kontakt): Adresse, Anfahrt, Reservierungs-Telefon, Kontaktformular.
+
+## Rechtliches
+
+- [Impressum](https://ristorante-goldoni.de/impressum): Anbieterkennzeichnung gemäß § 5 DDG.
+- [Datenschutz](https://ristorante-goldoni.de/datenschutz): Datenverarbeitung gemäß Art. 13 DSGVO.

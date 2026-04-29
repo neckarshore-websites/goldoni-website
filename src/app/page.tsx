@@ -1,11 +1,16 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { DeliveryBanner } from "@/components/DeliveryBanner";
+import { FaqSection } from "@/components/FaqSection";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
+import { StructuredData } from "@/components/StructuredData";
+import { FAQS } from "@/data/faqs";
+import { faqJsonLd } from "@/lib/structured-data";
 
 export default function Home() {
   return (
     <main>
+      <StructuredData data={faqJsonLd(FAQS)} />
       {/* Delivery banner — first impression, points to Wolt + Uber Eats */}
       <DeliveryBanner />
 
@@ -170,6 +175,12 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      {/* Häufige Fragen — closes the homepage with practical info
+          (hours, reservations, delivery, location, allergens) and
+          earns Google's FAQ rich result via the FAQPage JSON-LD
+          rendered above. */}
+      <FaqSection faqs={FAQS} />
     </main>
   );
 }

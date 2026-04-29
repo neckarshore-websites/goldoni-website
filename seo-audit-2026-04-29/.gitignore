@@ -1,0 +1,4 @@
+# Raw HTML snapshots (regenerable)
+*.html
+headers.txt
+*.xml

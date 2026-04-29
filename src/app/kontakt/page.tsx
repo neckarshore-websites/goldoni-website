@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { PageHero } from "@/components/PageHero";
+import { StructuredData } from "@/components/StructuredData";
 import { SITE } from "@/lib/site";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Kontakt — Ristorante Goldoni",
   description:
     "Fragen, Sonderwünsche oder eine kurze Nachricht — schreiben Sie uns direkt. Das Ristorante Goldoni antwortet so schnell wie möglich.",
+  alternates: { canonical: "/kontakt" },
 };
 
 export default function KontaktPage() {
   return (
     <main>
+      <StructuredData
+        data={breadcrumbJsonLd([{ name: "Kontakt", path: "/kontakt" }])}
+      />
       <PageHero
         src="/images/hero-kontakt-pizzo.webp"
         alt="Küstenstadt Pizzo in Kalabrien — Italiens Süden, Inspirationsquelle der Goldoni-Küche"

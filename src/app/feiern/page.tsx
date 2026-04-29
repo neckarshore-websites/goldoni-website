@@ -2,16 +2,22 @@ import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
 import { FeiernForm } from "@/components/forms/FeiernForm";
 import { PageHero } from "@/components/PageHero";
+import { StructuredData } from "@/components/StructuredData";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Feiern bei Goldoni — Private Anlaesse in Stuttgart",
   description:
     "Hochzeiten, Geburtstage, Taufen, Firmenfeiern. Im Ristorante Goldoni richten wir Ihren privaten Anlass aus — mit individueller Karte und der Aufmerksamkeit, die er verdient.",
+  alternates: { canonical: "/feiern" },
 };
 
 export default function FeiernPage() {
   return (
     <main>
+      <StructuredData
+        data={breadcrumbJsonLd([{ name: "Feiern", path: "/feiern" }])}
+      />
       <PageHero
         src="/images/hero-feiern-essen.webp"
         alt="Eleganter Teller mit einem Gericht, Weingläser und ein festlich gedeckter Tisch — perfekt für Ihre Feier"

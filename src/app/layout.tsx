@@ -4,6 +4,8 @@ import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ScrollRestore } from "@/components/ScrollRestore";
+import { StructuredData } from "@/components/StructuredData";
+import { restaurantJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
 const inter = localFont({
@@ -21,7 +23,10 @@ const playfair = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Ristorante Goldoni — Bella Italia in Stuttgart",
+  title: {
+    default: "Ristorante Goldoni — Bella Italia in Stuttgart",
+    template: "%s | Ristorante Goldoni",
+  },
   description:
     "Italienisch verliebte Kueche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht. Reinsburgstrasse 151 · Mi-So 18:00-23:00.",
   metadataBase: new URL("https://ristorante-goldoni.de"),
@@ -29,10 +34,21 @@ export const metadata: Metadata = {
     title: "Ristorante Goldoni — Bella Italia in Stuttgart",
     description:
       "Italienisch verliebte Kueche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht.",
-    url: "https://ristorante-goldoni.de",
+    // Relative URL — Next resolves it against `metadataBase` so the
+    // domain isn't duplicated in code. Per-page metadata can override
+    // this with its own canonical-shaped relative URL.
+    url: "/",
     siteName: "Ristorante Goldoni",
     locale: "de_DE",
     type: "website",
+    images: [
+      {
+        url: "/images/hero-goldoni-velvet.webp",
+        width: 1200,
+        height: 630,
+        alt: "Ristorante Goldoni — Schriftzug auf rotem Samt",
+      },
+    ],
   },
   robots: {
     index: true,
@@ -43,9 +59,10 @@ export const metadata: Metadata = {
     title: "Ristorante Goldoni — Bella Italia in Stuttgart",
     description:
       "Italienisch verliebte Kueche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht.",
+    images: ["/images/hero-goldoni-velvet.webp"],
   },
   alternates: {
-    canonical: "https://ristorante-goldoni.de/",
+    canonical: "/",
   },
 };
 
@@ -69,6 +86,11 @@ export default function RootLayout({
         <Script src="/theme-init.js" strategy="beforeInteractive" />
       </head>
       <body>
+        {/* Restaurant + LocalBusiness JSON-LD — drives Google rich
+            results for local search ("italienisches Restaurant
+            Stuttgart"). Restaurant is a subtype of LocalBusiness, so
+            one node satisfies both rich-result categories. */}
+        <StructuredData data={restaurantJsonLd()} />
         <ScrollRestore />
         <Header />
         {children}
