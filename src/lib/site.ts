@@ -22,6 +22,17 @@ export const SITE = {
   phoneDisplay: "+49 (711) 659 98 89",
   email: "info@goldoni-online.de",
 
+  /**
+   * Geo coordinates — used by the Restaurant JSON-LD `geo` block to
+   * help Google place the pin precisely in Local Pack and Maps.
+   * Source: OpenStreetMap node 112695827 ("Ristorante Goldoni"),
+   * cross-verified against the postal address.
+   */
+  coordinates: {
+    lat: 48.7685766,
+    lng: 9.1509705,
+  },
+
   // Hours
   hours: [
     { days: "Mi - So", time: "18:00 - 23:00" },
