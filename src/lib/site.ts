@@ -21,6 +21,11 @@ export const SITE = {
   phone: "+49 711 6599889",
   phoneDisplay: "+49 (711) 659 98 89",
   email: "info@goldoni-online.de",
+  // Pre-encoded mailto with subject prefix — use this everywhere a clickable
+  // email link appears so the user always has a recognisable subject line.
+  // Trailing "– " gives a natural separator for the actual topic.
+  emailMailto:
+    "mailto:info@goldoni-online.de?subject=Nachricht%20von%20der%20Goldoni%20Webseite%20%E2%80%93%20",
 
   /**
    * Geo coordinates — used by the Restaurant JSON-LD `geo` block to
@@ -43,6 +48,9 @@ export const SITE = {
   social: {
     facebook:
       "https://www.facebook.com/Ristorante-Goldoni-152510754787757/",
+    // Instagram — URL not yet confirmed; leave empty to suppress the link.
+    // Set to the profile URL once available (e.g. "https://www.instagram.com/ristorante_goldoni/").
+    instagram: "",
     wolt: "https://wolt.com/de/deu/stuttgart/restaurant/goldoni",
     // Goldoni house playlist — tracking params (?si=… &pi=…) stripped
     // so the URL stays canonical and shareable without leaking the

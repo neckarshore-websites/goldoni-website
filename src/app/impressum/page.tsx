@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
 import { LEGAL } from "@/lib/legal";
+import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
@@ -77,7 +78,7 @@ export default function ImpressumPage() {
               <p>
                 E-Mail:{" "}
                 <a
-                  href={`mailto:${LEGAL.contact.email}`}
+                  href={SITE.emailMailto}
                   className="underline"
                   style={{ color: "var(--color-accent)" }}
                 >

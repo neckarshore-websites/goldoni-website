@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { StructuredData } from "@/components/StructuredData";
 import { LEGAL } from "@/lib/legal";
+import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
@@ -72,7 +73,7 @@ export default function DatenschutzPage() {
               <br />
               E-Mail:{" "}
               <a
-                href={`mailto:${LEGAL.contact.email}`}
+                href={SITE.emailMailto}
                 className="underline"
                 style={{ color: "var(--color-accent)" }}
               >
@@ -304,24 +305,70 @@ export default function DatenschutzPage() {
                 <strong>Uber Eats</strong>
               </li>
               <li>
-                Soziales Netzwerk <strong>Facebook</strong>
+                Soziale Netzwerke <strong>Facebook</strong> und{" "}
+                <strong>Instagram</strong> (Meta Platforms Ireland Limited,
+                Merrion Road, Dublin 4, Irland)
               </li>
               <li>
-                Routenplanung über <strong>Google Maps</strong> (Link aus dem
-                Footer)
+                Musik-Streamingdienst <strong>Spotify</strong> (Spotify AB,
+                Regeringsgatan 19, 111&nbsp;53 Stockholm, Schweden) — Link zu
+                unserer Hausplaylist
+              </li>
+              <li>
+                Routenplanung über <strong>Google Maps</strong> (Google Ireland
+                Limited, Gordon House, Barrow Street, Dublin 4, Irland)
               </li>
             </ul>
             <p className="mt-3">
               Erst beim aktiven Klick auf einen dieser Links wird eine
               Verbindung zu den jeweiligen Anbietern hergestellt. Wir betten
-              keine Inhalte dieser Dienste in unsere Webseite ein und setzen
+              keine Inhalte dieser Dienste (insbesondere keine Like-Schaltflächen,
+              Pixel oder eingebettete Player) in unsere Webseite ein und setzen
               keine zugehörigen Skripte oder Cookies.
             </p>
             <p className="mt-3">
               Für die Datenverarbeitung auf den Zielseiten ist der jeweilige
               Anbieter verantwortlich. Bitte informieren Sie sich dort über die
-              jeweilige Datenschutzpraxis.
+              jeweilige Datenschutzpraxis:
             </p>
+            <ul className="mt-2 ml-6 list-disc space-y-1 text-sm">
+              <li>
+                Facebook&nbsp;/ Instagram:{" "}
+                <a
+                  href="https://www.facebook.com/privacy/policy/"
+                  className="underline"
+                  style={{ color: "var(--color-accent)" }}
+                  rel="nofollow noopener"
+                  target="_blank"
+                >
+                  facebook.com/privacy/policy
+                </a>
+              </li>
+              <li>
+                Spotify:{" "}
+                <a
+                  href="https://www.spotify.com/de/legal/privacy-policy/"
+                  className="underline"
+                  style={{ color: "var(--color-accent)" }}
+                  rel="nofollow noopener"
+                  target="_blank"
+                >
+                  spotify.com/de/legal/privacy-policy
+                </a>
+              </li>
+              <li>
+                Google Maps:{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  className="underline"
+                  style={{ color: "var(--color-accent)" }}
+                  rel="nofollow noopener"
+                  target="_blank"
+                >
+                  policies.google.com/privacy
+                </a>
+              </li>
+            </ul>
           </Section>
 
           {/* 9. Ihre Rechte */}
