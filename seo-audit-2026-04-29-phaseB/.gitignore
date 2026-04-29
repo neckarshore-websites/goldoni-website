@@ -3,3 +3,4 @@
 lh-*.json
 audit-data.json
 smoke-tests.txt
+*.png

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
+import { SpotifyLink } from "@/components/SpotifyLink";
 
 /**
  * Footer — two stacked bands, theme-fixed (same in light + dark):
@@ -136,6 +137,11 @@ export function Footer() {
                   >
                     Facebook
                   </a>
+                </li>
+                <li>
+                  {/* Hausplaylist — small Spotify mark + wordmark, sits
+                      naturally with the other follow links. */}
+                  <SpotifyLink variant="logo" className="hover:underline" />
                 </li>
               </ul>
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { NavLinks } from "@/components/NavLinks";
+import { SpotifyLink } from "@/components/SpotifyLink";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 /** Inline phone icon — same stroke style as ThemeToggle. */
@@ -104,6 +105,9 @@ export function Header() {
             <PhoneIcon />
             <span>Reservieren</span>
           </a>
+          {/* Hausplaylist — sits at the far right, monochrome by
+              default, lights up Spotify-green on hover. */}
+          <SpotifyLink variant="icon" />
         </div>
       </nav>
 

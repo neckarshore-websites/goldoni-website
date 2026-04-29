@@ -33,6 +33,11 @@ export const SITE = {
     facebook:
       "https://www.facebook.com/Ristorante-Goldoni-152510754787757/",
     wolt: "https://wolt.com/de/deu/stuttgart/restaurant/goldoni",
+    // Goldoni house playlist — tracking params (?si=… &pi=…) stripped
+    // so the URL stays canonical and shareable without leaking the
+    // session ID of whoever shared it with us.
+    spotifyPlaylist:
+      "https://open.spotify.com/playlist/56jhiSGUDlLrWuAtra52LS",
   },
 
   // Delivery partners — used by the homepage delivery banner + footer.
