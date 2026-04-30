@@ -6,7 +6,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Feiern bei Goldoni — Private Anlaesse in Stuttgart",
+  title: "Feiern bei Goldoni — Private Anlässe in Stuttgart",
   description:
     "Hochzeiten, Geburtstage, Taufen, Firmenfeiern. Im Ristorante Goldoni richten wir Ihren privaten Anlass aus — mit individueller Karte und der Aufmerksamkeit, die er verdient.",
   alternates: { canonical: "/feiern" },
@@ -58,7 +58,7 @@ export default function FeiernPage() {
             </span>
             <span>
               <strong>Individuelle Karte</strong> &mdash; abgestimmt auf
-              Anlass, Gaesteanzahl und Vorlieben
+              Anlass, Gästeanzahl und Vorlieben
             </span>
           </li>
           <li className="flex gap-3">
@@ -66,8 +66,8 @@ export default function FeiernPage() {
               &bull;
             </span>
             <span>
-              <strong>Sonntag vormittags verfuegbar</strong> &mdash;
-              Brunch, Tauffeier, Familienfest in entspannter Atmosphaere
+              <strong>Sonntag vormittags verfügbar</strong> &mdash;
+              Brunch, Tauffeier, Familienfest in entspannter Atmosphäre
             </span>
           </li>
           <li className="flex gap-3">
@@ -75,8 +75,8 @@ export default function FeiernPage() {
               &bull;
             </span>
             <span>
-              <strong>Wein- und Getraenkebegleitung</strong> &mdash; aus
-              unserem Keller passend zum Menue empfohlen
+              <strong>Wein- und Getränkebegleitung</strong> &mdash; aus
+              unserem Keller passend zum Menü empfohlen
             </span>
           </li>
           <li className="flex gap-3">
@@ -84,7 +84,7 @@ export default function FeiernPage() {
               &bull;
             </span>
             <span>
-              <strong>Persoenliche Beratung</strong> &mdash; Anfrage
+              <strong>Persönliche Beratung</strong> &mdash; Anfrage
               senden oder direkt anrufen
             </span>
           </li>
@@ -116,9 +116,9 @@ export default function FeiernPage() {
             className="mb-6"
             style={{ color: "var(--color-text-muted)" }}
           >
-            Datum, Anlass und Gaesteanzahl reichen fuer den ersten
-            Aufschlag &mdash; wir rufen zurueck und besprechen Karte und
-            Details persoenlich.
+            Datum, Anlass und Gästeanzahl reichen für den ersten
+            Aufschlag &mdash; wir rufen zurück und besprechen Karte und
+            Details persönlich.
           </p>
           <FeiernForm />
         </section>
