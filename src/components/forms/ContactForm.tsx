@@ -1,10 +1,8 @@
 "use client";
 
 import { useActionState } from "react";
-import {
-  sendInquiry,
-  INQUIRY_INITIAL_STATE,
-} from "@/app/actions/inquiry";
+import { sendInquiry } from "@/app/actions/inquiry";
+import { INQUIRY_INITIAL_STATE } from "@/app/actions/inquiry-state";
 import { FormField, Honeypot } from "@/components/forms/FormField";
 
 /**

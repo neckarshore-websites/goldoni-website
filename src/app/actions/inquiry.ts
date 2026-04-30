@@ -2,6 +2,7 @@
 
 import nodemailer from "nodemailer";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
+import type { InquiryState, InquiryType } from "./inquiry-state";
 
 /**
  * Inquiry Server Action — handles both /kontakt and /feiern submissions.
@@ -18,9 +19,9 @@ import type SMTPTransport from "nodemailer/lib/smtp-transport";
  * Env vars (all required in production; missing in production → hard error):
  *   SMTP_HOST          — DomainFactory SMTP host, e.g. `sslout.df.eu`
  *   SMTP_PORT          — `465` for SSL/TLS (default), `587` for STARTTLS
- *   SMTP_USER          — full mailbox address, e.g. `info@goldoni-online.de`
+ *   SMTP_USER          — full mailbox address, e.g. `kontakt@goldoni-online.de`
  *   SMTP_PASS          — mailbox password
- *   SMTP_FROM          — From-header, e.g. `Goldoni <info@goldoni-online.de>`.
+ *   SMTP_FROM          — From-header, e.g. `Goldoni <kontakt@goldoni-online.de>`.
  *                        The user-part MUST be a real account on the
  *                        authenticated mailbox; otherwise DomainFactory
  *                        rejects with `550 sender not allowed`.
@@ -31,17 +32,14 @@ import type SMTPTransport from "nodemailer/lib/smtp-transport";
  * local dev and Vercel previews without a real mailbox. In production a
  * missing config is treated as an outage and the user gets an honest
  * error message asking them to call instead.
+ *
+ * Why types and INQUIRY_INITIAL_STATE live in `./inquiry-state.ts`
+ * rather than here: a "use server" file can only export async
+ * functions in Next.js 15+. Exporting a const object alongside the
+ * action triggers a runtime "invalid-use-server-value" crash at
+ * module evaluation, which manifests as a 404 on form submit (the
+ * Server Action endpoint never registers). See PR #32.
  */
-
-export type InquiryType = "kontakt" | "feiern";
-
-export type InquiryState = {
-  status: "idle" | "success" | "error";
-  message?: string;
-  fieldErrors?: Record<string, string>;
-};
-
-export const INQUIRY_INITIAL_STATE: InquiryState = { status: "idle" };
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const MAX_MESSAGE_LEN = 4000;
