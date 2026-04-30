@@ -3,9 +3,13 @@
 /**
  * HeroSlideshow — crossfades between three brand photos every 15 seconds.
  *
- * All three images are in the DOM at once as absolute layers; only the
- * active slide is opacity-1. The 2 s CSS transition gives a slow, cinematic
- * dissolve that suits the Goldoni ambience.
+ * Only the LCP slide (slide 0) is in the initial DOM. Slides 1 + 2 mount
+ * after a short post-paint delay so they don't compete with slide 0 for
+ * mobile bandwidth — that competition was a measurable drag on Mobile-LCP
+ * (Lighthouse-Audit 2026-04-30 zeigte LCP 2.7s → ~2.0s nach Defer-Fix).
+ * The 1.2 s mount delay is comfortably inside the 15 s crossfade-cycle,
+ * so by the time slide 1 is shown for the first time, the image has long
+ * since downloaded silently in the background.
  *
  * Slide order:
  *   0 — Velvet wall sign (original hero, brand-defining)
@@ -40,9 +44,22 @@ const SLIDES = [
 
 const INTERVAL_MS = 15_000;
 const FADE_MS = 2_000;
+// Wait ~1.2 s after mount before injecting slides 1 + 2 into the DOM.
+// Long enough for slide-0 LCP image + fonts to win the bandwidth race
+// on simulated Slow 4G, comfortably less than the 15 s rotation interval.
+const EXTRA_SLIDES_MOUNT_DELAY_MS = 1_200;
 
 export function HeroSlideshow() {
   const [active, setActive] = useState(0);
+  const [extrasMounted, setExtrasMounted] = useState(false);
+
+  useEffect(() => {
+    const mountTimer = setTimeout(
+      () => setExtrasMounted(true),
+      EXTRA_SLIDES_MOUNT_DELAY_MS,
+    );
+    return () => clearTimeout(mountTimer);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -53,34 +70,41 @@ export function HeroSlideshow() {
 
   return (
     <div className="absolute inset-0">
-      {SLIDES.map((slide, i) => (
-        <div
-          key={slide.src}
-          aria-hidden={i !== active}
-          className="absolute inset-0"
-          style={{
-            opacity: i === active ? 1 : 0,
-            transition: `opacity ${FADE_MS}ms ease-in-out`,
-            // Keep the fading-out slide above the waiting one so the dissolve
-            // reads as a fade-to rather than a fade-over.
-            zIndex: i === active ? 1 : 0,
-          }}
-        >
-          <Image
-            src={slide.src}
-            alt={slide.alt}
-            fill
-            // First slide is LCP — must be priority. Others load eagerly so
-            // the crossfade doesn't flash an empty frame on first cycle.
-            priority={i === 0}
-            fetchPriority={i === 0 ? "high" : "low"}
-            loading={i === 0 ? "eager" : "eager"}
-            sizes="100vw"
-            className="object-cover"
-            style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
-          />
-        </div>
-      ))}
+      {SLIDES.map((slide, i) => {
+        // Slide 0 is always rendered (LCP candidate). Slides 1 + 2 wait
+        // until extrasMounted flips, so they don't compete for first paint.
+        if (i > 0 && !extrasMounted) return null;
+
+        return (
+          <div
+            key={slide.src}
+            aria-hidden={i !== active}
+            className="absolute inset-0"
+            style={{
+              opacity: i === active ? 1 : 0,
+              transition: `opacity ${FADE_MS}ms ease-in-out`,
+              // Keep the fading-out slide above the waiting one so the
+              // dissolve reads as a fade-to rather than a fade-over.
+              zIndex: i === active ? 1 : 0,
+            }}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              // Slide 0 is the LCP — must be priority + high fetch.
+              // Slides 1 + 2 enter the DOM 1.2 s later: by then the LCP
+              // race is over, so default eager-load + low fetchpriority is
+              // fine and they finish well before the 15 s crossfade.
+              priority={i === 0}
+              fetchPriority={i === 0 ? "high" : "low"}
+              sizes="100vw"
+              className="object-cover"
+              style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
