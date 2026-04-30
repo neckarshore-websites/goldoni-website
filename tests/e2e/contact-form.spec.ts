@@ -85,6 +85,34 @@ test.describe("/kontakt — ContactForm", () => {
     ).toBeVisible();
   });
 
+  test("preserves user input across validation errors", async ({ page }) => {
+    // Regression for the worst form UX: validation error wipes the
+    // whole form. The action echoes values back; the form reads them
+    // via defaultValue so the error round-trip keeps the input.
+    const f = fields(page);
+    await f.name.fill("Linus Test");
+    await f.phone.fill("+49 711 123456");
+    await f.message.fill(
+      "Frage zu Allergenen — Glutenfrei moeglich am Sonntag?",
+    );
+    // Email deliberately invalid so the action returns status=error
+    // with all other fields echoed back.
+    await f.email.fill("not-an-email");
+
+    await f.submit.click();
+
+    await expect(
+      page.getByText("Bitte gueltige E-Mail-Adresse angeben."),
+    ).toBeVisible();
+
+    await expect(f.name).toHaveValue("Linus Test");
+    await expect(f.email).toHaveValue("not-an-email");
+    await expect(f.phone).toHaveValue("+49 711 123456");
+    await expect(f.message).toHaveValue(
+      "Frage zu Allergenen — Glutenfrei moeglich am Sonntag?",
+    );
+  });
+
   test("trims and length-caps oversized fields without crashing", async ({
     page,
   }) => {

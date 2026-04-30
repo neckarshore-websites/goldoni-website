@@ -101,8 +101,15 @@ export function FormField(props: FormFieldProps) {
       />
     );
   } else if (props.as === "select") {
+    // `key` forces React to re-mount the <select> whenever the
+    // defaultValue changes — without it the select keeps its
+    // initial empty selection across `useActionState` re-renders,
+    // so an error round-trip would lose the user's choice. <input>
+    // and <textarea> don't need this; React tracks their value via
+    // the underlying DOM state on re-render.
     control = (
       <select
+        key={`${props.name}-${props.defaultValue ?? ""}`}
         id={id}
         name={props.name}
         required={props.required}

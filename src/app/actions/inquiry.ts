@@ -2,7 +2,12 @@
 
 import nodemailer from "nodemailer";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
-import type { InquiryState, InquiryType } from "./inquiry-state";
+import { LEGAL } from "@/lib/legal";
+import type {
+  InquiryFieldValues,
+  InquiryState,
+  InquiryType,
+} from "./inquiry-state";
 
 /**
  * Inquiry Server Action — handles both /kontakt and /feiern submissions.
@@ -46,7 +51,7 @@ const MAX_MESSAGE_LEN = 4000;
 const MAX_FIELD_LEN = 200;
 
 const TRANSPORT_FAILURE_MESSAGE =
-  "Wir koennen Ihre Anfrage gerade nicht digital uebermitteln. Bitte rufen Sie uns kurz an — die Telefonnummer finden Sie auf der Kontaktseite.";
+  `Wir koennen Ihre Anfrage gerade nicht digital uebermitteln. Bitte rufen Sie uns kurz an: ${LEGAL.contact.phone}.`;
 
 function clean(formData: FormData, key: string, max = MAX_FIELD_LEN): string {
   return String(formData.get(key) ?? "")
@@ -100,6 +105,25 @@ export async function sendInquiry(
   const phone = clean(formData, "phone");
   const message = clean(formData, "message", MAX_MESSAGE_LEN);
 
+  // Echoed back on every error response so the form keeps the user's
+  // input. Raw guestCount string (not Number) so "0", "viele", and
+  // empty all round-trip exactly.
+  const guestCountRaw = clean(formData, "guestCount");
+  const occasionRaw = clean(formData, "occasion");
+  const dateRaw = clean(formData, "date");
+  const preferredTimeRaw = clean(formData, "preferredTime");
+
+  const echoValues: InquiryFieldValues = {
+    name,
+    email,
+    phone,
+    message,
+    occasion: occasionRaw,
+    date: dateRaw,
+    guestCount: guestCountRaw,
+    preferredTime: preferredTimeRaw,
+  };
+
   const fieldErrors: Record<string, string> = {};
   if (!name) fieldErrors.name = "Bitte Namen angeben.";
   if (!email) fieldErrors.email = "Bitte E-Mail angeben.";
@@ -115,10 +139,10 @@ export async function sendInquiry(
   if (type === "kontakt") {
     if (!message) fieldErrors.message = "Bitte Nachricht angeben.";
   } else if (type === "feiern") {
-    occasion = clean(formData, "occasion");
-    date = clean(formData, "date");
-    guestCount = Number(clean(formData, "guestCount") || "0");
-    preferredTime = clean(formData, "preferredTime");
+    occasion = occasionRaw;
+    date = dateRaw;
+    guestCount = Number(guestCountRaw || "0");
+    preferredTime = preferredTimeRaw;
 
     if (!phone) fieldErrors.phone = "Bei Feiern bitte Telefonnummer angeben.";
     if (!occasion) fieldErrors.occasion = "Bitte Anlass auswaehlen.";
@@ -127,7 +151,11 @@ export async function sendInquiry(
       fieldErrors.guestCount = "Bitte Gaesteanzahl (mind. 1) angeben.";
     }
   } else {
-    return { status: "error", message: "Unbekannter Anfragetyp." };
+    return {
+      status: "error",
+      message: "Unbekannter Anfragetyp.",
+      values: echoValues,
+    };
   }
 
   if (Object.keys(fieldErrors).length > 0) {
@@ -135,6 +163,7 @@ export async function sendInquiry(
       status: "error",
       message: "Bitte Eingaben pruefen.",
       fieldErrors,
+      values: echoValues,
     };
   }
 
@@ -173,7 +202,11 @@ export async function sendInquiry(
         "[Goldoni Inquiry] SMTP not configured in production — " +
           "set SMTP_HOST/SMTP_PORT/SMTP_USER/SMTP_PASS/SMTP_FROM/INQUIRY_EMAIL_TO",
       );
-      return { status: "error", message: TRANSPORT_FAILURE_MESSAGE };
+      return {
+        status: "error",
+        message: TRANSPORT_FAILURE_MESSAGE,
+        values: echoValues,
+      };
     }
     // Dev / preview without configured SMTP → log and pretend success.
     console.log(
@@ -208,11 +241,19 @@ export async function sendInquiry(
         "[Goldoni Inquiry] SMTP rejected recipient(s)",
         info.rejected,
       );
-      return { status: "error", message: TRANSPORT_FAILURE_MESSAGE };
+      return {
+        status: "error",
+        message: TRANSPORT_FAILURE_MESSAGE,
+        values: echoValues,
+      };
     }
     return { status: "success" };
   } catch (err) {
     console.error("[Goldoni Inquiry] SMTP send threw", err);
-    return { status: "error", message: TRANSPORT_FAILURE_MESSAGE };
+    return {
+      status: "error",
+      message: TRANSPORT_FAILURE_MESSAGE,
+      values: echoValues,
+    };
   }
 }

@@ -13,10 +13,34 @@
 
 export type InquiryType = "kontakt" | "feiern";
 
+/**
+ * The user-facing form fields whose values we echo back into the
+ * form when the action returns with status "error". Without this,
+ * a missing required field would clear the entire form on submit
+ * — frustrating for users who filled in 6 of 7 fields correctly.
+ */
+export type InquiryFieldValues = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+  occasion?: string;
+  date?: string;
+  guestCount?: string;
+  preferredTime?: string;
+};
+
 export type InquiryState = {
   status: "idle" | "success" | "error";
   message?: string;
   fieldErrors?: Record<string, string>;
+  /**
+   * Echoed-back form values. Only populated on "error" responses;
+   * "success" wipes the form (panel replaces it) and "idle" has no
+   * values yet. Forms read these via `defaultValue=...` so users
+   * don't lose their input on validation.
+   */
+  values?: InquiryFieldValues;
 };
 
 export const INQUIRY_INITIAL_STATE: InquiryState = { status: "idle" };

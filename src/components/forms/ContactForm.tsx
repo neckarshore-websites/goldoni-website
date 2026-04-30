@@ -48,6 +48,7 @@ export function ContactForm() {
         label="Name"
         required
         autoComplete="name"
+        defaultValue={state.values?.name}
         error={state.fieldErrors?.name}
       />
       <FormField
@@ -57,6 +58,7 @@ export function ContactForm() {
         required
         autoComplete="email"
         inputMode="email"
+        defaultValue={state.values?.email}
         error={state.fieldErrors?.email}
       />
       <FormField
@@ -65,6 +67,7 @@ export function ContactForm() {
         label="Telefon (optional)"
         autoComplete="tel"
         inputMode="tel"
+        defaultValue={state.values?.phone}
         error={state.fieldErrors?.phone}
       />
       <FormField
@@ -73,6 +76,7 @@ export function ContactForm() {
         label="Nachricht"
         required
         rows={5}
+        defaultValue={state.values?.message}
         error={state.fieldErrors?.message}
       />
 
