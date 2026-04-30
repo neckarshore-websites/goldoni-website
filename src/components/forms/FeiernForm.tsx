@@ -4,15 +4,7 @@ import { useActionState } from "react";
 import { sendInquiry } from "@/app/actions/inquiry";
 import { INQUIRY_INITIAL_STATE } from "@/app/actions/inquiry-state";
 import { FormField, Honeypot } from "@/components/forms/FormField";
-
-const OCCASIONS = [
-  { value: "hochzeit", label: "Hochzeit" },
-  { value: "geburtstag", label: "Geburtstag" },
-  { value: "taufe", label: "Taufe / Kommunion" },
-  { value: "firmenfeier", label: "Firmenfeier" },
-  { value: "familienfest", label: "Familienfest" },
-  { value: "sonstiges", label: "Sonstiges" },
-];
+import { OCCASIONS } from "@/lib/occasions";
 
 /**
  * Feiern-Anfrage form for /feiern — adds occasion, date, guest count,

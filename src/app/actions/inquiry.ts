@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
 import { LEGAL } from "@/lib/legal";
 import { buildHtmlMail, buildTextMail } from "@/lib/email-html";
+import { occasionLabel } from "@/lib/occasions";
 import type {
   InquiryFieldValues,
   InquiryState,
@@ -48,7 +49,7 @@ import type {
  */
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-const MAX_MESSAGE_LEN = 4000;
+const MAX_MESSAGE_LEN = 500;
 const MAX_FIELD_LEN = 200;
 
 const TRANSPORT_FAILURE_MESSAGE =
@@ -58,6 +59,48 @@ function clean(formData: FormData, key: string, max = MAX_FIELD_LEN): string {
   return String(formData.get(key) ?? "")
     .trim()
     .slice(0, max);
+}
+
+/**
+ * Sanitize free-text fields against prompt-injection.
+ *
+ * Risk model: the owner (or a future automation layer) may pipe incoming
+ * inquiry mails into an AI assistant. A malicious actor could craft a
+ * message designed to hijack that AI ("Ignore previous instructions…").
+ *
+ * Defence-in-depth (not a silver bullet — real injection hardening lives
+ * in the AI consumer, not here):
+ *   1. Strip LLM control tokens (Llama/ChatML/Claude/GPT boundary markers).
+ *   2. Strip role prefixes at line-start (System:, Assistant:, Human:, AI:).
+ *   3. Collapse excessive blank lines (≥3 → 2) — common padding trick.
+ *   4. Strip lone lines of only dashes/equals (prompt-separator markers).
+ *   5. Strip C0 control characters except \n and \t.
+ *
+ * The function intentionally does NOT remove angle brackets or curly
+ * braces — those appear in legitimate restaurant messages (allergy codes,
+ * "< 10 Gäste", template-style wishes). False-positive cost > injection gain.
+ */
+function sanitizeText(s: string): string {
+  return s
+    // Normalize line endings
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
+    // Strip C0 control chars except \n (0x0A) and \t (0x09)
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "")
+    // LLM boundary / control tokens (all major model families)
+    .replace(/\[\/?(INST|SYS)\]/gi, "")
+    .replace(/<<\/?SYS>>/gi, "")
+    .replace(/<\|(system|user|assistant|im_start|im_end|endoftext)\|>/gi, "")
+    // Role prefixes at start of a line (case-insensitive)
+    .replace(
+      /^(system|assistant|human|ai|gpt|claude|ignore previous instructions?|ignore above|forget (previous|all)|new instructions?)\s*:\s*/gim,
+      "",
+    )
+    // Prompt-separator lines (lone dashes / equals, ≥3 chars)
+    .replace(/^[-=]{3,}\s*$/gm, "")
+    // Collapse 3+ consecutive blank lines → 2
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 }
 
 interface SmtpConfig {
@@ -104,7 +147,7 @@ export async function sendInquiry(
   const name = clean(formData, "name");
   const email = clean(formData, "email");
   const phone = clean(formData, "phone");
-  const message = clean(formData, "message", MAX_MESSAGE_LEN);
+  const message = sanitizeText(clean(formData, "message", MAX_MESSAGE_LEN));
 
   // Echoed back on every error response so the form keeps the user's
   // input. Raw guestCount string (not Number) so "0", "viele", and
@@ -171,7 +214,7 @@ export async function sendInquiry(
   // ----- Build email -----------------------------------------------
   const isFeiern = type === "feiern";
   const subject = isFeiern
-    ? `Feieranfrage: ${occasion} (${name})`
+    ? `Feieranfrage: ${occasionLabel(occasion)} (${name})`
     : `Kontaktanfrage von ${name}`;
 
   const emailPayload = isFeiern
@@ -181,7 +224,7 @@ export async function sendInquiry(
         email,
         phone,
         message: message || undefined,
-        occasion,
+        occasion: occasionLabel(occasion),
         date,
         guestCount,
         preferredTime: preferredTime || undefined,
