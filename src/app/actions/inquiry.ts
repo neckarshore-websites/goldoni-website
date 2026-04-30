@@ -3,6 +3,7 @@
 import nodemailer from "nodemailer";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
 import { LEGAL } from "@/lib/legal";
+import { buildHtmlMail, buildTextMail } from "@/lib/email-html";
 import type {
   InquiryFieldValues,
   InquiryState,
@@ -173,20 +174,28 @@ export async function sendInquiry(
     ? `Feieranfrage: ${occasion} (${name})`
     : `Kontaktanfrage von ${name}`;
 
-  const lines: string[] = [`Name: ${name}`, `E-Mail: ${email}`];
-  if (phone) lines.push(`Telefon: ${phone}`);
-  if (isFeiern) {
-    lines.push(`Anlass: ${occasion}`);
-    lines.push(`Datum: ${date}`);
-    lines.push(`Gästeanzahl: ${guestCount}`);
-    if (preferredTime) lines.push(`Wunschzeit: ${preferredTime}`);
-  }
-  if (message) {
-    lines.push("");
-    lines.push("Nachricht:");
-    lines.push(message);
-  }
-  const body = lines.join("\n");
+  const emailPayload = isFeiern
+    ? {
+        type: "feiern" as const,
+        name,
+        email,
+        phone,
+        message: message || undefined,
+        occasion,
+        date,
+        guestCount,
+        preferredTime: preferredTime || undefined,
+      }
+    : {
+        type: "kontakt" as const,
+        name,
+        email,
+        phone: phone || undefined,
+        message,
+      };
+
+  const htmlBody = buildHtmlMail(emailPayload);
+  const textBody = buildTextMail(emailPayload);
 
   // ----- Send -------------------------------------------------------
   const config = readSmtpConfig();
@@ -211,7 +220,7 @@ export async function sendInquiry(
     // Dev / preview without configured SMTP → log and pretend success.
     console.log(
       `[Goldoni Inquiry / dry-run no SMTP config]\n` +
-        `From: <not-configured>\nSubject: ${subject}\n\n${body}`,
+        `From: <not-configured>\nSubject: ${subject}\n\n${textBody}`,
     );
     return { status: "success" };
   }
@@ -234,7 +243,8 @@ export async function sendInquiry(
       to: config.to,
       replyTo: email,
       subject,
-      text: body,
+      text: textBody,
+      html: htmlBody,
     });
     if (info.rejected.length > 0) {
       console.error(
