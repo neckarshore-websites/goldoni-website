@@ -15,8 +15,8 @@
  * `MenuLegend` in `src/components/MenuSection.tsx` renders them grouped.
  *
  *   LMIV (Goldoni-used):  A Glutenhaltiges Getreide   B Krebstiere
- *                         C Eier   D Fische   E Erdnuesse   F Sojabohnen
- *                         G Milch (Laktose)   H Schalenfruechte
+ *                         C Eier   D Fische   E Erdnüsse   F Sojabohnen
+ *                         G Milch (Laktose)   H Schalenfrüchte
  *                         N Sesam   P Lupinen   R Weichtiere
  *   Goldoni-house:        I Sellerie   J Senf   S Sulfite
  *   ZZulV (additives):    1-13 (Farbstoff, Konservierung, … see codes.ts)

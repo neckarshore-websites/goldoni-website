@@ -51,7 +51,7 @@ const MAX_MESSAGE_LEN = 4000;
 const MAX_FIELD_LEN = 200;
 
 const TRANSPORT_FAILURE_MESSAGE =
-  `Wir koennen Ihre Anfrage gerade nicht digital uebermitteln. Bitte rufen Sie uns kurz an: ${LEGAL.contact.phone}.`;
+  `Wir können Ihre Anfrage gerade nicht digital übermitteln. Bitte rufen Sie uns kurz an: ${LEGAL.contact.phone}.`;
 
 function clean(formData: FormData, key: string, max = MAX_FIELD_LEN): string {
   return String(formData.get(key) ?? "")
@@ -128,7 +128,7 @@ export async function sendInquiry(
   if (!name) fieldErrors.name = "Bitte Namen angeben.";
   if (!email) fieldErrors.email = "Bitte E-Mail angeben.";
   else if (!EMAIL_RE.test(email))
-    fieldErrors.email = "Bitte gueltige E-Mail-Adresse angeben.";
+    fieldErrors.email = "Bitte gültige E-Mail-Adresse angeben.";
 
   // ----- Type-specific validation ----------------------------------
   let occasion = "";
@@ -145,10 +145,10 @@ export async function sendInquiry(
     preferredTime = preferredTimeRaw;
 
     if (!phone) fieldErrors.phone = "Bei Feiern bitte Telefonnummer angeben.";
-    if (!occasion) fieldErrors.occasion = "Bitte Anlass auswaehlen.";
+    if (!occasion) fieldErrors.occasion = "Bitte Anlass auswählen.";
     if (!date) fieldErrors.date = "Bitte Wunschdatum angeben.";
     if (!Number.isFinite(guestCount) || guestCount < 1) {
-      fieldErrors.guestCount = "Bitte Gaesteanzahl (mind. 1) angeben.";
+      fieldErrors.guestCount = "Bitte Gästeanzahl (mind. 1) angeben.";
     }
   } else {
     return {
@@ -161,7 +161,7 @@ export async function sendInquiry(
   if (Object.keys(fieldErrors).length > 0) {
     return {
       status: "error",
-      message: "Bitte Eingaben pruefen.",
+      message: "Bitte Eingaben prüfen.",
       fieldErrors,
       values: echoValues,
     };
@@ -178,7 +178,7 @@ export async function sendInquiry(
   if (isFeiern) {
     lines.push(`Anlass: ${occasion}`);
     lines.push(`Datum: ${date}`);
-    lines.push(`Gaesteanzahl: ${guestCount}`);
+    lines.push(`Gästeanzahl: ${guestCount}`);
     if (preferredTime) lines.push(`Wunschzeit: ${preferredTime}`);
   }
   if (message) {

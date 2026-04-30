@@ -226,8 +226,8 @@ export default function StyleGuidePage() {
           style={{ color: "var(--color-text-muted)" }}
         >
           Tokens, Typografie und Komponenten von Ristorante Goldoni. Diese
-          Seite ist eine Referenz fuer Pflege und Erweiterung. Mit dem
-          Theme-Toggle in der Kopfzeile laesst sich die Seite zwischen Hell
+          Seite ist eine Referenz für Pflege und Erweiterung. Mit dem
+          Theme-Toggle in der Kopfzeile lässt sich die Seite zwischen Hell
           und Dunkel umschalten — alle Werte aktualisieren sich live.
         </p>
 
@@ -244,7 +244,7 @@ export default function StyleGuidePage() {
             style={{ color: "var(--color-text-muted)" }}
           >
             Brand-Palette, abgeleitet aus einer Aufnahme des Restaurant-Innenraums.
-            Italian-food-themed Namen. Source-of-truth fuer alle Farben — die
+            Italian-food-themed Namen. Source-of-truth für alle Farben — die
             semantischen Tokens unten mappen auf diese Layer.
           </p>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -308,8 +308,8 @@ export default function StyleGuidePage() {
             className="mb-6 max-w-2xl"
             style={{ color: "var(--color-text-muted)" }}
           >
-            Was Komponenten taeglich nutzen — gemappt auf die Tavola-Palette
-            oben. Diese Werte aendern sich je Theme (Hell / Dunkel).
+            Was Komponenten täglich nutzen — gemappt auf die Tavola-Palette
+            oben. Diese Werte ändern sich je Theme (Hell / Dunkel).
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {COLOR_TOKENS.map((token) => (
@@ -616,10 +616,10 @@ export default function StyleGuidePage() {
             style={{ color: "var(--color-text-muted)" }}
           >
             Default ist <strong style={{ color: "var(--color-text)" }}>Hell</strong>{" "}
-            — passt zum Restaurant-Erlebnis und zur aelteren Stamm-Kundschaft.
+            — passt zum Restaurant-Erlebnis und zur älteren Stamm-Kundschaft.
             Der Toggle in der Kopfzeile schaltet auf{" "}
             <strong style={{ color: "var(--color-text)" }}>Dunkel</strong>{" "}
-            (warmes Espresso, kein kaltes Schwarz) — fuer mobile
+            (warmes Espresso, kein kaltes Schwarz) — für mobile
             Bestell-Nutzung am Abend.
           </p>
           <p
@@ -630,7 +630,7 @@ export default function StyleGuidePage() {
             auf <code style={{ color: "var(--color-text-muted)" }}>&lt;html&gt;</code>,
             persistiert in <code style={{ color: "var(--color-text-muted)" }}>localStorage</code>.
             Anti-Flash via <code style={{ color: "var(--color-text-muted)" }}>/theme-init.js</code>{" "}
-            (laeuft vor erstem Paint).
+            (läuft vor erstem Paint).
           </p>
         </section>
       </div>

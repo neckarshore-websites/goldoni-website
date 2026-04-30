@@ -12,7 +12,7 @@ const menu = empfehlungskarte as Menu;
 export const metadata: Metadata = {
   title: "Empfehlungskarte — Ristorante Goldoni",
   description:
-    "Saisonale Gerichte, Wochenangebote und Wein-Tipps aus der Kueche im Ristorante Goldoni in Stuttgart.",
+    "Saisonale Gerichte, Wochenangebote und Wein-Tipps aus der Küche im Ristorante Goldoni in Stuttgart.",
   alternates: { canonical: "/empfehlungen" },
 };
 

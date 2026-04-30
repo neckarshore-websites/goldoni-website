@@ -147,7 +147,7 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Display headings — Playfair Display fuer italienisches Flair */
+/* Display headings — Playfair Display für italienisches Flair */
 h1, h2, .font-display {
   font-family: var(--font-display), Georgia, "Times New Roman", serif;
   font-weight: 600;

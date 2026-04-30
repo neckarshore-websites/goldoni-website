@@ -1,6 +1,6 @@
 {
   "title": "Speisekarte",
-  "intro": "Italienisch verliebte Kueche — frische Zutaten, mit Liebe gemacht. Antipasti, Pasta, Pizze, Carne e Pesce, Dolci, Cafeteria und die Getraenkekarte.",
+  "intro": "Italienisch verliebte Küche — frische Zutaten, mit Liebe gemacht. Antipasti, Pasta, Pizze, Carne e Pesce, Dolci, Cafeteria und die Getränkekarte.",
   "updated": "2026-04-28",
   "categories": [
     {
@@ -10,26 +10,26 @@
       "items": [
         {
           "name": "Insalata Mista",
-          "description": "Gemischter Salat, mariniert mit Balsamico-Essig aus Modena und Extra Virgin Olivenoel",
+          "description": "Gemischter Salat, mariniert mit Balsamico-Essig aus Modena und Extra Virgin Olivenöl",
           "price": "16.00",
           "allergens": ["S"]
         },
         {
           "name": "Vitello tonnato alla piemontese",
-          "description": "Duenn geschnittenes Kalbsfleisch mit Thunfischsauce und Kapern",
+          "description": "Dünn geschnittenes Kalbsfleisch mit Thunfischsauce und Kapern",
           "price": "16.00",
           "allergens": ["D", "C", "G", "J", "S", "2", "3", "6"]
         },
         {
           "name": "Insalata di pomodoro e mozzarella di bufala",
-          "description": "Bueffelmozzarella und Tomatenscheiben",
+          "description": "Büffelmozzarella und Tomatenscheiben",
           "price": "12.50",
           "allergens": ["G"],
           "diet": ["vegetarian"]
         },
         {
           "name": "Carpaccio di barbabietola rossa con caprino, noci e miele",
-          "description": "Rote-Bete-Carpaccio mit Ziegenkaese, Walnuss und Akazienbluetenhonig",
+          "description": "Rote-Bete-Carpaccio mit Ziegenkäse, Walnuss und Akazienblütenhonig",
           "price": "14.00",
           "allergens": ["A", "G", "H"],
           "diet": ["vegetarian"]
@@ -54,13 +54,13 @@
         },
         {
           "name": "Antipasto di verdura grigliata",
-          "description": "Gegrilltes Gemuese — taeglich frisch vom Markt",
+          "description": "Gegrilltes Gemüse — täglich frisch vom Markt",
           "price": "15.50",
           "diet": ["vegetarian"]
         },
         {
           "name": "Carpaccio di Manzo",
-          "description": "Duenn geschnittenes rohes Rinderfilet mit Rucola und Granakaese",
+          "description": "Dünn geschnittenes rohes Rinderfilet mit Rucola und Granakäse",
           "price": "16.00"
         }
       ]
@@ -78,7 +78,7 @@
         },
         {
           "name": "Ravioli ripieni di spinaci e ricotta in crema di burro-salvia",
-          "description": "Gefuellte Ravioli mit Ricotta und Spinat in Butter-Salbei-Sauce",
+          "description": "Gefüllte Ravioli mit Ricotta und Spinat in Butter-Salbei-Sauce",
           "price": "17.00",
           "diet": ["vegetarian"]
         },
@@ -89,7 +89,7 @@
         },
         {
           "name": "Calamarata alla pescatora",
-          "description": "Kurze, breite Nudel mit aromatischen Meeresfruechten aus 5 Fischsorten — frische Ware",
+          "description": "Kurze, breite Nudel mit aromatischen Meeresfrüchten aus 5 Fischsorten — frische Ware",
           "price": "19.50"
         },
         {
@@ -114,7 +114,7 @@
         },
         {
           "name": "Pizza in crema di pistacchio, carciofi di Bronte, mortadella e bufala",
-          "description": "Pizza an Pistazien-Artischocken-Creme, Mortadella, Bueffelmozzarella",
+          "description": "Pizza an Pistazien-Artischocken-Creme, Mortadella, Büffelmozzarella",
           "price": "16.50",
           "allergens": ["A", "G", "H", "1", "2"]
         },
@@ -126,7 +126,7 @@
         },
         {
           "name": "Pizza con patate al rosmarino, prosciutto cotto e scamorza",
-          "description": "Pizza mit Hinterschinken, Scamorza-Kaese und Rosmarin-Kartoffeln",
+          "description": "Pizza mit Hinterschinken, Scamorza-Käse und Rosmarin-Kartoffeln",
           "price": "14.50",
           "allergens": ["A", "G", "1", "2", "3", "4", "9"]
         },
@@ -150,7 +150,7 @@
         },
         {
           "name": "Pizza Verdura",
-          "description": "Pizza mit gegrilltem Gemuese — taeglich frisch vom Markt",
+          "description": "Pizza mit gegrilltem Gemüse — täglich frisch vom Markt",
           "price": "14.50",
           "allergens": ["A", "G"],
           "diet": ["vegetarian"]
@@ -163,19 +163,19 @@
         },
         {
           "name": "Pizza col prosciutto crudo, rucola e Grana",
-          "description": "Pizza mit Rohschinken, Rucola und Granakaese",
+          "description": "Pizza mit Rohschinken, Rucola und Granakäse",
           "price": "15.50",
           "allergens": ["A", "G", "1", "2", "3"]
         },
         {
           "name": "Pizza Golosa con gorgonzola e pancetta del Sud Tirolo",
-          "description": "Pizza mit Gorgonzola und Suedtiroler Speck",
+          "description": "Pizza mit Gorgonzola und Südtiroler Speck",
           "price": "14.50",
           "allergens": ["A", "G", "2", "3"]
         },
         {
           "name": "Pizza bianca con bufala, zucchini e scampi sgusciati",
-          "description": "Pizza «bianca» mit Bueffelmozzarella, Zucchini und geschaelten Scampi",
+          "description": "Pizza «bianca» mit Büffelmozzarella, Zucchini und geschälten Scampi",
           "price": "15.50"
         }
       ]
@@ -187,7 +187,7 @@
       "items": [
         {
           "name": "Tagliata di filetto di manzo «Simmentaler» alla toscana",
-          "description": "Simmentaler Rinderfilet-Scheiben vom Lavastein-Grill auf Rucola-Salat und Granakaese-Raspeln, dazu Beilage",
+          "description": "Simmentaler Rinderfilet-Scheiben vom Lavastein-Grill auf Rucola-Salat und Granakäse-Raspeln, dazu Beilage",
           "price": "42.00",
           "allergens": ["A", "C", "G", "I", "S"]
         },
@@ -229,25 +229,25 @@
         },
         {
           "name": "Tartufo Nero / Bianco",
-          "description": "Schwarzes oder weisses Trueffeleis",
+          "description": "Schwarzes oder weißes Trüffeleis",
           "price": "7.00",
           "allergens": ["2", "3", "C", "G", "H", "S"]
         },
         {
           "name": "Cassata Siciliana",
-          "description": "Typisch sizilianisch: halbgefrorenes Eis mit kandierten Fruechten",
+          "description": "Typisch sizilianisch: halbgefrorenes Eis mit kandierten Früchten",
           "price": "8.00",
           "allergens": ["2", "3", "C", "G", "H"]
         },
         {
           "name": "Sorbetto al Limone",
-          "description": "Zitrone gefuellt mit Zitroneneis",
+          "description": "Zitrone gefüllt mit Zitroneneis",
           "price": "7.00",
           "allergens": ["2", "3"]
         },
         {
           "name": "Formaggio Misto",
-          "description": "Gemischter Kaeseteller",
+          "description": "Gemischter Käseteller",
           "price": "9.50",
           "allergens": ["A", "G", "2", "3"]
         }
@@ -357,7 +357,7 @@
     {
       "id": "analcolici",
       "name": "Analcolici",
-      "subtitle": "Alkoholfreie Getraenke",
+      "subtitle": "Alkoholfreie Getränke",
       "items": [
         {
           "name": "Coca-Cola",
@@ -494,5 +494,5 @@
       ]
     }
   ],
-  "footnote": "Allergene zu allen Speisen erhalten Sie auf Wunsch beim Service. Aenderungen vorbehalten. Alle Preise in EUR inkl. MwSt."
+  "footnote": "Allergene zu allen Speisen erhalten Sie auf Wunsch beim Service. Änderungen vorbehalten. Alle Preise in EUR inkl. MwSt."
 }
