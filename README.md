@@ -24,6 +24,16 @@ npm run dev   # http://localhost:3002
 
 (Port 3002 is used so it can run alongside `rauhut.com` on 3001 and `neckarshore.ai` on 3000.)
 
+## Tests
+
+```bash
+npm run lint          # ESLint
+npm run build         # Next.js production build (also runs typecheck)
+npm run test:e2e      # Playwright E2E suite — covers /kontakt + /feiern forms
+```
+
+Playwright runs against the dev server in dry-run-SMTP mode (no real mail dispatched). First-time setup needs `npm run test:e2e:install` to download the headless Chromium.
+
 ## Project layout
 
 ```

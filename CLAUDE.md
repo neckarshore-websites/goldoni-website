@@ -40,6 +40,7 @@ Same quality bar as `neckarshore-website` and `rauhut-website`:
 - No browser console errors
 - Build green (`npm run build`)
 - Lint green (`npm run lint`)
+- E2E tests green wenn Forms oder Server-Actions berührt wurden (`npm run test:e2e`) — Playwright-Suite deckt `/kontakt` + `/feiern` ab
 - Committed + pushed
 
 ## Visuelle Abnahme — HARTE REGEL
@@ -60,5 +61,9 @@ Später: entweder Markdown-Files im Repo (Linus pflegt), ein leichtes CMS (Decap
 - Mehrsprachigkeit (Deutsch primär; Italienisch als Stil-Akzent)
 - Blog / Events-CMS (Events-Seite kann statisch sein)
 - SEO-Overengineering
-- Playwright E2E (v1 manuelles Testing)
 - CI/CD Extras über Vercel hinaus
+
+## In-Scope-Erweiterungen seit v1-Start
+
+- **Playwright E2E** (PR #32, 2026-04-30) — ursprünglich als Out-of-Scope geplant, aber durch den `inquiry.ts`-404-Bug aus PR #32 als notwendige Defensive eingezogen. Suite deckt aktuell `/kontakt` + `/feiern` ab. Bei Touch von Forms / Server-Actions: `npm run test:e2e` muss grün sein.
+- **`/api/smtp-verify`** Diagnose-Endpoint (PR #34, 2026-04-30) — Token-gated Smoke-Test für SMTP-Konfig. Bleibt im Repo, kann jederzeit per `SMTP_VERIFY_TOKEN` aktiviert/deaktiviert werden.
