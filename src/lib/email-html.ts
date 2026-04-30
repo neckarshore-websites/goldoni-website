@@ -114,9 +114,7 @@ export function buildHtmlMail(payload: InquiryPayload): string {
   const submittedAt = nowIso();
   const submittedAtLocal = nowLocal();
 
-  const title = isFeiern
-    ? `Feieranfrage: ${payload.occasion} (${payload.name})`
-    : `Kontaktanfrage von ${payload.name}`;
+  const title = isFeiern ? "Feieranfrage" : "Kontaktanfrage";
 
   // ----- Data rows -----
   const metaRows = [
@@ -202,14 +200,10 @@ export function buildHtmlMail(payload: InquiryPayload): string {
 
         <!-- Header -->
         <div style="background:${C.espresso};padding:24px 28px;">
-          <p style="margin:0 0 4px;font-size:11px;letter-spacing:.12em;
-                    text-transform:uppercase;color:${C.parmigiano};
-                    font-family:Arial,Helvetica,sans-serif;">
+          <h1 style="margin:0;font-size:24px;font-weight:700;color:${C.mozzarella};
+                     font-family:Georgia,'Times New Roman',serif;line-height:1.2;
+                     letter-spacing:.01em;">
             ${isFeiern ? "Feieranfrage" : "Kontaktanfrage"}
-          </p>
-          <h1 style="margin:0;font-size:22px;font-weight:700;color:${C.mozzarella};
-                     font-family:Georgia,'Times New Roman',serif;line-height:1.3;">
-            ${escHtml(payload.name)}
           </h1>
           <div style="margin-top:12px;height:2px;width:40px;background:${C.salmon};
                       border-radius:1px;"></div>
