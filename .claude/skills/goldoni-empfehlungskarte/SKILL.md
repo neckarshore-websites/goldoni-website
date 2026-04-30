@@ -40,6 +40,27 @@ Pro Item zerlegen in:
 - **Speise:** italienischer Name, deutsche Beschreibung, Preis, Allergen-Codes, optional `volume` (z.B. "ca. 1 kg / 2 Personen"), optional `diet` (vegetarian/vegan/spicy)
 - **Wein:** Name, Producer, Classification (DOC/IGT/null), Year, Region, Grapes (Rebsorten als String), priceBottle (0,75 l), priceGlass (0,2 l)
 
+#### Umlaut- und ß-Regel (NICHT verhandelbar)
+
+Deutsche Beschreibungen MÜSSEN echte Umlaute und ß verwenden — niemals ASCII-Transliteration:
+
+| Falsch (ASCII) | Richtig |
+|---|---|
+| `Kaese`, `Granakaese`, `Bueffelmozzarella` | `Käse`, `Granakäse`, `Büffelmozzarella` |
+| `Tuermchen`, `Toertchen`, `Truffeleis` | `Türmchen`, `Törtchen`, `Trüffeleis` |
+| `geraeuchert`, `geschaelt`, `gefuellt`, `duenn` | `geräuchert`, `geschält`, `gefüllt`, `dünn` |
+| `Sosse`, `Heisses`, `weisses` | `Soße`, `Heißes`, `weißes` |
+| `fuer`, `gruene`, `Suedtirol`, `Akazienblueten` | `für`, `grüne`, `Südtirol`, `Akazienblüten` |
+| `Fruechten`, `Kaeche`, `Aenderungen`, `taeglich` | `Früchten`, `Küche`, `Änderungen`, `täglich` |
+| `Olivenoel`, `Meeresfruechte`, `Kaeseteller` | `Olivenöl`, `Meeresfrüchte`, `Käseteller` |
+| `Geschmacksverstaerker`, `Suessungsmittel` | `Geschmacksverstärker`, `Süßungsmittel` |
+
+Französische Lehnwörter mit Diakritika sind beizubehalten: `Crème Fraîche` (nicht `Creme Fraiche`), `Café` (nicht `Cafe`), `Pâté` (nicht `Pate`).
+
+Wenn das Inhaber-PDF selbst ASCII-transliteriert ist (alte Microsoft-Word-Vorlagen tun das gerne, oder OCR-Fehler): der Skill MUSS beim Einarbeiten konvertieren. Wir spiegeln das PDF nicht 1:1, wir produzieren publikationsreifen deutschen Text.
+
+Italienische Speisenamen bleiben unverändert (Original-Sprache).
+
 ### 2. Allergen-Codes validieren
 
 Lies `src/lib/codes.ts`. Jeder im PDF referenzierte Code (Buchstabe oder Zahl) muss in `LMIV_ALLERGENS`, `ZZULV_ADDITIVES` oder `HOUSE_CODES` aufgelöst sein. Wenn nicht: **dem User explizit melden** und nachfragen, statt zu raten.
@@ -218,6 +239,7 @@ PR mit `gh pr create --base main` öffnen.
 | Decimal-Trenner-Mismatch | Speisen-Preis `"15,00"` statt `"15.00"` | Speisen: PUNKT als Decimal. Weine: KOMMA als Decimal (verschiedene Renderer-Konventionen). |
 | Halbgeviertstrich `–` vs. Bindestrich `-` bei Wein-Preisen | Inkonsistente Live-Anzeige `28,-` vs `28,–` | Halbgeviertstrich (U+2013) für glatte Preise: `"28,–"`. Komma + Dezimalstellen: `"7,50"`. |
 | Codes-Comment in `src/lib/menu.ts` ist stale | Skill nennt L/M/O, codes.ts hat I/J/S | Nicht im Skill-Workflow korrigieren — separater Doc-Update-PR. Aber dem User melden falls auffällig. |
+| ASCII-Transliteration in deutscher Beschreibung (`Kaese`, `Sosse`, `fuer` …) | Sieht aus wie 1998-OCR; User-Catch 2026-04-30 | Vor PR-Open: Konsistenz-Check unten ausführen. Jeder Hit muss vor Push gefixt sein. Italienische Speisenamen bleiben Original. |
 
 ## Konsistenz-Check vor PR
 
@@ -228,20 +250,24 @@ cd ~/Developer/projects/personal/goldoni-website && \
   echo "--- Weine Counts ---" && \
   jq '{weiss: (.weiss | length), rot: (.rot | length)}' src/data/weinempfehlungen.json && \
   echo "--- Used Allergen Codes ---" && \
-  jq -r '.. | objects | select(.allergens?) | .allergens | .[]' src/data/empfehlungskarte.json | sort -u | tr '\n' ' '
+  jq -r '.. | objects | select(.allergens?) | .allergens | .[]' src/data/empfehlungskarte.json | sort -u | tr '\n' ' ' && echo && \
+  echo "--- Transliteration-Check (muss leer sein) ---" && \
+  rg -n '\b(fuer|ueber|koennen|moegen|moeglich|zurueck|gaeste|gueltig|pruefen|auswaehlen|persoenlich|uebermitt|naechst|spaeter|laesst|erhaelt|woechentl|naehere|hoeflich|tatsaechl|empfaeng|aehnlich|zusaetzl|ergaenz|verstaendl|gegenueber|fruehz|gruessen|wuensch|kaese|vorzueg|haelt|faellt|laeuft|haetten|waeren|moecht|begruess|qualitaet|aktivitaet|spezialitaet|gemuetlich|baerlauch|verkaeufer|enttaeusch|tortenstueck|tuermchen|geraeuchert|duenn|akazienblueten|granakaese|bueffel|geschaelten|verfuegbar|atmosphaere|getraenke|menue|gaesteanzahl|aenderung|gefuellt|trueffel|sosse|olivenoel|suedtirol|fruechten|gemuese|taeglich|kaeseteller|heisses|weisses|grosse|aenderungen|saeumen)\b' src/data/empfehlungskarte.json src/data/weinempfehlungen.json && echo "ASCII-Hits gefunden — muessen vor PR gefixt werden" || echo "OK — keine ASCII-Transliteration"
 ```
 
 Sollte zeigen:
 - 4 Kategorien (antipasti, primi-pizze, secondi, dolci) — keine Wein-Kategorie
 - weiss + rot Counts entsprechen dem PDF
 - Alle Codes in der LMIV/ZZulV/HOUSE-Whitelist (siehe oben)
+- Transliteration-Check: "OK — keine ASCII-Transliteration" (jeder Hit ist ein Blocker für den PR)
 
 ## Definition of Done
 
 - [ ] PDF/Quelle vollständig in beide JSONs übersetzt
+- [ ] Deutsche Beschreibungen verwenden echte Umlaute + ß (siehe Process §1)
 - [ ] `npm run build` grün
 - [ ] `npm run lint` grün
-- [ ] Konsistenz-Check (oben) zeigt erwartete Counts + nur whitelisted Codes
+- [ ] Konsistenz-Check (oben) zeigt: erwartete Counts + nur whitelisted Codes + "OK — keine ASCII-Transliteration"
 - [ ] Branch gepusht
 - [ ] PR auf `main` geöffnet, Test-Plan + Body-Template gefüllt
 - [ ] Vercel Preview-Deploy auf dem PR sichtbar — User kann reviewen
