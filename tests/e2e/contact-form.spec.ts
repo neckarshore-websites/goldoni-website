@@ -66,7 +66,7 @@ test.describe("/kontakt — ContactForm", () => {
     await expect(page.getByText("Bitte Nachricht angeben.")).toBeVisible();
 
     // Form-level summary message also surfaces.
-    await expect(page.getByText("Bitte Eingaben pruefen.")).toBeVisible();
+    await expect(page.getByText("Bitte Eingaben prüfen.")).toBeVisible();
   });
 
   test("rejects invalid email format", async ({ page }) => {
@@ -81,7 +81,7 @@ test.describe("/kontakt — ContactForm", () => {
       page.getByRole("heading", { name: "Grazie!" }),
     ).toHaveCount(0);
     await expect(
-      page.getByText("Bitte gueltige E-Mail-Adresse angeben."),
+      page.getByText("Bitte gültige E-Mail-Adresse angeben."),
     ).toBeVisible();
   });
 
@@ -102,7 +102,7 @@ test.describe("/kontakt — ContactForm", () => {
     await f.submit.click();
 
     await expect(
-      page.getByText("Bitte gueltige E-Mail-Adresse angeben."),
+      page.getByText("Bitte gültige E-Mail-Adresse angeben."),
     ).toBeVisible();
 
     await expect(f.name).toHaveValue("Linus Test");

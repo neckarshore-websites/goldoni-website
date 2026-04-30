@@ -75,14 +75,14 @@ test.describe("/feiern — FeiernForm", () => {
     await expect(
       page.getByText("Bei Feiern bitte Telefonnummer angeben."),
     ).toBeVisible();
-    await expect(page.getByText("Bitte Anlass auswaehlen.")).toBeVisible();
+    await expect(page.getByText("Bitte Anlass auswählen.")).toBeVisible();
     await expect(page.getByText("Bitte Wunschdatum angeben.")).toBeVisible();
     await expect(
-      page.getByText("Bitte Gaesteanzahl (mind. 1) angeben."),
+      page.getByText("Bitte Gästeanzahl (mind. 1) angeben."),
     ).toBeVisible();
 
     // Form-level summary.
-    await expect(page.getByText("Bitte Eingaben pruefen.")).toBeVisible();
+    await expect(page.getByText("Bitte Eingaben prüfen.")).toBeVisible();
   });
 
   test("rejects when phone is missing (required for Feiern)", async ({
@@ -155,7 +155,7 @@ test.describe("/feiern — FeiernForm", () => {
       page.getByRole("heading", { name: "Grazie!" }),
     ).toHaveCount(0);
     await expect(
-      page.getByText("Bitte Gaesteanzahl (mind. 1) angeben."),
+      page.getByText("Bitte Gästeanzahl (mind. 1) angeben."),
     ).toBeVisible();
   });
 
@@ -174,7 +174,7 @@ test.describe("/feiern — FeiernForm", () => {
       page.getByRole("heading", { name: "Grazie!" }),
     ).toHaveCount(0);
     await expect(
-      page.getByText("Bitte Gaesteanzahl (mind. 1) angeben."),
+      page.getByText("Bitte Gästeanzahl (mind. 1) angeben."),
     ).toBeVisible();
   });
 });
