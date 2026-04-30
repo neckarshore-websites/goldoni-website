@@ -7,20 +7,30 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+// AI-Generator (Midjourney/DALL-E) liefert PNG. Hero-Bilder MÜSSEN
+// für Lighthouse-LCP zu WebP konvertiert werden, bevor sie comitted
+// werden:
+//
+//   cwebp -q 85 -m 6 input.png -o output.webp
+//
+// Hintergrund: 16:9-Hero im Original-PNG ist 2.4-2.5 MB. Next.js
+// optimiert zwar zur Laufzeit, aber Cold-Cache-Conversion frisst
+// LCP-Budget auf Mobile. WebP-Source bringt Mobile-Performance
+// von 94 → 96+ (Lighthouse-Audit 2026-04-30).
 const ASSETS: AssetEntry[] = [
   // ── Hero-Images ──────────────────────────────────────────────────────────
   {
     id: "hero-menu",
     context: "Speisekarte — Hero",
-    target: "public/images/hero-menu-dishes.png",
-    filename: "hero-menu-dishes.png",
+    target: "public/images/hero-menu-dishes.webp",
+    filename: "hero-menu-dishes.webp",
     prompt:
       "Real food photography, natural colors, no warm filter. Overhead flat-lay of Italian fine dining dishes on a dark wooden table: carpaccio, fresh pasta with mushrooms and parmesan, burrata with tomatoes and pesto, bread bowl, olive oil dips, red and white wine glasses, linen napkins, silver cutlery. Even soft diffused light, accurate colors. Aspect ratio 16:9.",
   },
   {
     id: "hero-empfehlungen",
     context: "Empfehlungskarte — Hero (aktiv)",
-    target: "public/images/hero-empfehlungen-overhead-tafel.png",
+    target: "public/images/hero-empfehlungen-overhead-tafel.webp",
     prompt:
       "Real food photography, natural colors. Overhead flat-lay of a full Italian restaurant table: Pappardelle al ragù, Risotto ai funghi e tartufo, Burrata e prosciutto crudo, olive oil, sea salt, white wine glass, two red wine glasses, water glasses, linen napkins, silver cutlery, bread with grissini on a wooden board. Dark walnut table, soft diffused natural light. Editorial, no people. Aspect ratio 16:9.",
   },

@@ -24,7 +24,7 @@ export default function MenuPage() {
       />
       <StructuredData data={menuJsonLd(menu, "/menu")} />
       <PageHero
-        src="/images/hero-menu-dishes.png"
+        src="/images/hero-menu-dishes.webp"
         alt="Auswahl italienischer Gerichte im Ristorante Goldoni — Carpaccio, Pasta und Burrata von oben"
       />
       <div className="px-6 pb-20 pt-12 sm:px-12 sm:pb-24">

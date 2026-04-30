@@ -90,7 +90,7 @@ export function restaurantJsonLd(): Record<string, unknown> {
     image: [
       `${SITE.url}/images/hero-goldoni-velvet.webp`,
       `${SITE.url}/images/hero-goldoni-interior.webp`,
-      `${SITE.url}/images/hero-menu-dishes.png`,
+      `${SITE.url}/images/hero-menu-dishes.webp`,
     ],
     address: {
       "@type": "PostalAddress",

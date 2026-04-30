@@ -26,7 +26,7 @@ export default function EmpfehlungenPage() {
       />
       <StructuredData data={menuJsonLd(menu, "/empfehlungen")} />
       <PageHero
-        src="/images/hero-empfehlungen-overhead-tafel.png"
+        src="/images/hero-empfehlungen-overhead-tafel.webp"
         alt="Gedeckter Tisch von oben: Pappardelle, Risotto ai funghi e tartufo, Burrata e prosciutto, Weingläser und Brot — wöchentliche Empfehlungen im Ristorante Goldoni"
       />
       <div className="px-6 pb-20 pt-12 sm:px-12 sm:pb-24">
