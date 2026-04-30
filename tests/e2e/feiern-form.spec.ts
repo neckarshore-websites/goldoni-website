@@ -105,6 +105,41 @@ test.describe("/feiern — FeiernForm", () => {
     ).toBeVisible();
   });
 
+  test("preserves user input across validation errors", async ({ page }) => {
+    // Regression for the worst form UX: user fills 5 of 6 fields,
+    // submits, validation flags the missing field, and the entire
+    // form is wiped to blank. They have to re-type everything.
+    // The action echoes values back; the form reads them via
+    // defaultValue so the error round-trip keeps the input.
+    const f = fields(page);
+    await f.name.fill("Linus Test");
+    await f.email.fill("linus@example.com");
+    await f.occasion.selectOption("geburtstag");
+    await f.guestCount.fill("12");
+    await f.date.fill(futureDate);
+    await f.preferredTime.fill("ab 19:00");
+    await f.message.fill("Etwas Italienisches, gerne ohne Fisch.");
+    // Phone deliberately empty — Feiern requires it, so the action
+    // returns status=error with the other fields echoed back.
+
+    await f.submit.click();
+
+    await expect(
+      page.getByText("Bei Feiern bitte Telefonnummer angeben."),
+    ).toBeVisible();
+
+    // Now the values must still be in place.
+    await expect(f.name).toHaveValue("Linus Test");
+    await expect(f.email).toHaveValue("linus@example.com");
+    await expect(f.occasion).toHaveValue("geburtstag");
+    await expect(f.guestCount).toHaveValue("12");
+    await expect(f.date).toHaveValue(futureDate);
+    await expect(f.preferredTime).toHaveValue("ab 19:00");
+    await expect(f.message).toHaveValue(
+      "Etwas Italienisches, gerne ohne Fisch.",
+    );
+  });
+
   test("rejects when guestCount is zero", async ({ page }) => {
     const f = fields(page);
     await f.name.fill("Linus Test");

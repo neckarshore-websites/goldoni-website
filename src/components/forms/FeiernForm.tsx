@@ -66,6 +66,7 @@ export function FeiernForm() {
         label="Name"
         required
         autoComplete="name"
+        defaultValue={state.values?.name}
         error={state.fieldErrors?.name}
       />
       <FormField
@@ -75,6 +76,7 @@ export function FeiernForm() {
         required
         autoComplete="email"
         inputMode="email"
+        defaultValue={state.values?.email}
         error={state.fieldErrors?.email}
       />
       <FormField
@@ -85,6 +87,7 @@ export function FeiernForm() {
         autoComplete="tel"
         inputMode="tel"
         hint="Wir rufen kurz zurück, um Details zu klären."
+        defaultValue={state.values?.phone}
         error={state.fieldErrors?.phone}
       />
 
@@ -96,6 +99,7 @@ export function FeiernForm() {
           required
           options={OCCASIONS}
           placeholder="Bitte auswählen"
+          defaultValue={state.values?.occasion}
           error={state.fieldErrors?.occasion}
         />
         <FormField
@@ -105,6 +109,7 @@ export function FeiernForm() {
           required
           inputMode="numeric"
           pattern="[0-9]*"
+          defaultValue={state.values?.guestCount}
           error={state.fieldErrors?.guestCount}
         />
       </div>
@@ -116,12 +121,14 @@ export function FeiernForm() {
           label="Wunschdatum"
           required
           min={minDate}
+          defaultValue={state.values?.date}
           error={state.fieldErrors?.date}
         />
         <FormField
           name="preferredTime"
           label="Wunschzeit (optional)"
           hint='z.B. "ab 18:00" oder "Sonntag mittags"'
+          defaultValue={state.values?.preferredTime}
           error={state.fieldErrors?.preferredTime}
         />
       </div>
@@ -132,6 +139,7 @@ export function FeiernForm() {
         label="Anmerkungen (optional)"
         rows={4}
         hint="Allergien, Menü-Vorlieben, Besonderheiten?"
+        defaultValue={state.values?.message}
         error={state.fieldErrors?.message}
       />
 
