@@ -3,6 +3,7 @@ import { SITE } from "@/lib/site";
 import { DeliveryBanner } from "@/components/DeliveryBanner";
 import { FaqSection } from "@/components/FaqSection";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
+import { PhoneIcon } from "@/components/PhoneIcon";
 import { StructuredData } from "@/components/StructuredData";
 import { FAQS } from "@/data/faqs";
 import { faqJsonLd } from "@/lib/structured-data";
@@ -54,13 +55,20 @@ export default function Home() {
               </Link>
               <a
                 href={`tel:${SITE.phone}`}
-                className="rounded-md border-2 px-6 py-3 text-base font-medium text-white transition-colors backdrop-blur-sm"
+                className="inline-flex items-center justify-center gap-2 rounded-md border-2 px-6 py-3 text-base font-medium text-white transition-colors backdrop-blur-sm"
                 style={{
                   borderColor: "rgba(255,255,255,0.6)",
                   backgroundColor: "rgba(255,255,255,0.08)",
                 }}
+                aria-label={`Tisch reservieren — anrufen unter ${SITE.phoneDisplay}`}
               >
-                Tisch reservieren · {SITE.phoneDisplay}
+                {/* Phone (<640px): compact icon + "Reservieren".
+                    Tablet+Desktop (≥640px): full label with phone number. */}
+                <PhoneIcon className="h-4 w-4 sm:hidden" />
+                <span className="sm:hidden">Reservieren</span>
+                <span className="hidden sm:inline">
+                  Tisch reservieren · {SITE.phoneDisplay}
+                </span>
               </a>
             </div>
           </div>
