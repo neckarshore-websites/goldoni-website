@@ -65,12 +65,21 @@ export function ReviewsSection() {
 
         {/* Carousel rail — scroll-snap on the x-axis. Negative inline
             margins on small screens let the cards bleed to the screen
-            edge while the heading stays in the safe area. */}
+            edge while the heading stays in the safe area.
+
+            DO NOT add `scroll-smooth` here. Lighthouse 13's TraceEngine
+            fails with `NO_LCP` on the homepage (4 LCP-Invalidate events,
+            0 LCP-Candidate events) when `scroll-behavior: smooth` is
+            applied to a horizontally-scrollable region with cumulative
+            content width > viewport. Bisected 2026-05-04: removing the
+            class restores measurability without losing UX (smooth-scroll
+            only affects programmatic scrolls — none here, no arrow
+            buttons, native swipe / trackpad inertia is platform-native). */}
         <div
           role="region"
           aria-label="Kundenstimmen aus Google Maps"
           data-reviews-rail
-          className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 sm:-mx-12 sm:gap-5 lg:mx-0"
+          className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:-mx-12 sm:gap-5 lg:mx-0"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
