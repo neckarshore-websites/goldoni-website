@@ -177,6 +177,14 @@ h1, h2, .font-display {
   display: none;                /* Chromium, Safari, Webkit */
 }
 
+/* Reviews carousel — same scrollbar-hiding strategy as quick-jump.
+   The peek on the next card already signals horizontal-scrollability,
+   so a scrollbar would be visual noise. Targets only the carousel
+   rail itself (data attribute) so other regions remain unaffected. */
+[data-reviews-rail]::-webkit-scrollbar {
+  display: none;                /* Chromium, Safari, Webkit */
+}
+
 /* Theme toggle icons — DOM-driven, both rendered, CSS hides inactive */
 .theme-icon {
   display: none;

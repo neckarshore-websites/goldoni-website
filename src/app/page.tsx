@@ -4,6 +4,7 @@ import { DeliveryBanner } from "@/components/DeliveryBanner";
 import { FaqSection } from "@/components/FaqSection";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { PhoneIcon } from "@/components/PhoneIcon";
+import { ReviewsSection } from "@/components/ReviewsSection";
 import { StructuredData } from "@/components/StructuredData";
 import { FAQS } from "@/data/faqs";
 import { faqJsonLd } from "@/lib/structured-data";
@@ -151,6 +152,12 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      {/* Kundenstimmen — Google reviews as a horizontally scrollable
+          rail. Sits before Feiern so the social-proof beat lands right
+          before the celebration CTA. Source data is statically pinned
+          + anonymised in /src/data/google-reviews.json. */}
+      <ReviewsSection />
 
       {/* Feiern teaser — Olive field for the celebration message.
           Warm, grounded, and unmistakably restaurant-not-tech. */}
