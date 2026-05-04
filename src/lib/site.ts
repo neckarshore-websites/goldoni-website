@@ -46,15 +46,16 @@ export const SITE = {
 
   /**
    * Google Maps reviews URL — used by the homepage ReviewsSection cards
-   * and the collective "alle Bewertungen ansehen" CTA. Search-API
-   * format is intentional: it works without a hard-coded place_id (we
-   * don't have one yet) and lands on Goldoni's place card reliably for
-   * Stuttgart users. TODO: once the owner shares the canonical
-   * Maps-Place-Link (?cid=… or /place/…/data=…) replace this with that
-   * stable URL so deep-link metadata (CID) is preserved.
+   * and the collective "alle Bewertungen ansehen" CTA.
+   *
+   * This is Goldoni's official "ask for review" short-link from Google
+   * Business Profile (g.page/r/.../review). It opens the place card
+   * with the 5-star review-write modal pre-opened. Visitors who only
+   * want to read can dismiss the modal; visitors who want to leave a
+   * review get a one-click path. The conversion benefit is the reason
+   * we route both "lesen" and "ansehen" CTAs through this URL.
    */
-  googleReviewsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Ristorante+Goldoni+Reinsburgstrasse+151+Stuttgart",
+  googleReviewsUrl: "https://g.page/r/CTTy_KY_CjykEBM/review",
 
   // External links
   social: {
