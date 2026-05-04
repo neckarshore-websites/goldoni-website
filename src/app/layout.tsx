@@ -8,18 +8,25 @@ import { StructuredData } from "@/components/StructuredData";
 import { restaurantJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
+// Subset Variable fonts — wght axis range narrowed to weights actually
+// used in the codebase (400/500/600/700 for Inter; static 600 for Playfair).
+// opsz axis on Inter pinned to default 14 (we don't use optical sizing).
+// Saves ~51 KiB per pageload (109 -> 58 KiB combined). Glyph coverage
+// unchanged (~230 glyphs each, full Latin + German umlauts + Italian
+// accents + €). See `scripts/subset-fonts.py` for the subsetting recipe;
+// re-run only when source fonts change.
 const inter = localFont({
-  src: "../fonts/Inter-Variable.woff2",
+  src: "../fonts/Inter-Variable-subset.woff2",
   variable: "--font-inter",
   display: "swap",
-  weight: "100 900",
+  weight: "400 700",
 });
 
 const playfair = localFont({
-  src: "../fonts/PlayfairDisplay-Variable.woff2",
+  src: "../fonts/PlayfairDisplay-Subset.woff2",
   variable: "--font-playfair",
   display: "swap",
-  weight: "400 900",
+  weight: "600",
 });
 
 export const metadata: Metadata = {
