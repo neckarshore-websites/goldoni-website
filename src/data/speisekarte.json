@@ -195,7 +195,7 @@
           "name": "Tagliata di filetto di manzo «Simmentaler» alla toscana",
           "description": "Simmentaler Rinderfilet-Scheiben vom Lavastein-Grill auf Rucola-Salat und Granakäse-Raspeln, dazu Beilage",
           "price": "42.00",
-          "allergens": ["A", "C", "G", "I", "S"]
+          "allergens": ["G"]
         },
         {
           "name": "Costolette di agnello ai ferri",
@@ -213,7 +213,7 @@
           "name": "Gamberoni alla griglia",
           "description": "Gegrillte Riesengarnelen, dazu Beilage",
           "price": "32.00",
-          "allergens": ["A", "D", "H"]
+          "allergens": ["A", "B", "D", "H"]
         }
       ]
     },
