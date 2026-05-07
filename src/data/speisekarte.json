@@ -146,7 +146,8 @@
         {
           "name": "Pizza Laura",
           "description": "Pizza mit pikanter Salami, Rucola und Grana-Padano-Raspeln",
-          "price": "14.50"
+          "price": "14.50",
+          "allergens": ["A", "G", "1", "2", "3"]
         },
         {
           "name": "Pizza Verdura",
@@ -176,7 +177,8 @@
         {
           "name": "Pizza bianca con bufala, zucchini e scampi sgusciati",
           "description": "Pizza «bianca» mit Büffelmozzarella, Zucchini und geschälten Scampi",
-          "price": "15.50"
+          "price": "15.50",
+          "allergens": ["A", "G", "D", "B"]
         }
       ]
     },
