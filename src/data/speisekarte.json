@@ -11,12 +11,12 @@
         {
           "name": "Insalata Mista",
           "description": "Gemischter Salat, mariniert mit Balsamico-Essig aus Modena und Extra Virgin Olivenöl",
-          "price": "16.00",
+          "price": "7.00",
           "allergens": ["S"]
         },
         {
           "name": "Vitello tonnato alla piemontese",
-          "description": "Dünn geschnittenes Kalbsfleisch mit Thunfischsauce und Kapern",
+          "description": "Dünn geschnittenes Kalbsfleisch mit Thunfischsoße und Kapern",
           "price": "16.00",
           "allergens": ["D", "C", "G", "J", "S", "2", "3", "6"]
         },
@@ -61,7 +61,8 @@
         {
           "name": "Carpaccio di Manzo",
           "description": "Dünn geschnittenes rohes Rinderfilet mit Rucola und Granakäse",
-          "price": "16.00"
+          "price": "16.00",
+          "allergens": ["G"]
         }
       ]
     },
@@ -78,7 +79,7 @@
         },
         {
           "name": "Ravioli ripieni di spinaci e ricotta in crema di burro-salvia",
-          "description": "Gefüllte Ravioli mit Ricotta und Spinat in Butter-Salbei-Sauce",
+          "description": "Gefüllte Ravioli mit Ricotta und Spinat in Butter-Salbei-Soße",
           "price": "17.00",
           "allergens": ["A", "C", "G", "H", "B", "2", "3"],
           "diet": ["vegetarian"]
@@ -97,7 +98,7 @@
         },
         {
           "name": "Gnocchi alla sorrentina",
-          "description": "Kartoffelgnocchi in frischer Tomatensauce mit Mozzarellastreifen",
+          "description": "Kartoffelgnocchi in frischer Tomatensoße mit Mozzarellastreifen",
           "price": "15.50",
           "allergens": ["A", "G"],
           "diet": ["vegetarian"]
