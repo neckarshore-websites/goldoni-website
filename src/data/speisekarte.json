@@ -80,22 +80,26 @@
           "name": "Ravioli ripieni di spinaci e ricotta in crema di burro-salvia",
           "description": "Gefüllte Ravioli mit Ricotta und Spinat in Butter-Salbei-Sauce",
           "price": "17.00",
+          "allergens": ["A", "C", "G", "H", "B", "2", "3"],
           "diet": ["vegetarian"]
         },
         {
           "name": "Tagliatelle con salmone fresco e zucchine",
           "description": "Hausgemachte Bandnudeln mit Wildfang-Lachsfilet und Zucchini",
-          "price": "18.50"
+          "price": "18.50",
+          "allergens": ["A", "D", "S"]
         },
         {
           "name": "Calamarata alla pescatora",
           "description": "Kurze, breite Nudel mit aromatischen Meeresfrüchten aus 5 Fischsorten — frische Ware",
-          "price": "19.50"
+          "price": "19.50",
+          "allergens": ["A", "B", "D", "N"]
         },
         {
           "name": "Gnocchi alla sorrentina",
           "description": "Kartoffelgnocchi in frischer Tomatensauce mit Mozzarellastreifen",
           "price": "15.50",
+          "allergens": ["A", "G"],
           "diet": ["vegetarian"]
         }
       ]
@@ -146,7 +150,8 @@
         {
           "name": "Pizza Laura",
           "description": "Pizza mit pikanter Salami, Rucola und Grana-Padano-Raspeln",
-          "price": "14.50"
+          "price": "14.50",
+          "allergens": ["A", "G", "1", "2", "3"]
         },
         {
           "name": "Pizza Verdura",
@@ -176,7 +181,8 @@
         {
           "name": "Pizza bianca con bufala, zucchini e scampi sgusciati",
           "description": "Pizza «bianca» mit Büffelmozzarella, Zucchini und geschälten Scampi",
-          "price": "15.50"
+          "price": "15.50",
+          "allergens": ["A", "G", "D", "B"]
         }
       ]
     },
