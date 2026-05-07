@@ -13,7 +13,13 @@ const PARTNER_LOGOS: Record<
 > = {
   Wolt: {
     src: "/images/wolt-logo.png",
-    alt: "Wolt",
+    // Intentionally empty: the parent <a> already announces
+    // "Bestellen mit Wolt" via aria-label, and the sibling <span>
+    // renders "Bestellen mit" visibly. A non-empty alt would inject
+    // "Wolt" into the link's visible text content, breaking
+    // WCAG 2.5.3 Label-in-Name (visible "Wolt Bestellen mit" is not
+    // a substring of accessible name "Bestellen mit Wolt").
+    alt: "",
     selfLabeled: false,
   },
   "Uber Eats": {
