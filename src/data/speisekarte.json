@@ -225,7 +225,8 @@
         {
           "name": "Panna cotta",
           "description": "Hausgemacht",
-          "price": "7.50"
+          "price": "7.50",
+          "allergens": ["G"]
         },
         {
           "name": "Tiramisù",
@@ -278,16 +279,19 @@
         {
           "name": "Espressino",
           "description": "Mit Milchschaum",
-          "price": "3.00"
+          "price": "3.00",
+          "allergens": ["G", "9"]
         },
         {
           "name": "Espresso Corretto",
           "description": "Mit Schuss",
-          "price": "3.50"
+          "price": "3.50",
+          "allergens": ["9"]
         },
         {
           "name": "Cappuccino",
-          "price": "4.00"
+          "price": "4.00",
+          "allergens": ["G", "9"]
         }
       ]
     },
