@@ -110,6 +110,8 @@ interface SmtpConfig {
   pass: string;
   from: string;
   to: string;
+  /** Optional CC address (e.g. operator copy to german@rauhut.com). Omitted if env var is unset. */
+  cc?: string;
 }
 
 /**
@@ -129,7 +131,8 @@ function readSmtpConfig(): SmtpConfig | null {
   const port = Number(portRaw);
   if (!Number.isFinite(port) || port <= 0 || port > 65535) return null;
 
-  return { host, port, user, pass, from, to };
+  const cc = process.env.INQUIRY_EMAIL_CC || undefined;
+  return { host, port, user, pass, from, to, cc };
 }
 
 export async function sendInquiry(
@@ -284,6 +287,7 @@ export async function sendInquiry(
     const info = await transporter.sendMail({
       from: config.from,
       to: config.to,
+      ...(config.cc ? { cc: config.cc } : {}),
       replyTo: email,
       subject,
       text: textBody,

@@ -42,6 +42,7 @@ interface DiagResult {
     passHasTrailingWhitespace: boolean | null;
     fromPreview: string | null;
     toPreview: string | null;
+    ccPreview: string | null;
   };
   verify?: {
     ok: boolean;
@@ -97,6 +98,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   const pass = process.env.SMTP_PASS ?? null;
   const from = process.env.SMTP_FROM ?? null;
   const to = process.env.INQUIRY_EMAIL_TO ?? null;
+  const cc = process.env.INQUIRY_EMAIL_CC ?? null;
   const portParsed = portRaw ? Number(portRaw) : NaN;
   const portValid =
     Number.isFinite(portParsed) && portParsed > 0 && portParsed <= 65535;
@@ -114,6 +116,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       passHasTrailingWhitespace: pass !== null ? pass !== pass.trimEnd() : null,
       fromPreview: preview(from),
       toPreview: preview(to),
+      ccPreview: preview(cc),
     },
   };
 
