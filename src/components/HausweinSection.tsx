@@ -110,12 +110,6 @@ export function HausweinSection() {
         className="mb-6 border-t pt-10"
         style={{ borderColor: "var(--color-border)" }}
       >
-        <p
-          className="mb-1 text-xs uppercase tracking-[0.2em]"
-          style={{ color: "var(--color-brand-olive)" }}
-        >
-          Diese Karte
-        </p>
         <h2
           className="text-2xl sm:text-3xl"
           style={{ color: "var(--color-heading-italian)" }}
