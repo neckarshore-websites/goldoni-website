@@ -43,6 +43,13 @@ const BREATHING_PX = 16;
 export interface ExtraPill {
   id: string;
   name: string;
+  /**
+   * Optional anchor: insert this pill directly after the named category
+   * in the pill bar. Mirrors MenuSection's `slots[]` mechanism so pill
+   * order matches the rendered page order. Omit to append at the end
+   * (legacy behavior, kept for backwards-compat with /empfehlungen).
+   */
+  insertAfter?: string;
 }
 
 function chunkRows<T>(items: T[], size: number): T[][] {
@@ -60,14 +67,21 @@ export function MenuQuickJump({
   categories: MenuCategory[];
   extraPills?: ExtraPill[];
 }) {
-  // Unified pill list — categories first, extra pills appended.
-  const allPills = useMemo<ExtraPill[]>(
-    () => [
-      ...categories.map((c) => ({ id: c.id, name: c.name })),
-      ...extraPills,
-    ],
-    [categories, extraPills],
-  );
+  // Unified pill list — categories interleaved with positional extraPills,
+  // then trailing extraPills (no `insertAfter`) appended at the end.
+  const allPills = useMemo<ExtraPill[]>(() => {
+    const positional = extraPills.filter((p) => p.insertAfter);
+    const trailing = extraPills.filter((p) => !p.insertAfter);
+    const result: ExtraPill[] = [];
+    for (const cat of categories) {
+      result.push({ id: cat.id, name: cat.name });
+      for (const ep of positional) {
+        if (ep.insertAfter === cat.id) result.push(ep);
+      }
+    }
+    result.push(...trailing);
+    return result;
+  }, [categories, extraPills]);
 
   const [activeId, setActiveId] = useState<string>(allPills[0]?.id ?? "");
   const barRef = useRef<HTMLDivElement>(null);

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MenuSection } from "@/components/MenuSection";
+import { HausweinSection } from "@/components/HausweinSection";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
 import speisekarte from "@/data/speisekarte.json";
@@ -81,7 +82,13 @@ export default function MenuPage() {
           </span>
         </Link>
 
-        <MenuSection menu={menu} />
+        <MenuSection
+          menu={menu}
+          extraPills={[
+            { id: "hauswein", name: "Hausweine", insertAfter: "benvenuti" },
+          ]}
+          slots={[{ afterId: "benvenuti", node: <HausweinSection /> }]}
+        />
       </div>
       </div>
     </main>

@@ -1,7 +1,20 @@
+import { Fragment, type ReactNode } from "react";
 import type { Menu, MenuCategory, MenuItem } from "@/lib/menu";
 import { LMIV_ALLERGENS, ZZULV_ADDITIVES, HOUSE_CODES } from "@/lib/codes";
 import type { Code } from "@/lib/codes";
 import { MenuQuickJump, type ExtraPill } from "@/components/MenuQuickJump";
+
+/**
+ * Slot — inject custom content (e.g. <HausweinSection />) directly after
+ * a specific menu category. Used on /menu to drop the Vini della Casa
+ * section between Benvenuti and Analcolici without coupling wine data
+ * into speisekarte.json.
+ */
+export interface MenuSlot {
+  /** Category id after which to render `node`. */
+  afterId: string;
+  node: ReactNode;
+}
 
 const DIET_LABEL: Record<NonNullable<MenuItem["diet"]>[number], string> = {
   vegetarian: "veg",
@@ -183,10 +196,12 @@ export function MenuSection({
   menu,
   hideLegend = false,
   extraPills = [],
+  slots = [],
 }: {
   menu: Menu;
   hideLegend?: boolean;
   extraPills?: ExtraPill[];
+  slots?: MenuSlot[];
 }) {
   return (
     <div>
@@ -202,9 +217,17 @@ export function MenuSection({
       <MenuQuickJump categories={menu.categories} extraPills={extraPills} />
 
       <div className="space-y-16">
-        {menu.categories.map((cat) => (
-          <CategoryBlock key={cat.id} category={cat} />
-        ))}
+        {menu.categories.map((cat) => {
+          const matchingSlots = slots.filter((s) => s.afterId === cat.id);
+          return (
+            <Fragment key={cat.id}>
+              <CategoryBlock category={cat} />
+              {matchingSlots.map((s, idx) => (
+                <Fragment key={`${cat.id}-slot-${idx}`}>{s.node}</Fragment>
+              ))}
+            </Fragment>
+          );
+        })}
       </div>
 
       {!hideLegend && <MenuLegend menu={menu} />}
