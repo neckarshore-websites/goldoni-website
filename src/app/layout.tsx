@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ScrollRestore } from "@/components/ScrollRestore";
@@ -102,6 +103,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
