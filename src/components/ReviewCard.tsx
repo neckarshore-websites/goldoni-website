@@ -78,7 +78,11 @@ export function ReviewCard({
             className="mt-0.5 flex items-center gap-2 text-xs"
             style={{ color: "var(--color-text-muted)" }}
           >
-            <span className="flex items-center gap-0.5" aria-label={`${review.rating} von 5 Sternen`}>
+            <span
+              role="img"
+              className="flex items-center gap-0.5"
+              aria-label={`${review.rating} von 5 Sternen`}
+            >
               {Array.from({ length: 5 }, (_, i) => (
                 <StarIcon key={i} filled={i < review.rating} />
               ))}
@@ -102,7 +106,7 @@ export function ReviewCard({
         rel="noopener noreferrer"
         className="mt-5 inline-flex items-center gap-1 text-xs font-medium hover:underline"
         style={{ color: "var(--color-accent)" }}
-        aria-label={`Bewertung von ${review.author} auf Google öffnen`}
+        aria-label={`Auf Google lesen — Bewertung von ${review.author}`}
       >
         Auf Google lesen
         <span aria-hidden>→</span>
