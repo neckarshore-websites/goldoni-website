@@ -1,13 +1,19 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-04-29",
+  "updated": "2026-05-07",
   "categories": [
     {
       "id": "antipasti",
       "name": "Antipasti",
       "subtitle": "Vorspeisen",
       "items": [
+        {
+          "name": "Insalata di Polpo con patate",
+          "description": "Oktopusstückchensalat mit Kartoffeln",
+          "price": "16.00",
+          "allergens": ["D", "I", "N"]
+        },
         {
           "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
           "description": "Frittierte Auberginentürmchen mit geräuchertem Scamorzakäse und Mozzarella",
@@ -16,8 +22,8 @@
           "diet": ["vegetarian"]
         },
         {
-          "name": "Carpaccio di spada marinato agli agrumi calabresi su cicoria rossa",
-          "description": "Mariniertes Schwertfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoreebett",
+          "name": "Carpaccio di tonno marinato agli agrumi calabresi su cicoria rossa",
+          "description": "Mariniertes Thunfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
           "price": "15.50",
           "allergens": ["D", "H"]
         }
@@ -29,28 +35,30 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Quadrati ripieni con cacio e pere in crema di asparagi verdi",
-          "description": "Nudeln mit Birne-Käsefüllung an grüner Spargel-Creme",
-          "price": "18.50",
-          "allergens": ["A", "D", "G", "I", "J", "N", "B", "S", "F", "H"]
-        },
-        {
-          "name": "Linguine con mezzo astice",
-          "description": "Hausgemachte Linguine mit halbem Hummer und Kirschtomaten",
-          "price": "24.00",
-          "allergens": ["A", "D", "B"]
-        },
-        {
-          "name": "Strozzapreti con straccetti di Entrecote ed asparagi verdi al vino rosso",
-          "description": "Priesterwürger mit Entrecote-Scheiben und grünem Spargel in einer Rotweinsoße",
+          "name": "Delizie ripiene con melanzane e parmigiano in crema di burro",
+          "description": "Nudeln mit Auberginen-Parmesanfüllung an einer Buttersoße, mit Kirschtomaten und geriebenem salzigen Ricottakäse",
           "price": "19.00",
+          "allergens": ["A", "G", "I", "J", "N", "F", "2", "3"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Linguine con il ragú di polpo in umido",
+          "description": "Hausgemachte Linguine mit leicht scharfen Oktopusstückchen in einer Tomatensoße",
+          "price": "24.00",
+          "allergens": ["A", "D", "B"],
+          "diet": ["spicy"]
+        },
+        {
+          "name": "Pappardelle con le guanciotte di manzo al pomodoro",
+          "description": "Breite Bandnudeln mit Rinderbäckchen in einer Tomatensoße",
+          "price": "19.50",
           "allergens": ["A", "C", "I"]
         },
         {
-          "name": "Pizza con creme fraiche, salmone affumicato su letto di valeriana",
-          "description": "Pizza mit geräuchertem Lachs, Ackersalat und Crème Fraîche",
+          "name": "Pizza incoronata da burrata con salsiccia calabrese e cime di rapa",
+          "description": "Pizza mit kalabresischer Bratwurst und wildem Brokkoli, mit Burratakäse gekrönt",
           "price": "17.50",
-          "allergens": ["A", "D", "G", "1", "2"]
+          "allergens": ["A", "G", "1", "2"]
         }
       ]
     },
@@ -60,29 +68,22 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Petto di anitra all'arancia",
-          "description": "Entenbrust aus der Pfanne an Orangensoße, dazu Beilage",
-          "price": "26.00",
-          "allergens": ["A"]
+          "name": "Fegato di vitello alla veneziana",
+          "description": "Kalbslebermedaillons nach venezianischer Art, mit Beilage",
+          "price": "29.50",
+          "allergens": ["S"]
         },
         {
-          "name": "Bistecca grigliata tipo fiorentina alla toscana",
-          "description": "T-Bone-Steak (ca. 1 kg für 2 Personen) nach toskanischer Art vom Lavastein-Grill — pro Person 25,- €",
-          "volume": "ca. 1 kg / 2 Personen",
-          "price": "50.00",
-          "allergens": ["G"]
+          "name": "Tagliata di manzo alla toscana",
+          "description": "Rinderentrecôtescheiben nach toskanischer Art, mit Beilage",
+          "price": "38.00",
+          "allergens": ["A", "G"]
         },
         {
-          "name": "Dal mare Mediterraneo: Filetti di spigola alla plancia",
-          "description": "Gegrillte Loup-de-Mer-Filets, mit Beilage",
+          "name": "Filetti di rombo al limone",
+          "description": "Steinbuttfilets an Zitronen-Creme, mit Beilage",
           "price": "34.00",
           "allergens": ["D", "1", "2", "3"]
-        },
-        {
-          "name": "Trancie di pescespada alla pizzaiola",
-          "description": "Schwertfischsteak mit Oliven und Kapern in einer Tomatensoße, dazu Nudeln",
-          "price": "35.00",
-          "allergens": ["A", "D", "1", "2", "3"]
         }
       ]
     },
@@ -95,13 +96,15 @@
           "name": "Heißes Schokoladentörtchen mit flüssigem Kern",
           "description": "Serviert mit Vanilleeis",
           "price": "8.50",
-          "allergens": ["A", "C", "G", "H"]
+          "allergens": ["A", "C", "G", "H"],
+          "diet": ["vegetarian"]
         },
         {
           "name": "Pistazieneis mit Mandeln",
           "description": "Pistazieneis umhüllt mit gehackten Mandeln",
           "price": "9.00",
-          "allergens": ["A", "C", "G", "H"]
+          "allergens": ["A", "C", "G", "H"],
+          "diet": ["vegetarian"]
         }
       ]
     }
