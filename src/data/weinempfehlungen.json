@@ -42,5 +42,43 @@
       "priceBottle": "40,–",
       "priceGlass": "14,–"
     }
-  ]
+  ],
+  "hauswein": {
+    "weiss": [
+      {
+        "name": "Pinot Grigio",
+        "volume": "0,2 l",
+        "priceGlass": "7,50",
+        "allergens": ["S"]
+      },
+      {
+        "name": "Chardonnay",
+        "volume": "0,2 l",
+        "priceGlass": "7,50",
+        "allergens": ["S"]
+      }
+    ],
+    "rosato": [
+      {
+        "name": "Rosé",
+        "volume": "0,2 l",
+        "priceGlass": "7,50",
+        "allergens": ["S"]
+      }
+    ],
+    "rot": [
+      {
+        "name": "Nero d'Avola",
+        "volume": "0,2 l",
+        "priceGlass": "8,–",
+        "allergens": ["S"]
+      },
+      {
+        "name": "Primitivo",
+        "volume": "0,2 l",
+        "priceGlass": "8,–",
+        "allergens": ["S"]
+      }
+    ]
+  }
 }
