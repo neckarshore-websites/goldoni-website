@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /style-guide
+Disallow: /assets
+
+Host: https://ristorante-goldoni.de
+Sitemap: https://ristorante-goldoni.de/sitemap.xml
