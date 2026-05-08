@@ -10,7 +10,7 @@ import type { Menu } from "@/lib/menu";
 const menu = empfehlungskarte as Menu;
 
 export const metadata: Metadata = {
-  title: "Empfehlungskarte — Ristorante Goldoni",
+  title: "Empfehlungskarte",
   description:
     "Saisonale Gerichte, Wochenangebote und Wein-Tipps aus der Küche im Ristorante Goldoni in Stuttgart.",
   alternates: { canonical: "/empfehlungen" },

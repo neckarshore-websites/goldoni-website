@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Impressum — Ristorante Goldoni",
+  title: "Impressum",
   description: "Anbieterkennzeichnung gemaess § 5 DDG.",
   robots: { index: true, follow: false },
   alternates: { canonical: "/impressum" },
