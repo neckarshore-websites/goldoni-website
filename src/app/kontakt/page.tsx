@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Kontakt — Ristorante Goldoni",
+  title: "Kontakt",
   description:
     "Fragen, Sonderwünsche oder eine kurze Nachricht — schreiben Sie uns direkt. Das Ristorante Goldoni antwortet so schnell wie möglich.",
   alternates: { canonical: "/kontakt" },

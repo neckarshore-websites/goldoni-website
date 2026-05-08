@@ -11,7 +11,7 @@ import type { Menu } from "@/lib/menu";
 const menu = speisekarte as Menu;
 
 export const metadata: Metadata = {
-  title: "Speisekarte — Ristorante Goldoni",
+  title: "Speisekarte",
   description:
     "Antipasti, Pasta, Pizze, Hauptgerichte und Dolci im Ristorante Goldoni in Stuttgart. Italienisch verliebte Küche, frische Zutaten.",
   alternates: { canonical: "/menu" },

@@ -32,7 +32,7 @@ const playfair = localFont({
 export const metadata: Metadata = {
   title: {
     default: "Ristorante Goldoni — Bella Italia in Stuttgart",
-    template: "%s | Ristorante Goldoni",
+    template: "%s — Ristorante Goldoni",
   },
   description:
     "Italienisch verliebte Kueche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht. Reinsburgstrasse 151 · Mi-So 18:00-23:00.",

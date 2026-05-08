@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Datenschutzerklaerung — Ristorante Goldoni",
+  title: "Datenschutzerklärung",
   description:
     "Informationen zur Verarbeitung personenbezogener Daten gemaess Art. 13 DSGVO.",
   robots: { index: true, follow: false },
