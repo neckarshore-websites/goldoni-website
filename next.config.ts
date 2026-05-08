@@ -17,12 +17,37 @@ const nextConfig: NextConfig = {
    */
   skipTrailingSlashRedirect: true,
   /**
-   * Legacy WordPress redirects — see src/lib/redirects.ts for rationale.
-   * `permanent: true` emits HTTP 308 (preserves method, equivalent to 301
-   * for SEO link-equity transfer).
+   * Redirects in priority order:
+   *
+   *   1. Host canonicalisation (Phase D ACTION-PLAN M-2):
+   *      www.ristorante-goldoni.de/* -> ristorante-goldoni.de/*
+   *      308 permanent. Vercel does NOT auto-redirect www in this
+   *      project's domain config — we enforce in code so the policy
+   *      lives in version control rather than relying on Dashboard
+   *      state. The HTML `<link rel="canonical">` already points to
+   *      apex on every page, so SEO impact is purely hygiene; this
+   *      patch eliminates the duplicate-origin signal entirely.
+   *
+   *      Trade-off: a request to a legacy WP URL on the www subdomain
+   *      (e.g. `https://www.ristorante-goldoni.de/menue-28/`) takes
+   *      two hops — first to apex, then through the legacy redirect.
+   *      That subset of traffic is vanishingly small (modern links
+   *      use apex; legacy deeplinks use apex from the WP era too).
+   *
+   *   2. Legacy WordPress redirects — see src/lib/redirects.ts.
+   *      `permanent: true` emits HTTP 308 (preserves method,
+   *      equivalent to 301 for SEO link-equity transfer).
    */
   async redirects() {
-    return buildLegacyRedirects();
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.ristorante-goldoni.de" }],
+        destination: "https://ristorante-goldoni.de/:path*",
+        permanent: true,
+      },
+      ...buildLegacyRedirects(),
+    ];
   },
   /**
    * Security headers — Phase D ACTION-PLAN M-1.
