@@ -19,7 +19,7 @@ This repo lives at `~/Developer/projects/goldoni-website/`. Every Bash command m
 cd ~/Developer/projects/goldoni-website && ...
 ```
 
-The Claude Code harness resets `cwd` after every Bash call. Unscoped commands risk writing to the wrong repo (rauhut-website, neckarshore-website, OMNIXIS, planning repos, Obsidian vault). Same discipline as `neckarshore-website` and `rauhut-website`. Non-negotiable.
+The Claude Code harness resets `cwd` after every Bash call. Unscoped commands risk writing to the wrong repo (rauhut-website, neckarshore-website, omnopsis-backend, planning repos, Obsidian vault). Same discipline as `neckarshore-website` and `rauhut-website`. Non-negotiable.
 
 ## Rules
 
