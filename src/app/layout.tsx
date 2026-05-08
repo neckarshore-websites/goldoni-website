@@ -71,6 +71,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  // Google Search Console URL-prefix-property verification.
+  // Renders as <meta name="google-site-verification" content="..."/> in <head>.
+  // This is verification metadata only — no script, no cookie, no visitor data.
+  // Once verified, the tag can stay (Google recommends keeping it for re-verification).
+  verification: {
+    google: "Yw31pISC-ruYUPrDLlTvM1Hqzc1Ho0QPhRhwg8juFhw",
+  },
 };
 
 export default function RootLayout({
