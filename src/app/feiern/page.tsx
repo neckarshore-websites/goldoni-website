@@ -2,8 +2,43 @@ import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
 import { FeiernForm } from "@/components/forms/FeiernForm";
 import { PageHero } from "@/components/PageHero";
+import { SaalGalerie, type GalleryImage } from "@/components/SaalGalerie";
 import { StructuredData } from "@/components/StructuredData";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
+
+// Echte Saal-Fotos vom Restaurant. Hochkant, optimiert auf q=85 WebP.
+// Originals stammen aus realen Anlässen — Tafel mit goldenen Stuhlhussen,
+// gelbe Rosen + weiße Lilien als Tischdeko. Hero (16:9) ist ein Crop von F1.
+const SAAL_GALLERY: GalleryImage[] = [
+  {
+    src: "/images/feiern-saal-bogenfenster-tafel.webp",
+    width: 1053,
+    height: 1258,
+    alt: "Festlich gedeckte lange Tafel im Goldoni-Saal mit hohen Bogenfenstern, weißen Stuhlhussen mit goldenem Band, Kandelabern mit weißen Kerzen und Tischdeko aus gelben Rosen und Lilien.",
+    caption: "Lange Tafel im historischen Saal mit Bogenfenstern",
+  },
+  {
+    src: "/images/feiern-kandelaber-rosen-lilien.webp",
+    width: 1136,
+    height: 1534,
+    alt: "Goldene Kandelaber mit weißen Kerzen, weißen Lilien, gelben Rosen und Efeu — Tischdeko-Detail im Goldoni-Saal.",
+    caption: "Tischdeko — Kandelaber mit Rosen und Lilien",
+  },
+  {
+    src: "/images/feiern-tafel-aus-naehe.webp",
+    width: 1163,
+    height: 1255,
+    alt: "Festlich eingedeckte Tafel von oben — weiße Teller, Kristallgläser, Stuhlhussen mit goldenem Satinband, Tischdeko mit Kandelaber und Blumen.",
+    caption: "Eingedeckte Festtafel, von oben",
+  },
+  {
+    src: "/images/feiern-saal-historische-banner.webp",
+    width: 1172,
+    height: 1471,
+    alt: "Goldoni-Saal mit historischen Wandbannern (Ludwig Köller von Leinroden, 1872), Spiegel, Holzvertäfelung und festlich gedeckter Tafel mit weißen Stuhlhussen und goldenen Bändern.",
+    caption: "Saal mit historischen Bannern (Köller von Leinroden, 1872)",
+  },
+];
 
 export const metadata: Metadata = {
   // Absolute title — bypasses root template because the page-level
@@ -22,8 +57,8 @@ export default function FeiernPage() {
         data={breadcrumbJsonLd([{ name: "Feiern", path: "/feiern" }])}
       />
       <PageHero
-        src="/images/hero-feiern-essen.webp"
-        alt="Eleganter Teller mit einem Gericht, Weingläser und ein festlich gedeckter Tisch — perfekt für Ihre Feier"
+        src="/images/hero-feiern-saal.webp"
+        alt="Festlich gedeckte lange Tafel im historischen Goldoni-Saal mit Bogenfenstern, goldenen Stuhlhussen und Tischdeko aus weißen Lilien und gelben Rosen"
       />
       <div className="px-6 pb-20 pt-12 sm:px-12 sm:pb-24">
       <div className="mx-auto max-w-3xl">
@@ -164,6 +199,36 @@ export default function FeiernPage() {
             <span>Anrufen</span>
           </a>
         </div>
+
+        {/* Saal-Galerie — echte Fotos aus dem Restaurant. Lightbox auf
+            Klick (Desktop + Mobile), ESC schließt, ← / → blättern. */}
+        <section
+          className="mt-16 sm:mt-20"
+          aria-labelledby="saal-galerie-heading"
+        >
+          <p
+            className="mb-3 text-xs uppercase tracking-[0.2em]"
+            style={{ color: "var(--color-brand-olive)" }}
+          >
+            Eindrücke
+          </p>
+          <h2
+            id="saal-galerie-heading"
+            className="mb-4 text-2xl sm:text-3xl"
+            style={{ color: "var(--color-heading-italian)" }}
+          >
+            Unser Saal
+          </h2>
+          <p
+            className="mb-8 text-base leading-relaxed"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            Bogenfenster, dunkle Holzvertäfelung, lange Tafel mit
+            Tischdeko &mdash; ein Bild der letzten Feiern bei uns. Klicken
+            Sie für die Vollansicht.
+          </p>
+          <SaalGalerie images={SAAL_GALLERY} />
+        </section>
       </div>
       </div>
     </main>

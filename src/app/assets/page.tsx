@@ -49,20 +49,69 @@ const ASSETS: AssetEntry[] = [
       "Real restaurant photography, natural colors, no warm filter. A close-up of a worn leather-bound menu lying closed on a dark wooden table. Beside it: a single unlit white pillar candle, two empty crystal wine glasses. Background: soft out-of-focus restaurant interior. Neutral to cool tones. No text on the menu cover. No people. Shot from a 30-degree angle. Aspect ratio 16:9.",
   },
 
-  // ── Feiern ───────────────────────────────────────────────────────────────
+  // ── Feiern — Echte Fotos (aktiv auf /feiern) ────────────────────────────
+  // Hochkant-Originals + ein 16:9-Crop für den Hero. Authentische Saal-
+  // Eindrücke ersetzen die KI-generierten Fallback-Versionen weiter unten.
+  {
+    id: "feiern-real-hero",
+    context: "Feiern — Hero (16:9 Crop von F1, aktiv)",
+    target: "public/images/hero-feiern-saal.webp",
+    note:
+      "Echtes Foto. 16:9-Crop (1053×592) aus F1 — zeigt rote Decke, Bogenfenster und Tafel-Mitte mit Tischdeko. Wenn ein anderer Crop gewünscht ist: cwebp -crop x y w h auf das Original im Downloads/Feste/-Ordner.",
+  },
+  {
+    id: "feiern-real-1",
+    context: "Feiern — Saal mit Bogenfenstern (Galerie)",
+    target: "public/images/feiern-saal-bogenfenster-tafel.webp",
+    note:
+      "Echtes Foto, hochkant 1053×1258. Lange Tafel mit goldenen Stuhlhussen, weißen Lilien und gelben Rosen — helles Tageslicht durch die Bogenfenster.",
+  },
+  {
+    id: "feiern-real-2",
+    context: "Feiern — Kandelaber-Detail (Galerie)",
+    target: "public/images/feiern-kandelaber-rosen-lilien.webp",
+    note:
+      "Echtes Foto, hochkant 1136×1534. Goldener Kandelaber mit weißen Kerzen, weißen Lilien, gelben Rosen und Efeu — Tischdeko-Close-up.",
+  },
+  {
+    id: "feiern-real-3",
+    context: "Feiern — Tafel von oben (Galerie)",
+    target: "public/images/feiern-tafel-aus-naehe.webp",
+    note:
+      "Echtes Foto, hochkant 1163×1255. Eingedeckte Festtafel — weiße Teller, Kristallgläser, Stuhlhussen mit goldenem Band, Tischdeko aus Kandelabern und Blumen.",
+  },
+  {
+    id: "feiern-real-4",
+    context: "Feiern — Saal mit historischen Bannern (Galerie)",
+    target: "public/images/feiern-saal-historische-banner.webp",
+    note:
+      "Echtes Foto, hochkant 1172×1471. Saal mit historischen Wandbannern (Ludwig Köller von Leinroden, 1872), Spiegel, Holzvertäfelung und Doppel-Tafel.",
+  },
+
+  // ── Feiern — KI-Bilder (Fallback, ungenutzt) ────────────────────────────
+  // Bleiben als Fallback-Bibliothek, falls kurzfristig generische
+  // Stimmungsbilder gebraucht werden. Authentische Fotos oben sind
+  // immer die erste Wahl — KI-Versionen werden nach und nach abgelöst.
   {
     id: "feiern-service",
-    context: "Feiern — Hero Variante 1 (Service-Moment)",
+    context: "Feiern — KI-Fallback (Service-Moment, ungenutzt)",
     target: "public/images/feiern-service-fine-dining-tafel.png",
     prompt:
       "Real food photography, no filters. A hand placing an elegantly plated Italian main course onto a large white round plate, at a long dark wooden restaurant table. Crystal wine glasses with white wine in the foreground. Cool to neutral ambient restaurant lighting, no orange tones. Shallow depth of field. Aspect ratio 16:9.",
   },
   {
     id: "feiern-table",
-    context: "Feiern — Hero Variante 2 (Volle Tafel)",
+    context: "Feiern — KI-Fallback (Volle Tafel, ungenutzt)",
     target: "public/images/feiern-private-dinner-gesellschaft.png",
     prompt:
       "Real food photography, no post-processing filters. A long Italian restaurant table set for a private dinner celebration. Multiple white ceramic plates with Italian dishes, crystal wine glasses, dark wooden table, linen napkins, silverware. Guests' hands slightly visible at edges, faces out of frame. Wide shot, shallow depth of field. Aspect ratio 16:9.",
+  },
+  {
+    id: "feiern-essen-old",
+    context: "Feiern — KI-Hero alt (vor Saal-Foto-Update, ungenutzt)",
+    target: "public/images/hero-feiern-essen.webp",
+    note:
+      "War bis Mai 2026 der aktive Hero auf /feiern. Ersetzt durch echtes Saal-Foto (hero-feiern-saal.webp). Bleibt als Fallback im Repo.",
   },
 
   // ── Fine Dining ──────────────────────────────────────────────────────────
@@ -167,7 +216,14 @@ const ASSETS: AssetEntry[] = [
 
 const GROUPS = [
   { label: "Hero-Images", ids: ["hero-menu", "hero-empfehlungen", "hero-empfehlungen-alt", "hero-menu-classic"] },
-  { label: "Feiern", ids: ["feiern-service", "feiern-table"] },
+  {
+    label: "Feiern — Echte Fotos",
+    ids: ["feiern-real-hero", "feiern-real-1", "feiern-real-2", "feiern-real-3", "feiern-real-4"],
+  },
+  {
+    label: "Feiern — KI-Fallback (ungenutzt)",
+    ids: ["feiern-service", "feiern-table", "feiern-essen-old"],
+  },
   { label: "Fine Dining", ids: ["fine-dining-1", "fine-dining-2", "fine-dining-3", "fine-dining-4"] },
   { label: "Gerichte", ids: ["lasagne", "pizza-salami", "pizza-patate", "tagliata"] },
   { label: "Getränke", ids: ["caffe", "aperitivi", "digestivi", "analcolici"] },
