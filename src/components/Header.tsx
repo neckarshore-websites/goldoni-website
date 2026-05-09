@@ -93,13 +93,17 @@ export function Header() {
         </div>
       </nav>
 
-      {/* Mobile sub-nav — same brand-pill logic, smaller pills. */}
+      {/* Mobile sub-nav — same brand-pill logic, smaller pills.
+          overflow-x-auto + hidden scrollbar = silent scroll fallback
+          if labels grow past the viewport width on small phones
+          (iPhone SE 375px etc.). On wider mobile (≥ 414px) all four
+          pills currently fit in one row centered. */}
       <div
         className="border-t px-4 py-2 md:hidden"
         style={{ borderColor: "var(--color-noir-border)" }}
       >
         <NavLinks
-          className="flex justify-center gap-2 text-sm"
+          className="flex justify-center gap-2 overflow-x-auto text-sm [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           linkClassName="inline-block px-2.5 py-1"
         />
       </div>
