@@ -31,13 +31,13 @@ const NAV_LINKS: NavLink[] = [
   },
   {
     href: "/menu",
-    label: "Menü",
+    label: "Speisekarte",
     activeBg: "var(--color-bg-olive)",
     activeFg: "var(--color-on-olive)",
   },
   {
     href: "/feiern",
-    label: "Feiern",
+    label: "Feste feiern",
     // Salmon — same hue as the Reservieren CTA, so the celebratory
     // page reads as "the warm one".
     activeBg: "var(--color-accent)",
