@@ -100,7 +100,11 @@ export function SaalGalerie({ images }: SaalGalerieProps) {
                 width={img.width}
                 height={img.height}
                 sizes="(min-width: 640px) 50vw, 100vw"
-                className="block h-auto w-full object-cover transition-opacity duration-200 group-hover:opacity-90"
+                // Mobile (single column): natural Hochkant aspect — no crop.
+                // Desktop (sm:grid-cols-2): lock to 5:6 so cards in the same
+                // row align bottom-to-bottom. Source ratios sit between 3:4
+                // and 1:1; 5:6 (0.83) is the median, minimal crop on each.
+                className="block h-auto w-full object-cover transition-opacity duration-200 group-hover:opacity-90 sm:aspect-[5/6] sm:h-full"
               />
               {img.caption && (
                 <span
