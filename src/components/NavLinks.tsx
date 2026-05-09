@@ -72,7 +72,11 @@ export function NavLinks({ className, linkClassName }: Props) {
             <Link
               href={link.href}
               aria-current={isActive ? "page" : undefined}
-              className={`rounded-full transition-colors ${linkClassName}`}
+              // whitespace-nowrap: keep multi-word labels like "Feste
+              // feiern" on a single line — without it the active pill
+              // shrinks to the parent flex-track and wraps internally
+              // on narrow viewports (iPhone 12 Pro Max, 2026-05-09).
+              className={`whitespace-nowrap rounded-full transition-colors ${linkClassName}`}
               style={
                 isActive
                   ? {
