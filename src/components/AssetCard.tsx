@@ -20,7 +20,10 @@ export interface AssetEntry {
   context: string;
   target: string;
   filename?: string;
-  prompt: string;
+  /** AI-Prompt — for KI-generated images (Midjourney/DALL-E). */
+  prompt?: string;
+  /** Free-form note — for real photos that have no AI prompt. */
+  note?: string;
 }
 
 /** "public/images/foo.png" → "/images/foo.png" */
@@ -130,12 +133,22 @@ export function AssetCard({ asset }: { asset: AssetEntry }) {
               {asset.target}
             </code>
           </div>
-          <p
-            className="text-sm leading-relaxed"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            {asset.prompt}
-          </p>
+          {asset.prompt && (
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              {asset.prompt}
+            </p>
+          )}
+          {asset.note && (
+            <p
+              className="text-sm italic leading-relaxed"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              {asset.note}
+            </p>
+          )}
         </div>
       </div>
 
