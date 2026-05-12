@@ -61,9 +61,12 @@ export const SITE = {
   social: {
     facebook:
       "https://www.facebook.com/Ristorante-Goldoni-152510754787757/",
-    // Instagram — URL not yet confirmed; leave empty to suppress the link.
-    // Set to the profile URL once available (e.g. "https://www.instagram.com/ristorante_goldoni/").
-    instagram: "",
+    // Instagram — owner-confirmed handle.
+    // Captured 2026-05-10 via dr-sommer Z1 T9 Finding 1.6 user-decision
+    // (resolved DPO-drift: Datenschutz §8 already documented Instagram
+    // presence + Meta Platforms Ireland processor, but site.ts was empty —
+    // page documented something that did not exist in the UI).
+    instagram: "https://www.instagram.com/ristorante_goldoni_stuttgart",
     wolt: "https://wolt.com/de/deu/stuttgart/restaurant/goldoni",
     // Goldoni house playlist — tracking params (?si=… &pi=…) stripped
     // so the URL stays canonical and shareable without leaking the
