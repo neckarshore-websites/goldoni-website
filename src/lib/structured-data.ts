@@ -114,7 +114,10 @@ export function restaurantJsonLd(): Record<string, unknown> {
     acceptsReservations: "True",
     hasMenu: `${SITE.url}/menu`,
     openingHoursSpecification: buildOpeningHours(),
-    sameAs: [SITE.social.facebook],
+    // sameAs — verified social ownership signals. Filter empty strings so
+    // optional profiles (e.g. Instagram before owner-confirmation) do not
+    // leak as broken entries into the JSON-LD.
+    sameAs: [SITE.social.facebook, SITE.social.instagram].filter(Boolean),
   };
 }
 
