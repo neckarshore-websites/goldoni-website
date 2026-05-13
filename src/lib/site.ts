@@ -40,7 +40,7 @@ export const SITE = {
 
   // Hours
   hours: [
-    { days: "Mi - So", time: "18:00 - 23:00" },
+    { days: "Mi - So", time: "18:00 - 22:30" },
     { days: "Mo + Di", time: "geschlossen" },
   ],
 
