@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-05-07",
+  "updated": "2026-05-13",
   "categories": [
     {
       "id": "antipasti",
@@ -9,10 +9,10 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Insalata di Polpo con patate",
-          "description": "Oktopusstückchensalat mit Kartoffeln",
-          "price": "16.00",
-          "allergens": ["D", "I", "N"]
+          "name": "Zuppetta con moscardini al pomodoro e pane tostato",
+          "description": "Baby Oktopoden in einer Tomatensoße, dazu geröstetes Brot",
+          "price": "15.50",
+          "allergens": ["A", "D", "N"]
         },
         {
           "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
@@ -20,12 +20,6 @@
           "price": "15.00",
           "allergens": ["A", "G", "2", "3", "5"],
           "diet": ["vegetarian"]
-        },
-        {
-          "name": "Carpaccio di tonno marinato agli agrumi calabresi su cicoria rossa",
-          "description": "Mariniertes Thunfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
-          "price": "15.50",
-          "allergens": ["D", "H"]
         }
       ]
     },
@@ -35,28 +29,28 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Delizie ripiene con melanzane e parmigiano in crema di burro",
-          "description": "Nudeln mit Auberginen-Parmesanfüllung an einer Buttersoße, mit Kirschtomaten und geriebenem salzigen Ricottakäse",
+          "name": "Delizie ripiene con melanzane e parmigiano in crema di burro in cremetta di pomodoro e mozzarella",
+          "description": "Nudeln mit Auberginen-Parmesanfüllung an Tomatensoße und Mozzarellastücken",
           "price": "19.00",
           "allergens": ["A", "G", "I", "J", "N", "F", "2", "3"],
           "diet": ["vegetarian"]
         },
         {
           "name": "Linguine con il ragú di polpo in umido",
-          "description": "Hausgemachte Linguine mit leicht scharfen Oktopusstückchen in einer Tomatensoße",
+          "description": "Hausgemachte Linguine mit leicht scharfen Oktopusstücken in einer Tomatensoße",
           "price": "24.00",
-          "allergens": ["A", "D", "B"],
+          "allergens": ["A", "D", "N"],
           "diet": ["spicy"]
         },
         {
-          "name": "Pappardelle con le guanciotte di manzo al pomodoro",
-          "description": "Breite Bandnudeln mit Rinderbäckchen in einer Tomatensoße",
+          "name": "Pappardelle con il coniglio",
+          "description": "Breite Bandnudeln mit Kaninchenstücken nach Jäger Art",
           "price": "19.50",
           "allergens": ["A", "C", "I"]
         },
         {
-          "name": "Pizza incoronata da burrata con salsiccia calabrese e cime di rapa",
-          "description": "Pizza mit kalabresischer Bratwurst und wildem Brokkoli, mit Burratakäse gekrönt",
+          "name": "Pizza con bianca con la porchetta, scamorza ed asparagi verdi",
+          "description": "Pizza mit Spanferkelscheiben, geräuchertem Scamorzakäse und grünem Spargel",
           "price": "17.50",
           "allergens": ["A", "G", "1", "2"]
         }
@@ -68,21 +62,27 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Fegato di vitello alla veneziana",
-          "description": "Kalbslebermedaillons nach venezianischer Art, mit Beilage",
-          "price": "29.50",
-          "allergens": ["S"]
-        },
-        {
-          "name": "Tagliata di manzo alla toscana",
-          "description": "Rinderentrecôtescheiben nach toskanischer Art, mit Beilage",
-          "price": "38.00",
+          "name": "Piccata al limone",
+          "description": "Kalbsschnitzel an Zitronensoße, mit Beilage",
+          "price": "32.00",
           "allergens": ["A", "G"]
         },
         {
-          "name": "Filetti di rombo al limone",
-          "description": "Steinbuttfilets an Zitronen-Creme, mit Beilage",
+          "name": "Tomawak alla griglia",
+          "description": "Dry Aged Tomawak (ca. 1000 g für 2 Personen) vom Lavastein-Grill, serviert mit Rucola und Granakäseraspeln. Pro Person: 40,–",
+          "price": "80.00",
+          "allergens": ["G"]
+        },
+        {
+          "name": "Filetti di rombo alla plancia",
+          "description": "Steinbuttfilets vom Lavastein-Grill, dazu Beilage",
           "price": "34.00",
+          "allergens": ["D", "1", "2", "3"]
+        },
+        {
+          "name": "Medaglioni di pescatrice in padella coi pomodorini",
+          "description": "Seeteufelmedaillons aus der Pfanne mit Kirschtomaten, mit Beilage",
+          "price": "32.00",
           "allergens": ["D", "1", "2", "3"]
         }
       ]
@@ -93,16 +93,16 @@
       "subtitle": "Desserts",
       "items": [
         {
-          "name": "Heißes Schokoladentörtchen mit flüssigem Kern",
-          "description": "Serviert mit Vanilleeis",
-          "price": "8.50",
+          "name": "Pistazieneis mit Mandeln",
+          "description": "Pistazieneis umhüllt mit gehackten Mandeln",
+          "price": "9.00",
           "allergens": ["A", "C", "G", "H"],
           "diet": ["vegetarian"]
         },
         {
-          "name": "Pistazieneis mit Mandeln",
-          "description": "Pistazieneis umhüllt mit gehackten Mandeln",
-          "price": "9.00",
+          "name": "Schokoladensouffle",
+          "description": "Schokoladensouffle mit einer Kugel Vanilleeis",
+          "price": "8.50",
           "allergens": ["A", "C", "G", "H"],
           "diet": ["vegetarian"]
         }
