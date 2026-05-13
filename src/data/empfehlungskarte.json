@@ -68,13 +68,13 @@
           "allergens": ["A", "G"]
         },
         {
-          "name": "Tomawak alla griglia",
-          "description": "Dry Aged Tomawak (ca. 1000 g für 2 Personen) vom Lavastein-Grill, serviert mit Rucola und Granakäseraspeln. Pro Person: 40,–",
+          "name": "Tomahawk alla griglia",
+          "description": "Dry Aged Tomahawk (ca. 1000 g für 2 Personen) vom Lavastein-Grill, serviert mit Rucola und Granakäseraspeln. Pro Person: 40,–",
           "price": "80.00",
           "allergens": ["G"]
         },
         {
-          "name": "Filetti di rombo alla plancia",
+          "name": "Dal mare Mediterraneo - Filetti di rombo alla plancia",
           "description": "Steinbuttfilets vom Lavastein-Grill, dazu Beilage",
           "price": "34.00",
           "allergens": ["D", "1", "2", "3"]
