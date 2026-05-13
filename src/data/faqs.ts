@@ -30,7 +30,7 @@ export const FAQS: readonly Faq[] = [
   {
     question: "Wann hat das Ristorante Goldoni geöffnet?",
     answer:
-      "Mittwoch bis Sonntag von 18:00 bis 23:00 Uhr. Montag und Dienstag haben wir geschlossen.",
+      "Mittwoch bis Sonntag von 18:00 bis 22:30 Uhr. Montag und Dienstag haben wir geschlossen.",
   },
   {
     question: "Wie kann ich einen Tisch reservieren?",
