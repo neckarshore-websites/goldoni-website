@@ -30,6 +30,16 @@ export type LegacyRedirect = {
 export const LEGACY_REDIRECTS: readonly LegacyRedirect[] = [
   { from: "/menue-28/pasta-2", to: "/menu" },
   { from: "/menue-28", to: "/menu" },
+  // GSC 2026-05-15 — Pages > Not found (404) surfaced /menue/ as
+  // separately indexed from /menue-28/. WP had both canonical and
+  // ID-suffixed slug variants alive.
+  { from: "/menue", to: "/menu" },
+  // GSC 2026-05-15 — Pages > Page with redirect surfaced this
+  // malformed double-domain path (first detected 2022-10-18), almost
+  // certainly an external backlink written as a relative URL on a site
+  // whose template prepended its own host. Maps to /menu so any residual
+  // link equity transfers to the canonical menu route.
+  { from: "/ristorante-goldoni.de/menue", to: "/menu" },
   { from: "/private-feiern-und-firmen-events", to: "/feiern" },
   { from: "/datenschutzerklaerung", to: "/datenschutz" },
   { from: "/kontakt", to: "/kontakt" },
