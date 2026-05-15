@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
 import { LEGAL } from "@/lib/legal";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Impressum",
   description: "Anbieterkennzeichnung gemaess § 5 DDG.",
-  robots: { index: true, follow: false },
-  alternates: { canonical: "/impressum" },
-};
+  path: "/impressum",
+  noFollow: true,
+});
 
 export default function ImpressumPage() {
   return (

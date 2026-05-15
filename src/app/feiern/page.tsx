@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
 import { FeiernForm } from "@/components/forms/FeiernForm";
 import { PageHero } from "@/components/PageHero";
 import { SaalGalerie, type GalleryImage } from "@/components/SaalGalerie";
 import { StructuredData } from "@/components/StructuredData";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/page-metadata";
 
 // Echte Saal-Fotos vom Restaurant. Hochkant, optimiert auf q=85 WebP.
 // Originals stammen aus realen Anlässen — Tafel mit goldenen Stuhlhussen,
@@ -40,15 +40,16 @@ const SAAL_GALLERY: GalleryImage[] = [
   },
 ];
 
-export const metadata: Metadata = {
-  // Absolute title — bypasses root template because the page-level
-  // narrative already contains the brand ("Feiern bei Goldoni").
-  // Otherwise the brand would render twice.
-  title: { absolute: "Feiern bei Goldoni — Private Anlässe in Stuttgart" },
+// Absolute title — bypasses root template because the page-level narrative
+// already contains the brand ("Feiern bei Goldoni"). Otherwise the brand
+// would render twice in <title> and og:title.
+export const metadata = pageMetadata({
+  title: "Feiern bei Goldoni — Private Anlässe in Stuttgart",
   description:
     "Hochzeiten, Geburtstage, Taufen, Firmenfeiern. Im Ristorante Goldoni richten wir Ihren privaten Anlass aus — mit individueller Karte und der Aufmerksamkeit, die er verdient.",
-  alternates: { canonical: "/feiern" },
-};
+  path: "/feiern",
+  absoluteTitle: true,
+});
 
 export default function FeiernPage() {
   return (

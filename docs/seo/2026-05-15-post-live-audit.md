@@ -4,7 +4,7 @@
 **Persona:** Linus FE
 **Live seit:** 2026-05-07 (DNS-Cutover Phase C, L40)
 **WordPress-Baseline:** 31/100 (pre-migration, Bell-Audit)
-**Geschätzter Post-Migration-Score:** **90–94 / 100** → Lift **+60 Punkte**
+**Geschätzter Post-Migration-Score (nach F1-Fix in dieser PR):** **95+ / 100** → Lift **+64 Punkte**
 
 ## TL;DR
 
@@ -52,17 +52,30 @@ Aus L41-Briefing geforderte 4 Schema-Typen (Restaurant + Menu + FAQ + Breadcrumb
 
 ### Findings (Verbesserungspotenzial)
 
-#### F1 — og:title-Duplication auf allen Routen (Impact: Low-Medium)
+#### F1 — og:title-Duplication auf allen Routen (Impact: Low-Medium) — ✅ FIXED in dieser PR
 
-Alle 7 Routen senden identisch:
+Pre-Fix Befund: alle 7 Routen sendeten identisch:
 
 ```
 <meta property="og:title" content="Ristorante Goldoni — Bella Italia in Stuttgart">
 ```
 
-`<title>` ist pro Route differenziert (z.B. `"Speisekarte — Ristorante Goldoni"` für `/menu`), aber `og:title` fällt zurück auf den globalen Default. Social-Card-Previews (Facebook/LinkedIn/X) aus tieferen Routen werden dadurch generisch dargestellt.
+`<title>` war pro Route differenziert, aber `og:title` fiel zurück auf den globalen Layout-Default. Ursache: Next.js Metadata API ersetzt (nicht merged) den `openGraph`-Block, wenn ein Child-Segment irgendein OG-Feld setzt. Da die Sub-Pages keinen OG-Block hatten, erbten sie den globalen Default.
 
-**Fix:** In jeder Route-`page.tsx` `metadata.openGraph.title` explizit auf den seiten-spezifischen Titel setzen. Effort: XS (5 Min).
+**Fix in dieser PR:** Neuer DRY-Helper `src/lib/page-metadata.ts` mit `pageMetadata({title, description, path, absoluteTitle?, noFollow?, ogImage?})`. Baut pro Route den kompletten openGraph- + twitter-Block (title + description + url + siteName + locale + type + images), inkl. self-referential `alternates.canonical`. Alle 6 Sub-Pages migriert.
+
+Post-Fix verified via local build:
+
+| Route | og:title | twitter:title |
+|---|---|---|
+| /menu | Speisekarte — Ristorante Goldoni | Speisekarte — Ristorante Goldoni |
+| /empfehlungen | Empfehlungskarte — Ristorante Goldoni | Empfehlungskarte — Ristorante Goldoni |
+| /kontakt | Kontakt — Ristorante Goldoni | Kontakt — Ristorante Goldoni |
+| /feiern | Feiern bei Goldoni — Private Anlässe in Stuttgart | Feiern bei Goldoni — Private Anlässe in Stuttgart |
+| /impressum | Impressum — Ristorante Goldoni | Impressum — Ristorante Goldoni |
+| /datenschutz | Datenschutzerklärung — Ristorante Goldoni | Datenschutzerklärung — Ristorante Goldoni |
+
+Bonus: `og:description` und `twitter:description` werden ebenfalls pro Route korrekt gesetzt (vorher wurde der Layout-Default vererbt).
 
 #### F2 — og:image generisch (Impact: Low)
 
@@ -88,15 +101,15 @@ Host: https://ristorante-goldoni.de
 
 Das ist eine non-standard Yandex-Erweiterung. Google ignoriert die Zeile. Kein Schaden, kann bleiben.
 
-## Health-Score-Estimate
+## Health-Score-Estimate (nach F1-Fix in dieser PR)
 
 | Kategorie | Score | Begründung |
 |---|---|---|
 | Technical SEO | 100/100 | Security, Schema, Sitemap, Canonicals, Redirects, Mobile — alles grün |
-| On-Page | 95/100 | F1 (og:title-Duplication) zieht 5 Punkte ab |
+| On-Page | 100/100 | F1-Fix in dieser PR hebt og:title + og:description per Route auf seiten-spezifischen Wert |
 | Performance | 95/100 | per L34 Lighthouse-CDN-Run: Mobile 93+, Desktop 100, CLS 0 |
 | Mobile + A11y | 100/100 | per L34 Lighthouse |
-| **Estimate (gewichtet)** | **~92/100** | vs WP-Baseline 31/100 → **+61 Punkte** |
+| **Estimate (gewichtet)** | **~95/100** | vs WP-Baseline 31/100 → **+64 Punkte** |
 
 ## User-Manual-Tasks (kann ich nicht headless)
 
@@ -110,7 +123,7 @@ Erwartung M1: Restaurant + FAQ + Menu + BreadcrumbList alle "Eligible for rich r
 
 ## Follow-Up
 
-- **F1-Fix (og:title pro Route):** als kleiner Folge-PR. Trivial, kann sofort in dieselbe Session, ist aber nicht Teil der Audit-Acceptance.
+- **F1-Fix (og:title pro Route):** ✅ in dieser PR mitgeliefert (siehe oben).
 - **L41-Status:** in-review → done sobald M1-M3 manuell durchgeführt sind.
 
 ## Quellen

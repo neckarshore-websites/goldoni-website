@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import { StructuredData } from "@/components/StructuredData";
 import { LEGAL } from "@/lib/legal";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Datenschutzerklärung",
   description:
     "Informationen zur Verarbeitung personenbezogener Daten gemaess Art. 13 DSGVO.",
-  robots: { index: true, follow: false },
-  alternates: { canonical: "/datenschutz" },
-};
+  path: "/datenschutz",
+  noFollow: true,
+});
 
 export default function DatenschutzPage() {
   return (
