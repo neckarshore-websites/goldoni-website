@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { MenuSection, MenuLegend } from "@/components/MenuSection";
 import { WeinSection } from "@/components/WeinSection";
 import { PageHero } from "@/components/PageHero";
@@ -6,15 +5,16 @@ import { StructuredData } from "@/components/StructuredData";
 import empfehlungskarte from "@/data/empfehlungskarte.json";
 import { breadcrumbJsonLd, menuJsonLd } from "@/lib/structured-data";
 import type { Menu } from "@/lib/menu";
+import { pageMetadata } from "@/lib/page-metadata";
 
 const menu = empfehlungskarte as Menu;
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Empfehlungskarte",
   description:
     "Saisonale Gerichte, Wochenangebote und Wein-Tipps aus der Küche im Ristorante Goldoni in Stuttgart.",
-  alternates: { canonical: "/empfehlungen" },
-};
+  path: "/empfehlungen",
+});
 
 export default function EmpfehlungenPage() {
   return (

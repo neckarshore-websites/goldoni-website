@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { MenuSection } from "@/components/MenuSection";
 import { HausweinSection } from "@/components/HausweinSection";
@@ -7,15 +6,16 @@ import { StructuredData } from "@/components/StructuredData";
 import speisekarte from "@/data/speisekarte.json";
 import { breadcrumbJsonLd, menuJsonLd } from "@/lib/structured-data";
 import type { Menu } from "@/lib/menu";
+import { pageMetadata } from "@/lib/page-metadata";
 
 const menu = speisekarte as Menu;
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Speisekarte",
   description:
     "Antipasti, Pasta, Pizze, Hauptgerichte und Dolci im Ristorante Goldoni in Stuttgart. Italienisch verliebte Küche, frische Zutaten.",
-  alternates: { canonical: "/menu" },
-};
+  path: "/menu",
+});
 
 export default function MenuPage() {
   return (

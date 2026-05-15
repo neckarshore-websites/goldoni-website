@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Kontakt",
   description:
     "Fragen, Sonderwünsche oder eine kurze Nachricht — schreiben Sie uns direkt. Das Ristorante Goldoni antwortet so schnell wie möglich.",
-  alternates: { canonical: "/kontakt" },
-};
+  path: "/kontakt",
+});
 
 export default function KontaktPage() {
   return (
