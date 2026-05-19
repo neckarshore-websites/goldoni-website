@@ -9,7 +9,9 @@
 
 ## Status
 
-**Briefing stage.** No code, no Next.js bootstrap, no design system. Only `BRIEFING.md` + this file. Scope decisions (full relaunch vs. landing-only, CMS vs. manual, reservation handling, etc.) happen in a dedicated Goldoni session with the User after scope is confirmed with the friend.
+**Live production.** `ristorante-goldoni.de` läuft auf Vercel mit Next.js + selbst-gehosteten Fonts. Aktuelle Routen: `/` (Startseite), `/menue`, `/feiern` (Feier-Anfrage-Formular), `/kontakt` (Kontaktformular), `/empfehlungskarte`, `/api/*` (Form-Endpoints + Diagnose). SEO-Post-Live-Audit (L41) lief Mai 2026, GSC-404-Redirects (F3) gesetzt. Letzter Security-Bump: Next.js 16.2.6 (PR #72, 13 CVEs zu).
+
+Briefing-Phase ist seit Wochen vorbei — die ursprüngliche "kein Code, keine Bootstrap"-Doku unten war bis vor diesem CLAUDE.md-Update Drift. Verbleibende Scope-Klärungen sind kein Briefing-Backlog, sondern punktuelle Add-Ons: CMS-Frage (aktuell statisch in Repo), Online-Reservierung (aktuell Telefon/Mail per Brief), Events-Pipeline (statisch). Werden in dedizierter Goldoni-Session mit User + Restaurant-Freund entschieden.
 
 ## Working Directory Rule
 
