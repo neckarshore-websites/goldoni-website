@@ -23,9 +23,10 @@
  * delta is runner-environment, not regression. See
  * docs/perf/lcp-mobile-4g-investigation.md for the full datapoint table.
  * The Mobile-4G hard-gate threshold in scripts/lighthouse.mjs was relaxed
- * 90 -> 75 on the same day to absorb this CI noise without chasing
- * phantom regressions on every PR. 75 sits 3pp below the empirical CI
- * mean of 78 and still catches a real ~12-point regression.
+ * 90 -> 70 on the same day. The final 70-value was reached after n=4 CI
+ * evidence revealed three runner regimes (74 / 78 / 85 across observed
+ * runs); 70 sits 5pp below the worst-observed CI score, not below a
+ * perceived mean. See docs/perf/lcp-mobile-4g-investigation.md.
  */
 
 import { useEffect, useState } from "react";
