@@ -15,6 +15,16 @@
  *   0 — Velvet wall sign (original hero, brand-defining)
  *   1 — Golden angel figurine with Goldoni card
  *   2 — Restaurant interior, warm evening light
+ *
+ * Note on Lighthouse-CI vs reality (2026-05-27):
+ * GH-Actions shared-CPU runners score this component's Mobile-4G LCP
+ * ~1.5 s slower than an M-series Mac with cpuSlowdownMultiplier=4 against
+ * the same prod URL (CI 4.2 s vs local 2.7 s, Performance 78 vs 96). The
+ * delta is runner-environment, not regression. See
+ * docs/perf/lcp-mobile-4g-investigation.md for the full datapoint table.
+ * The Mobile-4G hard-gate threshold in scripts/lighthouse.mjs was relaxed
+ * 90 -> 80 on the same day to absorb this CI noise without chasing
+ * phantom regressions on every PR.
  */
 
 import { useEffect, useState } from "react";
