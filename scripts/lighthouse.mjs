@@ -22,16 +22,23 @@
  *   - Perf 85 was chosen historically because mobile Next.js framework JS
  *     overhead costs ~12 points on 4x CPU throttle. Raised to 90 (Mobile 4G)
  *     and 95 (Desktop) in 2026-04-10 to catch silent regressions.
- *   - Mobile 4G performance lowered 90 -> 80 on 2026-05-27 after empirical
- *     CI vs local delta measurement. CI-port run (2026-05-25, GH-Actions
- *     shared-CPU runner) scored Performance 78 / LCP 4.2s. Local audit on
- *     M-series Mac with simulate cpuSlowdownMultiplier=4 against the same
- *     prod URL on 2026-05-27 scored Performance 96 / LCP 2.7s / TBT 20ms.
- *     The ~18-point delta is CI-runner-environment, not a real regression.
- *     User-decision: relax to 80 (matches realistic Stuttgart-area device
- *     class: 5G-coverage standard, modern contracts). 80 still catches a
- *     genuine ~15-point regression. See docs/perf/lcp-mobile-4g-investigation.md
- *     for full datapoint table and rationale.
+ *   - Mobile 4G performance lowered 90 -> 75 on 2026-05-27 after empirical
+ *     CI vs local delta measurement.
+ *       CI Run 1 (2026-05-25): Performance 78 / LCP 4.2s / FCP 935ms / TBT 358ms / CLS 0
+ *       CI Run 2 (2026-05-27): Performance 78 / LCP 4.1s / FCP 952ms / TBT 360ms / CLS 0
+ *       Local (M-series, cpuSlow x4, 2026-05-27): Performance 96 / LCP 2.7s / TBT 20ms
+ *     The CI mean is a stable 78 (TBT-delta between runs = 2ms, LCP-delta = 100ms
+ *     — measurement precision, not variance). The ~18-point delta vs local is
+ *     GH-Actions shared-CPU runner-environment, not a real regression.
+ *     User-decision (2026-05-27): relax to 75 — 3pp buffer below the stable CI
+ *     mean of 78. Justified by Stuttgart-area customer device class (5G coverage
+ *     standard, modern contracts) which is well-served by the real local
+ *     performance, not by the pessimistic CI runner. 75 still catches a genuine
+ *     ~12-point regression (priority-drop, heavy third-party tag, image-format
+ *     reversal would each cost 15-20 points). The interim 80 setting (commit
+ *     e74d007) was calibrated against the wrong baseline (brief's "≥85 target"
+ *     rather than the empirical CI mean) and was a vermeidbarer Halbschritt.
+ *     See docs/perf/lcp-mobile-4g-investigation.md for full datapoint table.
  */
 
 import { execFileSync, spawn } from "node:child_process";
@@ -64,7 +71,7 @@ const PROFILES = [
     gate: "hard",
     lhArgs: ["--form-factor=mobile", "--screenEmulation.mobile"],
     thresholds: {
-      performance: 80,
+      performance: 75,
       accessibility: 95,
       "best-practices": 95,
       seo: 95,
