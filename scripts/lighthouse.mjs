@@ -22,6 +22,16 @@
  *   - Perf 85 was chosen historically because mobile Next.js framework JS
  *     overhead costs ~12 points on 4x CPU throttle. Raised to 90 (Mobile 4G)
  *     and 95 (Desktop) in 2026-04-10 to catch silent regressions.
+ *   - Mobile 4G performance lowered 90 -> 80 on 2026-05-27 after empirical
+ *     CI vs local delta measurement. CI-port run (2026-05-25, GH-Actions
+ *     shared-CPU runner) scored Performance 78 / LCP 4.2s. Local audit on
+ *     M-series Mac with simulate cpuSlowdownMultiplier=4 against the same
+ *     prod URL on 2026-05-27 scored Performance 96 / LCP 2.7s / TBT 20ms.
+ *     The ~18-point delta is CI-runner-environment, not a real regression.
+ *     User-decision: relax to 80 (matches realistic Stuttgart-area device
+ *     class: 5G-coverage standard, modern contracts). 80 still catches a
+ *     genuine ~15-point regression. See docs/perf/lcp-mobile-4g-investigation.md
+ *     for full datapoint table and rationale.
  */
 
 import { execFileSync, spawn } from "node:child_process";
@@ -54,7 +64,7 @@ const PROFILES = [
     gate: "hard",
     lhArgs: ["--form-factor=mobile", "--screenEmulation.mobile"],
     thresholds: {
-      performance: 90,
+      performance: 80,
       accessibility: 95,
       "best-practices": 95,
       seo: 95,
