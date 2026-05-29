@@ -1,66 +1,46 @@
 {
   "weiss": [
     {
-      "name": "Villa Angela",
-      "producer": "Velenosi",
+      "name": "Tasca d'Almerita Bianco",
+      "producer": "Tasca d'Almerita",
       "classification": "DOC",
       "year": 2024,
-      "region": "Marken",
-      "grapes": "100 % Verdicchio di Jesi",
+      "region": "Sizilien",
+      "grapes": "Inzolia, Cataratto, Grecanico",
       "priceBottle": "30,–",
       "priceGlass": "8,50"
     },
     {
-      "name": "I Ronchetti",
-      "producer": "Bonfante",
-      "classification": "DOC",
-      "year": 2024,
-      "region": "Piemont",
-      "grapes": "100 % Cortese",
-      "priceBottle": "32,–",
-      "priceGlass": "9,–"
-    },
-    {
-      "name": "Perste",
-      "producer": "Bonfante",
-      "classification": "DOC",
-      "year": 2024,
-      "region": "Piemont",
-      "grapes": "100 % Arneis",
-      "priceBottle": "35,–",
-      "priceGlass": "10,–"
+      "name": "Greco",
+      "producer": "Statti",
+      "classification": "IGT",
+      "year": 2025,
+      "region": "Kalabrien",
+      "grapes": "100 % Greco Bianco",
+      "priceBottle": "30,–",
+      "priceGlass": "8,50"
     }
   ],
   "rot": [
     {
-      "name": "Bracciarolo Rosso P.",
-      "producer": "Velenosi",
+      "name": "Santagostino",
+      "producer": "Firriato",
       "classification": "DOC",
-      "year": 2022,
-      "region": "Marken",
-      "grapes": "Cuvée Montepulciano & Sangiovese",
-      "priceBottle": "30,–",
-      "priceGlass": "8,50"
+      "year": 2020,
+      "region": "Sizilien",
+      "grapes": "Cuvée Nero d'Avola, Syrah",
+      "priceBottle": "35,–",
+      "priceGlass": "10,–"
     },
     {
       "name": "Villa Antinori",
       "producer": "Antinori",
       "classification": "IGT",
-      "year": 2022,
+      "year": 2023,
       "region": "Toskana",
-      "grapes": "Cuvée Cabernet, Sangiovese, Merlot, Syrah",
-      "priceBottle": "32,–",
-      "priceGlass": "9,–"
-    },
-    {
-      "name": "Trentangeli",
-      "producer": "Tormaresca",
-      "classification": "DOC",
-      "year": 2018,
-      "region": "Apulien",
-      "grapes": "Cuvée Barbera, Cabernet, Syrah",
-      "priceBottle": "35,–",
-      "priceGlass": "10,–"
+      "grapes": "Cuvée Sangiovese, Syrah, Cabernet, Merlot",
+      "priceBottle": "40,–",
+      "priceGlass": "12,50"
     }
   ],
   "hauswein": {
