@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-05-22",
+  "updated": "2026-05-29",
   "categories": [
     {
       "id": "antipasti",
@@ -9,23 +9,23 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Carpaccio di tonno marinato agli agrumi calabresi su cicoria rossa",
-          "description": "Mariniertes Thunfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
+          "name": "Carpaccio di bresaola con radicchio e scaglie pecorino",
+          "description": "Luftgetrockneter Rinderschinken von Black Angus, Radicchiosalat und Pecorinokäse",
+          "price": "16.00",
+          "allergens": ["G", "1", "2", "5"]
+        },
+        {
+          "name": "Insalata Platacese",
+          "description": "Gegrillte marinierte Paprika mit frischen Kirschtomaten, Knoblauch, Minze und Frühlingszwiebeln auf Burratakäse-Bett",
+          "price": "15.50",
+          "allergens": ["G", "2", "3"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Carpaccio di tonno marinato agli agrumi calabresi su letto di zucchini",
+          "description": "Mariniertes Thunfischcarpaccio mit Zitrusvinaigrette auf Zucchinibett",
           "price": "16.50",
           "allergens": ["D", "H"]
-        },
-        {
-          "name": "Cozze al vino bianco servito con bruschettone",
-          "description": "Miesmuscheln an Weißweinsoße mit geröstetem Brot serviert",
-          "price": "14.50",
-          "allergens": ["A", "D", "N"]
-        },
-        {
-          "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
-          "description": "Frittierte Auberginentürmchen mit geräuchertem Scamorzakäse und Mozzarella",
-          "price": "15.00",
-          "allergens": ["A", "G", "2", "3", "5"],
-          "diet": ["vegetarian"]
         }
       ]
     },
@@ -35,35 +35,29 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Gnocchi neri ripieni al tartufo in una crema di stracciatella",
-          "description": "Mit Reismehl bestäubte schwarze Kartoffelgnocchi mit Trüffelfüllung an Stracciatellakäse-Creme",
+          "name": "Mezzelune ripiene con fichi e noci in sughetto di gorgonzola",
+          "description": "Nudeln mit Feigen-Walnuss-Füllung an einer Gorgonzolasoße",
           "price": "18.50",
-          "allergens": ["A", "B", "D", "F", "G", "H", "I", "J", "N", "S"]
+          "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
+          "diet": ["vegetarian"]
         },
         {
-          "name": "Pappardelle alla Genovese (altes neapolitanisches Rezept)",
-          "description": "Breite Bandnudeln in einer Weißweinsoße mit Kalbsfleisch und Zwiebeln",
+          "name": "Pappardelle all'Amatriciana con raspellata di formaggio bovino al vino rosso",
+          "description": "Breite Bandnudeln mit Guanciale an Tomatensoße und geraspeltem, im Rotwein gereiftem Kuhkäse",
           "price": "19.50",
           "allergens": ["A", "C", "I"]
         },
         {
-          "name": "Linguine con vongole veraci ed i pomodorini",
-          "description": "Hausgemachte Linguine mit Venusmuscheln und Kirschtomaten",
-          "price": "21.00",
-          "allergens": ["A", "D"]
+          "name": "Linguine con i moscardini freschi",
+          "description": "Hausgemachte Linguine mit Baby-Oktopoden in einer Tomatensoße",
+          "price": "24.00",
+          "allergens": ["A", "D", "I", "N"]
         },
         {
-          "name": "Pinsa al pesto di basilico coi funghi di paglia, spianata calabrese e burratina",
-          "description": "Pinsa mit Austernpilzen, kalabresischer scharfer Salami, Baby Burratakäse und Basilikumpesto",
-          "price": "16.50",
-          "allergens": ["A", "G", "1", "2"],
-          "diet": ["spicy"]
-        },
-        {
-          "name": "Pizza bianca con i frutti di mare freschi",
-          "description": "Pizza (weiße Basis) mit frischen Meeresfrüchten",
+          "name": "Pizza bianca alla salsa olandese con il salmone affumicato e asparagi verdi",
+          "description": "Pizza (weiße Basis) mit Hollandaise-Creme, grünem Spargel und geräuchertem Lachs",
           "price": "17.50",
-          "allergens": ["A", "B", "D", "G", "N"]
+          "allergens": ["A", "G", "1", "2"]
         }
       ]
     },
@@ -73,28 +67,35 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Trance di filetto di agnello ai ferri con rucola e Grana Padano",
-          "description": "Gegrillte Lammfiletscheiben auf Rucola-Bett und Granakäseraspeln, mit Beilage",
-          "price": "35.00",
-          "allergens": ["G", "S"]
+          "name": "Piccata al limone",
+          "description": "Kalbsschnitzel an Zitronensoße, mit Beilage",
+          "price": "32.00",
+          "allergens": ["A", "G"]
         },
         {
-          "name": "Dalla foresta Sveva: Coniglio alla cacciatora maniera",
-          "description": "Kaninchenstückchen aus der Pfanne nach Jäger Art, dazu Beilage",
-          "price": "29.50",
-          "allergens": ["A", "G", "I"]
+          "name": "Guancia di vitello al forno servita con spinaci e patate al rosmarino",
+          "description": "„Kalbsbäckle“ aus dem Ofen, mit Rosmarinkartoffeln und Spinat serviert",
+          "price": "32.00",
+          "allergens": ["I", "S"]
         },
         {
-          "name": "Dal mare Mediterraneo: Rana pescatrice in crema di limone e menta",
-          "description": "Seeteufelmedaillons an Zitronen-Minze-Creme, dazu Beilage",
-          "price": "35.00",
-          "allergens": ["D"]
+          "name": "Tomawak alla griglia adagiato sulla rucola e scaglie di grana",
+          "description": "Dry Aged Tomawak vom Lavastein-Grill, serviert mit Rucola und Granakäseraspeln (pro Person 40,–)",
+          "price": "80.00",
+          "allergens": ["G"],
+          "volume": "ca. 1000 g / 2 Personen"
         },
         {
-          "name": "Filetti di branzino alla griglia lavica",
-          "description": "Wolfsbarschfilets vom Lavastein-Grill, mit Beilage",
-          "price": "30.00",
-          "allergens": ["D"]
+          "name": "Freschissimo calamaro grigliato su pietra lavica",
+          "description": "Calamaro vom Lavastein-Grill auf Rucolasalat und Kirschtomaten, mit Beilage",
+          "price": "27.50",
+          "allergens": ["D", "N"]
+        },
+        {
+          "name": "Trancia di spigola selvatica al limone",
+          "description": "Frisches Loup-de-Mer-Filet (Wildfang) in Zitronensoße, dazu Beilage",
+          "price": "33.00",
+          "allergens": ["D", "I"]
         }
       ]
     },
@@ -104,16 +105,16 @@
       "subtitle": "Desserts",
       "items": [
         {
-          "name": "Soufflé al cioccolato con gelato alla vaniglia",
-          "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
-          "price": "8.50",
+          "name": "Gelato al pistacchio con mandorle tritate",
+          "description": "Pistazieneis umhüllt mit gehackten Mandeln",
+          "price": "9.00",
           "allergens": ["A", "C", "G", "H"],
           "diet": ["vegetarian"]
         },
         {
-          "name": "Gelato alla nocciola con mandorle tritate",
-          "description": "Haselnusseis umhüllt mit gehackten Mandeln",
-          "price": "9.00",
+          "name": "Soufflé al cioccolato con gelato alla vaniglia",
+          "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
+          "price": "8.50",
           "allergens": ["A", "C", "G", "H"],
           "diet": ["vegetarian"]
         }
