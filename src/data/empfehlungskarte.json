@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-05-29",
+  "updated": "2026-06-04",
   "categories": [
     {
       "id": "antipasti",
@@ -9,10 +9,10 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Carpaccio di bresaola con radicchio e scaglie pecorino",
-          "description": "Luftgetrockneter Rinderschinken von Black Angus, Radicchiosalat und Pecorinokäse",
+          "name": "Zuppa di fregola sarda con il polpo fresco",
+          "description": "Kügelchen-Nudeln in einer Tomatensoße mit Oktopusstücken",
           "price": "16.00",
-          "allergens": ["G", "1", "2", "5"]
+          "allergens": ["A", "G", "I", "N"]
         },
         {
           "name": "Insalata Platacese",
@@ -22,9 +22,9 @@
           "diet": ["vegetarian"]
         },
         {
-          "name": "Carpaccio di tonno marinato agli agrumi calabresi su letto di zucchini",
-          "description": "Mariniertes Thunfischcarpaccio mit Zitrusvinaigrette auf Zucchinibett",
-          "price": "16.50",
+          "name": "Carpaccio di spada marinato agli agrumi calabresi su letto di zucchini",
+          "description": "Mariniertes Schwertfischcarpaccio mit Zitrusvinaigrette auf Zucchinibett",
+          "price": "16.00",
           "allergens": ["D", "H"]
         }
       ]
@@ -35,23 +35,22 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Mezzelune ripiene con fichi e noci in sughetto di gorgonzola",
-          "description": "Nudeln mit Feigen-Walnuss-Füllung an einer Gorgonzolasoße",
+          "name": "Rodoni con ripieno di asparagi in sughetto di pomodori verdi",
+          "description": "Nudeln mit Spargelfüllung an einer gelben Kirschtomatensoße",
           "price": "18.50",
-          "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
-          "diet": ["vegetarian"]
+          "allergens": ["A", "B", "D", "F", "G", "H", "I", "J", "N", "S"]
         },
         {
-          "name": "Pappardelle all'Amatriciana con raspellata di formaggio bovino al vino rosso",
-          "description": "Breite Bandnudeln mit Guanciale an Tomatensoße und geraspeltem, im Rotwein gereiftem Kuhkäse",
+          "name": "Strozzapreti con coda di vitello alla maniera „Vaccinara“",
+          "description": "Priesterwürger in Tomatensoße mit Ochsenschwanz (altes römisches Rezept)",
           "price": "19.50",
           "allergens": ["A", "C", "I"]
         },
         {
-          "name": "Linguine con i moscardini freschi",
-          "description": "Hausgemachte Linguine mit Baby-Oktopoden in einer Tomatensoße",
+          "name": "Linguine con il rombo e pomodorini gialli del Vesuvio",
+          "description": "Hausgemachte Linguine mit Steinbuttstückchen und gelben und roten Kirschtomaten",
           "price": "24.00",
-          "allergens": ["A", "D", "I", "N"]
+          "allergens": ["A", "D", "I"]
         },
         {
           "name": "Pizza bianca alla salsa olandese con il salmone affumicato e asparagi verdi",
@@ -73,27 +72,14 @@
           "allergens": ["A", "G"]
         },
         {
-          "name": "Guancia di vitello al forno servita con spinaci e patate al rosmarino",
-          "description": "„Kalbsbäckle“ aus dem Ofen, mit Rosmarinkartoffeln und Spinat serviert",
-          "price": "32.00",
-          "allergens": ["I", "S"]
+          "name": "Duetto di salmone e tonno alla plancia servito su letto di rucola e pomodorini",
+          "description": "Lachs- und Thunfischsteak auf Rucolasalat und Kirschtomaten, mit Beilage",
+          "price": "36.50",
+          "allergens": ["D"]
         },
         {
-          "name": "Tomawak alla griglia adagiato sulla rucola e scaglie di grana",
-          "description": "Dry Aged Tomawak vom Lavastein-Grill, serviert mit Rucola und Granakäseraspeln (pro Person 40,–)",
-          "price": "80.00",
-          "allergens": ["G"],
-          "volume": "ca. 1000 g / 2 Personen"
-        },
-        {
-          "name": "Freschissimo calamaro grigliato su pietra lavica",
-          "description": "Calamaro vom Lavastein-Grill auf Rucolasalat und Kirschtomaten, mit Beilage",
-          "price": "27.50",
-          "allergens": ["D", "N"]
-        },
-        {
-          "name": "Trancia di spigola selvatica al limone",
-          "description": "Frisches Loup-de-Mer-Filet (Wildfang) in Zitronensoße, dazu Beilage",
+          "name": "Filetti di orata selvatica al limone",
+          "description": "Frische Goldbrassefilets in Zitronensoße, dazu Beilage",
           "price": "33.00",
           "allergens": ["D", "I"]
         }
