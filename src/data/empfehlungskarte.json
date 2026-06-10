@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-06-04",
+  "updated": "2026-06-10",
   "categories": [
     {
       "id": "antipasti",
@@ -9,21 +9,22 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Zuppa di fregola sarda con il polpo fresco",
-          "description": "Kügelchen-Nudeln in einer Tomatensoße mit Oktopusstücken",
-          "price": "16.00",
-          "allergens": ["A", "G", "I", "N"]
+          "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
+          "description": "Frittierte Auberginentürmchen mit geräuchertem Scamorzakäse und Mozzarella",
+          "price": "15.00",
+          "allergens": ["A", "G", "2", "3", "5"],
+          "diet": ["vegetarian"]
         },
         {
           "name": "Insalata Platacese",
-          "description": "Gegrillte marinierte Paprika mit frischen Kirschtomaten, Knoblauch, Minze und Frühlingszwiebeln auf Burratakäse-Bett",
+          "description": "Gegrillte marinierte Paprika mit frischen Kirschtomaten, Knoblauch, Minze und Frühlingszwiebeln auf Burratakäse",
           "price": "15.50",
           "allergens": ["G", "2", "3"],
           "diet": ["vegetarian"]
         },
         {
-          "name": "Carpaccio di spada marinato agli agrumi calabresi su letto di zucchini",
-          "description": "Mariniertes Schwertfischcarpaccio mit Zitrusvinaigrette auf Zucchinibett",
+          "name": "Carpaccio di arance e spada marinato agli agrumi calabresi su letto di finocchio",
+          "description": "Mariniertes Orangen-Schwertfischcarpaccio mit Zitrusvinaigrette auf Fenchelbett",
           "price": "16.00",
           "allergens": ["D", "H"]
         }
@@ -35,8 +36,8 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Rodoni con ripieno di asparagi in sughetto di pomodori verdi",
-          "description": "Nudeln mit Spargelfüllung an einer gelben Kirschtomatensoße",
+          "name": "Tortelacci ripieni al tartufo in cremetta di Grana Padano",
+          "description": "Nudeln mit Trüffelfüllung an Granakäse-Creme",
           "price": "18.50",
           "allergens": ["A", "B", "D", "F", "G", "H", "I", "J", "N", "S"]
         },
@@ -47,16 +48,16 @@
           "allergens": ["A", "C", "I"]
         },
         {
-          "name": "Linguine con il rombo e pomodorini gialli del Vesuvio",
-          "description": "Hausgemachte Linguine mit Steinbuttstückchen und gelben und roten Kirschtomaten",
+          "name": "Linguine con i cannolicchi ed i gallinacci",
+          "description": "Hausgemachte Linguine mit Schwertmuscheln und Pfifferlingen",
           "price": "24.00",
-          "allergens": ["A", "D", "I"]
+          "allergens": ["A", "D", "I", "N"]
         },
         {
-          "name": "Pizza bianca alla salsa olandese con il salmone affumicato e asparagi verdi",
-          "description": "Pizza (weiße Basis) mit Hollandaise-Creme, grünem Spargel und geräuchertem Lachs",
+          "name": "Pizza con la porchetta e patate al rosmarino",
+          "description": "Pizza (weiße Basis) mit Rosmarinkartoffeln und Scheiben vom Spanferkel",
           "price": "17.50",
-          "allergens": ["A", "G", "1", "2"]
+          "allergens": ["A", "G", "H", "3"]
         }
       ]
     },
@@ -66,20 +67,33 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Piccata al limone",
-          "description": "Kalbsschnitzel an Zitronensoße, mit Beilage",
-          "price": "32.00",
-          "allergens": ["A", "G"]
+          "name": "Tomawak al forno",
+          "description": "Dry Aged Tomawak (ca. 1400 g für 2–3 Personen) aus dem Ofen, dazu Beilage — 40,– pro Person",
+          "price": "90.00",
+          "allergens": ["G"],
+          "volume": "ca. 1400 g / 2–3 Personen"
         },
         {
-          "name": "Duetto di salmone e tonno alla plancia servito su letto di rucola e pomodorini",
-          "description": "Lachs- und Thunfischsteak auf Rucolasalat und Kirschtomaten, mit Beilage",
+          "name": "Tagliata di Rib-Eye marinata nel Whiskey",
+          "description": "Gegrillte Rib-Eye-Scheiben in Whiskey mariniert, auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
           "price": "36.50",
-          "allergens": ["D"]
+          "allergens": ["G", "S"]
         },
         {
-          "name": "Filetti di orata selvatica al limone",
-          "description": "Frische Goldbrassefilets in Zitronensoße, dazu Beilage",
+          "name": "Guancia di vitello al forno servita con patate al rosmarino",
+          "description": "„Kalbsbäckle“ aus dem Ofen, mit Rosmarinkartoffeln serviert",
+          "price": "32.00",
+          "allergens": ["I", "S"]
+        },
+        {
+          "name": "Trance di tonno alla plancia",
+          "description": "Frisches Thunfischsteak vom Lavastein-Grill, dazu Beilage",
+          "price": "35.00",
+          "allergens": ["D", "I"]
+        },
+        {
+          "name": "Filetti di rombo in padella con pomodorini e menta",
+          "description": "Frische Steinbuttfilets aus der Pfanne mit Kirschtomaten und Minze, dazu Beilage",
           "price": "33.00",
           "allergens": ["D", "I"]
         }
