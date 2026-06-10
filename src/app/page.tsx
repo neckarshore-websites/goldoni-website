@@ -10,12 +10,20 @@ import { SundayLunchBanner } from "@/components/SundayLunchBanner";
 import { FAQS } from "@/data/faqs";
 import { faqJsonLd } from "@/lib/structured-data";
 
+/**
+ * ISR: regenerate the home page at most every 6h. The page content is
+ * otherwise static; this exists so the temporary SundayLunchBanner can
+ * auto-expire (its date check re-evaluates on each regeneration) without a
+ * manual redeploy. Can revert to fully static once the banner is gone.
+ */
+export const revalidate = 21600;
+
 export default function Home() {
   return (
     <main>
       <StructuredData data={faqJsonLd(FAQS)} />
       {/* Sunday-lunch announcement — temporary strip, sits above the
-          delivery banner. Remove after ~12 July 2026 (see component). */}
+          delivery banner. Auto-expires after 31 July 2026 (see component). */}
       <SundayLunchBanner />
       {/* Delivery banner — first impression, points to Wolt + Uber Eats */}
       <DeliveryBanner />

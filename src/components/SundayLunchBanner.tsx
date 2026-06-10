@@ -12,12 +12,34 @@
  * Colours are hardcoded (mode-independent): the banner stays white in dark
  * mode too, so the announcement always stands out.
  *
- * TEMPORARY: runs ~4 weeks. Remove (or move to the next announcement) after
- * approx. 12 July 2026 unless the owner extends it.
+ * AUTO-EXPIRY: the banner shows through the end of 31 July 2026
+ * (Europe/Berlin) and then hides itself — no manual removal or redeploy
+ * needed. The home page is ISR (`export const revalidate` in app/page.tsx),
+ * so on the first regeneration after the cutoff the date check below returns
+ * null and the strip disappears. To extend it, bump BANNER_EXPIRES_AT.
  *
  * Copy variant: V3 — "Herzlich & italienisch".
  */
+
+/**
+ * Cutoff: end of 31 July 2026 in Europe/Berlin (CEST = UTC+2), i.e. midnight
+ * into 1 August. A fixed timestamp.
+ */
+const BANNER_EXPIRES_AT = new Date("2026-08-01T00:00:00+02:00").getTime();
+
+/**
+ * Reading the clock lives here, outside the component body, so the Server
+ * Component stays pure (react-hooks/purity). The result is decided at build /
+ * ISR-regeneration time — the home page sets `revalidate` — and is never
+ * re-evaluated on the client.
+ */
+function bannerHasExpired(): boolean {
+  return Date.now() >= BANNER_EXPIRES_AT;
+}
+
 export function SundayLunchBanner() {
+  if (bannerHasExpired()) return null;
+
   return (
     <section
       style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #EAE0C5" }}
