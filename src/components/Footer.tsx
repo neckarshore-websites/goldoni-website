@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 import { SpotifyLink } from "@/components/SpotifyLink";
@@ -64,28 +65,33 @@ export function Footer() {
               >
                 Öffnungszeiten
               </h3>
-              <ul style={{ color: "var(--color-noir-text)" }}>
+              {/* Day → times as a 2-column grid: days in an auto-width
+                  column, time windows stacked in the second column. A day
+                  with several windows (Sunday: lunch + dinner) keeps them
+                  aligned under each other instead of overflowing the narrow
+                  desktop footer column. <dl> is the semantically correct
+                  shape for opening hours (term → description). Times split
+                  on " & " from site.ts; each window is unbreakable. */}
+              <dl
+                className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1"
+                style={{ color: "var(--color-noir-text)" }}
+              >
                 {SITE.hours.map((row) => {
-                  // A day-group may hold several windows (lunch & dinner),
-                  // joined by " & " in site.ts. Keep each window unbreakable
-                  // so a long row (Sunday) wraps between windows, never
-                  // mid-time.
                   const windows = row.time.split("&").map((w) => w.trim());
                   return (
-                    <li key={row.days}>
-                      {row.days}{" "}
-                      <span style={{ color: "var(--color-noir-text-muted)" }}>
-                        {windows.map((w, i) => (
-                          <span key={w} className="whitespace-nowrap">
-                            {i === 0 ? "· " : " & "}
+                    <Fragment key={row.days}>
+                      <dt className="whitespace-nowrap">{row.days}</dt>
+                      <dd style={{ color: "var(--color-noir-text-muted)" }}>
+                        {windows.map((w) => (
+                          <span key={w} className="block whitespace-nowrap">
                             {w}
                           </span>
                         ))}
-                      </span>
-                    </li>
+                      </dd>
+                    </Fragment>
                   );
                 })}
-              </ul>
+              </dl>
               {/* Feiertags-Hinweis — aktuelle Zeiten immer auf Google Maps */}
               <p
                 className="mt-3 text-sm leading-snug"
