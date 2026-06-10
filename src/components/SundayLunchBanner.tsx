@@ -10,7 +10,7 @@
  * TEMPORARY: runs ~4 weeks. Remove (or move to the next announcement) after
  * approx. 12 July 2026 unless the owner extends it.
  *
- * Copy variant: V1 — "Warm & familiär".
+ * Copy variant: V3 — "Herzlich & italienisch".
  */
 export function SundayLunchBanner() {
   return (
@@ -32,10 +32,12 @@ export function SundayLunchBanner() {
           className="text-sm sm:text-base"
           style={{ color: "var(--color-on-marinara)" }}
         >
-          <strong className="font-medium">Unser Sonntags-Mittagstisch.</strong>{" "}
-          Ab dem 14. Juni haben wir jeden Sonntag auch von 11:30 bis 14:30 Uhr
-          geöffnet &mdash; kommen Sie mit der ganzen Familie auf frische
-          italienische Küche vorbei.
+          <strong className="font-medium">
+            Buon pranzo della domenica!
+          </strong>{" "}
+          Ab dem 14. Juni kochen wir jeden Sonntag zusätzlich von 11:30 bis
+          14:30 Uhr. Ob nach dem Kirchgang oder dem Spaziergang &mdash; bei uns
+          wartet ein gedeckter Tisch auf Sie und Ihre Familie.
         </p>
       </div>
     </section>
