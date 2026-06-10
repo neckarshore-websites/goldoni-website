@@ -6,6 +6,7 @@ import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { PhoneIcon } from "@/components/PhoneIcon";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { StructuredData } from "@/components/StructuredData";
+import { SundayLunchBanner } from "@/components/SundayLunchBanner";
 import { FAQS } from "@/data/faqs";
 import { faqJsonLd } from "@/lib/structured-data";
 
@@ -13,6 +14,9 @@ export default function Home() {
   return (
     <main>
       <StructuredData data={faqJsonLd(FAQS)} />
+      {/* Sunday-lunch announcement — temporary strip, sits above the
+          delivery banner. Remove after ~12 July 2026 (see component). */}
+      <SundayLunchBanner />
       {/* Delivery banner — first impression, points to Wolt + Uber Eats */}
       <DeliveryBanner />
 
