@@ -65,14 +65,26 @@ export function Footer() {
                 Öffnungszeiten
               </h3>
               <ul style={{ color: "var(--color-noir-text)" }}>
-                {SITE.hours.map((row) => (
-                  <li key={row.days}>
-                    {row.days}{" "}
-                    <span style={{ color: "var(--color-noir-text-muted)" }}>
-                      · {row.time}
-                    </span>
-                  </li>
-                ))}
+                {SITE.hours.map((row) => {
+                  // A day-group may hold several windows (lunch & dinner),
+                  // joined by " & " in site.ts. Keep each window unbreakable
+                  // so a long row (Sunday) wraps between windows, never
+                  // mid-time.
+                  const windows = row.time.split("&").map((w) => w.trim());
+                  return (
+                    <li key={row.days}>
+                      {row.days}{" "}
+                      <span style={{ color: "var(--color-noir-text-muted)" }}>
+                        {windows.map((w, i) => (
+                          <span key={w} className="whitespace-nowrap">
+                            {i === 0 ? "· " : " & "}
+                            {w}
+                          </span>
+                        ))}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
               {/* Feiertags-Hinweis — aktuelle Zeiten immer auf Google Maps */}
               <p
