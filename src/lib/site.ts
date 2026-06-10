@@ -39,8 +39,14 @@ export const SITE = {
   },
 
   // Hours
+  // A day-group's `time` may hold several windows separated by " & "
+  // (e.g. Sunday lunch + dinner). Both consumers understand this:
+  // Footer renders the windows, structured-data emits one
+  // OpeningHoursSpecification per window. Keep times as "HH:MM - HH:MM"
+  // (ASCII hyphen) — the schema builder splits on it.
   hours: [
-    { days: "Mi - So", time: "18:00 - 22:30" },
+    { days: "Mi - Sa", time: "18:00 - 22:30" },
+    { days: "So", time: "11:30 - 14:30 & 18:00 - 22:30" },
     { days: "Mo + Di", time: "geschlossen" },
   ],
 

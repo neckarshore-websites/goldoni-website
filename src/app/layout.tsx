@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s — Ristorante Goldoni",
   },
   description:
-    "Italienisch verliebte Kueche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht. Reinsburgstrasse 151 · Mi-So 18:00-22:30.",
+    "Italienisch verliebte Kueche im Stuttgarter Westen. Neu: jeden Sonntag Mittagstisch 11:30-14:30 Uhr. Abends Mi-So ab 18:00. Reinsburgstrasse 151.",
   metadataBase: new URL("https://ristorante-goldoni.de"),
   openGraph: {
     title: "Ristorante Goldoni — Bella Italia in Stuttgart",
