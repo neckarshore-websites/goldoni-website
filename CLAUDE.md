@@ -3,7 +3,7 @@
 ## Repo Context
 
 - **Owner:** Linus (Frontend Artist)
-- **GitHub home:** `GmanFooFoo/goldoni-website` (User's personal GitHub — NOT the `neckarshore-ai` Org; this is a private barter project, not a Neckarshore AI product)
+- **GitHub home:** `neckarshore-websites/goldoni-website` (moved from the personal GitHub account 2026-06-11; still a private barter project, not a Neckarshore AI product)
 - **Domain:** `ristorante-goldoni.de` — currently WordPress/PHP 8.2 at the existing host. Migration path TBD in a dedicated session.
 - **Context:** Barter deal between the User and a friend who is part-owner of the restaurant. No cash — the User gets meals/pizza in exchange for maintaining the site. This affects priorities: no deadline pressure, but also no budget for fancy external tooling. Sustainable, low-maintenance, self-pflegbar is the goal.
 
@@ -15,10 +15,10 @@ Briefing-Phase ist seit Wochen vorbei — die ursprüngliche "kein Code, keine B
 
 ## Working Directory Rule
 
-This repo lives at `~/Developer/projects/personal/goldoni-website/`. Every Bash command must start with:
+This repo lives at `~/Developer/projects/neckarshore-websites/goldoni-website/`. Every Bash command must start with:
 
 ```bash
-cd ~/Developer/projects/personal/goldoni-website && ...
+cd ~/Developer/projects/neckarshore-websites/goldoni-website && ...
 ```
 
 The Claude Code harness resets `cwd` after every Bash call. Unscoped commands risk writing to the wrong repo (rauhut-website, neckarshore-website, omnopsis-backend, planning repos, Obsidian vault). Same discipline as `neckarshore-website` and `rauhut-website`. Non-negotiable.
