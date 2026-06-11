@@ -12,7 +12,7 @@ Wöchentlicher Workflow für das Update der Empfehlungskarte. Inhaber liefert PD
 Jeder Bash-Call beginnt mit:
 
 ```bash
-cd ~/Developer/projects/personal/goldoni-website && ...
+cd ~/Developer/projects/neckarshore-websites/goldoni-website && ...
 ```
 
 Der Harness resettet `cwd` nach jedem Call. Ohne expliziten `cd` schreibst du in das falsche Repo.
@@ -148,7 +148,7 @@ Schema (siehe `src/components/WeinSection.tsx`):
 ### 5. Build + Lint + Verify
 
 ```bash
-cd ~/Developer/projects/personal/goldoni-website && npm run build && npm run lint
+cd ~/Developer/projects/neckarshore-websites/goldoni-website && npm run build && npm run lint
 ```
 
 Beide müssen grün sein. TypeScript prüft Schema-Konformität gegen `Menu` und `Wine` Types — wenn der Build rot ist, hat das Schema-Drift.
@@ -156,7 +156,7 @@ Beide müssen grün sein. TypeScript prüft Schema-Konformität gegen `Menu` und
 Zusätzlich: prüfe dass alle referenzierten Allergen-Codes auch wirklich in der Legend aufgelöst werden:
 
 ```bash
-cd ~/Developer/projects/personal/goldoni-website && jq -r '.. | objects | select(.allergens?) | .allergens | .[]' src/data/empfehlungskarte.json | sort -u
+cd ~/Developer/projects/neckarshore-websites/goldoni-website && jq -r '.. | objects | select(.allergens?) | .allergens | .[]' src/data/empfehlungskarte.json | sort -u
 ```
 
 Jeder Code in der Output-Liste muss in `src/lib/codes.ts` (LMIV / ZZULV / HOUSE) definiert sein.
@@ -172,7 +172,7 @@ Wenn am gleichen Tag mehrere Iterationen: `-b`, `-c` Suffix.
 
 **Workflow:**
 ```bash
-cd ~/Developer/projects/personal/goldoni-website && \
+cd ~/Developer/projects/neckarshore-websites/goldoni-website && \
   git checkout main && git pull origin main && \
   git checkout -b linus/YYYY-MM-DD-empfehlungskarte-update
 ```
@@ -244,7 +244,7 @@ PR mit `gh pr create --base main` öffnen.
 ## Konsistenz-Check vor PR
 
 ```bash
-cd ~/Developer/projects/personal/goldoni-website && \
+cd ~/Developer/projects/neckarshore-websites/goldoni-website && \
   echo "--- Empfehlungskarte Kategorien ---" && \
   jq -r '.categories[] | "\(.id): \(.items | length) items"' src/data/empfehlungskarte.json && \
   echo "--- Weine Counts ---" && \
