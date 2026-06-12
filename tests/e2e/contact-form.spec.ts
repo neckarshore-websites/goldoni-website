@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { waitForTurnstileToken } from "./helpers";
 
 /**
  * /kontakt — ContactForm
@@ -41,6 +42,7 @@ test.describe("/kontakt — ContactForm", () => {
       "Playwright happy-path test — diese Nachricht erreicht den Inhaber nicht (dry-run).",
     );
 
+    await waitForTurnstileToken(page);
     await f.submit.click();
 
     await expect(
@@ -124,6 +126,7 @@ test.describe("/kontakt — ContactForm", () => {
     await f.email.fill("linus@example.com");
     await f.message.fill("length-cap test");
 
+    await waitForTurnstileToken(page);
     await f.submit.click();
 
     await expect(

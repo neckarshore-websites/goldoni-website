@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { waitForTurnstileToken } from "./helpers";
 
 /**
  * /feiern — FeiernForm
@@ -48,6 +49,7 @@ test.describe("/feiern — FeiernForm", () => {
     await f.preferredTime.fill("ab 19:00");
     await f.message.fill("Playwright happy-path Feiern.");
 
+    await waitForTurnstileToken(page);
     await f.submit.click();
 
     await expect(
