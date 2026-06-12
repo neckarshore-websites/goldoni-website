@@ -5,6 +5,7 @@ import type SMTPTransport from "nodemailer/lib/smtp-transport";
 import { LEGAL } from "@/lib/legal";
 import { buildHtmlMail, buildTextMail } from "@/lib/email-html";
 import { occasionLabel } from "@/lib/occasions";
+import { CAPTCHA_FORM_FIELD, verifyCaptchaToken } from "@/lib/captcha/verify";
 import type {
   InquiryFieldValues,
   InquiryState,
@@ -210,6 +211,24 @@ export async function sendInquiry(
       status: "error",
       message: "Bitte Eingaben prüfen.",
       fieldErrors,
+      values: echoValues,
+    };
+  }
+
+  // ----- Cloudflare Turnstile (Spam-Schutz) ------------------------
+  // Nach der Feld-Validierung, vor dem Versand: ein gültiges Token wird nur
+  // dann "verbraucht", wenn die Anfrage sonst vollständig ist. Graceful wenn
+  // unkonfiguriert (Flag aus → ok:true), fail-closed in Production wenn
+  // aktiviert + Secret fehlt. Spiegelbild des Client-Widgets
+  // (components/forms/Turnstile.tsx).
+  const captcha = await verifyCaptchaToken(
+    formData.get(CAPTCHA_FORM_FIELD) as string | null,
+  );
+  if (!captcha.ok) {
+    return {
+      status: "error",
+      message:
+        "Spam-Schutz konnte nicht bestätigt werden. Bitte warten Sie einen Moment, bis die Prüfung abgeschlossen ist, und senden Sie dann erneut.",
       values: echoValues,
     };
   }
