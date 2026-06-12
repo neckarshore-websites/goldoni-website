@@ -31,9 +31,22 @@ function toImageUrl(target: string): string {
   return target.replace(/^public/, "");
 }
 
-export function AssetCard({ asset }: { asset: AssetEntry }) {
+export function AssetCard({
+  asset,
+  exists = true,
+}: {
+  asset: AssetEntry;
+  /**
+   * Whether the target file is present on disk (computed at build time in the
+   * server component). When false, we render the "noch kein Bild" placeholder
+   * directly and never emit an <img src>, so a not-yet-generated asset cannot
+   * produce a 404 request (caught by the cross-site link-crawler, 2026-06-12).
+   */
+  exists?: boolean;
+}) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [imgError, setImgError] = useState(false);
+  // Known-missing files start in the placeholder state → no <img> request.
+  const [imgError, setImgError] = useState(!exists);
   const imageUrl = toImageUrl(asset.target);
   const closeRef = useRef<HTMLButtonElement>(null);
 
