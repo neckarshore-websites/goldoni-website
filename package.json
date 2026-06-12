@@ -8,6 +8,7 @@
     "start": "next start -p 3002",
     "lint": "eslint",
     "test:e2e": "playwright test",
+    "test:e2e:ci": "playwright test --grep-invert @external",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:install": "playwright install chromium",
     "lighthouse": "node scripts/lighthouse.mjs",

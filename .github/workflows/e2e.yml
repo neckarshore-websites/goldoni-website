@@ -1,0 +1,65 @@
+name: E2E (Playwright)
+
+# Wires the local Playwright suite into CI so it gates every PR + push to main.
+# Until now the inquiry-form E2E suite (tests/e2e/) ran local-only and blocked
+# no merge — this is the structural "tests-before-features" gate
+# (L-TEST-COVERAGE-PACKAGE item 1; ported from neckarshore PR #27).
+#
+# The dev server is managed by Playwright's `webServer` block in
+# playwright.config.ts (`npm run dev` on :3002, with SMTP_* cleared so the
+# inquiry action stays in its dry-run path) — no separate build/start step.
+# The config sets workers=1 + retries=2 under CI for shared-runner stability.
+#
+# Uses `test:e2e:ci` = `playwright test --grep-invert @external`. Goldoni's
+# suite has no @external-tagged tests today (the contact/feiern specs only
+# drive local form UX), but the flag keeps the family CI contract identical:
+# the gate runs only deterministic tests of our own code, never third-party
+# hosts that bot-block datacenter IPs. External-URL liveness, if ever added,
+# rides the link-crawler cron — never this gate.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  # Cancel superseded PR runs; let every push-to-main run complete (each main
+  # commit stays gated).
+  group: e2e-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  e2e:
+    name: Playwright E2E
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browser (chromium)
+        run: npx playwright install --with-deps chromium
+
+      - name: Run E2E tests (excludes @external)
+        run: npm run test:e2e:ci
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
