@@ -147,8 +147,10 @@ export const LEGAL = {
    *
    * 2026-04-29: USt-IdNr ergänzt (PR #25), E-Mail-Versand-Abschnitt von
    * Resend auf DomainFactory-SMTP umgestellt (PR-30).
+   * 2026-06-12: Cloudflare Turnstile als Formular-Spam-Schutz ergänzt
+   * (US-Auftragsverarbeiter, §4 Datenschutz).
    */
-  lastUpdated: "2026-04-29",
+  lastUpdated: "2026-06-12",
 } as const;
 
 export type LegalConfig = typeof LEGAL;

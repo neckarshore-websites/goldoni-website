@@ -214,10 +214,44 @@ export default function DatenschutzPage() {
               Pflichten nach §§ 147 AO, 257 HGB) bleiben unberührt.
             </p>
             <p className="mt-3">
-              <strong>Spam-Schutz:</strong> Die Formulare nutzen ein
+              <strong>Spam-Schutz (Honeypot):</strong> Die Formulare nutzen ein
               unsichtbares Honeypot-Feld zur automatisierten Erkennung von
               Bot-Anfragen. Es werden hierbei keine zusätzlichen
               personenbezogenen Daten erhoben.
+            </p>
+            <p className="mt-3">
+              <strong>Spam-Schutz (Cloudflare Turnstile):</strong> Zusätzlich
+              setzen wir auf beiden Formularseiten (Kontakt und Feiern-Anfrage){" "}
+              <strong>Cloudflare Turnstile</strong> ein, einen Dienst der
+              Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107,
+              USA. Beim Aufruf eines Formulars lädt ein Skript von Cloudflare,
+              das im Hintergrund prüft, ob die Eingabe von einem Menschen stammt.
+              Dabei verarbeitet Cloudflare technische Daten Ihres Browsers
+              (u.&nbsp;a. IP-Adresse, Browser-Eigenschaften) sowie das
+              Prüf-Ergebnis (einen Token). Turnstile arbeitet{" "}
+              <strong>ohne Cookies</strong> und ohne Cross-Site-Tracking; die
+              Daten werden nicht für Werbezwecke verwendet.
+            </p>
+            <p className="mt-3">
+              <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO
+              (berechtigtes Interesse an der Abwehr von Spam und missbräuchlichen
+              Formular-Einsendungen). Cloudflare agiert als Auftragsverarbeiter
+              nach Art. 28 DSGVO.
+            </p>
+            <p className="mt-3">
+              <strong>Drittlandübermittlung:</strong> Cloudflare ist ein
+              US-Anbieter; eine Übermittlung in die USA kann stattfinden.
+              Cloudflare stellt geeignete Garantien nach Art. 46 DSGVO bereit
+              (Standardvertragsklauseln). Datenschutzhinweise:{" "}
+              <a
+                href="https://www.cloudflare.com/privacypolicy/"
+                className="underline"
+                style={{ color: "var(--color-accent)" }}
+                rel="nofollow noopener"
+                target="_blank"
+              >
+                cloudflare.com/privacypolicy
+              </a>
             </p>
           </Section>
 
