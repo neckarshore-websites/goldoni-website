@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import { sendInquiry } from "@/app/actions/inquiry";
 import { INQUIRY_INITIAL_STATE } from "@/app/actions/inquiry-state";
 import { FormField, Honeypot } from "@/components/forms/FormField";
+import { Turnstile } from "@/components/forms/Turnstile";
 import { OCCASIONS } from "@/lib/occasions";
 
 /**
@@ -134,6 +135,8 @@ export function FeiernForm() {
         defaultValue={state.values?.message}
         error={state.fieldErrors?.message}
       />
+
+      <Turnstile />
 
       {state.status === "error" && state.message ? (
         <p

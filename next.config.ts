@@ -68,18 +68,24 @@ const nextConfig: NextConfig = {
    * needs maintenance as the JSON-LD payload changes — both bad
    * cost/benefit ratios for a static restaurant site.
    *
-   * If a future change adds external embeds (Google Maps iframe,
-   * Wolt SDK, reCAPTCHA, etc.) the connect-src / frame-src /
-   * script-src rules need extending here.
+   * Cloudflare Turnstile (Spam-Schutz der Formulare, dormant bis zur
+   * Aktivierung) ist unten verdrahtet: challenges.cloudflare.com in
+   * script-src + connect-src + frame-src. If a future change adds further
+   * external embeds (Google Maps iframe, Wolt SDK, etc.) extend the same
+   * rules here.
    */
   async headers() {
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
+      // Cloudflare Turnstile: das Widget-Script lädt von challenges.cloudflare.com.
+      "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob:",
       "font-src 'self'",
-      "connect-src 'self'",
+      // Turnstile siteverify + Challenge-Fetches gegen challenges.cloudflare.com.
+      "connect-src 'self' https://challenges.cloudflare.com",
+      // Turnstile rendert die Challenge in einem iframe von challenges.cloudflare.com.
+      "frame-src https://challenges.cloudflare.com",
       "form-action 'self'",
       "frame-ancestors 'none'",
       "base-uri 'self'",
