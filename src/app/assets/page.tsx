@@ -1,6 +1,22 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
 import { AssetCard } from "@/components/AssetCard";
 import type { AssetEntry } from "@/components/AssetCard";
+
+/**
+ * Does the asset's target file exist on disk? Evaluated at build time (this is
+ * a server component). A spec'd-but-not-yet-generated asset returns false, so
+ * AssetCard renders the placeholder instead of an <img src> that would 404 —
+ * keeping the internal /assets page off the cross-site link-crawler's report.
+ */
+function targetExists(target: string): boolean {
+  try {
+    return fs.existsSync(path.join(process.cwd(), target));
+  } catch {
+    return false;
+  }
+}
 
 export const metadata: Metadata = {
   title: "Assets — Ristorante Goldoni (intern)",
@@ -282,7 +298,9 @@ export default function AssetsPage() {
               {group.ids.map((id) => {
                 const asset = byId[id];
                 if (!asset) return null;
-                return <AssetCard key={id} asset={asset} />;
+                return (
+                  <AssetCard key={id} asset={asset} exists={targetExists(asset.target)} />
+                );
               })}
             </div>
           </section>
