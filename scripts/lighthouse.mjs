@@ -43,6 +43,13 @@
  *     70 still catches a genuine ~12-point regression (priority-drop, heavy
  *     third-party tag, image-format reversal would each cost 15-20 points).
  *     See docs/perf/lcp-mobile-4g-investigation.md for full datapoint table.
+ *   - Desktop performance lowered 95 -> 80 on 2026-06-13 (cross-site family
+ *     calibration, D-LIN-27-2 / Codify-Brief #458 "anchor below worst-observed").
+ *     Same TBT-variance class as Mobile 4G: the Desktop-95 hard gate false-red
+ *     on pure shared-runner TBT jitter and got admin-bypassed (PR #94). Observed
+ *     goldoni Desktop {89, 90}; cross-site worst-normal across the family is 86
+ *     (neckarshore). 80 anchors below worst-observed; a real regression below 80
+ *     still hard-fails. Mobile 4G (70) stays the perf canary.
  */
 
 import { execFileSync, spawn } from "node:child_process";
@@ -62,7 +69,12 @@ const PROFILES = [
     gate: "hard",
     lhArgs: ["--preset=desktop"],
     thresholds: {
-      performance: 95,
+      // Desktop Perf relaxed 95 → 80 on 2026-06-13 (cross-site calibration,
+      // anchor below worst-observed). Same TBT-variance class as the Mobile-4G
+      // saga below: on a 1× CPU preset the composite score tracks shared-runner
+      // jitter, not the site. Observed goldoni Desktop {89, 90}; 80 sits below
+      // worst-observed. See "Thresholds history" above.
+      performance: 80,
       accessibility: 95,
       "best-practices": 95,
       seo: 95,
