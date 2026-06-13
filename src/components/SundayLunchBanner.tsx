@@ -37,8 +37,19 @@ function bannerHasExpired(): boolean {
   return Date.now() >= BANNER_EXPIRES_AT;
 }
 
+/**
+ * MASTER TOGGLE. Set to `false` to hide the banner immediately — independent of
+ * the auto-expiry above — for when the Sunday-lunch launch date shifts.
+ * Flip back to `true` to show it again (the BANNER_EXPIRES_AT cutoff still
+ * applies on top, so bump that date too if the new launch is after 31 Jul 2026).
+ *
+ * 2026-06-13: DISABLED — the Sunday-lunch start is being postponed, so the
+ * announcement must not be visible until the date firms up.
+ */
+const BANNER_ENABLED = false;
+
 export function SundayLunchBanner() {
-  if (bannerHasExpired()) return null;
+  if (!BANNER_ENABLED || bannerHasExpired()) return null;
 
   return (
     <section
