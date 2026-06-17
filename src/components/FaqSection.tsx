@@ -1,4 +1,6 @@
 import type { Faq } from "@/data/faqs";
+import { slugify } from "@/lib/search/index-data";
+import { FaqHashOpener } from "@/components/FaqHashOpener";
 
 /**
  * Renders a list of frequently-asked questions as accessible
@@ -20,6 +22,7 @@ export function FaqSection({ faqs }: { faqs: readonly Faq[] }) {
         color: "var(--color-text)",
       }}
     >
+      <FaqHashOpener />
       <div className="mx-auto max-w-3xl">
         <p
           className="mb-3 text-center text-xs uppercase tracking-[0.25em]"
@@ -45,7 +48,7 @@ export function FaqSection({ faqs }: { faqs: readonly Faq[] }) {
                 opacity: 1,
               }}
             >
-              <details className="group">
+              <details id={slugify(faq.question)} className="group scroll-mt-24">
                 <summary
                   className="flex cursor-pointer items-center justify-between gap-4 py-5 text-base font-medium leading-snug sm:text-lg"
                   style={{ color: "var(--color-text)" }}

@@ -4,6 +4,7 @@ import { NavLinks } from "@/components/NavLinks";
 import { PhoneIcon } from "@/components/PhoneIcon";
 import { SpotifyLink } from "@/components/SpotifyLink";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { SearchButton } from "@/components/search/SearchButton";
 
 /**
  * Site Header — theme-fixed noir (espresso/black) in both light and dark.
@@ -84,6 +85,9 @@ export function Header() {
             <PhoneIcon />
             <span>Reservieren</span>
           </a>
+
+          {/* Site search — Cmd/Ctrl+K or click. Noir styling matches the header. */}
+          <SearchButton />
 
           {/* Hausplaylist — monochrome by default, lights up Spotify-green on hover */}
           <SpotifyLink variant="icon" />

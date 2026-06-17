@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SearchProvider } from "@/components/search/SearchProvider";
 import { ScrollRestore } from "@/components/ScrollRestore";
 import { StructuredData } from "@/components/StructuredData";
 import { restaurantJsonLd } from "@/lib/structured-data";
@@ -106,9 +107,11 @@ export default function RootLayout({
             one node satisfies both rich-result categories. */}
         <StructuredData data={restaurantJsonLd()} />
         <ScrollRestore />
-        <Header />
-        {children}
-        <Footer />
+        <SearchProvider>
+          <Header />
+          {children}
+          <Footer />
+        </SearchProvider>
       </body>
     </html>
   );
