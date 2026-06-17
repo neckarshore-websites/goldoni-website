@@ -15,9 +15,12 @@
     "lighthouse:quick": "node scripts/lighthouse.mjs --quick",
     "lighthouse:desktop": "node scripts/lighthouse.mjs --quick --profile=desktop",
     "lighthouse:mobile": "node scripts/lighthouse.mjs --quick --profile=mobile-4g",
-    "lighthouse:slow": "node scripts/lighthouse.mjs --quick --profile=mobile-slow"
+    "lighthouse:slow": "node scripts/lighthouse.mjs --quick --profile=mobile-slow",
+    "typecheck": "tsc --noEmit",
+    "test:search:unit": "NODE_ENV=production tsx tests/search/index-data.test.ts"
   },
   "dependencies": {
+    "minisearch": "7.2.0",
     "next": "16.2.6",
     "nodemailer": "8.0.7",
     "react": "19.2.4",
@@ -34,6 +37,7 @@
     "eslint-config-next": "16.2.3",
     "lighthouse": "13.0.3",
     "tailwindcss": "^4",
+    "tsx": "4.22.4",
     "typescript": "^5"
   },
   "overrides": {
