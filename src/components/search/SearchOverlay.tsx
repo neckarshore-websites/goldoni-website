@@ -75,7 +75,16 @@ function SearchPalette({
 
   function go(hit: Hit) {
     onClose();
-    router.push(hit.url);
+    const [path, hash] = hit.url.split("#");
+    // Same-page hash: assigning location.hash fires a native `hashchange`
+    // (router.push uses pushState, which does not) — so the browser scrolls
+    // to the id and FaqHashOpener reveals the targeted <details>. Cross-page
+    // links (and plain pages) go through the router as usual.
+    if (hash && path === window.location.pathname) {
+      window.location.assign(`#${hash}`);
+    } else {
+      router.push(hit.url);
+    }
   }
 
   function onKeyDown(e: React.KeyboardEvent) {
