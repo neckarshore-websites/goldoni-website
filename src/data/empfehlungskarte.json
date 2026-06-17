@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-06-10",
+  "updated": "2026-06-17",
   "categories": [
     {
       "id": "antipasti",
@@ -23,8 +23,8 @@
           "diet": ["vegetarian"]
         },
         {
-          "name": "Carpaccio di arance e spada marinato agli agrumi calabresi su letto di finocchio",
-          "description": "Mariniertes Orangen-Schwertfischcarpaccio mit Zitrusvinaigrette auf Fenchelbett",
+          "name": "Fette di Parma su melone e bufala campana",
+          "description": "Vorspeise vom Parmaschinken auf Honigmelonenscheiben und Büffelmozzarella",
           "price": "16.00",
           "allergens": ["D", "H"]
         }
@@ -36,16 +36,16 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Tortelacci ripieni al tartufo in cremetta di Grana Padano",
-          "description": "Nudeln mit Trüffelfüllung an Granakäse-Creme",
+          "name": "Tortellacci ripieni al tartufo in crema di burro con corona da mozzarella",
+          "description": "Nudeln mit Trüffelfüllung an Buttersoße, gekrönt mit Mozzarella",
           "price": "18.50",
           "allergens": ["A", "B", "D", "F", "G", "H", "I", "J", "N", "S"]
         },
         {
-          "name": "Strozzapreti con coda di vitello alla maniera „Vaccinara“",
-          "description": "Priesterwürger in Tomatensoße mit Ochsenschwanz (altes römisches Rezept)",
-          "price": "19.50",
-          "allergens": ["A", "C", "I"]
+          "name": "Pappardelle con il pollo „Bio“ in sughetto di pomodoro",
+          "description": "Breite Bandnudeln mit „BIO“-Hähnchenunterkeulen in einer Tomatensoße",
+          "price": "19.00",
+          "allergens": ["A", "C"]
         },
         {
           "name": "Linguine con i cannolicchi ed i gallinacci",
@@ -67,35 +67,28 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Tomawak al forno",
-          "description": "Dry Aged Tomawak (ca. 1400 g für 2 Personen) aus dem Ofen, dazu Beilage — 45,– pro Person",
-          "price": "90.00",
-          "allergens": ["G"],
-          "volume": "ca. 1400 g / 2 Personen"
-        },
-        {
-          "name": "Tagliata di Rib-Eye marinata nel Whiskey",
-          "description": "Gegrillte Rib-Eye-Scheiben in Whiskey mariniert, auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
+          "name": "Tagliata di vitello alla maniera toscana",
+          "description": "Gegrillte Kalbsfiletscheiben auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
           "price": "36.50",
           "allergens": ["G", "S"]
         },
         {
-          "name": "Guancia di vitello al forno servita con patate al rosmarino",
-          "description": "„Kalbsbäckle“ aus dem Ofen, mit Rosmarinkartoffeln serviert",
-          "price": "32.00",
-          "allergens": ["I", "S"]
+          "name": "Fegato di vitello alla veneziana",
+          "description": "Kalbslebermedaillons nach venezianischer Art, dazu Beilage",
+          "price": "29.50",
+          "allergens": ["S"]
         },
         {
-          "name": "Trance di tonno alla plancia",
-          "description": "Frisches Thunfischsteak vom Lavastein-Grill, dazu Beilage",
-          "price": "35.00",
-          "allergens": ["D", "I"]
+          "name": "Filetti di orata reale ai ferri",
+          "description": "Frische Royal-Goldbrasse vom Lavastein-Grill, dazu Beilage",
+          "price": "30.00",
+          "allergens": ["D"]
         },
         {
-          "name": "Filetti di rombo in padella con pomodorini e menta",
-          "description": "Frische Steinbuttfilets aus der Pfanne mit Kirschtomaten und Minze, dazu Beilage",
-          "price": "33.00",
-          "allergens": ["D", "I"]
+          "name": "Medaglioni di rospo in padella alla provinciale",
+          "description": "Seeteufelmedaillons aus der Pfanne mit Oliven, Knoblauch, Sellerie und Petersilie, dazu Beilage",
+          "price": "36.00",
+          "allergens": ["A", "D", "I", "S"]
         }
       ]
     },
@@ -115,6 +108,13 @@
           "name": "Soufflé al cioccolato con gelato alla vaniglia",
           "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
           "price": "8.50",
+          "allergens": ["A", "C", "G", "H"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Mezza noce di cocco con sorbetto al cocco",
+          "description": "Halbe Kokosschale gefüllt mit einem sehr leckeren Kokossorbet-Eis",
+          "price": "9.00",
           "allergens": ["A", "C", "G", "H"],
           "diet": ["vegetarian"]
         }
