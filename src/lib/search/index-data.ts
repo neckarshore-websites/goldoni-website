@@ -54,7 +54,7 @@ const PAGES: { title: string; description: string; url: string }[] = [
   {
     title: "Über uns",
     description:
-      "Silvio führt das Ristorante Goldoni im Stuttgarter Westen — gehobene italienische Küche zu angemessenen Preisen, kuratierte Weine, ein denkmalgeschütztes Jugendstil-Haus mit über 120 Jahren Gastgeschichte.",
+      "Silvio Brunetti führt das Ristorante Goldoni im Stuttgarter Westen — gehobene italienische Küche zu angemessenen Preisen, kuratierte Weine, ein denkmalgeschütztes Jugendstil-Haus mit über 120 Jahren Gastgeschichte.",
     url: "/ueber-uns",
   },
   {

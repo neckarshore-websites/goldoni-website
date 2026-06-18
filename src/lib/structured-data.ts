@@ -261,7 +261,7 @@ export function personJsonLd(): Record<string, unknown> {
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": `${SITE.url}/ueber-uns#silvio`,
-    name: "Silvio",
+    name: "Silvio Brunetti",
     jobTitle: "Gastgeber",
     worksFor: { "@id": `${SITE.url}/#restaurant` },
     knowsAbout: ["Italienische Küche", "Gastfreundschaft", "Weinbegleitung"],
