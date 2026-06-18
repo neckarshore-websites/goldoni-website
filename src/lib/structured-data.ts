@@ -244,6 +244,31 @@ export function menuJsonLd(menu: Menu, path: string): Record<string, unknown> {
 }
 
 /**
+ * Person — the host/owner entity for the "Über uns" page (E-E-A-T).
+ *
+ * A named, real person who runs the restaurant is a strong
+ * experience/authoritativeness signal for both classic search and
+ * AI answer engines. `worksFor` links Silvio to the Restaurant node
+ * by @id (set on the root layout) without duplicating NAP data.
+ *
+ * Deliberately minimal + honest:
+ * - No `founder` — that would imply he founded Goldoni, which is not
+ *   established (the building's gastronomy heritage predates Goldoni).
+ * - No invented fields (birth date, awards, etc.).
+ */
+export function personJsonLd(): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${SITE.url}/ueber-uns#silvio`,
+    name: "Silvio",
+    jobTitle: "Gastgeber",
+    worksFor: { "@id": `${SITE.url}/#restaurant` },
+    knowsAbout: ["Italienische Küche", "Gastfreundschaft", "Weinbegleitung"],
+  };
+}
+
+/**
  * FAQPage — eligible for the FAQ rich result on Google. Helps the
  * site appear for question-shaped queries ("Wann hat Goldoni
  * geöffnet?", "Liefert Goldoni nach Hause?") in both classic SERPs
