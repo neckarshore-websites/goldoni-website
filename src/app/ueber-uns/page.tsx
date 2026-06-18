@@ -9,7 +9,7 @@ import { breadcrumbJsonLd, personJsonLd } from "@/lib/structured-data";
 export const metadata: Metadata = pageMetadata({
   title: "Über uns",
   description:
-    "Silvio, Schweizer mit italienischen Wurzeln, führt das Ristorante Goldoni im Stuttgarter Westen — gehobene italienische Küche zu angemessenen Preisen, im denkmalgeschützten Jugendstil-Haus von 1905/06.",
+    "Silvio Brunetti führt das Ristorante Goldoni im Stuttgarter Westen — italienische Gastlichkeit mit Herz, gehobene Küche zu angemessenen Preisen, im denkmalgeschützten Jugendstil-Haus von 1905/06.",
   path: "/ueber-uns",
   ogImage: {
     url: "/images/hero-goldoni-interior.webp",
@@ -73,11 +73,11 @@ export default function UeberUns() {
             style={{ color: "var(--color-text)" }}
           >
             <p>
-              Das Goldoni führt Silvio — Schweizer mit italienischen Wurzeln,
-              mit Herz und einem feinen Gespür für seine Gäste. Er kennt seine
-              Stammgäste mit Namen, hört zu und liest, was jemand gerade
-              braucht: einen ruhigen Tisch, eine Empfehlung oder einfach ein
-              offenes Ohr.
+              Das Goldoni führt Silvio Brunetti — Italiener mit Leib und Seele,
+              mit ganzem Herzen und voller Stolz. Diese Leidenschaft trägt das
+              Haus: Er kennt seine Stammgäste mit Namen, hört zu und liest, was
+              jemand gerade braucht — einen ruhigen Tisch, eine Empfehlung oder
+              einfach ein offenes Ohr.
             </p>
             <p>
               Seine Gastfreundschaft kommt ohne Aufhebens aus. Niemand wird
