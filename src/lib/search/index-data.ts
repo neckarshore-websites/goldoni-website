@@ -52,6 +52,12 @@ const PAGES: { title: string; description: string; url: string }[] = [
     url: "/feiern",
   },
   {
+    title: "Über uns",
+    description:
+      "Silvio führt das Ristorante Goldoni im Stuttgarter Westen — gehobene italienische Küche zu angemessenen Preisen, kuratierte Weine, ein denkmalgeschütztes Jugendstil-Haus mit über 120 Jahren Gastgeschichte.",
+    url: "/ueber-uns",
+  },
+  {
     title: "Kontakt",
     description:
       "Fragen, Sonderwünsche oder eine kurze Nachricht — schreiben Sie dem Ristorante Goldoni direkt. Adresse, Telefon, Öffnungszeiten.",

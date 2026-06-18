@@ -44,6 +44,15 @@ const NAV_LINKS: NavLink[] = [
     activeFg: "var(--color-blanc-bg)",
   },
   {
+    href: "/ueber-uns",
+    label: "Über uns",
+    // Lime/mustard — the only Tavola hue not yet spoken for by a nav
+    // pill, and bright enough to read on the always-dark espresso header.
+    // Espresso text gives AA contrast on the mustard fill.
+    activeBg: "var(--tavola-lime)",
+    activeFg: "var(--tavola-espresso)",
+  },
+  {
     href: "/kontakt",
     label: "Kontakt",
     // Parmigiano cream — the only "light" pill in the set, balances

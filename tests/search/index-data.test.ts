@@ -22,7 +22,7 @@ check("covers every content type", () => {
   }
 });
 check("page docs include the key routes", () => {
-  for (const url of ["/", "/menu", "/empfehlungen", "/feiern", "/kontakt", "/impressum", "/datenschutz"]) {
+  for (const url of ["/", "/menu", "/empfehlungen", "/feiern", "/ueber-uns", "/kontakt", "/impressum", "/datenschutz"]) {
     assert.ok(docs.find((d) => d.type === "page" && d.url === url), `missing page ${url}`);
   }
 });

@@ -88,11 +88,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Philosophie — Plutarch quote on a deep Marinara field. The
-          editorial colour block carries the brand: red is the dominant
-          colour of the restaurant interior (velvet wall, sugo, tomato),
-          and a full-bleed section makes it actually visible on the
-          homepage instead of cream-on-cream. */}
+      {/* Über uns teaser — on the deep Marinara field (red is the
+          dominant colour of the restaurant interior: velvet wall, sugo,
+          tomato). Replaces the former Plutarch "Philosophie" quote with
+          a real house story + link to the dedicated /ueber-uns page
+          (host story + 120-year building heritage). */}
       <section
         className="px-6 py-24 sm:px-12 sm:py-28"
         style={{
@@ -105,19 +105,26 @@ export default function Home() {
             className="mb-4 text-xs uppercase tracking-[0.25em]"
             style={{ color: "var(--color-on-marinara-muted)" }}
           >
-            Tischgespräche
+            Das Haus
           </p>
-          <h2 className="mb-8 text-3xl sm:text-4xl">Brot und Speisen</h2>
-          <blockquote className="font-display text-xl italic leading-relaxed sm:text-2xl">
-            «Der Mensch teilt nicht nur Leben und Heim mit anderen, sondern
-            auch Brot und Speisen.»
-          </blockquote>
-          <cite
-            className="mt-6 block text-sm not-italic"
-            style={{ color: "var(--color-on-marinara-muted)" }}
+          <h2 className="mb-6 text-3xl sm:text-4xl">
+            Seit über 120 Jahren ein Ort der Gastlichkeit
+          </h2>
+          <p className="mx-auto mb-8 max-w-xl leading-relaxed opacity-95">
+            Im denkmalgeschützten Jugendstil-Haus in der Reinsburgstraße führt
+            Silvio das Goldoni — gehobene italienische Küche zu angemessenen
+            Preisen und eine Gastfreundschaft, die ohne Aufhebens auskommt.
+          </p>
+          <Link
+            href="/ueber-uns"
+            className="inline-block rounded-md border-2 px-6 py-3 text-base font-medium transition-colors"
+            style={{
+              borderColor: "var(--color-on-marinara-muted)",
+              color: "var(--color-on-marinara)",
+            }}
           >
-            &mdash; Plutarch, Tischgespräche
-          </cite>
+            Mehr über uns →
+          </Link>
         </div>
       </section>
 
