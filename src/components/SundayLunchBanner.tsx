@@ -1,6 +1,6 @@
 /**
  * SundayLunchBanner — temporary announcement strip for the new Sunday
- * lunch service (Sundays 11:30–14:30, starting 14 June 2026).
+ * lunch service (Sundays 12:00–14:30, live as of 20 June 2026).
  *
  * Placement: top of the homepage, directly under the header and ABOVE the
  * cream DeliveryBanner.
@@ -43,10 +43,12 @@ function bannerHasExpired(): boolean {
  * Flip back to `true` to show it again (the BANNER_EXPIRES_AT cutoff still
  * applies on top, so bump that date too if the new launch is after 31 Jul 2026).
  *
- * 2026-06-13: DISABLED — the Sunday-lunch start is being postponed, so the
- * announcement must not be visible until the date firms up.
+ * 2026-06-13: DISABLED — the Sunday-lunch start was being postponed, so the
+ * announcement was hidden until the date firmed up.
+ * 2026-06-20: RE-ENABLED — Silvio confirmed Sunday lunch is live now
+ * (12:00–14:30, owner-changed from the earlier 11:30 start).
  */
-const BANNER_ENABLED = false;
+const BANNER_ENABLED = true;
 
 export function SundayLunchBanner() {
   if (!BANNER_ENABLED || bannerHasExpired()) return null;
@@ -71,10 +73,10 @@ export function SundayLunchBanner() {
             Buon pranzo della domenica!
           </span>
           <br />
-          Ab dem 14. Juni kochen wir{" "}
+          Ab sofort kochen wir{" "}
           <strong style={{ color: "#8E2800" }}>jeden Sonntag</strong>{" "}
           zusätzlich von{" "}
-          <strong style={{ color: "#8E2800" }}>11:30 bis 14:30 Uhr</strong>.{" "}
+          <strong style={{ color: "#8E2800" }}>12:00 bis 14:30 Uhr</strong>.{" "}
           Ob nach dem Kirchgang oder dem Spaziergang &mdash; bei uns wartet ein
           gedeckter Tisch auf Sie und Ihre Familie.
         </p>

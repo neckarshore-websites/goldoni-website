@@ -30,11 +30,11 @@ export const FAQS: readonly Faq[] = [
   {
     question: "Wann hat das Ristorante Goldoni geöffnet?",
     answer:
-      "Mittwoch bis Sonntag von 18:00 bis 22:30 Uhr. Sonntags zusätzlich Mittagstisch von 11:30 bis 14:30 Uhr. Montag und Dienstag haben wir geschlossen.",
+      "Mittwoch bis Sonntag von 18:00 bis 22:30 Uhr. Sonntags zusätzlich Mittagstisch von 12:00 bis 14:30 Uhr. Montag und Dienstag haben wir geschlossen.",
   },
   {
     question: "Wie kann ich einen Tisch reservieren?",
-    answer: `Am liebsten per Telefon unter ${SITE.phoneDisplay}. Wir nehmen Reservierungen während unserer Öffnungszeiten entgegen — Mi–So ab 18:00 Uhr und sonntags zum Mittagstisch (11:30–14:30 Uhr).`,
+    answer: `Am liebsten per Telefon unter ${SITE.phoneDisplay}. Wir nehmen Reservierungen während unserer Öffnungszeiten entgegen — Mi–So ab 18:00 Uhr und sonntags zum Mittagstisch (12:00–14:30 Uhr).`,
   },
   {
     question: "Bietet das Goldoni Lieferung an?",
