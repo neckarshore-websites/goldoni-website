@@ -64,7 +64,7 @@ function expandDays(days: string): string[] {
  * Closed days are skipped — schema.org represents closure by absence.
  *
  * A day-group may carry several windows separated by " & " (e.g. Sunday
- * lunch 11:30–14:30 plus dinner 18:00–22:30). Each window becomes its own
+ * lunch 12:00–14:30 plus dinner 18:00–22:30). Each window becomes its own
  * OpeningHoursSpecification — schema.org has no multi-interval shorthand,
  * so two specs over the same dayOfWeek is the correct representation.
  */

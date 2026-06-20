@@ -46,7 +46,7 @@ export const SITE = {
   // (ASCII hyphen) — the schema builder splits on it.
   hours: [
     { days: "Mi - Sa", time: "18:00 - 22:30" },
-    { days: "So", time: "11:30 - 14:30 & 18:00 - 22:30" },
+    { days: "So", time: "12:00 - 14:30 & 18:00 - 22:30" },
     { days: "Mo + Di", time: "geschlossen" },
   ],
 
