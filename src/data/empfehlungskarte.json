@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-06-17",
+  "updated": "2026-06-21",
   "categories": [
     {
       "id": "antipasti",
@@ -9,11 +9,10 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
-          "description": "Frittierte Auberginentürmchen mit geräuchertem Scamorzakäse und Mozzarella",
-          "price": "15.00",
-          "allergens": ["A", "G", "2", "3", "5"],
-          "diet": ["vegetarian"]
+          "name": "Carpaccio di bresaola con spinaci e scaglie di pecorino",
+          "description": "Luftgetrockneter Rinderschinken vom Black Angus, Babyspinat und Pecorinokäse",
+          "price": "16.00",
+          "allergens": ["G", "1", "2", "5"]
         },
         {
           "name": "Insalata Platacese",
@@ -23,9 +22,9 @@
           "diet": ["vegetarian"]
         },
         {
-          "name": "Fette di Parma su melone e bufala campana",
-          "description": "Vorspeise vom Parmaschinken auf Honigmelonenscheiben und Büffelmozzarella",
-          "price": "16.00",
+          "name": "Carpaccio di tonno marinato agli agrumi calabresi su cicoria rossa",
+          "description": "Mariniertes Thunfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
+          "price": "16.50",
           "allergens": ["D", "H"]
         }
       ]
@@ -36,10 +35,11 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Tortellacci ripieni al tartufo in crema di burro con corona da mozzarella",
-          "description": "Nudeln mit Trüffelfüllung an Buttersoße, gekrönt mit Mozzarella",
-          "price": "18.50",
-          "allergens": ["A", "B", "D", "F", "G", "H", "I", "J", "N", "S"]
+          "name": "Mezzelune ripiene con fichi e noci in cremetta di burro e pomodorini",
+          "description": "Nudeln mit Feigen-Walnuss-Füllung an Buttersoße und Kirschtomaten",
+          "price": "19.00",
+          "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
+          "diet": ["vegetarian"]
         },
         {
           "name": "Pappardelle con il pollo „Bio“ in sughetto di pomodoro",
@@ -48,16 +48,16 @@
           "allergens": ["A", "C"]
         },
         {
-          "name": "Linguine con i cannolicchi ed i gallinacci",
-          "description": "Hausgemachte Linguine mit Schwertmuscheln und Pfifferlingen",
+          "name": "Linguine con gamberone „Black Tiger“ e burrata",
+          "description": "Hausgemachte Linguine mit geschälter Riesengarnele und Burratakäse",
           "price": "24.00",
-          "allergens": ["A", "D", "I", "N"]
+          "allergens": ["A", "B", "D", "I"]
         },
         {
-          "name": "Pizza con la porchetta e patate al rosmarino",
-          "description": "Pizza (weiße Basis) mit Rosmarinkartoffeln und Scheiben vom Spanferkel",
+          "name": "Pizza con la crème fraîche e salmone affumicato su letto di zucchine",
+          "description": "Pizza mit geräuchertem Lachs, Zucchini und Crème Fraîche",
           "price": "17.50",
-          "allergens": ["A", "G", "H", "3"]
+          "allergens": ["A", "G", "1", "2"]
         }
       ]
     },
@@ -67,27 +67,27 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Tagliata di vitello alla maniera toscana",
-          "description": "Gegrillte Kalbsfiletscheiben auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
+          "name": "Piccata al limone",
+          "description": "Kalbsschnitzel an Zitronensoße, dazu Beilage",
+          "price": "31.50",
+          "allergens": ["A", "G"]
+        },
+        {
+          "name": "Tagliata di Rib-Eye marinata nel Whiskey",
+          "description": "Gegrillte Rib-Eye-Scheiben in Whiskey mariniert, auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
           "price": "36.50",
           "allergens": ["G", "S"]
         },
         {
-          "name": "Fegato di vitello alla veneziana",
-          "description": "Kalbslebermedaillons nach venezianischer Art, dazu Beilage",
-          "price": "29.50",
-          "allergens": ["S"]
-        },
-        {
-          "name": "Filetti di orata reale ai ferri",
-          "description": "Frische Royal-Goldbrasse vom Lavastein-Grill, dazu Beilage",
-          "price": "30.00",
+          "name": "Filetti di rombo freschissimo ai ferri",
+          "description": "Frische Steinbuttfilets vom Lavastein-Grill, dazu Beilage",
+          "price": "33.00",
           "allergens": ["D"]
         },
         {
           "name": "Medaglioni di rospo in padella alla provinciale",
           "description": "Seeteufelmedaillons aus der Pfanne mit Oliven, Knoblauch, Sellerie und Petersilie, dazu Beilage",
-          "price": "36.00",
+          "price": "34.00",
           "allergens": ["A", "D", "I", "S"]
         }
       ]
