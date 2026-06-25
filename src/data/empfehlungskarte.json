@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-06-21",
+  "updated": "2026-06-25",
   "categories": [
     {
       "id": "antipasti",
@@ -42,16 +42,16 @@
           "diet": ["vegetarian"]
         },
         {
-          "name": "Pappardelle con il pollo „Bio“ in sughetto di pomodoro",
-          "description": "Breite Bandnudeln mit „BIO“-Hähnchenunterkeulen in einer Tomatensoße",
-          "price": "19.00",
-          "allergens": ["A", "C"]
+          "name": "Strozzapreti alla maniera genovese",
+          "description": "Priesterwürger mit Kalbs-Rindfleisch-Zwiebel-Ragù (alte neapolitanische Küche)",
+          "price": "19.50",
+          "allergens": ["A", "C", "I"]
         },
         {
-          "name": "Linguine con gamberone „Black Tiger“ e burrata",
-          "description": "Hausgemachte Linguine mit geschälter Riesengarnele und Burratakäse",
+          "name": "Linguine con i tentacoli di calamari e funghi gallinacci",
+          "description": "Hausgemachte Linguine mit Calamarizöpfen und Pfifferlingen in einer Tomatensoße",
           "price": "24.00",
-          "allergens": ["A", "B", "D", "I"]
+          "allergens": ["A", "D", "I", "N"]
         },
         {
           "name": "Pizza con la crème fraîche e salmone affumicato su letto di zucchine",
@@ -79,16 +79,16 @@
           "allergens": ["G", "S"]
         },
         {
-          "name": "Filetti di rombo freschissimo ai ferri",
-          "description": "Frische Steinbuttfilets vom Lavastein-Grill, dazu Beilage",
-          "price": "33.00",
+          "name": "Filetti di orata reale ai ferri",
+          "description": "Frische Royal Goldbrasse vom Lavastein-Grill, dazu Beilage",
+          "price": "32.00",
           "allergens": ["D"]
         },
         {
-          "name": "Medaglioni di rospo in padella alla provinciale",
-          "description": "Seeteufelmedaillons aus der Pfanne mit Oliven, Knoblauch, Sellerie und Petersilie, dazu Beilage",
-          "price": "34.00",
-          "allergens": ["A", "D", "I", "S"]
+          "name": "Trance di tonno rosso alla placia su letto di pomodorini e rucola",
+          "description": "Gegrilltes Thunfischsteak auf Rucolabett und Kirschtomaten, dazu Beilage",
+          "price": "35.00",
+          "allergens": ["D"]
         }
       ]
     },

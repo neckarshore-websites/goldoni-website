@@ -1,6 +1,16 @@
 {
   "weiss": [
     {
+      "name": "Villa Angela",
+      "producer": "Velenosi",
+      "classification": "DOC",
+      "year": 2024,
+      "region": "Marken",
+      "grapes": "100 % Verdicchio di Jesi",
+      "priceBottle": "30,–",
+      "priceGlass": "8,50"
+    },
+    {
       "name": "Tasca d'Almerita Bianco",
       "producer": "Tasca d'Almerita",
       "classification": "DOC",
@@ -41,6 +51,16 @@
       "grapes": "Cuvée Sangiovese, Syrah, Cabernet, Merlot",
       "priceBottle": "40,–",
       "priceGlass": "12,50"
+    },
+    {
+      "name": "DUEDIDUE",
+      "producer": "Bonfante",
+      "classification": "DOC",
+      "year": 2018,
+      "region": "Piemont",
+      "grapes": "Cuvée Barbera, Cabernet Sauvignon",
+      "priceBottle": "35,–",
+      "priceGlass": "10,–"
     }
   ],
   "hauswein": {
