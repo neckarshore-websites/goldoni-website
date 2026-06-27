@@ -28,16 +28,40 @@ The Claude Code harness resets `cwd` after every Bash call. Unscoped commands ri
 Same quality bar as `neckarshore-website` and `rauhut-website`:
 
 - Mobile-first responsive design
-- Lighthouse 95+ target on all metrics (desktop + mobile)
+- Lighthouse: A11y / Best Practices / SEO **hard @95** (CI-gating); Performance **soft-warn** (advisory, never blocks CI) — see [Lighthouse Device Matrix](#lighthouse-device-matrix) below
 - No JS frameworks beyond React/Next.js
 - Self-hosted fonts (DSGVO)
 - Commit after each section / logical block
 - Do NOT push to production domain until User approves — and before that, the friend (restaurant owner) approves the design direction at least once
 - German primary, Italian as stylistic accent (bella italia ohne Kitsch)
 
+## Lighthouse Device Matrix
+
+Three profiles. **Performance is soft-warn on all of them** (advisory, never blocks CI); **Accessibility / Best Practices / SEO are hard @95** on all of them (a drop fails CI). Profiles live in `scripts/lighthouse-profiles.mjs`; the regression test `scripts/lighthouse-profiles.test.mjs` locks the shape (`npm run test:lighthouse:unit` — 6 checks, ~0.1s, no Chrome). Ported to Goldoni 2026-06-18 (#103) as the estate standard.
+
+| # | Profil | Form Factor | Network | CPU | Perf Gate | Perf Warn-Line |
+|---|--------|-------------|---------|-----|-----------|----------------|
+| 1 | Desktop | desktop | `--preset=desktop` (LAN) | 1× | Soft-Warn | 80 |
+| 2 | Mobile 5G | mobile | 20ms / ~50 Mbps | 4× | Soft-Warn | 90 |
+| 3 | Mobile 4G | mobile | 150ms / ~1.6 Mbps (Slow-4G) | 4× | Soft-Warn | 90 |
+
+5G is faster than 4G — the network ordering is correct. The pre-2026-06-18 "Mobile Slow (Edge-5G)" profile (400 Kbps / 6× CPU) was **deleted**: 400 Kbps is slower than 4G, so the "5G" label inverted reality; sub-4G is an unserviceable audience (restaurant guests are mobile/5G-default).
+
+### Gate Philosophy (German Rauhut directive, 2026-06-18 — estate standard)
+
+- **Performance is soft-warn everywhere.** Perf scores track shared-runner CPU jitter, not the site — on the 1× desktop preset a fast static page swings {70, 86, 93, 98, 100} ⇔ TBT noise while LCP <1s / CLS stay rock-solid. A hard perf gate cried wolf and got admin-bypassed repeatedly across the estate, so it is now an **advisory warning line** per profile: the run prints `⚠` and logs the metric under "Soft warnings", but the exit code is unchanged. No hard perf gate on 4G — the audience is 5G-default.
+- **A11y / Best Practices / SEO are hard @95 on all three profiles** — deterministic categories (the site hits ~100), so a drop is a real defect, not runner noise. These are the *only* failures that change the exit code.
+
+### Commands
+
+- `npm run lighthouse:quick` — all 3 profiles (CI mode, assumes server on :3000)
+- `npm run lighthouse:desktop` / `npm run lighthouse:mobile` (4G) / `npm run lighthouse:5g` — single profile for dev-loop
+- `npm run test:lighthouse:unit` — profile-shape regression test (no Chrome; ~0.1s)
+- `npm run lighthouse` — full pipeline (build + start + all profiles + stop)
+
 ## Definition of Done
 
-- Lighthouse 95+ desktop + mobile
+- Lighthouse: A11y / Best Practices / SEO @95 hard (CI-gating); Performance soft-warn (advisory — logged, not gated). See Lighthouse Device Matrix.
 - Mobile + Desktop visual check
 - No browser console errors
 - Build green (`npm run build`)
