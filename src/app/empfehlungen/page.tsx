@@ -4,7 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
 import empfehlungskarte from "@/data/empfehlungskarte.json";
 import { breadcrumbJsonLd, menuJsonLd } from "@/lib/structured-data";
-import type { Menu } from "@/lib/menu";
+import { formatMenuDate, type Menu } from "@/lib/menu";
 import { pageMetadata } from "@/lib/page-metadata";
 
 const menu = empfehlungskarte as Menu;
@@ -38,11 +38,17 @@ export default function EmpfehlungenPage() {
             Diese Woche
           </p>
           <h1
-            className="mb-10 text-4xl sm:text-5xl"
+            className="mb-2 text-4xl sm:text-5xl"
             style={{ color: "var(--color-text)" }}
           >
             {menu.title}
           </h1>
+          <p
+            className="mb-10 text-sm"
+            style={{ color: "var(--color-brand-olive)" }}
+          >
+            Gültig ab {formatMenuDate(menu.updated)}*
+          </p>
           <MenuSection
             menu={menu}
             hideLegend
@@ -52,7 +58,18 @@ export default function EmpfehlungenPage() {
             ]}
           />
           <WeinSection />
-          <MenuLegend menu={menu} />
+          <MenuLegend
+            menu={menu}
+            notice={
+              <>
+                * Manchmal kann sich das Update unserer Empfehlungskarte ein
+                wenig verspäten — dann sehen Sie hier vielleicht noch die Karte
+                der Vorwoche. Wir bitten um <em>un po&rsquo; di pazienza</em>{" "}
+                oder fragen Sie einfach bei uns nach: Wir verraten Ihnen gern,
+                was heute frisch aus der Küche kommt.
+              </>
+            }
+          />
         </div>
       </div>
     </main>
