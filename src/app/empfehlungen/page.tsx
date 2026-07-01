@@ -2,6 +2,7 @@ import { MenuSection, MenuLegend } from "@/components/MenuSection";
 import { WeinSection } from "@/components/WeinSection";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
+import { SundayLunchBanner } from "@/components/SundayLunchBanner";
 import empfehlungskarte from "@/data/empfehlungskarte.json";
 import { breadcrumbJsonLd, menuJsonLd } from "@/lib/structured-data";
 import { formatMenuDate, type Menu } from "@/lib/menu";
@@ -16,6 +17,14 @@ export const metadata = pageMetadata({
   path: "/empfehlungen",
 });
 
+/**
+ * ISR: regenerate at most every 6h so the temporary SundayLunchBanner can
+ * auto-expire (its date check re-evaluates on each regeneration) without a
+ * manual redeploy — same reason as the home page. Revert to fully static
+ * once the banner is gone.
+ */
+export const revalidate = 21600;
+
 export default function EmpfehlungenPage() {
   return (
     <main>
@@ -25,6 +34,10 @@ export default function EmpfehlungenPage() {
         ])}
       />
       <StructuredData data={menuJsonLd(menu, "/empfehlungen")} />
+      {/* Sunday-lunch announcement — same temporary strip as the homepage,
+          shown above the hero. Shared component: auto-expires (31 Jul 2026)
+          and can be toggled off in one place for both pages. */}
+      <SundayLunchBanner />
       <PageHero
         src="/images/hero-empfehlungen-overhead-tafel.webp"
         alt="Gedeckter Tisch von oben: Pappardelle, Risotto ai funghi e tartufo, Burrata e prosciutto, Weingläser und Brot — wöchentliche Empfehlungen im Ristorante Goldoni"
