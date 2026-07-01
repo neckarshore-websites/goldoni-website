@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-06-25",
+  "updated": "2026-07-01",
   "categories": [
     {
       "id": "antipasti",
@@ -35,28 +35,28 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Mezzelune ripiene con fichi e noci in cremetta di burro e pomodorini",
-          "description": "Nudeln mit Feigen-Walnuss-Füllung an Buttersoße und Kirschtomaten",
+          "name": "Triangoli ripieni con i funghi gallinacci in salsa aurora",
+          "description": "Nudeln mit Pfifferlingsfüllung an rosa Soße",
           "price": "19.00",
           "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
           "diet": ["vegetarian"]
         },
         {
-          "name": "Strozzapreti alla maniera genovese",
-          "description": "Priesterwürger mit Kalbs-Rindfleisch-Zwiebel-Ragù (alte neapolitanische Küche)",
+          "name": "Strozzapreti all'Amatriciana",
+          "description": "Priesterwürger an Tomatensoße mit Schweinebacke und Schafskäse (altes Rezept aus Rom)",
           "price": "19.50",
-          "allergens": ["A", "C", "I"]
+          "allergens": ["A", "C", "G", "I"]
         },
         {
-          "name": "Linguine con i tentacoli di calamari e funghi gallinacci",
-          "description": "Hausgemachte Linguine mit Calamarizöpfen und Pfifferlingen in einer Tomatensoße",
-          "price": "24.00",
-          "allergens": ["A", "D", "I", "N"]
+          "name": "Linguine con mezzo astice",
+          "description": "Linguine mit halbem Hummer",
+          "price": "25.50",
+          "allergens": ["A", "B", "D", "I"]
         },
         {
-          "name": "Pizza con la crème fraîche e salmone affumicato su letto di zucchine",
-          "description": "Pizza mit geräuchertem Lachs, Zucchini und Crème Fraîche",
-          "price": "17.50",
+          "name": "Pizza bianca alla Gorgonzola, funghi gallinacci e Parma",
+          "description": "Pizza (weiße Basis) mit Gorgonzola-Käse, Pfifferlingen und Parmaschinken",
+          "price": "18.00",
           "allergens": ["A", "G", "1", "2"]
         }
       ]
@@ -67,10 +67,10 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Piccata al limone",
-          "description": "Kalbsschnitzel an Zitronensoße, dazu Beilage",
-          "price": "31.50",
-          "allergens": ["A", "G"]
+          "name": "Guancia di manzo al forno servita con riso",
+          "description": "„Rinderbäckle“ aus dem Ofen an Baroloweinsoße, mit Reis serviert",
+          "price": "29.00",
+          "allergens": ["S"]
         },
         {
           "name": "Tagliata di Rib-Eye marinata nel Whiskey",
@@ -79,16 +79,16 @@
           "allergens": ["G", "S"]
         },
         {
-          "name": "Filetti di orata reale ai ferri",
-          "description": "Frische Royal Goldbrasse vom Lavastein-Grill, dazu Beilage",
-          "price": "32.00",
+          "name": "Bistecca di tonno rosso ai ferri",
+          "description": "Frisches Thunfischsteak vom Lavastein-Grill, dazu Beilage",
+          "price": "36.00",
           "allergens": ["D"]
         },
         {
-          "name": "Trance di tonno rosso alla placia su letto di pomodorini e rucola",
-          "description": "Gegrilltes Thunfischsteak auf Rucolabett und Kirschtomaten, dazu Beilage",
-          "price": "35.00",
-          "allergens": ["D"]
+          "name": "Filetti di rombo al limone",
+          "description": "Frische Steinbuttfilets an Zitronensoße, mit Beilage",
+          "price": "33.00",
+          "allergens": ["D", "1", "2"]
         }
       ]
     },
