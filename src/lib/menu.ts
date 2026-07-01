@@ -68,3 +68,34 @@ export interface Menu {
   /** Footnote rendered after all categories (allergen legend, disclaimers). */
   footnote?: string;
 }
+
+const MENU_MONTHS_DE = [
+  "Januar",
+  "Februar",
+  "März",
+  "April",
+  "Mai",
+  "Juni",
+  "Juli",
+  "August",
+  "September",
+  "Oktober",
+  "November",
+  "Dezember",
+] as const;
+
+/**
+ * Format an ISO date (`YYYY-MM-DD`) as a German long date, e.g.
+ * `"2026-07-01"` → `"1. Juli 2026"`.
+ *
+ * Parsed component-wise on purpose: `new Date("YYYY-MM-DD")` is parsed as
+ * UTC midnight, so `Intl`/`toLocaleDateString` in a negative-offset build
+ * environment could render the previous day. Splitting the string avoids
+ * that drift entirely. Falls back to the raw input if it is not a
+ * well-formed ISO date.
+ */
+export function formatMenuDate(iso: string): string {
+  const [year, month, day] = iso.split("-").map(Number);
+  if (!year || !month || !day || month < 1 || month > 12) return iso;
+  return `${day}. ${MENU_MONTHS_DE[month - 1]} ${year}`;
+}

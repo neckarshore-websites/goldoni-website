@@ -161,12 +161,35 @@ function CodeLegend({ title, codes }: { title: string; codes: Code[] }) {
 }
 
 /** Standalone legend footer — exported so pages can place it after other sections. */
-export function MenuLegend({ menu }: { menu: Menu }) {
+export function MenuLegend({
+  menu,
+  notice,
+}: {
+  menu: Menu;
+  /**
+   * Optional friendly note rendered above the allergen legend. Used on
+   * /empfehlungen to explain that the weekly card may briefly lag behind.
+   * Omitted on /menu, so the standard Speisekarte legend stays untouched.
+   */
+  notice?: ReactNode;
+}) {
   return (
     <footer
       className="mt-16 border-t pt-8"
       style={{ borderColor: "var(--color-border)" }}
     >
+      {notice ? (
+        <p
+          className="mb-8 rounded-lg px-4 py-3 text-sm leading-relaxed"
+          style={{
+            backgroundColor: "var(--color-brand-cream)",
+            color: "var(--color-text-muted)",
+          }}
+        >
+          {notice}
+        </p>
+      ) : null}
+
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         <CodeLegend title="Allergene (LMIV)" codes={LMIV_ALLERGENS} />
         <CodeLegend title="Zusatzstoffe (ZZulV)" codes={ZZULV_ADDITIVES} />
