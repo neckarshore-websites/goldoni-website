@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-07-01",
+  "updated": "2026-07-08",
   "categories": [
     {
       "id": "antipasti",
@@ -9,21 +9,14 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Carpaccio di bresaola con spinaci e scaglie di pecorino",
-          "description": "Luftgetrockneter Rinderschinken vom Black Angus, Babyspinat und Pecorinokäse",
-          "price": "16.00",
-          "allergens": ["G", "1", "2", "5"]
-        },
-        {
-          "name": "Insalata Platacese",
-          "description": "Gegrillte marinierte Paprika mit frischen Kirschtomaten, Knoblauch, Minze und Frühlingszwiebeln auf Burratakäse",
+          "name": "Affettato di porchetta tonnata con scaglie di ravanello",
+          "description": "Saftige Spanferkelscheiben an Thunfischcreme und Radieschen",
           "price": "15.50",
-          "allergens": ["G", "2", "3"],
-          "diet": ["vegetarian"]
+          "allergens": ["G", "I", "J"]
         },
         {
-          "name": "Carpaccio di tonno marinato agli agrumi calabresi su cicoria rossa",
-          "description": "Mariniertes Thunfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
+          "name": "Carpaccio di pescespada marinato agli agrumi calabresi su cicoria rossa",
+          "description": "Mariniertes Schwertfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
           "price": "16.50",
           "allergens": ["D", "H"]
         }
@@ -35,27 +28,27 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Triangoli ripieni con i funghi gallinacci in salsa aurora",
-          "description": "Nudeln mit Pfifferlingsfüllung an rosa Soße",
+          "name": "Tortellacci ripieni al tartufo in crema di Grana Padano",
+          "description": "Nudeln mit Trüffelfüllung an Granakäse-Creme",
           "price": "19.00",
           "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
           "diet": ["vegetarian"]
         },
         {
-          "name": "Strozzapreti all'Amatriciana",
-          "description": "Priesterwürger an Tomatensoße mit Schweinebacke und Schafskäse (altes Rezept aus Rom)",
+          "name": "Pappardelle con i gallinacci e petto di pollo „Bio“",
+          "description": "Breite Bandnudeln mit Pfifferlingen und Hähnchenstreifen „Bio“",
           "price": "19.50",
           "allergens": ["A", "C", "G", "I"]
         },
         {
-          "name": "Linguine con mezzo astice",
-          "description": "Linguine mit halbem Hummer",
+          "name": "Linguine con gamberone gigante „Black Tiger“ incoronato da burrata",
+          "description": "Linguine mit einer Riesengarnele „Black Tiger“ (geschält) mit Burratakäse gekrönt",
           "price": "25.50",
-          "allergens": ["A", "B", "D", "I"]
+          "allergens": ["A", "B", "D", "G"]
         },
         {
-          "name": "Pizza bianca alla Gorgonzola, funghi gallinacci e Parma",
-          "description": "Pizza (weiße Basis) mit Gorgonzola-Käse, Pfifferlingen und Parmaschinken",
+          "name": "Pizza bianca alla Gorgonzola, funghi di paglia e Parma",
+          "description": "Pizza (weiße Basis) mit Gorgonzola-Käse, Austernpilzen und Parmaschinken",
           "price": "18.00",
           "allergens": ["A", "G", "1", "2"]
         }
@@ -67,28 +60,28 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Guancia di manzo al forno servita con riso",
-          "description": "„Rinderbäckle“ aus dem Ofen an Baroloweinsoße, mit Reis serviert",
-          "price": "29.00",
+          "name": "Fegato di vitello alla veneziana",
+          "description": "Kalbslebermedaillons nach venezianischer Art, dazu Beilage",
+          "price": "29.50",
           "allergens": ["S"]
         },
         {
-          "name": "Tagliata di Rib-Eye marinata nel Whiskey",
-          "description": "Gegrillte Rib-Eye-Scheiben in Whiskey mariniert, auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
-          "price": "36.50",
-          "allergens": ["G", "S"]
+          "name": "Bistecca Fiorentina (ca. 1400 g per 2-3 persone) al forno",
+          "description": "Fiorentinasteak (ca. 1200 g für 2-3 Personen) aus dem Ofen, mit Beilage",
+          "price": "110.00",
+          "allergens": []
         },
         {
-          "name": "Bistecca di tonno rosso ai ferri",
-          "description": "Frisches Thunfischsteak vom Lavastein-Grill, dazu Beilage",
-          "price": "36.00",
-          "allergens": ["D"]
+          "name": "Freschissimi calamari marinati alla mediterranea preparati sulla plancia",
+          "description": "Frische Calamari vom Lavastein-Grill, dazu Beilage",
+          "price": "30.00",
+          "allergens": ["D", "N"]
         },
         {
-          "name": "Filetti di rombo al limone",
-          "description": "Frische Steinbuttfilets an Zitronensoße, mit Beilage",
+          "name": "Filetti di rombo in padella in sughetto di limone e rosmarino",
+          "description": "Frische Steinbuttfilets an Zitronen-Rosmarinsoße, mit Beilage",
           "price": "33.00",
-          "allergens": ["D", "1", "2"]
+          "allergens": ["D"]
         }
       ]
     },

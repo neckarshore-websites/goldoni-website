@@ -19,6 +19,16 @@
       "grapes": "100 % Greco Bianco",
       "priceBottle": "30,–",
       "priceGlass": "8,50"
+    },
+    {
+      "name": "Roycello",
+      "producer": "Tormaresca",
+      "classification": "IGT",
+      "year": 2025,
+      "region": "Apulien",
+      "grapes": "100 % Fiano",
+      "priceBottle": "30,–",
+      "priceGlass": "8,50"
     }
   ],
   "rot": [
