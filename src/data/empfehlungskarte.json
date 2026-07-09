@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-07-08",
+  "updated": "2026-07-09",
   "categories": [
     {
       "id": "antipasti",
@@ -12,13 +12,20 @@
           "name": "Affettato di porchetta tonnata con scaglie di ravanello",
           "description": "Saftige Spanferkelscheiben an Thunfischcreme und Radieschen",
           "price": "15.50",
-          "allergens": ["G", "I", "J"]
+          "allergens": ["D", "G", "I", "J"]
         },
         {
           "name": "Carpaccio di pescespada marinato agli agrumi calabresi su cicoria rossa",
           "description": "Mariniertes Schwertfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
           "price": "16.50",
           "allergens": ["D", "H"]
+        },
+        {
+          "name": "Insalata estiva di anguria, formaggio caprino, cetriolo ed olive Taggiasche",
+          "description": "Salat von Wassermelone, Schafskäse, knackiger Gurke und entsteinten Oliven",
+          "price": "14.50",
+          "allergens": ["G"],
+          "diet": ["vegetarian"]
         }
       ]
     },
@@ -66,10 +73,10 @@
           "allergens": ["S"]
         },
         {
-          "name": "Bistecca Fiorentina (ca. 1300 g per 2-3 persone) al forno",
-          "description": "Fiorentinasteak (ca. 1300 g für 2-3 Personen) aus dem Ofen, mit Beilage",
-          "price": "110.00",
-          "allergens": []
+          "name": "Tomahawk (ca. 1200 g per 2 persone) alla griglia adagiata sulla rucola e scaglie di grana",
+          "description": "Dry Aged Tomahawk (ca. 1200 g für 2 Personen) vom Lavastein-Grill, serviert mit Rucola und Granakäseraspeln (40,– € pro Person)",
+          "price": "80.00",
+          "allergens": ["G"]
         },
         {
           "name": "Freschissimi calamari marinati alla mediterranea preparati sulla plancia",
