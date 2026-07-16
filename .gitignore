@@ -54,3 +54,4 @@ playwright-report/
 
 # Local scratch (Lighthouse baselines, ad-hoc artefacts)
 tmp/
+.mail-preview/

@@ -344,7 +344,7 @@ export function buildCustomerHtmlMail(payload: InquiryPayload): string {
             Stimmt etwas nicht? Antworten Sie einfach auf diese Mail oder
             rufen Sie uns an:
             <a href="tel:${escHtml(LEGAL.contact.phone.replace(/[^\d+]/g, ""))}"
-               style="color:${C.salmon};text-decoration:none;">${escHtml(LEGAL.contact.phone)}</a>.
+               style="color:${C.salmon};text-decoration:none;white-space:nowrap;">${escHtml(LEGAL.contact.phone)}</a>.
           </p>
         </div>
 
