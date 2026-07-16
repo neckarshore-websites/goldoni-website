@@ -5,6 +5,7 @@ import { sendInquiry } from "@/app/actions/inquiry";
 import { INQUIRY_INITIAL_STATE } from "@/app/actions/inquiry-state";
 import { FormField, Honeypot } from "@/components/forms/FormField";
 import { Turnstile } from "@/components/forms/Turnstile";
+import { LIMITS } from "@/lib/limits";
 
 /**
  * Simple contact form for /kontakt — Name, E-Mail, optional Telefon,
@@ -77,6 +78,7 @@ export function ContactForm() {
         label="Nachricht"
         required
         rows={5}
+        counterMax={LIMITS.message}
         defaultValue={state.values?.message}
         error={state.fieldErrors?.message}
       />
