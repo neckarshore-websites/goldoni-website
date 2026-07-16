@@ -18,7 +18,8 @@
     "lighthouse:5g": "node scripts/lighthouse.mjs --quick --profile=mobile-5g",
     "test:lighthouse:unit": "node --test scripts/lighthouse-profiles.test.mjs",
     "typecheck": "tsc --noEmit",
-    "test:search:unit": "NODE_ENV=production tsx tests/search/index-data.test.ts"
+    "test:search:unit": "NODE_ENV=production tsx tests/search/index-data.test.ts",
+    "mail:preview": "tsx scripts/mail-preview.mjs"
   },
   "dependencies": {
     "minisearch": "7.2.0",
