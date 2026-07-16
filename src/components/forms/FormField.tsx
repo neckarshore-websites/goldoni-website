@@ -8,6 +8,7 @@
  */
 
 import type { ReactNode } from "react";
+import { CountedTextarea } from "@/components/forms/CountedTextarea";
 
 type CommonProps = {
   name: string;
@@ -38,6 +39,14 @@ type InputProps = CommonProps & {
 type TextareaProps = CommonProps & {
   as: "textarea";
   rows?: number;
+  /**
+   * When set, renders a live character counter (client component) and
+   * flags the field once the count exceeds this value. This is a
+   * *display* limit — it is NOT applied as a `maxLength` attribute.
+   * The Server Action enforces the same number from `@/lib/limits` and
+   * rejects rather than truncates. See `lib/limits.ts` for why.
+   */
+  counterMax?: number;
 };
 
 type SelectProps = CommonProps & {
@@ -88,7 +97,19 @@ export function FormField(props: FormFieldProps) {
 
   let control: ReactNode;
   if (props.as === "textarea") {
-    control = (
+    control = props.counterMax ? (
+      <CountedTextarea
+        id={id}
+        name={props.name}
+        max={props.counterMax}
+        required={props.required}
+        defaultValue={props.defaultValue}
+        rows={props.rows}
+        invalid={Boolean(props.error)}
+        describedBy={describedBy}
+        style={baseControlStyle}
+      />
+    ) : (
       <textarea
         id={id}
         name={props.name}

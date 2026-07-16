@@ -6,6 +6,7 @@ import { INQUIRY_INITIAL_STATE } from "@/app/actions/inquiry-state";
 import { FormField, Honeypot } from "@/components/forms/FormField";
 import { Turnstile } from "@/components/forms/Turnstile";
 import { OCCASIONS } from "@/lib/occasions";
+import { LIMITS } from "@/lib/limits";
 
 /**
  * Feiern-Anfrage form for /feiern — adds occasion, date, guest count,
@@ -131,6 +132,7 @@ export function FeiernForm() {
         name="message"
         label="Anmerkungen (optional)"
         rows={4}
+        counterMax={LIMITS.message}
         hint="Allergien, Menü-Vorlieben, Besonderheiten?"
         defaultValue={state.values?.message}
         error={state.fieldErrors?.message}

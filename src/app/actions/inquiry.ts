@@ -3,9 +3,15 @@
 import nodemailer from "nodemailer";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
 import { LEGAL } from "@/lib/legal";
-import { buildHtmlMail, buildTextMail } from "@/lib/email-html";
+import {
+  buildCustomerHtmlMail,
+  buildCustomerTextMail,
+  buildHtmlMail,
+  buildTextMail,
+} from "@/lib/email-html";
 import { occasionLabel } from "@/lib/occasions";
 import { CAPTCHA_FORM_FIELD, verifyCaptchaToken } from "@/lib/captcha/verify";
+import { lengthError, type LimitField } from "@/lib/limits";
 import type {
   InquiryFieldValues,
   InquiryState,
@@ -50,16 +56,43 @@ import type {
  */
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-const MAX_MESSAGE_LEN = 500;
-const MAX_FIELD_LEN = 200;
 
 const TRANSPORT_FAILURE_MESSAGE =
   `Wir können Ihre Anfrage gerade nicht digital übermitteln. Bitte rufen Sie uns kurz an: ${LEGAL.contact.phone}.`;
 
-function clean(formData: FormData, key: string, max = MAX_FIELD_LEN): string {
-  return String(formData.get(key) ?? "")
-    .trim()
-    .slice(0, max);
+/**
+ * Read + trim a form value. Deliberately does NOT length-cap.
+ *
+ * Until 2026-07-16 this function ended in `.slice(0, max)`, which
+ * silently truncated over-long input: the guest saw "Grazie!", the
+ * owner got a message cut off mid-sentence, and neither ever knew. A
+ * 900-character allergy note for a 30-person party arrived as 500
+ * characters. Length is now *validated* (see `checkLengths`) and
+ * over-long input is rejected with the value echoed back intact.
+ * Limits live in `@/lib/limits` so client and server share one number.
+ */
+function clean(formData: FormData, key: string): string {
+  return String(formData.get(key) ?? "").trim();
+}
+
+/**
+ * Collect length errors for the given fields.
+ *
+ * Runs on the RAW trimmed value, before `sanitizeText`. Sanitising only
+ * ever shrinks a string, so validating the raw length is both the safe
+ * basis and the same unit the browser's live counter shows — client and
+ * server agree on what "1.842 characters" means.
+ */
+function checkLengths(
+  values: Partial<Record<LimitField, string>>,
+): Record<string, string> {
+  const errors: Record<string, string> = {};
+  for (const [field, value] of Object.entries(values)) {
+    if (value === undefined) continue;
+    const err = lengthError(field as LimitField, value);
+    if (err) errors[field] = err;
+  }
+  return errors;
 }
 
 /**
@@ -151,7 +184,11 @@ export async function sendInquiry(
   const name = clean(formData, "name");
   const email = clean(formData, "email");
   const phone = clean(formData, "phone");
-  const message = sanitizeText(clean(formData, "message", MAX_MESSAGE_LEN));
+  // Raw (trimmed only) — this is what the length check and the echo use,
+  // so the number the server counts is the number the guest's counter
+  // showed. Sanitising happens after, for the mail body only.
+  const rawMessage = clean(formData, "message");
+  const message = sanitizeText(rawMessage);
 
   // Echoed back on every error response so the form keeps the user's
   // input. Raw guestCount string (not Number) so "0", "viele", and
@@ -165,17 +202,35 @@ export async function sendInquiry(
     name,
     email,
     phone,
-    message,
+    // Echo the RAW text, not the sanitised one — the guest gets back
+    // character-for-character what they typed. Nothing is ever silently
+    // altered in the field they are looking at.
+    message: rawMessage,
     occasion: occasionRaw,
     date: dateRaw,
     guestCount: guestCountRaw,
     preferredTime: preferredTimeRaw,
   };
 
-  const fieldErrors: Record<string, string> = {};
+  // Length validation first: over-long input is rejected, never cut.
+  // Mirrors the browser's live counter (same limits, same raw unit).
+  const fieldErrors: Record<string, string> = checkLengths({
+    name,
+    email,
+    phone,
+    message: rawMessage,
+    ...(type === "feiern"
+      ? {
+          occasion: occasionRaw,
+          guestCount: guestCountRaw,
+          preferredTime: preferredTimeRaw,
+        }
+      : {}),
+  });
+
   if (!name) fieldErrors.name = "Bitte Namen angeben.";
   if (!email) fieldErrors.email = "Bitte E-Mail angeben.";
-  else if (!EMAIL_RE.test(email))
+  else if (!EMAIL_RE.test(email) && !fieldErrors.email)
     fieldErrors.email = "Bitte gültige E-Mail-Adresse angeben.";
 
   // ----- Type-specific validation ----------------------------------
@@ -323,6 +378,32 @@ export async function sendInquiry(
         values: echoValues,
       };
     }
+
+    // ----- Confirmation copy to the guest --------------------------
+    // Best-effort ONLY. The owner's mail is the one that matters — the
+    // inquiry has already arrived at this point. If the guest's copy
+    // bounces (typo'd address, full mailbox, greylisting), that must
+    // never turn a successfully delivered inquiry into an error the
+    // guest sees, or they would submit again and the kitchen would get
+    // the same party booked twice.
+    try {
+      await transporter.sendMail({
+        from: config.from,
+        to: email,
+        replyTo: config.to,
+        subject: isFeiern
+          ? `Ihre Feieranfrage bei Ristorante Goldoni`
+          : `Ihre Nachricht an Ristorante Goldoni`,
+        text: buildCustomerTextMail(emailPayload),
+        html: buildCustomerHtmlMail(emailPayload),
+      });
+    } catch (err) {
+      console.error(
+        "[Goldoni Inquiry] confirmation copy to guest failed (inquiry itself was delivered)",
+        err,
+      );
+    }
+
     return { status: "success" };
   } catch (err) {
     console.error("[Goldoni Inquiry] SMTP send threw", err);

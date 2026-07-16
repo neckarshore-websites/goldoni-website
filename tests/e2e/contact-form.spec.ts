@@ -1,5 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
 import { waitForTurnstileToken } from "./helpers";
+import { LIMITS, formatCount } from "../../src/lib/limits";
 
 /**
  * /kontakt — ContactForm
@@ -115,23 +116,68 @@ test.describe("/kontakt — ContactForm", () => {
     );
   });
 
-  test("trims and length-caps oversized fields without crashing", async ({
+  test("rejects an oversized field instead of silently truncating it", async ({
     page,
   }) => {
-    // The action enforces MAX_FIELD_LEN=200 and MAX_MESSAGE_LEN=4000;
-    // an over-sized name should not 500 — just gets sliced server-side
-    // and the submission still succeeds.
+    // Regression for the silent-truncation bug (2026-07-16): the action
+    // used to `.slice()` over-long input and return success, so the guest
+    // saw "Grazie!" while the owner got a cut-off message. Nobody noticed.
+    // Over-long input must now be REJECTED, never cut.
     const f = fields(page);
-    await f.name.fill("a".repeat(500));
+    await f.name.fill("a".repeat(LIMITS.name + 1));
     await f.email.fill("linus@example.com");
     await f.message.fill("length-cap test");
 
     await waitForTurnstileToken(page);
     await f.submit.click();
 
+    await expect(page.getByRole("heading", { name: "Grazie!" })).toHaveCount(0);
+    await expect(page.getByText(/Der Name ist 1 Zeichen zu lang/)).toBeVisible();
+  });
+
+  test("shows a live character counter on the message field", async ({
+    page,
+  }) => {
+    const f = fields(page);
+    await f.message.fill("a".repeat(42));
+    // Counter is aria-hidden (it would flood a screen reader), so assert
+    // on the rendered text rather than an accessible name.
     await expect(
-      page.getByRole("heading", { name: "Grazie!" }),
+      page.getByText(`42 / ${formatCount(LIMITS.message)}`),
     ).toBeVisible();
+  });
+
+  test("warns before submit when the message exceeds the limit", async ({
+    page,
+  }) => {
+    // The whole point of the fix: the guest finds out BEFORE sending,
+    // not never. No maxLength attribute — they can type past the limit,
+    // and the counter tells them they have.
+    const f = fields(page);
+    await f.message.fill("a".repeat(LIMITS.message + 25));
+
+    await expect(page.getByText(/25 Zeichen zu viel/)).toBeVisible();
+    // Guest may still type past the cap — nothing was swallowed.
+    await expect(f.message).toHaveValue("a".repeat(LIMITS.message + 25));
+  });
+
+  test("keeps an oversized message intact across the error round-trip", async ({
+    page,
+  }) => {
+    // Worst possible outcome would be "too long" + we drop your text.
+    const long = "Allergie-Hinweis. ".repeat(150); // > 2000 chars
+    const f = fields(page);
+    await f.name.fill("Linus Test");
+    await f.email.fill("linus@example.com");
+    await f.message.fill(long);
+
+    await waitForTurnstileToken(page);
+    await f.submit.click();
+
+    await expect(page.getByRole("heading", { name: "Grazie!" })).toHaveCount(0);
+    await expect(page.getByText(/Die Nachricht ist .* zu lang/)).toBeVisible();
+    // Echoed back character-for-character.
+    await expect(f.message).toHaveValue(long.trim());
   });
 
   test("honeypot submission silently returns success without leaking", async ({
