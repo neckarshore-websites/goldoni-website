@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-07-09",
+  "updated": "2026-07-17",
   "categories": [
     {
       "id": "antipasti",
@@ -9,8 +9,8 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Affettato di porchetta tonnata con scaglie di ravanello",
-          "description": "Saftige Spanferkelscheiben an Thunfischcreme und Radieschen",
+          "name": "Affettato di porchetta tonnata con scaglie di radicchio",
+          "description": "Saftige Spanferkelscheiben an Thunfischcreme und Radicchiosalat",
           "price": "15.50",
           "allergens": ["D", "G", "I", "J"]
         },
@@ -35,29 +35,30 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Tortellacci ripieni al tartufo in crema di Grana Padano",
-          "description": "Nudeln mit Trüffelfüllung an Granakäse-Creme",
+          "name": "Mezzelune ripiene con fichi e noci in cremetta di Taleggio",
+          "description": "Nudeln mit Feigen-Walnussfüllung an Taleggiokäse-Creme",
           "price": "19.00",
           "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
           "diet": ["vegetarian"]
         },
         {
-          "name": "Pappardelle con i gallinacci e petto di pollo „Bio“",
-          "description": "Breite Bandnudeln mit Pfifferlingen und Hähnchenstreifen „Bio“",
+          "name": "Strozzapreti alla Amatriciana",
+          "description": "Priesterwürger mit Schweinebacke und einer Tomatensoße (altes römisches Rezept)",
           "price": "19.50",
-          "allergens": ["A", "C", "G", "I"]
+          "allergens": ["A", "G", "I", "2", "3"]
         },
         {
-          "name": "Linguine con gamberone gigante „Black Tiger“ incoronato da burrata",
-          "description": "Linguine mit einer Riesengarnele „Black Tiger“ (geschält) mit Burratakäse gekrönt",
-          "price": "25.50",
-          "allergens": ["A", "B", "D", "G"]
+          "name": "Linguine con il salmone e pesto di pistacchio",
+          "description": "Linguine mit Lachs und Pistazienpesto",
+          "price": "22.50",
+          "allergens": ["A", "D", "G", "H"]
         },
         {
-          "name": "Pizza bianca alla Gorgonzola, funghi di paglia e Parma",
-          "description": "Pizza (weiße Basis) mit Gorgonzola-Käse, Austernpilzen und Parmaschinken",
-          "price": "18.00",
-          "allergens": ["A", "G", "1", "2"]
+          "name": "Pizza bianca alla parmigiana di melanzane vestita di pesto e incoronata da burrata",
+          "description": "Pizza (weiße Basis) mit frittierten Auberginen, gekrönt mit Burratakäse und geschmückt mit Basilikum-Pesto",
+          "price": "18.50",
+          "allergens": ["A", "C", "G"],
+          "diet": ["vegetarian"]
         }
       ]
     },
@@ -67,19 +68,19 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Fegato di vitello alla veneziana",
-          "description": "Kalbslebermedaillons nach venezianischer Art, dazu Beilage",
+          "name": "Fettina di manzo alla griglia servita con rucola, pomodorini e Grana Padano",
+          "description": "Paillard vom Rind serviert mit Rucola, Granakäseraspeln und Kirschtomaten",
           "price": "29.50",
-          "allergens": ["S"]
-        },
-        {
-          "name": "Tomahawk (ca. 1200 g per 2 persone) alla griglia adagiata sulla rucola e scaglie di grana",
-          "description": "Dry Aged Tomahawk (ca. 1200 g für 2 Personen) vom Lavastein-Grill, serviert mit Rucola und Granakäseraspeln (40,– € pro Person)",
-          "price": "80.00",
           "allergens": ["G"]
         },
         {
-          "name": "Freschissimi calamari marinati alla mediterranea preparati sulla plancia",
+          "name": "Tomahawk (ca. 1200 g per 2 persone) frollata 21 giorni al forno",
+          "description": "Dry Aged Tomahawk (ca. 1200 g für 2 Personen) aus dem Ofen, mit Beilage (40,– € pro Person)",
+          "price": "80.00",
+          "volume": "ca. 1200 g / 2 Personen"
+        },
+        {
+          "name": "Dal mare Mediterraneo: Calamari freschissimi alla griglia",
           "description": "Frische Calamari vom Lavastein-Grill, dazu Beilage",
           "price": "30.00",
           "allergens": ["D", "N"]
@@ -98,13 +99,6 @@
       "subtitle": "Desserts",
       "items": [
         {
-          "name": "Gelato al pistacchio con mandorle tritate",
-          "description": "Pistazieneis umhüllt mit gehackten Mandeln",
-          "price": "9.00",
-          "allergens": ["A", "C", "G", "H"],
-          "diet": ["vegetarian"]
-        },
-        {
           "name": "Soufflé al cioccolato con gelato alla vaniglia",
           "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
           "price": "8.50",
@@ -114,6 +108,13 @@
         {
           "name": "Mezza noce di cocco con sorbetto al cocco",
           "description": "Halbe Kokosschale gefüllt mit einem sehr leckeren Kokossorbet-Eis",
+          "price": "9.00",
+          "allergens": ["A", "C", "G", "H"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Tartufo al pistacchio",
+          "description": "Halbgefrorenes Pistazieneis",
           "price": "9.00",
           "allergens": ["A", "C", "G", "H"],
           "diet": ["vegetarian"]
