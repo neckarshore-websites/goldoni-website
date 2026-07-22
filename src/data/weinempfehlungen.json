@@ -1,16 +1,6 @@
 {
   "weiss": [
     {
-      "name": "Villa Angela",
-      "producer": "Velenosi",
-      "classification": "DOC",
-      "year": 2024,
-      "region": "Marken",
-      "grapes": "100 % Verdicchio di Jesi",
-      "priceBottle": "30,–",
-      "priceGlass": "8,50"
-    },
-    {
       "name": "Der weiße Löwe",
       "producer": "Graf Adelmann",
       "classification": "QbA",
@@ -21,12 +11,12 @@
       "priceGlass": "10,–"
     },
     {
-      "name": "Roycello",
-      "producer": "Tormaresca",
-      "classification": "IGT",
-      "year": 2025,
-      "region": "Apulien",
-      "grapes": "100 % Fiano",
+      "name": "Tenaci",
+      "producer": "Zorzettig",
+      "classification": "DOC",
+      "year": 2024,
+      "region": "Friaul",
+      "grapes": "100 % Sauvignon Blanc",
       "priceBottle": "30,–",
       "priceGlass": "8,50"
     }

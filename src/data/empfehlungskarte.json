@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-07-17",
+  "updated": "2026-07-22",
   "categories": [
     {
       "id": "antipasti",
@@ -21,8 +21,8 @@
           "allergens": ["D", "H"]
         },
         {
-          "name": "Insalata estiva di anguria, formaggio caprino, cetriolo ed olive Taggiasche",
-          "description": "Salat von Wassermelone, Schafskäse, knackiger Gurke und entsteinten Oliven",
+          "name": "Insalata estiva di anguria, formaggio caprino, cetriolo e miele",
+          "description": "Salat von Wassermelone, Schafskäse, knackiger Gurke und Honig",
           "price": "14.50",
           "allergens": ["G"],
           "diet": ["vegetarian"]
@@ -37,20 +37,20 @@
         {
           "name": "Mezzelune ripiene con fichi e noci in cremetta di Taleggio",
           "description": "Nudeln mit Feigen-Walnussfüllung an Taleggiokäse-Creme",
-          "price": "19.00",
+          "price": "20.50",
           "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
           "diet": ["vegetarian"]
         },
         {
-          "name": "Strozzapreti alla Amatriciana",
-          "description": "Priesterwürger mit Schweinebacke und einer Tomatensoße (altes römisches Rezept)",
-          "price": "19.50",
-          "allergens": ["A", "G", "I", "2", "3"]
+          "name": "Gnocchi di patate con il pollo „Bio“ in un sughetto di pomodoro",
+          "description": "Kartoffelgnocchi mit „Bio“-Hähnchenunterkeulen in einer Tomatensoße",
+          "price": "19.00",
+          "allergens": ["A", "C", "I"]
         },
         {
-          "name": "Linguine con il salmone e pesto di pistacchio",
-          "description": "Linguine mit Lachs und Pistazienpesto",
-          "price": "22.50",
+          "name": "Orecchiette con le cozze ed i funghi Fefferli",
+          "description": "Kurze Nudeln mit Miesmuscheln und Pfifferlingen",
+          "price": "19.50",
           "allergens": ["A", "D", "G", "H"]
         },
         {
@@ -68,10 +68,16 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Fettina di manzo alla griglia servita con rucola, pomodorini e Grana Padano",
-          "description": "Paillard vom Rind serviert mit Rucola, Granakäseraspeln und Kirschtomaten",
-          "price": "29.50",
-          "allergens": ["G"]
+          "name": "Piccata al limone",
+          "description": "Kalbsschnitzel an Zitronensoße, mit Beilage",
+          "price": "32.00",
+          "allergens": ["A", "G"]
+        },
+        {
+          "name": "Fegato di vitello alla veneziana",
+          "description": "Kalbslebermedaillons nach venezianischer Art, dazu Beilage",
+          "price": "30.50",
+          "allergens": ["S"]
         },
         {
           "name": "Tomahawk (ca. 1200 g per 2 persone) frollata 21 giorni al forno",
@@ -80,15 +86,15 @@
           "volume": "ca. 1200 g / 2 Personen"
         },
         {
-          "name": "Dal mare Mediterraneo: Calamari freschissimi alla griglia",
-          "description": "Frische Calamari vom Lavastein-Grill, dazu Beilage",
-          "price": "30.00",
-          "allergens": ["D", "N"]
+          "name": "Freschissime bistecche di tonno alla griglia con rucola e pomodorini",
+          "description": "Thunfischsteak vom Lavastein-Grill mit Rucola und Kirschtomaten, mit Beilage",
+          "price": "35.00",
+          "allergens": ["D"]
         },
         {
-          "name": "Filetti di rombo in padella in sughetto di limone e rosmarino",
-          "description": "Frische Steinbuttfilets an Zitronen-Rosmarinsoße, mit Beilage",
-          "price": "33.00",
+          "name": "Filetti di orata reale ai ferri",
+          "description": "Frische Royal-Goldbrassefilets vom Lavastein-Grill, dazu Beilage",
+          "price": "32.00",
           "allergens": ["D"]
         }
       ]
