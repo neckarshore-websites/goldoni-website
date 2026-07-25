@@ -41,16 +41,27 @@ Die Storefront zeigt andere Zeiten als die Website. Gemessen am 2026-07-25 auf d
 
 ## Für Wolt
 
-### W1 — Apple Pay lässt sich nicht bestätigen (blockierend)
+### ~~W1 — Apple Pay lässt sich nicht bestätigen~~ — ZURÜCKGEZOGEN, kein Wolt-Fehler
 
-**Beobachtet:** Nach Auswahl von Apple Pay erscheint das Bezahlfenster („Ristorante Goldoni (über Wolt) bezahlen — 3,00 €", Visa Debitkarte). Die Touch-ID-Aufforderung **erscheint und verschwindet wiederholt**; die Zahlung lässt sich nicht bestätigen. Nach mehreren Anläufen wurde sie einmal bestätigbar, danach wieder nicht.
+**Beobachtet war:** Nach Auswahl von Apple Pay erscheint das Bezahlfenster („Ristorante Goldoni (über Wolt) bezahlen — 3,00 €", Visa Debitkarte). Die Touch-ID-Aufforderung erscheint und verschwindet wiederholt; die Zahlung liess sich nicht bestätigen.
 
-**Umgebung:** macOS, Desktop-Browser.
+**Warum das kein Wolt-Bug ist:** Gegengeprüft auf `applepaydemo.apple.com` — Apples eigener Referenzimplementierung. **Dort tritt derselbe Fehler auf.** Damit ist die Ursache clientseitig und weder bei Wolt noch bei uns.
 
-**Fragen an Wolt:**
-1. Ist eine Mindest-/Höchstdauer der Apple-Pay-Session bekannt, nach der das Fenster ungültig wird?
-2. Gibt es bekannte Einschränkungen ausserhalb von Safari?
-3. Wird der Abbruch merchant-seitig protokolliert, sodass ihr den Vorgang nachvollziehen könnt?
+Weiter eingegrenzt am betroffenen Gerät (Mac17,3 / M5, macOS 26.5.2):
+
+| # | Geprüft | Ergebnis |
+|---|---------|----------|
+| 1 | Touch ID für Apple Pay freigegeben | `Biometrics for ApplePay: 1`, effektiv — **nicht die Ursache** |
+| 2 | Bluetooth (für Bestätigung via gekoppeltes Gerät) | An — nicht die Ursache |
+| 3 | Apple-Systemstatus | Apple Pay und Wallet ohne Störungsereignis — nicht die Ursache |
+| 4 | **Safari** auf `applepaydemo.apple.com` | Bezahlfenster erscheint, Spinner dreht, **Touch-ID-Abfrage kommt nie**. Reproduziert auf Apples eigener Referenzseite |
+| 5 | **Chrome** auf derselben Seite | QR-Code-Übergabe an ein Telefon statt Touch ID — **das ist Chromes vorgesehenes Verhalten** auf macOS, kein Fehler |
+
+**Befund:** Apple Pay erreicht in Safari auf diesem Gerät (M5 / macOS 26.5.2) die Biometrie-Abfrage nicht. Lokal an der Maschine, bei aktueller Hardware-/OS-Kombination. Weder Wolt noch die Website sind beteiligt.
+
+**Merke für den Vorgang:** Dieser Punkt stand kurz davor, als Wolt-Bug gemeldet zu werden. Die Isolationsprüfung gegen Apples Referenzseite hat das verhindert — die Reihenfolge war zuerst falsch herum (Meldung vor Eingrenzung) und wurde auf Einspruch des Betreibers korrigiert. Eine falsche Meldung hätte die drei berechtigten Punkte mitbeschädigt.
+
+**Auswirkung auf den Durchstich: keine.** Die Bestellung wurde per Kredit-/Debitkarte erfolgreich abgeschlossen.
 
 ### W2 — Gutscheinfeld liest sich wie der Bestellabschluss
 
