@@ -22,11 +22,26 @@ export default function Home() {
   return (
     <main>
       <StructuredData data={faqJsonLd(FAQS)} />
-      {/* Sunday-lunch announcement — temporary strip, sits above the
-          delivery banner. Auto-expires after 31 July 2026 (see component). */}
-      <SundayBanner />
-      {/* Delivery banner — first impression, points to Wolt + Uber Eats */}
-      <DeliveryBanner />
+      {/*
+        Order swapped visually on mobile only: the ordering action outranks the
+        Sunday announcement there (owner decision, 2026-07-26). Source order
+        stays Sunday-first — that is what a screen reader announces regardless
+        of viewport, since CSS `order` moves pixels, not the DOM. Two
+        independent, unrelated strips, so that mismatch is an accepted
+        trade-off here, not an oversight. `sm:` and up reverts to source order.
+      */}
+      <div className="flex flex-col">
+        <div className="order-2 sm:order-1">
+          {/* Sunday announcement — temporary strip. Auto-expires after
+              2 August 2026 (see component). */}
+          <SundayBanner />
+        </div>
+        <div className="order-1 sm:order-2">
+          {/* Delivery banner — first impression on mobile, points to the
+              Storefront + Uber Eats */}
+          <DeliveryBanner />
+        </div>
+      </div>
 
       {/* Hero — restaurant wall sign on red velvet, brand-defining photo */}
       <section className="relative isolate overflow-hidden">

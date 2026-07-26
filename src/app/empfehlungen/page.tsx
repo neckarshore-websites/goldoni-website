@@ -34,9 +34,10 @@ export default function EmpfehlungenPage() {
         ])}
       />
       <StructuredData data={menuJsonLd(menu, "/empfehlungen")} />
-      {/* Sunday-lunch announcement — same temporary strip as the homepage,
-          shown above the hero. Shared component: auto-expires (31 Jul 2026)
-          and can be toggled off in one place for both pages. */}
+      {/* Sunday announcement — same temporary strip as the homepage, shown
+          above the hero. Shared component: auto-expires (2 Aug 2026) and can
+          be toggled off in one place for both pages. No DeliveryBanner on
+          this page, so there is nothing to reorder against on mobile. */}
       <SundayBanner />
       <PageHero
         src="/images/hero-empfehlungen-overhead-tafel.webp"
