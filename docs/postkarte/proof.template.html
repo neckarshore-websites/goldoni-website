@@ -1,0 +1,561 @@
+<title>Goldoni Postkarte — Andruck A/B</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@font-face{font-family:"Playfair Proof";src:url(data:font/woff2;base64,__FONT_PLAYFAIR__) format("woff2");font-weight:600;font-display:block}
+@font-face{font-family:"Inter Proof";src:url(data:font/woff2;base64,__FONT_INTER__) format("woff2");font-weight:400 700;font-display:block}
+
+/* ── Proof-sheet chrome: cool and technical, so the cards carry all warmth ─ */
+:root{
+  --paper:#E9EBE9; --paper-2:#F4F5F3; --ink:#14181A; --ink-2:#3D4548;
+  --muted:#69726F; --rule:#C6CBC7; --rule-soft:#D7DBD7;
+  --accent:#1B6C61; --accent-soft:#D9E6E2;
+  --trim:#B4187A; --safe:#1B6C61;
+  --shadow:0 1px 2px rgba(20,24,26,.06),0 8px 28px rgba(20,24,26,.10);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#14181A; --paper-2:#1B2124; --ink:#EDF0EE; --ink-2:#BFC7C4;
+    --muted:#8C9591; --rule:#2E3639; --rule-soft:#242B2E;
+    --accent:#5FC9B7; --accent-soft:#1E3D38;
+    --trim:#F06BB4; --safe:#5FC9B7;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 34px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14181A; --paper-2:#1B2124; --ink:#EDF0EE; --ink-2:#BFC7C4;
+  --muted:#8C9591; --rule:#2E3639; --rule-soft:#242B2E;
+  --accent:#5FC9B7; --accent-soft:#1E3D38;
+  --trim:#F06BB4; --safe:#5FC9B7;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 34px rgba(0,0,0,.5);
+}
+:root[data-theme="light"]{
+  --paper:#E9EBE9; --paper-2:#F4F5F3; --ink:#14181A; --ink-2:#3D4548;
+  --muted:#69726F; --rule:#C6CBC7; --rule-soft:#D7DBD7;
+  --accent:#1B6C61; --accent-soft:#D9E6E2;
+  --trim:#B4187A; --safe:#1B6C61;
+  --shadow:0 1px 2px rgba(20,24,26,.06),0 8px 28px rgba(20,24,26,.10);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Inter Proof",system-ui,sans-serif;font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+.wrap{max-width:1180px;margin:0 auto;padding:clamp(24px,5vw,56px) clamp(16px,4vw,40px) 96px}
+
+.masthead{padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+h1{font-family:"Playfair Proof",Georgia,serif;font-weight:600;font-size:clamp(28px,4.4vw,42px);
+  line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.lede{margin:14px 0 0;max-width:64ch;color:var(--ink-2)}
+
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;
+  background:var(--rule-soft);border:1px solid var(--rule-soft);margin:28px 0 0}
+.spec>div{background:var(--paper-2);padding:12px 14px}
+.spec dt{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.spec dd{margin:0;font-size:14px;font-weight:600}
+
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:24px 0 0}
+button{font:inherit;font-size:13px;font-weight:600;color:var(--ink);background:var(--paper-2);
+  border:1px solid var(--rule);border-radius:2px;padding:8px 14px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px}
+button:hover{border-color:var(--accent)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--rule);flex:none}
+button[aria-pressed="true"] .dot{background:var(--accent)}
+.hint{font-size:12.5px;color:var(--muted);margin:10px 0 0;max-width:78ch}
+
+.variant{margin:64px 0 0}
+.vhead{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;
+  padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.vtag{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;font-weight:700;
+  letter-spacing:.08em;color:var(--paper);background:var(--ink);padding:3px 8px;border-radius:2px}
+.vname{font-family:"Playfair Proof",Georgia,serif;font-size:23px;font-weight:600;margin:0}
+.vclaim{color:var(--muted);font-size:13.5px;margin:0}
+.vnote{margin:12px 0 0;max-width:72ch;color:var(--ink-2);font-size:14px}
+
+.sheet{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:clamp(20px,3vw,36px);margin:26px 0 0}
+.face{min-width:0}
+.flabel{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 9px}
+.flabel b{color:var(--ink);font-weight:700;letter-spacing:.14em}
+
+/* ── Card: data format 216 x 154 mm. --mm is exactly one millimetre, so every
+      size below is the real printed size. ──────────────────────────────── */
+.card{container-type:inline-size;position:relative;width:100%;aspect-ratio:216/154;
+  box-shadow:var(--shadow);overflow:hidden;isolation:isolate;
+  --mm:.46296cqw;
+  --espresso:#1A1612; --mozzarella:#FAFAFA; --parmigiano:#FEF1A5;
+  --marinara:#8E2800; --olive:#746B03; --tan:#C9BD8A;
+}
+.pad{position:absolute;inset:calc(13*var(--mm));display:flex}
+.guides{position:absolute;inset:0;pointer-events:none;z-index:5;opacity:0;transition:opacity .18s}
+body.show-guides .guides{opacity:1}
+@media (prefers-reduced-motion:reduce){.guides{transition:none}}
+.g-trim{position:absolute;inset:calc(3*var(--mm));border:1px dashed var(--trim)}
+.g-safe{position:absolute;inset:calc(6*var(--mm));border:1px dashed var(--safe)}
+
+.c-eyebrow{font-family:"Inter Proof",sans-serif;font-weight:600;font-size:calc(3.1*var(--mm));
+  letter-spacing:.26em;text-transform:uppercase;margin:0}
+.c-display{font-family:"Playfair Proof",Georgia,serif;font-weight:600;line-height:1.04;
+  margin:0;letter-spacing:-.015em}
+.c-body{font-family:"Inter Proof",sans-serif;font-size:calc(4.6*var(--mm));line-height:1.42;margin:0}
+.c-facts{font-family:"Inter Proof",sans-serif;font-size:calc(3.6*var(--mm));line-height:1.5;margin:0}
+.c-rule{height:calc(.35*var(--mm));border:0;margin:0 0 calc(4*var(--mm));width:calc(34*var(--mm))}
+
+/* Front: statement + quiet footer */
+.front{background:var(--espresso)}
+.front .pad{flex-direction:column;justify-content:space-between}
+.front .c-eyebrow{color:var(--parmigiano)}
+.front .c-display{color:var(--mozzarella)}
+.front .c-body{color:var(--tan)}
+.front .c-rule{background:var(--parmigiano);opacity:.5}
+.front .c-facts{color:var(--tan);opacity:.9}
+.front .c-facts strong{color:var(--mozzarella);font-weight:600}
+
+/* Back: text column beside QR column. */
+.back .pad{gap:calc(11*var(--mm))}
+.o-text{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;
+  gap:calc(6*var(--mm));min-width:0}
+.o-qr{flex:0 0 calc(62*var(--mm));display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:calc(3.2*var(--mm))}
+
+/* Layout study only: headline spans the top, body and QR sit underneath. */
+.stacked .pad{flex-direction:column;gap:calc(7*var(--mm))}
+.stacked .back-row{display:flex;gap:calc(11*var(--mm));align-items:center;flex:1 1 auto;min-height:0}
+.qr-panel{width:100%;padding:calc(3.4*var(--mm));background:#fff}
+.qr-panel svg{display:block;width:100%;height:auto}
+.qr-cap{font-family:"Inter Proof",sans-serif;font-weight:700;font-size:calc(5.2*var(--mm));
+  margin:0;text-align:center}
+.back .c-display{font-size:calc(13*var(--mm))}
+
+.b-back{background:var(--marinara)}
+.b-back .c-display{color:var(--mozzarella)}
+.b-back .c-body{color:#F8E7C6}
+.b-back .qr-cap{color:var(--parmigiano)}
+
+/* Olive field — the pairing already defined in globals.css as
+   --color-bg-olive / --color-on-olive / --color-on-olive-muted.
+   Placed last so it wins over .front and .back on equal specificity. */
+.olive{background:var(--olive)}
+.olive .c-eyebrow{color:var(--parmigiano)}
+.olive .c-display{color:var(--mozzarella)}
+.olive .c-body{color:var(--mozzarella)}
+.olive .c-rule{background:var(--parmigiano);opacity:.6}
+.olive .c-facts{color:var(--parmigiano)}
+.olive .c-facts strong{color:var(--mozzarella);font-weight:600}
+.olive .qr-cap{color:var(--mozzarella)}
+
+/* Sections */
+.section{margin:64px 0 0;border-top:1px solid var(--rule);padding-top:28px}
+.section h2{font-family:"Playfair Proof",Georgia,serif;font-weight:600;font-size:26px;margin:0 0 6px}
+.section h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  margin:32px 0 0;font-weight:600}
+.tablewrap{overflow-x:auto;margin:14px 0 0}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+th{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:600;
+  border-bottom:1px solid var(--rule)}
+td.n{width:1%;white-space:nowrap;color:var(--muted);font-family:ui-monospace,Menlo,monospace}
+.quote{font-family:"Playfair Proof",Georgia,serif;font-size:17px;line-height:1.3}
+.quote-s{font-family:"Inter Proof",sans-serif;font-size:14.5px}
+.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:2px 7px;border-radius:2px;white-space:nowrap}
+.pill.ok{background:var(--accent-soft);color:var(--accent)}
+.pill.ask{background:#F6E3C4;color:#7A4A05}
+.pill.live{background:var(--ink);color:var(--paper)}
+@media (prefers-color-scheme:dark){.pill.ask{background:#4A3208;color:#F0C877}}
+:root[data-theme="dark"] .pill.ask{background:#4A3208;color:#F0C877}
+:root[data-theme="light"] .pill.ask{background:#F6E3C4;color:#7A4A05}
+.legend{margin:16px 0 0;font-size:13px;color:var(--muted);max-width:76ch}
+footer{margin:56px 0 0;padding-top:20px;border-top:1px solid var(--rule);font-size:12.5px;
+  color:var(--muted);max-width:80ch}
+
+body.true-size .sheet{grid-template-columns:1fr;justify-items:start}
+body.true-size .card{width:216mm;max-width:100%}
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Ristorante Goldoni · Andruck zur Abstimmung · Fassung 3</p>
+    <h1>Postkarte, zwei Entwürfe</h1>
+    <p class="lede">Vorne die Einladung, hinten das Bestellen — Postkartenlogik. Beide Vorderseiten
+      stehen in Espresso und unterscheiden sich im Satz; die Rückseiten unterscheiden sich in der
+      Lautstärke. Weiß als Kartengrund ist raus, die Aktionsfläche ebenfalls.
+      Textalternativen stehen unten als Liste, nicht im Layout.</p>
+  </header>
+
+  <dl class="spec">
+    <div><dt>Endformat</dt><dd class="mono">210 × 148 mm</dd></div>
+    <div><dt>Datenformat</dt><dd class="mono">216 × 154 mm</dd></div>
+    <div><dt>Beschnitt</dt><dd class="mono">3 mm umlaufend</dd></div>
+    <div><dt>Fließtext</dt><dd class="mono">4,6 mm ≈ 13 pt</dd></div>
+    <div><dt>QR gedruckt</dt><dd class="mono">≈ 51 mm</dd></div>
+    <div><dt>Druck</dt><dd class="mono">4/4-farbig</dd></div>
+  </dl>
+
+  <div class="controls">
+    <button type="button" id="tg-guides" aria-pressed="true">
+      <span class="dot" aria-hidden="true"></span>Druckhilfslinien
+    </button>
+    <button type="button" id="tg-size" aria-pressed="false">
+      <span class="dot" aria-hidden="true"></span>Originalgröße
+    </button>
+  </div>
+  <p class="hint">Magenta ist die Schnittkante, Grün der Sicherheitsabstand.
+    <strong>Originalgröße</strong> rechnet in echten Millimetern — erst dann beurteilst du die Schrift so,
+    wie sie auf dem Papier steht.</p>
+
+  <!-- ══ Variante A ══════════════════════════════════════════════════════ -->
+  <section class="variant">
+    <div class="vhead">
+      <span class="vtag">A</span>
+      <h2 class="vname">Kurz &amp; leise</h2>
+      <p class="vclaim">Vorderseite Espresso · Rückseite Olive · knappe Headline</p>
+    </div>
+    <p class="vnote">Zwei Worte und ein Punkt auf schwarzem Grund, dahinter die Bestellseite in Olive.
+      Die Farbkombination ist keine Erfindung: <code>globals.css</code> führt
+      <code>--color-bg-olive</code> zusammen mit <code>--color-on-olive</code> bereits als vollflächiges
+      Farbfeld. Gemessen ergibt Mozzarella auf Olive <strong>5,5:1</strong>, Parmigiano
+      <strong>4,8:1</strong> — beides über der Schwelle, die für Fließtext gilt.</p>
+
+    <div class="sheet">
+      <div class="face">
+        <p class="flabel"><span><b>Vorderseite</b></span><span class="mono">216 × 154 mm</span></p>
+        <div class="card front">
+          <div class="pad">
+            <p class="c-eyebrow">Ristorante Goldoni</p>
+            <div>
+              <p class="c-display" style="font-size:calc(25*var(--mm))">Italienisch<br>verliebt.</p>
+              <p class="c-body" style="margin-top:calc(6*var(--mm))">Frische Zutaten, mit Liebe gemacht.</p>
+            </div>
+            <div>
+              <hr class="c-rule">
+              <p class="c-facts"><strong>Reinsburgstraße 151 · 70197 Stuttgart</strong><br>
+                +49 (711) 659 98 89 · ristorante-goldoni.de</p>
+            </div>
+          </div>
+          <div class="guides" aria-hidden="true"><div class="g-trim"></div><div class="g-safe"></div></div>
+        </div>
+      </div>
+
+      <div class="face">
+        <p class="flabel"><span><b>Rückseite</b> · Bestellen</span><span class="mono">216 × 154 mm</span></p>
+        <div class="card back olive">
+          <div class="pad">
+            <div class="o-text">
+              <p class="c-display">Direkt bei uns<br>bestellen.</p>
+              <p class="c-body">Abholen oder liefern lassen — Sie entscheiden.
+                Und wer in der Nähe ist: einfach kurz vorbeikommen.</p>
+            </div>
+            <div class="o-qr">
+              <div class="qr-panel">__QR_A__</div>
+              <p class="qr-cap">Hier entlang.</p>
+            </div>
+          </div>
+          <div class="guides" aria-hidden="true"><div class="g-trim"></div><div class="g-safe"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Variante B ══════════════════════════════════════════════════════ -->
+  <section class="variant">
+    <div class="vhead">
+      <span class="vtag">B</span>
+      <h2 class="vname">Slogan &amp; laut</h2>
+      <p class="vclaim">Vorderseite mit dem Website-Slogan · Rückseite Marinara</p>
+    </div>
+    <p class="vnote">Die Vorderseite trägt den Satz, auf den du zu 80 % tippst — der Slogan, der so schon
+      auf der Website steht. Dafür ist die Zeile länger und der Grad kleiner. Die Rückseite steht
+      vollflächig in Marinara: in einer Papiertüte zwischen Pizzakartons der Unterschied zwischen gesehen
+      und übersehen.</p>
+
+    <div class="sheet">
+      <div class="face">
+        <p class="flabel"><span><b>Vorderseite</b></span><span class="mono">216 × 154 mm</span></p>
+        <div class="card front">
+          <div class="pad">
+            <p class="c-eyebrow">Ristorante Goldoni</p>
+            <div>
+              <p class="c-display" style="font-size:calc(17*var(--mm))">Italienisch<br>verliebte Küche.</p>
+              <p class="c-body" style="margin-top:calc(6*var(--mm))">Frische Zutaten, mit Liebe gemacht.</p>
+            </div>
+            <div>
+              <hr class="c-rule">
+              <p class="c-facts"><strong>Reinsburgstraße 151 · 70197 Stuttgart</strong><br>
+                +49 (711) 659 98 89 · ristorante-goldoni.de</p>
+            </div>
+          </div>
+          <div class="guides" aria-hidden="true"><div class="g-trim"></div><div class="g-safe"></div></div>
+        </div>
+      </div>
+
+      <div class="face">
+        <p class="flabel"><span><b>Rückseite</b> · Bestellen</span><span class="mono">216 × 154 mm</span></p>
+        <div class="card back b-back">
+          <div class="pad">
+            <div class="o-text">
+              <p class="c-display">Direkt bei uns<br>bestellen.</p>
+              <p class="c-body">Abholen oder liefern lassen — Sie entscheiden.
+                Und wer in der Nähe ist: einfach kurz vorbeikommen.</p>
+            </div>
+            <div class="o-qr">
+              <div class="qr-panel">__QR_B__</div>
+              <p class="qr-cap">Prego.</p>
+            </div>
+          </div>
+          <div class="guides" aria-hidden="true"><div class="g-trim"></div><div class="g-safe"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Stand der Entscheidungen ═══════════════════════════════════════ -->
+  <section class="section">
+    <h2>Stand der Entscheidungen</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>Punkt</th><th>Stand</th><th>Anmerkung</th></tr></thead>
+        <tbody>
+          <tr><td class="n">1</td><td>Weiß als Kartengrund</td>
+            <td><span class="pill ok">entfernt</span></td>
+            <td>Beide Vorderseiten stehen in Espresso, die Rückseiten in Espresso bzw. Marinara.</td></tr>
+          <tr><td class="n">2</td><td>„Bei uns steht immer ein Teller für Sie bereit.“</td>
+            <td><span class="pill ok">entfernt</span></td>
+            <td>Klang gestelzt. Ersatzvorschläge stehen unten in der Textliste.</td></tr>
+          <tr><td class="n">3</td><td>Begrüßungs-Box / Kampagne</td>
+            <td><span class="pill ok">entfernt</span></td>
+            <td>Kampagne läuft im Portal, nicht auf dem Papier. Vorteil nebenbei: der Druck ist damit
+              unabhängig davon, ob und wann ihr die Kampagne wechselt.</td></tr>
+          <tr><td class="n">4</td><td>Adresse nur auf der Vorderseite</td>
+            <td><span class="pill ok">geändert</span></td>
+            <td>Wie besprochen. Kleiner Vorbehalt fürs Protokoll: der Abhol-Satz steht hinten, die
+              Straße vorn — wer spontan vorbeifahren will, muss die Karte umdrehen.</td></tr>
+          <tr><td class="n">5</td><td>Seitenfolge Vorne links, Hinten rechts</td>
+            <td><span class="pill ok">geändert</span></td>
+            <td>Postkartenlogik statt Kühlschranklogik.</td></tr>
+          <tr><td class="n">5b</td><td>Olive auf der Rückseite von A</td>
+            <td><span class="pill ok">geändert</span></td>
+            <td>Nur die Rückseite; beide Vorderseiten bleiben Espresso. Die Tokens dafür stehen schon
+              in <code>globals.css</code> (<code>--color-bg-olive</code> / <code>--color-on-olive</code>).
+              Wichtig dabei: der cremefarbene Ton, den die Rückseite auf Espresso trug, kommt auf Olive
+              nur auf 2,9:1 — zu wenig für Fließtext. Deshalb steht der Text dort in Mozzarella und
+              Parmigiano, nicht in Tan.</td></tr>
+          <tr><td class="n">5d</td><td>„Unsere eigene Bestellseite“ war sachlich falsch</td>
+            <td><span class="pill ok">korrigiert</span></td>
+            <td>Die Storefront ist Wolts White-Label-Produkt auf <code>order.site</code> — sie trägt
+              Namen und Karte des Hauses, ist aber keine eigene Seite. Die Formulierung stammte aus der
+              internen Kanal-Dokumentation im Repo, wo sie den Kanal gegen den Marktplatz abgrenzt;
+              als Gästetext wird daraus eine Behauptung, die nicht hält. Ersatzlos gestrichen — die
+              Headline sagt ohnehin, worum es geht.</td></tr>
+          <tr><td class="n">5e</td><td>„Heimweg“ als einziges Abholbild</td>
+            <td><span class="pill ok">ersetzt</span></td>
+            <td>Deckte nur den ab, der ohnehin vorbeifährt — nicht den, der schon zu Hause sitzt und
+              noch einmal rausgeht. „Kurz vorbeikommen“ trägt beide.</td></tr>
+          <tr><td class="n">5c</td><td>„Jetzt bestellen“ als QR-Zeile verworfen</td>
+            <td><span class="pill ask">bewusst</span></td>
+            <td>Festgehalten, damit die Entscheidung später nicht wie ein Versehen aussieht: Wolts
+              eigener Leitfaden verlangt genau diese Formulierung und warnt vor vagen Bezeichnungen
+              (siehe Kommentar in <code>site.ts</code>). Sie war die einzige nachweislich getestete
+              Zeile. Die Klarheit trägt jetzt die Headline „Direkt bei uns bestellen.“ direkt daneben.</td></tr>
+          <tr><td class="n">6</td><td>A/B-Achse</td>
+            <td><span class="pill live">läuft</span></td>
+            <td>Beide Seiten unterscheiden sich — Satz vorn, Farbe hinten. Der Vergleich zeigt damit,
+              welche Karte insgesamt gewinnt, nicht welches einzelne Element.</td></tr>
+          <tr><td class="n">6b</td><td>Headline auf der Rückseite</td>
+            <td><span class="pill ok">entschieden</span></td>
+            <td>Steht <strong>neben</strong> dem QR, nicht darüber. Eine Studie mit ganzbreiter Headline
+              über Text und QR wurde gebaut und verworfen. Die Tabellenüberschrift hieß irrtümlich
+              „Headline über dem QR“ und hat diesen Umweg ausgelöst — sie heißt jetzt nur noch
+              „Rückseite — Headline“.</td></tr>
+          <tr><td class="n">7</td><td>QR-Module in reinem Schwarz</td>
+            <td><span class="pill ask">vor Druck</span></td>
+            <td>Nur K, kein gemischtes Schwarz. Reserve reichlich: rund 51 mm Kantenlänge, gut 1 mm
+              je Modul.</td></tr>
+          <tr><td class="n">8</td><td>Das „G“ im QR-Emblem</td>
+            <td><span class="pill ask">vor Druck</span></td>
+            <td>In Pfade konvertieren — eine lebende Schriftreferenz in Druckdaten ist ein
+              Platzhalterkästchen, das nur darauf wartet zu passieren.</td></tr>
+          <tr><td class="n">9</td><td>Marinara im Vierfarbdruck</td>
+            <td><span class="pill ask">vor Druck</span></td>
+            <td><code>#8E2800</code> kippt von RGB nach CMYK am stärksten. Betrifft die Rückseite von B.
+              Vor der Freigabe gehört ein echter Proof auf den Tisch, kein Bildschirm.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ Textvarianten ══════════════════════════════════════════════════ -->
+  <section class="section">
+    <h2>Textvarianten zum Durchsprechen</h2>
+    <p class="legend">Nur Text, nicht gestaltet — genau wie besprochen. <strong>Quelle</strong> sagt, ob
+      der Satz schon irgendwo von euch steht oder ein Vorschlag von mir ist. Was von der Website kommt,
+      ist erprobt; was von mir kommt, braucht eine Freigabe.</p>
+
+    <h3>Vorderseite — Headline</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>Satz</th><th>Quelle</th><th>Wirkung</th></tr></thead>
+        <tbody>
+          <tr><td class="n">1</td><td class="quote">Italienisch verliebte Küche.</td>
+            <td><span class="pill ok">Website</span></td>
+            <td>Im Entwurf B. Vollständig, warm, schon eingeführt. Braucht mehr Zeilenlänge.</td></tr>
+          <tr><td class="n">2</td><td class="quote">Italienisch verliebt.</td>
+            <td><span class="pill ok">Website, gekürzt</span></td>
+            <td>Im Entwurf A. Aus 1 herausgeschnitten, dadurch plakativer — trägt aber nur, wenn der
+              Untertitel erklärt, wovon die Rede ist.</td></tr>
+          <tr><td class="n">3</td><td class="quote">Verliebt in italienische Küche.</td>
+            <td><span class="pill ask">Vorschlag</span></td>
+            <td>Grammatisch geradliniger als 1, verliert aber die Eigenart, die den Slogan merkfähig macht.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Vorderseite — Untertitel</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>Satz</th><th>Quelle</th><th>Wirkung</th></tr></thead>
+        <tbody>
+          <tr><td class="n">1</td><td class="quote-s">Frische Zutaten, mit Liebe gemacht.</td>
+            <td><span class="pill ok">Website</span></td>
+            <td><span class="pill live">1. Wahl</span> Steht so auf beiden Entwürfen. Sagt etwas über
+              die Küche, nichts über den Ort.</td></tr>
+          <tr><td class="n">2</td><td class="quote-s">Pasta, Pizza &amp; ein Platz am Tisch.</td>
+            <td><span class="pill ask">überarbeitet</span></td>
+            <td><span class="pill live">2. Wahl</span> Pizza rückt hinter Pasta, das „und“ wird ein
+              Kaufmanns-Und. Nennt beim Namen, wofür Leute kommen.</td></tr>
+          <tr><td class="n">3</td><td class="quote-s">Küche, Keller &amp; ein Platz am Tisch.</td>
+            <td><span class="pill ask">neu</span></td>
+            <td>„Küche und Keller“ ist die alte Wendung für Essen und Wein — eleganter als eine
+              Aufzählung von Gerichten. Setzt voraus, dass die Weinkarte den Anspruch trägt; sie
+              existiert (eigene Wein- und Hausweinseite), das Urteil darüber steht dem Betreiber zu.</td></tr>
+          <tr><td class="n">4</td><td class="quote-s">Pasta, Dolci &amp; ein langer Abend.</td>
+            <td><span class="pill ask">neu</span></td>
+            <td>Erzählt den Abend statt der Speisekarte. Passt zur Auslage im Restaurant besser als
+              zur Lieferung nach Hause — dort ist der lange Abend nicht das Versprechen.</td></tr>
+          <tr><td class="n">5</td><td class="quote-s">Ein Teller, ein Glas &amp; etwas Zeit.</td>
+            <td><span class="pill ask">neu</span></td>
+            <td>Ohne jede Speise. Am ruhigsten und am wenigsten austauschbar — aber auch am
+              unbestimmtesten: Wer die Karte zum ersten Mal sieht, erfährt nicht, dass es italienisch ist.
+              Trägt nur unter der vollständigen Headline aus Entwurf B.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Rückseite — Headline</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>Satz</th><th>Quelle</th><th>Wirkung</th></tr></thead>
+        <tbody>
+          <tr><td class="n">1</td><td class="quote">Direkt bei uns bestellen.</td>
+            <td><span class="pill ask">Vorschlag</span></td>
+            <td>In beiden Entwürfen. Sagt genau das eine, was die Karte erreichen soll.</td></tr>
+          <tr><td class="n">2</td><td class="quote">Ihr kürzester Weg zu uns.</td>
+            <td><span class="pill ask">Vorschlag</span></td>
+            <td>Funktioniert doppelt — der kurze Weg zur Bestellung und der kurze Weg zur Tür.
+              Sagt „nah“, ohne festzulegen, aus welcher Richtung jemand kommt.</td></tr>
+          <tr><td class="n">3</td><td class="quote">Heute schon Hunger?</td>
+            <td><span class="pill ask">Vorschlag</span></td>
+            <td>Am K&uuml;hlschrank die direkteste Ansprache; klingt aber weniger nach Restaurant.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Rückseite — Zeile unter dem QR</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>Satz</th><th>Quelle</th><th>Wirkung</th></tr></thead>
+        <tbody>
+          <tr><td class="n">1</td><td class="quote-s">Hier entlang.</td>
+            <td><span class="pill ask">Vorschlag</span></td>
+            <td><span class="pill live">im Entwurf A</span> Zurückhaltend, fast beiläufig — die Headline
+              darüber trägt die Klarheit, diese Zeile darf freundlich sein.</td></tr>
+          <tr><td class="n">2</td><td class="quote-s">Prego.</td>
+            <td><span class="pill ask">Vorschlag</span></td>
+            <td><span class="pill live">im Entwurf B</span> Idiomatisch genau richtig: „prego“ ist im
+              Italienischen die Einladung, etwas zu tun — „bitte, gehen Sie voran“. Unter einem QR heißt
+              das wörtlich „hier entlang“.</td></tr>
+          <tr><td class="n">3</td><td class="quote-s">Prego, subito.</td>
+            <td><span class="pill ask">neu</span></td>
+            <td>„subito“ heißt sofort — die einzige der Zwei-Wort-Fassungen, die Tempo verspricht, und
+              damit die einzige, die zum Abholgedanken passt. Der Preis: von allen vorgeschlagenen
+              italienischen Wörtern ist es das, das am wenigsten Leute kennen.</td></tr>
+          <tr><td class="n">4</td><td class="quote-s">Prego, andiamo.</td>
+            <td><span class="pill ask">neu</span></td>
+            <td>„los geht’s“. Bewegung statt Höflichkeit, und im Klang die schönste der vier.
+              Ein Teil der Leser wird „andiamo“ nicht übersetzen können — schaden tut es dann nicht,
+              nützen aber auch nicht.</td></tr>
+          <tr><td class="n">5</td><td class="quote-s">Prego, buon appetito.</td>
+            <td><span class="pill ask">neu</span></td>
+            <td>Die mit Abstand bekannteste italienische Wendung hier — praktisch jeder versteht sie.
+              Dafür stimmt der Zeitpunkt nicht ganz: guten Appetit wünscht man nach dem Bestellen,
+              nicht davor.</td></tr>
+          <tr><td class="n">6</td><td class="quote-s">Prego — hier entlang.</td>
+            <td><span class="pill ask">neu</span></td>
+            <td>Keine reine Zwei-Wort-Fassung, sondern deine beiden Zusagen kombiniert: der italienische
+              Ton führt, das deutsche Wort trägt die Bedeutung. Niemand muss raten, und der Akzent
+              bleibt. Länger als alle anderen — unter dem QR steht dafür genug Platz.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Rückseite — Fließtext</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>Satz</th><th>Quelle</th><th>Wirkung</th></tr></thead>
+        <tbody>
+          <tr><td class="n">1</td><td class="quote-s">Abholen oder liefern lassen — Sie entscheiden.
+            Und wer in der Nähe ist: einfach kurz vorbeikommen.</td>
+            <td><span class="pill ask">neu</span></td>
+            <td><span class="pill live">in beiden Entwürfen</span> Ohne Besitzanspruch auf die Seite und
+              ohne Heimweg. „Kurz vorbeikommen“ deckt beide Fälle ab: den, der ohnehin vorbeifährt,
+              und den, der schon zu Hause sitzt und noch einmal rausgeht.</td></tr>
+          <tr><td class="n">2</td><td class="quote-s">Scannen, aussuchen, fertig.
+            Abholen oder bringen lassen — Sie entscheiden.</td>
+            <td><span class="pill ask">Vorschlag</span></td>
+            <td>Die schnellste Fassung, drei Schritte in vier Worten. Verzichtet dafür ganz darauf, den
+              Abholgedanken zu pflanzen — sie nennt ihn nur als Option.</td></tr>
+          <tr><td class="n">3</td><td class="quote-s">Abholen oder bringen lassen.
+            Wohnen Sie um die Ecke? Kurz anhalten, aussteigen, mitnehmen.</td>
+            <td><span class="pill ask">neu</span></td>
+            <td>Die körperlichste Fassung — sie beschreibt die Handlung statt sie zu benennen, und das
+              ist der Grund, warum so ein Satz hängen bleibt. Etwas länger als die anderen.</td></tr>
+          <tr><td class="n">4</td><td class="quote-s">Bei uns bestellt, von uns gemacht.
+            Abholen oder bringen lassen.</td>
+            <td><span class="pill ask">neu</span></td>
+            <td>Verlagert den Stolz von der Bestellseite auf die Küche — dorthin, wo er auch hingehört
+              und wo er ohne jeden Vorbehalt stimmt. Erwähnt das Abholen, wirbt aber nicht dafür.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>QR erzeugt aus <code>STOREFRONT_PARTNER.url</code>, Fehlerkorrektur H, gerastert und mit jsQR
+      gegengelesen — er löst auf dieselbe Adresse auf wie der Bestellknopf der Website. Schriften:
+      Playfair Display 600 und Inter aus den Repo-Subsets. Farben ausschließlich aus der Tavola-Palette
+      in <code>src/app/globals.css</code>. Die Karten wechseln bewusst nicht mit dem Farbschema —
+      gedrucktes Papier hat keinen Dunkelmodus; nur die Seite drumherum passt sich an.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var body = document.body;
+  function wire(id, cls, initial) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    body.classList.toggle(cls, initial);
+    btn.addEventListener("click", function () {
+      var on = btn.getAttribute("aria-pressed") === "true";
+      btn.setAttribute("aria-pressed", String(!on));
+      body.classList.toggle(cls, !on);
+    });
+  }
+  wire("tg-guides", "show-guides", true);
+  wire("tg-size", "true-size", false);
+})();
+</script>

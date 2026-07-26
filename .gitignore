@@ -55,3 +55,7 @@ playwright-report/
 # Local scratch (Lighthouse baselines, ad-hoc artefacts)
 tmp/
 .mail-preview/
+
+# Erzeugte Andruck-Artefakte (docs/postkarte/build.mjs)
+docs/postkarte/proof.html
+docs/postkarte/print.html

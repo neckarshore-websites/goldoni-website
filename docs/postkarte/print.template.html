@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Goldoni Postkarte — Entwürfe</title>
+<style>
+@font-face{font-family:"Playfair";src:url(data:font/woff2;base64,__FONT_PLAYFAIR__) format("woff2");font-weight:600;font-display:block}
+@font-face{font-family:"Inter";src:url(data:font/woff2;base64,__FONT_INTER__) format("woff2");font-weight:400 700;font-display:block}
+
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;padding:0;background:#fff}
+
+.page{width:210mm;height:297mm;background:#fff;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:11mm;page-break-after:always;overflow:hidden}
+.page:last-child{page-break-after:auto}
+
+/* Card — 216 x 154 mm data format, scaled to 170 mm wide for A4.
+   --mm stays proportional, so every internal size keeps its real ratio. */
+.card{position:relative;width:170mm;aspect-ratio:216/154;overflow:hidden;
+  container-type:inline-size;
+  --mm:.46296cqw;
+  --espresso:#1A1612; --mozzarella:#FAFAFA; --parmigiano:#FEF1A5;
+  --marinara:#8E2800; --olive:#746B03; --tan:#C9BD8A;
+}
+.pad{position:absolute;inset:calc(13*var(--mm));display:flex}
+
+.c-eyebrow{font-family:"Inter",sans-serif;font-weight:600;font-size:calc(3.1*var(--mm));
+  letter-spacing:.26em;text-transform:uppercase;margin:0}
+.c-display{font-family:"Playfair",Georgia,serif;font-weight:600;line-height:1.04;margin:0;
+  letter-spacing:-.015em}
+.c-body{font-family:"Inter",sans-serif;font-size:calc(4.6*var(--mm));line-height:1.42;margin:0}
+.c-facts{font-family:"Inter",sans-serif;font-size:calc(3.6*var(--mm));line-height:1.5;margin:0}
+.c-rule{height:calc(.35*var(--mm));border:0;margin:0 0 calc(4*var(--mm));width:calc(34*var(--mm))}
+
+.front{background:var(--espresso)}
+.front .pad{flex-direction:column;justify-content:space-between}
+.front .c-eyebrow{color:var(--parmigiano)}
+.front .c-display{color:var(--mozzarella)}
+.front .c-body{color:var(--tan)}
+.front .c-rule{background:var(--parmigiano);opacity:.5}
+.front .c-facts{color:var(--tan)}
+.front .c-facts strong{color:var(--mozzarella);font-weight:600}
+
+.back .pad{gap:calc(11*var(--mm))}
+.o-text{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;
+  gap:calc(6*var(--mm));min-width:0}
+.o-qr{flex:0 0 calc(62*var(--mm));display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:calc(3.2*var(--mm))}
+.qr-panel{width:100%;padding:calc(3.4*var(--mm));background:#fff}
+.qr-panel svg{display:block;width:100%;height:auto}
+.qr-cap{font-family:"Inter",sans-serif;font-weight:700;font-size:calc(5.2*var(--mm));
+  margin:0;text-align:center}
+.back .c-display{font-size:calc(13*var(--mm))}
+
+.b-back{background:var(--marinara)}
+.b-back .c-display{color:var(--mozzarella)}
+.b-back .c-body{color:#F8E7C6}
+.b-back .qr-cap{color:var(--parmigiano)}
+
+.olive{background:var(--olive)}
+.olive .c-display{color:var(--mozzarella)}
+.olive .c-body{color:var(--mozzarella)}
+.olive .qr-cap{color:var(--mozzarella)}
+</style>
+</head>
+<body>
+
+<!-- Seite 1 — Variante A -->
+<section class="page">
+  <div class="card front">
+    <div class="pad">
+      <p class="c-eyebrow">Ristorante Goldoni</p>
+      <div>
+        <p class="c-display" style="font-size:calc(25*var(--mm))">Italienisch<br>verliebt.</p>
+        <p class="c-body" style="margin-top:calc(6*var(--mm))">Frische Zutaten, mit Liebe gemacht.</p>
+      </div>
+      <div>
+        <hr class="c-rule">
+        <p class="c-facts"><strong>Reinsburgstraße 151 · 70197 Stuttgart</strong><br>
+          +49 (711) 659 98 89 · ristorante-goldoni.de</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card back olive">
+    <div class="pad">
+      <div class="o-text">
+        <p class="c-display">Direkt bei uns<br>bestellen.</p>
+        <p class="c-body">Abholen oder liefern lassen — Sie entscheiden.
+          Und wer in der Nähe ist: einfach kurz vorbeikommen.</p>
+      </div>
+      <div class="o-qr">
+        <div class="qr-panel">__QR_A__</div>
+        <p class="qr-cap">Hier entlang.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Seite 2 — Variante B -->
+<section class="page">
+  <div class="card front">
+    <div class="pad">
+      <p class="c-eyebrow">Ristorante Goldoni</p>
+      <div>
+        <p class="c-display" style="font-size:calc(17*var(--mm))">Italienisch<br>verliebte Küche.</p>
+        <p class="c-body" style="margin-top:calc(6*var(--mm))">Frische Zutaten, mit Liebe gemacht.</p>
+      </div>
+      <div>
+        <hr class="c-rule">
+        <p class="c-facts"><strong>Reinsburgstraße 151 · 70197 Stuttgart</strong><br>
+          +49 (711) 659 98 89 · ristorante-goldoni.de</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card back b-back">
+    <div class="pad">
+      <div class="o-text">
+        <p class="c-display">Direkt bei uns<br>bestellen.</p>
+        <p class="c-body">Abholen oder liefern lassen — Sie entscheiden.
+          Und wer in der Nähe ist: einfach kurz vorbeikommen.</p>
+      </div>
+      <div class="o-qr">
+        <div class="qr-panel">__QR_B__</div>
+        <p class="qr-cap">Prego.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
