@@ -40,21 +40,19 @@ export default function SandboxPage() {
             className="text-xl font-semibold"
             style={{ color: "var(--color-text)" }}
           >
-            Entwurf: Urlaubsbanner
+            Urlaubsbanner
           </h2>
           <p
             className="mt-1 max-w-2xl text-sm leading-relaxed"
             style={{ color: "var(--color-text-muted)" }}
           >
-            Noch auf keiner öffentlichen Seite eingebunden. Zwei Dinge fehlen:{" "}
-            <strong>das Urlaubsmotiv</strong> — bis dahin steht ein Farbverlauf
-            statt eines kaputten Bildes — und{" "}
-            <strong>die Bestätigung des Wiedereröffnungsdatums</strong>. Genannt
-            war &bdquo;ab Mittwoch, den 24.&ldquo;; der 24. August ist aber ein
-            Montag, und montags ist ohnehin Ruhetag. Nach der Schliessung bis
-            Sonntag, dem 23., wäre der erste Tag zurück{" "}
-            <strong>Mittwoch, der 26. August</strong>. So steht es unten — der
-            Wochentag stimmt, die Zahl war eine andere.
+            Seit 2026-07-26 auch live auf der Startseite (Betreiber-Wunsch —
+            einmal in echter Umgebung ansehen). Alle Daten vor Ort bestätigt:
+            Wiedereröffnung <strong>Mittwoch, 26. August</strong>. Blendet sich
+            selbst am <strong>Montag, 24. August</strong> aus — vor der
+            Wiedereröffnung, weil Montag und Dienstag ohnehin Standard-Ruhetage
+            sind. Fehlt noch: <strong>das Urlaubsmotiv</strong>, bis dahin
+            steht der Azzurro-Farbverlauf.
           </p>
         </div>
         <HolidayBanner />
