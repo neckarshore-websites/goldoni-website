@@ -3,8 +3,10 @@ import Image from "next/image";
 /**
  * HolidayBanner — Ankündigung der Sommerschliessung.
  *
- * ENTWURF, noch nicht auf einer öffentlichen Seite eingebunden. Zu sehen auf
- * der internen /sandbox.
+ * LIVE auf der Startseite seit 2026-07-26, auf ausdrücklichen Wunsch des
+ * Betreibers — er wollte es einmal in der echten Umgebung sehen, bevor die
+ * Schliessung überhaupt beginnt. Zusätzlich weiterhin auf /sandbox zu sehen.
+ * Zum Abschalten: `BANNER_ENABLED` unten auf `false`.
  *
  * Warum eine eigene Komponente und kein Umbau des SundayBanner: die beiden
  * schliessen sich zeitlich aus. Der Sonntagsstreifen läuft bis einschliesslich
@@ -12,38 +14,53 @@ import Image from "next/image";
  * also nie beides gleichzeitig da, und zwei kurze Komponenten mit je einem
  * Ablaufdatum sind ehrlicher als eine mit einer Fallunterscheidung.
  *
- * ZWEI DINGE FEHLEN NOCH:
+ * ALLE DATEN BESTÄTIGT 2026-07-26 (vor Ort):
+ * - Wiedereröffnung: Mittwoch, 26. August. Die ursprüngliche Angabe „ab
+ *   Mittwoch, den 24." war in sich widersprüchlich — der 24. ist ein Montag —
+ *   und wurde zur abgeleiteten Fassung korrigiert, dann vom Betreiber bestätigt.
+ * - Das Banner blendet sich am Montag, 24. August aus — VOR der Wiedereröffnung,
+ *   nicht erst danach. Absicht: Montag und Dienstag (24./25.) sind ohnehin die
+ *   Standard-Ruhetage, die die Fussleiste immer als „Mo + Di geschlossen"
+ *   zeigt. Ein Sonderhinweis für diese zwei Tage ist überflüssig.
  *
- * 1. DAS BILD. `HOLIDAY_IMAGE` zeigt auf eine Datei, die es noch nicht gibt —
- *    der Betreiber liefert ein Urlaubsmotiv nach. Solange sie fehlt, rendert
- *    die Komponente einen ruhigen Farbverlauf statt eines kaputten Bildes.
- *    Wenn das Motiv da ist: nach public/images/ legen, hier den Pfad setzen,
- *    fertig. Vorher als WebP konvertieren (siehe /assets zur Begründung —
- *    Hero-PNGs kosten LCP-Budget auf Mobil).
- *
- * 2. DAS WIEDERERÖFFNUNGSDATUM IST UNBESTÄTIGT. Der Betreiber nannte
- *    „ab Mittwoch, den 24.". Der 24. August 2026 ist ein MONTAG, und montags
- *    ist ohnehin Ruhetag. Nach der Schliessung bis Sonntag, 23. folgen Montag
- *    24. und Dienstag 25. als reguläre Ruhetage — der erste Tag zurück wäre
- *    damit MITTWOCH, DER 26. AUGUST. Der Wochentag stimmt, die Zahl nicht.
- *    Unten steht die abgeleitete Fassung; sie gehört bestätigt, bevor das
- *    Banner öffentlich wird. Ein falsches Datum hier heisst Gäste vor
- *    verschlossener Tür.
+ * NOCH OFFEN: DAS BILD. `HOLIDAY_IMAGE` zeigt auf eine Datei, die es noch
+ * nicht gibt — der Betreiber liefert ein Urlaubsmotiv nach. Solange sie
+ * fehlt, rendert die Komponente den unten stehenden Azzurro-Farbverlauf statt
+ * eines kaputten Bildes. Motiv da: nach public/images/ legen, Pfad hier
+ * setzen, fertig — vorher als WebP (siehe /assets zur Begründung).
  */
 
 /** Pfad zum Urlaubsmotiv. `null`, solange der Betreiber keines geliefert hat. */
 const HOLIDAY_IMAGE: string | null = null;
 
 /**
- * Erster Tag der Schliessung und erster Tag zurück.
+ * Erster Tag der Schliessung, letzter geschlossener Tag, erster Tag zurück.
  *
  * Als ISO-Datum gehalten, nicht als Fliesstext, damit die Wochentage aus dem
  * Datum abgeleitet und nicht danebengeschrieben werden — genau der Fehler, der
- * diesen Entwurf mit einem Montag statt eines Mittwochs erreicht hat.
+ * die erste Fassung dieses Banners mit einem Montag statt eines Mittwochs
+ * erreicht hat.
  */
 const CLOSED_FROM = "2026-08-03";
 const CLOSED_UNTIL = "2026-08-23";
 const REOPEN = "2026-08-26";
+
+/**
+ * MASTER-SCHALTER. Auf `false` setzen, um das Banner sofort auszublenden —
+ * unabhängig vom Ablaufdatum unten. Zurück auf `true`, um es wieder zu zeigen.
+ */
+const BANNER_ENABLED = true;
+
+/**
+ * Cutoff: Beginn von Montag, 24. August 2026, Europe/Berlin (CEST = UTC+2).
+ * Bewusst VOR der Wiedereröffnung (26. August), nicht danach — siehe Docblock
+ * oben: die letzten zwei geschlossenen Tage sind ohnehin Standard-Ruhetage.
+ */
+const BANNER_EXPIRES_AT = new Date("2026-08-24T00:00:00+02:00").getTime();
+
+function bannerHasExpired(): boolean {
+  return Date.now() >= BANNER_EXPIRES_AT;
+}
 
 const WOCHENTAGE = [
   "Montag",
@@ -80,7 +97,23 @@ function zerlege(iso: string) {
   };
 }
 
+/**
+ * Azzurro — italienisches Meeresblau, bewusst eine Ausnahme von der warmen
+ * Tavola-Palette (Salmon/Marinara/Olive), die den Rest der Website trägt.
+ * Betreiber-Entscheidung 2026-07-26: für eine "wir sind im Urlaub"-Anzeige
+ * passt Meer und Himmel besser als Terracotta.
+ *
+ * Die drei Töne sind absichtlich dunkel genug gehalten, dass weisser Text
+ * überall im Verlauf über 4,5:1 Kontrast bleibt (WCAG AA) — ein hellerer
+ * dritter Ton wurde geprüft und verworfen (~2,8:1, durchgefallen).
+ */
+const AZZURRO_GRADIENT =
+  "linear-gradient(120deg, #0B3D5C 0%, #145C7A 55%, #1B6B93 100%)";
+const AZZURRO_FALLBACK = "#123C5A";
+
 export function HolidayBanner() {
+  if (!BANNER_ENABLED || bannerHasExpired()) return null;
+
   const von = zerlege(CLOSED_FROM);
   const bis = zerlege(CLOSED_UNTIL);
   const zurueck = zerlege(REOPEN);
@@ -88,7 +121,7 @@ export function HolidayBanner() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ backgroundColor: "#8E2800" }}
+      style={{ backgroundColor: AZZURRO_FALLBACK }}
       aria-label="Betriebsferien"
     >
       {HOLIDAY_IMAGE ? (
@@ -107,10 +140,7 @@ export function HolidayBanner() {
         <div
           aria-hidden
           className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(120deg, #8E2800 0%, #B64926 55%, #746B03 100%)",
-          }}
+          style={{ background: AZZURRO_GRADIENT }}
         />
       )}
 

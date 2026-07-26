@@ -5,6 +5,7 @@ import { FaqSection } from "@/components/FaqSection";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { PhoneIcon } from "@/components/PhoneIcon";
 import { ReviewsSection } from "@/components/ReviewsSection";
+import { HolidayBanner } from "@/components/HolidayBanner";
 import { StructuredData } from "@/components/StructuredData";
 import { SundayBanner } from "@/components/SundayBanner";
 import { FAQS } from "@/data/faqs";
@@ -22,6 +23,12 @@ export default function Home() {
   return (
     <main>
       <StructuredData data={faqJsonLd(FAQS)} />
+      {/* Summer-closure notice — the most consequential announcement on the
+          page (three weeks fully shut) outranks both strips below it.
+          Auto-expires Monday 24 August 2026 (see component); until then,
+          visible now as advance notice even though the closure itself starts
+          3 August. */}
+      <HolidayBanner />
       {/*
         Order swapped visually on mobile only: the ordering action outranks the
         Sunday announcement there (owner decision, 2026-07-26). Source order
