@@ -1,110 +1,142 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { DeliveryBanner } from "@/components/DeliveryBanner";
+import { SITE, STOREFRONT_PARTNER } from "@/lib/site";
 
 /**
  * /sandbox — interne Vorschauflaeche.
  *
- * TEMPORAER. Existiert, damit der Wolt-Storefront-Bestellknopf isoliert
- * angeschaut werden kann, BEVOR er in DeliveryBanner + Footer verdrahtet wird
- * (Work Order 2026-07-25, §4e). Wird umbenannt oder geloescht, sobald Variante
- * A/B entschieden ist — diese Route soll nicht zur Dauereinrichtung werden.
+ * TEMPORAER. Zeigt die beiden Layout-Varianten des Bestellbanners nebeneinander,
+ * damit Founder und Betreiber hinschauen statt sich etwas vorzustellen
+ * (Work Order 2026-07-25, §4e). Wird geloescht, sobald A oder B entschieden ist
+ * — diese Route soll nicht zur Dauereinrichtung werden.
+ *
+ * Beide Varianten rendern die ECHTE `DeliveryBanner`-Komponente mit dem echten
+ * Storefront-Eintrag aus site.ts. Keine Kopie, keine Attrappe: was hier
+ * abgenommen wird, ist was live geht.
  *
  * `noindex, nofollow` auf der Seite; zusaetzlich in robots.ts disallowed.
  */
 export const metadata: Metadata = {
   title: "Sandbox (intern)",
-  description: "Interne Vorschau — nicht Teil der oeffentlichen Website.",
+  description: "Interne Vorschau — nicht Teil der öffentlichen Website.",
   robots: { index: false, follow: false },
   alternates: { canonical: "/sandbox" },
 };
 
 /**
- * TODO(4a): Wandert nach `SITE.delivery` mit `channel: "own"`, sobald das
- * Datenmodell umgebaut ist. Hier bewusst hartkodiert — so kann die Vorschau
- * den Live-Banner und den Footer nicht veraendern.
+ * Der Partner-Satz NACH der Umstellung.
  *
- * `/de/`-Variante, nicht `/en/`: Wolts Mail, PDF und QR-Code tragen alle die
- * englische Fassung. Ziel per curl -I mit 200 verifiziert (2026-07-25).
+ * Storefront statt Marktplatz-Wolt, Uber Eats bleibt. Gefiltert wird ueber den
+ * Namen, weil der Marktplatz-Eintrag und die Storefront beide "Wolt" heissen —
+ * der Ausdruck sagt damit woertlich, was die Umstellung tut: der eine Wolt-Weg
+ * ersetzt den anderen, Uber Eats bleibt unberuehrt.
+ *
+ * Am Tag der Umstellung wandert genau das in site.ts und diese Zeile faellt weg.
  */
-const STOREFRONT_URL =
-  "https://order.site/goldoni/de/deu/stuttgart/restaurant/ristorante-goldoni-sf";
+const NACH_UMSTELLUNG = [
+  STOREFRONT_PARTNER,
+  ...SITE.delivery.filter((p) => p.name !== STOREFRONT_PARTNER.name),
+];
+
+function Variante({
+  buchstabe,
+  titel,
+  beschreibung,
+  children,
+}: {
+  buchstabe: string;
+  titel: string;
+  beschreibung: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="mb-16">
+      <div className="mx-auto mb-4 max-w-6xl px-6 sm:px-12">
+        <div className="flex items-baseline gap-3">
+          <span
+            className="text-3xl font-bold leading-none"
+            style={{ color: "var(--color-accent)" }}
+          >
+            {buchstabe}
+          </span>
+          <h2
+            className="text-xl font-semibold"
+            style={{ color: "var(--color-text)" }}
+          >
+            {titel}
+          </h2>
+        </div>
+        <p className="mt-1 text-sm" style={{ color: "var(--color-text-muted)" }}>
+          {beschreibung}
+        </p>
+      </div>
+      {children}
+    </section>
+  );
+}
 
 export default function SandboxPage() {
   return (
-    <main
-      className="flex min-h-[70vh] items-center justify-center px-6 py-24"
-      style={{ backgroundColor: "var(--color-bg)" }}
-    >
-      {/*
-        Kein `aria-label` — und das ist Absicht, im Unterschied zur Wolt-Kachel
-        in DeliveryBanner.tsx. Dort ist der sichtbare Text nur das Fragment
-        "Bestellen mit", also muss der zugaengliche Name per aria-label kommen.
-        Hier ist der sichtbare Text vollstaendig ("Jetzt bestellen" +
-        "bestellt ueber Wolt"), der zugaengliche Name entsteht daraus direkt,
-        und WCAG 2.5.3 Label-in-Name ist trivial erfuellt. Kein aria-label
-        nachruesten — das wuerde die Regel erst brechen.
-      */}
-      <a
-        href={STOREFRONT_URL}
-        target="_blank"
-        // `noopener` WITHOUT `noreferrer` — the pair is a copy-paste habit, but
-        // they do two different jobs and we only want one of them.
-        //
-        // `noopener` is the security half: it severs `window.opener`, so the
-        // opened tab cannot reach back and redirect this page (tabnabbing).
-        // Non-negotiable, stays.
-        //
-        // `noreferrer` would additionally strip the Referer header — and that
-        // is the one thing this link must NOT do. The entire economic case for
-        // the Storefront is "these are OUR visitors, so the commission is 3,5 %
-        // instead of ~30 %". Without a referrer the order arrives at Wolt as
-        // direct traffic and the website can never be credited for it. That
-        // number is not reconstructable after the fact.
-        //
-        // Privacy is already handled one level up: the site-wide
-        // `Referrer-Policy: strict-origin-when-cross-origin` (next.config.ts)
-        // sends only the origin `https://ristorante-goldoni.de`, never the path.
-        // Attribution without leaking which page the guest came from.
-        rel="noopener"
-        className="inline-flex items-center gap-4 rounded-xl px-7 py-4 shadow-sm transition-transform hover:scale-[1.02] focus-visible:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-4"
-        style={{
-          backgroundColor: "var(--color-accent)",
-          outlineColor: "var(--color-accent)",
-        }}
-      >
-        {/*
-          Die Wolt-Marke behaelt ihre eigene Brand-Portal-Scheibe in Wolt-Cyan
-          — die Marke sitzt also nie direkt auf Goldoni-Salmon. Damit ist die
-          offene Brand-Portal-Frage aus §5.4 des Work Orders hier nicht
-          beruehrt, sondern umgangen.
+    <main className="py-12" style={{ backgroundColor: "var(--color-bg)" }}>
+      <div className="mx-auto mb-12 max-w-6xl px-6 sm:px-12">
+        <p
+          className="text-sm leading-relaxed"
+          style={{ color: "var(--color-text-muted)" }}
+        >
+          Interne Vorschau, nicht verlinkt und für Suchmaschinen gesperrt. Beide
+          Varianten zeigen das Bestellbanner der Startseite <strong>nach</strong>{" "}
+          der Umstellung: die eigene Bestellseite ersetzt den Wolt-Marktplatz,
+          Uber Eats bleibt. Auf der echten Startseite steht heute unverändert
+          der bisherige Zustand.
+        </p>
+      </div>
 
-          alt="" mit Absicht: siehe Hinweis oben. Ein nicht-leerer alt wuerde
-          "Wolt" in den sichtbaren Textinhalt des Links injizieren.
-        */}
-        <Image
-          src="/images/wolt-logo.png"
-          alt=""
-          width={96}
-          height={96}
-          className="block h-11 w-11 flex-shrink-0 rounded-full sm:h-12 sm:w-12"
-        />
-        <span className="flex flex-col text-left">
-          <span
-            className="text-lg font-semibold leading-tight sm:text-xl"
-            style={{ color: "var(--color-on-marinara)" }}
-          >
-            Jetzt bestellen
-          </span>
-          {/* Mozzarella auf Salmon = 5,1:1, Parmigiano auf Salmon = 4,6:1 —
-              beide ueber der AA-Schwelle von 4,5:1 fuer Fliesstext. */}
-          <span
-            className="mt-0.5 text-xs font-medium uppercase tracking-wide sm:text-sm"
-            style={{ color: "var(--color-on-marinara-muted)" }}
-          >
-            bestellt über Wolt
-          </span>
-        </span>
-      </a>
+      <Variante
+        buchstabe="A"
+        titel="Bestellknopf führend"
+        beschreibung="Der eigene Bestellweg groß, Uber Eats als kleinere Kachel daneben. Lenkt Gäste in den günstigeren Kanal, ohne den anderen zu verstecken."
+      >
+        <DeliveryBanner layout="lead" partners={NACH_UMSTELLUNG} />
+      </Variante>
+
+      <Variante
+        buchstabe="B"
+        titel="Beide gleich groß"
+        beschreibung="Bestellknopf und Uber Eats auf gleicher Höhe. Neutraler, überlässt dem Gast die Wahl vollständig."
+      >
+        <DeliveryBanner layout="equal" partners={NACH_UMSTELLUNG} />
+      </Variante>
+
+      <section className="mx-auto max-w-6xl px-6 sm:px-12">
+        <h2
+          className="text-xl font-semibold"
+          style={{ color: "var(--color-text)" }}
+        >
+          Fußleiste
+        </h2>
+        <p
+          className="mt-1 text-sm"
+          style={{ color: "var(--color-text-muted)" }}
+        >
+          Keine Variante, sondern in beiden Fällen gleich — steht auf jeder
+          Seite unter &bdquo;Folgen &amp; Bestellen&ldquo;. Der eigene Bestellweg
+          heißt dort nicht &bdquo;Lieferung via&ldquo;, weil das nach
+          Fremdkurier klänge:
+        </p>
+        <ul
+          className="mt-3 space-y-1 text-sm"
+          style={{ color: "var(--color-text)" }}
+        >
+          {NACH_UMSTELLUNG.map((p) => (
+            <li key={p.name}>
+              &bull;{" "}
+              {p.channel === "own"
+                ? "Direkt bestellen"
+                : `Lieferung via ${p.name}`}
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }
