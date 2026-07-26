@@ -4,6 +4,61 @@
  * imports from here. Update here, propagates everywhere.
  */
 
+/**
+ * How an ordering channel relates to us.
+ *
+ * - `own`         — our own ordering page (Wolt Storefront). Roughly 3,5 %
+ *                   (pickup) to 16 % (Wolt courier) commission.
+ * - `marketplace` — a third-party marketplace with its own audience. Roughly
+ *                   30 %.
+ *
+ * The distinction is DATA, deliberately, not a name comparison inside a
+ * component. `PARTNER_LOGOS` in DeliveryBanner.tsx already demonstrates what
+ * name-keyed behaviour costs: it breaks silently the moment a partner is
+ * renamed or added. Hierarchy belongs where the partners are described.
+ */
+export type DeliveryChannel = "own" | "marketplace";
+
+export type DeliveryPartner = {
+  name: string;
+  url: string;
+  /**
+   * Visible call-to-action. Must remain a substring of the link's accessible
+   * name — WCAG 2.5.3 Label in Name. See DeliveryBanner.tsx.
+   */
+  tagline: string;
+  channel: DeliveryChannel;
+};
+
+/**
+ * Declared with an explicit type instead of riding the `as const` on SITE.
+ * `as const` would narrow `channel` to the literals actually present today
+ * (both `"marketplace"`), so every `channel === "own"` check downstream would
+ * fail to compile as an impossible comparison — and the branch we are about to
+ * build would be unreachable by construction.
+ */
+const DELIVERY: readonly DeliveryPartner[] = [
+  {
+    // Tagline matches the visible "Bestellen mit" composite text on the
+    // Wolt tile + the Uber Eats brand-portal asset, ensuring the link's
+    // accessible name (aria-label) matches its visible text content
+    // (WCAG 2.5.3 Label in Name).
+    name: "Wolt",
+    url: "https://wolt.com/de/deu/stuttgart/restaurant/goldoni",
+    tagline: "Bestellen mit Wolt",
+    channel: "marketplace",
+  },
+  {
+    // Hash-ID is Uber's permanent restaurant identifier (verified 2026-04-28:
+    // path with ID returns 200, path without ID returns 404).
+    // Query params like ?diningMode=DELIVERY are UI-state tracking, stripped.
+    name: "Uber Eats",
+    url: "https://www.ubereats.com/de/store/ristorante-goldoni/b6ZSgAthWcC5UJSAaK97mA",
+    tagline: "Bestellen mit Uber Eats",
+    channel: "marketplace",
+  },
+];
+
 export const SITE = {
   name: "Ristorante Goldoni",
   tagline: "Bella Italia in Stuttgart",
@@ -73,7 +128,12 @@ export const SITE = {
     // presence + Meta Platforms Ireland processor, but site.ts was empty —
     // page documented something that did not exist in the UI).
     instagram: "https://www.instagram.com/ristorante_goldoni_stuttgart",
-    wolt: "https://wolt.com/de/deu/stuttgart/restaurant/goldoni",
+    // `wolt` REMOVED 2026-07-26. It held the Wolt MARKETPLACE URL and had zero
+    // consumers anywhere in src/ — a dead field pointing at the ~30 % channel.
+    // Left in place it is a landmine: the next rebuild wires it up in good
+    // faith and the expensive path is back. The ordering link now lives in
+    // `delivery` below, where it is typed by `channel` and cannot be confused
+    // with a social profile.
     // Goldoni house playlist — tracking params (?si=… &pi=…) stripped
     // so the URL stays canonical and shareable without leaking the
     // session ID of whoever shared it with us.
@@ -82,25 +142,9 @@ export const SITE = {
   },
 
   // Delivery partners — used by the homepage delivery banner + footer.
-  delivery: [
-    {
-      // Tagline matches the visible "Bestellen mit" composite text on the
-      // Wolt tile + the Uber Eats brand-portal asset, ensuring the link's
-      // accessible name (aria-label) matches its visible text content
-      // (WCAG 2.5.3 Label in Name).
-      name: "Wolt",
-      url: "https://wolt.com/de/deu/stuttgart/restaurant/goldoni",
-      tagline: "Bestellen mit Wolt",
-    },
-    {
-      // Hash-ID is Uber's permanent restaurant identifier (verified 2026-04-28:
-      // path with ID returns 200, path without ID returns 404).
-      // Query params like ?diningMode=DELIVERY are UI-state tracking, stripped.
-      name: "Uber Eats",
-      url: "https://www.ubereats.com/de/store/ristorante-goldoni/b6ZSgAthWcC5UJSAaK97mA",
-      tagline: "Bestellen mit Uber Eats",
-    },
-  ],
+  // Defined as DELIVERY above so `channel` keeps its union type; see the note
+  // there for why `as const` would break the downstream branch.
+  delivery: DELIVERY,
 
   // Public transport — Bus 92 stops directly in front of the restaurant.
   transit: {

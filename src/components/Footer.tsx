@@ -163,11 +163,20 @@ export function Footer() {
                     <a
                       href={partner.url}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      // `noopener` only, no `noreferrer` — ordering links must
+                      // keep their Referer so the order can be credited to this
+                      // website. Full reasoning in DeliveryBanner.tsx.
+                      rel="noopener"
                       className="hover:underline"
                       style={{ color: "var(--color-noir-text)" }}
                     >
-                      Lieferung via {partner.name}
+                      {/* "Lieferung via Wolt Storefront" would read as a
+                          third-party courier, which is exactly what our own
+                          ordering page is not. The wording follows the channel,
+                          not the partner name. */}
+                      {partner.channel === "own"
+                        ? "Direkt bestellen"
+                        : `Lieferung via ${partner.name}`}
                     </a>
                   </li>
                 ))}

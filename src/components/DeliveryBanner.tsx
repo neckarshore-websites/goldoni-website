@@ -1,46 +1,164 @@
 import Image from "next/image";
 import { SITE } from "@/lib/site";
+import type { DeliveryPartner } from "@/lib/site";
+import { requireLogo } from "@/lib/delivery-logos";
 
 /**
- * Brand-portal-licensed assets keyed by partner name.
- * - Wolt: cyan circle logo (logo only, we add the "Bestellen mit Wolt" label).
- * - Uber Eats: official German co-marketing composite ("Bestellen mit Uber Eats")
- *   which already carries the call-to-action — we render it as a self-labeled tile.
+ * Relative weight of our own ordering channel against the marketplaces.
+ *
+ * - `lead`  — own channel as a large leading button, marketplaces beside it.
+ * - `equal` — own channel and marketplaces at the same size.
+ *
+ * One layout branch over one data model, not two implementations. Which one
+ * ships is the venue owner's call; both are rendered side by side on /sandbox
+ * so the choice is made by looking rather than imagining.
  */
-const PARTNER_LOGOS: Record<
-  string,
-  { src: string; alt: string; selfLabeled: boolean } | null
-> = {
-  Wolt: {
-    src: "/images/wolt-logo.png",
-    // Intentionally empty: the parent <a> already announces
-    // "Bestellen mit Wolt" via aria-label, and the sibling <span>
-    // renders "Bestellen mit" visibly. A non-empty alt would inject
-    // "Wolt" into the link's visible text content, breaking
-    // WCAG 2.5.3 Label-in-Name (visible "Wolt Bestellen mit" is not
-    // a substring of accessible name "Bestellen mit Wolt").
-    alt: "",
-    selfLabeled: false,
-  },
-  "Uber Eats": {
-    src: "/images/uber-eats-logo.png",
-    alt: "Bestellen mit Uber Eats",
-    selfLabeled: true,
-  },
-};
+export type DeliveryLayout = "lead" | "equal";
+
+const TILE = "h-24 w-24 sm:h-28 sm:w-28";
+/** Same height as a tile, width left to the content — used by layout `equal`. */
+const TILE_HEIGHT = "h-24 sm:h-28";
+
+/** Marketplace partner — unchanged square brand tile. */
+function MarketplaceTile({ partner }: { partner: DeliveryPartner }) {
+  const logo = requireLogo(partner.name);
+
+  return (
+    <a
+      href={partner.url}
+      target="_blank"
+      // `noopener` only — see the note on OwnChannelButton for why `noreferrer`
+      // is deliberately absent on ordering links.
+      rel="noopener"
+      aria-label={partner.tagline}
+      className="block overflow-hidden rounded-lg shadow-sm transition-transform hover:scale-[1.02] focus-visible:scale-[1.02]"
+    >
+      {logo.selfLabeled ? (
+        // Uber Eats — composite already says "Bestellen mit Uber Eats"
+        <Image
+          src={logo.src}
+          alt={logo.alt}
+          width={112}
+          height={112}
+          className={`block ${TILE}`}
+        />
+      ) : (
+        // Wolt — bare logo on cyan field, "Bestellen mit Wolt" label below
+        <div
+          className={`flex flex-col items-center justify-center ${TILE}`}
+          style={{ backgroundColor: "#00C2E8" }}
+        >
+          <Image
+            src={logo.src}
+            alt={logo.alt}
+            width={96}
+            height={96}
+            className="block h-14 w-14 sm:h-16 sm:w-16"
+          />
+          {/* Dark-on-cyan label — Wolt's brand portal allows
+              both white and dark variants; dark passes WCAG
+              contrast (7.94:1 vs. 2.13:1 for white-on-cyan). */}
+          <span
+            className="mt-0.5 text-[9px] font-semibold uppercase tracking-wide sm:text-[10px]"
+            style={{ color: "var(--color-text)" }}
+          >
+            Bestellen mit
+          </span>
+        </div>
+      )}
+    </a>
+  );
+}
 
 /**
- * Top-of-homepage banner that points to delivery partners (Wolt, Uber Eats).
+ * Our own ordering channel — Goldoni frame carrying the partner's brand mark.
  *
- * Each partner renders as a square brand tile (96x96 mobile, 112x112 desktop).
- * Wolt's tile carries the cyan logo above a "Bestellen mit Wolt" label since
- * Wolt did not ship a co-branding composite. Uber Eats' tile renders the
- * official "Bestellen mit Uber Eats" green composite as-is.
- *
- * Mobile (75% of Goldoni traffic): tiles stack 2-up in a row — touch-friendly.
- * Desktop: tiles sit beside the headline.
+ * The mark keeps its own brand-portal disc, so it never sits directly on
+ * Goldoni salmon. That sidesteps the open brand-portal question rather than
+ * pre-empting it.
  */
-export function DeliveryBanner() {
+function OwnChannelButton({
+  partner,
+  layout,
+}: {
+  partner: DeliveryPartner;
+  layout: DeliveryLayout;
+}) {
+  const logo = requireLogo(partner.name);
+
+  return (
+    <a
+      href={partner.url}
+      target="_blank"
+      // `noopener` WITHOUT `noreferrer`. The pair is a copy-paste habit but does
+      // two different jobs: `noopener` severs `window.opener` (the security
+      // win, non-negotiable), `noreferrer` additionally strips the Referer.
+      //
+      // Stripping it on an ORDERING link would be self-harm: the entire case
+      // for our own channel is "these are OUR visitors, so ~3,5 % instead of
+      // ~30 %". Without a referrer the order arrives as direct traffic and the
+      // website is never credited — a number that cannot be reconstructed
+      // afterwards. Privacy stays covered by the site-wide
+      // `Referrer-Policy: strict-origin-when-cross-origin` (origin only, never
+      // the path).
+      rel="noopener"
+      // No `aria-label` — unlike the marketplace tiles, whose visible text is
+      // only the fragment "Bestellen mit". Here the visible text is complete,
+      // so the accessible name derives from it and WCAG 2.5.3 Label-in-Name
+      // holds without help. Adding an aria-label later would break it.
+      className={`inline-flex items-center gap-4 rounded-xl px-7 shadow-sm transition-transform hover:scale-[1.02] focus-visible:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-4 ${
+        layout === "lead" ? "py-4" : TILE_HEIGHT
+      }`}
+      style={{
+        backgroundColor: "var(--color-accent)",
+        outlineColor: "var(--color-accent)",
+      }}
+    >
+      <Image
+        src={logo.src}
+        alt=""
+        width={96}
+        height={96}
+        className="block h-11 w-11 flex-shrink-0 rounded-full sm:h-12 sm:w-12"
+      />
+      <span className="flex flex-col text-left">
+        <span
+          className="text-lg font-semibold leading-tight sm:text-xl"
+          style={{ color: "var(--color-on-marinara)" }}
+        >
+          {partner.tagline}
+        </span>
+        {/* Mozzarella on salmon = 5,1:1, parmigiano on salmon = 4,6:1 —
+            both above the 4,5:1 AA threshold for body text. */}
+        <span
+          className="mt-0.5 text-xs font-medium uppercase tracking-wide sm:text-sm"
+          style={{ color: "var(--color-on-marinara-muted)" }}
+        >
+          bestellt über {partner.name}
+        </span>
+      </span>
+    </a>
+  );
+}
+
+/**
+ * Top-of-homepage banner that points to the ordering channels.
+ *
+ * Hierarchy comes from `partner.channel` in site.ts, not from a name check
+ * here: `own` renders as the leading order button, `marketplace` as a
+ * secondary brand tile.
+ *
+ * Mobile (75% of Goldoni traffic): stacks in a row — touch-friendly.
+ * Desktop: sits beside the headline.
+ */
+export function DeliveryBanner({
+  layout = "lead",
+}: {
+  layout?: DeliveryLayout;
+} = {}) {
+  const own = SITE.delivery.filter((p) => p.channel === "own");
+  const marketplaces = SITE.delivery.filter((p) => p.channel === "marketplace");
+
   return (
     <section
       className="border-b"
@@ -67,56 +185,17 @@ export function DeliveryBanner() {
           von unseren Partnern.
         </p>
 
-        <div className="flex flex-shrink-0 gap-3">
-          {SITE.delivery.map((partner) => {
-            const logo = PARTNER_LOGOS[partner.name];
-            if (!logo) return null;
-
-            return (
-              <a
-                key={partner.name}
-                href={partner.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={partner.tagline}
-                className="block overflow-hidden rounded-lg shadow-sm transition-transform hover:scale-[1.02] focus-visible:scale-[1.02]"
-              >
-                {logo.selfLabeled ? (
-                  // Uber Eats — composite already says "Bestellen mit Uber Eats"
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={112}
-                    height={112}
-                    className="block h-24 w-24 sm:h-28 sm:w-28"
-                  />
-                ) : (
-                  // Wolt — bare logo on cyan field, "Bestellen mit Wolt" label below
-                  <div
-                    className="flex h-24 w-24 flex-col items-center justify-center sm:h-28 sm:w-28"
-                    style={{ backgroundColor: "#00C2E8" }}
-                  >
-                    <Image
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={96}
-                      height={96}
-                      className="block h-14 w-14 sm:h-16 sm:w-16"
-                    />
-                    {/* Dark-on-cyan label — Wolt's brand portal allows
-                        both white and dark variants; dark passes WCAG
-                        contrast (7.94:1 vs. 2.13:1 for white-on-cyan). */}
-                    <span
-                      className="mt-0.5 text-[9px] font-semibold uppercase tracking-wide sm:text-[10px]"
-                      style={{ color: "var(--color-text)" }}
-                    >
-                      Bestellen mit
-                    </span>
-                  </div>
-                )}
-              </a>
-            );
-          })}
+        <div className="flex flex-shrink-0 items-center gap-3">
+          {own.map((partner) => (
+            <OwnChannelButton
+              key={partner.name}
+              partner={partner}
+              layout={layout}
+            />
+          ))}
+          {marketplaces.map((partner) => (
+            <MarketplaceTile key={partner.name} partner={partner} />
+          ))}
         </div>
       </div>
     </section>
