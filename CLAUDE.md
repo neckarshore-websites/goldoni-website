@@ -83,7 +83,7 @@ Später: entweder Markdown-Files im Repo (Linus pflegt), ein leichtes CMS (Decap
 
 - Analytics / Tracking (kein Cookie-Banner nötig falls möglich)
 - Online-Reservierung (Telefon + Mail reicht v1; Formular-Only als Option)
-- Delivery-Integration (Wolt-Link im Footer reicht)
+- ~~Delivery-Integration (Wolt-Link im Footer reicht)~~ — **aufgehoben 2026-07-26.** Wolt hat am 2026-07-24 die **Storefront** freigeschaltet: eine eigene Bestellseite auf `order.site`, die statt ~30 % Marktplatz-Provision 3,5 % (Abholung) bzw. 16 % (Wolt-Kurier) kostet. Seitdem ist der Bestellweg ein eigener Kanal und kein Fussnoten-Link mehr — Datenmodell (`channel`), führender Bestellknopf im Banner, Datenschutz-Abschnitt 9 und ein aus `site.ts` generierter Druck-QR. Der Wolt-**Marktplatz**-Link ist von der Website verschwunden; das Listing in der Wolt-App bleibt unberührt. Siehe `docs/wolt-storefront-durchstich-2026-07-25.md`.
 - Mehrsprachigkeit (Deutsch primär; Italienisch als Stil-Akzent)
 - Blog / Events-CMS (Events-Seite kann statisch sein)
 - SEO-Overengineering

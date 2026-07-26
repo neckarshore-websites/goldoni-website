@@ -31,23 +31,56 @@ export type DeliveryPartner = {
 };
 
 /**
+ * The Wolt Storefront entry — LIVE since 2026-07-26, first in `DELIVERY`.
+ *
+ * Our own ordering channel: roughly 3,5 % (pickup) to 16 % (Wolt courier)
+ * commission against the ~30 % a marketplace order costs. The lever only works
+ * on visitors who are already on ristorante-goldoni.de, which is why it leads
+ * the banner rather than sitting beside the marketplaces.
+ *
+ * `/de/`, NOT `/en/`. Wolt's activation mail, the attached PDF and the
+ * print-ready QR code in it all carry the English variant for a venue in
+ * Stuttgart. Both locales return 200, neither redirects, and both resolve to
+ * the same venue id — verified 2026-07-25 — so the choice is purely which
+ * language a German guest lands in. The QR code in public/images is generated
+ * from THIS constant and decoded back in CI, so the printed code cannot drift
+ * away from the button.
+ *
+ * Still exported separately although it now lives in DELIVERY: the internal
+ * preview route and the e-mail signatures reference it by name.
+ *
+ * HOURS: the Storefront advertises Wed–Sat 16:30–22:30 and Sunday 12:00–22:30,
+ * while this site shows Wed–Sat 18:00–22:30 and Sunday 12:00–14:30 +
+ * 18:00–22:30. That gap is INTENTIONAL and resolved — owner decision
+ * 2026-07-26: pizza production for delivery starts before the dining room
+ * opens, so delivery hours legitimately run wider. Do NOT "fix" the site's
+ * hours to match; they describe the restaurant, not the kitchen's delivery
+ * window.
+ */
+export const STOREFRONT_PARTNER: DeliveryPartner = {
+  name: "Wolt",
+  url: "https://order.site/goldoni/de/deu/stuttgart/restaurant/ristorante-goldoni-sf",
+  // Doubles as the button's visible headline. Wolt's own best-practice guide
+  // asks for exactly this wording ("Jetzt bestellen" / "Hier bestellen") and
+  // warns against vague labels like "Menü".
+  tagline: "Jetzt bestellen",
+  channel: "own",
+};
+
+/**
  * Declared with an explicit type instead of riding the `as const` on SITE.
- * `as const` would narrow `channel` to the literals actually present today
- * (both `"marketplace"`), so every `channel === "own"` check downstream would
- * fail to compile as an impossible comparison — and the branch we are about to
- * build would be unreachable by construction.
+ * Under `as const` each `channel` would narrow to its own string literal, and
+ * a consumer filtering for the other value would fail to compile as an
+ * impossible comparison. The union has to survive to the call sites.
  */
 const DELIVERY: readonly DeliveryPartner[] = [
-  {
-    // Tagline matches the visible "Bestellen mit" composite text on the
-    // Wolt tile + the Uber Eats brand-portal asset, ensuring the link's
-    // accessible name (aria-label) matches its visible text content
-    // (WCAG 2.5.3 Label in Name).
-    name: "Wolt",
-    url: "https://wolt.com/de/deu/stuttgart/restaurant/goldoni",
-    tagline: "Bestellen mit Wolt",
-    channel: "marketplace",
-  },
+  // Own ordering page first — the banner renders `own` as the leading button.
+  // The Wolt MARKETPLACE entry that used to sit here is gone on purpose
+  // (owner decision, work order 2026-07-25 §1): it offered our own visitors
+  // nothing the Storefront does not, at roughly ten times the commission.
+  // The Wolt listing in the app is untouched; only this website stops
+  // pointing at it.
+  STOREFRONT_PARTNER,
   {
     // Hash-ID is Uber's permanent restaurant identifier (verified 2026-04-28:
     // path with ID returns 200, path without ID returns 404).
@@ -59,39 +92,6 @@ const DELIVERY: readonly DeliveryPartner[] = [
   },
 ];
 
-/**
- * The Wolt Storefront entry — STAGED, deliberately NOT in `DELIVERY` yet.
- *
- * Wolt activated the Storefront on 2026-07-24. It is our own ordering channel:
- * roughly 3,5 % (pickup) to 16 % (Wolt courier) commission against the ~30 % a
- * marketplace order costs. It is exported here rather than inlined into the
- * preview page so that GOING LIVE IS A MOVE, NOT A REWRITE — drop this constant
- * into `DELIVERY`, delete the marketplace Wolt entry above, done. What the
- * preview shows is then exactly what ships, by construction rather than by
- * someone remembering to keep two copies in sync.
- *
- * `/de/`, NOT `/en/`. Wolt's activation mail, the attached PDF and the
- * print-ready QR code in it all carry the English variant for a venue in
- * Stuttgart. Both locales return 200, neither redirects, and both resolve to
- * the same venue id — verified 2026-07-25 — so the choice is purely which
- * language a German guest lands in.
- *
- * BEFORE THIS GOES LIVE: the Storefront's own delivery hours must be corrected
- * by the venue owner. They currently read Wed–Sat 16:30–22:30 and Sunday
- * 09:00–24:00 against the website's Wed–Sat 18:00–22:30 and Sunday
- * 12:00–14:30 + 18:00–22:30. Routing guests here first would send them to a
- * kitchen that is not running. See
- * docs/wolt-storefront-durchstich-2026-07-25.md, finding S1.
- */
-export const STOREFRONT_PARTNER: DeliveryPartner = {
-  name: "Wolt",
-  url: "https://order.site/goldoni/de/deu/stuttgart/restaurant/ristorante-goldoni-sf",
-  // Doubles as the button's visible headline. Wolt's own best-practice guide
-  // asks for exactly this wording ("Jetzt bestellen" / "Hier bestellen") and
-  // warns against vague labels like "Menü".
-  tagline: "Jetzt bestellen",
-  channel: "own",
-};
 
 export const SITE = {
   name: "Ristorante Goldoni",
