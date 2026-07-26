@@ -4,19 +4,31 @@ import { SIGNATURES, signatureDocument } from "@/lib/email-signatures";
 import { HolidayBanner } from "@/components/HolidayBanner";
 
 /**
- * /sandbox — interne Arbeitsfläche.
+ * /sandbox — interne Werkzeug- und Dokumentationsseite. DAUERHAFT, nicht
+ * temporär — Betreiber-Entscheidung 2026-07-26.
  *
  * Nicht verlinkt, `noindex, nofollow`, zusätzlich in robots.ts disallowed.
  *
- * Ursprünglich für den A/B-Vergleich des Bestellbanners gebaut (Work Order
- * 2026-07-25 §4e). Diese Aufgabe ist erledigt — Variante A wurde am 2026-07-26
- * gewählt und ist live —, deshalb sind der Vergleich und die zugehörigen
- * Screenshots wieder entfernt. Was bleibt, sind Dinge zum Herunterladen und
- * Weitergeben, die auf der öffentlichen Website nichts zu suchen haben.
+ * WICHTIG FÜR SPÄTER: diese Seite ist NICHT automatisch der Aufräum-Ort für
+ * jede abgeschlossene Aufgabe. Ursprünglich war sie das — der A/B-Vergleich
+ * des Bestellbanners (Work Order 2026-07-25 §4e) wurde nach der Entscheidung
+ * für Variante A samt Screenshots wieder entfernt, weil er seinen einen Zweck
+ * erfüllt hatte und nichts mehr zu tun hatte. Der Betreiber hat das umgekehrt:
+ * die verbleibenden Bausteine bleiben ABSICHTLICH stehen, auch nachdem ihre
+ * jeweilige Aufgabe erledigt ist —
+ *   - die E-Mail-Signaturen: sollen langfristig hier dokumentiert bleiben,
+ *     nicht nur bis zur Wahl einer Variante;
+ *   - das Urlaubsbanner: wird wahrscheinlich nächstes Jahr wieder gebraucht —
+ *     KEIN automatisch wiederkehrendes Banner, sondern eine Vorlage zum
+ *     Kopieren; die Daten in HolidayBanner.tsx sind für 2026 hartkodiert und
+ *     müssen vor der nächsten Wiederverwendung aktualisiert werden.
+ * Nur der QR-Code-Baustein war schon immer als Dauereinrichtung gedacht.
+ * Vor dem Entfernen von irgendetwas hier: nachfragen, nicht annehmen.
  */
 export const metadata: Metadata = {
   title: "Sandbox (intern)",
-  description: "Interne Arbeitsfläche — nicht Teil der öffentlichen Website.",
+  description:
+    "Interne Werkzeug- und Dokumentationsseite — nicht Teil der öffentlichen Website.",
   robots: { index: false, follow: false },
   alternates: { canonical: "/sandbox" },
 };
@@ -29,8 +41,10 @@ export default function SandboxPage() {
           className="max-w-2xl text-sm leading-relaxed"
           style={{ color: "var(--color-text-muted)" }}
         >
-          Interne Seite, nicht verlinkt und für Suchmaschinen gesperrt. Hier
-          liegen Dateien zum Herunterladen und Weitergeben.
+          Interne Werkzeugseite, nicht verlinkt und für Suchmaschinen
+          gesperrt. Dauerhaft gedacht, nicht als Zwischenlager für erledigte
+          Aufgaben — hier liegen Dinge zum Herunterladen, Weitergeben und
+          Wiederverwenden.
         </p>
       </div>
 

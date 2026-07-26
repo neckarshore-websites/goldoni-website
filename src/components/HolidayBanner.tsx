@@ -38,6 +38,16 @@ import Image from "next/image";
  * KEIN FOTO GEPLANT (Stand 2026-07-26). Der Betreiber hat den Azzurro-Verlauf
  * allein für ausreichend befunden. `HOLIDAY_IMAGE` bleibt als Erweiterungspunkt
  * stehen, falls sich das ändert — sonst nichts weiter zu tun.
+ *
+ * BLEIBT ALS VORLAGE AUF /sandbox STEHEN — Betreiber-Entscheidung 2026-07-26,
+ * wahrscheinlich für die nächste Sommerschliessung wiederverwendet. Das ist
+ * KEIN automatisch wiederkehrendes Banner: `CLOSED_FROM`/`CLOSED_UNTIL`/
+ * `REOPEN`/`BANNER_VISIBLE_FROM`/`BANNER_EXPIRES_AT` sind für 2026
+ * hartkodiert und müssen vor der nächsten Verwendung von Hand aktualisiert
+ * werden. Beim nächsten Mal: alle fünf Konstanten austauschen, dann die
+ * neuen Fenstergrenzen an konkreten Zeitstempeln prüfen (heute/Start/Ende/
+ * danach) statt der ISO-Zeichenkette zu glauben — derselbe Ansatz, der 2026
+ * zwei echte Datumsfehler gefunden hat, bevor sie live gingen.
  */
 
 /** Pfad zum Urlaubsmotiv. `null` = kein Foto geplant; siehe Docblock oben. */
