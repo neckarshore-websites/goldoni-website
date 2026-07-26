@@ -333,7 +333,8 @@ export default function DatenschutzPage() {
             <ul className="mt-2 ml-6 list-disc space-y-1">
               <li>
                 Lieferdienste <strong>Wolt</strong> und{" "}
-                <strong>Uber Eats</strong>
+                <strong>Uber Eats</strong> — zu Bestellungen über unsere eigene
+                Bestellseite bei Wolt siehe Abschnitt&nbsp;9
               </li>
               <li>
                 Soziale Netzwerke <strong>Facebook</strong> und{" "}
@@ -402,8 +403,64 @@ export default function DatenschutzPage() {
             </ul>
           </Section>
 
-          {/* 9. Ihre Rechte */}
-          <Section title="9. Ihre Rechte als betroffene Person">
+          {/* 9. Wolt Storefront — eigene Online-Bestellseite */}
+          <Section title="9. Bestellungen über unsere Online-Bestellseite">
+            <p>
+              Für Bestellungen zur Abholung und Lieferung betreiben wir eine
+              eigene Online-Bestellseite. Sie wird technisch von der{" "}
+              <strong>Wolt Enterprises Deutschland GmbH</strong>, Stralauer
+              Allee&nbsp;6, 10245&nbsp;Berlin, unter der Adresse{" "}
+              <code>order.site</code> bereitgestellt.
+            </p>
+            <p className="mt-3">
+              <strong>Wann Daten übermittelt werden:</strong> Erst wenn Sie den
+              Bestell-Knopf auf dieser Webseite aktiv anklicken, wird eine
+              Verbindung zu Wolt hergestellt. Wir binden keine Skripte,
+              Schaltflächen oder sonstigen Inhalte von Wolt in diese Webseite
+              ein und setzen keine zugehörigen Cookies. Ohne Ihren Klick werden
+              keine Daten an Wolt übermittelt.
+            </p>
+            <p className="mt-3">
+              <strong>Welche Daten dort anfallen:</strong> Die Bestellung findet
+              vollständig auf der Bestellseite statt. Die dort erhobenen Daten
+              — insbesondere Ihre Telefonnummer zur Anmeldung, Ihr Name,
+              Liefer- oder Abholangaben, der Bestellinhalt sowie die
+              Zahlungsdaten — werden von Wolt erhoben und verarbeitet, nicht von
+              uns über diese Webseite.
+            </p>
+            <p className="mt-3">
+              <strong>Getrennte Verantwortlichkeit:</strong> Wolt und wir sind
+              für die Verarbeitung jeweils{" "}
+              <strong>eigenständig Verantwortliche</strong> im Sinne von
+              Art.&nbsp;4 Nr.&nbsp;7 DSGVO. Zwischen uns und Wolt besteht{" "}
+              <strong>kein</strong> Auftragsverarbeitungsverhältnis. Für die
+              Verarbeitung auf der Bestellseite ist Wolt verantwortlich; die
+              dortige Datenschutzerklärung gilt ergänzend zu dieser Erklärung.
+            </p>
+            <p className="mt-3">
+              <strong>Rechtsgrundlage</strong> für die Bereitstellung des
+              Bestell-Links ist unser berechtigtes Interesse an einem eigenen
+              Bestellweg (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO). Die
+              Verarbeitung Ihrer Bestellung durch Wolt erfolgt zur Erfüllung des
+              mit Ihnen geschlossenen Vertrags (Art.&nbsp;6 Abs.&nbsp;1
+              lit.&nbsp;b DSGVO).
+            </p>
+            <p className="mt-3">
+              Datenschutzerklärung von Wolt:{" "}
+              <a
+                href="https://explore.wolt.com/de/deu/privacy"
+                className="underline"
+                style={{ color: "var(--color-accent)" }}
+                rel="nofollow noopener"
+                target="_blank"
+              >
+                explore.wolt.com/de/deu/privacy
+              </a>
+            </p>
+          </Section>
+
+          {/* 10. Ihre Rechte */}
+          <Section title="10. Ihre Rechte als betroffene Person">
             <p>
               Soweit personenbezogene Daten von Ihnen verarbeitet werden,
               stehen Ihnen als betroffener Person folgende Rechte zu:
@@ -442,7 +499,7 @@ export default function DatenschutzPage() {
           </Section>
 
           {/* 10. Beschwerderecht */}
-          <Section title="10. Beschwerderecht bei der Aufsichtsbehörde">
+          <Section title="11. Beschwerderecht bei der Aufsichtsbehörde">
             <p>
               Sie haben gemäß Art. 77 DSGVO das Recht, sich bei einer
               Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer
@@ -483,7 +540,7 @@ export default function DatenschutzPage() {
           </Section>
 
           {/* 11. Pflicht zur Bereitstellung */}
-          <Section title="11. Pflicht zur Bereitstellung der Daten">
+          <Section title="12. Pflicht zur Bereitstellung der Daten">
             <p>
               Eine gesetzliche oder vertragliche Pflicht zur Bereitstellung
               Ihrer personenbezogenen Daten besteht nicht. Die Angabe der mit
@@ -495,7 +552,7 @@ export default function DatenschutzPage() {
           </Section>
 
           {/* 12. Automatisierte Entscheidungsfindung */}
-          <Section title="12. Automatisierte Entscheidungsfindung">
+          <Section title="13. Automatisierte Entscheidungsfindung">
             <p>
               Eine automatisierte Entscheidungsfindung einschließlich Profiling
               im Sinne von Art. 22 DSGVO findet auf dieser Webseite nicht
@@ -504,7 +561,7 @@ export default function DatenschutzPage() {
           </Section>
 
           {/* 13. Aktualität */}
-          <Section title="13. Aktualität und Änderung dieser Datenschutzerklärung">
+          <Section title="14. Aktualität und Änderung dieser Datenschutzerklärung">
             <p>
               Diese Datenschutzerklärung ist aktuell gültig und hat den unten
               angegebenen Stand. Durch die Weiterentwicklung unserer Webseite
