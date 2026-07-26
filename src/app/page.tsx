@@ -5,7 +5,7 @@ import { FaqSection } from "@/components/FaqSection";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { PhoneIcon } from "@/components/PhoneIcon";
 import { ReviewsSection } from "@/components/ReviewsSection";
-import { HolidayBanner } from "@/components/HolidayBanner";
+import { HolidayBanner, isSummerClosureWindow } from "@/components/HolidayBanner";
 import { StructuredData } from "@/components/StructuredData";
 import { SundayBanner } from "@/components/SundayBanner";
 import { FAQS } from "@/data/faqs";
@@ -24,31 +24,42 @@ export default function Home() {
     <main>
       <StructuredData data={faqJsonLd(FAQS)} />
       {/* Summer-closure notice — the most consequential announcement on the
-          page (three weeks fully shut) outranks both strips below it.
-          Auto-expires Monday 24 August 2026 (see component); until then,
-          visible now as advance notice even though the closure itself starts
-          3 August. */}
+          page (three weeks fully shut) outranks both strips below it. Visible
+          exactly during the closure window (3–23 August 2026), which the
+          strips below also read from the same exported check, so there is one
+          time source, not two independently maintained ones. */}
       <HolidayBanner />
       {/*
-        Order swapped visually on mobile only: the ordering action outranks the
-        Sunday announcement there (owner decision, 2026-07-26). Source order
-        stays Sunday-first — that is what a screen reader announces regardless
-        of viewport, since CSS `order` moves pixels, not the DOM. Two
-        independent, unrelated strips, so that mismatch is an accepted
-        trade-off here, not an oversight. `sm:` and up reverts to source order.
+        Sunday announcement + order button both suppressed during the closure
+        window (owner decision, 2026-07-26): a kitchen that is shut cannot
+        take an order, so a delivery CTA in that window would be actively
+        wrong, not just redundant with HolidayBanner above. Reappears
+        automatically on 24 August via the same isSummerClosureWindow() check
+        HolidayBanner uses to hide itself — one boundary, two consumers.
+
+        Whether SundayBanner itself resumes AFTER 24 August is a separate,
+        still-open decision (owner: depends on the weather) — untouched here.
+        Its own component already stopped rendering permanently from 2 August
+        via its own unrelated expiry; this wrapper only ever prevented it from
+        showing during 3–23 August on top of that, so nothing changes for it
+        once the closure window ends.
       */}
-      <div className="flex flex-col">
-        <div className="order-2 sm:order-1">
-          {/* Sunday announcement — temporary strip. Auto-expires after
-              2 August 2026 (see component). */}
-          <SundayBanner />
+      {!isSummerClosureWindow() && (
+        <div className="flex flex-col">
+          <div className="order-2 sm:order-1">
+            {/* Sunday announcement — temporary strip. Auto-expires after
+                2 August 2026 (see component); additionally suppressed during
+                the closure window by the wrapper above. */}
+            <SundayBanner />
+          </div>
+          <div className="order-1 sm:order-2">
+            {/* Delivery banner — first impression on mobile, points to the
+                Storefront + Uber Eats. Suppressed during the closure window;
+                see the wrapper comment above. */}
+            <DeliveryBanner />
+          </div>
         </div>
-        <div className="order-1 sm:order-2">
-          {/* Delivery banner — first impression on mobile, points to the
-              Storefront + Uber Eats */}
-          <DeliveryBanner />
-        </div>
-      </div>
+      )}
 
       {/* Hero — restaurant wall sign on red velvet, brand-defining photo */}
       <section className="relative isolate overflow-hidden">
