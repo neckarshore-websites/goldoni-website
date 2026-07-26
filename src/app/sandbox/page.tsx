@@ -46,16 +46,16 @@ export default function SandboxPage() {
             className="mt-1 max-w-2xl text-sm leading-relaxed"
             style={{ color: "var(--color-text-muted)" }}
           >
-            Seit 2026-07-26 auch live auf der Startseite (Betreiber-Wunsch —
-            einmal in echter Umgebung ansehen). Alle Daten vor Ort bestätigt:
-            Wiedereröffnung <strong>Mittwoch, 26. August</strong>. Blendet sich
-            selbst am <strong>Montag, 24. August</strong> aus — vor der
-            Wiedereröffnung, weil Montag und Dienstag ohnehin Standard-Ruhetage
-            sind. Fehlt noch: <strong>das Urlaubsmotiv</strong>, bis dahin
-            steht der Azzurro-Farbverlauf.
+            Auf der Startseite verbaut, aber terminiert: erscheint dort
+            automatisch ab <strong>Dienstag, 4. August</strong>, blendet sich
+            automatisch am <strong>Montag, 24. August</strong> wieder aus —
+            vor der Wiedereröffnung am <strong>Mittwoch, 26. August</strong>,
+            weil Montag und Dienstag ohnehin Standard-Ruhetage sind. Hier auf
+            /sandbox ist es unabhängig davon immer zu sehen. Kein Foto
+            geplant — der Azzurro-Farbverlauf bleibt.
           </p>
         </div>
-        <HolidayBanner />
+        <HolidayBanner forcePreview />
       </section>
 
       <section className="mx-auto max-w-6xl px-6 sm:px-12">

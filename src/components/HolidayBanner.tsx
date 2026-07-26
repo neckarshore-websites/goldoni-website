@@ -3,10 +3,17 @@ import Image from "next/image";
 /**
  * HolidayBanner — Ankündigung der Sommerschliessung.
  *
- * LIVE auf der Startseite seit 2026-07-26, auf ausdrücklichen Wunsch des
- * Betreibers — er wollte es einmal in der echten Umgebung sehen, bevor die
- * Schliessung überhaupt beginnt. Zusätzlich weiterhin auf /sandbox zu sehen.
- * Zum Abschalten: `BANNER_ENABLED` unten auf `false`.
+ * TERMINIERT: erscheint automatisch ab Dienstag, 4. August 2026, blendet sich
+ * automatisch ab Montag, 24. August wieder aus. War kurz am 2026-07-26 sofort
+ * live geschaltet (Betreiber-Wunsch, einmal in echter Umgebung ansehen), dann
+ * auf ausdrücklichen Betreiber-Wunsch auf den 4. August terminiert — siehe
+ * `BANNER_VISIBLE_FROM` unten. Weiterhin permanent auf /sandbox zu sehen.
+ *
+ * BEKANNTE LÜCKE, BEWUSST HINGENOMMEN: Die Schliessung selbst beginnt bereits
+ * Montag, 3. August — das Banner zeigt an diesem einen Tag noch NICHTS an.
+ * Genannt und nicht stillschweigend übernommen; Betreiber hat auf den 4.
+ * bestanden. Falls sich das ändert: `BANNER_VISIBLE_FROM` auf CLOSED_FROM
+ * ziehen, ein Einzeiler.
  *
  * Warum eine eigene Komponente und kein Umbau des SundayBanner: die beiden
  * schliessen sich zeitlich aus. Der Sonntagsstreifen läuft bis einschliesslich
@@ -23,14 +30,12 @@ import Image from "next/image";
  *   Standard-Ruhetage, die die Fussleiste immer als „Mo + Di geschlossen"
  *   zeigt. Ein Sonderhinweis für diese zwei Tage ist überflüssig.
  *
- * NOCH OFFEN: DAS BILD. `HOLIDAY_IMAGE` zeigt auf eine Datei, die es noch
- * nicht gibt — der Betreiber liefert ein Urlaubsmotiv nach. Solange sie
- * fehlt, rendert die Komponente den unten stehenden Azzurro-Farbverlauf statt
- * eines kaputten Bildes. Motiv da: nach public/images/ legen, Pfad hier
- * setzen, fertig — vorher als WebP (siehe /assets zur Begründung).
+ * KEIN FOTO GEPLANT (Stand 2026-07-26). Der Betreiber hat den Azzurro-Verlauf
+ * allein für ausreichend befunden. `HOLIDAY_IMAGE` bleibt als Erweiterungspunkt
+ * stehen, falls sich das ändert — sonst nichts weiter zu tun.
  */
 
-/** Pfad zum Urlaubsmotiv. `null`, solange der Betreiber keines geliefert hat. */
+/** Pfad zum Urlaubsmotiv. `null` = kein Foto geplant; siehe Docblock oben. */
 const HOLIDAY_IMAGE: string | null = null;
 
 /**
@@ -47,9 +52,18 @@ const REOPEN = "2026-08-26";
 
 /**
  * MASTER-SCHALTER. Auf `false` setzen, um das Banner sofort auszublenden —
- * unabhängig vom Ablaufdatum unten. Zurück auf `true`, um es wieder zu zeigen.
+ * unabhängig von den beiden Zeitfenstern unten. Zurück auf `true`, um wieder
+ * den terminierten Ablauf greifen zu lassen.
  */
 const BANNER_ENABLED = true;
+
+/**
+ * Beginn der Sichtbarkeit: Dienstag, 4. August 2026, 00:00 Europe/Berlin
+ * (CEST = UTC+2). Betreiber-Entscheidung 2026-07-26 — bewusst NICHT der 3.
+ * August, an dem die Schliessung selbst beginnt; siehe Docblock oben zur damit
+ * einhergehenden einen Tag Lücke.
+ */
+const BANNER_VISIBLE_FROM = new Date("2026-08-04T00:00:00+02:00").getTime();
 
 /**
  * Cutoff: Beginn von Montag, 24. August 2026, Europe/Berlin (CEST = UTC+2).
@@ -58,8 +72,9 @@ const BANNER_ENABLED = true;
  */
 const BANNER_EXPIRES_AT = new Date("2026-08-24T00:00:00+02:00").getTime();
 
-function bannerHasExpired(): boolean {
-  return Date.now() >= BANNER_EXPIRES_AT;
+function bannerIsOutsideItsWindow(): boolean {
+  const now = Date.now();
+  return now < BANNER_VISIBLE_FROM || now >= BANNER_EXPIRES_AT;
 }
 
 const WOCHENTAGE = [
@@ -111,8 +126,21 @@ const AZZURRO_GRADIENT =
   "linear-gradient(120deg, #0B3D5C 0%, #145C7A 55%, #1B6B93 100%)";
 const AZZURRO_FALLBACK = "#123C5A";
 
-export function HolidayBanner() {
-  if (!BANNER_ENABLED || bannerHasExpired()) return null;
+export function HolidayBanner({
+  forcePreview = false,
+}: {
+  /**
+   * Umgeht den Zeitfensterschalter — NUR für /sandbox. Ohne das würde die
+   * Vorschauseite selbst nichts mehr zeigen, sobald das Zeitfenster wirkt: eine
+   * Vorschau, die sich wegdatiert, ist keine Vorschau mehr. Dieselbe Idee wie
+   * das `partners`-Prop in DeliveryBanner für die (inzwischen entfernte)
+   * A/B-Fläche.
+   */
+  forcePreview?: boolean;
+} = {}) {
+  if (!forcePreview && (!BANNER_ENABLED || bannerIsOutsideItsWindow())) {
+    return null;
+  }
 
   const von = zerlege(CLOSED_FROM);
   const bis = zerlege(CLOSED_UNTIL);
