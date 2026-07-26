@@ -68,6 +68,28 @@ check("every partner has a usable url and tagline", () => {
   }
 });
 
+check("no Wolt MARKETPLACE ordering URL survives in the delivery config", () => {
+  // The work order's own Definition of Done phrased this as `grep -rn "wolt.com"
+  // src/` returning nothing. That grep stopped discriminating the moment the
+  // privacy policy link (explore.wolt.com) landed in /datenschutz, where it
+  // belongs. The condition that actually matters is narrower: no ordering URL
+  // pointing at the ~30 % marketplace channel.
+  for (const p of SITE.delivery) {
+    assert.doesNotMatch(
+      p.url,
+      /wolt\.com\/[a-z]{2}\/[a-z]{3}\/[^/]+\/restaurant\//i,
+      `partner "${p.name}" points at the Wolt marketplace, not our own page`,
+    );
+  }
+});
+
+check("the own channel is the Storefront", () => {
+  const own = SITE.delivery.filter((p) => p.channel === "own");
+  assert.equal(own.length, 1, "expected exactly one own ordering channel");
+  assert.match(own[0].url, /^https:\/\/order\.site\//);
+  assert.match(own[0].url, /\/de\//, "own channel is not the German locale");
+});
+
 check("at most one own channel", () => {
   const own = SITE.delivery.filter((p) => p.channel === "own");
   assert.ok(

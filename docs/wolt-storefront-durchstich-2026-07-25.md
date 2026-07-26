@@ -17,7 +17,15 @@ Technischer Durchstich: Bestellknopf auf `ristorante-goldoni.de` → Wolt Storef
 
 ---
 
-## Für Silvio — S1: Liefer-/Öffnungszeiten stimmen nicht
+## ~~Für Silvio — S1: Liefer-/Öffnungszeiten stimmen nicht~~ — GEKLÄRT 2026-07-26, kein Defekt
+
+**Auflösung:** Der Sonntagswert wurde vom Betreiber auf **12:00–22:30** korrigiert (die ursprünglichen 09:00–24:00 waren tatsächlich falsch). Die verbleibende Abweichung Mi–Sa — Storefront 16:30, Website 18:00 — ist **Absicht**: die Pizzaproduktion für Lieferungen beginnt, bevor der Gastraum öffnet. Lieferzeiten dürfen von Öffnungszeiten abweichen, und hier tun sie es aus einem Grund.
+
+**Die Website bleibt unverändert.** Ihre Zeiten beschreiben das Restaurant, nicht das Lieferfenster der Küche. Wer sie später „angleichen" will, liest bitte erst diesen Absatz.
+
+Der ursprüngliche Fund bleibt unten stehen, weil die Begründung, warum er *kein* Defekt ist, mehr wert ist als eine gelöschte Zeile.
+
+### Ursprünglicher Fund (2026-07-25)
 
 Die Storefront zeigt andere Zeiten als die Website. Gemessen am 2026-07-25 auf der Storefront-Detailseite.
 
