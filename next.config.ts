@@ -101,6 +101,23 @@ const nextConfig: NextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           {
+            // `payment=()` disables the Payment Request API — the interface
+            // Apple Pay and Google Pay use to open their payment sheet — for
+            // EVERY origin including our own.
+            //
+            // Correct today: nothing is paid for on this site. Ordering happens
+            // on Wolt's Storefront, which opens as its own top-level tab with
+            // its own headers, so this lock never reaches it.
+            //
+            // READ THIS BEFORE EMBEDDING WOLT'S SMART BUTTON. That SDK
+            // (`storefront-web-static-assets.order.site/storefront-sdk/app.js`,
+            // shipped in Wolt's activation mail) opens the payment sheet ON THIS
+            // PAGE. With `payment=()` in place the button would render, look
+            // healthy, and silently fail to pay — a failure that reads exactly
+            // like a Wolt defect while being one line of our own config.
+            // Relax to `payment=(self "https://order.site")` in the same commit
+            // that adds the SDK, or leave the SDK out. See
+            // docs/wolt-storefront-durchstich-2026-07-25.md.
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
           },

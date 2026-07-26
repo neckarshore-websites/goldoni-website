@@ -47,7 +47,25 @@ export default function SandboxPage() {
       <a
         href={STOREFRONT_URL}
         target="_blank"
-        rel="noopener noreferrer"
+        // `noopener` WITHOUT `noreferrer` — the pair is a copy-paste habit, but
+        // they do two different jobs and we only want one of them.
+        //
+        // `noopener` is the security half: it severs `window.opener`, so the
+        // opened tab cannot reach back and redirect this page (tabnabbing).
+        // Non-negotiable, stays.
+        //
+        // `noreferrer` would additionally strip the Referer header — and that
+        // is the one thing this link must NOT do. The entire economic case for
+        // the Storefront is "these are OUR visitors, so the commission is 3,5 %
+        // instead of ~30 %". Without a referrer the order arrives at Wolt as
+        // direct traffic and the website can never be credited for it. That
+        // number is not reconstructable after the fact.
+        //
+        // Privacy is already handled one level up: the site-wide
+        // `Referrer-Policy: strict-origin-when-cross-origin` (next.config.ts)
+        // sends only the origin `https://ristorante-goldoni.de`, never the path.
+        // Attribution without leaking which page the guest came from.
+        rel="noopener"
         className="inline-flex items-center gap-4 rounded-xl px-7 py-4 shadow-sm transition-transform hover:scale-[1.02] focus-visible:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-4"
         style={{
           backgroundColor: "var(--color-accent)",
