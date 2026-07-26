@@ -6,13 +6,13 @@ import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { PhoneIcon } from "@/components/PhoneIcon";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { StructuredData } from "@/components/StructuredData";
-import { SundayLunchBanner } from "@/components/SundayLunchBanner";
+import { SundayBanner } from "@/components/SundayBanner";
 import { FAQS } from "@/data/faqs";
 import { faqJsonLd } from "@/lib/structured-data";
 
 /**
  * ISR: regenerate the home page at most every 6h. The page content is
- * otherwise static; this exists so the temporary SundayLunchBanner can
+ * otherwise static; this exists so the temporary SundayBanner can
  * auto-expire (its date check re-evaluates on each regeneration) without a
  * manual redeploy. Can revert to fully static once the banner is gone.
  */
@@ -22,11 +22,26 @@ export default function Home() {
   return (
     <main>
       <StructuredData data={faqJsonLd(FAQS)} />
-      {/* Sunday-lunch announcement — temporary strip, sits above the
-          delivery banner. Auto-expires after 31 July 2026 (see component). */}
-      <SundayLunchBanner />
-      {/* Delivery banner — first impression, points to Wolt + Uber Eats */}
-      <DeliveryBanner />
+      {/*
+        Order swapped visually on mobile only: the ordering action outranks the
+        Sunday announcement there (owner decision, 2026-07-26). Source order
+        stays Sunday-first — that is what a screen reader announces regardless
+        of viewport, since CSS `order` moves pixels, not the DOM. Two
+        independent, unrelated strips, so that mismatch is an accepted
+        trade-off here, not an oversight. `sm:` and up reverts to source order.
+      */}
+      <div className="flex flex-col">
+        <div className="order-2 sm:order-1">
+          {/* Sunday announcement — temporary strip. Auto-expires after
+              2 August 2026 (see component). */}
+          <SundayBanner />
+        </div>
+        <div className="order-1 sm:order-2">
+          {/* Delivery banner — first impression on mobile, points to the
+              Storefront + Uber Eats */}
+          <DeliveryBanner />
+        </div>
+      </div>
 
       {/* Hero — restaurant wall sign on red velvet, brand-defining photo */}
       <section className="relative isolate overflow-hidden">

@@ -30,7 +30,7 @@ const PAGES: { title: string; description: string; url: string }[] = [
   {
     title: "Startseite",
     description:
-      "Ristorante Goldoni — Bella Italia in Stuttgart. Italienisch verliebte Küche im Stuttgarter Westen, Sonntags-Mittagstisch, Lieferung über Wolt und Uber Eats.",
+      "Ristorante Goldoni — Bella Italia in Stuttgart. Italienisch verliebte Küche im Stuttgarter Westen, sonntags durchgehend geöffnet, Lieferung über Wolt und Uber Eats.",
     url: "/",
   },
   {

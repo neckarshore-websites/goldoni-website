@@ -49,13 +49,11 @@ export type DeliveryPartner = {
  * Still exported separately although it now lives in DELIVERY: the internal
  * preview route and the e-mail signatures reference it by name.
  *
- * HOURS: the Storefront advertises Wed–Sat 16:30–22:30 and Sunday 12:00–22:30,
- * while this site shows Wed–Sat 18:00–22:30 and Sunday 12:00–14:30 +
- * 18:00–22:30. That gap is INTENTIONAL and resolved — owner decision
- * 2026-07-26: pizza production for delivery starts before the dining room
- * opens, so delivery hours legitimately run wider. Do NOT "fix" the site's
- * hours to match; they describe the restaurant, not the kitchen's delivery
- * window.
+ * HOURS: Sunday now matches on both sides (12:00–22:30). The remaining gap is
+ * Wed–Sat — Storefront 16:30, this site 18:00 — and it is INTENTIONAL, owner
+ * decision 2026-07-26: pizza production for delivery starts before the dining
+ * room opens, so the delivery window legitimately runs wider. Do NOT "fix" the
+ * site's hours to match; they describe the restaurant, not the kitchen.
  */
 export const STOREFRONT_PARTNER: DeliveryPartner = {
   name: "Wolt",
@@ -135,7 +133,7 @@ export const SITE = {
   // (ASCII hyphen) — the schema builder splits on it.
   hours: [
     { days: "Mi - Sa", time: "18:00 - 22:30" },
-    { days: "So", time: "12:00 - 14:30 & 18:00 - 22:30" },
+    { days: "So", time: "12:00 - 22:30" },
     { days: "Mo + Di", time: "geschlossen" },
   ],
 
