@@ -3,23 +3,28 @@ import Image from "next/image";
 /**
  * HolidayBanner — Ankündigung der Sommerschliessung.
  *
- * TERMINIERT: erscheint automatisch ab Dienstag, 4. August 2026, blendet sich
- * automatisch ab Montag, 24. August wieder aus. War kurz am 2026-07-26 sofort
- * live geschaltet (Betreiber-Wunsch, einmal in echter Umgebung ansehen), dann
- * auf ausdrücklichen Betreiber-Wunsch auf den 4. August terminiert — siehe
- * `BANNER_VISIBLE_FROM` unten. Weiterhin permanent auf /sandbox zu sehen.
+ * TERMINIERT: erscheint automatisch ab Montag, 3. August 2026 (Beginn der
+ * Schliessung selbst), blendet sich automatisch ab Montag, 24. August wieder
+ * aus. War kurz am 2026-07-26 sofort live geschaltet (Betreiber-Wunsch, einmal
+ * in echter Umgebung ansehen), kurz auf den 4. August verschoben, dann auf
+ * ausdrücklichen Betreiber-Wunsch wieder auf den 3. gezogen — volle Deckung
+ * der Schliessung, keine Lücke. Weiterhin permanent auf /sandbox zu sehen
+ * (siehe `forcePreview`).
  *
- * BEKANNTE LÜCKE, BEWUSST HINGENOMMEN: Die Schliessung selbst beginnt bereits
- * Montag, 3. August — das Banner zeigt an diesem einen Tag noch NICHTS an.
- * Genannt und nicht stillschweigend übernommen; Betreiber hat auf den 4.
- * bestanden. Falls sich das ändert: `BANNER_VISIBLE_FROM` auf CLOSED_FROM
- * ziehen, ein Einzeiler.
+ * WÄHREND DER SCHLIESSUNG VERSCHWINDET AUCH DAS BESTELLBANNER (Wolt/Uber Eats)
+ * UND DAS SONNTAGSBANNER VON DER STARTSEITE. Betreiber-Entscheidung: aus einer
+ * geschlossenen Küche heraus zu bestellen ist unmöglich, also hat ein
+ * Bestellbanner in dieser Zeit keinen Sinn — „alles raus, nur noch Azzurro
+ * oben". `isSummerClosureWindow()` exportiert exakt dasselbe Zeitfenster, das
+ * dieses Banner selbst zeigt, damit `page.tsx` beide Banner mit EINER
+ * Zeitquelle steuert statt einer zweiten, separat gepflegten.
  *
- * Warum eine eigene Komponente und kein Umbau des SundayBanner: die beiden
- * schliessen sich zeitlich aus. Der Sonntagsstreifen läuft bis einschliesslich
- * Sonntag, 2. August; die Schliessung beginnt am Montag, 3. August. Es steht
- * also nie beides gleichzeitig da, und zwei kurze Komponenten mit je einem
- * Ablaufdatum sind ehrlicher als eine mit einer Fallunterscheidung.
+ * Das Bestellbanner kommt am 24. August automatisch zurück (derselbe Cutoff).
+ * Ob das Sonntagsbanner danach wieder erscheint, ist bewusst NICHT Teil dieser
+ * Logik — SundayBanner.tsx läuft mit seinem eigenen, permanenten Ablauf
+ * (2. August, kein Wiedereinschalten) weiter, unberührt von dieser Datei. Das
+ * ist Absicht: die Wiedereinführung hängt laut Betreiber vom Wetter ab und ist
+ * eine eigene, spätere Entscheidung.
  *
  * ALLE DATEN BESTÄTIGT 2026-07-26 (vor Ort):
  * - Wiedereröffnung: Mittwoch, 26. August. Die ursprüngliche Angabe „ab
@@ -51,19 +56,20 @@ const CLOSED_UNTIL = "2026-08-23";
 const REOPEN = "2026-08-26";
 
 /**
- * MASTER-SCHALTER. Auf `false` setzen, um das Banner sofort auszublenden —
- * unabhängig von den beiden Zeitfenstern unten. Zurück auf `true`, um wieder
- * den terminierten Ablauf greifen zu lassen.
+ * MASTER-SCHALTER. Auf `false` setzen, um NUR DIESES BANNER sofort
+ * auszublenden. Wirkt NICHT auf die Unterdrückung von Bestell-/Sonntagsbanner
+ * unten — die folgt ausschliesslich dem Zeitfenster (`isSummerClosureWindow`),
+ * unabhängig davon, ob die Ankündigung selbst gerade sichtbar ist. Ein Gast
+ * soll nie "jetzt bestellen" lesen, während die Küche tatsächlich zu hat, nur
+ * weil jemand die Ankündigungs-Kachel abgeschaltet hat.
  */
 const BANNER_ENABLED = true;
 
 /**
- * Beginn der Sichtbarkeit: Dienstag, 4. August 2026, 00:00 Europe/Berlin
- * (CEST = UTC+2). Betreiber-Entscheidung 2026-07-26 — bewusst NICHT der 3.
- * August, an dem die Schliessung selbst beginnt; siehe Docblock oben zur damit
- * einhergehenden einen Tag Lücke.
+ * Beginn der Sichtbarkeit: Montag, 3. August 2026, 00:00 Europe/Berlin
+ * (CEST = UTC+2) — exakt der Beginn der Schliessung, keine Lücke.
  */
-const BANNER_VISIBLE_FROM = new Date("2026-08-04T00:00:00+02:00").getTime();
+const BANNER_VISIBLE_FROM = new Date("2026-08-03T00:00:00+02:00").getTime();
 
 /**
  * Cutoff: Beginn von Montag, 24. August 2026, Europe/Berlin (CEST = UTC+2).
@@ -72,9 +78,15 @@ const BANNER_VISIBLE_FROM = new Date("2026-08-04T00:00:00+02:00").getTime();
  */
 const BANNER_EXPIRES_AT = new Date("2026-08-24T00:00:00+02:00").getTime();
 
-function bannerIsOutsideItsWindow(): boolean {
+/**
+ * Reine Datumsfrage, ohne `BANNER_ENABLED` — bewusst getrennt, siehe Kommentar
+ * dort. Exportiert, weil `page.tsx` dieselbe Grenze braucht, um Bestell- und
+ * Sonntagsbanner während der Schliessung zu unterdrücken. Eine Zeitquelle,
+ * zwei Konsumenten, statt zweier separat gepflegter Daten.
+ */
+export function isSummerClosureWindow(): boolean {
   const now = Date.now();
-  return now < BANNER_VISIBLE_FROM || now >= BANNER_EXPIRES_AT;
+  return now >= BANNER_VISIBLE_FROM && now < BANNER_EXPIRES_AT;
 }
 
 const WOCHENTAGE = [
@@ -130,15 +142,15 @@ export function HolidayBanner({
   forcePreview = false,
 }: {
   /**
-   * Umgeht den Zeitfensterschalter — NUR für /sandbox. Ohne das würde die
-   * Vorschauseite selbst nichts mehr zeigen, sobald das Zeitfenster wirkt: eine
-   * Vorschau, die sich wegdatiert, ist keine Vorschau mehr. Dieselbe Idee wie
-   * das `partners`-Prop in DeliveryBanner für die (inzwischen entfernte)
-   * A/B-Fläche.
+   * Umgeht den Master-Schalter UND das Zeitfenster — NUR für /sandbox. Ohne
+   * das würde die Vorschauseite selbst nichts mehr zeigen, sobald das
+   * Zeitfenster wirkt: eine Vorschau, die sich wegdatiert, ist keine Vorschau
+   * mehr. Dieselbe Idee wie das `partners`-Prop in DeliveryBanner für die
+   * (inzwischen entfernte) A/B-Fläche.
    */
   forcePreview?: boolean;
 } = {}) {
-  if (!forcePreview && (!BANNER_ENABLED || bannerIsOutsideItsWindow())) {
+  if (!forcePreview && (!BANNER_ENABLED || !isSummerClosureWindow())) {
     return null;
   }
 

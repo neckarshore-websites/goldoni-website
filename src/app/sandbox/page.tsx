@@ -47,12 +47,15 @@ export default function SandboxPage() {
             style={{ color: "var(--color-text-muted)" }}
           >
             Auf der Startseite verbaut, aber terminiert: erscheint dort
-            automatisch ab <strong>Dienstag, 4. August</strong>, blendet sich
-            automatisch am <strong>Montag, 24. August</strong> wieder aus —
-            vor der Wiedereröffnung am <strong>Mittwoch, 26. August</strong>,
-            weil Montag und Dienstag ohnehin Standard-Ruhetage sind. Hier auf
-            /sandbox ist es unabhängig davon immer zu sehen. Kein Foto
-            geplant — der Azzurro-Farbverlauf bleibt.
+            automatisch ab <strong>Montag, 3. August</strong> (Beginn der
+            Schliessung, keine Lücke), blendet sich automatisch am{" "}
+            <strong>Montag, 24. August</strong> wieder aus — vor der
+            Wiedereröffnung am <strong>Mittwoch, 26. August</strong>, weil
+            Montag und Dienstag ohnehin Standard-Ruhetage sind. In diesem
+            Zeitfenster verschwinden Sonntags- und Bestellbanner ebenfalls von
+            der Startseite — eine geschlossene Küche nimmt keine Bestellungen
+            an. Hier auf /sandbox ist das Urlaubsbanner unabhängig davon immer
+            zu sehen. Kein Foto geplant — der Azzurro-Farbverlauf bleibt.
           </p>
         </div>
         <HolidayBanner forcePreview />
