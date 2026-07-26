@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { DeliveryBanner } from "@/components/DeliveryBanner";
 import { SITE, STOREFRONT_PARTNER } from "@/lib/site";
 
@@ -36,6 +37,37 @@ export const metadata: Metadata = {
 const NACH_UMSTELLUNG = [
   STOREFRONT_PARTNER,
   ...SITE.delivery.filter((p) => p.name !== STOREFRONT_PARTNER.name),
+];
+
+/**
+ * Bilddateien der beiden Varianten, damit sie ohne Aufruf dieser Seite
+ * weitergereicht werden können (Silvio bekommt eher ein Bild als eine URL).
+ *
+ * Bewusst SNAPSHOTS, keine Quelle der Wahrheit: die gerenderten Banner weiter
+ * oben sind verbindlich. Wird das Banner geändert, driften diese Dateien — sie
+ * gehören deshalb zusammen mit dieser Route gelöscht, sobald A oder B
+ * entschieden ist. Die Maße sind die echten Dateimaße, damit next/image nicht
+ * raten muss und kein Layout-Shift entsteht.
+ *
+ * Bewusst NUR die beiden Banner-Varianten. Ein Ganzseiten-Screenshot in
+ * Handybreite wog 700 KB — für eine Seite, die man auf dem Telefon einfach
+ * aufrufen kann. Das ist Ballast, kein Nutzen.
+ */
+const SCREENSHOTS = [
+  {
+    titel: "Variante A — Bestellknopf führend",
+    src: "/images/sandbox/variante-a.png",
+    alt: "Bestellbanner, Variante A: großer Bestellknopf, kleinere Uber-Eats-Kachel daneben.",
+    width: 1600,
+    height: 206,
+  },
+  {
+    titel: "Variante B — beide gleich groß",
+    src: "/images/sandbox/variante-b.png",
+    alt: "Bestellbanner, Variante B: Bestellknopf und Uber-Eats-Kachel gleich groß nebeneinander.",
+    width: 1600,
+    height: 242,
+  },
 ];
 
 function Variante({
@@ -136,6 +168,52 @@ export default function SandboxPage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="mx-auto mt-16 max-w-6xl px-6 sm:px-12">
+        <h2
+          className="text-xl font-semibold"
+          style={{ color: "var(--color-text)" }}
+        >
+          Zum Weiterschicken
+        </h2>
+        <p
+          className="mt-1 text-sm leading-relaxed"
+          style={{ color: "var(--color-text-muted)" }}
+        >
+          Dieselben Varianten als Bilddatei — für WhatsApp, Mail oder den
+          Ausdruck, wenn jemand die Seite nicht selbst aufrufen soll. Antippen
+          öffnet die Datei in voller Größe.{" "}
+          <strong>Achtung: das sind Momentaufnahmen.</strong> Verbindlich ist
+          immer die gerenderte Fassung oben auf dieser Seite; wenn am Banner
+          etwas geändert wird, veralten diese Bilder.
+        </p>
+
+        <div className="mt-6 space-y-8">
+          {SCREENSHOTS.map((s) => (
+            <figure key={s.src}>
+              <figcaption
+                className="mb-2 text-sm font-medium"
+                style={{ color: "var(--color-text)" }}
+              >
+                {s.titel}
+              </figcaption>
+              <a href={s.src} target="_blank" rel="noopener">
+                <Image
+                  src={s.src}
+                  alt={s.alt}
+                  width={s.width}
+                  height={s.height}
+                  className="h-auto w-full rounded-lg border"
+                  style={{ borderColor: "var(--color-border)" }}
+                  // Preview-only assets on a noindex route — no LCP budget to
+                  // protect here, so they stay lazy and out of the way.
+                  loading="lazy"
+                />
+              </a>
+            </figure>
+          ))}
+        </div>
       </section>
     </main>
   );
