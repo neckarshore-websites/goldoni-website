@@ -15,13 +15,41 @@ import { requireLogo } from "@/lib/delivery-logos";
  */
 export type DeliveryLayout = "lead" | "equal";
 
-const TILE = "h-24 w-24 sm:h-28 sm:w-28";
-/** Same height as a tile, width left to the content — used by layout `equal`. */
+/**
+ * Tile size per layout. THIS is what distinguishes the two variants — not the
+ * order button, which stays prominent either way.
+ *
+ * - `equal` — the historical 96/112 px square. Marketplace and own channel read
+ *   as peers.
+ * - `lead`  — a deliberately smaller 64/80 px square, so the own channel leads
+ *   and the marketplace is present without competing.
+ *
+ * The work order phrases the choice as "order button large, Uber Eats small
+ * beside it" versus "both the same size". If both layouts rendered the same
+ * tile there would be nothing to choose between.
+ */
+const TILE_SIZE: Record<DeliveryLayout, string> = {
+  lead: "h-16 w-16 sm:h-20 sm:w-20",
+  equal: "h-24 w-24 sm:h-28 sm:w-28",
+};
+/** Inner logo size, scaled with the tile so the cyan field keeps its padding. */
+const TILE_LOGO: Record<DeliveryLayout, string> = {
+  lead: "h-9 w-9 sm:h-11 sm:w-11",
+  equal: "h-14 w-14 sm:h-16 sm:w-16",
+};
+/** Height a tile occupies — used to match the button in layout `equal`. */
 const TILE_HEIGHT = "h-24 sm:h-28";
 
-/** Marketplace partner — unchanged square brand tile. */
-function MarketplaceTile({ partner }: { partner: DeliveryPartner }) {
+/** Marketplace partner — square brand tile, sized by layout. */
+function MarketplaceTile({
+  partner,
+  layout,
+}: {
+  partner: DeliveryPartner;
+  layout: DeliveryLayout;
+}) {
   const logo = requireLogo(partner.name);
+  const tile = TILE_SIZE[layout];
 
   return (
     <a
@@ -40,12 +68,12 @@ function MarketplaceTile({ partner }: { partner: DeliveryPartner }) {
           alt={logo.alt}
           width={112}
           height={112}
-          className={`block ${TILE}`}
+          className={`block ${tile}`}
         />
       ) : (
         // Wolt — bare logo on cyan field, "Bestellen mit Wolt" label below
         <div
-          className={`flex flex-col items-center justify-center ${TILE}`}
+          className={`flex flex-col items-center justify-center ${tile}`}
           style={{ backgroundColor: "#00C2E8" }}
         >
           <Image
@@ -53,7 +81,7 @@ function MarketplaceTile({ partner }: { partner: DeliveryPartner }) {
             alt={logo.alt}
             width={96}
             height={96}
-            className="block h-14 w-14 sm:h-16 sm:w-16"
+            className={`block ${TILE_LOGO[layout]}`}
           />
           {/* Dark-on-cyan label — Wolt's brand portal allows
               both white and dark variants; dark passes WCAG
@@ -153,11 +181,30 @@ function OwnChannelButton({
  */
 export function DeliveryBanner({
   layout = "lead",
+  partners = SITE.delivery,
 }: {
   layout?: DeliveryLayout;
+  /**
+   * Overridable ONLY so the noindex preview route can render a prospective
+   * partner set — the Storefront entry that is staged in site.ts but not yet
+   * live. The production call sites pass nothing and get SITE.delivery.
+   *
+   * The preview deliberately drives THIS component rather than a copy, so what
+   * the owner approves is what ships.
+   */
+  partners?: readonly DeliveryPartner[];
 } = {}) {
-  const own = SITE.delivery.filter((p) => p.channel === "own");
-  const marketplaces = SITE.delivery.filter((p) => p.channel === "marketplace");
+  const own = partners.filter((p) => p.channel === "own");
+  const marketplaces = partners.filter((p) => p.channel === "marketplace");
+
+  // A `lead` layout with nothing to lead is a contradiction: without an own
+  // channel there is no hierarchy to express, so shrinking the marketplace
+  // tiles would demote them in favour of nobody. Fall back to `equal`.
+  //
+  // This is also what keeps the live homepage byte-identical while the
+  // Storefront entry is still staged — production renders the default `lead`,
+  // has no own partner, and therefore keeps the historical 96/112 px tiles.
+  const effectiveLayout: DeliveryLayout = own.length > 0 ? layout : "equal";
 
   return (
     <section
@@ -190,11 +237,15 @@ export function DeliveryBanner({
             <OwnChannelButton
               key={partner.name}
               partner={partner}
-              layout={layout}
+              layout={effectiveLayout}
             />
           ))}
           {marketplaces.map((partner) => (
-            <MarketplaceTile key={partner.name} partner={partner} />
+            <MarketplaceTile
+              key={partner.name}
+              partner={partner}
+              layout={effectiveLayout}
+            />
           ))}
         </div>
       </div>
