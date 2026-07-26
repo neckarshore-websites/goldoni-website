@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { SIGNATURES, signatureDocument } from "@/lib/email-signatures";
+import { HolidayBanner } from "@/components/HolidayBanner";
 
 /**
  * /sandbox — interne Arbeitsfläche.
@@ -32,6 +33,32 @@ export default function SandboxPage() {
           liegen Dateien zum Herunterladen und Weitergeben.
         </p>
       </div>
+
+      <section className="mb-20">
+        <div className="mx-auto mb-4 max-w-6xl px-6 sm:px-12">
+          <h2
+            className="text-xl font-semibold"
+            style={{ color: "var(--color-text)" }}
+          >
+            Entwurf: Urlaubsbanner
+          </h2>
+          <p
+            className="mt-1 max-w-2xl text-sm leading-relaxed"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            Noch auf keiner öffentlichen Seite eingebunden. Zwei Dinge fehlen:{" "}
+            <strong>das Urlaubsmotiv</strong> — bis dahin steht ein Farbverlauf
+            statt eines kaputten Bildes — und{" "}
+            <strong>die Bestätigung des Wiedereröffnungsdatums</strong>. Genannt
+            war &bdquo;ab Mittwoch, den 24.&ldquo;; der 24. August ist aber ein
+            Montag, und montags ist ohnehin Ruhetag. Nach der Schliessung bis
+            Sonntag, dem 23., wäre der erste Tag zurück{" "}
+            <strong>Mittwoch, der 26. August</strong>. So steht es unten — der
+            Wochentag stimmt, die Zahl war eine andere.
+          </p>
+        </div>
+        <HolidayBanner />
+      </section>
 
       <section className="mx-auto max-w-6xl px-6 sm:px-12">
         <h2
