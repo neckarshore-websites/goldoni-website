@@ -1,9 +1,14 @@
 /**
- * SundayLunchBanner — temporary announcement strip for the new Sunday
- * lunch service (Sundays 12:00–14:30, live as of 20 June 2026).
+ * SundayBanner — temporary announcement strip for the Sunday opening hours.
  *
- * Placement: top of the homepage, directly under the header and ABOVE the
- * cream DeliveryBanner.
+ * 2026-07-26: RENAMED from SundayLunchBanner and rewritten. Sunday is no longer
+ * a separate lunch service inside a closed afternoon — the kitchen now runs
+ * CONTINUOUSLY from 12:00 to 22:30. "Mittagstisch" stopped being true, and a
+ * component called …LunchBanner announcing something that is not lunch is the
+ * same class of stale label as the copy it renders.
+ *
+ * Placement: top of the homepage AND /empfehlungen, directly under the header
+ * and ABOVE the cream DeliveryBanner.
  *
  * Design: white field, near-black text, RED key words ("jeden Sonntag",
  * the time window) for maximum prominence. The earlier marinara-on-marinara
@@ -12,7 +17,7 @@
  * Colours are hardcoded (mode-independent): the banner stays white in dark
  * mode too, so the announcement always stands out.
  *
- * AUTO-EXPIRY: the banner shows through the end of 31 July 2026
+ * AUTO-EXPIRY: the banner shows through the end of Sunday 2 August 2026
  * (Europe/Berlin) and then hides itself — no manual removal or redeploy
  * needed. The home page is ISR (`export const revalidate` in app/page.tsx),
  * so on the first regeneration after the cutoff the date check below returns
@@ -22,10 +27,15 @@
  */
 
 /**
- * Cutoff: end of 31 July 2026 in Europe/Berlin (CEST = UTC+2), i.e. midnight
- * into 1 August. A fixed timestamp.
+ * Cutoff: end of Sunday 2 August 2026 in Europe/Berlin (CEST = UTC+2), i.e.
+ * midnight into Monday 3 August. A fixed timestamp.
+ *
+ * Chosen deliberately, not rounded: Sunday 2 August is the last service before
+ * the summer closure, and the banner announces Sunday hours. From Monday
+ * 3 August the restaurant is shut for holidays, so a strip advertising Sunday
+ * opening would be actively wrong — it retires on exactly the right day.
  */
-const BANNER_EXPIRES_AT = new Date("2026-08-01T00:00:00+02:00").getTime();
+const BANNER_EXPIRES_AT = new Date("2026-08-03T00:00:00+02:00").getTime();
 
 /**
  * Reading the clock lives here, outside the component body, so the Server
@@ -41,16 +51,18 @@ function bannerHasExpired(): boolean {
  * MASTER TOGGLE. Set to `false` to hide the banner immediately — independent of
  * the auto-expiry above — for when the Sunday-lunch launch date shifts.
  * Flip back to `true` to show it again (the BANNER_EXPIRES_AT cutoff still
- * applies on top, so bump that date too if the new launch is after 31 Jul 2026).
+ * applies on top, so bump that date too if the new launch is after 2 Aug 2026).
  *
  * 2026-06-13: DISABLED — the Sunday-lunch start was being postponed, so the
  * announcement was hidden until the date firmed up.
  * 2026-06-20: RE-ENABLED — Silvio confirmed Sunday lunch is live now
  * (12:00–14:30, owner-changed from the earlier 11:30 start).
+ * 2026-07-26: Sunday became CONTINUOUS 12:00–22:30; copy rewritten, expiry
+ * moved to 3 August so the strip covers the last Sunday before the closure.
  */
 const BANNER_ENABLED = true;
 
-export function SundayLunchBanner() {
+export function SundayBanner() {
   if (!BANNER_ENABLED || bannerHasExpired()) return null;
 
   return (
@@ -70,13 +82,13 @@ export function SundayLunchBanner() {
             className="font-display text-base italic sm:text-lg"
             style={{ color: "#8E2800" }}
           >
-            Buon pranzo della domenica!
+            Buona domenica!
           </span>
           <br />
           Ab sofort kochen wir{" "}
           <strong style={{ color: "#8E2800" }}>jeden Sonntag</strong>{" "}
-          zusätzlich von{" "}
-          <strong style={{ color: "#8E2800" }}>12:00 bis 14:30 Uhr</strong>.{" "}
+          durchgehend von{" "}
+          <strong style={{ color: "#8E2800" }}>12:00 bis 22:30 Uhr</strong>.{" "}
           Ob nach dem Kirchgang oder dem Spaziergang &mdash; bei uns wartet ein
           gedeckter Tisch auf Sie und Ihre Familie.
         </p>

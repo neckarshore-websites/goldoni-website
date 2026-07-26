@@ -6,13 +6,13 @@ import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { PhoneIcon } from "@/components/PhoneIcon";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { StructuredData } from "@/components/StructuredData";
-import { SundayLunchBanner } from "@/components/SundayLunchBanner";
+import { SundayBanner } from "@/components/SundayBanner";
 import { FAQS } from "@/data/faqs";
 import { faqJsonLd } from "@/lib/structured-data";
 
 /**
  * ISR: regenerate the home page at most every 6h. The page content is
- * otherwise static; this exists so the temporary SundayLunchBanner can
+ * otherwise static; this exists so the temporary SundayBanner can
  * auto-expire (its date check re-evaluates on each regeneration) without a
  * manual redeploy. Can revert to fully static once the banner is gone.
  */
@@ -24,7 +24,7 @@ export default function Home() {
       <StructuredData data={faqJsonLd(FAQS)} />
       {/* Sunday-lunch announcement — temporary strip, sits above the
           delivery banner. Auto-expires after 31 July 2026 (see component). */}
-      <SundayLunchBanner />
+      <SundayBanner />
       {/* Delivery banner — first impression, points to Wolt + Uber Eats */}
       <DeliveryBanner />
 
