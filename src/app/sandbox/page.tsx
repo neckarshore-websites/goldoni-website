@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { SIGNATURES, signatureDocument } from "@/lib/email-signatures";
 
 /**
  * /sandbox — interne Arbeitsfläche.
@@ -94,6 +95,78 @@ export default function SandboxPage() {
               </span>
             </li>
           </ul>
+        </div>
+      </section>
+
+      <section className="mx-auto mt-20 max-w-6xl px-6 sm:px-12">
+        <h2
+          className="text-xl font-semibold"
+          style={{ color: "var(--color-text)" }}
+        >
+          E-Mail-Signatur — zwei Vorschläge
+        </h2>
+        <p
+          className="mt-1 max-w-2xl text-sm leading-relaxed"
+          style={{ color: "var(--color-text-muted)" }}
+        >
+          Beide enthalten den Bestell-QR und ziehen Adresse, Telefon und
+          Öffnungszeiten aus derselben Quelle wie die Website — eine Signatur
+          wird tausendfach verschickt und lässt sich nicht zurückholen, sie darf
+          keine abgeschriebene zweite Kopie sein.{" "}
+          <strong>Die Funktionsbezeichnung fehlt mit Absicht:</strong>{" "}
+          &bdquo;Inhaber&ldquo; und &bdquo;Mit&#8209;Eigentümer&ldquo; sind nicht
+          dasselbe, und das ist eine Angabe, die ich nicht errate — sag mir die
+          richtige, dann steht sie drin.
+        </p>
+
+        <div className="mt-8 space-y-10">
+          {SIGNATURES.map((s) => (
+            <div key={s.id}>
+              <h3
+                className="text-base font-semibold"
+                style={{ color: "var(--color-text)" }}
+              >
+                {s.titel}
+              </h3>
+              <p
+                className="mt-1 max-w-2xl text-sm"
+                style={{ color: "var(--color-text-muted)" }}
+              >
+                {s.beschreibung}
+              </p>
+              {/*
+                iframe statt Inline-Rendering: innerhalb der Seite wuerde die
+                Signatur den CSS-Reset der Website erben und anders aussehen als
+                im Postfach. Ein eigenes Dokument zeigt, was beim Empfaenger
+                ankommt — und es ist exakt der String, den auch die Datei unter
+                /signaturen enthaelt.
+              */}
+              <iframe
+                title={`Vorschau ${s.titel}`}
+                srcDoc={signatureDocument(s.html, s.titel)}
+                sandbox=""
+                loading="lazy"
+                height={s.previewHeight}
+                className="mt-4 w-full rounded-lg border"
+                style={{ borderColor: "var(--color-border)" }}
+              />
+              <p className="mt-3 text-sm">
+                <a
+                  className="underline"
+                  href={`/signaturen/goldoni-signatur-${s.id}.html`}
+                  target="_blank"
+                  rel="noopener"
+                  style={{ color: "var(--color-accent)" }}
+                >
+                  Zum Einbauen öffnen
+                </a>{" "}
+                <span style={{ color: "var(--color-text-muted)" }}>
+                  — dort alles markieren, kopieren und in den
+                  Signatur-Einstellungen des Mailprogramms einfügen
+                </span>
+              </p>
+            </div>
+          ))}
         </div>
       </section>
     </main>

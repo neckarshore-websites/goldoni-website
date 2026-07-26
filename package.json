@@ -18,6 +18,7 @@
     "lighthouse:5g": "node scripts/lighthouse.mjs --quick --profile=mobile-5g",
     "test:lighthouse:unit": "node --test scripts/lighthouse-profiles.test.mjs",
     "typecheck": "tsc --noEmit",
+    "signaturen": "tsx scripts/generate-signatures.ts",
     "qr:storefront": "tsx scripts/generate-storefront-qr.ts",
     "test:qr:unit": "tsx tests/delivery/storefront-qr.test.ts",
     "test:delivery:unit": "tsx tests/delivery/channel-model.test.ts",

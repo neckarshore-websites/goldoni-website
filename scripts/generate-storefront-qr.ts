@@ -56,6 +56,17 @@ async function main() {
   });
   writeFileSync(join(root, "public/images/storefront-qr.png"), png);
 
+  // Small raster for e-mail signatures. Mail clients cannot resize sensibly and
+  // the file is fetched on every open by every recipient, so the 2000 px print
+  // version is the wrong asset there — 440 px covers a ~110 px display box on a
+  // retina screen at a fraction of the weight.
+  const pngMail = await QRCode.toBuffer(url, {
+    ...common,
+    type: "png",
+    width: 440,
+  });
+  writeFileSync(join(root, "public/images/storefront-qr-mail.png"), pngMail);
+
   writeFileSync(
     join(root, "scripts/storefront-qr.lock.json"),
     `${JSON.stringify({ url, errorCorrectionLevel: common.errorCorrectionLevel }, null, 2)}\n`,
