@@ -58,6 +58,18 @@ check("PNG decodes to the URL the site links to", () => {
   );
 });
 
+check("the mail-sized PNG decodes to the same URL", () => {
+  // Separate asset, separate chance to drift. It is embedded in e-mail
+  // signatures by absolute URL, so a wrong one would go out with every message
+  // Silvio sends and could not be recalled.
+  const mailPath = join(root, "public/images/storefront-qr-mail.png");
+  assert.ok(existsSync(mailPath), `missing ${mailPath} — run: npm run qr:storefront`);
+  const png = PNG.sync.read(readFileSync(mailPath));
+  const decoded = jsQR(new Uint8ClampedArray(png.data), png.width, png.height);
+  assert.ok(decoded, "no QR code found in the mail-sized PNG");
+  assert.equal(decoded.data, STOREFRONT_PARTNER.url);
+});
+
 check("the encoded URL is the /de/ variant", () => {
   // Wolt's own mail, PDF and QR all carry /en/ for a German venue. Guard the
   // deliberate deviation so a future regeneration cannot quietly adopt theirs.
