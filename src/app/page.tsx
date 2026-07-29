@@ -24,18 +24,30 @@ export default function Home() {
     <main>
       <StructuredData data={faqJsonLd(FAQS)} />
       {/* Summer-closure notice — the most consequential announcement on the
-          page (three weeks fully shut) outranks both strips below it. Visible
-          exactly during the closure window (3–23 August 2026), which the
-          strips below also read from the same exported check, so there is one
-          time source, not two independently maintained ones. */}
+          page (three weeks fully shut) outranks both strips below it.
+
+          TWO PHASES since 2026-07-30 (owner request): the banner goes up on
+          30 July, four days BEFORE the closure starts, so guests still have a
+          chance to come in; it then runs through the closure itself (3–23
+          August) and hides on 24 August. The banner owns that earlier start
+          alone — see BANNER_VISIBLE_FROM vs CLOSURE_STARTS_AT in the
+          component. Deliberately NOT one shared start: the strips below key
+          off the closure, not off the announcement. */}
       <HolidayBanner />
       {/*
         Sunday announcement + order button both suppressed during the closure
         window (owner decision, 2026-07-26): a kitchen that is shut cannot
         take an order, so a delivery CTA in that window would be actively
         wrong, not just redundant with HolidayBanner above. Reappears
-        automatically on 24 August via the same isSummerClosureWindow() check
-        HolidayBanner uses to hide itself — one boundary, two consumers.
+        automatically on 24 August, the shared end boundary.
+
+        NOTE the asymmetry, it is load-bearing: isSummerClosureWindow() starts
+        on 3 August, while HolidayBanner itself becomes visible on 30 July. So
+        during 30 July – 2 August the closure notice and the order button are
+        BOTH on the page, which is correct — the kitchen is open and the
+        Storefront is our own 3.5 % channel. Pulling this check back to the
+        banner's start date would kill the order button in exactly the week it
+        still earns money.
 
         Whether SundayBanner itself resumes AFTER 24 August is a separate,
         still-open decision (owner: depends on the weather) — untouched here.
