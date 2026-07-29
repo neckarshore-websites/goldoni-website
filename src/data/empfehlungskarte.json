@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-07-22",
+  "updated": "2026-07-29",
   "categories": [
     {
       "id": "antipasti",
@@ -15,14 +15,15 @@
           "allergens": ["D", "G", "I", "J"]
         },
         {
-          "name": "Carpaccio di pescespada marinato agli agrumi calabresi su cicoria rossa",
-          "description": "Mariniertes Schwertfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
-          "price": "16.50",
-          "allergens": ["D", "H"]
+          "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
+          "description": "Frittierte Auberginentürmchen mit geräuchertem Scamorzakäse und Mozzarella",
+          "price": "15.00",
+          "allergens": ["A", "G", "2", "3", "5"],
+          "diet": ["vegetarian"]
         },
         {
-          "name": "Insalata estiva di anguria, formaggio caprino, cetriolo e miele",
-          "description": "Salat von Wassermelone, Schafskäse, knackiger Gurke und Honig",
+          "name": "Insalata estiva di anguria, formaggio caprino, cetriolo ed olive Taggiasche",
+          "description": "Salat von Wassermelone, Schafskäse, knackiger Gurke und entsteinten Oliven",
           "price": "14.50",
           "allergens": ["G"],
           "diet": ["vegetarian"]
@@ -35,27 +36,27 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Mezzelune ripiene con fichi e noci in cremetta di Taleggio",
-          "description": "Nudeln mit Feigen-Walnussfüllung an Taleggiokäse-Creme",
+          "name": "Mezzelune ripiene con fichi e noci in cremetta di Gorgonzola",
+          "description": "Nudeln mit Feigen-Walnussfüllung an Gorgonzola-Creme",
           "price": "20.50",
           "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
           "diet": ["vegetarian"]
         },
         {
-          "name": "Gnocchi di patate con il pollo „Bio“ in un sughetto di pomodoro",
-          "description": "Kartoffelgnocchi mit „Bio“-Hähnchenunterkeulen in einer Tomatensoße",
+          "name": "Strozzapreti con il pollo „Bio“ in un sughetto di pomodoro",
+          "description": "Priesterwürger mit „Bio“-Hähnchenunterkeulen in einer Tomatensoße",
           "price": "19.00",
           "allergens": ["A", "C", "I"]
         },
         {
-          "name": "Orecchiette con le cozze ed i funghi Fefferli",
-          "description": "Kurze Nudeln mit Miesmuscheln und Pfifferlingen",
-          "price": "19.50",
-          "allergens": ["A", "D", "G", "H"]
+          "name": "Linguine con gamberone gigante „Black Tiger“ incoronato da burrata",
+          "description": "Linguine mit einer Riesengarnele „Black Tiger“ (geschält), gekrönt mit Burratakäse",
+          "price": "25.50",
+          "allergens": ["A", "B", "D", "G"]
         },
         {
-          "name": "Pizza bianca alla parmigiana di melanzane vestita di pesto e incoronata da burrata",
-          "description": "Pizza (weiße Basis) mit frittierten Auberginen, gekrönt mit Burratakäse und geschmückt mit Basilikum-Pesto",
+          "name": "Pizza bianca alla parmigiana di melanzane vestita di pesto e incoronata da bufala",
+          "description": "Pizza (weiße Basis) mit frittierten Auberginen, gekrönt mit Büffelmozzarella und geschmückt mit Basilikum-Pesto",
           "price": "18.50",
           "allergens": ["A", "C", "G"],
           "diet": ["vegetarian"]
@@ -74,16 +75,9 @@
           "allergens": ["A", "G"]
         },
         {
-          "name": "Fegato di vitello alla veneziana",
-          "description": "Kalbslebermedaillons nach venezianischer Art, dazu Beilage",
-          "price": "30.50",
-          "allergens": ["S"]
-        },
-        {
-          "name": "Tomahawk (ca. 1200 g per 2 persone) frollata 21 giorni al forno",
-          "description": "Dry Aged Tomahawk (ca. 1200 g für 2 Personen) aus dem Ofen, mit Beilage (40,– € pro Person)",
-          "price": "80.00",
-          "volume": "ca. 1200 g / 2 Personen"
+          "name": "Cotoletta di maiale al tegame in crema di burro e salvia",
+          "description": "Schweinekotelett aus der Pfanne an Butter-Salbeisoße, dazu Beilage",
+          "price": "35.00"
         },
         {
           "name": "Freschissime bistecche di tonno alla griglia con rucola e pomodorini",
