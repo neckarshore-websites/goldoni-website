@@ -3,6 +3,10 @@ import { WeinSection } from "@/components/WeinSection";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
 import { SundayBanner } from "@/components/SundayBanner";
+import {
+  HolidayBanner,
+  isSummerClosureWindow,
+} from "@/components/HolidayBanner";
 import empfehlungskarte from "@/data/empfehlungskarte.json";
 import { breadcrumbJsonLd, menuJsonLd } from "@/lib/structured-data";
 import { formatMenuDate, type Menu } from "@/lib/menu";
@@ -26,6 +30,8 @@ export const metadata = pageMetadata({
 export const revalidate = 21600;
 
 export default function EmpfehlungenPage() {
+  const geschlossen = isSummerClosureWindow();
+
   return (
     <main>
       <StructuredData
@@ -34,11 +40,33 @@ export default function EmpfehlungenPage() {
         ])}
       />
       <StructuredData data={menuJsonLd(menu, "/empfehlungen")} />
-      {/* Sunday announcement — same temporary strip as the homepage, shown
-          above the hero. Shared component: auto-expires (2 Aug 2026) and can
-          be toggled off in one place for both pages. No DeliveryBanner on
-          this page, so there is nothing to reorder against on mobile. */}
-      <SundayBanner />
+      {/*
+        Genau EIN Streifen ueber dem Hero, und welcher, entscheidet die
+        Schliessung.
+
+        WAEHREND DER SCHLIESSUNG (ab 3. August) das Urlaubsbanner. Diese Seite
+        braucht es dringender als die Startseite: sie zeigt "Diese Woche" und
+        eine vollstaendige Karte mit Preisen. Ohne Hinweis liest ein Gast im
+        August eine Wochenkarte fuer eine Kueche, die drei Wochen zu ist — das
+        ist nicht nur eine verpasste Gelegenheit, das ist eine falsche Auskunft.
+
+        VORHER das Sonntagsbanner, wie bisher. Bewusst NICHT schon in der
+        Ankuendigungsphase (30. Juli bis 2. August) das Urlaubsbanner:
+        Betreiber-Entscheidung 2026-07-30. Wer in dieser Woche die Karte liest,
+        soll die Karte sehen, nicht die Absage. Die Ankuendigung steht in dieser
+        Phase auf der Startseite, wo sie den Besuch anstossen kann, statt ihn
+        auf der Speisekarte selbst zu bremsen.
+
+        Die beiden schliessen sich exakt aneinander an, nicht ungefaehr:
+        SundayBanner laeuft am 2026-08-03T00:00+02:00 ab, isSummerClosureWindow()
+        beginnt an derselben Sekunde. Das Entweder-Oder ist deshalb heute schon
+        redundant — es steht hier trotzdem, weil die beiden Daten in ZWEI
+        Dateien von Hand gepflegt werden. Zoege jemand die Schliessung naechstes
+        Jahr vor, ohne den Sonntags-Cutoff mitzuziehen, lade diese Seite sonst
+        waehrend der Betriebsferien zum Sonntagsessen ein. Die Startseite ist
+        gegen genau das bereits abgesichert; diese war es nicht.
+      */}
+      {geschlossen ? <HolidayBanner /> : <SundayBanner />}
       <PageHero
         src="/images/hero-empfehlungen-overhead-tafel.webp"
         alt="Gedeckter Tisch von oben: Pappardelle, Risotto ai funghi e tartufo, Burrata e prosciutto, Weingläser und Brot — wöchentliche Empfehlungen im Ristorante Goldoni"
