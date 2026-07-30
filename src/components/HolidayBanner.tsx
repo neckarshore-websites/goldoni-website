@@ -3,21 +3,32 @@ import Image from "next/image";
 /**
  * HolidayBanner — Ankündigung der Sommerschliessung.
  *
- * TERMINIERT: erscheint automatisch ab Montag, 3. August 2026 (Beginn der
- * Schliessung selbst), blendet sich automatisch ab Montag, 24. August wieder
- * aus. War kurz am 2026-07-26 sofort live geschaltet (Betreiber-Wunsch, einmal
- * in echter Umgebung ansehen), kurz auf den 4. August verschoben, dann auf
- * ausdrücklichen Betreiber-Wunsch wieder auf den 3. gezogen — volle Deckung
- * der Schliessung, keine Lücke. Weiterhin permanent auf /sandbox zu sehen
- * (siehe `forcePreview`).
+ * ZWEI PHASEN, ZWEI GRENZEN — der Punkt dieser Datei seit 2026-07-30.
+ *
+ * 1. ANKÜNDIGUNG (ab Donnerstag, 30. Juli 2026): Das Banner ist sichtbar,
+ *    OBWOHL die Küche noch offen ist. Betreiber-Wunsch 2026-07-30: Gäste
+ *    sollen die Schliessung rechtzeitig sehen und kurzfristig noch einmal
+ *    kommen. In dieser Phase trägt das Banner eine zusätzliche Einladung
+ *    („noch sind wir da") — siehe `isPreClosureAnnouncement()`.
+ * 2. SCHLIESSUNG (ab Montag, 3. August 2026): dieselbe Kachel, ohne die
+ *    Einladung. Blendet sich ab Montag, 24. August wieder aus.
+ *
+ * DIESE TRENNUNG IST DER GANZE WITZ, ALSO NICHT WIEDER ZUSAMMENZIEHEN:
+ * `isSummerClosureWindow()` steuert die Unterdrückung von BESTELLBANNER
+ * (Wolt Storefront) und SONNTAGSBANNER auf der Startseite. Würde man die
+ * Sichtbarkeit des Urlaubsbanners einfach vordatieren und beide Grenzen
+ * weiter aus EINER Konstante speisen, verschwände der Bestellknopf schon in
+ * der Ankündigungsphase — also genau in der Woche, in der er noch Umsatz
+ * bringt, aus einer Küche, die noch warm ist. Deshalb hat die ANKÜNDIGUNG
+ * ihre eigene Startgrenze (`BANNER_VISIBLE_FROM`) und die SCHLIESSUNG ihre
+ * (`CLOSURE_STARTS_AT`). Das ENDE bleibt gemeinsam (`BANNER_EXPIRES_AT`) —
+ * dort war eine Zeitquelle immer richtig.
  *
  * WÄHREND DER SCHLIESSUNG VERSCHWINDET AUCH DAS BESTELLBANNER (Wolt/Uber Eats)
  * UND DAS SONNTAGSBANNER VON DER STARTSEITE. Betreiber-Entscheidung: aus einer
  * geschlossenen Küche heraus zu bestellen ist unmöglich, also hat ein
  * Bestellbanner in dieser Zeit keinen Sinn — „alles raus, nur noch Azzurro
- * oben". `isSummerClosureWindow()` exportiert exakt dasselbe Zeitfenster, das
- * dieses Banner selbst zeigt, damit `page.tsx` beide Banner mit EINER
- * Zeitquelle steuert statt einer zweiten, separat gepflegten.
+ * oben". Weiterhin permanent auf /sandbox zu sehen (siehe `forcePreview`).
  *
  * Das Bestellbanner kommt am 24. August automatisch zurück (derselbe Cutoff).
  * Ob das Sonntagsbanner danach wieder erscheint, ist bewusst NICHT Teil dieser
@@ -76,27 +87,60 @@ const REOPEN = "2026-08-26";
 const BANNER_ENABLED = true;
 
 /**
- * Beginn der Sichtbarkeit: Montag, 3. August 2026, 00:00 Europe/Berlin
- * (CEST = UTC+2) — exakt der Beginn der Schliessung, keine Lücke.
+ * Beginn der SICHTBARKEIT des Banners: Donnerstag, 30. Juli 2026, 00:00
+ * Europe/Berlin (CEST = UTC+2) — vier Tage VOR der Schliessung. Das ist die
+ * Ankündigungsphase (Betreiber-Wunsch 2026-07-30).
+ *
+ * Diese Konstante steuert AUSSCHLIESSLICH, ob die Kachel gerendert wird. Sie
+ * darf NICHT die Unterdrückung von Bestell-/Sonntagsbanner steuern — dafür
+ * gibt es `CLOSURE_STARTS_AT`. Siehe Docblock oben.
  */
-const BANNER_VISIBLE_FROM = new Date("2026-08-03T00:00:00+02:00").getTime();
+const BANNER_VISIBLE_FROM = new Date("2026-07-30T00:00:00+02:00").getTime();
+
+/**
+ * Beginn der tatsächlichen SCHLIESSUNG: Montag, 3. August 2026, 00:00
+ * Europe/Berlin (CEST = UTC+2) — abgeleitet aus `CLOSED_FROM`, damit die
+ * Grenze nicht zweimal von Hand gepflegt wird und nicht auseinanderlaufen
+ * kann. Ab hier (und keinen Tag früher) verschwinden Bestell- und
+ * Sonntagsbanner.
+ */
+const CLOSURE_STARTS_AT = new Date(`${CLOSED_FROM}T00:00:00+02:00`).getTime();
 
 /**
  * Cutoff: Beginn von Montag, 24. August 2026, Europe/Berlin (CEST = UTC+2).
  * Bewusst VOR der Wiedereröffnung (26. August), nicht danach — siehe Docblock
  * oben: die letzten zwei geschlossenen Tage sind ohnehin Standard-Ruhetage.
+ * Gemeinsames Ende für beide Phasen.
  */
 const BANNER_EXPIRES_AT = new Date("2026-08-24T00:00:00+02:00").getTime();
 
 /**
  * Reine Datumsfrage, ohne `BANNER_ENABLED` — bewusst getrennt, siehe Kommentar
- * dort. Exportiert, weil `page.tsx` dieselbe Grenze braucht, um Bestell- und
- * Sonntagsbanner während der Schliessung zu unterdrücken. Eine Zeitquelle,
- * zwei Konsumenten, statt zweier separat gepflegter Daten.
+ * dort. Exportiert, weil `page.tsx` diese Grenze braucht, um Bestell- und
+ * Sonntagsbanner während der Schliessung zu unterdrücken.
+ *
+ * ACHTUNG: Startet bei `CLOSURE_STARTS_AT`, NICHT bei `BANNER_VISIBLE_FROM`.
+ * In der Ankündigungsphase (30. Juli bis 2. August) ist die Küche offen, also
+ * bleiben Bestell- und Sonntagsbanner sichtbar, während das Urlaubsbanner
+ * bereits oben steht. Genau das ist der Sinn der Phase.
  */
 export function isSummerClosureWindow(): boolean {
   const now = Date.now();
+  return now >= CLOSURE_STARTS_AT && now < BANNER_EXPIRES_AT;
+}
+
+/** Sichtbarkeitsfenster der Kachel selbst — Ankündigung UND Schliessung. */
+function isBannerWindow(): boolean {
+  const now = Date.now();
   return now >= BANNER_VISIBLE_FROM && now < BANNER_EXPIRES_AT;
+}
+
+/**
+ * Ankündigungsphase: Banner steht schon, Küche ist noch offen. Nur in diesem
+ * Fenster trägt die Kachel die zusätzliche „kommen Sie noch vorbei"-Zeile.
+ */
+function isPreClosureAnnouncement(): boolean {
+  return Date.now() < CLOSURE_STARTS_AT;
 }
 
 const WOCHENTAGE = [
@@ -160,13 +204,14 @@ export function HolidayBanner({
    */
   forcePreview?: boolean;
 } = {}) {
-  if (!forcePreview && (!BANNER_ENABLED || !isSummerClosureWindow())) {
+  if (!forcePreview && (!BANNER_ENABLED || !isBannerWindow())) {
     return null;
   }
 
   const von = zerlege(CLOSED_FROM);
   const bis = zerlege(CLOSED_UNTIL);
   const zurueck = zerlege(REOPEN);
+  const ankuendigung = isPreClosureAnnouncement();
 
   return (
     <section
@@ -199,7 +244,9 @@ export function HolidayBanner({
           className="font-display text-lg italic sm:text-xl"
           style={{ color: "#FEF1A5" }}
         >
-          Arrivederci &mdash; ci vediamo presto!
+          {ankuendigung
+            ? "Ancora qualche giorno — noch sind wir für Sie da!"
+            : "Arrivederci — ci vediamo presto!"}
         </p>
         <h2
           className="mt-2 text-2xl font-bold sm:text-3xl"
@@ -221,6 +268,19 @@ export function HolidayBanner({
           </strong>{" "}
           bleibt unsere Küche kalt &mdash; wir tanken Sonne in Italien.
         </p>
+        {/* Nur in der Ankündigungsphase: die Küche ist noch offen, und genau
+            darum steht das Banner schon oben. Farbe ist dieselbe wie die
+            Kursivzeile darüber — auf diesem Verlauf bereits als WCAG-AA
+            geprüft, also kein neues Kontrastrisiko. */}
+        {ankuendigung ? (
+          <p
+            className="mx-auto mt-3 max-w-xl text-sm font-medium leading-relaxed sm:text-base"
+            style={{ color: "#FEF1A5" }}
+          >
+            Bis dahin haben wir wie gewohnt für Sie geöffnet &mdash; kommen Sie
+            diese Woche gerne noch einmal vorbei.
+          </p>
+        ) : null}
         <p
           className="mt-4 inline-block rounded-full px-5 py-2 text-sm font-semibold sm:text-base"
           style={{ backgroundColor: "#FEF1A5", color: "#1A1612" }}
