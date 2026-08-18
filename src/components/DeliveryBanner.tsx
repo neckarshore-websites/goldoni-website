@@ -108,9 +108,15 @@ function MarketplaceTile({
 function OwnChannelButton({
   partner,
   layout,
+  showBrandMark = true,
+  subline,
 }: {
   partner: DeliveryPartner;
   layout: DeliveryLayout;
+  /** false blendet das Partner-Logo aus (Betreiber-Entscheidung 2026-08-18). */
+  showBrandMark?: boolean;
+  /** Ersetzt "bestellt ueber <Partner>" durch eigenen Text. */
+  subline?: string;
 }) {
   const logo = requireLogo(partner.name);
 
@@ -142,13 +148,15 @@ function OwnChannelButton({
         outlineColor: "var(--color-accent)",
       }}
     >
-      <Image
-        src={logo.src}
-        alt=""
-        width={96}
-        height={96}
-        className="block h-11 w-11 flex-shrink-0 rounded-full sm:h-12 sm:w-12"
-      />
+      {showBrandMark && (
+        <Image
+          src={logo.src}
+          alt=""
+          width={96}
+          height={96}
+          className="block h-11 w-11 flex-shrink-0 rounded-full sm:h-12 sm:w-12"
+        />
+      )}
       <span className="flex flex-col text-left">
         <span
           className="text-lg font-semibold leading-tight sm:text-xl"
@@ -162,7 +170,7 @@ function OwnChannelButton({
           className="mt-0.5 text-xs font-medium uppercase tracking-wide sm:text-sm"
           style={{ color: "var(--color-on-marinara-muted)" }}
         >
-          bestellt über {partner.name}
+          {subline ?? `bestellt über ${partner.name}`}
         </span>
       </span>
     </a>
@@ -182,6 +190,9 @@ function OwnChannelButton({
 export function DeliveryBanner({
   layout = "lead",
   partners = SITE.delivery,
+  showBrandMark = true,
+  subline,
+  intro,
 }: {
   layout?: DeliveryLayout;
   /**
@@ -193,6 +204,12 @@ export function DeliveryBanner({
    * the owner approves is what ships.
    */
   partners?: readonly DeliveryPartner[];
+  /** false = ohne Partner-Logo. */
+  showBrandMark?: boolean;
+  /** Eigener Text statt "bestellt ueber <Partner>". */
+  subline?: string;
+  /** Ersetzt den Einleitungssatz links. */
+  intro?: React.ReactNode;
 } = {}) {
   const own = partners.filter((p) => p.channel === "own");
   const marketplaces = partners.filter((p) => p.channel === "marketplace");
@@ -227,9 +244,13 @@ export function DeliveryBanner({
           >
             &#9679;
           </span>
-          <strong className="font-medium">Auch nach Hause:</strong>{" "}
-          Bestellen Sie unsere Karte direkt aus der Küche &mdash; geliefert
-          von unseren Partnern.
+          {intro ?? (
+            <>
+              <strong className="font-medium">Auch nach Hause:</strong>{" "}
+              Bestellen Sie unsere Karte direkt aus der Küche &mdash; geliefert
+              von unseren Partnern.
+            </>
+          )}
         </p>
 
         <div className="flex flex-shrink-0 items-center gap-3">
@@ -238,6 +259,8 @@ export function DeliveryBanner({
               key={partner.name}
               partner={partner}
               layout={effectiveLayout}
+              showBrandMark={showBrandMark}
+              subline={subline}
             />
           ))}
           {marketplaces.map((partner) => (

@@ -78,7 +78,15 @@ const nextConfig: NextConfig = {
     const csp = [
       "default-src 'self'",
       // Cloudflare Turnstile: das Widget-Script lädt von challenges.cloudflare.com.
-      "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
+      // `'unsafe-eval'` NUR im Entwicklungsmodus: React/Turbopack brauchen eval()
+      // fuer Fast Refresh und Callstack-Rekonstruktion. Ohne diese Zeile bricht
+      // `npm run dev` mit "eval() is not supported in this environment" ab,
+      // waehrend die Produktion davon unberuehrt bleibt (React nutzt eval() dort
+      // nie). Die Bedingung haengt an NODE_ENV, nicht an einem Schalter, damit
+      // kein Produktions-Build sie versehentlich mitnehmen kann.
+      process.env.NODE_ENV === "development"
+        ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com"
+        : "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob:",
       "font-src 'self'",
