@@ -23,6 +23,28 @@ export default function Home() {
   return (
     <main>
       <StructuredData data={faqJsonLd(FAQS)} />
+      {/* Bestellbanner — eigener Kanal, ohne Fremdmarke.
+          Betreiber-Entscheidung 2026-08-18: der Marktplatz-Teil (Uber-Eats-
+          Kachel) und das Wolt-Zeichen entfallen auf der Website; der Knopf
+          fuehrt unveraendert auf die Wolt-Bestellseite (~3,5 % statt ~30 %).
+          Wolt bestaetigt: keine Anzeigepflicht fuer Uber Eats.
+
+          BEWUSST OHNE ZEITFENSTER, ebenfalls Betreiber-Entscheidung vom
+          2026-08-18: das Banner steht auch waehrend der Sommerpause. Es
+          ersetzt die frueher hier haengende Unterdrueckung per
+          isSummerClosureWindow() vom 2026-07-26. Der Urlaubshinweis darunter
+          traegt die Information, dass die Kueche zu ist. */}
+      <DeliveryBanner
+        partners={SITE.delivery.filter((p) => p.channel === "own")}
+        showBrandMark={false}
+        subline="Alles direkt aus der Küche"
+        intro={
+          <>
+            <strong className="font-medium">Auch nach Hause:</strong>{" "}
+            Unsere ganze Karte, frisch zubereitet und zu Ihnen geliefert.
+          </>
+        }
+      />
       {/* Summer-closure notice — the most consequential announcement on the
           page (three weeks fully shut) outranks both strips below it.
 
@@ -35,26 +57,18 @@ export default function Home() {
           off the closure, not off the announcement. */}
       <HolidayBanner />
       {/*
-        Sunday announcement + order button both suppressed during the closure
-        window (owner decision, 2026-07-26): a kitchen that is shut cannot
-        take an order, so a delivery CTA in that window would be actively
-        wrong, not just redundant with HolidayBanner above. Reappears
-        automatically on 24 August, the shared end boundary.
-
-        NOTE the asymmetry, it is load-bearing: isSummerClosureWindow() starts
-        on 3 August, while HolidayBanner itself becomes visible on 30 July. So
-        during 30 July – 2 August the closure notice and the order button are
-        BOTH on the page, which is correct — the kitchen is open and the
-        Storefront is our own 3.5 % channel. Pulling this check back to the
-        banner's start date would kill the order button in exactly the week it
-        still earns money.
+        Sunday announcement only. The order button USED to be suppressed here
+        as well (owner decision 2026-07-26: a shut kitchen cannot take an
+        order). That suppression was lifted on 2026-08-18 by the owner — the
+        banner above now runs year-round and the closure notice carries the
+        "kitchen is shut" message. Do not reintroduce the coupling without a
+        new decision; it was removed on purpose, not lost.
 
         Whether SundayBanner itself resumes AFTER 24 August is a separate,
         still-open decision (owner: depends on the weather) — untouched here.
         Its own component already stopped rendering permanently from 2 August
         via its own unrelated expiry; this wrapper only ever prevented it from
-        showing during 3–23 August on top of that, so nothing changes for it
-        once the closure window ends.
+        showing during 3–23 August on top of that.
       */}
       {!isSummerClosureWindow() && (
         <div className="flex flex-col">
@@ -63,12 +77,6 @@ export default function Home() {
                 2 August 2026 (see component); additionally suppressed during
                 the closure window by the wrapper above. */}
             <SundayBanner />
-          </div>
-          <div className="order-1 sm:order-2">
-            {/* Delivery banner — first impression on mobile, points to the
-                Storefront + Uber Eats. Suppressed during the closure window;
-                see the wrapper comment above. */}
-            <DeliveryBanner />
           </div>
         </div>
       )}
