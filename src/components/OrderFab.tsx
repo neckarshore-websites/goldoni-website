@@ -8,12 +8,18 @@ import { STOREFRONT_PARTNER } from "@/lib/site";
  * dauerhaft. Das ist der Handel, über den entschieden wird.
  *
  * `visibility` entscheidet, auf welcher Seite der 768-px-Grenze er erscheint.
- * Standard `mobile` — am Desktop stehen seit dem 25.08. Knopf und Streifen in
- * der Seite, ein zusätzlicher schwebender wäre dort Doppelung. Variante C
- * (Prototyp 2026-08-25) dreht genau das um: schwebender Knopf STATT der
- * Streifen, weil die Karte am Desktop eine zentrierte Spalte ist und die
- * untere rechte Ecke dort leer bleibt. Am Handy verdeckt derselbe Knopf
- * zwangsläufig Text — derselbe Knopf, zwei verschiedene Rechnungen.
+ * Die Live-Kartenseiten stehen seit dem 25.08. auf `always`: erst nur Desktop
+ * (Variante C — schwebender Knopf statt Kopfknopf und Streifen), am selben
+ * Tag auf das Handy erweitert (Variante B des A/B-Vergleichs).
+ *
+ * Die beiden Geräte tragen dabei verschiedene Rechnungen: am Desktop ist die
+ * Karte eine zentrierte Spalte, die untere rechte Ecke bleibt leer und der
+ * Knopf kostet nichts. Am Handy füllt dieselbe Spalte den Bildschirm — dort
+ * verdeckt er zwangsläufig eine Zeile. Betreiber-Entscheidung: der Handel
+ * lohnt sich, weil der Bestellweg sonst am Ende der Karte begraben liegt.
+ *
+ * `mobile` und `desktop` bleiben als Werte erhalten; die Prototypseiten unter
+ * /sandbox nutzen sie für den Vergleich.
  *
  * `bottom` respektiert `env(safe-area-inset-bottom)`, damit der Knopf auf
  * iPhones nicht unter der Home-Leiste klebt.

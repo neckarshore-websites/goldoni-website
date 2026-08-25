@@ -97,7 +97,7 @@ export default function MenuPage() {
           er ersetzt den Knopf neben der Ueberschrift UND die zwei Streifen
           in der Karte. Die Karte liest sich damit ununterbrochen, und der
           Knopf sitzt im leeren Seitenrand neben der zentrierten Spalte. */}
-      <OrderFab visibility="desktop" />
+      <OrderFab visibility="always" />
     </main>
   );
 }

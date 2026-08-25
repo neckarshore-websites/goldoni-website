@@ -117,7 +117,7 @@ export default function EmpfehlungenPage() {
       </div>
       {/* Siehe /menu: ein einziger dauerhafter Bestellknopf am Desktop,
           Betreiber-Entscheidung 2026-08-25. */}
-      <OrderFab visibility="desktop" />
+      <OrderFab visibility="always" />
     </main>
   );
 }

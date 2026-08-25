@@ -43,27 +43,21 @@ for (const path of PAGES) {
     await expect(fab).toHaveAttribute("rel", "noopener");
   });
 
-  test(`${path}: mobile shows no order CTA but keeps the footer order link`, async ({
-    page,
-  }) => {
+  test(`${path}: mobile shows the same floating button`, async ({ page }) => {
     await page.setViewportSize(MOBILE);
     await page.goto(path);
 
-    // `:visible`, not a DOM count. The CTAs are hidden with `display: none`,
-    // so they remain in the markup on phones — what must be zero is what a
-    // guest can SEE and tap. A DOM-count assertion here would fail against a
-    // correct implementation and tempt the next person to "fix" the component.
-    await expect(
-      page.locator('[data-testid="order-cta"]:visible'),
-    ).toHaveCount(0);
+    // Seit dem 25.08. trägt das Handy denselben Knopf wie der Desktop
+    // (Variante B des A/B-Vergleichs). Vorher stand hier bewusst eine
+    // Null — die Grenze war eine Entscheidung, ihre Aufhebung ist es auch.
+    const fab = page.locator('[data-testid="order-cta-fab"]');
+    await expect(fab).toHaveCount(1);
+    await expect(fab).toBeVisible();
+    await expect(fab).toHaveAttribute("href", STOREFRONT_PARTNER.url);
 
-    // Die Handy-Varianten liegen weiterhin nur auf /sandbox. Der schwebende
-    // Knopf ist am Desktop live, darf hier aber nicht sichtbar werden; der
-    // Pillen-Knopf ist nirgends live.
+    // Variante A (Knopf IN der klebenden Kategorieleiste) ist nicht gewählt
+    // worden und liegt weiterhin nur auf /sandbox.
     await expect(page.locator('[data-testid="order-cta-pill"]')).toHaveCount(0);
-    await expect(
-      page.locator('[data-testid="order-cta-fab"]:visible'),
-    ).toHaveCount(0);
 
     // Non-vacuity: the page must still offer a way to order at all.
     const orderLinks = page.locator(`a[href="${STOREFRONT_PARTNER.url}"]`);
