@@ -79,9 +79,35 @@ function Qr({ sizeMm, padMm }: { sizeMm: number; padMm: number }) {
 
 /* ── Briefumschlag DIN lang quer, Datenformat 230 × 120 mm ───────────── */
 
+/**
+ * Vorderseite: waagerecht geteilt. Oben Espresso mit der Wortmarke, unten
+ * Olive mit dem Fenster.
+ *
+ * WARUM DIE TEILUNG GENAU DORT LIEGT: die Kante sitzt knapp ueber dem
+ * Fenster. Damit steht die Anschrift des Empfaengers — die im Fenster
+ * erscheint — vollstaendig im olivgruenen Feld und wird nicht von einer
+ * Farbkante durchschnitten. Eine Teilung in der geometrischen Mitte saehe
+ * ausgewogener aus und liefe genau durch das Fenster.
+ *
+ * DIE ABSENDERADRESSE STEHT NICHT MEHR HIER, sondern auf der Rueckseite
+ * (Betreiber-Entscheidung 2026-08-25). Das macht die Vorderseite ruhig und
+ * verlangt im Gegenzug ein beidseitig bedrucktes Produkt.
+ */
 export function BriefumschlagArtwork() {
   return (
-    <Sheet wmm={230} hmm={120} background={C.olive}>
+    <Sheet wmm={230} hmm={120} background={C.espresso}>
+      {/* Unteres Feld. 62 mm hoch: Fenster (45 mm) plus Abstand darueber
+          und darunter, gemessen im Datenformat. */}
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: "calc(62 * var(--mm))",
+          background: C.olive,
+        }}
+      />
       <div style={{ position: "absolute", inset: "calc(13 * var(--mm))" }}>
         <div style={{ position: "absolute", left: 0, top: 0 }}>
           <p
@@ -101,53 +127,25 @@ export function BriefumschlagArtwork() {
               margin: 0,
               fontFamily: SERIF,
               fontWeight: 600,
-              fontSize: "calc(11 * var(--mm))",
+              fontSize: "calc(13 * var(--mm))",
               lineHeight: 1,
               color: C.mozzarella,
             }}
           >
             Goldoni
           </p>
-          <hr
-            style={{
-              height: "calc(.25 * var(--mm))",
-              border: 0,
-              width: "calc(30 * var(--mm))",
-              margin: "calc(3 * var(--mm)) 0 calc(2.5 * var(--mm))",
-              background: C.parmigiano,
-              opacity: 0.6,
-            }}
-          />
           <p
             style={{
-              margin: 0,
+              margin: "calc(3 * var(--mm)) 0 0",
               fontSize: "calc(3 * var(--mm))",
               lineHeight: 1.45,
-              color: C.mozzarella,
+              color: C.tan,
             }}
           >
-            +49 (711) 659 98 89 · ristorante-goldoni.de
+            Italienisch verliebte Küche im Stuttgarter Westen.
           </p>
         </div>
 
-        {/* Absenderzeile ueber dem Fenster — bei Fensterumschlaegen die
-            postalisch vorgesehene Stelle. */}
-        <p
-          style={{
-            position: "absolute",
-            left: "calc(12 * var(--mm))",
-            bottom: "calc(57 * var(--mm))",
-            margin: 0,
-            fontSize: "calc(2.5 * var(--mm))",
-            color: C.parmigiano,
-          }}
-        >
-          Ristorante Goldoni · Reinsburgstraße 151 · 70197 Stuttgart
-        </p>
-
-        {/* Fenster 90 × 45 mm und Briefmarkenfeld: beide bleiben UNBEDRUCKT.
-            Hier gestrichelt dargestellt, damit sichtbar ist, warum die
-            Gestaltung dort aufhoert. In den Druckdaten steht dort nichts. */}
         <Zone
           label="Fenster"
           style={{
@@ -168,6 +166,59 @@ export function BriefumschlagArtwork() {
             borderStyle: "dotted",
           }}
         />
+      </div>
+    </Sheet>
+  );
+}
+
+/**
+ * Rueckseite: traegt die Absenderanschrift, seit die Vorderseite sie
+ * abgegeben hat. Vollflaechig Olive, damit beide Seiten zusammengehoeren
+ * und die dunkle Vorderseite nicht allein steht.
+ *
+ * Die Klappe des Umschlags liegt hier — Text bleibt deshalb in der oberen
+ * Haelfte, wo nichts verklebt wird.
+ */
+export function BriefumschlagBackArtwork() {
+  return (
+    <Sheet wmm={230} hmm={120} background={C.olive}>
+      <div
+        style={{
+          position: "absolute",
+          inset: "calc(13 * var(--mm))",
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <p
+            style={{
+              margin: 0,
+              fontWeight: 600,
+              fontSize: "calc(2.6 * var(--mm))",
+              letterSpacing: ".3em",
+              textTransform: "uppercase",
+              color: C.parmigiano,
+            }}
+          >
+            Absender
+          </p>
+          <p
+            style={{
+              margin: "calc(3 * var(--mm)) 0 0",
+              fontSize: "calc(3.4 * var(--mm))",
+              lineHeight: 1.55,
+              color: C.mozzarella,
+            }}
+          >
+            <strong style={{ fontWeight: 600 }}>Ristorante Goldoni</strong>
+            <br />
+            Reinsburgstraße 151 · 70197 Stuttgart
+            <br />
+            +49 (711) 659 98 89 · ristorante-goldoni.de
+          </p>
+        </div>
       </div>
     </Sheet>
   );
@@ -202,95 +253,137 @@ function Zone({ label, style }: { label: string; style: CSSProperties }) {
 
 /* ── Pizzakarton, Deckelfläche 262 × 260 mm ──────────────────────────── */
 
-export function PizzakartonArtwork() {
+/**
+ * Der Deckel, waagerecht in zwei Felder geteilt (Betreiber-Entscheidung
+ * 2026-08-25). Zwei Aufteilungen stehen zur Wahl:
+ *
+ *   "espresso-oben" — Wortmarke auf Espresso, Bestellweg auf Olive.
+ *   "olive-oben"    — umgekehrt.
+ *
+ * BEIDE SIND GEBAUT, WEIL DAS AM BILDSCHIRM ZU ENTSCHEIDEN IST UND NICHT
+ * IM KOPF. Was fuer "espresso-oben" spricht: die Wortmarke steht dann auf
+ * demselben Grund wie auf Postkarte und Bierdeckel, und der Karton wird
+ * meist von oben und leicht schraeg gesehen — das dunkle Feld ist dort, wo
+ * der Blick zuerst hinfaellt. Was dagegen spricht: der Bestellweg, also der
+ * einzige Teil mit einer Aufgabe, sitzt dann unten.
+ *
+ * Die Teilung liegt bei 52 Prozent, nicht bei 50: das obere Feld traegt
+ * mehr Inhalt und wirkt sonst gedrueckt. Eine exakte Haelfte sieht auf
+ * Papier kleiner aus als sie ist.
+ */
+export function PizzakartonArtwork({
+  variant = "espresso-oben",
+}: {
+  variant?: "espresso-oben" | "olive-oben";
+} = {}) {
+  const oben = variant === "espresso-oben" ? C.espresso : C.olive;
+  const unten = variant === "espresso-oben" ? C.olive : C.espresso;
+
   return (
-    <Sheet wmm={262} hmm={260} background={C.espresso}>
+    <Sheet wmm={262} hmm={260} background={oben}>
       <div
         style={{
           position: "absolute",
-          inset: "calc(22 * var(--mm))",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: "48%",
+          background: unten,
+        }}
+      />
+
+      {/* Oberes Feld — die Marke. */}
+      <div
+        style={{
+          position: "absolute",
+          left: "calc(22 * var(--mm))",
+          right: "calc(22 * var(--mm))",
+          top: 0,
+          height: "52%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
         }}
       >
-        <div style={{ textAlign: "center" }}>
+        <p
+          style={{
+            margin: 0,
+            fontWeight: 600,
+            fontSize: "calc(5 * var(--mm))",
+            letterSpacing: ".34em",
+            textTransform: "uppercase",
+            color: C.parmigiano,
+          }}
+        >
+          Ristorante
+        </p>
+        <p
+          style={{
+            margin: "calc(4 * var(--mm)) 0 0",
+            fontFamily: SERIF,
+            fontWeight: 600,
+            fontSize: "calc(50 * var(--mm))",
+            lineHeight: 0.95,
+            letterSpacing: "-.015em",
+            color: C.mozzarella,
+          }}
+        >
+          Goldoni
+        </p>
+        <p
+          style={{
+            margin: "calc(7 * var(--mm)) 0 0",
+            fontSize: "calc(7.4 * var(--mm))",
+            lineHeight: 1.35,
+            color: variant === "espresso-oben" ? C.tan : C.parmigiano,
+          }}
+        >
+          Italienisch verliebte Küche im Stuttgarter Westen.
+        </p>
+      </div>
+
+      {/* Unteres Feld — der Bestellweg. Er arbeitet in dem Moment, in dem
+          der Gast die Schachtel oeffnet und die Haende am Karton hat. */}
+      <div
+        style={{
+          position: "absolute",
+          left: "calc(22 * var(--mm))",
+          right: "calc(22 * var(--mm))",
+          bottom: 0,
+          height: "48%",
+          display: "flex",
+          alignItems: "center",
+          gap: "calc(16 * var(--mm))",
+        }}
+      >
+        <div style={{ flex: "1 1 auto" }}>
           <p
             style={{
               margin: 0,
-              fontWeight: 600,
-              fontSize: "calc(5 * var(--mm))",
-              letterSpacing: ".34em",
-              textTransform: "uppercase",
-              color: C.parmigiano,
-            }}
-          >
-            Ristorante
-          </p>
-          <p
-            style={{
-              margin: "calc(4 * var(--mm)) 0 0",
               fontFamily: SERIF,
               fontWeight: 600,
-              fontSize: "calc(46 * var(--mm))",
-              lineHeight: 0.95,
-              letterSpacing: "-.015em",
+              fontSize: "calc(17 * var(--mm))",
+              lineHeight: 1.05,
               color: C.mozzarella,
             }}
           >
-            Goldoni
+            Nächstes Mal
+            <br />
+            direkt bei uns.
           </p>
           <p
             style={{
-              margin: "calc(8 * var(--mm)) 0 0",
-              fontSize: "calc(7.6 * var(--mm))",
-              lineHeight: 1.35,
-              color: C.tan,
+              margin: "calc(5 * var(--mm)) 0 0",
+              fontSize: "calc(7.4 * var(--mm))",
+              color: variant === "espresso-oben" ? C.mozzarella : C.tan,
             }}
           >
-            Italienisch verliebte Küche im Stuttgarter Westen.
+            Abholen oder liefern lassen.
           </p>
         </div>
-
-        {/* Der einzige Block, der etwas verlangt — und er verlangt es in dem
-            Moment, in dem der Gast die Schachtel oeffnet. */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "calc(14 * var(--mm))",
-            background: C.olive,
-            padding: "calc(12 * var(--mm))",
-            borderRadius: "calc(2 * var(--mm))",
-          }}
-        >
-          <div style={{ flex: "1 1 auto" }}>
-            <p
-              style={{
-                margin: 0,
-                fontFamily: SERIF,
-                fontWeight: 600,
-                fontSize: "calc(15 * var(--mm))",
-                lineHeight: 1.05,
-                color: C.mozzarella,
-              }}
-            >
-              Nächstes Mal
-              <br />
-              direkt bei uns.
-            </p>
-            <p
-              style={{
-                margin: "calc(5 * var(--mm)) 0 0",
-                fontSize: "calc(7 * var(--mm))",
-                color: C.mozzarella,
-              }}
-            >
-              Abholen oder liefern lassen.
-            </p>
-          </div>
-          <Qr sizeMm={66} padMm={4} />
-        </div>
+        <Qr sizeMm={70} padMm={4} />
       </div>
     </Sheet>
   );

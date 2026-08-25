@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import { BriefumschlagArtwork } from "@/components/artwork/PrintArtwork";
+import {
+  BriefumschlagArtwork,
+  BriefumschlagBackArtwork,
+} from "@/components/artwork/PrintArtwork";
 import { PrintSpecPage } from "@/components/PrintSpecPage";
 
 export const metadata: Metadata = {
@@ -33,13 +36,18 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Briefumschlag"
       intro="DIN lang quer mit Fenster, haftklebend. Für Rechnungen, Gutscheine und Post an Gäste — das Stück, das im Briefkasten landet, bevor irgendjemand die Website kennt."
-      status="Entwurf in Oliv — setzt die 4/0-Variante voraus, siehe offene Punkte"
+      status="Zweifarbiger Entwurf, beidseitig — setzt die 4/4-Variante voraus"
       aspect={{ w: 1600, h: 835 }}
       sides={[
         {
           label: "Vorderseite",
-          caption: "Fenster und Briefmarkenfeld bleiben unbedruckt",
+          caption: "zweifarbig geteilt, Fenster und Briefmarkenfeld bleiben frei",
           node: <BriefumschlagArtwork />,
+        },
+        {
+          label: "Rückseite",
+          caption: "trägt die Absenderanschrift",
+          node: <BriefumschlagBackArtwork />,
         },
       ]}
       specs={[
@@ -51,7 +59,7 @@ export default function Page() {
         ["Fenster-Toleranz", "ca. 1 mm Versatz laut Datenblatt"],
         ["Papier", "80 g/m² Offset weiss, beschreibbar, laser- und tintenstrahlgeeignet"],
         ["Verschluss", "haftklebend, innenliegende Seitenklappen"],
-        ["Druck", "aktuell gewählt 1/0 (nur Schwarz) — dieser Entwurf braucht 4/0"],
+        ["Druck", "aktuell gewählt 1/0 (einseitig, nur Schwarz) — dieser Entwurf braucht 4/4"],
       ]}
       decisions={[
         {
@@ -59,8 +67,16 @@ export default function Page() {
           body: "Betreiber-Entscheidung 2026-08-25: Oliv und Espresso auf allen Drucksachen. Der Umschlag trägt deshalb dieselbe Wortmarke, dieselbe Fläche, dieselben Farben — er ist bei vielen Gästen der erste Kontakt mit dem Haus, oft bevor sie die Website kennen.",
         },
         {
-          title: "Der Preis dieser Entscheidung: 4/0 statt 1/0",
-          body: "Das aktuell ausgewählte Produkt ist einseitig, nur Schwarz. Oliv ist dort nicht möglich — das ist eine Produkteigenschaft, keine Gestaltungsfrage. Entweder die vierfarbige Variante bestellen, oder der Umschlag wird schwarz auf Weiss. Ein vollflächig oliv bedruckter Umschlag verlangt ausserdem stärkeres Papier als 80 g: dünnes Offsetpapier wellt sich unter Vollton.",
+          title: "Zwei Farben vorne, Anschrift hinten",
+          body: "Betreiber-Entscheidung 2026-08-25. Die Vorderseite ist waagerecht geteilt: oben Espresso mit der Wortmarke, unten Olive mit dem Fenster. Die Absenderanschrift wandert auf die Rückseite und macht die Vorderseite ruhig.",
+        },
+        {
+          title: "Die Kante liegt über dem Fenster, nicht in der Mitte",
+          body: "Eine Teilung in der geometrischen Mitte sähe ausgewogener aus und liefe genau durch das Fenster — die Anschrift des Empfängers wäre dann von einer Farbkante durchschnitten. Deshalb sitzt die Kante knapp darüber, und das Fenster steht vollständig im olivgrünen Feld.",
+        },
+        {
+          title: "Der Preis dieser Entscheidung: 4/4 statt 1/0",
+          body: "Das aktuell ausgewählte Produkt ist einseitig und nur schwarz. Zwei Farben vorne UND Druck auf der Rückseite verlangen die beidseitig vierfarbige Variante. Ausserdem: vollflächige Farbe braucht stärkeres Papier als 80 g — dünnes Offsetpapier wellt sich unter Vollton, und bei beidseitigem Vollton umso mehr.",
         },
         {
           title: "Die Anschrift steht genau einmal",
@@ -76,7 +92,7 @@ export default function Page() {
         },
       ]}
       openPoints={[
-        "ENTSCHEIDUNG VOR ALLEM ANDEREN: 4/0 statt 1/0 bestellen, sonst ist dieser Entwurf nicht druckbar. Mit der Farbe steigt auch der Preis, und vollflächig Oliv verlangt schwereres Papier als 80 g.",
+        "ENTSCHEIDUNG VOR ALLEM ANDEREN: 4/4 statt 1/0 bestellen, sonst ist dieser Entwurf nicht druckbar — zwei Farben vorne und Druck hinten gehen einseitig-schwarz nicht. Mit der Farbe steigt der Preis, und beidseitiger Vollton verlangt schwereres Papier als 80 g.",
         "Der Entwurf ist noch nicht besprochen. Ob der Umschlag überhaupt gebraucht wird und wofür, entscheidet der Betreiber — bisher ist er eine Möglichkeit, kein Auftrag.",
         "Auflage und ob mit oder ohne Fenster: die Fensterfassung lohnt nur, wenn Anschriften aus einem System gedruckt werden. Wer von Hand adressiert, fährt ohne Fenster besser.",
         "Prüfen, ob der Umschlag zum Papier der Postkarte passt — beides liegt beim Gast auf demselben Tisch.",
