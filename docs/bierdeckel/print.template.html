@@ -32,7 +32,7 @@ html,body{margin:0;padding:0;background:#fff;font-family:"Inter",sans-serif}
 
 /* Sicherheitsflaeche. Alles Wichtige bleibt in diesem Rechteck: es passt
    vollstaendig in das Sechseck, auch wenn beim Stanzen 2 mm verrutschen. */
-.safe{width:58%;display:flex;flex-direction:column;align-items:center;gap:calc(3*var(--mm))}
+.safe{width:60%;display:flex;flex-direction:column;align-items:center;gap:calc(3*var(--mm))}
 
 .front{background:var(--espresso)}
 .back{background:var(--olive)}
@@ -43,6 +43,15 @@ html,body{margin:0;padding:0;background:#fff;font-family:"Inter",sans-serif}
   font-size:calc(15*var(--mm));margin:0;letter-spacing:-.01em}
 .rule{width:calc(22*var(--mm));height:.35mm;border:0;margin:calc(1*var(--mm)) 0}
 .meta{font-size:calc(3.1*var(--mm));line-height:1.5;margin:0}
+/* Der Satz von der Startseite steht anstelle der Adresse (Betreiber-Wahl
+   2026-08-25, volle Fassung). 86 Zeichen auf 93 mm: die Groesse ist deshalb
+   nicht gestalterisch gewaehlt, sondern von der Zeichenzahl diktiert. Bleibt
+   in der Grotesk, damit er der Playfair-Wortmarke die Buehne nicht streitig
+   macht — bei dieser Laenge waere Serife ausserdem schwerer zu lesen.
+   Der harte Umbruch nach "Westen." trennt die zwei Aussagen sauber, statt
+   den Umbruch dem Zufall der Zeilenbreite zu ueberlassen. */
+.claim{font-size:calc(2.95*var(--mm));line-height:1.5;letter-spacing:.005em;margin:0;
+  text-wrap:balance}
 
 .qr{width:calc(36*var(--mm));padding:calc(2.2*var(--mm));background:#fff;border-radius:.6mm}
 .qr svg{display:block;width:100%;height:auto}
@@ -74,7 +83,7 @@ html,body{margin:0;padding:0;background:#fff;font-family:"Inter",sans-serif}
             <p class="eyebrow" style="color:var(--tan)">Ristorante</p>
             <p class="wordmark" style="color:var(--mozzarella)">Goldoni</p>
             <hr class="rule" style="background:var(--tan)">
-            <p class="meta" style="color:var(--tan)">Reinsburgstra&szlig;e 151<br>Stuttgart-West</p>
+            <p class="claim" style="color:var(--tan)">Italienisch verliebte K&uuml;che im Stuttgarter Westen.<br>Frische Zutaten, mit Liebe gemacht.</p>
           </div>
           <div class="guide"><svg viewBox="0 0 93 80.54"><polygon points="0,40.27 23.25,0 69.75,0 93,40.27 69.75,80.54 23.25,80.54" fill="none" stroke="#B64926" stroke-width="0.2" stroke-dasharray="1.2 1.2"/></svg></div>
         </div>
