@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Goldoni Postkarte A6 — Druckdaten</title>
+<style>
+@font-face{font-family:"Playfair";src:url(data:font/woff2;base64,__FONT_PLAYFAIR__) format("woff2");font-weight:600;font-display:block}
+@font-face{font-family:"Inter";src:url(data:font/woff2;base64,__FONT_INTER__) format("woff2");font-weight:400 700;font-display:block}
+
+/* Seitengroesse der Vorlage: 436,535 x 314,646 pt (= 154 x 111 mm).
+   GEMESSEN, NICHT ANGENOMMEN: Chromium legt trotzdem 437,04 x 315,12 pt an —
+   0,18 mm zu gross in beiden Richtungen. Es rundet die Seitenbox auf ganze
+   CSS-Pixel, und weder eine Angabe in Millimetern noch in Punkt aendert das;
+   beide Schreibweisen wurden ausprobiert und liefern dasselbe Ergebnis.
+   BEWERTUNG: 0,18 mm liegen tief im 3-mm-Beschnitt, der Versatz zur
+   Schnittkante betraegt 0,09 mm je Seite — unterhalb der Toleranz, die die
+   Druckerei selbst im Datenblatt einraeumt. Es bleibt stehen und wird
+   benannt, statt es mit einem Eingriff in die MediaBox zu verstecken. Wer es
+   exakt braucht, setzt die Datei ausserhalb des Browsers — dieselbe
+   Entscheidung, die auch CMYK erzwingen wuerde. */
+@page{size:436.535pt 314.646pt;margin:0}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;padding:0;background:#fff;font-family:"Inter",sans-serif}
+
+.page{width:210mm;height:297mm;background:#fff;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10mm;page-break-after:auto;overflow:hidden}
+
+/* ECHTE GROESSE: 148 x 105 mm Endformat. Die Karte wird hier im Datenformat
+   154 x 111 mm gezeichnet (3 mm Beschnitt umlaufend), damit --mm eine echte
+   Millimeter-Einheit bleibt: --mm = 1/154 der Kartenbreite. Jeder Wert in
+   den Regeln unten ist damit als Millimeter des Datenformats lesbar. */
+.card{position:relative;width:154mm;aspect-ratio:154/111;overflow:hidden;
+  container-type:inline-size;
+  --mm:.64935cqw;
+  --espresso:#1A1612; --mozzarella:#FAFAFA; --parmigiano:#FEF1A5;
+  --marinara:#8E2800; --olive:#746B03; --tan:#C9BD8A;
+}
+.pad{position:absolute;inset:calc(9.5*var(--mm));display:flex}
+
+/* NEU GESETZT, NICHT SKALIERT. Ein Verkleinern der A5-Werte um den Faktor
+   0,713 haette den Fliesstext auf 3,3 mm gedrueckt — lesbar auf dem Schirm,
+   grenzwertig auf Papier in einer Papiertuete. Die Schlagzeile gibt dafuer
+   mehr ab als proportional: sie hat auf A5 Platz zum Prahlen, auf A6 nicht. */
+.c-eyebrow{font-weight:600;font-size:calc(2.7*var(--mm));letter-spacing:.24em;
+  text-transform:uppercase;margin:0}
+.c-display{font-family:"Playfair",Georgia,serif;font-weight:600;line-height:1.05;margin:0;
+  letter-spacing:-.015em}
+.c-body{font-size:calc(3.7*var(--mm));line-height:1.4;margin:0}
+.c-facts{font-size:calc(3.1*var(--mm));line-height:1.5;margin:0}
+.c-rule{height:calc(.3*var(--mm));border:0;margin:0 0 calc(3.2*var(--mm));width:calc(24*var(--mm))}
+
+.front{background:var(--espresso)}
+.front .pad{flex-direction:column;justify-content:space-between}
+.front .c-eyebrow{color:var(--parmigiano)}
+.front .c-display{color:var(--mozzarella);font-size:calc(15*var(--mm))}
+.front .c-body{color:var(--tan)}
+.front .c-rule{background:var(--parmigiano);opacity:.5}
+.front .c-facts{color:var(--tan)}
+.front .c-facts strong{color:var(--mozzarella);font-weight:600}
+
+.back{background:var(--olive)}
+.back .pad{gap:calc(8*var(--mm))}
+.o-text{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;
+  gap:calc(4.5*var(--mm));min-width:0}
+.o-qr{flex:0 0 calc(44*var(--mm));display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:calc(2.6*var(--mm))}
+.qr-panel{width:100%;padding:calc(2.6*var(--mm));background:#fff}
+.qr-panel svg{display:block;width:100%;height:auto}
+.qr-cap{font-weight:700;font-size:calc(4*var(--mm));margin:0;text-align:center}
+.back .c-display{font-size:calc(9*var(--mm));color:var(--mozzarella)}
+.back .c-body{color:var(--mozzarella)}
+.back .qr-cap{color:var(--mozzarella)}
+
+/* Endformat-Marke: zeigt, wo nach dem Schneiden die Kante liegt. Nur auf
+   diesem Kontrollbogen, nicht in den Druckdaten. */
+.trim{position:absolute;inset:calc(3*var(--mm));border:.2mm dashed rgba(255,255,255,.45);
+  pointer-events:none}
+
+.label{font-size:3mm;letter-spacing:.18em;text-transform:uppercase;color:#8a8178;margin:0}
+.note{font-size:3.2mm;line-height:1.5;color:#6b625a;max-width:150mm;text-align:center;margin:0}
+.stack{display:flex;flex-direction:column;align-items:center;gap:3mm}
+
+/* DRUCKDATEN, nicht Kontrollbogen. Zwei Seiten zu je 154 x 111 mm — exakt
+   die Geometrie der Vorlage der Druckerei (gemessen: 436,535 x 314,646 pt).
+   Keine Marken, keine Beschriftung, keine Endformat-Linie: alles, was hier
+   sichtbar ist, wird gedruckt.
+   Die Karte fuellt die Seite randlos; der Beschnitt von 3 mm ist Teil der
+   Flaeche und wird von der Druckerei weggeschnitten. */
+html,body{width:436.535pt}
+.sheet{width:436.535pt;height:314.646pt;page-break-after:always;overflow:hidden}
+.sheet:last-child{page-break-after:auto}
+.card{width:436.535pt;height:314.646pt;aspect-ratio:auto}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="card front">
+    <div class="pad">
+      <p class="c-eyebrow">Ristorante Goldoni</p>
+      <div>
+        <p class="c-display">Italienisch<br>verliebt.</p>
+        <p class="c-body" style="margin-top:calc(4.5*var(--mm))">Frische Zutaten, mit Liebe gemacht.</p>
+      </div>
+      <div>
+        <hr class="c-rule">
+        <p class="c-facts"><strong>Reinsburgstra&szlig;e 151 &middot; 70197 Stuttgart</strong><br>
+          +49 (711) 659 98 89 &middot; ristorante-goldoni.de</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sheet">
+  <div class="card back">
+    <div class="pad">
+      <div class="o-text">
+        <p class="c-display">Direkt bei uns<br>bestellen.</p>
+        <p class="c-body">Abholen oder liefern lassen &mdash; Sie entscheiden.
+          Und wer in der N&auml;he ist: einfach kurz vorbeikommen.</p>
+      </div>
+      <div class="o-qr">
+        <div class="qr-panel">__QR_A__</div>
+        <p class="qr-cap">Hier entlang.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

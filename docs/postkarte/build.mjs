@@ -39,7 +39,7 @@ const subs = {
   __QR_B__: text(join(here, "qr-B.svg")),
 };
 
-for (const name of ["proof", "print"]) {
+for (const name of ["proof", "print", "a6", "druck"]) {
   let html = text(join(here, `${name}.template.html`));
   for (const [key, value] of Object.entries(subs)) html = html.replace(key, value);
 
@@ -74,6 +74,29 @@ if (process.argv.includes("--pdf")) {
     printBackground: true,
     preferCSSPageSize: true,
   });
-  await browser.close();
   console.log("goldoni-postkarte-entwuerfe.pdf");
+
+  await page.goto(`file://${join(here, "a6.html")}`, { waitUntil: "networkidle" });
+  await page.evaluate(() => document.fonts.ready);
+  await page.pdf({
+    path: join(here, "goldoni-postkarte-a6.pdf"),
+    format: "A4",
+    printBackground: true,
+    preferCSSPageSize: true,
+  });
+  console.log("goldoni-postkarte-a6.pdf");
+
+  // Druckdaten: zwei Seiten zu je 154 x 111 mm. preferCSSPageSize traegt die
+  // @page-Groesse aus dem Stylesheet in das PDF — ohne sie faellt Chromium
+  // auf A4 zurueck und die Datei waere fuer die Druckerei unbrauchbar.
+  await page.goto(`file://${join(here, "druck.html")}`, { waitUntil: "networkidle" });
+  await page.evaluate(() => document.fonts.ready);
+  await page.pdf({
+    path: join(here, "goldoni-postkarte-a6-druckdaten.pdf"),
+    printBackground: true,
+    preferCSSPageSize: true,
+  });
+  console.log("goldoni-postkarte-a6-druckdaten.pdf");
+
+  await browser.close();
 }

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Goldoni Bierdeckel — Entwurf</title>
+<style>
+@font-face{font-family:"Playfair";src:url(data:font/woff2;base64,__FONT_PLAYFAIR__) format("woff2");font-weight:600;font-display:block}
+@font-face{font-family:"Inter";src:url(data:font/woff2;base64,__FONT_INTER__) format("woff2");font-weight:400 700;font-display:block}
+
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;padding:0;background:#fff;font-family:"Inter",sans-serif}
+
+.page{width:210mm;height:297mm;background:#fff;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:14mm;page-break-after:always;overflow:hidden}
+.page:last-child{page-break-after:auto}
+
+.row{display:flex;gap:16mm;align-items:center}
+
+/* Sechseck, ECHTE GROESSE.
+   93 mm Spitze-zu-Spitze waagerecht. Ein regelmaessiges Sechseck ist damit
+   93 * sqrt(3)/2 = 80,54 mm hoch — die 81 mm der Bestellung sind gerundet.
+   Die Ecken der clip-path liegen bei 25 % und 75 %, weil die flache Kante
+   oben genau eine Seitenlaenge misst (46,5 mm = 93/2). */
+.mat{position:relative;width:93mm;height:80.54mm;overflow:hidden;
+  container-type:inline-size;
+  --mm:1.07527cqw;
+  clip-path:polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+  --espresso:#1A1612; --mozzarella:#FAFAFA; --parmigiano:#FEF1A5;
+  --marinara:#8E2800; --olive:#746B03; --tan:#C9BD8A;
+  display:flex;align-items:center;justify-content:center;text-align:center}
+
+/* Sicherheitsflaeche. Alles Wichtige bleibt in diesem Rechteck: es passt
+   vollstaendig in das Sechseck, auch wenn beim Stanzen 2 mm verrutschen. */
+.safe{width:60%;display:flex;flex-direction:column;align-items:center;gap:calc(3*var(--mm))}
+
+.front{background:var(--espresso)}
+.back{background:var(--olive)}
+
+.eyebrow{font-weight:600;font-size:calc(2.9*var(--mm));letter-spacing:.3em;
+  text-transform:uppercase;margin:0}
+.wordmark{font-family:"Playfair",Georgia,serif;font-weight:600;line-height:1;
+  font-size:calc(15*var(--mm));margin:0;letter-spacing:-.01em}
+.rule{width:calc(22*var(--mm));height:.35mm;border:0;margin:calc(1*var(--mm)) 0}
+.meta{font-size:calc(3.1*var(--mm));line-height:1.5;margin:0}
+/* Der Satz von der Startseite steht anstelle der Adresse (Betreiber-Wahl
+   2026-08-25, volle Fassung). 86 Zeichen auf 93 mm: die Groesse ist deshalb
+   nicht gestalterisch gewaehlt, sondern von der Zeichenzahl diktiert. Bleibt
+   in der Grotesk, damit er der Playfair-Wortmarke die Buehne nicht streitig
+   macht — bei dieser Laenge waere Serife ausserdem schwerer zu lesen.
+   Der harte Umbruch nach "Westen." trennt die zwei Aussagen sauber, statt
+   den Umbruch dem Zufall der Zeilenbreite zu ueberlassen. */
+.claim{font-size:calc(2.95*var(--mm));line-height:1.5;letter-spacing:.005em;margin:0;
+  text-wrap:balance}
+
+.qr{width:calc(36*var(--mm));padding:calc(2.2*var(--mm));background:#fff;border-radius:.6mm}
+.qr svg{display:block;width:100%;height:auto}
+.cta{font-family:"Playfair",Georgia,serif;font-weight:600;line-height:1.06;
+  font-size:calc(7.2*var(--mm));margin:0}
+.sub{font-size:calc(3.1*var(--mm));line-height:1.45;margin:0}
+
+/* Stanzkontur zur Kontrolle — liegt UEBER dem Motiv, druckt aber nur auf
+   diesem Kontrollbogen mit. Die Druckdatei bekommt sie als eigene Ebene. */
+.guide{position:absolute;inset:0;pointer-events:none}
+.guide svg{width:100%;height:100%;display:block}
+
+.label{font-size:3mm;letter-spacing:.18em;text-transform:uppercase;color:#8a8178;
+  margin:0 0 3mm;text-align:center}
+.note{font-size:3.2mm;line-height:1.5;color:#6b625a;max-width:150mm;text-align:center;margin:0}
+.stack{display:flex;flex-direction:column;align-items:center}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="stack">
+    <p class="label">Bierdeckel Sechseck &middot; 93 &times; 81 mm &middot; echte Gr&ouml;sse</p>
+    <div class="row">
+
+      <div class="stack">
+        <div class="mat front">
+          <div class="safe">
+            <p class="eyebrow" style="color:var(--tan)">Ristorante</p>
+            <p class="wordmark" style="color:var(--mozzarella)">Goldoni</p>
+            <hr class="rule" style="background:var(--tan)">
+            <p class="claim" style="color:var(--tan)">Italienisch verliebte K&uuml;che im Stuttgarter Westen.<br>Frische Zutaten, mit Liebe gemacht.</p>
+          </div>
+          <div class="guide"><svg viewBox="0 0 93 80.54"><polygon points="0,40.27 23.25,0 69.75,0 93,40.27 69.75,80.54 23.25,80.54" fill="none" stroke="#B64926" stroke-width="0.2" stroke-dasharray="1.2 1.2"/></svg></div>
+        </div>
+        <p class="label" style="margin:3mm 0 0">Vorderseite</p>
+      </div>
+
+      <div class="stack">
+        <div class="mat back">
+          <div class="safe">
+            <p class="cta" style="color:var(--mozzarella)">Direkt bei<br>uns bestellen.</p>
+            <div class="qr">__QR__</div>
+            <p class="sub" style="color:var(--parmigiano)">Abholen oder liefern lassen.</p>
+          </div>
+          <div class="guide"><svg viewBox="0 0 93 80.54"><polygon points="0,40.27 23.25,0 69.75,0 93,40.27 69.75,80.54 23.25,80.54" fill="none" stroke="#B64926" stroke-width="0.2" stroke-dasharray="1.2 1.2"/></svg></div>
+        </div>
+        <p class="label" style="margin:3mm 0 0">R&uuml;ckseite</p>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="note">Gestrichelt: die Stanzkontur. 1,5 mm Bierdeckelpappe, beidseitig 4-farbig.
+  Datenformat mit 3 mm Beschnitt umlaufend: 100 &times; 87 mm. Der QR-Code f&uuml;hrt auf die
+  deutsche Fassung der eigenen Bestellseite und wird aus derselben Adresse erzeugt wie der
+  Bestellknopf auf der Website.</p>
+</div>
+
+</body>
+</html>

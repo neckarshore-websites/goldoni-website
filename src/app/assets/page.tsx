@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
 import { AssetCard } from "@/components/AssetCard";
+import { AssetsNav } from "@/components/AssetsNav";
 import type { AssetEntry } from "@/components/AssetCard";
 
 /**
@@ -255,8 +256,13 @@ export default function AssetsPage() {
       style={{ backgroundColor: "var(--color-blanc-bg)" }}
     >
       <div className="mx-auto max-w-4xl">
+        {/* Mini-Navigation, seit 2026-08-25: /assets trug bis dahin genau eine
+            Art von Gegenstand (Bildauftraege mit Prompt). Die Drucksachen sind
+            eine zweite Art und haben eigene Seiten bekommen, statt diese Liste
+            weiter wachsen zu lassen. */}
+        <AssetsNav current="bilder" />
         <p
-          className="mb-3 text-xs uppercase tracking-[0.2em]"
+          className="mb-3 mt-10 text-xs uppercase tracking-[0.2em]"
           style={{ color: "var(--color-brand-olive)" }}
         >
           Intern
