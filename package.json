@@ -22,6 +22,7 @@
     "qr:storefront": "tsx scripts/generate-storefront-qr.ts",
     "test:qr:unit": "tsx tests/delivery/storefront-qr.test.ts",
     "test:delivery:unit": "tsx tests/delivery/channel-model.test.ts",
+    "test:schema:unit": "tsx tests/delivery/order-action.test.ts",
     "test:search:unit": "NODE_ENV=production tsx tests/search/index-data.test.ts",
     "mail:preview": "tsx scripts/mail-preview.mjs"
   },

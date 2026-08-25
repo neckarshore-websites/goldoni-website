@@ -38,5 +38,6 @@ jobs:
         run: |
           npm run test:lighthouse:unit
           npm run test:delivery:unit
+          npm run test:schema:unit
           npm run test:qr:unit
           npm run test:search:unit

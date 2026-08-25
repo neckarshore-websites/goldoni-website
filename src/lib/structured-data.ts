@@ -20,7 +20,7 @@
  *   currency range). "€€" matches the casual fine-dining position.
  */
 
-import { SITE } from "./site";
+import { SITE, STOREFRONT_PARTNER } from "./site";
 import type { Menu, MenuItem, MenuCategory, DietTag } from "./menu";
 import type { Faq } from "@/data/faqs";
 
@@ -121,6 +121,46 @@ export function restaurantJsonLd(): Record<string, unknown> {
     currenciesAccepted: "EUR",
     acceptsReservations: "True",
     hasMenu: `${SITE.url}/menu`,
+    /**
+     * OrderAction — the machine-readable half of the order button.
+     *
+     * The page has carried a visible ordering path since 2026-07-26; the
+     * graph did not. A consumer reading only the JSON-LD saw a restaurant
+     * with a menu that takes reservations, and no way to order.
+     *
+     * URL comes from `STOREFRONT_PARTNER`, never a literal. Button, printed
+     * QR code, e-mail signatures and this node all resolve from that one
+     * constant, so the schema cannot drift away from the button — and a
+     * drift here is invisible, because nothing renders it.
+     *
+     * NO `deliveryMethod` ON PURPOSE. Both halves would be a claim we cannot
+     * make honestly: pickup is real, but the courier is Wolt's, not ours, and
+     * the GoodRelations vocabulary offers no value for "third-party courier
+     * arranged by the ordering platform". The guest chooses pickup or
+     * delivery on the Storefront itself, where the choice is actually true.
+     *
+     * NOT A PROMISE OF A GOOGLE RICH RESULT. Google's order-from-search
+     * surface runs through a partner programme, not through markup alone.
+     * What this buys is a valid, honest graph for whoever reads it — AI
+     * search included — at the cost of ten lines of inert text.
+     */
+    potentialAction: [
+      {
+        "@type": "OrderAction",
+        name: STOREFRONT_PARTNER.tagline,
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: STOREFRONT_PARTNER.url,
+          inLanguage: "de-DE",
+          actionPlatform: [
+            "https://schema.org/DesktopWebPlatform",
+            "https://schema.org/MobileWebPlatform",
+            "https://schema.org/IOSPlatform",
+            "https://schema.org/AndroidPlatform",
+          ],
+        },
+      },
+    ],
     openingHoursSpecification: buildOpeningHours(),
     // sameAs — verified social ownership signals. Filter empty strings so
     // optional profiles (e.g. Instagram before owner-confirmation) do not
