@@ -27,7 +27,12 @@ export type PrintSpecPageProps = {
   title: string;
   intro: string;
   status: string;
-  sides: [PrintSide, PrintSide];
+  /**
+   * Eine oder zwei Seiten. Der Briefumschlag ist 1/0 bedruckt — es GIBT
+   * keine zweite Seite, und eine leere Kachel dafuer waere eine Luege ueber
+   * das Produkt.
+   */
+  sides: PrintSide[];
   specs: Array<[string, string]>;
   decisions: Array<{ title: string; body: string }>;
   openPoints: string[];
@@ -91,7 +96,11 @@ export function PrintSpecPage({
           </p>
         </header>
 
-        <section className="mt-12 grid gap-6 sm:grid-cols-2">
+        <section
+          className={`mt-12 grid gap-6 ${
+            sides.length > 1 ? "sm:grid-cols-2" : "sm:max-w-2xl"
+          }`}
+        >
           {sides.map((side) => (
             <figure key={side.label} className="m-0">
               <div

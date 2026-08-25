@@ -16,6 +16,7 @@ const ENTRIES = [
   { key: "bilder", href: "/assets", label: "Bilder & Prompts" },
   { key: "postkarte", href: "/assets/postkarte", label: "Postkarte" },
   { key: "bierdeckel", href: "/assets/bierdeckel", label: "Bierdeckel" },
+  { key: "briefumschlag", href: "/assets/briefumschlag", label: "Briefumschlag" },
 ] as const;
 
 export type AssetsNavKey = (typeof ENTRIES)[number]["key"];
