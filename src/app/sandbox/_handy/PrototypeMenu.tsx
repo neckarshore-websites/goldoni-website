@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { MenuSection } from "@/components/MenuSection";
-import { OrderCtaHeadline } from "@/components/OrderCta";
 import { OrderFab } from "@/components/OrderFab";
 import { PageHero } from "@/components/PageHero";
 import speisekarte from "@/data/speisekarte.json";
@@ -84,15 +83,16 @@ export function PrototypeMenu({ variant }: { variant: "a" | "b" | "c" }) {
           >
             Unsere Karte
           </p>
-          <div className="mb-6 flex items-start justify-between gap-8">
-            <h1
-              className="text-4xl sm:text-5xl"
-              style={{ color: "var(--color-text)" }}
-            >
-              Speisekarten
-            </h1>
-            {isC && <OrderCtaHeadline />}
-          </div>
+          {/* KEIN Knopf neben der Ueberschrift in Variante C — Betreiber,
+              2026-08-25: wenn der schwebende Knopf dauerhaft da ist, ist der
+              obere doppelt. Die Ueberschrift steht wieder allein, wie vor dem
+              25.08. */}
+          <h1
+            className="mb-6 text-4xl sm:text-5xl"
+            style={{ color: "var(--color-text)" }}
+          >
+            Speisekarten
+          </h1>
 
           {/* Variante C spiegelt die Live-Seite MINUS der beiden Streifen:
               Knopf bei der Ankunft, schwebender Knopf fuer den Rest. Deshalb

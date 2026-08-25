@@ -23,28 +23,24 @@ import { STOREFRONT_PARTNER } from "../../src/lib/site";
 const DESKTOP = { width: 1280, height: 900 };
 const MOBILE = { width: 390, height: 844 };
 
-const PAGES = [
-  { path: "/menu", ctas: 3 }, // headline + band after `pizze` + band after `dolci`
-  { path: "/empfehlungen", ctas: 2 }, // headline + band after `primi-pizze`
-];
+// Ein einziger schwebender Knopf je Seite — Betreiber-Entscheidung
+// 2026-08-25 nach dem Prototyp-Vergleich. Er ersetzte den Knopf neben der
+// Ueberschrift und die Streifen in der Karte, die am selben Tag kurz live
+// waren. Steigt diese Zahl wieder, war das eine Entscheidung und kein Zufall.
+const PAGES = ["/menu", "/empfehlungen"];
 
-for (const { path, ctas } of PAGES) {
-  test(`${path}: desktop shows ${ctas} order CTAs, all pointing at the Storefront`, async ({
-    page,
-  }) => {
+for (const path of PAGES) {
+  test(`${path}: desktop shows the floating order button`, async ({ page }) => {
     await page.setViewportSize(DESKTOP);
     await page.goto(path);
 
-    const cta = page.locator('[data-testid="order-cta"]');
-    await expect(cta).toHaveCount(ctas);
-
-    for (let i = 0; i < ctas; i++) {
-      await expect(cta.nth(i)).toBeVisible();
-      await expect(cta.nth(i)).toHaveAttribute("href", STOREFRONT_PARTNER.url);
-      // noopener severs window.opener; noreferrer is deliberately absent so the
-      // order is still attributed to this website. See OrderCta.tsx.
-      await expect(cta.nth(i)).toHaveAttribute("rel", "noopener");
-    }
+    const fab = page.locator('[data-testid="order-cta-fab"]');
+    await expect(fab).toHaveCount(1);
+    await expect(fab).toBeVisible();
+    await expect(fab).toHaveAttribute("href", STOREFRONT_PARTNER.url);
+    // noopener severs window.opener; noreferrer is deliberately absent so the
+    // order is still attributed to this website. See OrderFab.tsx.
+    await expect(fab).toHaveAttribute("rel", "noopener");
   });
 
   test(`${path}: mobile shows no order CTA but keeps the footer order link`, async ({
@@ -61,11 +57,13 @@ for (const { path, ctas } of PAGES) {
       page.locator('[data-testid="order-cta"]:visible'),
     ).toHaveCount(0);
 
-    // The prototype variants (pill inside the sticky bar, floating button)
-    // live on /sandbox only. If either ever leaks onto a live page without a
-    // decision, this fails — the whole point of the 25.08. split.
+    // Die Handy-Varianten liegen weiterhin nur auf /sandbox. Der schwebende
+    // Knopf ist am Desktop live, darf hier aber nicht sichtbar werden; der
+    // Pillen-Knopf ist nirgends live.
     await expect(page.locator('[data-testid="order-cta-pill"]')).toHaveCount(0);
-    await expect(page.locator('[data-testid="order-cta-fab"]')).toHaveCount(0);
+    await expect(
+      page.locator('[data-testid="order-cta-fab"]:visible'),
+    ).toHaveCount(0);
 
     // Non-vacuity: the page must still offer a way to order at all.
     const orderLinks = page.locator(`a[href="${STOREFRONT_PARTNER.url}"]`);
