@@ -36,7 +36,7 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Briefumschlag"
       intro="DIN lang quer mit Fenster, haftklebend. Für Rechnungen, Gutscheine und Post an Gäste — das Stück, das im Briefkasten landet, bevor irgendjemand die Website kennt."
-      status="Zweifarbiger Entwurf, beidseitig — setzt die 4/4-Variante voraus"
+      status="Zweifarbiger Entwurf, beidseitig — Farbigkeit der Bestellvariante prüfen"
       aspect={{ w: 1600, h: 835 }}
       sides={[
         {
@@ -59,7 +59,7 @@ export default function Page() {
         ["Fenster-Toleranz", "ca. 1 mm Versatz laut Datenblatt"],
         ["Papier", "80 g/m² Offset weiss, beschreibbar, laser- und tintenstrahlgeeignet"],
         ["Verschluss", "haftklebend, innenliegende Seitenklappen"],
-        ["Druck", "aktuell gewählt 1/0 (einseitig, nur Schwarz) — dieser Entwurf braucht 4/4"],
+        ["Druck", "beidseitig (im Preis enthalten) — Farbigkeit 4/4 nötig, nicht 1/1"],
       ]}
       decisions={[
         {
@@ -75,8 +75,8 @@ export default function Page() {
           body: "Eine Teilung in der geometrischen Mitte sähe ausgewogener aus und liefe genau durch das Fenster — die Anschrift des Empfängers wäre dann von einer Farbkante durchschnitten. Deshalb sitzt die Kante knapp darüber, und das Fenster steht vollständig im olivgrünen Feld.",
         },
         {
-          title: "Der Preis dieser Entscheidung: 4/4 statt 1/0",
-          body: "Das aktuell ausgewählte Produkt ist einseitig und nur schwarz. Zwei Farben vorne UND Druck auf der Rückseite verlangen die beidseitig vierfarbige Variante. Ausserdem: vollflächige Farbe braucht stärkeres Papier als 80 g — dünnes Offsetpapier wellt sich unter Vollton, und bei beidseitigem Vollton umso mehr.",
+          title: "Beidseitig ist bezahlt, Farbe ist die offene Frage",
+          body: "Korrektur vom 25.08.: die Preisstaffel gilt bereits für den beidseitig bedruckten Umschlag — der Druck auf der Rückseite kostet also nichts extra. Was zu prüfen bleibt, ist die Farbigkeit: 4/4 (vierfarbig beidseitig) trägt diesen Entwurf, 1/1 (schwarz beidseitig) nicht. Ohne Farbe kein Oliv.",
         },
         {
           title: "Die Anschrift steht genau einmal",
@@ -92,7 +92,8 @@ export default function Page() {
         },
       ]}
       openPoints={[
-        "ENTSCHEIDUNG VOR ALLEM ANDEREN: 4/4 statt 1/0 bestellen, sonst ist dieser Entwurf nicht druckbar — zwei Farben vorne und Druck hinten gehen einseitig-schwarz nicht. Mit der Farbe steigt der Preis, und beidseitiger Vollton verlangt schwereres Papier als 80 g.",
+        "Beim Bestellen prüfen, ob die gewählte Variante VIERFARBIG beidseitig ist (4/4) und nicht schwarz beidseitig (1/1). Beidseitig ist laut Betreiber bereits im Preis enthalten; offen ist allein die Farbe, und ohne Farbe gibt es kein Oliv.",
+        "Beidseitiger Vollton auf 80 g Offsetpapier wellt sich. Vor der Bestellung prüfen, ob ein schwereres Papier wählbar ist.",
         "Der Entwurf ist noch nicht besprochen. Ob der Umschlag überhaupt gebraucht wird und wofür, entscheidet der Betreiber — bisher ist er eine Möglichkeit, kein Auftrag.",
         "Auflage und ob mit oder ohne Fenster: die Fensterfassung lohnt nur, wenn Anschriften aus einem System gedruckt werden. Wer von Hand adressiert, fährt ohne Fenster besser.",
         "Prüfen, ob der Umschlag zum Papier der Postkarte passt — beides liegt beim Gast auf demselben Tisch.",
@@ -100,7 +101,7 @@ export default function Page() {
       printerNote={PRINTER_NOTE}
       prices={{
         caption:
-          "Stand 25. August 2026, netto — Achtung, Preise der 1/0-Variante (nur Schwarz). Der Entwurf in Oliv braucht 4/0 und kostet mehr.",
+          "Stand 25. August 2026, netto. Betreiber-Korrektur: die Staffel gilt für den BEIDSEITIG bedruckten Umschlag — sie deckt den Entwurf mit Vorder- und Rückseite also bereits ab.",
         rows: [
           { qty: 100, net: 28.75 },
           { qty: 250, net: 36.24 },
