@@ -82,6 +82,22 @@ export default function Page() {
         "Prüfen, ob der Umschlag zum Papier der Postkarte passt — beides liegt beim Gast auf demselben Tisch.",
       ]}
       printerNote={PRINTER_NOTE}
+      prices={{
+        caption:
+          "Stand 25. August 2026, netto — Achtung, Preise der 1/0-Variante (nur Schwarz). Der Entwurf in Oliv braucht 4/0 und kostet mehr.",
+        rows: [
+          { qty: 100, net: 28.75 },
+          { qty: 250, net: 36.24 },
+          { qty: 500, net: 46.48 },
+          { qty: 750, net: 57.29 },
+          { qty: 1000, net: 58.44, pick: true },
+          { qty: 1500, net: 90.86 },
+          { qty: 2000, net: 90.95 },
+          { qty: 2500, net: 110.07 },
+          { qty: 5000, net: 161.7 },
+        ],
+        note: "Zwei Fallen: 750 Stück kosten 57,29 €, 1.000 kosten 58,44 € — 250 Umschläge mehr für 1,15 €. Und 1.500 kosten 90,86 €, 2.000 kosten 90,95 € — 500 mehr für neun Cent. Die runde Zahl ist hier immer der bessere Kauf. 1.000 Stück zu 5,84 Cent sind der Punkt, an dem die Kurve flach wird; darüber lagert man Papier für Jahre.",
+      }}
       downloads={[
         {
           href: "/assets/print/goldoni-briefumschlag-druckdaten.pdf",

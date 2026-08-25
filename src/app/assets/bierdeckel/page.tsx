@@ -95,6 +95,21 @@ Sollmass; das liegt innerhalb des 3-mm-Beschnitts.`}
         "Stanzkontur als eigene Ebene liefern, nicht als gedruckte Linie.",
         "Postkarte, Bierdeckel oder beides — und die Auflage.",
       ]}
+      prices={{
+        caption:
+          "Stand 25. August 2026, netto. Ein Bierdeckel wird verbraucht, nicht aufgehoben — die Auflage entscheidet, wie lange nicht nachbestellt werden muss.",
+        rows: [
+          { qty: 100, net: 24.94 },
+          { qty: 250, net: 54.47 },
+          { qty: 500, net: 90.56, pick: true },
+          { qty: 1000, net: 175.88 },
+          { qty: 2500, net: 256.68 },
+          { qty: 5000, net: 389.98 },
+          { qty: 7500, net: 641.68 },
+          { qty: 10000, net: 642.32 },
+        ],
+        note: "Zwei Dinge stehen in diesen Zahlen. Erstens: 7.500 Stück kosten 641,68 €, 10.000 kosten 642,32 € — 2.500 Deckel mehr für 64 Cent. Wer 7.500 bestellt, zahlt pro Stück sogar mehr als bei 5.000. Zweitens fällt der Stückpreis von 24,9 Cent auf 6,4 Cent, aber 10.000 Bierdeckel sind eine Palette und Jahre Vorrat. 500 Stück für 90,56 € sind der vernünftige erste Lauf: genug, um zu sehen, ob der Weg zieht, wenig genug, um das Motiv danach noch zu ändern.",
+      }}
       downloads={[
         {
           href: "/assets/print/goldoni-bierdeckel-druckdaten.pdf",

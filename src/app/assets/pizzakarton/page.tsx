@@ -63,6 +63,21 @@ export default function Page() {
         "Auflage und Preis: ein Pizzakarton ist eine andere Grössenordnung als 500 Postkarten für 27 Euro. Vor der Gestaltung lohnt der Blick auf die Staffelpreise.",
         "Vor der Bestellung klären, ob die aktuellen Kartons vom Lieferanten kommen und ob eine eigene Bestellung überhaupt zum Bedarf passt.",
       ]}
+      prices={{
+        caption:
+          "Stand 25. August 2026, netto, aus dem Stückpreis der Druckerei hochgerechnet.",
+        rows: [
+          { qty: 50, net: 95.5 },
+          { qty: 100, net: 96.0 },
+          { qty: 200, net: 96.0 },
+          { qty: 225, net: 96.75, pick: true },
+          { qty: 250, net: 107.5 },
+          { qty: 500, net: 215.0 },
+          { qty: 1000, net: 420.0 },
+          { qty: 1100, net: 451.0 },
+        ],
+        note: "Der Stückpreis fällt von 1,91 € bei 50 Stück auf 0,43 € und bleibt ab 225 praktisch stehen — 0,42 € ab 700, 0,41 € ab 1.100. Die Frage lautet deshalb nicht, wie billig es wird, sondern wie viele ins Lager passen: ab 225 Stück zahlt man für Menge, nicht mehr für einen besseren Preis. Zum Vergleich der Kleinmengen-Tarif für einen Testlauf: 20 Stück kosten 4,73 € je Karton, elfmal so viel wie bei 250.",
+      }}
       downloads={[
         {
           href: "/assets/print/wmd-pizzakarton-datenblatt.pdf",

@@ -52,6 +52,17 @@ export type PrintSpecPageProps = {
   printerNote?: string;
   /** Bildseitenverhältnis, damit Next/Image nicht springt. */
   aspect: { w: number; h: number };
+  /**
+   * Staffelpreise der Druckerei. Der Stückpreis wird gerechnet, nicht
+   * abgetippt — und die Sprungstellen werden markiert: bei diesem Anbieter
+   * kostet die Stufe UNTER einer runden Zahl oft fast dasselbe wie die
+   * runde selbst, was jede Bestellung dazwischen unvernünftig macht.
+   */
+  prices?: {
+    caption: string;
+    note?: string;
+    rows: Array<{ qty: number; net: number; pick?: boolean }>;
+  };
 };
 
 export function PrintSpecPage({
@@ -66,8 +77,11 @@ export function PrintSpecPage({
   openPoints,
   downloads,
   printerNote,
+  prices,
   aspect,
 }: PrintSpecPageProps) {
+  const fmt = (n: number) =>
+    n.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   return (
     <main className="px-6 py-12 sm:px-12">
       <div className="mx-auto max-w-4xl">
@@ -222,6 +236,107 @@ export function PrintSpecPage({
             ))}
           </ul>
         </section>
+
+        {prices ? (
+          <section className="mt-14">
+            <h2
+              className="mb-2 text-2xl"
+              style={{ color: "var(--color-text)" }}
+            >
+              Preise
+            </h2>
+            <p
+              className="mb-4 max-w-2xl text-sm leading-relaxed"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              {prices.caption}
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr>
+                    <th
+                      className="border-b py-2 pr-4 text-left text-xs uppercase tracking-wider"
+                      style={{
+                        borderColor: "var(--color-border)",
+                        color: "var(--color-text-muted)",
+                      }}
+                    >
+                      Auflage
+                    </th>
+                    <th
+                      className="border-b py-2 pr-4 text-right text-xs uppercase tracking-wider"
+                      style={{
+                        borderColor: "var(--color-border)",
+                        color: "var(--color-text-muted)",
+                      }}
+                    >
+                      Netto
+                    </th>
+                    <th
+                      className="border-b py-2 text-right text-xs uppercase tracking-wider"
+                      style={{
+                        borderColor: "var(--color-border)",
+                        color: "var(--color-text-muted)",
+                      }}
+                    >
+                      Pro Stück
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {prices.rows.map((r) => (
+                    <tr
+                      key={r.qty}
+                      className="border-b"
+                      style={{
+                        borderColor: "var(--color-border)",
+                        backgroundColor: r.pick
+                          ? "var(--color-brand-cream)"
+                          : undefined,
+                      }}
+                    >
+                      <td
+                        className="py-2 pr-4 tabular-nums"
+                        style={{ color: "var(--color-text)" }}
+                      >
+                        {r.qty.toLocaleString("de-DE")} Stück
+                        {r.pick ? (
+                          <span
+                            className="ml-2 text-xs font-medium"
+                            style={{ color: "var(--color-accent)" }}
+                          >
+                            empfohlen
+                          </span>
+                        ) : null}
+                      </td>
+                      <td
+                        className="py-2 pr-4 text-right tabular-nums"
+                        style={{ color: "var(--color-text)" }}
+                      >
+                        {fmt(r.net)} €
+                      </td>
+                      <td
+                        className="py-2 text-right tabular-nums"
+                        style={{ color: "var(--color-text-muted)" }}
+                      >
+                        {fmt((r.net / r.qty) * 100)} ct
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {prices.note ? (
+              <p
+                className="mt-4 max-w-2xl text-sm leading-relaxed"
+                style={{ color: "var(--color-text-muted)" }}
+              >
+                {prices.note}
+              </p>
+            ) : null}
+          </section>
+        ) : null}
 
         {printerNote ? (
           <section className="mt-14">
