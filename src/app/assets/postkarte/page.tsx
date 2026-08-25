@@ -71,6 +71,11 @@ export default function Page() {
       ]}
       downloads={[
         {
+          href: "/assets/print/goldoni-postkarte-a6-druckdaten.pdf",
+          label: "goldoni-postkarte-a6-druckdaten.pdf",
+          hint: "zwei Seiten à 154 × 111 mm, ohne Marken — das, was die Druckerei bekommt. RGB, siehe offene Punkte",
+        },
+        {
           href: "/assets/print/goldoni-postkarte-a6.pdf",
           label: "goldoni-postkarte-a6.pdf",
           hint: "A6 quer, echte Grösse, mit Endformat-Marke",
