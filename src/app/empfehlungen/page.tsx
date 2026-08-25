@@ -1,5 +1,6 @@
 import { MenuSection, MenuLegend } from "@/components/MenuSection";
 import { WeinSection } from "@/components/WeinSection";
+import { OrderCtaBand, OrderCtaHeadline } from "@/components/OrderCta";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
 import { SundayBanner } from "@/components/SundayBanner";
@@ -73,30 +74,49 @@ export default function EmpfehlungenPage() {
       />
       <div className="px-6 pb-20 pt-12 sm:px-12 sm:pb-24">
         <div className="mx-auto max-w-3xl">
-          <p
-            className="mb-3 text-xs uppercase tracking-[0.2em]"
-            style={{ color: "var(--color-brand-olive)" }}
-          >
-            Diese Woche
-          </p>
-          <h1
-            className="mb-2 text-4xl sm:text-5xl"
-            style={{ color: "var(--color-text)" }}
-          >
-            {menu.title}
-          </h1>
-          <p
-            className="mb-10 text-sm"
-            style={{ color: "var(--color-brand-olive)" }}
-          >
-            Gültig ab {formatMenuDate(menu.updated)}*
-          </p>
+          {/* Kopfzeile — Überschrift und Gültigkeitsdatum links, Bestell-CTA
+              rechts (nur Desktop). Das Datum bleibt beim Titel: wer bestellt,
+              soll sehen, von wann die Karte ist. */}
+          <div className="mb-10 flex items-start justify-between gap-8">
+            <div>
+              <p
+                className="mb-3 text-xs uppercase tracking-[0.2em]"
+                style={{ color: "var(--color-brand-olive)" }}
+              >
+                Diese Woche
+              </p>
+              <h1
+                className="mb-2 text-4xl sm:text-5xl"
+                style={{ color: "var(--color-text)" }}
+              >
+                {menu.title}
+              </h1>
+              <p
+                className="text-sm"
+                style={{ color: "var(--color-brand-olive)" }}
+              >
+                Gültig ab {formatMenuDate(menu.updated)}*
+              </p>
+            </div>
+            <OrderCtaHeadline />
+          </div>
           <MenuSection
             menu={menu}
             hideLegend
             extraPills={[
               { id: "weine-weiss", name: "Weißweine" },
               { id: "weine-rot", name: "Rotweine" },
+            ]}
+            /* Ein Streifen, nicht zwei: die Empfehlungskarte hat vier
+               Kategorien, keine zehn. Er steht nach Primi & Pizze, wo auf
+               dieser Seite die Bestellabsicht am höchsten ist. */
+            slots={[
+              {
+                afterId: "primi-pizze",
+                node: (
+                  <OrderCtaBand text="Diese Gerichte gibt es auch zum Mitnehmen oder nach Hause." />
+                ),
+              },
             ]}
           />
           <WeinSection />

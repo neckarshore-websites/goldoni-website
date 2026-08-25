@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MenuSection } from "@/components/MenuSection";
 import { HausweinSection } from "@/components/HausweinSection";
+import { OrderCtaBand, OrderCtaHeadline } from "@/components/OrderCta";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
 import speisekarte from "@/data/speisekarte.json";
@@ -30,18 +31,26 @@ export default function MenuPage() {
       />
       <div className="px-6 pb-20 pt-12 sm:px-12 sm:pb-24">
       <div className="mx-auto max-w-3xl">
-        <p
-          className="mb-3 text-xs uppercase tracking-[0.2em]"
-          style={{ color: "var(--color-brand-olive)" }}
-        >
-          Unsere Karte
-        </p>
-        <h1
-          className="mb-6 text-4xl sm:text-5xl"
-          style={{ color: "var(--color-text)" }}
-        >
-          Speisekarten
-        </h1>
+        {/* Kopfzeile — Überschrift links, Bestell-CTA rechts (nur Desktop).
+            Der Knopf steht bewusst NEBEN der Überschrift und nicht darüber:
+            er soll den Blick auf die Karte nicht abfangen, sondern begleiten. */}
+        <div className="mb-6 flex items-start justify-between gap-8">
+          <div>
+            <p
+              className="mb-3 text-xs uppercase tracking-[0.2em]"
+              style={{ color: "var(--color-brand-olive)" }}
+            >
+              Unsere Karte
+            </p>
+            <h1
+              className="text-4xl sm:text-5xl"
+              style={{ color: "var(--color-text)" }}
+            >
+              Speisekarten
+            </h1>
+          </div>
+          <OrderCtaHeadline />
+        </div>
 
         {/* Empfehlungs-Banner — leitet auf die wechselnde Empfehlungskarte.
             Tokens (--color-bg-olive + --color-on-olive*) ensure WCAG AA
@@ -87,7 +96,25 @@ export default function MenuPage() {
           extraPills={[
             { id: "hauswein", name: "Hausweine", insertAfter: "benvenuti" },
           ]}
-          slots={[{ afterId: "benvenuti", node: <HausweinSection /> }]}
+          /* Bestell-Streifen an zwei Stellen, nicht an zehn: nach den Pizze
+             (wo die Lieferbestellungen entstehen) und nach den Dolci, wo das
+             Essen endet und die Getränkekarte beginnt. Dazwischen liegen je
+             mehrere Kategorien, damit der Streifen ein Angebot bleibt. */
+          slots={[
+            {
+              afterId: "pizze",
+              node: (
+                <OrderCtaBand text="Pasta oder Pizza gefunden? Direkt bei uns bestellen — zur Abholung oder Lieferung." />
+              ),
+            },
+            {
+              afterId: "dolci",
+              node: (
+                <OrderCtaBand text="Die ganze Karte gibt es auch nach Hause — frisch aus derselben Küche." />
+              ),
+            },
+            { afterId: "benvenuti", node: <HausweinSection /> },
+          ]}
         />
       </div>
       </div>
