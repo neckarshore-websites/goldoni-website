@@ -32,6 +32,12 @@ export type PrintSpecPageProps = {
   decisions: Array<{ title: string; body: string }>;
   openPoints: string[];
   downloads: Array<{ href: string; label: string; hint: string }>;
+  /**
+   * Text fuer das Hinweisfeld der Bestellung. Bewusst als <pre> gerendert und
+   * nicht als Fliesstext: er ist zum Kopieren da, nicht zum Lesen, und ein
+   * umgebrochener Farbwert ist ein falscher Farbwert.
+   */
+  printerNote?: string;
   /** Bildseitenverhältnis, damit Next/Image nicht springt. */
   aspect: { w: number; h: number };
 };
@@ -47,6 +53,7 @@ export function PrintSpecPage({
   decisions,
   openPoints,
   downloads,
+  printerNote,
   aspect,
 }: PrintSpecPageProps) {
   return (
@@ -197,6 +204,39 @@ export function PrintSpecPage({
             ))}
           </ul>
         </section>
+
+        {printerNote ? (
+          <section className="mt-14">
+            <h2
+              className="mb-2 text-2xl"
+              style={{ color: "var(--color-text)" }}
+            >
+              Hinweise für die Druckerei
+            </h2>
+            <p
+              className="mb-4 max-w-2xl text-sm leading-relaxed"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              Zum Kopieren in das Hinweisfeld der Bestellung. Es ersetzt keinen
+              Proof — es sorgt dafür, dass die automatische Umrechnung nicht
+              alleine entscheidet, wie die beiden Vollton-Flächen und der
+              QR-Code aussehen.
+            </p>
+            <pre
+              className="overflow-x-auto rounded-lg border p-4 text-xs leading-relaxed"
+              style={{
+                borderColor: "var(--color-border)",
+                backgroundColor: "var(--color-blanc-bg)",
+                color: "var(--color-text)",
+                fontFamily:
+                  "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+                whiteSpace: "pre-wrap",
+              }}
+            >
+              {printerNote}
+            </pre>
+          </section>
+        ) : null}
 
         <section className="mt-14">
           <h2

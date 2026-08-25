@@ -69,6 +69,38 @@ export default function Page() {
         "Freigabe der Texte durch den Betreiber. Sie sprechen für sein Haus.",
         "Auflage.",
       ]}
+      printerNote={`HINWEISE ZUR DATEI — Ristorante Goldoni, Postkarte A6 quer
+
+Die Datei liegt in RGB vor. Bitte nach Ihrem Standardprofil nach CMYK
+wandeln (ISO Coated v2 / FOGRA39 bzw. PSO Coated v3), relativ
+farbmetrisch mit Tiefenkompensierung, maximaler Farbauftrag 300 %.
+
+Fuer die drei folgenden Stellen bitten wir darum, die Zielwerte zu
+setzen statt allein automatisch zu wandeln:
+
+1. QR-CODE (Rueckseite)
+   Module: 100 % Schwarz, C 0 / M 0 / Y 0 / K 100.
+   KEIN Vierfarbschwarz — an den Modulkanten kostet jede
+   Passerdifferenz Lesbarkeit.
+   Ruhezone um den Code: Papierweiss, 0 / 0 / 0 / 0.
+
+2. VORDERSEITE, dunkler Vollton (Espresso, RGB #1A1612)
+   Zielwert: C 55 / M 60 / Y 60 / K 100 (warmes Tiefschwarz).
+   Reines K 100 wirkt auf gestrichenem Papier grau und flau; die
+   Flaeche traegt die ganze Vorderseite.
+
+3. RUECKSEITE, Vollton Olive (RGB #746B03)
+   Zielwert: C 20 / M 22 / Y 100 / K 40.
+
+Weitere Farben, als Orientierung (aus der Datei umgerechnet):
+   Parmigiano  #FEF1A5   C  0 / M  4 / Y 40 / K  0
+   Tan         #C9BD8A   C 18 / M 18 / Y 48 / K  0
+   Salmon      #B64926   C  7 / M 78 / Y 93 / K 14
+
+Schriften sind eingebettet. Text und QR-Code sind Vektor, keine Pixel.
+Seitenformat 154 x 111 mm, Seite 1 Vorderseite, Seite 2 Rueckseite.
+Fertigungsbedingt liegt das Seitenformat 0,18 mm ueber dem Sollmass —
+innerhalb des 3-mm-Beschnitts, bitte auf 148 x 105 mm mittig schneiden.`}
       downloads={[
         {
           href: "/assets/print/goldoni-postkarte-a6-druckdaten.pdf",
