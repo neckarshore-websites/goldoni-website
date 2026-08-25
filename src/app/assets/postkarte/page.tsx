@@ -118,6 +118,16 @@ innerhalb des 3-mm-Beschnitts, bitte auf 148 x 105 mm mittig schneiden.`}
           hint: "frühere A5-Fassung, beide Farbvarianten A und B",
         },
         {
+          href: "/assets/print/wmd-postkarte-a6-datenblatt.pdf",
+          label: "wmd-postkarte-a6-datenblatt.pdf",
+          hint: "Original der Druckerei — Masse und Anforderungen an Veredelungen",
+        },
+        {
+          href: "/assets/print/wmd-postkarte-a6-vorlage.pdf",
+          label: "wmd-postkarte-a6-vorlage.pdf",
+          hint: "Original der Druckerei — Gestaltungsvorlage",
+        },
+        {
           href: "/assets/print/postkarte-vorderseite.jpg",
           label: "postkarte-vorderseite.jpg",
           hint: "zum Weitergeben per Messenger",
