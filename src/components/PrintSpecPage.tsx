@@ -17,8 +17,15 @@ import { STOREFRONT_PARTNER } from "@/lib/site";
 export type PrintSide = {
   label: string;
   caption: string;
-  src: string;
-  alt: string;
+  /** Bilddatei — fuer Motive, die (noch) als Export vorliegen. */
+  src?: string;
+  alt?: string;
+  /**
+   * Motiv als HTML. Seit 2026-08-25 der bevorzugte Weg: kein Umweg ueber
+   * PDF-Export und JPG-Zuschnitt, und damit auch keine Gelegenheit, dass
+   * Anzeige und Quelle auseinanderlaufen.
+   */
+  node?: React.ReactNode;
 };
 
 export type PrintSpecPageProps = {
@@ -110,13 +117,15 @@ export function PrintSpecPage({
                   backgroundColor: "#FFFFFF",
                 }}
               >
-                <Image
-                  src={side.src}
-                  alt={side.alt}
-                  width={aspect.w}
-                  height={aspect.h}
-                  className="h-auto w-full"
-                />
+                {side.node ?? (
+                  <Image
+                    src={side.src as string}
+                    alt={side.alt ?? ""}
+                    width={aspect.w}
+                    height={aspect.h}
+                    className="h-auto w-full"
+                  />
+                )}
               </div>
               <figcaption
                 className="mt-2 text-sm"

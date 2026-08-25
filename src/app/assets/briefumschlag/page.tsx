@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BriefumschlagArtwork } from "@/components/artwork/PrintArtwork";
 import { PrintSpecPage } from "@/components/PrintSpecPage";
 
 export const metadata: Metadata = {
@@ -32,14 +33,13 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Briefumschlag"
       intro="DIN lang quer mit Fenster, haftklebend. Für Rechnungen, Gutscheine und Post an Gäste — das Stück, das im Briefkasten landet, bevor irgendjemand die Website kennt."
-      status="Erster Entwurf — noch nicht besprochen, noch nicht freigegeben"
+      status="Entwurf in Oliv — setzt die 4/0-Variante voraus, siehe offene Punkte"
       aspect={{ w: 1600, h: 835 }}
       sides={[
         {
           label: "Vorderseite",
-          caption: "einseitig bedruckt, nur Schwarz",
-          src: "/assets/print/briefumschlag-vorderseite.jpg",
-          alt: "Briefumschlag DIN lang quer: Wortmarke Goldoni oben links, Absenderzeile über dem Sichtfenster, Briefmarkenfeld oben rechts.",
+          caption: "Fenster und Briefmarkenfeld bleiben unbedruckt",
+          node: <BriefumschlagArtwork />,
         },
       ]}
       specs={[
@@ -51,12 +51,16 @@ export default function Page() {
         ["Fenster-Toleranz", "ca. 1 mm Versatz laut Datenblatt"],
         ["Papier", "80 g/m² Offset weiss, beschreibbar, laser- und tintenstrahlgeeignet"],
         ["Verschluss", "haftklebend, innenliegende Seitenklappen"],
-        ["Druck", "1/0 — einseitig, nur Schwarz"],
+        ["Druck", "aktuell gewählt 1/0 (nur Schwarz) — dieser Entwurf braucht 4/0"],
       ]}
       decisions={[
         {
-          title: "Keine Vollton-Flächen",
-          body: "Die Postkarte und der Bierdeckel leben von vollflächigem Espresso und Olive. Hier wäre dasselbe ein Fehler: 80-g-Offsetpapier schlägt bei grossen schwarzen Flächen durch, wellt sich, und das Produkt ist ohnehin einfarbig. Der Umschlag arbeitet mit Weissraum statt mit Fläche.",
+          title: "Dieselbe Sprache wie Postkarte und Bierdeckel",
+          body: "Betreiber-Entscheidung 2026-08-25: Oliv und Espresso auf allen Drucksachen. Der Umschlag trägt deshalb dieselbe Wortmarke, dieselbe Fläche, dieselben Farben — er ist bei vielen Gästen der erste Kontakt mit dem Haus, oft bevor sie die Website kennen.",
+        },
+        {
+          title: "Der Preis dieser Entscheidung: 4/0 statt 1/0",
+          body: "Das aktuell ausgewählte Produkt ist einseitig, nur Schwarz. Oliv ist dort nicht möglich — das ist eine Produkteigenschaft, keine Gestaltungsfrage. Entweder die vierfarbige Variante bestellen, oder der Umschlag wird schwarz auf Weiss. Ein vollflächig oliv bedruckter Umschlag verlangt ausserdem stärkeres Papier als 80 g: dünnes Offsetpapier wellt sich unter Vollton.",
         },
         {
           title: "Die Anschrift steht genau einmal",
@@ -72,6 +76,7 @@ export default function Page() {
         },
       ]}
       openPoints={[
+        "ENTSCHEIDUNG VOR ALLEM ANDEREN: 4/0 statt 1/0 bestellen, sonst ist dieser Entwurf nicht druckbar. Mit der Farbe steigt auch der Preis, und vollflächig Oliv verlangt schwereres Papier als 80 g.",
         "Der Entwurf ist noch nicht besprochen. Ob der Umschlag überhaupt gebraucht wird und wofür, entscheidet der Betreiber — bisher ist er eine Möglichkeit, kein Auftrag.",
         "Auflage und ob mit oder ohne Fenster: die Fensterfassung lohnt nur, wenn Anschriften aus einem System gedruckt werden. Wer von Hand adressiert, fährt ohne Fenster besser.",
         "Prüfen, ob der Umschlag zum Papier der Postkarte passt — beides liegt beim Gast auf demselben Tisch.",
@@ -98,11 +103,7 @@ export default function Page() {
           label: "wmd-briefumschlag-vorlage.pdf",
           hint: "Original der Druckerei — Gestaltungsvorlage",
         },
-        {
-          href: "/assets/print/briefumschlag-vorderseite.jpg",
-          label: "briefumschlag-vorderseite.jpg",
-          hint: "zum Weitergeben per Messenger",
-        },
+
       ]}
     />
   );

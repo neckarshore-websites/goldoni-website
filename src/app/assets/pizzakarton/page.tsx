@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PizzakartonArtwork } from "@/components/artwork/PrintArtwork";
 import { PrintSpecPage } from "@/components/PrintSpecPage";
 
 export const metadata: Metadata = {
@@ -13,9 +14,14 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Pizzakarton"
       intro="26 × 26 × 4 cm, aussen vierfarbig bedruckt. Der Deckel ist mit Abstand die grösste Markenfläche im ganzen Satz — grösser als Postkarte, Bierdeckel und Briefumschlag zusammen, und der Gast schaut ihn an, während er wartet."
-      status="Noch kein Entwurf — Masse ausgewertet, Stanzvorlage liegt vor"
+      status="Deckel-Entwurf — Kartonfarbe und Auflage noch offen"
       aspect={{ w: 1200, h: 2373 }}
       sides={[
+        {
+          label: "Deckel",
+          caption: "die einzige Fläche, die gestaltet wird",
+          node: <PizzakartonArtwork />,
+        },
         {
           label: "Stanzvorlage der Druckerei",
           caption: "flach ausgelegt, 353 × 698 mm — noch ohne unsere Gestaltung",
@@ -52,7 +58,7 @@ export default function Page() {
         },
       ]}
       openPoints={[
-        "Es gibt noch keinen Entwurf. Als Nächstes: Deckelgestaltung auf Basis der Stanzvorlage, mit dem QR-Code und einer sehr kurzen Zeile — mehr trägt Wellpappe nicht.",
+        "Der Deckel-Entwurf steht, die Übertragung auf die Stanzvorlage nicht: das Motiv muss noch auf der Deckelfläche der Vorlage positioniert werden, mit Falzlinien als Grundlage.",
         "Kartonfarbe entscheiden: weiss oder braun. Auf braunem Karton verschiebt sich jede Farbe, und Espresso auf Braun ist kein Espresso mehr.",
         "Auflage und Preis: ein Pizzakarton ist eine andere Grössenordnung als 500 Postkarten für 27 Euro. Vor der Gestaltung lohnt der Blick auf die Staffelpreise.",
         "Vor der Bestellung klären, ob die aktuellen Kartons vom Lieferanten kommen und ob eine eigene Bestellung überhaupt zum Bedarf passt.",
