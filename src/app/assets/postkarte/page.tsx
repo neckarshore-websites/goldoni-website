@@ -101,6 +101,18 @@ Schriften sind eingebettet. Text und QR-Code sind Vektor, keine Pixel.
 Seitenformat 154 x 111 mm, Seite 1 Vorderseite, Seite 2 Rueckseite.
 Fertigungsbedingt liegt das Seitenformat 0,18 mm ueber dem Sollmass —
 innerhalb des 3-mm-Beschnitts, bitte auf 148 x 105 mm mittig schneiden.`}
+      prices={{
+        caption:
+          "Stand 25. August 2026, netto, ohne Veredelung. Mattfolie und die einmalige Qualitätskontrolle (14,00 € netto) kommen dazu.",
+        rows: [
+          { qty: 100, net: 17.74 },
+          { qty: 250, net: 24.21 },
+          { qty: 300, net: 26.57 },
+          { qty: 500, net: 27.02, pick: true },
+          { qty: 550, net: 41.61 },
+        ],
+        note: "500 ist die letzte Stufe vor dem Sprung: von 300 auf 500 kostet 45 Cent mehr — für 200 zusätzliche Karten. Die nächste Stufe darüber kostet 54 Prozent mehr für 10 Prozent mehr Karten. Alles zwischen 300 und 500 zu bestellen wäre unvernünftig.",
+      }}
       downloads={[
         {
           href: "/assets/print/goldoni-postkarte-a6-druckdaten.pdf",
@@ -116,6 +128,16 @@ innerhalb des 3-mm-Beschnitts, bitte auf 148 x 105 mm mittig schneiden.`}
           href: "/assets/print/goldoni-postkarte-entwuerfe.pdf",
           label: "goldoni-postkarte-entwuerfe.pdf",
           hint: "frühere A5-Fassung, beide Farbvarianten A und B",
+        },
+        {
+          href: "/assets/print/wmd-postkarte-a6-datenblatt.pdf",
+          label: "wmd-postkarte-a6-datenblatt.pdf",
+          hint: "Original der Druckerei — Masse und Anforderungen an Veredelungen",
+        },
+        {
+          href: "/assets/print/wmd-postkarte-a6-vorlage.pdf",
+          label: "wmd-postkarte-a6-vorlage.pdf",
+          hint: "Original der Druckerei — Gestaltungsvorlage",
         },
         {
           href: "/assets/print/postkarte-vorderseite.jpg",

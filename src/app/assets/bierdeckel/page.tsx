@@ -30,22 +30,24 @@ export default function Page() {
         },
       ]}
       specs={[
-        ["Endformat", "Sechseck, 93 × 81 mm"],
-        ["Exakte Höhe", "80,54 mm (93 × √3⁄2)"],
-        ["Datenformat", "100 × 87 mm"],
-        ["Beschnitt", "3 mm umlaufend"],
+        ["Endformat", "Sechseck, maximale Bemassung 93 × 81 mm"],
+        ["Datenformat", "99 × 87 mm (Vorlage nachgemessen: 280,63 × 246,614 pt)"],
+        ["Beschnitt", "3 mm, im Datenformat enthalten"],
+        ["Sicherheitsabstand", "6 mm — ab Datenformat, nicht ab Stanzkante"],
+        ["Stanzform", "frei, kommt vom Werkzeug — nicht in die Datei zeichnen"],
         ["Material", "1,5 mm Bierdeckelpappe, kompostierbar"],
         ["Druck", "4/4-farbig"],
+        ["Farbmodus", "CMYK gefordert — unsere Datei ist RGB"],
         ["QR gedruckt", "ca. 33 mm Kantenlänge"],
       ]}
       decisions={[
         {
-          title: "Die 81 mm sind gerundet — die Datei rechnet mit 80,54",
-          body: "Ein regelmässiges Sechseck mit 93 mm von Spitze zu Spitze ist 80,54 mm hoch. Wer glatte 81,0 einsetzt, staucht es um einen halben Millimeter, und die Stanze passt nicht mehr zur Datei.",
+          title: "Die Druckdatei zeichnet kein Sechseck",
+          body: "Der Kontrollbogen zeigt die Form, damit ein Mensch sie beurteilen kann. Die Druckdatei darf sie nicht zeichnen: der Hintergrund läuft randlos über das volle Datenformat, damit nach dem Stanzen keine weisse Kante stehenbleibt. Die Form macht das Werkzeug — „freie Stanzform“ nennt das Datenblatt es.",
         },
         {
-          title: "Alles Wichtige liegt in 60 Prozent der Breite",
-          body: "Ein Sechseck verliert an vier Ecken Fläche, und Stanzen laufen um ein bis zwei Millimeter. Text, der die Schrägen ausreizt, ist der Text, der abgeschnitten wird.",
+          title: "Sechs Millimeter Sicherheitsabstand, ab Datenformat",
+          body: "Das ist der Unterschied zur Postkarte, wo drei Millimeter ab Endformat gelten. Hier sind es sechs, und sie werden vom grösseren Mass aus gemessen — nutzbar bleibt entsprechend weniger. Alles Wichtige liegt deshalb in 58 Prozent der Breite, was zusätzlich die vier abgeschrägten Ecken berücksichtigt.",
         },
         {
           title: "Keine Adresse",
@@ -56,17 +58,78 @@ export default function Page() {
           body: "Ein Bierdeckel bekommt Flecken. Die höchste Fehlerkorrektur-Stufe verträgt sie.",
         },
       ]}
+      printerNote={`HINWEISE ZUR DATEI — Ristorante Goldoni, Sechseck-Bierdeckel 93 x 81 mm
+
+Die Datei liegt in RGB vor. Bitte nach Ihrem Standardprofil nach CMYK
+wandeln (ISO Coated v2 / FOGRA39 bzw. PSO Coated v3), relativ
+farbmetrisch mit Tiefenkompensierung.
+
+Bierdeckelpappe ist ungestrichen und saugend — bitte den Farbauftrag
+entsprechend Ihrer Erfahrung mit diesem Material begrenzen. Beide Seiten
+sind vollflaechig eingefaerbt.
+
+Fuer die zwei folgenden Stellen bitten wir darum, die Zielwerte zu setzen
+statt allein automatisch zu wandeln:
+
+1. QR-CODE (Rueckseite)
+   Module: 100 % Schwarz, C 0 / M 0 / Y 0 / K 100.
+   KEIN Vierfarbschwarz — an den Modulkanten kostet jede
+   Passerdifferenz Lesbarkeit, und dieser Code ist der einzige Zweck
+   der Rueckseite.
+   Ruhezone um den Code: Papierweiss, 0 / 0 / 0 / 0.
+
+2. VOLLTON-FLAECHEN
+   Vorderseite Espresso (RGB #1A1612): C 55 / M 60 / Y 60 / K 100.
+   Rueckseite Olive   (RGB #746B03): C 20 / M 22 / Y 100 / K 40.
+
+Datenformat 99 x 87 mm, Seite 1 Vorderseite, Seite 2 Rueckseite.
+Hintergruende laufen randlos bis an die Kante des Datenformats.
+Keine Stanzkontur in der Datei — freie Stanzform nach Ihrer Vorlage.
+Saemtlicher Inhalt liegt innerhalb des Sicherheitsabstands von 6 mm.
+Fertigungsbedingt liegt das Seitenformat rund 0,14 mm ueber dem
+Sollmass; das liegt innerhalb des 3-mm-Beschnitts.`}
       openPoints={[
+        "Farbmodus: CMYK gefordert, unsere Datei ist RGB. Bierdeckelpappe ist ungestrichen und saugend — der Farbumschlag fällt hier stärker aus als auf gestrichenem Papier. Der Hinweistext oben setzt Zielwerte für die beiden Vollton-Flächen und den QR-Code.",
         "QR-Module in reinem Schwarz (nur K).",
         "Olive als Proof prüfen: vollflächig auf saugender Bierdeckelpappe fällt jeder Ton dunkler und stumpfer aus als auf gestrichenem Papier.",
         "Stanzkontur als eigene Ebene liefern, nicht als gedruckte Linie.",
         "Postkarte, Bierdeckel oder beides — und die Auflage.",
       ]}
+      prices={{
+        caption:
+          "Stand 25. August 2026, netto. Ein Bierdeckel wird verbraucht, nicht aufgehoben — die Auflage entscheidet, wie lange nicht nachbestellt werden muss.",
+        rows: [
+          { qty: 100, net: 24.94 },
+          { qty: 250, net: 54.47 },
+          { qty: 500, net: 90.56, pick: true },
+          { qty: 1000, net: 175.88 },
+          { qty: 2500, net: 256.68 },
+          { qty: 5000, net: 389.98 },
+          { qty: 7500, net: 641.68 },
+          { qty: 10000, net: 642.32 },
+        ],
+        note: "Zwei Dinge stehen in diesen Zahlen. Erstens: 7.500 Stück kosten 641,68 €, 10.000 kosten 642,32 € — 2.500 Deckel mehr für 64 Cent. Wer 7.500 bestellt, zahlt pro Stück sogar mehr als bei 5.000. Zweitens fällt der Stückpreis von 24,9 Cent auf 6,4 Cent, aber 10.000 Bierdeckel sind eine Palette und Jahre Vorrat. 500 Stück für 90,56 € sind der vernünftige erste Lauf: genug, um zu sehen, ob der Weg zieht, wenig genug, um das Motiv danach noch zu ändern.",
+      }}
       downloads={[
+        {
+          href: "/assets/print/goldoni-bierdeckel-druckdaten.pdf",
+          label: "goldoni-bierdeckel-druckdaten.pdf",
+          hint: "zwei Seiten à 99 × 87 mm, randlos, ohne Stanzkontur — das, was die Druckerei bekommt",
+        },
         {
           href: "/assets/print/goldoni-bierdeckel-entwurf.pdf",
           label: "goldoni-bierdeckel-entwurf.pdf",
-          hint: "Kontrollbogen, beide Seiten in echter Grösse mit Stanzkontur",
+          hint: "Kontrollbogen, beide Seiten in echter Grösse mit Stanzkontur zum Ausschneiden",
+        },
+        {
+          href: "/assets/print/wmd-bierdeckel-datenblatt.pdf",
+          label: "wmd-bierdeckel-datenblatt.pdf",
+          hint: "Original der Druckerei — Masse, Sicherheitsabstand, Anforderungen",
+        },
+        {
+          href: "/assets/print/wmd-bierdeckel-vorlage.pdf",
+          label: "wmd-bierdeckel-vorlage.pdf",
+          hint: "Original der Druckerei — Gestaltungsvorlage mit Stanzkontur (12 MB)",
         },
         {
           href: "/assets/print/bierdeckel-vorderseite.jpg",
