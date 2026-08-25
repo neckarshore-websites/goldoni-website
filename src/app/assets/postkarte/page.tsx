@@ -13,8 +13,8 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Postkarte"
       intro="Liegt jeder Lieferung bei und im Restaurant aus. Sie hat eine Aufgabe: Gäste beim nächsten Mal direkt bei uns bestellen lassen statt über den Marktplatz."
-      status="Entwurf A (Olive) — Freigabe des Betreibers steht aus"
-      aspect={{ w: 1600, h: 1141 }}
+      status="Entwurf A (Olive), Format A6 quer — Freigabe des Betreibers steht aus"
+      aspect={{ w: 1600, h: 1154 }}
       sides={[
         {
           label: "Vorne",
@@ -30,12 +30,13 @@ export default function Page() {
         },
       ]}
       specs={[
-        ["Endformat", "210 × 148 mm (DIN A5 quer)"],
-        ["Datenformat", "216 × 154 mm"],
+        ["Endformat", "148 × 105 mm (DIN A6 quer)"],
+        ["Datenformat", "154 × 111 mm"],
         ["Beschnitt", "3 mm umlaufend"],
         ["Sicherheitsabstand", "3 mm ab Endformat"],
         ["Druck", "4/4-farbig"],
-        ["QR gedruckt", "ca. 51 mm Kantenlänge, gut 1 mm je Modul"],
+        ["QR gedruckt", "ca. 37 mm Kantenlänge"],
+        ["Frühere Fassung", "A5 quer, 210 × 148 mm — verworfen 2026-08-25"],
       ]}
       decisions={[
         {
@@ -54,6 +55,10 @@ export default function Page() {
           title: "Kein Wort über Provisionen",
           body: "Abholung wird damit begründet, dass sie schnell ist — nicht damit, dass sie billiger ist.",
         },
+        {
+          title: "A6 statt A5, und neu gesetzt statt verkleinert",
+          body: "Die Postkarte reist nach Hause; was mitreist, soll aufgehoben werden, und A6 ist das Format, das man behält. Die Schrift wurde dafür neu gesetzt — ein Verkleinern der A5-Werte hätte den Fliesstext auf 3,3 mm gedrückt. Der Bierdeckel übernimmt die andere Aufgabe: gesehen werden, im Lokal.",
+        },
       ]}
       openPoints={[
         "QR-Module in reinem Schwarz (nur K). An Modulkanten kostet jede Passerdifferenz Lesbarkeit.",
@@ -63,9 +68,14 @@ export default function Page() {
       ]}
       downloads={[
         {
+          href: "/assets/print/goldoni-postkarte-a6.pdf",
+          label: "goldoni-postkarte-a6.pdf",
+          hint: "A6 quer, echte Grösse, mit Endformat-Marke",
+        },
+        {
           href: "/assets/print/goldoni-postkarte-entwuerfe.pdf",
           label: "goldoni-postkarte-entwuerfe.pdf",
-          hint: "beide Varianten, A und B, je Vorder- und Rückseite",
+          hint: "frühere A5-Fassung, beide Farbvarianten A und B",
         },
         {
           href: "/assets/print/postkarte-vorderseite.jpg",
