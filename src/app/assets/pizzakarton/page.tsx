@@ -14,18 +14,13 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Pizzakarton"
       intro="26 × 26 × 4 cm, aussen vierfarbig bedruckt. Der Deckel ist mit Abstand die grösste Markenfläche im ganzen Satz — grösser als Postkarte, Bierdeckel und Briefumschlag zusammen, und der Gast schaut ihn an, während er wartet."
-      status="Zwei Aufteilungen zur Wahl — Kartonfarbe und Auflage noch offen"
+      status="Entschieden: Aufteilung A, weisser Karton, 225–250 Stück — bereit für die Druckdaten"
       aspect={{ w: 1200, h: 2373 }}
       sides={[
         {
-          label: "Deckel A — Espresso oben",
-          caption: "Wortmarke auf dem dunklen Feld, Bestellweg auf Olive",
+          label: "Deckel",
+          caption: "gewählte Aufteilung: Espresso oben, Bestellweg auf Olive",
           node: <PizzakartonArtwork variant="espresso-oben" />,
-        },
-        {
-          label: "Deckel B — Olive oben",
-          caption: "dieselben Elemente, Felder getauscht",
-          node: <PizzakartonArtwork variant="olive-oben" />,
         },
         {
           label: "Stanzvorlage der Druckerei",
@@ -50,16 +45,16 @@ export default function Page() {
           body: "Betreiber-Entscheidung 2026-08-25: der Deckel wird waagerecht geteilt, oben die eine Farbe, unten die andere. Die Kante liegt bei 52 statt 50 Prozent — das obere Feld trägt mehr Inhalt und wirkt bei exakter Hälfte gedrückt. Eine genaue Halbierung sieht auf Papier kleiner aus, als sie ist.",
         },
         {
-          title: "Meine Empfehlung: Espresso oben (Variante A)",
-          body: "Dafür spricht, dass die Wortmarke dann auf demselben Grund steht wie auf Postkarte und Bierdeckel — ein Gast, der beides kennt, erkennt es wieder. Dagegen spricht, dass der Bestellweg, also der einzige Teil mit einer Aufgabe, nach unten rutscht. Wer den Karton auf dem Tisch aufklappt, sieht zuerst die obere Kante. Entscheiden kannst nur du, und zwar am Bildschirm, nicht an dieser Begründung.",
+          title: "Aufteilung A gewählt, B verworfen",
+          body: "Betreiber-Entscheidung 2026-08-25 nach dem direkten Vergleich beider Fassungen. Espresso oben, weil die Wortmarke damit auf demselben Grund steht wie auf Postkarte und Bierdeckel — wer eines kennt, erkennt das andere. Der Preis dieser Wahl, offen benannt: der Bestellweg, der einzige Teil mit einer Aufgabe, sitzt unten. Variante B (Felder getauscht) bleibt in der Versionsgeschichte, falls die Entscheidung je zurückgedreht wird.",
         },
         {
           title: "Nur der Deckel zählt",
           body: "Die Vorlage hat sechs Flächen: Deckel, Boden, Rückseite und drei Seiten. Gesehen wird im gefalteten Zustand vor allem der Deckel und die Vorderkante. Alles andere ist entweder verdeckt oder liegt auf dem Tisch — Gestaltung dort kostet Farbe und bringt nichts.",
         },
         {
-          title: "Grau markierte Flächen bleiben Materialfarbe",
-          body: "Das Datenblatt weist Bereiche aus, die gar nicht bedruckt werden können. Sie behalten die Farbe des Kartons — weiss oder braun, das ist eine Bestellentscheidung und beeinflusst, wie unsere Farben wirken.",
+          title: "Weisser Karton, entschieden",
+          body: "Betreiber-Entscheidung 2026-08-25. Unsere Palette setzt hellen Grund voraus: Espresso auf braunem Karton ist kein Espresso mehr, und Oliv wird schlammig. Brauner Karton wirkt handwerklicher und ist meist günstiger — der Preisunterschied ist billiger als eine Farbwelt, die an einer Stelle bricht. Die grau markierten, nicht bedruckbaren Flächen des Bogens bleiben damit weiss.",
         },
         {
           title: "Schrift mindestens 10 pt, negativ 12 pt",
@@ -71,11 +66,8 @@ export default function Page() {
         },
       ]}
       openPoints={[
-        "Aufteilung wählen: A (Espresso oben) oder B (Olive oben).",
         "Der Deckel-Entwurf steht, die Übertragung auf die Stanzvorlage nicht: das Motiv muss noch auf der Deckelfläche der Vorlage positioniert werden, mit Falzlinien als Grundlage.",
-        "Kartonfarbe entscheiden: weiss oder braun. Auf braunem Karton verschiebt sich jede Farbe, und Espresso auf Braun ist kein Espresso mehr.",
-        "Auflage und Preis: ein Pizzakarton ist eine andere Grössenordnung als 500 Postkarten für 27 Euro. Vor der Gestaltung lohnt der Blick auf die Staffelpreise.",
-        "Vor der Bestellung klären, ob die aktuellen Kartons vom Lieferanten kommen und ob eine eigene Bestellung überhaupt zum Bedarf passt.",
+        "Beschaffung entschieden: selbst bestellen, 225 bis 250 Stück. Offen bleibt nur, ob die bisherigen Kartons vom Lieferanten weiterlaufen, solange der Vorrat reicht.",
       ]}
       prices={{
         caption:

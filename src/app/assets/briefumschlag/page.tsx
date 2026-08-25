@@ -36,7 +36,7 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Briefumschlag"
       intro="DIN lang quer mit Fenster, haftklebend. Für Rechnungen, Gutscheine und Post an Gäste — das Stück, das im Briefkasten landet, bevor irgendjemand die Website kennt."
-      status="Zweifarbiger Entwurf, beidseitig — Farbigkeit der Bestellvariante prüfen"
+      status="Entschieden: vierfarbig beidseitig (4/4), zweifarbiger Entwurf"
       aspect={{ w: 1600, h: 835 }}
       sides={[
         {
@@ -59,7 +59,7 @@ export default function Page() {
         ["Fenster-Toleranz", "ca. 1 mm Versatz laut Datenblatt"],
         ["Papier", "80 g/m² Offset weiss, beschreibbar, laser- und tintenstrahlgeeignet"],
         ["Verschluss", "haftklebend, innenliegende Seitenklappen"],
-        ["Druck", "beidseitig (im Preis enthalten) — Farbigkeit 4/4 nötig, nicht 1/1"],
+        ["Druck", "4/4 — vierfarbig beidseitig, entschieden 2026-08-25"],
       ]}
       decisions={[
         {
@@ -75,8 +75,8 @@ export default function Page() {
           body: "Eine Teilung in der geometrischen Mitte sähe ausgewogener aus und liefe genau durch das Fenster — die Anschrift des Empfängers wäre dann von einer Farbkante durchschnitten. Deshalb sitzt die Kante knapp darüber, und das Fenster steht vollständig im olivgrünen Feld.",
         },
         {
-          title: "Beidseitig ist bezahlt, Farbe ist die offene Frage",
-          body: "Korrektur vom 25.08.: die Preisstaffel gilt bereits für den beidseitig bedruckten Umschlag — der Druck auf der Rückseite kostet also nichts extra. Was zu prüfen bleibt, ist die Farbigkeit: 4/4 (vierfarbig beidseitig) trägt diesen Entwurf, 1/1 (schwarz beidseitig) nicht. Ohne Farbe kein Oliv.",
+          title: "Vierfarbig beidseitig, entschieden",
+          body: "Betreiber-Entscheidung 2026-08-25: 4/4. Ohne Farbe kein Oliv, und ein erster Eindruck in Schwarz-Weiss neben drei farbigen Geschwistern sieht nach Sparen aus — der Umschlag ist bei vielen Empfängern der erste Kontakt überhaupt. Der beidseitige Druck ist in der Preisstaffel bereits enthalten, wie der Betreiber korrigiert hat.",
         },
         {
           title: "Die Anschrift steht genau einmal",
@@ -92,7 +92,7 @@ export default function Page() {
         },
       ]}
       openPoints={[
-        "Beim Bestellen prüfen, ob die gewählte Variante VIERFARBIG beidseitig ist (4/4) und nicht schwarz beidseitig (1/1). Beidseitig ist laut Betreiber bereits im Preis enthalten; offen ist allein die Farbe, und ohne Farbe gibt es kein Oliv.",
+        "Beim Bestellen die 4/4-Variante wählen — die Staffel auf dieser Seite stammt aus einer beidseitigen Auswahl, deren Farbigkeit noch zu bestätigen ist. Weicht der Preis deutlich ab, sag Bescheid, dann rechne ich die Tabelle neu.",
         "Beidseitiger Vollton auf 80 g Offsetpapier wellt sich. Vor der Bestellung prüfen, ob ein schwereres Papier wählbar ist.",
         "Der Entwurf ist noch nicht besprochen. Ob der Umschlag überhaupt gebraucht wird und wofür, entscheidet der Betreiber — bisher ist er eine Möglichkeit, kein Auftrag.",
         "Auflage und ob mit oder ohne Fenster: die Fensterfassung lohnt nur, wenn Anschriften aus einem System gedruckt werden. Wer von Hand adressiert, fährt ohne Fenster besser.",
