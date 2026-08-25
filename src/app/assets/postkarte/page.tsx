@@ -31,9 +31,11 @@ export default function Page() {
       ]}
       specs={[
         ["Endformat", "148 × 105 mm (DIN A6 quer)"],
-        ["Datenformat", "154 × 111 mm"],
+        ["Datenformat", "154 × 111 mm (Datenblatt bestätigt)"],
         ["Beschnitt", "3 mm umlaufend"],
-        ["Sicherheitsabstand", "3 mm ab Endformat"],
+        ["Sicherheitsabstand", "3 mm ab Endformat, allseitig"],
+        ["Farbmodus", "CMYK gefordert — unsere Datei ist RGB"],
+        ["Auflösung", "300 dpi gefordert; Text und QR sind Vektor"],
         ["Druck", "4/4-farbig"],
         ["QR gedruckt", "ca. 37 mm Kantenlänge"],
         ["Frühere Fassung", "A5 quer, 210 × 148 mm — verworfen 2026-08-25"],
@@ -61,8 +63,9 @@ export default function Page() {
         },
       ]}
       openPoints={[
-        "QR-Module in reinem Schwarz (nur K). An Modulkanten kostet jede Passerdifferenz Lesbarkeit.",
-        "Marinara #8E2800 als Proof prüfen — betrifft nur die verworfene Variante B, bei Entwurf A entfällt der Punkt.",
+        "Farbmodus: die Druckerei fordert CMYK, unsere Datei entsteht im Browser und ist RGB. Sie konvertiert automatisch — laut eigenem Datenblatt mit „leicht verändertem optischen Gesamteindruck“. Genau dort, wo die Karte vollflächig dunkel und vollflächig oliv ist, ist das keine Kleinigkeit. Entweder Proof bestellen oder die Datei ausserhalb des Browsers final setzen.",
+        "QR-Module in reinem Schwarz (nur K) — aus einer RGB-Datei nicht zusicherbar, siehe Punkt darüber.",
+        "Veredelung: Mattfolie braucht keine eigene Datei und ist damit sofort machbar. Partieller UV-, Glitzerlack und Heissfolie brauchen laut Datenblatt eine Sonderfarbebene (100 % Magenta, benannt „lack“ bzw. „praegung“, auf Überdrucken) — die kann unsere Browser-Strecke nicht erzeugen.",
         "Freigabe der Texte durch den Betreiber. Sie sprechen für sein Haus.",
         "Auflage.",
       ]}
