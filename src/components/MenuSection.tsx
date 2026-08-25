@@ -220,11 +220,14 @@ export function MenuSection({
   hideLegend = false,
   extraPills = [],
   slots = [],
+  quickJumpOrderCta,
 }: {
   menu: Menu;
   hideLegend?: boolean;
   extraPills?: ExtraPill[];
   slots?: MenuSlot[];
+  /** Prototyp-Durchreiche (2026-08-25) — siehe MenuQuickJump `orderCta`. */
+  quickJumpOrderCta?: { label: string; href: string };
 }) {
   // No wrapping <div> here — render as Fragment so the sticky pill bar's
   // containing block becomes the parent page wrapper. Otherwise the bar
@@ -243,7 +246,11 @@ export function MenuSection({
         </p>
       ) : null}
 
-      <MenuQuickJump categories={menu.categories} extraPills={extraPills} />
+      <MenuQuickJump
+        categories={menu.categories}
+        extraPills={extraPills}
+        orderCta={quickJumpOrderCta}
+      />
 
       <div className="space-y-16">
         {menu.categories.map((cat) => {

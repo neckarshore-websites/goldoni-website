@@ -63,9 +63,25 @@ function chunkRows<T>(items: T[], size: number): T[][] {
 export function MenuQuickJump({
   categories,
   extraPills = [],
+  orderCta,
 }: {
   categories: MenuCategory[];
   extraPills?: ExtraPill[];
+  /**
+   * PROTOTYP-SCHALTER (2026-08-25). Setzt einen Bestell-Knopf als letztes
+   * Element in die klebende Pillenleiste — Variante A der Handy-Beurteilung.
+   *
+   * Standard ist `undefined`, die Live-Seiten uebergeben nichts und rendern
+   * damit exakt wie vorher. Der Prototyp treibt bewusst DIESE Komponente und
+   * keine Kopie: was der Betreiber beurteilt, ist das, was ginge — dieselbe
+   * Zeilenumbruch-Logik, dieselbe Hoehenmessung.
+   *
+   * Die Leiste misst ihre eigene Hoehe per ResizeObserver in
+   * `--goldoni-pills-h`; eine zusaetzliche Zeile durch den Knopf traegt sich
+   * deshalb von selbst in die Sprungziele nach. Das war die Sorge, die diese
+   * Variante teuer gemacht haette — sie ist bereits geloest.
+   */
+  orderCta?: { label: string; href: string };
 }) {
   // Unified pill list — categories interleaved with positional extraPills,
   // then trailing extraPills (no `insertAfter`) appended at the end.
@@ -246,6 +262,25 @@ export function MenuQuickJump({
               className="flex flex-wrap justify-center gap-2"
             >
               {row.map(renderPill)}
+              {/* Knopf haengt an die LETZTE Zeile an, statt eine eigene zu
+                  bekommen. Passt er nicht mehr daneben, bricht er selbst um —
+                  und genau dieses Verhalten soll der Prototyp zeigen, nicht
+                  ein geschoenter Sonderfall. */}
+              {orderCta && idx === rowsMobile.length - 1 ? (
+                <a
+                  href={orderCta.href}
+                  target="_blank"
+                  rel="noopener"
+                  data-testid="order-cta-pill"
+                  className="whitespace-nowrap rounded-full px-4 py-1 text-sm font-semibold"
+                  style={{
+                    backgroundColor: "var(--color-accent)",
+                    color: "var(--color-on-marinara)",
+                  }}
+                >
+                  {orderCta.label}
+                </a>
+              ) : null}
             </div>
           ))}
         </div>
