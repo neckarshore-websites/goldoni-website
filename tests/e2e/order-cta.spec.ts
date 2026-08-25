@@ -61,6 +61,12 @@ for (const { path, ctas } of PAGES) {
       page.locator('[data-testid="order-cta"]:visible'),
     ).toHaveCount(0);
 
+    // The prototype variants (pill inside the sticky bar, floating button)
+    // live on /sandbox only. If either ever leaks onto a live page without a
+    // decision, this fails — the whole point of the 25.08. split.
+    await expect(page.locator('[data-testid="order-cta-pill"]')).toHaveCount(0);
+    await expect(page.locator('[data-testid="order-cta-fab"]')).toHaveCount(0);
+
     // Non-vacuity: the page must still offer a way to order at all.
     const orderLinks = page.locator(`a[href="${STOREFRONT_PARTNER.url}"]`);
     expect(await orderLinks.count()).toBeGreaterThan(0);

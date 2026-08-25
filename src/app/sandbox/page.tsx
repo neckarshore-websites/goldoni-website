@@ -48,6 +48,53 @@ export default function SandboxPage() {
         </p>
       </div>
 
+      {/* Handy-Prototyp Bestell-CTA — A/B, 2026-08-25. Zwei eigene Seiten
+          statt zweier Bloecke hier: beide Varianten kleben am Bildschirmrand
+          und wuerden sich auf einer gemeinsamen Seite gegenseitig stoeren.
+          Nach der Entscheidung NICHT stillschweigend entfernen — siehe
+          Docblock oben, der Betreiber entscheidet, was hier bleibt. */}
+      <section className="mb-20">
+        <div className="mx-auto max-w-6xl px-6 sm:px-12">
+          <h2
+            className="text-xl font-semibold"
+            style={{ color: "var(--color-text)" }}
+          >
+            Handy-Prototyp: Bestellknopf auf der Speisekarte
+          </h2>
+          <p
+            className="mt-1 max-w-2xl text-sm leading-relaxed"
+            style={{ color: "var(--color-text-muted)" }}
+          >
+            Zwei Varianten zum Vergleich am Telefon. Die Desktop-Fassung ist
+            seit dem 25. August live; fuer das Handy steht die Entscheidung
+            noch aus. Beide Prototypen zeigen die volle Speisekarte, damit das
+            Blaettern echt ist.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <a
+              href="/sandbox/handy-a"
+              className="rounded-lg border px-4 py-2 text-sm"
+              style={{
+                borderColor: "var(--color-border-strong)",
+                color: "var(--color-text)",
+              }}
+            >
+              Variante A &mdash; Knopf in der Kategorieleiste
+            </a>
+            <a
+              href="/sandbox/handy-b"
+              className="rounded-lg border px-4 py-2 text-sm"
+              style={{
+                borderColor: "var(--color-border-strong)",
+                color: "var(--color-text)",
+              }}
+            >
+              Variante B &mdash; schwebender Knopf
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="mb-20">
         <div className="mx-auto mb-4 max-w-6xl px-6 sm:px-12">
           <h2
