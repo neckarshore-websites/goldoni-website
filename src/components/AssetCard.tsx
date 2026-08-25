@@ -24,6 +24,15 @@ export interface AssetEntry {
   prompt?: string;
   /** Free-form note — for real photos that have no AI prompt. */
   note?: string;
+  /**
+   * Herkunft des Bildes. Seit 2026-08-25 Pflichtfeld, weil die Frage seit dem
+   * 2. August 2026 rechtlich relevant ist (Transparenzpflichten der
+   * KI-Verordnung) und sich bis dahin nur indirekt aus dem Vorhandensein
+   * eines Prompts ableiten liess. Eine Ableitung ist keine Dokumentation:
+   * ein Bild ohne Prompt kann ein Foto sein oder ein Prompt, den niemand
+   * notiert hat.
+   */
+  origin: "ki" | "foto";
 }
 
 /** "public/images/foo.png" → "/images/foo.png" */
