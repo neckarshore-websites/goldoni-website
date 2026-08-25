@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MenuSection } from "@/components/MenuSection";
+import { OrderCtaHeadline } from "@/components/OrderCta";
 import { OrderFab } from "@/components/OrderFab";
 import { PageHero } from "@/components/PageHero";
 import speisekarte from "@/data/speisekarte.json";
@@ -7,6 +8,24 @@ import { STOREFRONT_PARTNER } from "@/lib/site";
 import type { Menu } from "@/lib/menu";
 
 const menu = speisekarte as Menu;
+
+const VARIANT_LABEL = {
+  a: "Knopf in der Kategorieleiste (Handy)",
+  b: "schwebender Knopf (Handy)",
+  c: "schwebender Knopf statt Streifen (Desktop)",
+} as const;
+
+const VARIANT_PATH = {
+  a: "/sandbox/handy-a",
+  b: "/sandbox/handy-b",
+  c: "/sandbox/desktop-c",
+} as const;
+
+const OTHER_VARIANTS = {
+  a: ["b", "c"],
+  b: ["a", "c"],
+  c: ["a", "b"],
+} as const;
 
 /**
  * Handy-Prototyp der Bestell-CTAs — zwei Varianten, echte Speisekarte.
@@ -18,8 +37,9 @@ const menu = speisekarte as Menu;
  *
  * Beide Varianten treiben die echten Komponenten, keine Nachbauten.
  */
-export function PrototypeMenu({ variant }: { variant: "a" | "b" }) {
+export function PrototypeMenu({ variant }: { variant: "a" | "b" | "c" }) {
   const isA = variant === "a";
+  const isC = variant === "c";
 
   return (
     <main>
@@ -32,17 +52,20 @@ export function PrototypeMenu({ variant }: { variant: "a" | "b" }) {
       >
         <p className="mx-auto max-w-3xl">
           <strong className="font-medium">
-            Prototyp {isA ? "A" : "B"} —{" "}
-            {isA ? "Knopf in der Kategorieleiste" : "schwebender Knopf"}.
+            Prototyp {variant.toUpperCase()} — {VARIANT_LABEL[variant]}.
           </strong>{" "}
-          Interne Vorschau, nicht die Live-Seite. Am besten am Telefon ansehen.{" "}
-          <Link
-            href={isA ? "/sandbox/handy-b" : "/sandbox/handy-a"}
-            className="underline"
-          >
-            Zur Variante {isA ? "B" : "A"}
-          </Link>{" "}
-          ·{" "}
+          Interne Vorschau, nicht die Live-Seite.{" "}
+          {isC
+            ? "Am Bildschirm ansehen — diese Variante meint den Desktop."
+            : "Am besten am Telefon ansehen."}{" "}
+          {OTHER_VARIANTS[variant].map((v) => (
+            <span key={v}>
+              <Link href={VARIANT_PATH[v]} className="underline">
+                Zur Variante {v.toUpperCase()}
+              </Link>{" "}
+              ·{" "}
+            </span>
+          ))}
           <Link href="/sandbox" className="underline">
             Sandbox
           </Link>
@@ -61,13 +84,19 @@ export function PrototypeMenu({ variant }: { variant: "a" | "b" }) {
           >
             Unsere Karte
           </p>
-          <h1
-            className="mb-6 text-4xl sm:text-5xl"
-            style={{ color: "var(--color-text)" }}
-          >
-            Speisekarten
-          </h1>
+          <div className="mb-6 flex items-start justify-between gap-8">
+            <h1
+              className="text-4xl sm:text-5xl"
+              style={{ color: "var(--color-text)" }}
+            >
+              Speisekarten
+            </h1>
+            {isC && <OrderCtaHeadline />}
+          </div>
 
+          {/* Variante C spiegelt die Live-Seite MINUS der beiden Streifen:
+              Knopf bei der Ankunft, schwebender Knopf fuer den Rest. Deshalb
+              steht hier bewusst keine `slots`-Angabe. */}
           <MenuSection
             menu={menu}
             quickJumpOrderCta={
@@ -79,7 +108,8 @@ export function PrototypeMenu({ variant }: { variant: "a" | "b" }) {
         </div>
       </div>
 
-      {!isA && <OrderFab />}
+      {variant === "b" && <OrderFab visibility="mobile" />}
+      {isC && <OrderFab visibility="desktop" />}
     </main>
   );
 }

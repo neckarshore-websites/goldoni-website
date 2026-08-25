@@ -91,6 +91,16 @@ export default function SandboxPage() {
             >
               Variante B &mdash; schwebender Knopf
             </a>
+            <a
+              href="/sandbox/desktop-c"
+              className="rounded-lg border px-4 py-2 text-sm"
+              style={{
+                borderColor: "var(--color-border-strong)",
+                color: "var(--color-text)",
+              }}
+            >
+              Variante C &mdash; Desktop: schwebender Knopf statt Streifen
+            </a>
           </div>
         </div>
       </section>
