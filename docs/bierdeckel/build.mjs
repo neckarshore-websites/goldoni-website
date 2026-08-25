@@ -35,7 +35,8 @@ const subs = {
   __QR__: text(join(root, "docs/postkarte/qr-A.svg")),
 };
 
-let html = text(join(here, "print.template.html"));
+for (const name of ["print", "druck"]) {
+let html = text(join(here, `${name}.template.html`));
 for (const [key, value] of Object.entries(subs)) html = html.replaceAll(key, value);
 
 const left = html.match(/__[A-Z_]+__/g);
@@ -51,8 +52,9 @@ if (open !== close) {
   process.exit(1);
 }
 
-writeFileSync(join(here, "print.html"), html);
-console.log(`print.html  (${(html.length / 1024).toFixed(0)} KB, divs ${open}/${close})`);
+writeFileSync(join(here, `${name}.html`), html);
+console.log(`${name}.html  (${(html.length / 1024).toFixed(0)} KB, divs ${open}/${close})`);
+}
 
 if (process.argv.includes("--pdf")) {
   const { chromium } = await import("@playwright/test");
@@ -66,6 +68,16 @@ if (process.argv.includes("--pdf")) {
     printBackground: true,
     preferCSSPageSize: true,
   });
-  await browser.close();
   console.log("goldoni-bierdeckel-entwurf.pdf");
+
+  await page.goto(`file://${join(here, "druck.html")}`, { waitUntil: "networkidle" });
+  await page.evaluate(() => document.fonts.ready);
+  await page.pdf({
+    path: join(here, "goldoni-bierdeckel-druckdaten.pdf"),
+    printBackground: true,
+    preferCSSPageSize: true,
+  });
+  console.log("goldoni-bierdeckel-druckdaten.pdf");
+
+  await browser.close();
 }

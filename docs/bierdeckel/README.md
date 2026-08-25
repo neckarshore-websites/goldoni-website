@@ -18,20 +18,34 @@ bestellen statt zu kommen. Beides schliesst sich nicht aus.
 
 | Angabe | Wert |
 |--------|------|
-| Endformat | Sechseck, 93 × 81 mm |
-| Exakte Höhe | 80,54 mm |
-| Datenformat | 100 × 87 mm |
-| Beschnitt | 3 mm umlaufend |
+| Endformat | Sechseck, maximale Bemassung 93 × 81 mm |
+| Datenformat | 99 × 87 mm |
+| Beschnitt | 3 mm, im Datenformat enthalten |
+| Sicherheitsabstand | 6 mm, **ab Datenformat** |
+| Stanzform | frei — kommt vom Werkzeug, nicht aus der Datei |
 | Material | 1,5 mm Bierdeckelpappe, kompostierbar |
 | Druck | 4/4-farbig |
 | QR gedruckt | ca. 33 mm Kantenlänge |
 
-**Die 81 mm sind gerundet, und das ist kein Detail.** Ein regelmässiges
-Sechseck mit 93 mm von Spitze zu Spitze ist 93 · √3/2 = **80,54 mm** hoch. Die
-Zeichnung arbeitet mit dem exakten Wert; wer 81,0 mm einsetzt, staucht das
-Sechseck um einen halben Millimeter und die Stanze passt nicht mehr zur Datei.
-Die flache Kante oben misst genau eine Seitenlänge, 46,5 mm — deshalb liegen
-die Eckpunkte der Kontur bei 25 % und 75 % der Breite.
+Quelle: Datenblatt und Vorlage der Druckerei, beide gegengelesen und die
+Vorlage nachgemessen (280,63 × 246,614 pt = exakt 99 × 87 mm).
+
+> **Warning:** Die erste Fassung dieses Dokuments nannte 100 × 87 mm und
+> einen Beschnitt „umlaufend" zusätzlich zum Endformat. Beides war
+> geschätzt, nicht gelesen — das Datenformat ist **99 × 87 mm** und der
+> Beschnitt ist darin bereits enthalten. Der Sicherheitsabstand ist mit
+> 6 mm doppelt so gross wie bei der Postkarte und wird ausserdem vom
+> Datenformat aus gemessen, nicht von der Schnittkante.
+
+**Die 81 mm sind gerundet — für den Kontrollbogen relevant, für die
+Druckdatei nicht.** Ein regelmässiges Sechseck mit 93 mm von Spitze zu Spitze
+ist 93 · √3/2 = **80,54 mm** hoch; die Druckerei nennt 81. Der Kontrollbogen
+zeichnet 80,54, damit die ausgeschnittene Papierform stimmt.
+
+**Die Druckdatei zeichnet gar kein Sechseck.** Das ist der Punkt, an dem die
+erste Fassung falsch gedacht war: bei einer freien Stanzform liefert man ein
+randloses Rechteck im Datenformat, und die Form entsteht am Werkzeug. Eine
+mitgelieferte Kontur wäre entweder gedruckte Linie oder Anlass zur Rückfrage.
 
 ## Die Gestaltung
 

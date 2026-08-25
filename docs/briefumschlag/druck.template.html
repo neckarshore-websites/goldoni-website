@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Goldoni Briefumschlag — Druckdaten</title>
+<style>
+@font-face{font-family:"Playfair";src:url(data:font/woff2;base64,__FONT_PLAYFAIR__) format("woff2");font-weight:600;font-display:block}
+@font-face{font-family:"Inter";src:url(data:font/woff2;base64,__FONT_INTER__) format("woff2");font-weight:400 700;font-display:block}
+
+/* Datenformat 230 x 120 mm laut Datenblatt (darin 5 mm Beschnitt). */
+@page{size:230mm 120mm;margin:0}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;padding:0;background:#fff;font-family:"Inter",sans-serif}
+
+.page{width:297mm;height:210mm;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:10mm;overflow:hidden}
+
+/* ECHTE GROESSE. Datenformat 230 x 120 mm laut Datenblatt, darin 5 mm
+   Beschnitt. --mm ist damit ein echter Millimeter des Datenformats. */
+.env{position:relative;width:230mm;height:120mm;background:#fff;overflow:hidden;
+  container-type:inline-size;--mm:.43478cqw;color:#000}
+
+/* EIN FARBAUFTRAG, SCHWARZ. Das Produkt ist 1/0 bedruckt — kein Espresso,
+   kein Olive, keine Flaeche. Wer hier eine Vollton-Rueckseite entwirft,
+   entwirft ein anderes Produkt. */
+
+/* Endformat-Rahmen und Sicherheitsabstand — nur auf dem Kontrollbogen. */
+.trim{position:absolute;left:5mm;top:5mm;width:220mm;height:110mm;
+  border:.2mm dashed #B64926;pointer-events:none}
+.safe{position:absolute;left:8mm;top:8mm;width:214mm;height:104mm;
+  border:.2mm dotted #746B03;pointer-events:none}
+
+/* FENSTER. 90 x 45 mm, 20 mm von links und 15 mm von unten — gemessen am
+   ENDFORMAT, deshalb ueberall 5 mm Beschnitt aufgeschlagen.
+   Das Datenblatt raeumt rund 1 mm Versatz bei der Fensterposition ein;
+   der Freihalte-Rahmen unten traegt dem Rechnung. */
+.window{position:absolute;left:calc(25*var(--mm));bottom:calc(20*var(--mm));
+  width:calc(90*var(--mm));height:calc(45*var(--mm));
+  border:.25mm solid #B64926;border-radius:1mm;
+  display:flex;align-items:center;justify-content:center}
+.window span{font-size:calc(3*var(--mm));letter-spacing:.1em;text-transform:uppercase;
+  color:#B64926}
+/* 2 mm Sicherheitsring um das Fenster, wegen des moeglichen Versatzes. */
+.window-clear{position:absolute;left:calc(23*var(--mm));bottom:calc(18*var(--mm));
+  width:calc(94*var(--mm));height:calc(49*var(--mm));
+  border:.2mm dotted #B64926;opacity:.6}
+
+/* Briefmarkenfeld oben rechts, freizuhalten. */
+.stamp{position:absolute;right:calc(10*var(--mm));top:calc(10*var(--mm));
+  width:calc(45*var(--mm));height:calc(28*var(--mm));
+  border:.2mm dotted #999;display:flex;align-items:center;justify-content:center}
+.stamp span{font-size:calc(2.8*var(--mm));letter-spacing:.1em;text-transform:uppercase;color:#999}
+
+/* --- Der eigentliche Druck --- */
+.sender{position:absolute;left:calc(13*var(--mm));top:calc(11*var(--mm));}
+.sender .mark{font-family:"Playfair",Georgia,serif;font-weight:600;
+  font-size:calc(11*var(--mm));line-height:1;margin:0;letter-spacing:-.01em}
+.sender .eyebrow{font-weight:600;font-size:calc(2.6*var(--mm));letter-spacing:.3em;
+  text-transform:uppercase;margin:0 0 calc(2*var(--mm))}
+.sender hr{height:.25mm;background:#000;border:0;width:calc(30*var(--mm));
+  margin:calc(3*var(--mm)) 0 calc(2.5*var(--mm))}
+.sender .addr{font-size:calc(3*var(--mm));line-height:1.45;margin:0}
+
+/* Absenderzeile direkt ueber dem Fenster — postalisch die Stelle, an der
+   der Absender bei Fensterumschlaegen steht. Klein, damit sie die
+   Empfaengeranschrift im Fenster nicht stoert. */
+.retline{position:absolute;left:calc(25*var(--mm));bottom:calc(70*var(--mm));
+  font-size:calc(2.5*var(--mm));letter-spacing:.02em;margin:0}
+
+.label{font-size:3.4mm;letter-spacing:.18em;text-transform:uppercase;color:#8a8178;margin:0}
+.note{font-size:3.2mm;line-height:1.5;color:#6b625a;max-width:200mm;text-align:center;margin:0}
+.legend{display:flex;gap:8mm;font-size:3mm;color:#6b625a}
+.legend b{font-weight:600}
+
+/* DRUCKDATEN. Eine Seite, nur Schwarz, keine Hilfslinien.
+   Fenster, Endformat, Sicherheitsabstand und Briefmarkenfeld sind
+   Kontrollmittel und haben hier nichts zu suchen — was sichtbar ist, wird
+   gedruckt. Die Freiflaechen entstehen dadurch, dass dort NICHTS steht. */
+html,body{width:230mm;height:120mm}
+.env{width:230mm;height:120mm}
+.trim,.safe,.window,.window-clear,.stamp,.label,.note,.legend{display:none}
+.page{width:230mm;height:120mm;gap:0}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="env">
+    <div class="sender">
+      <p class="eyebrow">Ristorante</p>
+      <p class="mark">Goldoni</p>
+      <hr>
+      <p class="addr">+49 (711) 659 98 89 &middot; ristorante-goldoni.de</p>
+    </div>
+    <p class="retline">Ristorante Goldoni &middot; Reinsburgstra&szlig;e 151 &middot; 70197 Stuttgart</p>
+  </div>
+</div>
+
+</body>
+</html>
