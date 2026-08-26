@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SITE } from "@/lib/site";
+import { SITE, partnerHref } from "@/lib/site";
 import type { DeliveryPartner } from "@/lib/site";
 import { requireLogo } from "@/lib/delivery-logos";
 
@@ -53,7 +53,7 @@ function MarketplaceTile({
 
   return (
     <a
-      href={partner.url}
+      href={partnerHref(partner)}
       target="_blank"
       // `noopener` only — see the note on OwnChannelButton for why `noreferrer`
       // is deliberately absent on ordering links.
@@ -122,7 +122,7 @@ function OwnChannelButton({
 
   return (
     <a
-      href={partner.url}
+      href={partnerHref(partner)}
       target="_blank"
       // `noopener` WITHOUT `noreferrer`. The pair is a copy-paste habit but does
       // two different jobs: `noopener` severs `window.opener` (the security

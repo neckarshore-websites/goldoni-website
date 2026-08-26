@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { STOREFRONT_PARTNER } from "../../src/lib/site";
+import { storefrontUrl } from "../../src/lib/site";
 
 /**
  * Guards the ordering CTAs on the two menu pages — and, just as importantly,
@@ -11,8 +11,14 @@ import { STOREFRONT_PARTNER } from "../../src/lib/site";
  * to every other kind of test. A stray `sm:` would put the buttons on phones
  * in landscape, which is precisely the surface still under review.
  *
- * Also guards the URL: every CTA must resolve from `STOREFRONT_PARTNER`, never
- * a pasted string. A new component is where a literal creeps in.
+ * Also guards the URL: every CTA must resolve from site.ts, never a pasted
+ * string. A new component is where a literal creeps in.
+ *
+ * Seit 2026-08-26 ist die erwartete Adresse `storefrontUrl("web")`, nicht die
+ * nackte `STOREFRONT_PARTNER.url`: Website-Flaechen tragen die Kanal-Kennung,
+ * damit eine Bestellung von hier von einer ueber Google oder die Wolt-App
+ * unterscheidbar ist. Die nackte Form bleibt die kanonische Quelle und steht
+ * weiterhin in der maschinenlesbaren Auskunft.
  *
  * WHY THE MOBILE ASSERTION IS NOT "no ordering path on phones": the footer
  * link stays on every viewport. The mobile checks therefore assert zero
@@ -37,7 +43,7 @@ for (const path of PAGES) {
     const fab = page.locator('[data-testid="order-cta-fab"]');
     await expect(fab).toHaveCount(1);
     await expect(fab).toBeVisible();
-    await expect(fab).toHaveAttribute("href", STOREFRONT_PARTNER.url);
+    await expect(fab).toHaveAttribute("href", storefrontUrl("web"));
     // noopener severs window.opener; noreferrer is deliberately absent so the
     // order is still attributed to this website. See OrderFab.tsx.
     await expect(fab).toHaveAttribute("rel", "noopener");
@@ -53,14 +59,14 @@ for (const path of PAGES) {
     const fab = page.locator('[data-testid="order-cta-fab"]');
     await expect(fab).toHaveCount(1);
     await expect(fab).toBeVisible();
-    await expect(fab).toHaveAttribute("href", STOREFRONT_PARTNER.url);
+    await expect(fab).toHaveAttribute("href", storefrontUrl("web"));
 
     // Variante A (Knopf IN der klebenden Kategorieleiste) ist nicht gewählt
     // worden und liegt weiterhin nur auf /sandbox.
     await expect(page.locator('[data-testid="order-cta-pill"]')).toHaveCount(0);
 
     // Non-vacuity: the page must still offer a way to order at all.
-    const orderLinks = page.locator(`a[href="${STOREFRONT_PARTNER.url}"]`);
+    const orderLinks = page.locator(`a[href="${storefrontUrl("web")}"]`);
     expect(await orderLinks.count()).toBeGreaterThan(0);
   });
 }

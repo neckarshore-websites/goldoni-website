@@ -242,3 +242,20 @@ export type OrderChannel = "papier" | "web";
 export function storefrontUrl(channel: OrderChannel): string {
   return `${STOREFRONT_PARTNER.url}?utm_source=${channel}`;
 }
+
+/**
+ * Die Adresse, die eine WEBSITE-Flaeche fuer einen Lieferpartner verlinken soll.
+ *
+ * Nur der EIGENE Kanal bekommt die Web-Kennung. Ein Marktplatz-Link traegt sie
+ * nicht: `utm_source=web` bedeutet "ueber unsere Seite auf UNSEREN Bestellweg
+ * gekommen", und an einen Dritten unsere Kanal-Kennung anzuhaengen misst nichts
+ * und erzaehlt seinem Auswertungswerkzeug etwas ueber uns.
+ *
+ * Warum das eine Funktion ist und kein Namensvergleich in der Komponente: die
+ * Hierarchie liegt als DATEN im `channel`-Feld (siehe DeliveryChannel oben), und
+ * `PARTNER_LOGOS` in DeliveryBanner.tsx zeigt bereits, was namensbasierte Logik
+ * kostet — sie bricht still, sobald ein Partner umbenannt oder ergaenzt wird.
+ */
+export function partnerHref(partner: DeliveryPartner): string {
+  return partner.channel === "own" ? storefrontUrl("web") : partner.url;
+}

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { SITE } from "@/lib/site";
+import { SITE, partnerHref } from "@/lib/site";
 import { SpotifyLink } from "@/components/SpotifyLink";
 import { SocialIconLink } from "@/components/SocialIconLink";
 
@@ -161,7 +161,7 @@ export function Footer() {
                 {SITE.delivery.map((partner) => (
                   <li key={partner.name}>
                     <a
-                      href={partner.url}
+                      href={partnerHref(partner)}
                       target="_blank"
                       // `noopener` only, no `noreferrer` — ordering links must
                       // keep their Referer so the order can be credited to this
