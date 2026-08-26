@@ -1,19 +1,13 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-07-29",
+  "updated": "2026-08-26",
   "categories": [
     {
       "id": "antipasti",
       "name": "Antipasti",
       "subtitle": "Vorspeisen",
       "items": [
-        {
-          "name": "Affettato di porchetta tonnata con scaglie di radicchio",
-          "description": "Saftige Spanferkelscheiben an Thunfischcreme und Radicchiosalat",
-          "price": "15.50",
-          "allergens": ["D", "G", "I", "J"]
-        },
         {
           "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
           "description": "Frittierte Auberginentürmchen mit geräuchertem Scamorzakäse und Mozzarella",
@@ -22,11 +16,10 @@
           "diet": ["vegetarian"]
         },
         {
-          "name": "Insalata estiva di anguria, formaggio caprino, cetriolo ed olive Taggiasche",
-          "description": "Salat von Wassermelone, Schafskäse, knackiger Gurke und entsteinten Oliven",
-          "price": "14.50",
-          "allergens": ["G"],
-          "diet": ["vegetarian"]
+          "name": "Carpaccio di pescespada marinato agli agrumi calabresi su cicoria rossa",
+          "description": "Mariniertes Schwertfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
+          "price": "16.50",
+          "allergens": ["D", "H"]
         }
       ]
     },
@@ -36,30 +29,29 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Mezzelune ripiene con fichi e noci in cremetta di Gorgonzola",
-          "description": "Nudeln mit Feigen-Walnussfüllung an Gorgonzola-Creme",
-          "price": "20.50",
-          "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
+          "name": "Tortellacci ripieni al tartufo in crema di Grana Padano",
+          "description": "Nudeln mit Trüffelfüllung an Granakäse-Creme",
+          "price": "20.00",
+          "allergens": ["A", "C", "F", "G", "I", "J", "N", "2", "3"],
           "diet": ["vegetarian"]
         },
         {
-          "name": "Strozzapreti con il pollo „Bio“ in un sughetto di pomodoro",
-          "description": "Priesterwürger mit „Bio“-Hähnchenunterkeulen in einer Tomatensoße",
-          "price": "19.00",
-          "allergens": ["A", "C", "I"]
+          "name": "Strozzapreti all'Amatriciana",
+          "description": "Priesterwürger an Tomatensoße, mit Schweinebacke und Schafskäse (altes Rezept aus Rom)",
+          "price": "19.50",
+          "allergens": ["A", "C", "G", "I"]
         },
         {
-          "name": "Linguine con gamberone gigante „Black Tiger“ incoronato da burrata",
-          "description": "Linguine mit einer Riesengarnele „Black Tiger“ (geschält), gekrönt mit Burratakäse",
-          "price": "25.50",
-          "allergens": ["A", "B", "D", "G"]
+          "name": "Linguine con il tonno fresco ed i funghi cantarelli",
+          "description": "Linguine mit Thunfischstücken und Pfifferlingen",
+          "price": "24.50",
+          "allergens": ["A", "D", "G"]
         },
         {
-          "name": "Pizza bianca alla parmigiana di melanzane vestita di pesto e incoronata da bufala",
-          "description": "Pizza (weiße Basis) mit frittierten Auberginen, gekrönt mit Büffelmozzarella und geschmückt mit Basilikum-Pesto",
-          "price": "18.50",
-          "allergens": ["A", "C", "G"],
-          "diet": ["vegetarian"]
+          "name": "Pizza a base bianca con la salsiccia fresca e cime di rapa",
+          "description": "Pizza (weiße Basis) mit kalabresischer Bratwurst und Stängelkohl",
+          "price": "17.50",
+          "allergens": ["A", "G", "H", "3"]
         }
       ]
     },
@@ -69,21 +61,21 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Piccata al limone",
-          "description": "Kalbsschnitzel an Zitronensoße, mit Beilage",
-          "price": "32.00",
-          "allergens": ["A", "G"]
+          "name": "Ossobuco alla milanese con contorno di verdura",
+          "description": "Kalbshaxe nach Mailänder Art, dazu Beilage",
+          "price": "34.00"
         },
         {
-          "name": "Cotoletta di maiale al tegame in crema di burro e salvia",
-          "description": "Schweinekotelett aus der Pfanne an Butter-Salbeisoße, dazu Beilage",
-          "price": "35.00"
+          "name": "Bistecca Fiorentina al forno",
+          "description": "Fiorentinasteak aus dem Ofen, mit Beilage",
+          "price": "110.00",
+          "volume": "ca. 1400 g / 2–3 Personen"
         },
         {
-          "name": "Freschissime bistecche di tonno alla griglia con rucola e pomodorini",
-          "description": "Thunfischsteak vom Lavastein-Grill mit Rucola und Kirschtomaten, mit Beilage",
+          "name": "Medaglioni di rana pescatrice in crema di menta e pistacchio",
+          "description": "Seeteufelmedaillons an Minz-Pistaziensoße, mit Beilage",
           "price": "35.00",
-          "allergens": ["D"]
+          "allergens": ["D", "H", "S"]
         },
         {
           "name": "Filetti di orata reale ai ferri",

@@ -11,12 +11,22 @@
       "priceGlass": "10,–"
     },
     {
-      "name": "Ottella",
-      "producer": "Montresor",
+      "name": "Bianco",
+      "producer": "Tasca d'Almerita",
       "classification": "DOC",
-      "year": 2023,
-      "region": "Lombardei",
-      "grapes": "100 % Lugana",
+      "year": 2024,
+      "region": "Sizilien",
+      "grapes": "Inzolia, Catarratto, Grecanico",
+      "priceBottle": "30,–",
+      "priceGlass": "8,50"
+    },
+    {
+      "name": "Greco",
+      "producer": "Statti",
+      "classification": "IGT",
+      "year": 2025,
+      "region": "Kalabrien",
+      "grapes": "100 % Greco Bianco",
       "priceBottle": "30,–",
       "priceGlass": "8,50"
     }
@@ -31,16 +41,6 @@
       "grapes": "Cuvée Corvina, Rondinella",
       "priceBottle": "35,–",
       "priceGlass": "10,–"
-    },
-    {
-      "name": "Villa Antinori",
-      "producer": "Antinori",
-      "classification": "IGT",
-      "year": 2023,
-      "region": "Toskana",
-      "grapes": "Cuvée Sangiovese, Syrah, Cabernet, Merlot",
-      "priceBottle": "40,–",
-      "priceGlass": "12,50"
     },
     {
       "name": "DUEDIDUE",
@@ -59,13 +59,17 @@
         "name": "Pinot Grigio",
         "volume": "0,2 l",
         "priceGlass": "7,50",
-        "allergens": ["S"]
+        "allergens": [
+          "S"
+        ]
       },
       {
         "name": "Chardonnay",
         "volume": "0,2 l",
         "priceGlass": "7,50",
-        "allergens": ["S"]
+        "allergens": [
+          "S"
+        ]
       }
     ],
     "rosato": [
@@ -73,7 +77,9 @@
         "name": "Rosé",
         "volume": "0,2 l",
         "priceGlass": "7,50",
-        "allergens": ["S"]
+        "allergens": [
+          "S"
+        ]
       }
     ],
     "rot": [
@@ -81,13 +87,17 @@
         "name": "Nero d'Avola",
         "volume": "0,2 l",
         "priceGlass": "8,–",
-        "allergens": ["S"]
+        "allergens": [
+          "S"
+        ]
       },
       {
         "name": "Primitivo",
         "volume": "0,2 l",
         "priceGlass": "8,–",
-        "allergens": ["S"]
+        "allergens": [
+          "S"
+        ]
       }
     ]
   }
