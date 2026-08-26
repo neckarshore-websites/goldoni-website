@@ -15,9 +15,10 @@
  * human before a print order.
  *
  * The reason it exists at all is written out in the Swift file: on 2026-08-26 shortening
- * the printed address shrank the matrix from 49x49 to 37x37 and made the styled code
- * unscannable, while the generator's own check stayed green because it decodes a
- * square-eyed approximation rather than the artifact.
+ * the printed address shrank the matrix from 49x49 to 37x37 and exposed a half-module
+ * error in the finder-pattern geometry that had been there all along. Every phone failed
+ * on the code while the generator's own check stayed green, because that check builds its
+ * own picture instead of reading the delivered one.
  *
  * ALSO RENDERS AT A DELIBERATELY MODEST SIZE. 600 px is close to what a phone actually
  * resolves off a postcard held at arm's length — verifying only at 1600 px would pass

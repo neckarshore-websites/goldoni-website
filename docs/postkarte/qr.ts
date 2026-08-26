@@ -22,12 +22,14 @@
  * So this script rasterises the geometry and hands it to jsQR.
  *
  * READ THIS BEFORE TRUSTING THE CHECK BELOW. It is a PAYLOAD check, not a readability
- * check, and on 2026-08-26 that difference cost a working QR code. The rasteriser draws
- * the finder eyes as SQUARES; the emitted SVG draws them ROUNDED. So this decodes a
- * picture the artifact does not look like, and it stayed green while the real code was
- * unscannable by every phone on the planet. jsQR cannot read the styled SVG at all — not
- * even the versions that scan perfectly — which is why the honest split is: this checks
- * the data, `npm run pruef:druck-qr` (Apple Vision, macOS) checks whether it scans.
+ * check, and on 2026-08-26 that difference cost half a day. The rasteriser builds its own
+ * picture from the module data — at the CORRECT finder positions — while the emitted SVG
+ * drew those finders half a module off. So it verified geometry the artifact did not have
+ * and stayed green while every phone failed on the real code.
+ *
+ * The lesson is not "rasterise more carefully". It is that a second pair of eyes is only a
+ * second pair of eyes if it looks at the SAME THING — here, the delivered SVG. That is
+ * what `npm run pruef:druck-qr` (Apple Vision, macOS) does, and why it exists.
  * The emblem is rasterised as solid black, the harshest thing that could sit
  * there. If it survives that, marinara is not going to trouble it.
  */
@@ -49,27 +51,18 @@ import { ORDER_LANDING } from "../../src/lib/site";
 const url = ORDER_LANDING;
 
 /**
- * READABILITY IS AN OPEN QUESTION ON THIS ARTIFACT — measured 2026-08-26, not assumed.
+ * LESBARKEIT IST GEMESSEN, NICHT ANGENOMMEN — und sie war am 26.08.2026 einen halben Tag
+ * lang nicht gegeben. Die Ursache lag in der Geometrie der Suchmarken (siehe den langen
+ * Kommentar bei FINDERS), nicht in der Gestaltung und nicht in der Codegroesse.
  *
- * Apple's Vision decoder (the engine in the iPhone camera) does NOT read the styled code
- * this file emits. Measured against a control, single-render, no rescaling, both colour
- * variants:
+ * Belegt mit Apples Vision-Dekodierer, der Maschine in der iPhone-Kamera: nach der
+ * Korrektur lesen sich beide Farbvarianten; davor las sich keine einzige von sieben
+ * durchprobierten Gestaltungen, auch die voellig schlichte nicht.
  *
- *   plain unstyled QR, same payload -> reads at 4, 8, 16, 24, 32, 40 px per module
- *   this styled QR                  -> reads at NONE of those sizes
- *
- * Raising the QR version was tried and is NOT the fix (37x37, 41x41 and 49x49 all fail).
- * The variable is the STYLING: separated round modules and rounded finder eyes. Whether a
- * given styled code happens to decode appears to depend on the payload — the previous
- * artifact, carrying the long Wolt URL, did decode in the same harness. That is not a
- * property anyone should ship 500 beermats on.
- *
- * The check at the bottom of this file cannot see any of this: it rasterises the finder
- * eyes as SQUARES and reads that with jsQR, so it verifies a shape the SVG does not draw.
- * It stayed green throughout. Treat it as a PAYLOAD check only.
- *
- * NOTHING HERE IS CLEARED FOR PRINT until `npm run pruef:druck-qr` passes and a real phone
- * has scanned a real proof. The styling-versus-reliability call is the Founder's.
+ * Die Pruefung am Ende dieser Datei ist und bleibt eine NUTZLAST-Pruefung. Sie rastert
+ * eigenstaendig und kann Fehler im ausgelieferten SVG grundsaetzlich nicht sehen — sie hat
+ * genau das bewiesen, indem sie waehrend des ganzen Defekts gruen blieb. Vor jedem Druck
+ * gilt deshalb zusaetzlich: npm run pruef:druck-qr
  */
 const qr = QRCode.create(url, { errorCorrectionLevel: "H" });
 const N: number = qr.modules.size;
@@ -135,9 +128,36 @@ export function toSvg(s: QrStyle): string {
     .join("");
   parts.push(`<path fill="${s.module}" d="${dots}"/>`);
 
+  /*
+   * DIE SUCHMARKE IST 7x7 MODULE GROSS, UND SIE WAR ES HIER LANGE NICHT.
+   *
+   * Eine SVG-Kontur liegt MITTIG auf der Kante. Ein 7x7-Rechteck mit
+   * `stroke-width="1"` reicht deshalb von -0,5 bis 7,5 — die gezeichnete Marke ist
+   * 8x8 und um ein halbes Modul verschoben. Genau das stand hier. Richtig ist ein
+   * 6x6-Rechteck ab (fx+0,5): die Kontur deckt dann fx..fx+1 und fx+6..fx+7, also
+   * exakt den aeusseren Modulring.
+   *
+   * WAS DIESER HALBE MODULRAND GEKOSTET HAT: Apples Vision-Dekodierer hat den Code
+   * ueberhaupt nicht mehr gefunden — Suchmarken sind das Erste, wonach jeder
+   * Dekodierer sucht. Aufgefallen ist es erst am 26.08.2026, als die gedruckte
+   * Adresse kuerzer wurde und die Matrix von 49x49 auf 37x37 schrumpfte; bei der
+   * groesseren Matrix war der Fehler offenbar noch verzeihlich. Gemessen: mit dieser
+   * Korrektur lesen sich SIEBEN durchprobierte Gestaltungsvarianten, ohne sie KEINE
+   * einzige — auch nicht die voellig schlichte. Die Gestaltung war nie das Problem.
+   *
+   * DASS DIE SELBSTPRUEFUNG UNTEN NICHTS GEMERKT HAT, ist keine Nachlaessigkeit,
+   * sondern die Pointe: ihr Rasterer zeichnet die Suchmarken an den RICHTIGEN
+   * Modulpositionen. Sie hat also durchgehend die korrekte Geometrie geprueft und
+   * damit den Fehler im SVG verdeckt. Ein zweites Auge auf dieselbe Sache ist nur
+   * dann eines, wenn es dieselbe Sache ansieht — hier das ausgelieferte SVG, was
+   * `npm run pruef:druck-qr` jetzt tut.
+   *
+   * Der Eckradius folgt der Verschiebung: 2,1 am aeusseren Rand entspricht 1,6 auf
+   * der Konturmitte, damit die Marke aussieht wie vorher.
+   */
   for (const [fx, fy] of FINDERS) {
     parts.push(
-      `<rect x="${fx}" y="${fy}" width="7" height="7" rx="2.1" ry="2.1" fill="none" stroke="${s.eye}" stroke-width="1"/>`,
+      `<rect x="${fx + 0.5}" y="${fy + 0.5}" width="6" height="6" rx="1.6" ry="1.6" fill="none" stroke="${s.eye}" stroke-width="1"/>`,
       `<rect x="${fx + 2}" y="${fy + 2}" width="3" height="3" rx="1" ry="1" fill="${s.eye}"/>`,
     );
   }

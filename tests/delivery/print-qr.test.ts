@@ -8,22 +8,18 @@ import { ORDER_LANDING, ORDER_PATH } from "../../src/lib/site";
  * not pretend to guard the rest.
  *
  * WHAT IT DOES NOT CHECK, AND WHY THAT IS STATED HERE RATHER THAN QUIETLY OMITTED:
- * whether the codes actually SCAN. Measured 2026-08-26 against Apple's Vision decoder,
- * single-render, with a control:
+ * whether the codes actually SCAN. jsQR — the only decoder available on the Linux runner —
+ * cannot read these styled codes even when they are correct and phones read them
+ * instantly. A decode assertion here would therefore be either impossible or, worse,
+ * passable by decoding a re-drawn approximation instead of the delivered artifact.
  *
- *   plain unstyled QR, same payload -> reads at 4, 8, 16, 24, 32, 40 px per module
- *   the styled postcard/beermat QR  -> reads at none of them
- *
- * jsQR — the only decoder available on the Linux runner — cannot read the styled codes
- * either, including ones that phones read instantly. So a decode assertion in CI would be
- * either impossible or, worse, passable by decoding a squared-up approximation of the
- * artifact instead of the artifact. That is precisely the mistake already sitting in
- * `docs/postkarte/qr.ts`: its self-check rasterises the finder eyes as squares, and it
- * stayed green while the emitted code was unreadable.
+ * That is not hypothetical. It is exactly what `docs/postkarte/qr.ts` does, and on
+ * 2026-08-26 it stayed green for months over finder patterns drawn half a module off —
+ * a defect that made the emitted code unreadable to every phone the moment the matrix got
+ * small enough to stop being forgiving.
  *
  * Readability is therefore gated OUTSIDE CI, by `npm run pruef:druck-qr` (macOS, Apple
- * Vision) plus a real phone on a real proof, before any print order. A red gate there is
- * the current state of the styled variants and is not a defect in this file.
+ * Vision) plus a real phone on a real proof, before any print order.
  */
 
 let pass = 0,

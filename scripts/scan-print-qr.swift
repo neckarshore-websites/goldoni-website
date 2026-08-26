@@ -5,29 +5,27 @@
 //
 // WHY THIS EXISTS, and it is not a nice-to-have.
 //
-// On 2026-08-26 the printed ordering address changed from the long Wolt URL to our own
-// short `/bestellen` path. The QR matrix shrank with it, from 49x49 modules to 37x37, and
-// at 37x37 the STYLED code — round modules, rounded finder eyes, centre emblem — stopped
-// being readable by Vision entirely. Not marginal: no read at any render size.
+// On 2026-08-26 the printed ordering address moved to our own short `/bestellen` path and
+// the QR matrix shrank from 49x49 modules to 37x37. At that size the emitted code stopped
+// being readable at all — Apple Vision found nothing, at any render size, both colour
+// variants. Confirmed on an actual iPhone before anything was changed.
 //
-// Nothing caught it. `docs/postkarte/qr.ts` carries its own decode check and that check
-// stayed green, because it rasterises the finder eyes as SQUARES while the emitted SVG
-// draws them ROUNDED, and then reads that different picture with jsQR. It was verifying a
-// shape the artifact does not have. A guard that is green on an unscannable code is worse
-// than no guard, because it is trusted.
+// The cause was NOT the styling, which was the first suspect and the wrong one. An SVG
+// stroke sits centred on the edge, so the finder patterns — drawn as 7x7 rects with a
+// 1-module stroke — actually covered 8x8 and sat half a module off. Finder patterns are
+// the first thing any decoder looks for. Measured: with the geometry corrected, seven
+// different stylings all decode; without it, none of them do, including a completely plain
+// one. The larger matrix had been forgiving of the same defect for months.
 //
-// Measured, so the next person does not have to rediscover it:
-//   - 37x37 (version 5) styled  -> no read, any size, both variants
-//   - 41x41 (version 6) styled  -> no read
-//   - 49x49 (version 8) styled  -> reads from ~400 px upward, both variants
-//   - the same short URL as a PLAIN, unstyled code -> reads fine
-// So the payload was never the problem. The styling costs robustness, and that cost is
-// only affordable from version 8 upward. `qr.ts` pins the version for that reason.
+// NOTHING CAUGHT IT. `docs/postkarte/qr.ts` carries its own decode check and it stayed
+// green throughout, because it rasterises its own picture from the module data at the
+// CORRECT finder positions. It was verifying geometry the artifact did not have. A guard
+// that is green on an unscannable code is worse than no guard, because it is trusted —
+// and the fix is not a better rasteriser but a check that reads the DELIVERED file.
 //
-// WHY jsQR IS NOT USED HERE. jsQR cannot read these styled codes at all — not even the
-// version-8 ones that Vision and phones read without hesitation. It is a stricter, simpler
-// detector. So the CI suite deliberately does NOT claim to decode the print artifacts; it
-// checks the constants, the lock file and the geometry. THIS script is the readability
+// WHY jsQR IS NOT USED HERE. jsQR cannot read these styled codes even when they are
+// correct and phones read them instantly. It is a stricter, simpler detector. So the CI
+// suite deliberately makes no claim about scannability; this script is the readability
 // gate, it is macOS-only, and it is a required step before any print order.
 
 import Foundation
