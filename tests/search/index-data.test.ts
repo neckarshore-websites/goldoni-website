@@ -55,10 +55,21 @@ check("minisearch finds a FAQ by topic", () => {
   assert.ok(hits.some((h) => h.type === "faq"), "no FAQ hit for 'reservieren'");
 });
 check("minisearch finds a wine", () => {
+  // Term is DERIVED from the current wine data, never pinned to one bottle: the
+  // Empfehlungskarte swaps its wines weekly, and a hardcoded producer turns this
+  // test red on a content update that is entirely correct (happened 2026-08-26
+  // when "Villa Antinori" left the card).
+  const wine = docs.find((d) => d.type === "wine");
+  assert.ok(wine, "no wine doc in the index at all");
+  const term = wine.title
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter((w) => w.length >= 4)
+    .sort((a, b) => b.length - a.length)[0];
+  assert.ok(term, `no searchable token in wine title "${wine.title}"`);
   const mini = new MiniSearch({ fields: ["title", "text"], storeFields: ["url", "type"] });
   mini.addAll(docs);
-  const hits = mini.search("antinori", { fuzzy: 0.2, prefix: true });
-  assert.ok(hits.some((h) => h.type === "wine"), "no wine hit for 'antinori'");
+  const hits = mini.search(term, { fuzzy: 0.2, prefix: true });
+  assert.ok(hits.some((h) => h.type === "wine"), `no wine hit for '${term}'`);
 });
 
 console.log(`index-data: ${pass} passed, ${fail} failed`);
