@@ -1,4 +1,4 @@
-import { SITE, STOREFRONT_PARTNER } from "./site";
+import { SITE, STOREFRONT_PARTNER, storefrontUrl } from "./site";
 
 /**
  * E-Mail-Signaturen für Ristorante Goldoni.
@@ -48,7 +48,7 @@ const link = (href: string, text: string, color = ACCENT) =>
 
 function qrCell(size: number) {
   return `<td style="padding:0 0 0 24px;vertical-align:top;">
-        <a href="${STOREFRONT_PARTNER.url}" style="text-decoration:none;">
+        <a href="${storefrontUrl("web")}" style="text-decoration:none;">
           <img src="${QR_SRC}" width="${size}" height="${size}" alt="QR-Code zur Online-Bestellung bei Ristorante Goldoni" style="display:block;border:0;outline:none;width:${size}px;height:${size}px;" />
         </a>
         <div style="font-family:${FONT};font-size:10px;line-height:14px;color:${MUTED};text-align:center;padding-top:4px;width:${size}px;">Direkt bestellen</div>
@@ -118,7 +118,7 @@ export const SIGNATURE_B = `<table cellpadding="0" cellspacing="0" border="0" st
           .join("\n        ")}
       </table>
       <div style="font-family:${FONT};font-size:13px;line-height:20px;color:${INK};padding-top:10px;">
-        ${link(STOREFRONT_PARTNER.url, "&#9679; Jetzt online bestellen")}
+        ${link(storefrontUrl("web"), "&#9679; Jetzt online bestellen")}
       </div>
     </td>
     ${qrCell(110)}

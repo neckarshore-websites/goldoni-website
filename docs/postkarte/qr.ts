@@ -19,7 +19,15 @@
  * until something reads the pixels back. A styled code that does not scan is a
  * printed dead end, and looking at it on screen tells you nothing.
  *
- * So this script rasterises the exact geometry it emits and hands it to jsQR.
+ * So this script rasterises the geometry and hands it to jsQR.
+ *
+ * READ THIS BEFORE TRUSTING THE CHECK BELOW. It is a PAYLOAD check, not a readability
+ * check, and on 2026-08-26 that difference cost a working QR code. The rasteriser draws
+ * the finder eyes as SQUARES; the emitted SVG draws them ROUNDED. So this decodes a
+ * picture the artifact does not look like, and it stayed green while the real code was
+ * unscannable by every phone on the planet. jsQR cannot read the styled SVG at all — not
+ * even the versions that scan perfectly — which is why the honest split is: this checks
+ * the data, `npm run pruef:druck-qr` (Apple Vision, macOS) checks whether it scans.
  * The emblem is rasterised as solid black, the harshest thing that could sit
  * there. If it survives that, marinara is not going to trouble it.
  */
@@ -28,9 +36,41 @@ import { join } from "node:path";
 import QRCode from "qrcode";
 import { PNG } from "pngjs";
 import jsQR from "jsqr";
-import { STOREFRONT_PARTNER } from "../../src/lib/site";
+import { ORDER_LANDING } from "../../src/lib/site";
 
-const url = STOREFRONT_PARTNER.url;
+/**
+ * SINCE 2026-08-26 THIS IS OUR OWN DOMAIN, not the storefront address.
+ * `/bestellen` redirects to Wolt carrying `utm_source=papier`. Two reasons, and the
+ * first is the one that cannot be bought back later: a printed code encoding
+ * `order.site/...` is dead paper the day that address changes, while one encoding our
+ * domain is a redirect edit away from pointing anywhere. Full reasoning at ORDER_PATH
+ * in src/lib/site.ts (Founder decision).
+ */
+const url = ORDER_LANDING;
+
+/**
+ * READABILITY IS AN OPEN QUESTION ON THIS ARTIFACT — measured 2026-08-26, not assumed.
+ *
+ * Apple's Vision decoder (the engine in the iPhone camera) does NOT read the styled code
+ * this file emits. Measured against a control, single-render, no rescaling, both colour
+ * variants:
+ *
+ *   plain unstyled QR, same payload -> reads at 4, 8, 16, 24, 32, 40 px per module
+ *   this styled QR                  -> reads at NONE of those sizes
+ *
+ * Raising the QR version was tried and is NOT the fix (37x37, 41x41 and 49x49 all fail).
+ * The variable is the STYLING: separated round modules and rounded finder eyes. Whether a
+ * given styled code happens to decode appears to depend on the payload — the previous
+ * artifact, carrying the long Wolt URL, did decode in the same harness. That is not a
+ * property anyone should ship 500 beermats on.
+ *
+ * The check at the bottom of this file cannot see any of this: it rasterises the finder
+ * eyes as SQUARES and reads that with jsQR, so it verifies a shape the SVG does not draw.
+ * It stayed green throughout. Treat it as a PAYLOAD check only.
+ *
+ * NOTHING HERE IS CLEARED FOR PRINT until `npm run pruef:druck-qr` passes and a real phone
+ * has scanned a real proof. The styling-versus-reliability call is the Founder's.
+ */
 const qr = QRCode.create(url, { errorCorrectionLevel: "H" });
 const N: number = qr.modules.size;
 const DATA: Uint8Array = qr.modules.data as unknown as Uint8Array;
@@ -208,7 +248,12 @@ function main() {
     console.error(`FEHLER: dekodiert zu ${decoded.data}, erwartet ${url}`);
     process.exit(1);
   }
-  console.log("Dekodiert: identisch mit der URL des Bestell-Buttons.");
+  console.log("Nutzlast : stimmt mit der gedruckten Bestell-Adresse ueberein.");
+  console.log(
+    "HINWEIS  : das oben prueft die MODULDATEN, nicht die Lesbarkeit der gestylten\n" +
+      "           Zeichnung — der Rasterer hier zeichnet die Suchmarken eckig, das SVG\n" +
+      "           rundet sie ab. Vor jedem Druck zusaetzlich: npm run pruef:druck-qr",
+  );
 }
 
 main();

@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { buildLegacyRedirects } from "./src/lib/redirects";
+import { ORDER_PATH, storefrontUrl } from "./src/lib/site";
 
 const nextConfig: NextConfig = {
   images: {
@@ -34,7 +35,23 @@ const nextConfig: NextConfig = {
    *      That subset of traffic is vanishingly small (modern links
    *      use apex; legacy deeplinks use apex from the WP era too).
    *
-   *   2. Legacy WordPress redirects — see src/lib/redirects.ts.
+   *   2. The printed ordering path — `/bestellen` -> the Wolt Storefront,
+   *      carrying `utm_source=papier`. See ORDER_PATH in src/lib/site.ts
+   *      for the decision behind it (Founder, 2026-08-26).
+   *
+   *      `permanent: false` (307) IS THE POINT, not an oversight. A 308 is
+   *      cached by the browser indefinitely, which would hand back exactly
+   *      the property this construction was chosen to buy: a printed code
+   *      that can be repointed later. Whoever "corrects" this to permanent
+   *      for SEO tidiness turns every already-scanned card into a permanent
+   *      client-side alias to an address we may no longer use. Nothing links
+   *      here for ranking; there is no link equity to preserve.
+   *
+   *      Both slash forms are listed so a hand-typed `/bestellen/` resolves
+   *      in ONE hop and does not pick up a permanent cache entry from the
+   *      generic trailing-slash rule that would otherwise catch it.
+   *
+   *   3. Legacy WordPress redirects — see src/lib/redirects.ts.
    *      `permanent: true` emits HTTP 308 (preserves method,
    *      equivalent to 301 for SEO link-equity transfer).
    */
@@ -46,6 +63,11 @@ const nextConfig: NextConfig = {
         destination: "https://ristorante-goldoni.de/:path*",
         permanent: true,
       },
+      ...[ORDER_PATH, `${ORDER_PATH}/`].map((source) => ({
+        source,
+        destination: storefrontUrl("papier"),
+        permanent: false,
+      })),
       ...buildLegacyRedirects(),
     ];
   },

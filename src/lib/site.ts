@@ -190,3 +190,55 @@ export const SITE = {
 } as const;
 
 export type SiteConfig = typeof SITE;
+
+/**
+ * WHERE AN ORDER CAME FROM — the marker that had to be decided before the print run.
+ *
+ * Founder decision 2026-08-26 (option 1 of three): the printed codes do NOT encode the
+ * Wolt address. They encode a path on our own domain that redirects there. Two properties
+ * follow, and only the second is about measurement:
+ *
+ *   1. REPOINTABLE. Paper cannot be patched. A code encoding `order.site/...` is dead the
+ *      day that address changes or the partner does; a code encoding OUR domain is one
+ *      redirect edit away from pointing anywhere. This repo already shows that direction
+ *      of travel — the marketplace entry was removed over commission (see DELIVERY above).
+ *   2. ATTRIBUTED. The redirect appends `utm_source=papier`; the site's own button and the
+ *      e-mail signature carry `utm_source=web`.
+ *
+ * WHY THE WEB SIDE IS MARKED TOO rather than being "the unmarked one": an order with no
+ * marker is not a website order. It is a website order OR a Google order OR one placed in
+ * the Wolt app OR someone typing the address. Absence identifies nothing, so the coarse
+ * split the decision asked for needs both halves named.
+ *
+ * THE E-MAIL SIGNATURE COUNTS AS WEB, not paper. It is a screen, and `papier` has to stay
+ * a clean answer to the one question the print run is meant to settle — does printed
+ * matter pull anyone onto our own ordering channel.
+ *
+ * WHAT STAYS BARE, deliberately: `structured-data.ts`. A utm-tagged `potentialAction`
+ * target would relabel search-engine-originated orders as ours.
+ *
+ * WHETHER WOLT'S MERCHANT PORTAL REPORTS THE MARKER IS UNMEASURED — we cannot see inside
+ * that portal, and nothing here should be read as a claim that we can. What IS measured
+ * (2026-08-26, curl): the parameter survives the request — HTTP 200, no redirect, zero
+ * hops, nothing stripped.
+ */
+export const ORDER_PATH = "/bestellen";
+
+/**
+ * The address that gets PRINTED. Derived from `SITE.url`, never written out a second
+ * time: a hand-copied URL is exactly the drift `scripts/generate-storefront-qr.ts` exists
+ * to prevent, and here it would be worse than usual, because the copy that is wrong is
+ * the one on 500 beermats.
+ */
+export const ORDER_LANDING = `${SITE.url}${ORDER_PATH}`;
+
+export type OrderChannel = "papier" | "web";
+
+/**
+ * The storefront address carrying its channel marker. `STOREFRONT_PARTNER.url` stays the
+ * bare canonical form — every marked variant is derived from it here, so the venue path
+ * has exactly one source.
+ */
+export function storefrontUrl(channel: OrderChannel): string {
+  return `${STOREFRONT_PARTNER.url}?utm_source=${channel}`;
+}
