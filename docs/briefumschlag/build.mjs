@@ -3,8 +3,16 @@
  *
  *   node docs/briefumschlag/build.mjs --pdf
  *
- * Kein QR-Code: der Umschlag ist 1/0 schwarz bedruckt, und ein QR-Code
- * gehoert auf das, was drin liegt, nicht auf die Huelle.
+ * Kein QR-Code, und der Grund hat sich nicht geaendert, obwohl die Farbigkeit es hat:
+ * ein Bestellweg gehoert auf das, was drin liegt, nicht auf die Huelle.
+ *
+ * ACHTUNG, DIE ENTSCHEIDUNG IST DIESER DATEI VORAUS. Der Betreiber hat am 2026-08-25
+ * auf 4/4 (vierfarbig beidseitig) entschieden; dieses Skript erzeugt weiterhin EINE
+ * Seite, einfarbig schwarz. Der Kommentar sagte bis dahin schlicht "1/0" und stimmte
+ * damit mit der Datei, aber nicht mehr mit der Absicht ueberein.
+ * Nicht stillschweigend nachgezogen: aus 1/0 einseitig 4/4 beidseitig zu machen ist
+ * Gestaltungsarbeit an zwei Flaechen, keine Umstellung eines Schalters — und
+ * Gestaltung nimmt hier der Betreiber ab, nicht das Bauskript.
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";

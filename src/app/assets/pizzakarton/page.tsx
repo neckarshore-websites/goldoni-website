@@ -39,6 +39,56 @@ export default function Page() {
         ["Schrift positiv", "mindestens 10 pt (3,53 mm)"],
         ["Schrift negativ", "mindestens 12 pt (4,23 mm)"],
       ]}
+      printerNote={`HINWEISE ZUR DATEI — Ristorante Goldoni, Pizzakarton 26 x 26 x 4 cm
+
+Die Datei liegt in RGB vor. Bitte nach Ihrem Standardprofil nach CMYK
+wandeln (ISO Coated v2 / FOGRA39 bzw. PSO Coated v3), relativ
+farbmetrisch mit Tiefenkompensierung.
+
+Bedruckt wird WELLPAPPE, weiss, ungestrichen und stark saugend — bitte
+den Farbauftrag entsprechend Ihrer Erfahrung mit diesem Material
+begrenzen. Die Deckelflaeche ist vollflaechig in zwei Toenen eingefaerbt;
+dort faellt ein zu hoher Auftrag zuerst auf.
+
+Fuer die drei folgenden Stellen bitten wir darum, die Zielwerte zu setzen
+statt allein automatisch zu wandeln:
+
+1. QR-CODE (Deckel, unteres Feld)
+   Module: 100 % Schwarz, C 0 / M 0 / Y 0 / K 100.
+   KEIN Vierfarbschwarz — an den Modulkanten kostet jede
+   Passerdifferenz Lesbarkeit, und auf saugender Wellpappe laeuft die
+   Farbe ohnehin.
+   Ruhezone um den Code: Papierweiss, 0 / 0 / 0 / 0. Der Code steht
+   bewusst auf einer weissen Kachel, nicht direkt auf der Farbflaeche.
+
+2. VOLLTON OBEN (Espresso, RGB #1A1612)
+   Zielwert: C 55 / M 60 / Y 60 / K 100 (warmes Tiefschwarz).
+   Reines K 100 wirkt auf Wellpappe grau und fleckig.
+
+3. VOLLTON UNTEN (Olive, RGB #746B03)
+   Zielwert: C 20 / M 22 / Y 100 / K 40.
+
+Weitere Farben, als Orientierung (aus der Datei umgerechnet):
+   Mozzarella  #FAFAFA   C  1 / M  1 / Y  1 / K  0
+   Parmigiano  #FEF1A5   C  0 / M  4 / Y 40 / K  0
+   Tan         #C9BD8A   C 18 / M 18 / Y 48 / K  0
+
+Datenformat 353 x 698 mm, Endformat 343 x 688 mm, 5 mm Beschnitt im
+Datenformat enthalten. Druck 4/0, nur aussen, eine Seite.
+
+BEDRUCKT IST NUR DIE DECKELFLAECHE. Sie liegt zwischen den Falzlinien
+Ihrer Stanzvorlage bei 45,7 / 307,2 mm waagerecht und 42,4 / 302,4 mm
+senkrecht; das Motiv steht dort um 180 Grad gedreht, passend zu der
+kopfstehenden Beschriftung "DECKEL" auf Ihrer Vorlage. Boden, Rueckseite
+und Seiten bleiben bewusst unbedruckt in der Materialfarbe weiss, ebenso
+die grau markierten, nicht bedruckbaren Flaechen.
+
+Schriften sind eingebettet, Text und QR-Code sind Vektor.
+Saemtlicher Inhalt haelt mindestens 22 mm Abstand zu den Falzlinien.
+Kleinste Schrift 7,4 mm (rund 21 pt) — deutlich ueber Ihrer Vorgabe von
+10 pt positiv und 12 pt negativ.
+Fertigungsbedingt liegt das Seitenformat rund 0,16 mm ueber dem
+Sollmass; das liegt innerhalb des 5-mm-Beschnitts.`}
       decisions={[
         {
           title: "Zwei Felder statt einer Fläche",

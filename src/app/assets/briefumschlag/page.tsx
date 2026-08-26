@@ -36,7 +36,7 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Briefumschlag"
       intro="DIN lang quer mit Fenster, haftklebend. Für Rechnungen, Gutscheine und Post an Gäste — das Stück, das im Briefkasten landet, bevor irgendjemand die Website kennt."
-      status="Entschieden: vierfarbig beidseitig (4/4), zweifarbiger Entwurf"
+      status="Bestellt: einseitig 1/0 schwarz-weiss — die Rückseite bleibt unbedruckt"
       aspect={{ w: 1600, h: 835 }}
       sides={[
         {
@@ -59,7 +59,7 @@ export default function Page() {
         ["Fenster-Toleranz", "ca. 1 mm Versatz laut Datenblatt"],
         ["Papier", "80 g/m² Offset weiss, beschreibbar, laser- und tintenstrahlgeeignet"],
         ["Verschluss", "haftklebend, innenliegende Seitenklappen"],
-        ["Druck", "4/4 — vierfarbig beidseitig, entschieden 2026-08-25"],
+        ["Druck", "1/0 — einseitig schwarz-weiss (bestelltes Produkt, Betreiber 2026-08-26)"],
       ]}
       decisions={[
         {
@@ -75,8 +75,8 @@ export default function Page() {
           body: "Eine Teilung in der geometrischen Mitte sähe ausgewogener aus und liefe genau durch das Fenster — die Anschrift des Empfängers wäre dann von einer Farbkante durchschnitten. Deshalb sitzt die Kante knapp darüber, und das Fenster steht vollständig im olivgrünen Feld.",
         },
         {
-          title: "Vierfarbig beidseitig, entschieden",
-          body: "Betreiber-Entscheidung 2026-08-25: 4/4. Ohne Farbe kein Oliv, und ein erster Eindruck in Schwarz-Weiss neben drei farbigen Geschwistern sieht nach Sparen aus — der Umschlag ist bei vielen Empfängern der erste Kontakt überhaupt. Der beidseitige Druck ist in der Preisstaffel bereits enthalten, wie der Betreiber korrigiert hat.",
+          title: "Einseitig 1/0 — die frühere Notiz „vierfarbig beidseitig“ war falsch",
+          body: "Betreiber-Korrektur 2026-08-26 gegen die eigene Notiz vom Vortag: bestellt ist „einseitig 1/0 schwarz-/weiss bedruckt“, die Rückseite bleibt unbedruckt weiss. Die Seite führte bis dahin 4/4 vierfarbig beidseitig, die Druckdaten hatten immer eine Seite in Schwarz — die Datei hatte also recht und die Beschreibung nicht. Festgehalten statt gelöscht, weil die Farbfrage bei einer Neuauflage wiederkommt: gegen Farbe sprach nie der Preis, sondern dass eine grosse Vollton-Fläche auf 80-g-Offsetpapier durchschlägt und den Umschlag wellig macht.",
         },
         {
           title: "Die Anschrift steht genau einmal",
@@ -92,6 +92,7 @@ export default function Page() {
         },
       ]}
       openPoints={[
+        "Die Rückseite: das bestellte Produkt ist einseitig bedruckt, die Vorschau auf dieser Seite zeigt aber eine gestaltete Rückseite mit der Absenderanschrift. Eine der beiden muss weichen — entweder wandert der Absender auf die bedruckte Vorderseite, oder er entfällt. Betreiber-Entscheidung, keine Bauentscheidung.",
         "Beim Bestellen die 4/4-Variante wählen — die Staffel auf dieser Seite stammt aus einer beidseitigen Auswahl, deren Farbigkeit noch zu bestätigen ist. Weicht der Preis deutlich ab, sag Bescheid, dann rechne ich die Tabelle neu.",
         "Beidseitiger Vollton auf 80 g Offsetpapier wellt sich. Vor der Bestellung prüfen, ob ein schwereres Papier wählbar ist.",
         "Der Entwurf ist noch nicht besprochen. Ob der Umschlag überhaupt gebraucht wird und wofür, entscheidet der Betreiber — bisher ist er eine Möglichkeit, kein Auftrag.",
