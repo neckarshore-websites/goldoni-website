@@ -251,7 +251,7 @@ function Zone({ label, style }: { label: string; style: CSSProperties }) {
   );
 }
 
-/* ── Pizzakarton, Deckelfläche 262 × 260 mm ──────────────────────────── */
+/* ── Pizzakarton, Deckelfläche 322 × 327 mm ──────────────────────────── */
 
 /**
  * Der Deckel, waagerecht in zwei Felder geteilt (Betreiber-Entscheidung
@@ -271,6 +271,28 @@ function Zone({ label, style }: { label: string; style: CSSProperties }) {
  * mehr Inhalt und wirkt sonst gedrueckt. Eine exakte Haelfte sieht auf
  * Papier kleiner aus als sie ist.
  */
+/*
+ * GROESSENWECHSEL 26 -> 32 cm, Betreiber-Entscheidung 2026-08-26.
+ *
+ * Der Deckel ist von 262 x 260 mm auf 322 x 327 mm gewachsen. Alle
+ * mm-Angaben in diesem Motiv sind mit dem Faktor 322/262 = 1,229
+ * mitgewachsen, damit die am 25.08. abgenommene Komposition erhalten
+ * bleibt: --mm ist echte Millimeter der Bogenbreite, also haette ein
+ * blosses Aendern von wmm den Satz auf einer 23 Prozent groesseren
+ * Flaeche stehen lassen — optisch eine ANDERE Gestaltung als die
+ * abgenommene, mit mehr Rand. Die Teilung 52/48 ist prozentual und
+ * traegt sich selbst.
+ *
+ * DIE DECKELHOEHE 327 IST ABGELEITET, NICHT GEMESSEN: das Datenblatt
+ * nennt die sechs waagerechten Baender 38,5 | 327 | 38 | 44,5 | 323 | 37
+ * (Summe 808 = Endformat), und DECKEL liegt in der Zeichnung ueber
+ * RUECKSEITE, also im ersten grossen Band. Dass der Deckel (327) etwas
+ * groesser ist als der Boden (323), passt zur Bauart — der Deckel
+ * schliesst ueber den Boden. Fuer die Vorschau ist der Unterschied 1,2
+ * Prozent. FUER DIE DRUCKDATEN NICHT AUS DIESER ZAHL ARBEITEN, sondern
+ * das Motiv auf der Stanzvorlage ueberlagern; das ist ohnehin ein
+ * offener Punkt der Seite.
+ */
 export function PizzakartonArtwork({
   variant = "espresso-oben",
 }: {
@@ -280,7 +302,7 @@ export function PizzakartonArtwork({
   const unten = variant === "espresso-oben" ? C.olive : C.espresso;
 
   return (
-    <Sheet wmm={262} hmm={260} background={oben}>
+    <Sheet wmm={322} hmm={327} background={oben}>
       <div
         style={{
           position: "absolute",
@@ -296,8 +318,8 @@ export function PizzakartonArtwork({
       <div
         style={{
           position: "absolute",
-          left: "calc(22 * var(--mm))",
-          right: "calc(22 * var(--mm))",
+          left: "calc(27 * var(--mm))",
+          right: "calc(27 * var(--mm))",
           top: 0,
           height: "52%",
           display: "flex",
@@ -311,7 +333,7 @@ export function PizzakartonArtwork({
           style={{
             margin: 0,
             fontWeight: 600,
-            fontSize: "calc(5 * var(--mm))",
+            fontSize: "calc(6.1 * var(--mm))",
             letterSpacing: ".34em",
             textTransform: "uppercase",
             color: C.parmigiano,
@@ -321,10 +343,10 @@ export function PizzakartonArtwork({
         </p>
         <p
           style={{
-            margin: "calc(4 * var(--mm)) 0 0",
+            margin: "calc(4.9 * var(--mm)) 0 0",
             fontFamily: SERIF,
             fontWeight: 600,
-            fontSize: "calc(50 * var(--mm))",
+            fontSize: "calc(61.5 * var(--mm))",
             lineHeight: 0.95,
             letterSpacing: "-.015em",
             color: C.mozzarella,
@@ -334,8 +356,8 @@ export function PizzakartonArtwork({
         </p>
         <p
           style={{
-            margin: "calc(7 * var(--mm)) 0 0",
-            fontSize: "calc(7.4 * var(--mm))",
+            margin: "calc(8.6 * var(--mm)) 0 0",
+            fontSize: "calc(9.1 * var(--mm))",
             lineHeight: 1.35,
             color: variant === "espresso-oben" ? C.tan : C.parmigiano,
           }}
@@ -349,13 +371,13 @@ export function PizzakartonArtwork({
       <div
         style={{
           position: "absolute",
-          left: "calc(22 * var(--mm))",
-          right: "calc(22 * var(--mm))",
+          left: "calc(27 * var(--mm))",
+          right: "calc(27 * var(--mm))",
           bottom: 0,
           height: "48%",
           display: "flex",
           alignItems: "center",
-          gap: "calc(16 * var(--mm))",
+          gap: "calc(19.7 * var(--mm))",
         }}
       >
         <div style={{ flex: "1 1 auto" }}>
@@ -364,7 +386,7 @@ export function PizzakartonArtwork({
               margin: 0,
               fontFamily: SERIF,
               fontWeight: 600,
-              fontSize: "calc(17 * var(--mm))",
+              fontSize: "calc(20.9 * var(--mm))",
               lineHeight: 1.05,
               color: C.mozzarella,
             }}
@@ -375,15 +397,15 @@ export function PizzakartonArtwork({
           </p>
           <p
             style={{
-              margin: "calc(5 * var(--mm)) 0 0",
-              fontSize: "calc(7.4 * var(--mm))",
+              margin: "calc(6.1 * var(--mm)) 0 0",
+              fontSize: "calc(9.1 * var(--mm))",
               color: variant === "espresso-oben" ? C.mozzarella : C.tan,
             }}
           >
             Abholen oder liefern lassen.
           </p>
         </div>
-        <Qr sizeMm={70} padMm={4} />
+        <Qr sizeMm={86} padMm={4.9} />
       </div>
     </Sheet>
   );
