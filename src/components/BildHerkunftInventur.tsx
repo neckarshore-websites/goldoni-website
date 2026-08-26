@@ -1,53 +1,37 @@
-/**
- * Inventur der Bild-Herkunft auf den öffentlichen Seiten.
- *
- * ANLASS: seit dem 2. August 2026 gelten die Transparenzpflichten der
- * KI-Verordnung (Artikel 50). Eine pauschale Kennzeichnungspflicht für alle
- * KI-Bilder gibt es nicht — die Pflicht greift bei Inhalten, die Reales
- * täuschend echt darstellen. Ob unsere Bilder darunterfallen, ist eine
- * juristische Bewertung und steht ausdrücklich NICHT hier: sie ist als
- * Auftrag an den DPO vorgemerkt.
- *
- * Was hier steht, ist die Tatsachengrundlage dafür — und die ist unabhängig
- * von jeder Rechtsfrage nützlich: welches Bild auf welcher Seite stammt
- * woher.
- *
- * ERHOBEN AM 2026-08-25 durch Auswertung aller Bildpfade in src/ (ohne
- * /assets und /sandbox) gegen die Liste unten. Nicht geschätzt.
- */
-
-type Zeile = {
-  datei: string;
-  seite: string;
-  herkunft: "ki" | "foto" | "offen";
-};
+import { ZEILEN, istBelegt, type Zeile } from "@/lib/bild-herkunft";
 
 /**
- * Die fünf `offen`-Zeilen sind der eigentliche Fund. Sie sind NICHT
- * "vermutlich KI" — sie sind undokumentiert, und dazu gehört ausgerechnet
- * die Startseiten-Bildfolge und das Vorschaubild, das beim Teilen der Seite
- * erscheint. Ein Rateergebnis hier einzutragen wäre schlimmer als die Lücke.
+ * Zeigt das Bild-Herkunfts-Register an. Die Daten liegen seit dem 26.08.2026
+ * in `src/lib/bild-herkunft.ts` und NICHT mehr hier — dieser Baustein stellt
+ * sie nur dar.
+ *
+ * WARUM DER UMZUG: die Liste war eine von Hand gepflegte Momentaufnahme in
+ * einer .tsx-Datei. Ein neues Hero-Bild hätte sie still veralten lassen, und
+ * aus fünf undokumentierten Bildern wären unbemerkt sechs geworden. Als
+ * eigenes Datenmodul kann `tests/delivery/bild-herkunft.test.ts` sie gegen die
+ * tatsächlichen Bildreferenzen im Quelltext halten, in beide Richtungen.
+ *
+ * Die Rechtsfrage steht weiterhin ausdrücklich NICHT hier: ob und welche
+ * dieser Bilder gekennzeichnet werden müssen, ist eine Bewertung und als
+ * Auftrag an den DPO vorgemerkt. Diese Tabelle liefert die Tatsachen dafür.
  */
-const ZEILEN: Zeile[] = [
-  { datei: "hero-goldoni-velvet.webp", seite: "Startseite (Bildfolge) + Vorschaubild beim Teilen", herkunft: "offen" },
-  { datei: "hero-goldoni-interior.webp", seite: "Startseite (Bildfolge) + strukturierte Daten", herkunft: "offen" },
-  { datei: "hero-goldoni-angel.webp", seite: "Startseite (Bildfolge)", herkunft: "offen" },
-  { datei: "hero-impressum-trauben.webp", seite: "Impressum", herkunft: "offen" },
-  { datei: "hero-kontakt-pizzo.webp", seite: "Kontakt", herkunft: "offen" },
-  { datei: "hero-menu-dishes.webp", seite: "Speisekarte + strukturierte Daten", herkunft: "ki" },
-  { datei: "hero-empfehlungen-overhead-tafel.webp", seite: "Empfehlungskarte", herkunft: "ki" },
-  { datei: "hero-feiern-saal.webp", seite: "Feste feiern (Hero)", herkunft: "foto" },
-  { datei: "feiern-saal-bogenfenster-tafel.webp", seite: "Feste feiern (Galerie)", herkunft: "foto" },
-  { datei: "feiern-kandelaber-rosen-lilien.webp", seite: "Feste feiern (Galerie)", herkunft: "foto" },
-  { datei: "feiern-tafel-aus-naehe.webp", seite: "Feste feiern (Galerie)", herkunft: "foto" },
-  { datei: "feiern-saal-historische-banner.webp", seite: "Feste feiern (Galerie)", herkunft: "foto" },
-];
 
 const LABEL: Record<Zeile["herkunft"], string> = {
   ki: "KI-erzeugt",
   foto: "Echtes Foto",
   offen: "nicht dokumentiert",
 };
+
+/**
+ * Was in der Nachweis-Spalte steht. Ein Gedankenstrich bei einer offenen Zeile
+ * ist eine Aussage, kein Platzhalter: dort IST nichts dokumentiert, und das ist
+ * der Fund, den diese Tabelle festhält.
+ */
+function nachweisText(z: Zeile): string {
+  if (!istBelegt(z.nachweis)) return "—";
+  const n = z.nachweis!;
+  return [n.werkzeug, n.erzeugt, n.rechte].filter(Boolean).join(" · ") || "dokumentiert";
+}
 
 export function BildHerkunftInventur() {
   const offen = ZEILEN.filter((z) => z.herkunft === "offen").length;
@@ -70,7 +54,8 @@ export function BildHerkunftInventur() {
         style={{ color: "var(--color-text-muted)" }}
       >
         Erhoben am 25. August 2026 aus allen Bildpfaden im Quelltext, nicht
-        geschätzt. Anlass sind die seit dem 2. August 2026 geltenden
+        geschätzt — und seit dem 26. August durch eine Pflichtprüfung gehalten,
+        die das Register in beide Richtungen gegen den Quelltext abgleicht. Anlass sind die seit dem 2. August 2026 geltenden
         Transparenzpflichten der KI-Verordnung. <strong>Ob und welche dieser
         Bilder gekennzeichnet werden müssen, ist eine juristische Bewertung
         und steht hier bewusst nicht</strong> — sie ist als Auftrag an den
@@ -93,7 +78,7 @@ export function BildHerkunftInventur() {
         <table className="w-full text-sm">
           <thead>
             <tr>
-              {["Datei", "Wo sie erscheint", "Herkunft"].map((h) => (
+              {["Datei", "Wo sie erscheint", "Herkunft", "Nachweis"].map((h) => (
                 <th
                   key={h}
                   className="border-b py-2 pr-4 text-left text-xs uppercase tracking-wider"
@@ -140,6 +125,12 @@ export function BildHerkunftInventur() {
                   >
                     {LABEL[z.herkunft]}
                   </span>
+                </td>
+                <td
+                  className="py-2 pl-4 text-xs"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  {nachweisText(z)}
                 </td>
               </tr>
             ))}
