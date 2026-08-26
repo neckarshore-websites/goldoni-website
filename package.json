@@ -5,6 +5,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev -p 3002",
+    "druck:sync": "node scripts/sync-print-assets.mjs",
     "lighthouse": "node scripts/lighthouse.mjs",
     "lighthouse:5g": "node scripts/lighthouse.mjs --quick --profile=mobile-5g",
     "lighthouse:desktop": "node scripts/lighthouse.mjs --quick --profile=desktop",
@@ -17,6 +18,7 @@
     "signaturen": "tsx scripts/generate-signatures.ts",
     "start": "next start -p 3002",
     "test:delivery:unit": "tsx tests/delivery/channel-model.test.ts",
+    "test:druck:unit": "tsx tests/delivery/print-assets.test.ts",
     "test:e2e": "playwright test",
     "test:e2e:ci": "playwright test --grep-invert @external",
     "test:e2e:install": "playwright install chromium",
