@@ -41,3 +41,15 @@ jobs:
           npm run test:schema:unit
           npm run test:qr:unit
           npm run test:search:unit
+          npm run test:druck:unit
+          npm run test:qr:print:unit
+          npm run test:redirect:unit
+
+      # NOT COVERED HERE, stated rather than left to be assumed: whether the printed QR
+      # codes actually SCAN. That needs Apple's Vision decoder, which does not exist on
+      # this runner, and jsQR cannot read the styled codes even when they are correct.
+      # The gate is `npm run pruef:druck-qr` on macOS plus a real phone on a real proof,
+      # before any print order. The three suites added above check that the artifacts
+      # exist, that the SERVED copies equal the built ones, and that the printed address
+      # matches the path this site serves — everything except the one thing a Linux
+      # runner cannot honestly answer.

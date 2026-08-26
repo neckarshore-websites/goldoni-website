@@ -1,4 +1,5 @@
 {
-  "url": "https://order.site/goldoni/de/deu/stuttgart/restaurant/ristorante-goldoni-sf",
+  "printUrl": "https://ristorante-goldoni.de/bestellen",
+  "mailUrl": "https://order.site/goldoni/de/deu/stuttgart/restaurant/ristorante-goldoni-sf?utm_source=web",
   "errorCorrectionLevel": "H"
 }

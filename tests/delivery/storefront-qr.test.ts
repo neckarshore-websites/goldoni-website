@@ -3,7 +3,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { PNG } from "pngjs";
 import jsQR from "jsqr";
-import { STOREFRONT_PARTNER } from "../../src/lib/site";
+import { ORDER_LANDING, STOREFRONT_PARTNER, storefrontUrl } from "../../src/lib/site";
 
 /**
  * Proves the COMMITTED QR asset resolves to the ordering URL the website uses.
@@ -43,7 +43,7 @@ check("QR assets are committed", () => {
   }
 });
 
-check("PNG decodes to the URL the site links to", () => {
+check("the print PNG decodes to the PRINTED ordering address", () => {
   const png = PNG.sync.read(readFileSync(pngPath));
   const decoded = jsQR(new Uint8ClampedArray(png.data), png.width, png.height);
   // Non-vacuity: a null result must fail loudly rather than skip the compare.
@@ -53,12 +53,12 @@ check("PNG decodes to the URL the site links to", () => {
   );
   assert.equal(
     decoded.data,
-    STOREFRONT_PARTNER.url,
-    "the printed code points somewhere other than the website's order button",
+    ORDER_LANDING,
+    "the print asset points somewhere other than the ordering path this site serves",
   );
 });
 
-check("the mail-sized PNG decodes to the same URL", () => {
+check("the mail-sized PNG decodes to the WEB-marked storefront address", () => {
   // Separate asset, separate chance to drift. It is embedded in e-mail
   // signatures by absolute URL, so a wrong one would go out with every message
   // Silvio sends and could not be recalled.
@@ -67,23 +67,37 @@ check("the mail-sized PNG decodes to the same URL", () => {
   const png = PNG.sync.read(readFileSync(mailPath));
   const decoded = jsQR(new Uint8ClampedArray(png.data), png.width, png.height);
   assert.ok(decoded, "no QR code found in the mail-sized PNG");
-  assert.equal(decoded.data, STOREFRONT_PARTNER.url);
+  // DELIBERATELY NOT the same URL as the print asset since 2026-08-26. A signature is a
+  // screen, so it may point straight at the partner and carry the web marker; only paper
+  // needs the repointable detour. Two near-identical filenames, two destinations — this
+  // assertion is what keeps that from being an accident.
+  assert.equal(decoded.data, storefrontUrl("web"));
 });
 
-check("the encoded URL is the /de/ variant", () => {
+check("the venue path is still the /de/ variant", () => {
   // Wolt's own mail, PDF and QR all carry /en/ for a German venue. Guard the
   // deliberate deviation so a future regeneration cannot quietly adopt theirs.
-  const lock = JSON.parse(readFileSync(lockPath, "utf8")) as { url: string };
-  assert.match(lock.url, /\/de\//, "URL is not the German locale");
-  assert.doesNotMatch(lock.url, /\/en\//, "URL fell back to the English locale");
+  // Asserted on the canonical constant, not on the lock: since the print asset moved to
+  // our own domain it no longer contains a locale at all, and testing the lock's print
+  // entry for /de/ would have been a check that passes by looking somewhere else.
+  assert.match(STOREFRONT_PARTNER.url, /\/de\//, "URL is not the German locale");
+  assert.doesNotMatch(STOREFRONT_PARTNER.url, /\/en\//, "URL fell back to the English locale");
 });
 
-check("lock file agrees with site.ts (asset was regenerated)", () => {
-  const lock = JSON.parse(readFileSync(lockPath, "utf8")) as { url: string };
+check("lock file agrees with site.ts (assets were regenerated)", () => {
+  const lock = JSON.parse(readFileSync(lockPath, "utf8")) as {
+    printUrl: string;
+    mailUrl: string;
+  };
   assert.equal(
-    lock.url,
-    STOREFRONT_PARTNER.url,
-    "site.ts changed but the QR was not regenerated — run: npm run qr:storefront",
+    lock.printUrl,
+    ORDER_LANDING,
+    "site.ts changed but the print QR was not regenerated — run: npm run qr:storefront",
+  );
+  assert.equal(
+    lock.mailUrl,
+    storefrontUrl("web"),
+    "site.ts changed but the mail QR was not regenerated — run: npm run qr:storefront",
   );
 });
 

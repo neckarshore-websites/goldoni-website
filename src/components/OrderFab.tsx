@@ -1,4 +1,4 @@
-import { STOREFRONT_PARTNER } from "@/lib/site";
+import { STOREFRONT_PARTNER, storefrontUrl } from "@/lib/site";
 
 /**
  * Schwebender Bestell-Knopf — Variante B der Handy-Beurteilung (2026-08-25).
@@ -38,7 +38,7 @@ export function OrderFab({
 
   return (
     <a
-      href={STOREFRONT_PARTNER.url}
+      href={storefrontUrl("web")}
       target="_blank"
       rel="noopener"
       data-testid="order-cta-fab"

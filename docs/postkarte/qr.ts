@@ -19,7 +19,17 @@
  * until something reads the pixels back. A styled code that does not scan is a
  * printed dead end, and looking at it on screen tells you nothing.
  *
- * So this script rasterises the exact geometry it emits and hands it to jsQR.
+ * So this script rasterises the geometry and hands it to jsQR.
+ *
+ * READ THIS BEFORE TRUSTING THE CHECK BELOW. It is a PAYLOAD check, not a readability
+ * check, and on 2026-08-26 that difference cost half a day. The rasteriser builds its own
+ * picture from the module data — at the CORRECT finder positions — while the emitted SVG
+ * drew those finders half a module off. So it verified geometry the artifact did not have
+ * and stayed green while every phone failed on the real code.
+ *
+ * The lesson is not "rasterise more carefully". It is that a second pair of eyes is only a
+ * second pair of eyes if it looks at the SAME THING — here, the delivered SVG. That is
+ * what `npm run pruef:druck-qr` (Apple Vision, macOS) does, and why it exists.
  * The emblem is rasterised as solid black, the harshest thing that could sit
  * there. If it survives that, marinara is not going to trouble it.
  */
@@ -28,9 +38,32 @@ import { join } from "node:path";
 import QRCode from "qrcode";
 import { PNG } from "pngjs";
 import jsQR from "jsqr";
-import { STOREFRONT_PARTNER } from "../../src/lib/site";
+import { ORDER_LANDING } from "../../src/lib/site";
 
-const url = STOREFRONT_PARTNER.url;
+/**
+ * SINCE 2026-08-26 THIS IS OUR OWN DOMAIN, not the storefront address.
+ * `/bestellen` redirects to Wolt carrying `utm_source=papier`. Two reasons, and the
+ * first is the one that cannot be bought back later: a printed code encoding
+ * `order.site/...` is dead paper the day that address changes, while one encoding our
+ * domain is a redirect edit away from pointing anywhere. Full reasoning at ORDER_PATH
+ * in src/lib/site.ts (Founder decision).
+ */
+const url = ORDER_LANDING;
+
+/**
+ * LESBARKEIT IST GEMESSEN, NICHT ANGENOMMEN — und sie war am 26.08.2026 einen halben Tag
+ * lang nicht gegeben. Die Ursache lag in der Geometrie der Suchmarken (siehe den langen
+ * Kommentar bei FINDERS), nicht in der Gestaltung und nicht in der Codegroesse.
+ *
+ * Belegt mit Apples Vision-Dekodierer, der Maschine in der iPhone-Kamera: nach der
+ * Korrektur lesen sich beide Farbvarianten; davor las sich keine einzige von sieben
+ * durchprobierten Gestaltungen, auch die voellig schlichte nicht.
+ *
+ * Die Pruefung am Ende dieser Datei ist und bleibt eine NUTZLAST-Pruefung. Sie rastert
+ * eigenstaendig und kann Fehler im ausgelieferten SVG grundsaetzlich nicht sehen — sie hat
+ * genau das bewiesen, indem sie waehrend des ganzen Defekts gruen blieb. Vor jedem Druck
+ * gilt deshalb zusaetzlich: npm run pruef:druck-qr
+ */
 const qr = QRCode.create(url, { errorCorrectionLevel: "H" });
 const N: number = qr.modules.size;
 const DATA: Uint8Array = qr.modules.data as unknown as Uint8Array;
@@ -95,9 +128,36 @@ export function toSvg(s: QrStyle): string {
     .join("");
   parts.push(`<path fill="${s.module}" d="${dots}"/>`);
 
+  /*
+   * DIE SUCHMARKE IST 7x7 MODULE GROSS, UND SIE WAR ES HIER LANGE NICHT.
+   *
+   * Eine SVG-Kontur liegt MITTIG auf der Kante. Ein 7x7-Rechteck mit
+   * `stroke-width="1"` reicht deshalb von -0,5 bis 7,5 — die gezeichnete Marke ist
+   * 8x8 und um ein halbes Modul verschoben. Genau das stand hier. Richtig ist ein
+   * 6x6-Rechteck ab (fx+0,5): die Kontur deckt dann fx..fx+1 und fx+6..fx+7, also
+   * exakt den aeusseren Modulring.
+   *
+   * WAS DIESER HALBE MODULRAND GEKOSTET HAT: Apples Vision-Dekodierer hat den Code
+   * ueberhaupt nicht mehr gefunden — Suchmarken sind das Erste, wonach jeder
+   * Dekodierer sucht. Aufgefallen ist es erst am 26.08.2026, als die gedruckte
+   * Adresse kuerzer wurde und die Matrix von 49x49 auf 37x37 schrumpfte; bei der
+   * groesseren Matrix war der Fehler offenbar noch verzeihlich. Gemessen: mit dieser
+   * Korrektur lesen sich SIEBEN durchprobierte Gestaltungsvarianten, ohne sie KEINE
+   * einzige — auch nicht die voellig schlichte. Die Gestaltung war nie das Problem.
+   *
+   * DASS DIE SELBSTPRUEFUNG UNTEN NICHTS GEMERKT HAT, ist keine Nachlaessigkeit,
+   * sondern die Pointe: ihr Rasterer zeichnet die Suchmarken an den RICHTIGEN
+   * Modulpositionen. Sie hat also durchgehend die korrekte Geometrie geprueft und
+   * damit den Fehler im SVG verdeckt. Ein zweites Auge auf dieselbe Sache ist nur
+   * dann eines, wenn es dieselbe Sache ansieht — hier das ausgelieferte SVG, was
+   * `npm run pruef:druck-qr` jetzt tut.
+   *
+   * Der Eckradius folgt der Verschiebung: 2,1 am aeusseren Rand entspricht 1,6 auf
+   * der Konturmitte, damit die Marke aussieht wie vorher.
+   */
   for (const [fx, fy] of FINDERS) {
     parts.push(
-      `<rect x="${fx}" y="${fy}" width="7" height="7" rx="2.1" ry="2.1" fill="none" stroke="${s.eye}" stroke-width="1"/>`,
+      `<rect x="${fx + 0.5}" y="${fy + 0.5}" width="6" height="6" rx="1.6" ry="1.6" fill="none" stroke="${s.eye}" stroke-width="1"/>`,
       `<rect x="${fx + 2}" y="${fy + 2}" width="3" height="3" rx="1" ry="1" fill="${s.eye}"/>`,
     );
   }
@@ -208,7 +268,12 @@ function main() {
     console.error(`FEHLER: dekodiert zu ${decoded.data}, erwartet ${url}`);
     process.exit(1);
   }
-  console.log("Dekodiert: identisch mit der URL des Bestell-Buttons.");
+  console.log("Nutzlast : stimmt mit der gedruckten Bestell-Adresse ueberein.");
+  console.log(
+    "HINWEIS  : das oben prueft die MODULDATEN, nicht die Lesbarkeit der gestylten\n" +
+      "           Zeichnung — der Rasterer hier zeichnet die Suchmarken eckig, das SVG\n" +
+      "           rundet sie ab. Vor jedem Druck zusaetzlich: npm run pruef:druck-qr",
+  );
 }
 
 main();
