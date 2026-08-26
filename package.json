@@ -17,6 +17,7 @@
     "qr:storefront": "tsx scripts/generate-storefront-qr.ts",
     "signaturen": "tsx scripts/generate-signatures.ts",
     "start": "next start -p 3002",
+    "test:bildherkunft:unit": "tsx tests/delivery/bild-herkunft.test.ts",
     "test:delivery:unit": "tsx tests/delivery/channel-model.test.ts",
     "test:druck:unit": "tsx tests/delivery/print-assets.test.ts",
     "test:e2e": "playwright test",

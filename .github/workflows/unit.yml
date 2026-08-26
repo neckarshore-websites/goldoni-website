@@ -44,6 +44,7 @@ jobs:
           npm run test:druck:unit
           npm run test:qr:print:unit
           npm run test:redirect:unit
+          npm run test:bildherkunft:unit
 
       # NOT COVERED HERE, stated rather than left to be assumed: whether the printed QR
       # codes actually SCAN. That needs Apple's Vision decoder, which does not exist on
