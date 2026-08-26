@@ -1,4 +1,4 @@
-import { SITE, STOREFRONT_PARTNER, storefrontUrl } from "./site";
+import { SITE, storefrontUrl } from "./site";
 
 /**
  * E-Mail-Signaturen für Ristorante Goldoni.

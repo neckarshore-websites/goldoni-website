@@ -41,6 +41,25 @@ const ARTIFACTS = [
   { label: "Druck-QR (Flyer, Aufkleber)", path: "public/images/storefront-qr.svg" },
 ];
 
+/**
+ * DIE AUSGELIEFERTEN DRUCKDATEN, und sie stehen aus einem bestimmten Grund hier.
+ *
+ * Die SVGs oben sind die Quelle; diese PDFs sind, was ein Mensch an eine Druckerei
+ * schickt. Am 26.08.2026 waren die beiden fuer zwoelf Stunden auseinander — die
+ * Quelle war repariert, das Ausgelieferte trug noch den unlesbaren Code, und jede
+ * Pruefung zeigte auf die falsche Seite dieser Luecke. Ein Tor, das nur die Quelle
+ * liest, haette das wieder nicht gesehen.
+ *
+ * Geprueft wird deshalb `public/assets/print` — die Kopie, die die Website
+ * herausgibt. Seiten ohne QR (Vorderseiten) stehen nicht in der Liste; ein
+ * fehlender Code dort waere kein Befund, sondern die Gestaltung.
+ */
+const PRINT_PDFS = [
+  { label: "Postkarte Rueckseite", path: "public/assets/print/goldoni-postkarte-a6-druckdaten.pdf", seite: 2 },
+  { label: "Bierdeckel Rueckseite", path: "public/assets/print/goldoni-bierdeckel-druckdaten.pdf", seite: 2 },
+  { label: "Pizzakarton Deckel", path: "public/assets/print/goldoni-pizzakarton-deckel-druckdaten.pdf", seite: 1 },
+];
+
 const dir = mkdtempSync(join(tmpdir(), "druck-qr-"));
 try {
   const args = [ORDER_LANDING];
@@ -54,6 +73,14 @@ try {
       .png()
       .toFile(out);
     args.push(`${label}=${out}`);
+  }
+
+  for (const { label, path, seite } of PRINT_PDFS) {
+    const stem = join(dir, path.replace(/[^a-z0-9]/gi, "-"));
+    // 300 dpi: nah an dem, was eine Kamera von einer gedruckten Flaeche aufloest,
+    // und hoch genug, dass die Rasterung nicht selbst zum Befund wird.
+    spawnSync("pdftoppm", ["-r", "300", "-png", "-singlefile", "-f", String(seite), "-l", String(seite), path, stem], { stdio: "ignore" });
+    args.push(`${label}=${stem}.png`);
   }
 
   const res = spawnSync("swift", ["scripts/scan-print-qr.swift", ...args], {

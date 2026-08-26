@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Goldoni Pizzakarton — Druckdaten</title>
+<style>
+@font-face{font-family:"Playfair";src:url(data:font/woff2;base64,__FONT_PLAYFAIR__) format("woff2");font-weight:600;font-display:block}
+@font-face{font-family:"Inter";src:url(data:font/woff2;base64,__FONT_INTER__) format("woff2");font-weight:400 700;font-display:block}
+
+/* DATENFORMAT: 1000,63 x 1978,58 pt = exakt 353 x 698 mm.
+   GEMESSEN an der Stanzvorlage der Druckerei (pdfinfo), nicht aus dem
+   Datenblatt abgetippt — dieselbe Vorsicht wie beim Bierdeckel, wo die
+   abgetippte Annahme in der Breite um einen Millimeter danebenlag.
+   Datenblatt und Vorlage stimmen hier ueberein; das ist geprueft, nicht
+   vorausgesetzt. */
+@page{size:353mm 698mm;margin:0}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;padding:0;background:#fff;font-family:"Inter",sans-serif}
+
+.bogen{position:relative;width:353mm;height:698mm;background:#fff;overflow:hidden;
+  --espresso:#1A1612; --mozzarella:#FAFAFA; --parmigiano:#FEF1A5;
+  --olive:#746B03; --tan:#C9BD8A}
+
+/* DIE DECKELFLAECHE, GEMESSEN AN DEN FALZLINIEN DER VORLAGE.
+   Die Vorlage zeichnet Falzlinien cyan, den Sicherheitsabstand blau und das
+   Endformat magenta gestrichelt. Aus einem 600-dpi-Rendering ausgemessen
+   (Fehler < 0,05 mm), nicht aus dem Bild geschaetzt:
+
+     linke Falz    45,7 mm      obere Falz    42,4 mm
+     rechte Falz  307,2 mm      untere Falz  302,4 mm
+     -> 261,5 x 260,0 mm
+
+   Das deckt sich mit den 262 x 260 mm, fuer die PizzakartonArtwork gebaut
+   wurde. Der Sicherheitsabstand von 3 mm liegt jeweils nach innen; alles
+   Inhaltliche haelt hier mindestens 22 mm Rand und liegt damit weit
+   innerhalb davon.
+
+   RANDABFALLEND WIRD BEWUSST NICHT GEDRUCKT. Die Vorlage markiert rot, was
+   im gefalteten Zustand verdeckt ist, und grau, was gar nicht bedruckbar
+   ist. Der Deckel endet an seinen Falzlinien: dort faellt die Farbe an eine
+   Kante, die beim Falten ohnehin bricht. Farbe darueber hinaus kostet
+   Druckflaeche und ist im fertigen Karton nicht zu sehen. */
+.deckel{position:absolute;left:45.7mm;top:42.4mm;width:261.5mm;height:260mm;
+  background:var(--espresso);overflow:hidden;
+
+  /* UM 180 GRAD GEDREHT, UND DAS IST KEINE GESTALTUNGSFRAGE.
+     Die Vorlage beschriftet die Flaeche mit einem kopfstehenden "DECKEL"
+     (ebenso "SEITE A" unten). Eine Panel-Beschriftung steht in der
+     Leserichtung des FERTIGEN Produkts — steht sie auf dem Bogen kopf, dann
+     zeigt die Oberkante des Deckels im Bogen nach unten. Ohne diese Drehung
+     stuende die Wortmarke auf dem geoeffneten Karton verkehrt herum, und das
+     merkt man erst an 250 gelieferten Kartons.
+     Geprueft wird es nicht durch Nachdenken, sondern durch die Ueberlagerung
+     in build.mjs --pruefen: dort liegt das Motiv sichtbar in der Flaeche, die
+     die Vorlage als Deckel ausweist. */
+  transform:rotate(180deg)}
+
+/* Unteres Feld. Teilung bei 52/48 statt 50/50 — Betreiber-Entscheidung
+   2026-08-25: das obere Feld traegt mehr Inhalt und wirkt bei exakter
+   Haelfte gedrueckt. */
+.unten{position:absolute;left:0;right:0;bottom:0;height:48%;background:var(--olive)}
+
+.feld-oben{position:absolute;left:22mm;right:22mm;top:0;height:52%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center}
+.eyebrow{margin:0;font-weight:600;font-size:5mm;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--parmigiano)}
+.wortmarke{margin:4mm 0 0;font-family:"Playfair",Georgia,serif;font-weight:600;
+  font-size:50mm;line-height:.95;letter-spacing:-.015em;color:var(--mozzarella)}
+.claim{margin:7mm 0 0;font-size:7.4mm;line-height:1.35;color:var(--tan)}
+
+.feld-unten{position:absolute;left:22mm;right:22mm;bottom:0;height:48%;
+  display:flex;align-items:center;gap:16mm}
+.bestellweg{flex:1 1 auto}
+.zeile{margin:0;font-family:"Playfair",Georgia,serif;font-weight:600;
+  font-size:17mm;line-height:1.05;color:var(--mozzarella)}
+.zusatz{margin:5mm 0 0;font-size:7.4mm;color:var(--mozzarella)}
+
+/* QR 70 mm plus 4 mm weisser Rand. AUF WELLPAPPE IST GROSS RICHTIG: der
+   Karton saugt und die Farbe laeuft, weshalb die Druckerei sogar fuer Schrift
+   10 pt positiv und 12 pt negativ vorschreibt. 70 mm sind rund 1,6 mm je
+   Modul — reichlich, und das ist hier das billigste Bauteil der ganzen
+   Sache. Kleiner machen, damit das Layout aufgeht, waere die falsche
+   Ersparnis. */
+.qr{width:70mm;height:70mm;padding:4mm;background:#fff;border-radius:1.5mm;flex:0 0 auto}
+.qr svg{display:block;width:100%;height:100%}
+</style>
+</head>
+<body>
+<div class="bogen">
+  <div class="deckel">
+    <div class="unten"></div>
+
+    <div class="feld-oben">
+      <p class="eyebrow">Ristorante</p>
+      <p class="wortmarke">Goldoni</p>
+      <p class="claim">Italienisch verliebte Küche im Stuttgarter Westen.</p>
+    </div>
+
+    <div class="feld-unten">
+      <div class="bestellweg">
+        <p class="zeile">Nächstes Mal<br>direkt bei uns.</p>
+        <p class="zusatz">Abholen oder liefern lassen.</p>
+      </div>
+      <div class="qr">__QR__</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

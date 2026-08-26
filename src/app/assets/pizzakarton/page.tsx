@@ -61,12 +61,16 @@ export default function Page() {
           body: "Wellpappe saugt und läuft. Feine Schrift schliesst zu; deshalb schreibt die Druckerei Mindestgrössen vor. Das schliesst Kleingedrucktes auf dem Karton praktisch aus — auf dem Deckel gehört ohnehin wenig hin.",
         },
         {
+          title: "Auf der Stanzvorlage positioniert, und um 180 Grad gedreht",
+          body: "Die Deckelfläche liegt zwischen den Falzlinien bei 45,7 und 307,2 mm waagerecht und 42,4 und 302,4 mm senkrecht — 261,5 × 260,0 mm, ausgemessen an der Vorlage der Druckerei, nicht aus dem Datenblatt abgetippt. Das Motiv steht um 180 Grad gedreht auf dem Bogen: die Vorlage beschriftet die Fläche mit einem kopfstehenden „DECKEL“, und eine Panel-Beschriftung steht in der Leserichtung des fertigen Produkts. Ohne die Drehung stünde die Wortmarke auf dem geöffneten Karton verkehrt herum. Geprüft wird das nicht durch Nachdenken: „build.mjs --pruefen“ legt die Druckdaten deckungsgleich über die Stanzvorlage, und auf diesem Bild ist zu sehen, dass das Motiv in der Fläche liegt, die „DECKEL“ heisst.",
+        },
+        {
           title: "Der QR-Code gehört hierhin, nicht auf die Rückseite",
           body: "Wenn der Karton einen Bestellweg zeigt, dann auf dem Deckel: ein Gast, der die Schachtel gerade öffnet, hat die Hände am Karton und das Telefon daneben. Genau derselbe Code wie auf Postkarte und Bierdeckel.",
         },
       ]}
       openPoints={[
-        "Der Deckel-Entwurf steht, die Übertragung auf die Stanzvorlage nicht: das Motiv muss noch auf der Deckelfläche der Vorlage positioniert werden, mit Falzlinien als Grundlage.",
+        "Farbmodus: die Datei ist RGB, die Druckerei fordert CMYK und wandelt laut eigenem Datenblatt automatisch. Auf Wellpappe, mit zwei Vollton-Feldern, ist das keine Kleinigkeit — vor der Auflage gehört ein Andruck bestellt.",
         "Beschaffung entschieden: selbst bestellen, 225 bis 250 Stück. Offen bleibt nur, ob die bisherigen Kartons vom Lieferanten weiterlaufen, solange der Vorrat reicht.",
       ]}
       prices={{
@@ -85,6 +89,11 @@ export default function Page() {
         note: "Der Stückpreis fällt von 1,91 € bei 50 Stück auf 0,43 € und bleibt ab 225 praktisch stehen — 0,42 € ab 700, 0,41 € ab 1.100. Die Frage lautet deshalb nicht, wie billig es wird, sondern wie viele ins Lager passen: ab 225 Stück zahlt man für Menge, nicht mehr für einen besseren Preis. Zum Vergleich der Kleinmengen-Tarif für einen Testlauf: 20 Stück kosten 4,73 € je Karton, elfmal so viel wie bei 250.",
       }}
       downloads={[
+        {
+          href: "/assets/print/goldoni-pizzakarton-deckel-druckdaten.pdf",
+          label: "goldoni-pizzakarton-deckel-druckdaten.pdf",
+          hint: "Druckdaten, 353 × 698 mm — Motiv auf der Deckelfläche, RGB",
+        },
         {
           href: "/assets/print/wmd-pizzakarton-datenblatt.pdf",
           label: "wmd-pizzakarton-datenblatt.pdf",
