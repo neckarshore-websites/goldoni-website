@@ -46,7 +46,7 @@ export default function Page() {
         },
         {
           label: "Rückseite",
-          caption: "trägt die Absenderanschrift, heller Grund (Betreiber-Entscheidung 27.08.)",
+          caption: "der persönliche Teil — Gruss, Linie, und Platz für zwei Zeilen von Hand",
           node: <BriefumschlagBackArtwork />,
         },
       ]}
@@ -92,6 +92,8 @@ export default function Page() {
         },
       ]}
       openPoints={[
+        "Die Gestaltung lebt davon, dass jemand hineinschreibt. Silvio muss zusagen, dass er das mitträgt — bleibt die Fläche leer, wirkt der Umschlag unfertig statt einladend, und dann wäre der schlichte Absender-Rücken die bessere Wahl. Das ist keine Bauarbeit, sondern eine Frage an ihn.",
+        "Wo die Klappe dieses Umschlags verklebt, ist NICHT gemessen: die Vorlage der Druckerei zeigt nur die Vorderseite. Die Gestaltung ist deshalb so gesetzt, dass sie in beiden Fällen stimmt — 38 mm bleiben an beiden Kanten frei. Vor dem Druck trotzdem einmal an einem echten Umschlag nachsehen; das kostet dreissig Sekunden und entscheidet, ob der Gruss lesbar bleibt oder überklebt wird.",
         "Beim Bestellen die 4/4-Variante wählen — die Staffel auf dieser Seite stammt aus einer beidseitigen Auswahl, deren Farbigkeit noch zu bestätigen ist. Weicht der Preis deutlich ab, sag Bescheid, dann rechne ich die Tabelle neu.",
         "Das Wellen ist mit der hellen Rückseite weitgehend erledigt: seit dem 27.08. trägt nur noch die Vorderseite Vollton, die Rückseite ist heller Grund mit Text. Der Punkt bleibt trotzdem stehen, bis das Papier gewählt ist — vollflächig auf 80 g bleibt vollflächig, auch einseitig.",
         "Für die Rückseite gibt es KEINE Druckdaten. Was die Druckerei heute bekommen würde, ist eine Seite: die Vorderseite. Die Rückseite existiert bisher nur als Bildschirm-Entwurf. Wer 4/4 bestellt, braucht vorher die zweite Seite als Datei — das ist eine kleine Arbeit, aber sie ist nicht gemacht, und der Status oben sagt 4/4.",

@@ -172,67 +172,88 @@ export function BriefumschlagArtwork() {
 }
 
 /**
- * Rueckseite: traegt die Absenderanschrift, seit die Vorderseite sie
- * abgegeben hat.
+ * Rueckseite: der persoenliche Teil.
  *
- * GRUND VOLLFLAECHIG MOZZARELLA — Betreiber-Entscheidung 2026-08-27 bei der
- * Sichtabnahme ("vorne OK, hinten bitte auf Mozzarella"). Vorher war die
- * Rueckseite vollflaechig Olive. Die Umstellung dreht die Schriftfarben mit,
- * weil helle Schrift auf hellem Grund nicht lesbar ist:
+ * BETREIBER-ENTSCHEIDUNG 2026-08-27, nach fuenf massgetreu gezeichneten
+ * Vorschlaegen: gewaehlt wurde "Die Handschrift". Gedruckt wird ein Gruss und
+ * eine Linie; der Rest der Flaeche bleibt frei, damit von Hand hineingeschrieben
+ * werden kann. Der Ruecken wird in dem Moment gesehen, in dem jemand den Brief
+ * aufreisst und ihn in der Hand haelt — dieselbe Logik wie beim Pizzakartondeckel.
  *
- *   Absender-Zeile  Olive  #746B03 auf #FAFAFA  Kontrast 5,2
- *   Anschrift       Espresso #1A1612 auf #FAFAFA  Kontrast 17,2
+ * ZWEI ABWEICHUNGEN VOM ENTWURF, BEIDE ABSICHT:
  *
- * Beide gemessen, nicht geschaetzt. Parmigiano und Tan scheiden hier aus —
- * sie kommen auf 1,1 bzw. 1,8 und waeren auf hellem Grund nicht zu lesen.
+ * 1. "Platz fuer zwei Zeilen von Hand" wird NICHT gedruckt. Im Entwurf stand die
+ *    Zeile als blasse Beschriftung in der Flaeche — das war eine Anmerkung fuer
+ *    uns, keine Gestaltung. Gedruckt waere sie eine Anweisung an den Empfaenger
+ *    und damit das Gegenteil von persoenlich.
  *
- * NEBENWIRKUNG IN DIE RICHTIGE RICHTUNG: der offene Punkt "beidseitiger
- * Vollton auf 80 g Offsetpapier wellt sich" verliert damit seine Grundlage.
- * Nur noch eine Seite traegt Vollton.
+ * 2. Der Inhalt sitzt in der SENKRECHTEN MITTE, nicht unter einer Klappe.
+ *    Grund: wo die Klappe dieses Umschlags genau liegt, ist NICHT GEMESSEN — die
+ *    Vorlage der Druckerei zeigt nur die Vorderseite. Statt eine unbekannte Lage
+ *    zu raten, ist die Gestaltung so gesetzt, dass sie stimmt, egal ob die Klappe
+ *    oben oder unten verklebt: ein Band von 38 mm bleibt an BEIDEN Kanten frei
+ *    (Inhalt von 38 bis 72 mm auf 110 mm Hoehe). Eine ungemessene Groesse
+ *    entscheidet damit nichts mehr.
  *
- * Die Klappe des Umschlags liegt hier — Text bleibt deshalb in der oberen
- * Haelfte, wo nichts verklebt wird.
+ * Farben gemessen, nicht geschaetzt — Kontrast gegen #FAFAFA:
+ *   Gruss + Linie  Olive    #746B03   5,2
+ *   Absenderzeile  Espresso #1A1612  17,2
  */
 export function BriefumschlagBackArtwork() {
   return (
     <Sheet wmm={230} hmm={120} background={C.mozzarella}>
+      {/* Inhaltsband: 38 bis 72 mm der 110 mm Endformat-Hoehe, plus 5 mm
+          Beschnitt oben — bleibt an beiden Kanten 38 mm frei. */}
       <div
         style={{
           position: "absolute",
-          inset: "calc(13 * var(--mm))",
+          left: "calc(28 * var(--mm))",
+          right: "calc(28 * var(--mm))",
+          top: "calc(43 * var(--mm))",
+          height: "calc(34 * var(--mm))",
           display: "flex",
-          alignItems: "flex-start",
+          flexDirection: "column",
           justifyContent: "center",
         }}
       >
-        <div style={{ textAlign: "center" }}>
-          <p
-            style={{
-              margin: 0,
-              fontWeight: 600,
-              fontSize: "calc(2.6 * var(--mm))",
-              letterSpacing: ".3em",
-              textTransform: "uppercase",
-              color: C.olive,
-            }}
-          >
-            Absender
-          </p>
-          <p
-            style={{
-              margin: "calc(3 * var(--mm)) 0 0",
-              fontSize: "calc(3.4 * var(--mm))",
-              lineHeight: 1.55,
-              color: C.espresso,
-            }}
-          >
-            <strong style={{ fontWeight: 600 }}>Ristorante Goldoni</strong>
-            <br />
-            Reinsburgstraße 151 · 70197 Stuttgart
-            <br />
-            +49 (711) 659 98 89 · ristorante-goldoni.de
-          </p>
-        </div>
+        <p
+          style={{
+            margin: 0,
+            fontFamily: SERIF,
+            fontWeight: 600,
+            fontSize: "calc(9 * var(--mm))",
+            lineHeight: 1,
+            color: C.olive,
+          }}
+        >
+          Grazie.
+        </p>
+
+        {/* Die Linie ist eine Einladung, kein Formularfeld — deshalb eine
+            durchgezogene Haarlinie und keine gestrichelte Schreibzeile. */}
+        <div
+          style={{
+            marginTop: "calc(5 * var(--mm))",
+            width: "calc(46 * var(--mm))",
+            height: "calc(.35 * var(--mm))",
+            background: C.olive,
+          }}
+        />
+
+        <p
+          style={{
+            margin: "calc(11 * var(--mm)) 0 0",
+            fontSize: "calc(3.1 * var(--mm))",
+            lineHeight: 1.5,
+            color: C.espresso,
+          }}
+        >
+          <strong style={{ fontWeight: 600, color: C.olive }}>
+            Ristorante Goldoni
+          </strong>
+          {" · "}Reinsburgstraße 151 · 70197 Stuttgart
+          {" · "}+49 (711) 659 98 89
+        </p>
       </div>
     </Sheet>
   );
