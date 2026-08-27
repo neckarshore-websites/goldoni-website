@@ -58,36 +58,26 @@ export default function Page() {
           body: "Ein Bierdeckel bekommt Flecken. Die höchste Fehlerkorrektur-Stufe verträgt sie.",
         },
       ]}
-      printerNote={`HINWEISE ZUR DATEI — Ristorante Goldoni, Sechseck-Bierdeckel 93 x 81 mm
+      printerNote={`HINWEISE ZUR DATEI — Ristorante Goldoni, Sechseck-Bierdeckel
 
-Die Datei liegt in RGB vor. Bitte nach Ihrem Standardprofil nach CMYK
-wandeln (ISO Coated v2 / FOGRA39 bzw. PSO Coated v3), relativ
-farbmetrisch mit Tiefenkompensierung.
+Zwei Seiten, 99 x 87 mm Datenformat. Seite 1 Vorderseite, Seite 2 Rueckseite.
+Beide Seiten sind vollflaechig eingefaerbt, Hintergruende laufen randlos bis an
+die Kante des Datenformats. Schriften eingebettet, alles Vektor.
 
-Bierdeckelpappe ist ungestrichen und saugend — bitte den Farbauftrag
-entsprechend Ihrer Erfahrung mit diesem Material begrenzen. Beide Seiten
-sind vollflaechig eingefaerbt.
+Die Datei liegt in RGB vor; die Wandlung nach CMYK durch Sie ist uns bekannt
+und recht.
 
-Fuer die zwei folgenden Stellen bitten wir darum, die Zielwerte zu setzen
-statt allein automatisch zu wandeln:
+BIERDECKELPAPPE IST UNGESTRICHEN UND SAUGEND. Bitte den Gesamtfarbauftrag nach
+Ihrer Erfahrung mit diesem Material begrenzen — wir geben bewusst keine Zahl
+vor, Sie kennen das Material besser als wir. Wenn dabei der Ton der beiden
+Vollton-Flaechen leidet, ist uns der niedrigere Auftrag lieber.
 
-1. QR-CODE (Rueckseite)
-   Module: 100 % Schwarz, C 0 / M 0 / Y 0 / K 100.
-   KEIN Vierfarbschwarz — an den Modulkanten kostet jede
-   Passerdifferenz Lesbarkeit, und dieser Code ist der einzige Zweck
-   der Rueckseite.
-   Ruhezone um den Code: Papierweiss, 0 / 0 / 0 / 0.
+EIN EINZIGER WUNSCH: den QR-Code auf der Rueckseite in reinem Schwarz halten
+(nur K), nicht in Vierfarbschwarz. Er ist der ganze Zweck dieser Seite, und an
+den Modulkanten kostet jede Passerdifferenz Lesbarkeit.
 
-2. VOLLTON-FLAECHEN
-   Vorderseite Espresso (RGB #1A1612): C 55 / M 60 / Y 60 / K 100.
-   Rueckseite Olive   (RGB #746B03): C 20 / M 22 / Y 100 / K 40.
-
-Datenformat 99 x 87 mm, Seite 1 Vorderseite, Seite 2 Rueckseite.
-Hintergruende laufen randlos bis an die Kante des Datenformats.
 Keine Stanzkontur in der Datei — freie Stanzform nach Ihrer Vorlage.
-Saemtlicher Inhalt liegt innerhalb des Sicherheitsabstands von 6 mm.
-Fertigungsbedingt liegt das Seitenformat rund 0,14 mm ueber dem
-Sollmass; das liegt innerhalb des 3-mm-Beschnitts.`}
+Saemtlicher Inhalt liegt innerhalb des Sicherheitsabstands von 6 mm.`}
       openPoints={[
         "Farbmodus: CMYK gefordert, unsere Datei ist RGB. Bierdeckelpappe ist ungestrichen und saugend — der Farbumschlag fällt hier stärker aus als auf gestrichenem Papier. Der Hinweistext oben setzt Zielwerte für die beiden Vollton-Flächen und den QR-Code.",
         "QR-Module in reinem Schwarz (nur K).",

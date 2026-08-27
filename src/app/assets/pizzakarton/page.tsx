@@ -97,65 +97,36 @@ export default function Page() {
       }}
       printerNote={`HINWEISE ZUR DATEI — Ristorante Goldoni, Pizzakarton 32 x 32 x 4 cm
 
-Die Datei liegt in RGB vor. Bitte nach Ihrem Standardprofil nach CMYK
-wandeln (ISO Coated v2 / FOGRA39 bzw. PSO Coated v3), relativ
-farbmetrisch mit Tiefenkompensierung.
+Eine Seite, 413 x 818 mm Datenformat. Schriften eingebettet, alles Vektor.
 
-Bedruckt wird ausschliesslich der DECKEL. Der uebrige Bogen bleibt
-unbedruckt — das ist beabsichtigt und kein Fehler in der Datei: alle
-anderen Flaechen sind im gefalteten Zustand verdeckt oder liegen auf
-dem Tisch.
+DREI DINGE SEHEN AUS WIE EIN FEHLER UND SIND ABSICHT:
 
-Das Motiv steht auf dem Bogen um 180 Grad gedreht. Auch das ist
-beabsichtigt: Ihre Vorlage beschriftet die Deckelflaeche kopfstehend,
-waehrend RUECKSEITE und BODEN richtig herum stehen. Gedreht steht die
-Wortmarke auf dem geoeffneten Karton richtig.
+1. Der Bogen ist fast vollstaendig unbedruckt. Bedruckt wird nur der DECKEL;
+   alle anderen Flaechen sind im gefalteten Zustand verdeckt.
+2. Das Motiv steht um 180 Grad gedreht. Ihre Vorlage beschriftet die
+   Deckelflaeche kopfstehend — gedreht steht die Wortmarke auf dem geoeffneten
+   Karton richtig.
+3. Die Farbe endet an den Falzlinien und laeuft nicht darueber hinaus. Dort
+   bricht die Kante beim Falten ohnehin.
 
-Weisse Wellpappe ist ungestrichen und stark saugend — staerker als
-Bierdeckelpappe. Bitte den Farbauftrag entsprechend Ihrer Erfahrung mit
-diesem Material begrenzen. Die Deckelflaeche ist vollflaechig
-eingefaerbt, in zwei Feldern.
+Die bedruckte Flaeche ist an den Falzlinien Ihrer Stanzvorlage ausgemessen:
+321,5 x 322,7 mm, 45,8 mm von links und 42,0 mm von oben.
 
-Fuer die vier folgenden Stellen bitten wir darum, die Zielwerte zu
-setzen statt allein automatisch zu wandeln:
+Die Datei liegt in RGB vor; die Wandlung nach CMYK durch Sie ist uns bekannt
+und recht.
 
-1. QR-CODE (unteres Feld)
-   Module: 100 % Schwarz, C 0 / M 0 / Y 0 / K 100.
-   KEIN Vierfarbschwarz — an den Modulkanten kostet jede
-   Passerdifferenz Lesbarkeit, und auf saugendem Material laufen die
-   Module ohnehin zu.
-   Ruhezone um den Code: Papierweiss, 0 / 0 / 0 / 0.
-   Der Code misst 86 mm; er ist bewusst gross, weil das Material saugt.
+WEISSE WELLPAPPE SAUGT STARK. Bitte den Gesamtfarbauftrag nach Ihrer Erfahrung
+mit diesem Material begrenzen — wir geben bewusst keine Zahl vor. Wenn dabei
+der Ton der beiden Vollton-Felder leidet, ist uns der niedrigere Auftrag lieber.
 
-2. OBERES FELD, dunkler Vollton (Espresso, RGB #1A1612)
-   Zielwert: C 55 / M 60 / Y 60 / K 100 (warmes Tiefschwarz).
-   Reines K 100 wirkt flau; die Flaeche traegt die Wortmarke.
+ZWEI WUENSCHE:
+- Der QR-Code in reinem Schwarz (nur K), nicht in Vierfarbschwarz. Er misst
+  86 mm und ist bewusst gross, weil das Material saugt.
+- Die helle Schrift (Wortmarke und Bestellweg) bitte als Aussparung auf das
+  Material setzen, nicht als feines Raster. Der Wert liegt knapp unter
+  Papierweiss; ein 2-Prozent-Raster waere auf Wellpappe unsichtbar oder fleckig.
 
-3. UNTERES FELD, Vollton Olive (RGB #746B03)
-   Zielwert: C 20 / M 22 / Y 100 / K 40.
-
-4. HELLE SCHRIFT (Wortmarke und Bestellweg, RGB #FAFAFA)
-   Bitte als Aussparung auf das Material setzen, nicht als 2-%-Raster.
-   Der Wert in der Datei ist knapp unter Papierweiss; auf saugender
-   Wellpappe ist ein 2-%-Raster entweder unsichtbar oder fleckig.
-   Unbedruckt ist hier das sauberere Ergebnis.
-
-Weitere Farben, als Orientierung (aus der Datei umgerechnet, Werte wie
-auf Postkarte und Bierdeckel):
-   Parmigiano  #FEF1A5   C  0 / M  4 / Y 40 / K  0   (Zeile RISTORANTE)
-   Tan         #C9BD8A   C 18 / M 18 / Y 48 / K  0   (Claim unter der Wortmarke)
-
-Schriften sind eingebettet. Text und QR-Code sind Vektor, keine Pixel.
-Kleinste Schrift 6,1 mm (rund 17 pt), damit deutlich ueber Ihrem
-Mindestmass von 10 pt positiv und 12 pt negativ.
-
-Datenformat 413 x 818 mm, eine Seite. Die bedruckte Flaeche ist an den
-Falzlinien Ihrer Stanzvorlage ausgemessen und liegt bei 321,5 x 322,7 mm,
-45,8 mm von links und 42,0 mm von oben. Die Farbe endet an den
-Falzlinien und laeuft bewusst NICHT darueber hinaus — dort bricht die
-Kante beim Falten ohnehin.
-Fertigungsbedingt liegt das Seitenformat 0,09 x 0,13 mm ueber dem
-Sollmass; das liegt weit innerhalb des 5-mm-Beschnitts.`}
+Kleinste Schrift 6,1 mm, rund 17 pt — deutlich ueber Ihrem Mindestmass.`}
       downloads={[
         {
           href: "/assets/print/goldoni-pizzakarton-deckel-druckdaten.pdf",
