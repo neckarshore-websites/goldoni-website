@@ -74,6 +74,7 @@ export default function Page() {
         },
       ]}
       openPoints={[
+        "Farbmodus: die Druckerei fordert CMYK, unsere Datei entsteht im Browser und ist RGB. Sie wandelt automatisch. Genau dort, wo der Deckel vollflächig Espresso und vollflächig Oliv ist, entscheidet diese Wandlung über den Eindruck — auf weisser Wellpappe, die stark saugt, stärker als auf gestrichenem Papier. Die Hinweise für die Druckerei weiter unten setzen deshalb Zielwerte für die beiden Vollton-Flächen, den QR-Code und die helle Schrift. Sie ersetzen keinen Andruck — dafür ist der Probekarton da.",
         "Die Vorschau oben zeigt den Deckel weiterhin 327 mm hoch, die Druckdaten 322,7 mm. Die Bildschirmfassung ist damit 1,3 Prozent zu hoch — physisch sind alle Schriftgrössen identisch, nur der Rahmen ist es nicht. Die Korrektur ist eine Zahl in einer Zeile, aber sie verschiebt die am 25. August abgenommene Aufteilung um 4,3 mm und braucht deshalb eine Entscheidung des Betreibers, keine stille Änderung.",
         "Ein einzelner Probekarton für 13,50 € netto wird zuerst bestellt (Betreiber-Entscheidung 2026-08-26). Er ist zugleich die Abnahme, die ein Bildschirm nicht leisten kann: Farbe auf Wellpappe, Lesbarkeit des Codes auf saugendem Material, Wirkung der Schriftgrössen in echter Grösse.",
         "Beschaffung entschieden: selbst bestellen, 250 Stück nach dem Probekarton. Offen bleibt nur, ob die bisherigen 26er-Kartons vom Lieferanten weiterlaufen, solange der Vorrat reicht.",
@@ -94,6 +95,67 @@ export default function Page() {
         ],
         note: "Der Stückpreis fällt von 1,91 € bei 50 Stück auf 0,52 € und steht ab 225 still — 0,51 € erst ab 700, 0,50 € ab 1.100. Gewählt sind 250 Stück. Dass 225 denselben Stückpreis hat, ändert daran nichts: die 25 zusätzlichen Kartons kosten exakt den Stückpreis, weder Aufschlag noch Nachlass. Die erste Zeile ist kein Staffelpreis, sondern der Einzelpreis für einen Probekarton — 13,50 € netto vom Betreiber erfragt, nicht aus der Staffel gerechnet. Zur Einordnung: der kleine 26er lag bei 250 Stück bei 107,50 € netto, der grosse liegt bei 130,00 €.",
       }}
+      printerNote={`HINWEISE ZUR DATEI — Ristorante Goldoni, Pizzakarton 32 x 32 x 4 cm
+
+Die Datei liegt in RGB vor. Bitte nach Ihrem Standardprofil nach CMYK
+wandeln (ISO Coated v2 / FOGRA39 bzw. PSO Coated v3), relativ
+farbmetrisch mit Tiefenkompensierung.
+
+Bedruckt wird ausschliesslich der DECKEL. Der uebrige Bogen bleibt
+unbedruckt — das ist beabsichtigt und kein Fehler in der Datei: alle
+anderen Flaechen sind im gefalteten Zustand verdeckt oder liegen auf
+dem Tisch.
+
+Das Motiv steht auf dem Bogen um 180 Grad gedreht. Auch das ist
+beabsichtigt: Ihre Vorlage beschriftet die Deckelflaeche kopfstehend,
+waehrend RUECKSEITE und BODEN richtig herum stehen. Gedreht steht die
+Wortmarke auf dem geoeffneten Karton richtig.
+
+Weisse Wellpappe ist ungestrichen und stark saugend — staerker als
+Bierdeckelpappe. Bitte den Farbauftrag entsprechend Ihrer Erfahrung mit
+diesem Material begrenzen. Die Deckelflaeche ist vollflaechig
+eingefaerbt, in zwei Feldern.
+
+Fuer die vier folgenden Stellen bitten wir darum, die Zielwerte zu
+setzen statt allein automatisch zu wandeln:
+
+1. QR-CODE (unteres Feld)
+   Module: 100 % Schwarz, C 0 / M 0 / Y 0 / K 100.
+   KEIN Vierfarbschwarz — an den Modulkanten kostet jede
+   Passerdifferenz Lesbarkeit, und auf saugendem Material laufen die
+   Module ohnehin zu.
+   Ruhezone um den Code: Papierweiss, 0 / 0 / 0 / 0.
+   Der Code misst 86 mm; er ist bewusst gross, weil das Material saugt.
+
+2. OBERES FELD, dunkler Vollton (Espresso, RGB #1A1612)
+   Zielwert: C 55 / M 60 / Y 60 / K 100 (warmes Tiefschwarz).
+   Reines K 100 wirkt flau; die Flaeche traegt die Wortmarke.
+
+3. UNTERES FELD, Vollton Olive (RGB #746B03)
+   Zielwert: C 20 / M 22 / Y 100 / K 40.
+
+4. HELLE SCHRIFT (Wortmarke und Bestellweg, RGB #FAFAFA)
+   Bitte als Aussparung auf das Material setzen, nicht als 2-%-Raster.
+   Der Wert in der Datei ist knapp unter Papierweiss; auf saugender
+   Wellpappe ist ein 2-%-Raster entweder unsichtbar oder fleckig.
+   Unbedruckt ist hier das sauberere Ergebnis.
+
+Weitere Farben, als Orientierung (aus der Datei umgerechnet, Werte wie
+auf Postkarte und Bierdeckel):
+   Parmigiano  #FEF1A5   C  0 / M  4 / Y 40 / K  0   (Zeile RISTORANTE)
+   Tan         #C9BD8A   C 18 / M 18 / Y 48 / K  0   (Claim unter der Wortmarke)
+
+Schriften sind eingebettet. Text und QR-Code sind Vektor, keine Pixel.
+Kleinste Schrift 6,1 mm (rund 17 pt), damit deutlich ueber Ihrem
+Mindestmass von 10 pt positiv und 12 pt negativ.
+
+Datenformat 413 x 818 mm, eine Seite. Die bedruckte Flaeche ist an den
+Falzlinien Ihrer Stanzvorlage ausgemessen und liegt bei 321,5 x 322,7 mm,
+45,8 mm von links und 42,0 mm von oben. Die Farbe endet an den
+Falzlinien und laeuft bewusst NICHT darueber hinaus — dort bricht die
+Kante beim Falten ohnehin.
+Fertigungsbedingt liegt das Seitenformat 0,09 x 0,13 mm ueber dem
+Sollmass; das liegt weit innerhalb des 5-mm-Beschnitts.`}
       downloads={[
         {
           href: "/assets/print/goldoni-pizzakarton-deckel-druckdaten.pdf",

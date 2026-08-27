@@ -173,15 +173,29 @@ export function BriefumschlagArtwork() {
 
 /**
  * Rueckseite: traegt die Absenderanschrift, seit die Vorderseite sie
- * abgegeben hat. Vollflaechig Olive, damit beide Seiten zusammengehoeren
- * und die dunkle Vorderseite nicht allein steht.
+ * abgegeben hat.
+ *
+ * GRUND VOLLFLAECHIG MOZZARELLA — Betreiber-Entscheidung 2026-08-27 bei der
+ * Sichtabnahme ("vorne OK, hinten bitte auf Mozzarella"). Vorher war die
+ * Rueckseite vollflaechig Olive. Die Umstellung dreht die Schriftfarben mit,
+ * weil helle Schrift auf hellem Grund nicht lesbar ist:
+ *
+ *   Absender-Zeile  Olive  #746B03 auf #FAFAFA  Kontrast 5,2
+ *   Anschrift       Espresso #1A1612 auf #FAFAFA  Kontrast 17,2
+ *
+ * Beide gemessen, nicht geschaetzt. Parmigiano und Tan scheiden hier aus —
+ * sie kommen auf 1,1 bzw. 1,8 und waeren auf hellem Grund nicht zu lesen.
+ *
+ * NEBENWIRKUNG IN DIE RICHTIGE RICHTUNG: der offene Punkt "beidseitiger
+ * Vollton auf 80 g Offsetpapier wellt sich" verliert damit seine Grundlage.
+ * Nur noch eine Seite traegt Vollton.
  *
  * Die Klappe des Umschlags liegt hier — Text bleibt deshalb in der oberen
  * Haelfte, wo nichts verklebt wird.
  */
 export function BriefumschlagBackArtwork() {
   return (
-    <Sheet wmm={230} hmm={120} background={C.olive}>
+    <Sheet wmm={230} hmm={120} background={C.mozzarella}>
       <div
         style={{
           position: "absolute",
@@ -199,7 +213,7 @@ export function BriefumschlagBackArtwork() {
               fontSize: "calc(2.6 * var(--mm))",
               letterSpacing: ".3em",
               textTransform: "uppercase",
-              color: C.parmigiano,
+              color: C.olive,
             }}
           >
             Absender
@@ -209,7 +223,7 @@ export function BriefumschlagBackArtwork() {
               margin: "calc(3 * var(--mm)) 0 0",
               fontSize: "calc(3.4 * var(--mm))",
               lineHeight: 1.55,
-              color: C.mozzarella,
+              color: C.espresso,
             }}
           >
             <strong style={{ fontWeight: 600 }}>Ristorante Goldoni</strong>

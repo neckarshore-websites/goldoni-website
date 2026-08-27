@@ -46,7 +46,7 @@ export default function Page() {
         },
         {
           label: "Rückseite",
-          caption: "trägt die Absenderanschrift",
+          caption: "trägt die Absenderanschrift, heller Grund (Betreiber-Entscheidung 27.08.)",
           node: <BriefumschlagBackArtwork />,
         },
       ]}
@@ -93,7 +93,8 @@ export default function Page() {
       ]}
       openPoints={[
         "Beim Bestellen die 4/4-Variante wählen — die Staffel auf dieser Seite stammt aus einer beidseitigen Auswahl, deren Farbigkeit noch zu bestätigen ist. Weicht der Preis deutlich ab, sag Bescheid, dann rechne ich die Tabelle neu.",
-        "Beidseitiger Vollton auf 80 g Offsetpapier wellt sich. Vor der Bestellung prüfen, ob ein schwereres Papier wählbar ist.",
+        "Das Wellen ist mit der hellen Rückseite weitgehend erledigt: seit dem 27.08. trägt nur noch die Vorderseite Vollton, die Rückseite ist heller Grund mit Text. Der Punkt bleibt trotzdem stehen, bis das Papier gewählt ist — vollflächig auf 80 g bleibt vollflächig, auch einseitig.",
+        "Für die Rückseite gibt es KEINE Druckdaten. Was die Druckerei heute bekommen würde, ist eine Seite: die Vorderseite. Die Rückseite existiert bisher nur als Bildschirm-Entwurf. Wer 4/4 bestellt, braucht vorher die zweite Seite als Datei — das ist eine kleine Arbeit, aber sie ist nicht gemacht, und der Status oben sagt 4/4.",
         "Der Entwurf ist noch nicht besprochen. Ob der Umschlag überhaupt gebraucht wird und wofür, entscheidet der Betreiber — bisher ist er eine Möglichkeit, kein Auftrag.",
         "Auflage und ob mit oder ohne Fenster: die Fensterfassung lohnt nur, wenn Anschriften aus einem System gedruckt werden. Wer von Hand adressiert, fährt ohne Fenster besser.",
         "Prüfen, ob der Umschlag zum Papier der Postkarte passt — beides liegt beim Gast auf demselben Tisch.",
