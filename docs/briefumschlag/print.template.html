@@ -71,6 +71,35 @@ html,body{margin:0;padding:0;background:#fff;font-family:"Inter",sans-serif}
 .retline{position:absolute;left:calc(25*var(--mm));bottom:calc(70*var(--mm));
   font-size:calc(2.5*var(--mm));letter-spacing:.02em;margin:0}
 
+/* ── RUECKSEITE, seit 2026-08-27 ──────────────────────────────────────────
+   Betreiber-Entscheidung: "Die Handschrift" — ein Gruss, eine Linie, und
+   Platz, um von Hand hineinzuschreiben.
+
+   SCHWARZ, NICHT OLIVE, und das ist keine Nachlaessigkeit gegenueber dem
+   abgenommenen Bildschirm-Entwurf. Diese Datei ist die Druckdatei fuer das
+   1/0-Produkt, fuer das auch die Vorlage der Druckerei gemacht ist; der
+   Kommentar oben sagt ausdruecklich, dass eine Vollton-Rueckseite ein
+   ANDERES Produkt waere. Mit dieser zweiten Seite wird der Umschlag 1/1 —
+   Schwarz auf beiden Seiten, weiterhin ohne Flaeche, also weiterhin ohne
+   Durchschlagen und ohne Wellen. Die farbige Fassung existiert als
+   Bildschirm-Entwurf und wartet auf die Produktentscheidung.
+
+   SENKRECHT MITTIG, weil die Klappenlage nicht gemessen ist: 38 mm bleiben
+   an beiden Kanten frei (Inhalt zwischen 43 und 77 mm des 120-mm-
+   Datenformats). Egal ob die Klappe oben oder unten verklebt — der Gruss
+   bleibt lesbar. */
+.rueck{position:absolute;left:calc(28*var(--mm));right:calc(28*var(--mm));
+  top:calc(43*var(--mm));height:calc(34*var(--mm));
+  display:flex;flex-direction:column;justify-content:center}
+.gruss{font-family:"Playfair",Georgia,serif;font-weight:600;
+  font-size:calc(9*var(--mm));line-height:1;margin:0}
+/* Haarlinie, keine gestrichelte Schreibzeile — eine Einladung, kein
+   Formularfeld. */
+.gruss-linie{height:.25mm;background:#000;border:0;width:calc(46*var(--mm));
+  margin:calc(5*var(--mm)) 0 0}
+.rueck-addr{font-size:calc(3.1*var(--mm));line-height:1.5;margin:calc(11*var(--mm)) 0 0}
+.rueck-addr strong{font-weight:600}
+
 .label{font-size:3.4mm;letter-spacing:.18em;text-transform:uppercase;color:#8a8178;margin:0}
 .note{font-size:3.2mm;line-height:1.5;color:#6b625a;max-width:200mm;text-align:center;margin:0}
 .legend{display:flex;gap:8mm;font-size:3mm;color:#6b625a}
@@ -106,8 +135,22 @@ html,body{margin:0;padding:0;background:#fff;font-family:"Inter",sans-serif}
     <span><b style="color:#999">&middot; &middot; &middot;</b> Briefmarkenfeld freihalten</span>
   </div>
 
-  <p class="note">Einseitig bedruckt, nur Schwarz (1/0). Keine Vollton-Fl&auml;chen: auf 80-g-Offsetpapier
-  schl&auml;gt eine gro&szlig;e schwarze Fl&auml;che durch und macht den Umschlag wellig. Das Fenster bleibt frei,
+  <p class="label" style="margin-top:6mm">R&uuml;ckseite &middot; der pers&ouml;nliche Teil</p>
+
+  <div class="env">
+    <div class="rueck">
+      <p class="gruss">Grazie.</p>
+      <hr class="gruss-linie">
+      <p class="rueck-addr"><strong>Ristorante Goldoni</strong> &middot; Reinsburgstra&szlig;e 151
+        &middot; 70197 Stuttgart &middot; +49 (711) 659 98 89</p>
+    </div>
+    <div class="trim"></div>
+    <div class="safe"></div>
+  </div>
+
+  <p class="note">Beidseitig bedruckt, nur Schwarz (1/1). Keine Vollton-Fl&auml;chen: auf 80-g-Offsetpapier
+  schl&auml;gt eine gro&szlig;e schwarze Fl&auml;che durch und macht den Umschlag wellig &mdash;
+  auch auf der R&uuml;ckseite steht deshalb nur Schrift. Das Fenster bleibt frei,
   ebenso 2 mm rundherum &mdash; das Datenblatt r&auml;umt rund 1 mm Versatz bei der Fensterposition ein.</p>
 </div>
 
