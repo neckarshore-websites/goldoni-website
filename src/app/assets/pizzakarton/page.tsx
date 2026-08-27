@@ -14,7 +14,7 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Pizzakarton"
       intro="32 × 32 × 4 cm, aussen vierfarbig bedruckt. Der Deckel ist mit Abstand die grösste Markenfläche im ganzen Satz — grösser als Postkarte, Bierdeckel und Briefumschlag zusammen, und der Gast schaut ihn an, während er wartet."
-      status="Entschieden: 32 × 32 cm, Aufteilung A, weisser Karton, 250 Stück — zuerst ein einzelner Probekarton"
+      status="Druckdaten liegen vor. Entschieden: 32 × 32 cm, Aufteilung A, weisser Karton, 250 Stück — zuerst ein einzelner Probekarton"
       aspect={{ w: 1200, h: 2376 }}
       sides={[
         {
@@ -45,6 +45,10 @@ export default function Page() {
           body: "Betreiber-Entscheidung 2026-08-26. Diese Seite beschreibt ab sofort ausschliesslich den grossen Karton; der 26er wird nicht parallel geführt, weil eine Bestellgrundlage mit zwei Größen genau die Verwechslung erzeugt, die sie verhindern soll. Die Stanze ist baugleich: dieselben sechs Flächen, dieselben Laschen mit 40,5 mm, dieselben Regeln für Beschnitt, Sicherheitsabstand und Mindestschrift. Gewachsen ist nur das Quadrat — der Bogen wird um exakt die 60 mm breiter, die der Deckel breiter wird. Die Gestaltungsentscheidungen vom 25. August bleiben deshalb alle gültig, sie liegen nur auf einer grösseren Fläche. Der alte Stand ist über die Versionsgeschichte erreichbar.",
         },
         {
+          title: "Die Deckelfläche wird gemessen, nicht gerechnet — und die gerechnete Zahl war falsch",
+          body: "Für die Druckdaten liest ein eigenes Werkzeug die Fläche aus der Stanzvorlage der Druckerei: Falzlinien aus dem Rasterbild, das richtige Feld über die Beschriftung «DECKEL» aus der Textebene derselben Datei. Ergebnis: 321,5 × 322,7 mm, 45,8 mm von links und 42,0 mm von oben. Bis dahin stand im Entwurf eine Höhe von 327 mm, abgeleitet aus der Bänderfolge des Datenblatts unter der Annahme, der Deckel sei das erste grosse Feld. Die Vorlage misst dieses Feld mit 322,7 mm und beschriftet das zweite, 327 mm hohe, mit «BODEN» — die Ableitung lag 4,3 mm daneben. Auf einer Stanzvorlage ist das genug, um eine Kante zu verfehlen. Die Zahl steht jetzt nirgends mehr abgeschrieben: ändert die Druckerei ihre Vorlage, hält der Bau an, statt still ein anderes Motiv auszugeben.",
+        },
+        {
           title: "Zwei Felder statt einer Fläche",
           body: "Betreiber-Entscheidung 2026-08-25: der Deckel wird waagerecht geteilt, oben die eine Farbe, unten die andere. Die Kante liegt bei 52 statt 50 Prozent — das obere Feld trägt mehr Inhalt und wirkt bei exakter Hälfte gedrückt. Eine genaue Halbierung sieht auf Papier kleiner aus, als sie ist.",
         },
@@ -70,7 +74,7 @@ export default function Page() {
         },
       ]}
       openPoints={[
-        "Der Deckel-Entwurf steht, die Übertragung auf die Stanzvorlage nicht: das Motiv muss auf der Deckelfläche der neuen Vorlage positioniert werden, mit den Falzlinien als Grundlage. Die Deckelhöhe von 327 mm ist aus der Bänderfolge des Datenblatts abgeleitet und für die Vorschau genau genug — für die Druckdaten wird sie überlagert, nicht gerechnet.",
+        "Die Vorschau oben zeigt den Deckel weiterhin 327 mm hoch, die Druckdaten 322,7 mm. Die Bildschirmfassung ist damit 1,3 Prozent zu hoch — physisch sind alle Schriftgrössen identisch, nur der Rahmen ist es nicht. Die Korrektur ist eine Zahl in einer Zeile, aber sie verschiebt die am 25. August abgenommene Aufteilung um 4,3 mm und braucht deshalb eine Entscheidung des Betreibers, keine stille Änderung.",
         "Ein einzelner Probekarton für 13,50 € netto wird zuerst bestellt (Betreiber-Entscheidung 2026-08-26). Er ist zugleich die Abnahme, die ein Bildschirm nicht leisten kann: Farbe auf Wellpappe, Lesbarkeit des Codes auf saugendem Material, Wirkung der Schriftgrössen in echter Grösse.",
         "Beschaffung entschieden: selbst bestellen, 250 Stück nach dem Probekarton. Offen bleibt nur, ob die bisherigen 26er-Kartons vom Lieferanten weiterlaufen, solange der Vorrat reicht.",
       ]}
@@ -91,6 +95,11 @@ export default function Page() {
         note: "Der Stückpreis fällt von 1,91 € bei 50 Stück auf 0,52 € und steht ab 225 still — 0,51 € erst ab 700, 0,50 € ab 1.100. Gewählt sind 250 Stück. Dass 225 denselben Stückpreis hat, ändert daran nichts: die 25 zusätzlichen Kartons kosten exakt den Stückpreis, weder Aufschlag noch Nachlass. Die erste Zeile ist kein Staffelpreis, sondern der Einzelpreis für einen Probekarton — 13,50 € netto vom Betreiber erfragt, nicht aus der Staffel gerechnet. Zur Einordnung: der kleine 26er lag bei 250 Stück bei 107,50 € netto, der grosse liegt bei 130,00 €.",
       }}
       downloads={[
+        {
+          href: "/assets/print/goldoni-pizzakarton-deckel-druckdaten.pdf",
+          label: "goldoni-pizzakarton-deckel-druckdaten.pdf",
+          hint: "das, was an die Druckerei geht — Motiv auf der Deckelfläche der Vorlage, 413 × 818 mm",
+        },
         {
           href: "/assets/print/wmd-pizzakarton-datenblatt.pdf",
           label: "wmd-pizzakarton-datenblatt.pdf",
