@@ -12,31 +12,23 @@ export const metadata: Metadata = {
 
 const PRINTER_NOTE = `HINWEISE ZUR DATEI — Ristorante Goldoni, Briefumschlag DIN lang quer
 
-Beidseitig, nur Schwarz (1/1). Bitte 100 % Schwarz drucken, C 0 / M 0 /
-Y 0 / K 100 — kein Vierfarbschwarz, das Produkt ist einfarbig.
+Zwei Seiten, 230 x 120 mm Datenformat. Seite 1 Vorderseite mit Fenster,
+Seite 2 Rueckseite. Schriften eingebettet, alles Vektor.
 
-Die Datei liegt in RGB vor; die enthaltenen Elemente sind reines Schwarz
-und Weiss, eine Wandlung nach Graustufen bzw. K verlaendert das Bild
-nicht.
+BEIDSEITIG, NUR SCHWARZ (1/1). Bitte in reinem Schwarz drucken, K 100, kein
+Vierfarbschwarz — das Produkt ist einfarbig. Die Datei enthaelt ausschliesslich
+Schwarz und Weiss; eine Wandlung nach Graustufen bzw. K veraendert sie nicht.
 
-Datenformat 230 x 120 mm, zwei Seiten. Seite 1 ist die Vorderseite mit
-Fenster, Seite 2 die Rueckseite. Es gibt auf BEIDEN Seiten bewusst KEINE
-Vollton-Flaechen: auf 80-g-Offsetpapier schlaegt eine grosse schwarze
-Flaeche durch und macht den Umschlag wellig.
+KEINE VOLLTON-FLAECHEN, auf beiden Seiten nicht. Auf 80-g-Offsetpapier schlaegt
+eine grosse schwarze Flaeche durch und macht den Umschlag wellig.
 
-Auf der Rueckseite steht wenig, und das ist Absicht: ein Gruss, eine Linie,
-die Absenderzeile. Der Rest der Flaeche bleibt frei, damit von Hand
-hineingeschrieben werden kann. Bitte die Freiflaeche nicht als Fehler
-lesen und nichts hineinsetzen.
+Auf der Rueckseite steht wenig, und das ist Absicht: ein Gruss, eine Linie, die
+Absenderzeile. Der freie Platz ist zum Schreiben von Hand gedacht — bitte nicht
+als Fehler lesen und nichts hineinsetzen.
 
-Der Inhalt der Rueckseite liegt senkrecht mittig (43 bis 77 mm des
-120-mm-Datenformats), damit er unabhaengig von der Klappenlage frei bleibt.
-
-Freigehalten sind: das Fenster (90 x 45 mm, 20 mm von links und 15 mm von
-unten ab Endformat) samt 2 mm ringsum wegen des im Datenblatt genannten
-Versatzes von rund 1 mm, sowie das Briefmarkenfeld oben rechts.
-
-Schriften sind eingebettet, saemtliche Inhalte sind Vektor.`;
+Freigehalten sind das Fenster (90 x 45 mm, 20 mm von links und 15 mm von unten
+ab Endformat) samt 2 mm ringsum wegen des im Datenblatt genannten Versatzes von
+rund 1 mm, sowie das Briefmarkenfeld oben rechts.`;
 
 export default function Page() {
   return (

@@ -71,36 +71,20 @@ export default function Page() {
       ]}
       printerNote={`HINWEISE ZUR DATEI — Ristorante Goldoni, Postkarte A6 quer
 
-Die Datei liegt in RGB vor. Bitte nach Ihrem Standardprofil nach CMYK
-wandeln (ISO Coated v2 / FOGRA39 bzw. PSO Coated v3), relativ
-farbmetrisch mit Tiefenkompensierung, maximaler Farbauftrag 300 %.
+Zwei Seiten, 154 x 111 mm Datenformat. Seite 1 Vorderseite, Seite 2 Rueckseite.
+Schriften sind eingebettet, alle Inhalte sind Vektor.
 
-Fuer die drei folgenden Stellen bitten wir darum, die Zielwerte zu
-setzen statt allein automatisch zu wandeln:
+Die Datei liegt in RGB vor; die Wandlung nach CMYK durch Sie ist uns bekannt
+und recht.
 
-1. QR-CODE (Rueckseite)
-   Module: 100 % Schwarz, C 0 / M 0 / Y 0 / K 100.
-   KEIN Vierfarbschwarz — an den Modulkanten kostet jede
-   Passerdifferenz Lesbarkeit.
-   Ruhezone um den Code: Papierweiss, 0 / 0 / 0 / 0.
+EIN EINZIGER WUNSCH, und er betrifft nur den QR-Code auf der Rueckseite:
+bitte dessen Module in reinem Schwarz halten (nur K), nicht in
+Vierfarbschwarz. An den Modulkanten kostet jede Passerdifferenz Lesbarkeit.
+Falls Ihr Ablauf das nicht getrennt steuern kann, sagen Sie uns bitte
+Bescheid — wir liefern den Code dann als eigene Datei.
 
-2. VORDERSEITE, dunkler Vollton (Espresso, RGB #1A1612)
-   Zielwert: C 55 / M 60 / Y 60 / K 100 (warmes Tiefschwarz).
-   Reines K 100 wirkt auf gestrichenem Papier grau und flau; die
-   Flaeche traegt die ganze Vorderseite.
-
-3. RUECKSEITE, Vollton Olive (RGB #746B03)
-   Zielwert: C 20 / M 22 / Y 100 / K 40.
-
-Weitere Farben, als Orientierung (aus der Datei umgerechnet):
-   Parmigiano  #FEF1A5   C  0 / M  4 / Y 40 / K  0
-   Tan         #C9BD8A   C 18 / M 18 / Y 48 / K  0
-   Salmon      #B64926   C  7 / M 78 / Y 93 / K 14
-
-Schriften sind eingebettet. Text und QR-Code sind Vektor, keine Pixel.
-Seitenformat 154 x 111 mm, Seite 1 Vorderseite, Seite 2 Rueckseite.
-Fertigungsbedingt liegt das Seitenformat 0,18 mm ueber dem Sollmass —
-innerhalb des 3-mm-Beschnitts, bitte auf 148 x 105 mm mittig schneiden.`}
+Fertigungsbedingt liegt das Seitenformat 0,18 mm ueber dem Sollmass. Bitte auf
+148 x 105 mm mittig schneiden.`}
       prices={{
         caption:
           "Stand 25. August 2026, netto, ohne Veredelung. Mattfolie und die einmalige Qualitätskontrolle (14,00 € netto) kommen dazu.",

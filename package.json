@@ -24,6 +24,7 @@
     "test:e2e:ci": "playwright test --grep-invert @external",
     "test:e2e:install": "playwright install chromium",
     "test:e2e:ui": "playwright test --ui",
+    "test:hinweis:unit": "tsx tests/delivery/printer-note.test.ts",
     "test:lighthouse:unit": "node --test scripts/lighthouse-profiles.test.mjs",
     "test:qr:print:unit": "tsx tests/delivery/print-qr.test.ts",
     "test:qr:unit": "tsx tests/delivery/storefront-qr.test.ts",
