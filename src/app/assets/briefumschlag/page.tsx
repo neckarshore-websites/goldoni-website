@@ -12,16 +12,25 @@ export const metadata: Metadata = {
 
 const PRINTER_NOTE = `HINWEISE ZUR DATEI — Ristorante Goldoni, Briefumschlag DIN lang quer
 
-Einseitig, nur Schwarz (1/0). Bitte 100 % Schwarz drucken, C 0 / M 0 /
+Beidseitig, nur Schwarz (1/1). Bitte 100 % Schwarz drucken, C 0 / M 0 /
 Y 0 / K 100 — kein Vierfarbschwarz, das Produkt ist einfarbig.
 
 Die Datei liegt in RGB vor; die enthaltenen Elemente sind reines Schwarz
 und Weiss, eine Wandlung nach Graustufen bzw. K verlaendert das Bild
 nicht.
 
-Datenformat 230 x 120 mm, eine Seite. Es gibt bewusst KEINE
+Datenformat 230 x 120 mm, zwei Seiten. Seite 1 ist die Vorderseite mit
+Fenster, Seite 2 die Rueckseite. Es gibt auf BEIDEN Seiten bewusst KEINE
 Vollton-Flaechen: auf 80-g-Offsetpapier schlaegt eine grosse schwarze
 Flaeche durch und macht den Umschlag wellig.
+
+Auf der Rueckseite steht wenig, und das ist Absicht: ein Gruss, eine Linie,
+die Absenderzeile. Der Rest der Flaeche bleibt frei, damit von Hand
+hineingeschrieben werden kann. Bitte die Freiflaeche nicht als Fehler
+lesen und nichts hineinsetzen.
+
+Der Inhalt der Rueckseite liegt senkrecht mittig (43 bis 77 mm des
+120-mm-Datenformats), damit er unabhaengig von der Klappenlage frei bleibt.
 
 Freigehalten sind: das Fenster (90 x 45 mm, 20 mm von links und 15 mm von
 unten ab Endformat) samt 2 mm ringsum wegen des im Datenblatt genannten
@@ -36,7 +45,7 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Briefumschlag"
       intro="DIN lang quer mit Fenster, haftklebend. Für Rechnungen, Gutscheine und Post an Gäste — das Stück, das im Briefkasten landet, bevor irgendjemand die Website kennt."
-      status="Entschieden: vierfarbig beidseitig (4/4), zweifarbiger Entwurf"
+      status="Druckdaten liegen vor: zwei Seiten, Schwarz (1/1). Der 4/4-Entwurf auf dieser Seite ist die farbige Fassung und wartet auf die Produktentscheidung"
       aspect={{ w: 1600, h: 835 }}
       sides={[
         {
@@ -59,7 +68,8 @@ export default function Page() {
         ["Fenster-Toleranz", "ca. 1 mm Versatz laut Datenblatt"],
         ["Papier", "80 g/m² Offset weiss, beschreibbar, laser- und tintenstrahlgeeignet"],
         ["Verschluss", "haftklebend, innenliegende Seitenklappen"],
-        ["Druck", "4/4 — vierfarbig beidseitig, entschieden 2026-08-25"],
+        ["Druck (Entwurf)", "4/4 — vierfarbig beidseitig, entschieden 2026-08-25"],
+        ["Druck (Druckdaten)", "1/1 — Schwarz beidseitig, wie die Vorlage der Druckerei"],
       ]}
       decisions={[
         {
@@ -96,7 +106,7 @@ export default function Page() {
         "Wo die Klappe dieses Umschlags verklebt, ist NICHT gemessen: die Vorlage der Druckerei zeigt nur die Vorderseite. Die Gestaltung ist deshalb so gesetzt, dass sie in beiden Fällen stimmt — 38 mm bleiben an beiden Kanten frei. Vor dem Druck trotzdem einmal an einem echten Umschlag nachsehen; das kostet dreissig Sekunden und entscheidet, ob der Gruss lesbar bleibt oder überklebt wird.",
         "Beim Bestellen die 4/4-Variante wählen — die Staffel auf dieser Seite stammt aus einer beidseitigen Auswahl, deren Farbigkeit noch zu bestätigen ist. Weicht der Preis deutlich ab, sag Bescheid, dann rechne ich die Tabelle neu.",
         "Das Wellen ist mit der hellen Rückseite weitgehend erledigt: seit dem 27.08. trägt nur noch die Vorderseite Vollton, die Rückseite ist heller Grund mit Text. Der Punkt bleibt trotzdem stehen, bis das Papier gewählt ist — vollflächig auf 80 g bleibt vollflächig, auch einseitig.",
-        "Für die Rückseite gibt es KEINE Druckdaten. Was die Druckerei heute bekommen würde, ist eine Seite: die Vorderseite. Die Rückseite existiert bisher nur als Bildschirm-Entwurf. Wer 4/4 bestellt, braucht vorher die zweite Seite als Datei — das ist eine kleine Arbeit, aber sie ist nicht gemacht, und der Status oben sagt 4/4.",
+        "Die Druckdaten sind SCHWARZ, der Entwurf oben ist farbig — das ist kein Versehen, sondern die offene Produktfrage. Die einzige Vorlage der Druckerei im Repo ist 1/0-farbig, und die Druckdatei folgt ihr; mit der zweiten Seite ist der Umschlag jetzt 1/1. Die farbige Fassung existiert als Bildschirm-Entwurf und braucht ein Produkt, das beidseitig vierfarbig kann. Erst diese Entscheidung, dann die farbigen Druckdaten.",
         "Der Entwurf ist noch nicht besprochen. Ob der Umschlag überhaupt gebraucht wird und wofür, entscheidet der Betreiber — bisher ist er eine Möglichkeit, kein Auftrag.",
         "Auflage und ob mit oder ohne Fenster: die Fensterfassung lohnt nur, wenn Anschriften aus einem System gedruckt werden. Wer von Hand adressiert, fährt ohne Fenster besser.",
         "Prüfen, ob der Umschlag zum Papier der Postkarte passt — beides liegt beim Gast auf demselben Tisch.",
@@ -122,7 +132,7 @@ export default function Page() {
         {
           href: "/assets/print/goldoni-briefumschlag-druckdaten.pdf",
           label: "goldoni-briefumschlag-druckdaten.pdf",
-          hint: "eine Seite, 230 × 120 mm, ohne Hilfslinien — das, was die Druckerei bekommt",
+          hint: "zwei Seiten, 230 × 120 mm, ohne Hilfslinien — das, was die Druckerei bekommt",
         },
         {
           href: "/assets/print/goldoni-briefumschlag-entwurf.pdf",
