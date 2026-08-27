@@ -111,7 +111,9 @@ export const LEGAL = {
      */
     hoster: {
       name: "Vercel Inc.",
-      address: "340 S Lemon Ave #4133, Walnut, CA 91789, USA",
+      // 2026-08-27 berichtigt: die alte Anschrift (Walnut, CA) fuehrt Vercel
+      // nicht mehr. Gegen vercel.com/legal/privacy-policy geprueft.
+      address: "440 N Barranca Avenue #4133, Covina, CA 91723, USA",
       privacyUrl: "https://vercel.com/legal/privacy-policy",
       dpaUrl: "https://vercel.com/legal/dpa",
     },
