@@ -333,8 +333,9 @@ export default function DatenschutzPage() {
             <ul className="mt-2 ml-6 list-disc space-y-1">
               <li>
                 Lieferdienste <strong>Wolt</strong> und{" "}
-                <strong>Uber Eats</strong> — zu Bestellungen über unsere eigene
-                Bestellseite bei Wolt siehe Abschnitt&nbsp;9
+                <strong>Uber Eats</strong> (Uber B.V., Burgerweeshuispad 301,
+                1076 HR Amsterdam, Niederlande) — zu Bestellungen über unsere
+                eigene Bestellseite bei Wolt siehe Abschnitt&nbsp;9
               </li>
               <li>
                 Soziale Netzwerke <strong>Facebook</strong> und{" "}
@@ -364,6 +365,18 @@ export default function DatenschutzPage() {
               jeweilige Datenschutzpraxis:
             </p>
             <ul className="mt-2 ml-6 list-disc space-y-1 text-sm">
+              <li>
+                Uber Eats:{" "}
+                <a
+                  href="https://www.uber.com/legal/privacy"
+                  className="underline"
+                  style={{ color: "var(--color-accent)" }}
+                  rel="nofollow noopener"
+                  target="_blank"
+                >
+                  uber.com/legal/privacy
+                </a>
+              </li>
               <li>
                 Facebook&nbsp;/ Instagram:{" "}
                 <a

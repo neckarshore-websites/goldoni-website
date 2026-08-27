@@ -38,7 +38,6 @@ export const LEGAL = {
    */
   contact: {
     phone: "+49 (711) 659 98 89",
-    fax: "+49 (711) 659 98 89",
     email: "info@goldoni-online.de",
   },
 
@@ -62,20 +61,13 @@ export const LEGAL = {
     url: "https://www.stuttgart.de/leben/aemter-und-behoerden/amt-fuer-oeffentliche-ordnung.php",
   },
 
-  /**
-   * § 5 Abs. 1 Nr. 5 DDG — Berufsrechtliche Regelungen, soweit der Anbieter
-   * eine erlaubnispflichtige Tätigkeit ausübt.
-   */
-  profession: {
-    title: "Gastwirt",
-    grantedIn: "Bundesrepublik Deutschland",
-    regulation: "Gaststättengesetz (GastG)",
-    regulationUrl: "https://www.gesetze-im-internet.de/gastg/",
-  },
 
   /**
-   * Berufshaftpflichtversicherung — nicht zwingend Pflicht, aber auf der
-   * bestehenden Site angegeben und übernommen.
+   * Betriebshaftpflichtversicherung — keine Pflichtangabe nach § 5 DDG, aber
+   * auf der bestehenden Site angegeben und übernommen. 2026-08-27 von
+   * "Berufshaftpflicht" umbenannt: das ist die Bezeichnung für freie Berufe,
+   * ein Gastwirt versichert den Betrieb. Der Versicherer selbst ist NICHT
+   * nachgeprüft — er stammt aus der alten Site.
    */
   insurance: {
     name: "SIGNAL IDUNA Gruppe",
@@ -119,7 +111,9 @@ export const LEGAL = {
      */
     hoster: {
       name: "Vercel Inc.",
-      address: "340 S Lemon Ave #4133, Walnut, CA 91789, USA",
+      // 2026-08-27 berichtigt: die alte Anschrift (Walnut, CA) fuehrt Vercel
+      // nicht mehr. Gegen vercel.com/legal/privacy-policy geprueft.
+      address: "440 N Barranca Avenue #4133, Covina, CA 91723, USA",
       privacyUrl: "https://vercel.com/legal/privacy-policy",
       dpaUrl: "https://vercel.com/legal/dpa",
     },
@@ -150,7 +144,7 @@ export const LEGAL = {
    * 2026-06-12: Cloudflare Turnstile als Formular-Spam-Schutz ergänzt
    * (US-Auftragsverarbeiter, §4 Datenschutz).
    */
-  lastUpdated: "2026-06-12",
+  lastUpdated: "2026-08-27",
 } as const;
 
 export type LegalConfig = typeof LEGAL;
