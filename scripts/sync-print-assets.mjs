@@ -33,6 +33,7 @@ export const GENERATED = [
   "docs/bierdeckel/goldoni-bierdeckel-entwurf.pdf",
   "docs/briefumschlag/goldoni-briefumschlag-druckdaten.pdf",
   "docs/briefumschlag/goldoni-briefumschlag-entwurf.pdf",
+  "docs/pizzakarton/goldoni-pizzakarton-deckel-druckdaten.pdf",
 ];
 
 /**
