@@ -43,7 +43,22 @@ export type PrintSpecPageProps = {
   specs: Array<[string, string]>;
   decisions: Array<{ title: string; body: string }>;
   openPoints: string[];
-  downloads: Array<{ href: string; label: string; hint: string }>;
+  /**
+   * Dateien zum Herunterladen.
+   *
+   * `group` trennt, was die Druckerei bekommt, von dem, was nur uns gehoert —
+   * Herleitung, Originalvorlagen der Druckerei, Bilder zum Weitergeben. Ohne
+   * die Trennung steht die eine Datei, die wirklich in den Auftrag geht,
+   * zwischen sechs anderen, die in der Liste gleich aussehen; genau so waehlt
+   * jemand unter Zeitdruck die falsche aus. Optional: Seiten ohne `group`
+   * rendern unveraendert als eine Liste ohne Zwischenueberschrift.
+   */
+  downloads: Array<{ href: string; label: string; hint: string; group?: string }>;
+  /**
+   * Reihenfolge und Beschriftung der Gruppen. Nur hier genannte Gruppen
+   * bekommen eine Ueberschrift; Dateien ohne `group` stehen davor.
+   */
+  downloadGroups?: Array<{ key: string; title: string; note?: string }>;
   /**
    * Text fuer das Hinweisfeld der Bestellung. Bewusst als <pre> gerendert und
    * nicht als Fliesstext: er ist zum Kopieren da, nicht zum Lesen, und ein
@@ -76,6 +91,7 @@ export function PrintSpecPage({
   decisions,
   openPoints,
   downloads,
+  downloadGroups,
   printerNote,
   prices,
   aspect,
@@ -378,8 +394,8 @@ export function PrintSpecPage({
           >
             Dateien
           </h2>
-          <ul className="space-y-3">
-            {downloads.map((d) => (
+          {(() => {
+            const zeile = (d: (typeof downloads)[number]) => (
               <li key={d.href}>
                 <a
                   href={d.href}
@@ -396,8 +412,37 @@ export function PrintSpecPage({
                   {d.hint}
                 </span>
               </li>
-            ))}
-          </ul>
+            );
+            const gruppen = downloadGroups ?? [];
+            const ohne = downloads.filter((d) => !d.group || !gruppen.some((g) => g.key === d.group));
+            return (
+              <>
+                {ohne.length > 0 ? <ul className="space-y-3">{ohne.map(zeile)}</ul> : null}
+                {gruppen.map((g) => {
+                  const dateien = downloads.filter((d) => d.group === g.key);
+                  if (dateien.length === 0) return null;
+                  return (
+                    <div key={g.key} className="mt-8 first:mt-0">
+                      <h3
+                        className="text-sm font-semibold uppercase tracking-wider"
+                        style={{ color: "var(--color-text)" }}
+                      >
+                        {g.title}
+                      </h3>
+                      {g.note ? (
+                        <p className="mb-3 mt-1 text-sm" style={{ color: "var(--color-text-muted)" }}>
+                          {g.note}
+                        </p>
+                      ) : (
+                        <div className="mb-3" />
+                      )}
+                      <ul className="space-y-3">{dateien.map(zeile)}</ul>
+                    </div>
+                  );
+                })}
+              </>
+            );
+          })()}
         </section>
 
         <p

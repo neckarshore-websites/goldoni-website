@@ -51,14 +51,40 @@ const ARTIFACTS = [
  * liest, haette das wieder nicht gesehen.
  *
  * Geprueft wird deshalb `public/assets/print` — die Kopie, die die Website
- * herausgibt. Seiten ohne QR (Vorderseiten) stehen nicht in der Liste; ein
- * fehlender Code dort waere kein Befund, sondern die Gestaltung.
+ * herausgibt.
+ *
+ * KEINE FESTE SEITENZAHL MEHR, und das ist der zweite Fehler derselben Familie.
+ * Bis zum 28.08.2026 stand hier `seite: 2` fuer die Postkarte. Dann tauschte der
+ * Betreiber die Seitenreihenfolge der Druckdatei — eine voellig legitime, rein
+ * inhaltliche Aenderung — und das Tor durchsuchte die Einladungsseite, fand dort
+ * naturgemaess keinen Code und meldete "NICHT LESBAR — darf nicht in den Druck".
+ * Ein roter Alarm auf einer einwandfreien Datei, unmittelbar vor einer Bestellung.
+ *
+ * Jetzt werden ALLE Seiten jeder Datei gelesen, und die Forderung lautet: genau
+ * eine Seite traegt einen lesbaren Code, und der zeigt auf die richtige Adresse.
+ * Damit ist die Pruefung gegen Seitenvertauschungen immun, und sie sagt zusaetzlich,
+ * AUF WELCHER Seite der Code sitzt — wandert er, sieht man es, statt es zu raten.
+ * Seiten ohne Code sind erwartet (Vorderseiten) und kein Befund.
+ *
+ * Grenze, benannt statt verschwiegen: eine Seite ohne Code und eine Seite mit
+ * kaputtem Code sind fuer den Decoder ununterscheidbar. Deshalb ist "null lesbare
+ * Seiten" ein Fehlschlag — ein kaputter Code kann so nie gruen werden. Traegt eine
+ * Datei zwei Codes und einer ist kaputt, faellt das hier nicht auf; dieser Fall
+ * existiert im Bestand nicht und wuerde die Pruefung teurer machen als sie nuetzt.
  */
 const PRINT_PDFS = [
-  { label: "Postkarte Rueckseite", path: "public/assets/print/goldoni-postkarte-a6-druckdaten.pdf", seite: 2 },
-  { label: "Bierdeckel Rueckseite", path: "public/assets/print/goldoni-bierdeckel-druckdaten.pdf", seite: 2 },
-  { label: "Pizzakarton Deckel", path: "public/assets/print/goldoni-pizzakarton-deckel-druckdaten.pdf", seite: 1 },
+  { label: "Postkarte", path: "public/assets/print/goldoni-postkarte-a6-druckdaten.pdf" },
+  { label: "Bierdeckel", path: "public/assets/print/goldoni-bierdeckel-druckdaten.pdf" },
+  { label: "Pizzakarton Deckel", path: "public/assets/print/goldoni-pizzakarton-deckel-druckdaten.pdf" },
 ];
+
+/** Seitenzahl einer PDF-Datei — gelesen, nicht angenommen. */
+function seitenzahl(path) {
+  const info = spawnSync("pdfinfo", [path], { encoding: "utf8" });
+  const m = /^Pages:\s+(\d+)$/m.exec(info.stdout ?? "");
+  if (!m) throw new Error(`Seitenzahl von ${path} nicht lesbar — pdfinfo fehlt oder die Datei ist defekt.`);
+  return Number(m[1]);
+}
 
 const dir = mkdtempSync(join(tmpdir(), "druck-qr-"));
 try {
@@ -75,16 +101,25 @@ try {
     args.push(`${label}=${out}`);
   }
 
-  for (const { label, path, seite } of PRINT_PDFS) {
-    const stem = join(dir, path.replace(/[^a-z0-9]/gi, "-"));
-    // 300 dpi: nah an dem, was eine Kamera von einer gedruckten Flaeche aufloest,
-    // und hoch genug, dass die Rasterung nicht selbst zum Befund wird.
-    spawnSync("pdftoppm", ["-r", "300", "-png", "-singlefile", "-f", String(seite), "-l", String(seite), path, stem], { stdio: "ignore" });
-    args.push(`${label}=${stem}.png`);
+  // Jede Seite jeder Druckdatei wird ein eigenes Artefakt. Die Gruppenlogik unten
+  // entscheidet danach, was ein Befund ist und was blosse Vorderseite.
+  const gruppen = new Map();
+  for (const { label, path } of PRINT_PDFS) {
+    const n = seitenzahl(path);
+    gruppen.set(label, []);
+    for (let seite = 1; seite <= n; seite++) {
+      const stem = join(dir, `${path.replace(/[^a-z0-9]/gi, "-")}-s${seite}`);
+      // 300 dpi: nah an dem, was eine Kamera von einer gedruckten Flaeche aufloest,
+      // und hoch genug, dass die Rasterung nicht selbst zum Befund wird.
+      spawnSync("pdftoppm", ["-r", "300", "-png", "-singlefile", "-f", String(seite), "-l", String(seite), path, stem], { stdio: "ignore" });
+      const artefakt = `${label} Seite ${seite}`;
+      gruppen.get(label).push(artefakt);
+      args.push(`${artefakt}=${stem}.png`);
+    }
   }
 
   const res = spawnSync("swift", ["scripts/scan-print-qr.swift", ...args], {
-    stdio: "inherit",
+    encoding: "utf8",
   });
   if (res.error) {
     console.error(
@@ -92,7 +127,45 @@ try {
     );
     process.exit(1);
   }
-  process.exit(res.status ?? 1);
+  const ausgabe = `${res.stdout ?? ""}${res.stderr ?? ""}`;
+
+  // Zeilen des Decoders auswerten statt nur seinen Rueckgabewert zu nehmen: eine
+  // Seite ohne Code ist fuer ihn ein Fehlschlag, fuer uns die Vorderseite.
+  const gelesen = new Map();
+  const falschesZiel = [];
+  for (const zeile of ausgabe.split("\n")) {
+    const ok = /^\s*✓ (.+?) -> (.+)$/.exec(zeile);
+    if (ok) gelesen.set(ok[1], ok[2]);
+    const zeigtAuf = /^\s*✗ (.+?): zeigt auf (.+)$/.exec(zeile);
+    if (zeigtAuf) falschesZiel.push(`${zeigtAuf[1]} — ${zeigtAuf[2]}`);
+  }
+
+  let fehler = 0;
+  for (const { label } of ARTIFACTS) {
+    if (gelesen.has(label)) console.log(`  ✓ ${label} -> ${gelesen.get(label)}`);
+    else { console.log(`  ✗ ${label}: NICHT LESBAR — dieser Code darf nicht in den Druck`); fehler++; }
+  }
+  for (const [label, artefakte] of gruppen) {
+    const treffer = artefakte.filter((a) => gelesen.has(a));
+    if (treffer.length === 1) {
+      const seite = treffer[0].slice(label.length + 1);
+      console.log(`  ✓ ${label} (${seite}) -> ${gelesen.get(treffer[0])}`);
+    } else if (treffer.length === 0) {
+      console.log(`  ✗ ${label}: auf KEINER der ${artefakte.length} Seiten ein lesbarer Code — darf nicht in den Druck`);
+      fehler++;
+    } else {
+      console.log(`  ✗ ${label}: ${treffer.length} Seiten tragen einen Code, erwartet genau eine`);
+      fehler++;
+    }
+  }
+  for (const treffer of falschesZiel) {
+    console.log(`  ✗ ${treffer} — falsches Ziel`);
+    fehler++;
+  }
+
+  const gesamt = ARTIFACTS.length + gruppen.size;
+  console.log(`\nDruck-QR (Apple Vision): ${gesamt - fehler} von ${gesamt} in Ordnung`);
+  process.exit(fehler > 0 ? 1 : 0);
 } finally {
   rmSync(dir, { recursive: true, force: true });
 }

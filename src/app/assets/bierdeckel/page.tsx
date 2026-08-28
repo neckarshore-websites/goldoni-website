@@ -13,7 +13,7 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Bierdeckel"
       intro="Liegt im Restaurant auf dem Tisch, unter dem Glas, und wird dort minutenlang angesehen. Trifft damit andere Gäste als die Postkarte: Leute, die gerade da sind und beim nächsten Mal vielleicht bestellen."
-      status="Entwurf — Freigabe des Betreibers steht aus"
+      status="Sechseck 93 × 81 mm — Texte vom Betreiber freigegeben (28.08.2026), bestellbereit. Auflage: kleine Erstauflage zum Ansehen, Menge noch offen"
       aspect={{ w: 1200, h: 1048 }}
       sides={[
         {
@@ -83,7 +83,7 @@ Saemtlicher Inhalt liegt innerhalb des Sicherheitsabstands von 6 mm.`}
         "QR-Module in reinem Schwarz (nur K).",
         "Olive als Proof prüfen: vollflächig auf saugender Bierdeckelpappe fällt jeder Ton dunkler und stumpfer aus als auf gestrichenem Papier.",
         "Stanzkontur als eigene Ebene liefern, nicht als gedruckte Linie.",
-        "Postkarte, Bierdeckel oder beides — und die Auflage.",
+        "Auflage der Erstbestellung. Entschieden am 28.08.2026: bewusst klein, um Oliv auf saugender Pappe zuerst in der Hand zu sehen — die Menge steht noch aus. Unsere erfasste Staffel beginnt bei 100 Stück für 24,94 €; dass die Druckerei auch 25 als Stufe führt, ist belegt, der Preis dafür jedoch nicht (der abgerufene Beleg gehörte zu einem anderen Produkt).",
       ]}
       prices={{
         caption:
