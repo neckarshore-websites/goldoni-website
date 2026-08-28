@@ -37,7 +37,7 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Briefumschlag"
       intro="DIN lang quer mit Fenster, haftklebend. Für Rechnungen, Gutscheine und Post an Gäste — das Stück, das im Briefkasten landet, bevor irgendjemand die Website kennt."
-      status="Druckdaten liegen vor: zwei Seiten, Schwarz (1/1). Der 4/4-Entwurf auf dieser Seite ist die farbige Fassung und wartet auf die Produktentscheidung"
+      status="Druckdaten liegen vor: zwei Seiten, Schwarz (1/1). Texte vom Betreiber freigegeben (28.08.2026). Der 4/4-Entwurf auf dieser Seite ist die farbige Fassung und wartet auf die Produktentscheidung"
       aspect={{ w: 1600, h: 835 }}
       sides={[
         {

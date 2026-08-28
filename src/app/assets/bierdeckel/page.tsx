@@ -12,8 +12,8 @@ export default function Page() {
       navKey="bierdeckel"
       eyebrow="Drucksachen"
       title="Bierdeckel"
-      intro="Liegt im Restaurant auf dem Tisch, unter dem Glas, und wird dort minutenlang angesehen. Trifft damit andere Gäste als die Postkarte: Leute, die gerade da sind und beim nächsten Mal vielleicht bestellen."
-      status="Entwurf — Freigabe des Betreibers steht aus"
+      intro="Soll im Restaurant auf dem Tisch liegen, unter dem Glas, und dort minutenlang angesehen werden — er würde damit andere Gäste treffen als die Postkarte: Leute, die gerade da sind und beim nächsten Mal vielleicht bestellen. Im Konjunktiv, und das ist keine Vorsicht: Goldoni verwendet heute keine Bierdeckel. Ob dieser einen Platz auf den Tischen bekommt, ist die eigentliche offene Frage dieser Seite — nicht die Auflage."
+      status="Sechseck 93 × 81 mm — Texte vom Betreiber freigegeben (28.08.2026). Als Testballon bestellbereit: 25 Stück für 15,00 €, um ihn einmal in der Hand und auf dem Tisch zu sehen"
       aspect={{ w: 1200, h: 1048 }}
       sides={[
         {
@@ -83,22 +83,24 @@ Saemtlicher Inhalt liegt innerhalb des Sicherheitsabstands von 6 mm.`}
         "QR-Module in reinem Schwarz (nur K).",
         "Olive als Proof prüfen: vollflächig auf saugender Bierdeckelpappe fällt jeder Ton dunkler und stumpfer aus als auf gestrichenem Papier.",
         "Stanzkontur als eigene Ebene liefern, nicht als gedruckte Linie.",
-        "Postkarte, Bierdeckel oder beides — und die Auflage.",
+        "Der eigentliche offene Punkt ist nicht die Auflage, sondern die Platzierung: Goldoni verwendet heute keine Bierdeckel. Der Testballon beantwortet zwei Fragen auf einmal — wie Oliv auf saugender Pappe wirklich aussieht, und ob das Stück auf einem gedeckten Tisch überhaupt funktioniert. Erst danach ist eine Auflage sinnvoll.",
+        "Auflage entschieden am 28.08.2026: 25 Stück für 15,00 € als Test. Bewusst gegen die wirtschaftlichere Stufe — 100 kosten 24,94 € und damit 24,9 statt 60 ct pro Stück, aber 75 davon läge niemand aus, solange die Platzierung nicht entschieden ist. Bei einem Testballon zählt der Gesamtbetrag, nicht der Stückpreis.",
       ]}
       prices={{
         caption:
-          "Stand 25. August 2026, netto. Ein Bierdeckel wird verbraucht, nicht aufgehoben — die Auflage entscheidet, wie lange nicht nachbestellt werden muss.",
+          "Netto. Die Stufen ab 100 mit Stand 25. August 2026; die 25er-Stufe am 28. August im Shop nachgesehen. Ein Bierdeckel wird verbraucht, nicht aufgehoben — sobald er tatsächlich auf den Tischen liegt, entscheidet die Auflage, wie lange nicht nachbestellt werden muss.",
         rows: [
+          { qty: 25, net: 15.0, pick: true },
           { qty: 100, net: 24.94 },
           { qty: 250, net: 54.47 },
-          { qty: 500, net: 90.56, pick: true },
+          { qty: 500, net: 90.56 },
           { qty: 1000, net: 175.88 },
           { qty: 2500, net: 256.68 },
           { qty: 5000, net: 389.98 },
           { qty: 7500, net: 641.68 },
           { qty: 10000, net: 642.32 },
         ],
-        note: "Zwei Dinge stehen in diesen Zahlen. Erstens: 7.500 Stück kosten 641,68 €, 10.000 kosten 642,32 € — 2.500 Deckel mehr für 64 Cent. Wer 7.500 bestellt, zahlt pro Stück sogar mehr als bei 5.000. Zweitens fällt der Stückpreis von 24,9 Cent auf 6,4 Cent, aber 10.000 Bierdeckel sind eine Palette und Jahre Vorrat. 500 Stück für 90,56 € sind der vernünftige erste Lauf: genug, um zu sehen, ob der Weg zieht, wenig genug, um das Motiv danach noch zu ändern.",
+        note: "Gewählt sind 25 Stück für 15,00 €, und das ist bewusst die unwirtschaftlichste Zeile der Tabelle: 60 Cent pro Stück gegenüber 24,9 Cent bei 100. Der Grund steht in den offenen Punkten — solange nicht entschieden ist, ob der Deckel überhaupt auf die Tische kommt, ist jede grössere Menge Vorrat für eine Verwendung, die es noch nicht gibt. Wenn er sich bewährt, ist 500 für 90,56 € der vernünftige erste echte Lauf. Zwei Fallen weiter oben in der Staffel, für später: 7.500 Stück kosten 641,68 €, 10.000 kosten 642,32 € — 2.500 Deckel mehr für 64 Cent, und wer 7.500 bestellt, zahlt pro Stück mehr als bei 5.000.",
       }}
       downloads={[
         {

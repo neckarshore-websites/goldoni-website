@@ -94,6 +94,34 @@ html,body{width:436.535pt}
 </head>
 <body>
 
+<!--
+  SEITENREIHENFOLGE: oliv (Bestellseite) zuerst, schwarz (Einladung) danach.
+
+  Getauscht am 28.08.2026 auf Wunsch des Betreibers, damit die Bestellseite die
+  erste Seite der Druckdatei ist. Die Reihenfolge ist NICHT kosmetisch: der
+  Hinweistext an die Druckerei weist die Veredelung ueber die SEITENZAHL zu.
+
+  Wer diese beiden Bloecke wieder umstellt, aendert damit still, welche Seite
+  mattkaschiert wird. Dann gehoeren `printerNote` in
+  src/app/assets/postkarte/page.tsx und die ausgelieferte PDF in
+  public/assets/print mitgezogen.
+-->
+<div class="sheet">
+  <div class="card back">
+    <div class="pad">
+      <div class="o-text">
+        <p class="c-display">Direkt bei uns<br>bestellen.</p>
+        <p class="c-body">Abholen oder liefern lassen &mdash; Sie entscheiden.
+          Und wer in der N&auml;he ist: einfach kurz vorbeikommen.</p>
+      </div>
+      <div class="o-qr">
+        <div class="qr-panel">__QR_A__</div>
+        <p class="qr-cap">Hier entlang.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="sheet">
   <div class="card front">
     <div class="pad">
@@ -106,22 +134,6 @@ html,body{width:436.535pt}
         <hr class="c-rule">
         <p class="c-facts"><strong>Reinsburgstra&szlig;e 151 &middot; 70197 Stuttgart</strong><br>
           +49 (711) 659 98 89 &middot; ristorante-goldoni.de</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="sheet">
-  <div class="card back">
-    <div class="pad">
-      <div class="o-text">
-        <p class="c-display">Direkt bei uns<br>bestellen.</p>
-        <p class="c-body">Abholen oder liefern lassen &mdash; Sie entscheiden.
-          Und wer in der N&auml;he ist: einfach kurz vorbeikommen.</p>
-      </div>
-      <div class="o-qr">
-        <div class="qr-panel">__QR_A__</div>
-        <p class="qr-cap">Hier entlang.</p>
       </div>
     </div>
   </div>

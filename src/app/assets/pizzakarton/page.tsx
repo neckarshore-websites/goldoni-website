@@ -14,7 +14,7 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Pizzakarton"
       intro="32 × 32 × 4 cm, aussen vierfarbig bedruckt. Der Deckel ist mit Abstand die grösste Markenfläche im ganzen Satz — grösser als Postkarte, Bierdeckel und Briefumschlag zusammen, und der Gast schaut ihn an, während er wartet."
-      status="Druckdaten liegen vor. Entschieden: 32 × 32 cm, Aufteilung A, weisser Karton, 250 Stück — zuerst ein einzelner Probekarton"
+      status="Druckdaten liegen vor, Texte vom Betreiber freigegeben (28.08.2026). Entschieden: 32 × 32 cm, Aufteilung A, weisser Karton, 250 Stück — zuerst ein einzelner Probekarton"
       aspect={{ w: 1200, h: 2376 }}
       sides={[
         {
