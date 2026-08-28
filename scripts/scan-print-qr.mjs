@@ -111,7 +111,15 @@ try {
       const stem = join(dir, `${path.replace(/[^a-z0-9]/gi, "-")}-s${seite}`);
       // 300 dpi: nah an dem, was eine Kamera von einer gedruckten Flaeche aufloest,
       // und hoch genug, dass die Rasterung nicht selbst zum Befund wird.
-      spawnSync("pdftoppm", ["-r", "300", "-png", "-singlefile", "-f", String(seite), "-l", String(seite), path, stem], { stdio: "ignore" });
+      const gerendert = spawnSync("pdftoppm", ["-r", "300", "-png", "-singlefile", "-f", String(seite), "-l", String(seite), path, stem], { encoding: "utf8" });
+      // Ein stillschweigend gescheiterter Renderer erzeugt keine Datei, und eine fehlende
+      // Datei ist fuer den Decoder von einer Seite ohne Code nicht zu unterscheiden. Dann
+      // meldete dieses Tor ein Werkzeugproblem als "kein lesbarer Code" — richtig rot, aber
+      // mit falscher Ursache, und die naechste Person sucht am falschen Ort.
+      if (gerendert.error || gerendert.status !== 0) {
+        console.error(`  ✗ ${label} Seite ${seite}: pdftoppm fehlgeschlagen (${gerendert.error?.message ?? `Rueckgabewert ${gerendert.status}`})`);
+        process.exit(1);
+      }
       const artefakt = `${label} Seite ${seite}`;
       gruppen.get(label).push(artefakt);
       args.push(`${artefakt}=${stem}.png`);
@@ -129,27 +137,56 @@ try {
   }
   const ausgabe = `${res.stdout ?? ""}${res.stderr ?? ""}`;
 
-  // Zeilen des Decoders auswerten statt nur seinen Rueckgabewert zu nehmen: eine
-  // Seite ohne Code ist fuer ihn ein Fehlschlag, fuer uns die Vorderseite.
-  const gelesen = new Map();
-  const falschesZiel = [];
+  // Zeilen des Decoders auswerten statt nur seinen Rueckgabewert zu nehmen: eine Seite ohne
+  // Code ist fuer ihn ein Fehlschlag, fuer uns die Vorderseite.
+  //
+  // JE ARTEFAKT GENAU EIN ZUSTAND, und das ist keine Kosmetik. Die erste Fassung fuehrte
+  // "gelesen" und "falsches Ziel" getrennt: ein Code, der LESBAR ist aber auf die falsche
+  // Adresse zeigt, fehlte damit in "gelesen", wurde einmal als "NICHT LESBAR" gezaehlt und
+  // danach ein zweites Mal als falsches Ziel. Ergebnis: die gefaehrlichste Fehlerart des
+  // ganzen Tors unter falschem Namen gemeldet, dazu eine Gesamtzahl, die negativ werden
+  // konnte. Gefunden von CodeRabbit auf PR #166, bevor es jemand gedruckt hat.
+  const OK = "ok", ZIEL = "falsches-ziel", UNLESBAR = "unlesbar";
+  const zustand = new Map();
   for (const zeile of ausgabe.split("\n")) {
     const ok = /^\s*✓ (.+?) -> (.+)$/.exec(zeile);
-    if (ok) gelesen.set(ok[1], ok[2]);
-    const zeigtAuf = /^\s*✗ (.+?): zeigt auf (.+)$/.exec(zeile);
-    if (zeigtAuf) falschesZiel.push(`${zeigtAuf[1]} — ${zeigtAuf[2]}`);
+    if (ok) { zustand.set(ok[1], { art: OK, ziel: ok[2] }); continue; }
+    const falsch = /^\s*✗ (.+?): zeigt auf (.+?), erwartet /.exec(zeile);
+    if (falsch) { zustand.set(falsch[1], { art: ZIEL, ziel: falsch[2] }); continue; }
+    const nichts = /^\s*✗ (.+?): (?:NICHT LESBAR|fehlt)/.exec(zeile);
+    if (nichts) zustand.set(nichts[1], { art: UNLESBAR });
   }
 
   let fehler = 0;
+  /** Ein Artefakt, zu dem der Decoder gar nichts gesagt hat, ist ein abgebrochener Lauf. */
+  const stumm = (name) => {
+    console.log(`  ✗ ${name}: keine Antwort des Decoders — Lauf unvollstaendig, nicht bewertbar`);
+    fehler++;
+  };
+
   for (const { label } of ARTIFACTS) {
-    if (gelesen.has(label)) console.log(`  ✓ ${label} -> ${gelesen.get(label)}`);
+    const z = zustand.get(label);
+    if (!z) { stumm(label); continue; }
+    if (z.art === OK) console.log(`  ✓ ${label} -> ${z.ziel}`);
+    else if (z.art === ZIEL) { console.log(`  ✗ ${label}: FALSCHES ZIEL — zeigt auf ${z.ziel}`); fehler++; }
     else { console.log(`  ✗ ${label}: NICHT LESBAR — dieser Code darf nicht in den Druck`); fehler++; }
   }
+
   for (const [label, artefakte] of gruppen) {
-    const treffer = artefakte.filter((a) => gelesen.has(a));
+    const zustaende = artefakte.map((a) => [a, zustand.get(a)]);
+    if (zustaende.some(([, z]) => !z)) { stumm(label); continue; }
+    // Falsches Ziel schlaegt alles: ein lesbarer Code, der woanders hinfuehrt, ist
+    // schlimmer als gar keiner — er wird gescannt und fuehrt den Gast in die Irre.
+    const falsch = zustaende.filter(([, z]) => z.art === ZIEL);
+    if (falsch.length > 0) {
+      for (const [a, z] of falsch) console.log(`  ✗ ${a}: FALSCHES ZIEL — zeigt auf ${z.ziel}`);
+      fehler++;
+      continue;
+    }
+    const treffer = zustaende.filter(([, z]) => z.art === OK);
     if (treffer.length === 1) {
-      const seite = treffer[0].slice(label.length + 1);
-      console.log(`  ✓ ${label} (${seite}) -> ${gelesen.get(treffer[0])}`);
+      const [a, z] = treffer[0];
+      console.log(`  ✓ ${label} (${a.slice(label.length + 1)}) -> ${z.ziel}`);
     } else if (treffer.length === 0) {
       console.log(`  ✗ ${label}: auf KEINER der ${artefakte.length} Seiten ein lesbarer Code — darf nicht in den Druck`);
       fehler++;
@@ -157,10 +194,6 @@ try {
       console.log(`  ✗ ${label}: ${treffer.length} Seiten tragen einen Code, erwartet genau eine`);
       fehler++;
     }
-  }
-  for (const treffer of falschesZiel) {
-    console.log(`  ✗ ${treffer} — falsches Ziel`);
-    fehler++;
   }
 
   const gesamt = ARTIFACTS.length + gruppen.size;
