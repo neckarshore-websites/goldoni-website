@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-08-26",
+  "updated": "2026-09-02",
   "categories": [
     {
       "id": "antipasti",
@@ -11,15 +11,15 @@
         {
           "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
           "description": "Frittierte Auberginentürmchen mit geräuchertem Scamorzakäse und Mozzarella",
-          "price": "15.00",
+          "price": "15.50",
           "allergens": ["A", "G", "2", "3", "5"],
           "diet": ["vegetarian"]
         },
         {
-          "name": "Carpaccio di pescespada marinato agli agrumi calabresi su cicoria rossa",
-          "description": "Mariniertes Schwertfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
-          "price": "16.50",
-          "allergens": ["D", "H"]
+          "name": "Cozze al vino bianco servito con bruschettone",
+          "description": "Miesmuscheln an Weißweinsoße mit geröstetem Brot serviert",
+          "price": "15.00",
+          "allergens": ["A", "D", "N", "S"]
         }
       ]
     },
@@ -29,29 +29,29 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Tortellacci ripieni al tartufo in crema di Grana Padano",
-          "description": "Nudeln mit Trüffelfüllung an Granakäse-Creme",
-          "price": "20.00",
-          "allergens": ["A", "C", "F", "G", "I", "J", "N", "2", "3"],
+          "name": "Mezzelune ripiene con fichi e noci in cremetta di Grana Padano",
+          "description": "Nudeln mit Feigen-Walnussfüllung an Granakäse-Creme",
+          "price": "19.50",
+          "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
           "diet": ["vegetarian"]
         },
         {
-          "name": "Strozzapreti all'Amatriciana",
-          "description": "Priesterwürger an Tomatensoße, mit Schweinebacke und Schafskäse (altes Rezept aus Rom)",
-          "price": "19.50",
-          "allergens": ["A", "C", "G", "I"]
+          "name": "Strozzapreti al vino rosso con le punte di filetto frollato e pinoli",
+          "description": "Priesterwürger mit Dry-Aged-Rinderfiletspitzen an Rotweinsoße und Pinienkernen",
+          "price": "21.50",
+          "allergens": ["A", "C", "H", "I", "S"]
         },
         {
-          "name": "Linguine con il tonno fresco ed i funghi cantarelli",
-          "description": "Linguine mit Thunfischstücken und Pfifferlingen",
+          "name": "Linguine con il tonno fresco, pomodorino ed i funghi cantarelli",
+          "description": "Linguine mit Thunfischstücken, Kirschtomaten und Pfifferlingen",
           "price": "24.50",
           "allergens": ["A", "D", "G"]
         },
         {
-          "name": "Pizza a base bianca con la salsiccia fresca e cime di rapa",
-          "description": "Pizza (weiße Basis) mit kalabresischer Bratwurst und Stängelkohl",
-          "price": "17.50",
-          "allergens": ["A", "G", "H", "3"]
+          "name": "Pizza con la creme fraiche il salmone affumicato incoronato da burrata su letto di valeriana",
+          "description": "Pizza (weiße Basis) mit Crème fraîche, geräuchertem Lachs und Feldsalat, mit Burratakäse gekrönt",
+          "price": "18.50",
+          "allergens": ["A", "D", "G", "1", "2"]
         }
       ]
     },
@@ -61,26 +61,27 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Ossobuco alla milanese con contorno di verdura",
-          "description": "Kalbshaxe nach Mailänder Art, dazu Beilage",
-          "price": "34.00"
+          "name": "Piccata al limone",
+          "description": "Kalbsschnitzel an Zitronensoße, mit Beilage",
+          "price": "33.00",
+          "allergens": ["A", "G"]
         },
         {
-          "name": "Bistecca Fiorentina al forno",
-          "description": "Fiorentinasteak aus dem Ofen, mit Beilage",
-          "price": "110.00",
-          "volume": "ca. 1400 g / 2–3 Personen"
+          "name": "Fegato di vitello alla veneziana",
+          "description": "Kalbslebermedaillons nach venezianischer Art, dazu Beilage",
+          "price": "30.50",
+          "allergens": ["S"]
         },
         {
-          "name": "Medaglioni di rana pescatrice in crema di menta e pistacchio",
-          "description": "Seeteufelmedaillons an Minz-Pistaziensoße, mit Beilage",
+          "name": "Medaglioni di rospo in padella al sughetto di menta e pistacchio",
+          "description": "Seeteufelmedaillons aus der Pfanne an Minz-Pistazien-Creme, mit Beilage",
           "price": "35.00",
-          "allergens": ["D", "H", "S"]
+          "allergens": ["A", "D", "H", "S"]
         },
         {
-          "name": "Filetti di orata reale ai ferri",
-          "description": "Frische Royal-Goldbrassefilets vom Lavastein-Grill, dazu Beilage",
-          "price": "32.00",
+          "name": "Bistecche di pescespada ai ferri",
+          "description": "Frisches Schwertfischsteak vom Lavastein-Grill, dazu Beilage",
+          "price": "33.00",
           "allergens": ["D"]
         }
       ]
@@ -105,8 +106,7 @@
           "diet": ["vegetarian"]
         },
         {
-          "name": "Tartufo al pistacchio",
-          "description": "Halbgefrorenes Pistazieneis",
+          "name": "Pistazieneis umhüllt mit gehackten Mandeln",
           "price": "9.00",
           "allergens": ["A", "C", "G", "H"],
           "diet": ["vegetarian"]
