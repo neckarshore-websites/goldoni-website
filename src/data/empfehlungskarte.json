@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-09-02",
+  "updated": "2026-09-09",
   "categories": [
     {
       "id": "antipasti",
@@ -36,16 +36,16 @@
           "diet": ["vegetarian"]
         },
         {
-          "name": "Strozzapreti al vino rosso con le punte di filetto frollato e pinoli",
-          "description": "Priesterwürger mit Dry-Aged-Rinderfiletspitzen an Rotweinsoße und Pinienkernen",
-          "price": "21.50",
-          "allergens": ["A", "C", "H", "I", "S"]
+          "name": "Strozzapreti con coda di vitello alla maniera „Vaccinara“",
+          "description": "Priesterwürger in einer Tomatensoße mit Ochsenschwanz (altes römisches Rezept)",
+          "price": "21.00",
+          "allergens": ["A", "C"]
         },
         {
-          "name": "Linguine con il tonno fresco, pomodorino ed i funghi cantarelli",
-          "description": "Linguine mit Thunfischstücken, Kirschtomaten und Pfifferlingen",
-          "price": "24.50",
-          "allergens": ["A", "D", "G"]
+          "name": "Linguine con i cannolicchi ed i funghi cantarelli",
+          "description": "Linguine mit Schwertmuscheln und Pfifferlingen",
+          "price": "21.50",
+          "allergens": ["A", "D", "N"]
         },
         {
           "name": "Pizza con la creme fraiche il salmone affumicato incoronato da burrata su letto di valeriana",
@@ -61,26 +61,26 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Piccata al limone",
-          "description": "Kalbsschnitzel an Zitronensoße, mit Beilage",
-          "price": "33.00",
-          "allergens": ["A", "G"]
+          "name": "Salsiccia al finocchietto grigliata, servita su friarielli",
+          "description": "Kalabresische Bratwurst vom Lavastein-Grill, serviert auf Stängelkohl, mit Beilage",
+          "price": "28.00",
+          "allergens": ["A", "G", "I"]
         },
         {
-          "name": "Fegato di vitello alla veneziana",
-          "description": "Kalbslebermedaillons nach venezianischer Art, dazu Beilage",
-          "price": "30.50",
-          "allergens": ["S"]
+          "name": "Tagliata di Rib-Eye servita su rucola, pomodorini e scaglie di Grana",
+          "description": "Gegrilltes Rib-Eye (Dry Aged) serviert auf Rucola-Bett, mit Kirschtomaten und Granakäse-Raspeln, dazu Beilage",
+          "price": "35.50",
+          "allergens": ["D", "G"]
         },
         {
-          "name": "Medaglioni di rospo in padella al sughetto di menta e pistacchio",
-          "description": "Seeteufelmedaillons aus der Pfanne an Minz-Pistazien-Creme, mit Beilage",
+          "name": "Filetti di rombo al sughetto di limone e rosmarino",
+          "description": "Steinbuttfilets aus der Pfanne an Zitronen-Rosmarin-Creme, mit Beilage",
           "price": "35.00",
-          "allergens": ["A", "D", "H", "S"]
+          "allergens": ["D"]
         },
         {
-          "name": "Bistecche di pescespada ai ferri",
-          "description": "Frisches Schwertfischsteak vom Lavastein-Grill, dazu Beilage",
+          "name": "Filetti di orata reale alla griglia",
+          "description": "Frische Goldbrassenfilets vom Lavastein-Grill, dazu Beilage",
           "price": "33.00",
           "allergens": ["D"]
         }
