@@ -52,7 +52,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
     "jsqr": "1.4.0",
-    "lighthouse": "13.0.3",
+    "lighthouse": "13.4.1",
     "pngjs": "7.0.0",
     "qrcode": "1.5.4",
     "tailwindcss": "^4",
@@ -61,7 +61,7 @@
   },
   "overrides": {
     "postcss": "8.5.28",
-    "js-yaml": "4.2.0",
+    "js-yaml": "4.3.2",
     "@babel/core": "7.29.6"
   }
 }
