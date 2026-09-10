@@ -241,8 +241,11 @@ export default function DatenschutzPage() {
             <p className="mt-3">
               <strong>Drittlandübermittlung:</strong> Cloudflare ist ein
               US-Anbieter; eine Übermittlung in die USA kann stattfinden.
-              Cloudflare stellt geeignete Garantien nach Art. 46 DSGVO bereit
-              (Standardvertragsklauseln). Datenschutzhinweise:{" "}
+              Cloudflare, Inc. ist unter dem EU-US Data Privacy Framework
+              zertifiziert, sodass die Übermittlung auf dem
+              Angemessenheitsbeschluss der EU-Kommission beruht (Art. 45 DSGVO);
+              ergänzend bestehen Standardvertragsklauseln (Art. 46 DSGVO).
+              Datenschutzhinweise:{" "}
               <a
                 href="https://www.cloudflare.com/privacypolicy/"
                 className="underline"
