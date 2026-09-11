@@ -1,14 +1,14 @@
 {
   "weiss": [
     {
-      "name": "Der weiße Löwe",
-      "producer": "Graf Adelmann",
-      "classification": "QbA",
-      "year": 2023,
-      "region": "Baden-Württemberg",
-      "grapes": "Cuvée Riesling, Grau- und Weißburgunder",
-      "priceBottle": "35,–",
-      "priceGlass": "10,–"
+      "name": "Tenaci",
+      "producer": "Zorzettig",
+      "classification": "DOC",
+      "year": 2025,
+      "region": "Friaul",
+      "grapes": "100 % Sauvignon Blanc",
+      "priceBottle": "30,–",
+      "priceGlass": "8,50"
     },
     {
       "name": "Bianco",
@@ -33,12 +33,12 @@
   ],
   "rot": [
     {
-      "name": "Rubrato",
-      "producer": "Feudi di San Gregorio",
-      "classification": "DOC",
-      "year": 2019,
-      "region": "Kampanien",
-      "grapes": "100 % Aglianico",
+      "name": "Amarone",
+      "producer": "Filiari",
+      "classification": "DOCG",
+      "year": 2023,
+      "region": "Venetien",
+      "grapes": "Corvina, Corvinone, Rondinella",
       "priceBottle": "35,–",
       "priceGlass": "10,–"
     },
