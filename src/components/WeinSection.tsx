@@ -17,6 +17,8 @@ interface Wine {
   grapes: string;
   priceBottle: string;
   priceGlass: string;
+  /** Allergen codes (the recommended wines carry "S" = Sulfite), same as the Hauswein rows. */
+  allergens?: string[];
 }
 
 function WineRow({ wine }: { wine: Wine }) {
@@ -34,6 +36,14 @@ function WineRow({ wine }: { wine: Wine }) {
               style={{ color: "var(--color-text-muted)" }}
             >
               {badge}
+            </span>
+          ) : null}
+          {wine.allergens && wine.allergens.length > 0 ? (
+            <span
+              className="ml-2 text-xs font-normal"
+              style={{ color: "var(--color-text-subtle)" }}
+            >
+              ({wine.allergens.join(", ")})
             </span>
           ) : null}
         </p>

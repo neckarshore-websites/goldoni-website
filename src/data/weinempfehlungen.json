@@ -8,7 +8,10 @@
       "region": "Friaul",
       "grapes": "100 % Sauvignon Blanc",
       "priceBottle": "30,–",
-      "priceGlass": "8,50"
+      "priceGlass": "8,50",
+      "allergens": [
+        "S"
+      ]
     },
     {
       "name": "Bianco",
@@ -18,7 +21,10 @@
       "region": "Sizilien",
       "grapes": "Inzolia, Catarratto, Grecanico",
       "priceBottle": "30,–",
-      "priceGlass": "8,50"
+      "priceGlass": "8,50",
+      "allergens": [
+        "S"
+      ]
     },
     {
       "name": "Greco",
@@ -28,7 +34,10 @@
       "region": "Kalabrien",
       "grapes": "100 % Greco Bianco",
       "priceBottle": "30,–",
-      "priceGlass": "8,50"
+      "priceGlass": "8,50",
+      "allergens": [
+        "S"
+      ]
     }
   ],
   "rot": [
@@ -40,7 +49,10 @@
       "region": "Venetien",
       "grapes": "Corvina, Corvinone, Rondinella",
       "priceBottle": "35,–",
-      "priceGlass": "10,–"
+      "priceGlass": "10,–",
+      "allergens": [
+        "S"
+      ]
     },
     {
       "name": "DUEDIDUE",
@@ -50,7 +62,10 @@
       "region": "Piemont",
       "grapes": "Cuvée Barbera, Cabernet Sauvignon",
       "priceBottle": "35,–",
-      "priceGlass": "10,–"
+      "priceGlass": "10,–",
+      "allergens": [
+        "S"
+      ]
     }
   ],
   "hauswein": {
