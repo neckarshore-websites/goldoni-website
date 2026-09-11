@@ -19,7 +19,7 @@
           "name": "Tagliere di affettato misto alla calabrese per 2 persone",
           "description": "Auswahl verschiedener Salamis für 2 Personen",
           "price": "18.00",
-          "allergens": ["A", "D", "G", "H"]
+          "allergens": ["A", "G", "H"]
         },
         {
           "name": "Affettato di porchetta tonnata con scaglie di radicchio",
@@ -38,7 +38,8 @@
           "name": "Tortellacci ripieni al tartufo in sughetto di burro",
           "description": "Nudeln mit Trüffelfüllung an Butter-Creme",
           "price": "19.50",
-          "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"]
+          "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
+          "diet": ["vegetarian"]
         },
         {
           "name": "Strozzapreti con la salsiccia ed i funghi cantarelli",
