@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-09-11",
+  "updated": "2026-09-16",
   "categories": [
     {
       "id": "antipasti",
@@ -18,7 +18,7 @@
         {
           "name": "Tagliere di affettato misto alla calabrese per 2 persone",
           "description": "Auswahl verschiedener Salamis für 2 Personen",
-          "price": "18.00",
+          "price": "20.00",
           "allergens": ["A", "G", "H"]
         },
         {
@@ -42,16 +42,16 @@
           "diet": ["vegetarian"]
         },
         {
-          "name": "Strozzapreti con la salsiccia ed i funghi cantarelli",
-          "description": "Priesterwürger mit kalabresischer Bratwurst und Pfifferlingen",
+          "name": "Pappardelle con la bolognese della nonna e pinoli",
+          "description": "Breite Bandnudeln mit frischer Bolognesesoße und Pinienkernen",
           "price": "21.00",
-          "allergens": ["A", "C", "I"]
+          "allergens": ["A", "C", "H", "I"]
         },
         {
-          "name": "Linguine con i cannolicchi e cozze",
-          "description": "Linguine mit Schwert- und Miesmuscheln sowie Kirschtomaten",
-          "price": "21.50",
-          "allergens": ["A", "D", "N"]
+          "name": "Sombreri ripieni con menta e zucchini al sughetto di capesante e pomodorini",
+          "description": "Gefüllte Pasta mit Zucchini und Minze, serviert mit Jakobsmuschelfleisch und Kirschtomaten",
+          "price": "25.50",
+          "allergens": ["A", "B", "D"]
         },
         {
           "name": "Pizza con la creme fraiche il salmone affumicato incoronato da burrata su letto di valeriana",
@@ -67,20 +67,14 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Fegato di vitello alla veneziana",
-          "description": "Kalbslebermedaillons nach venezianischer Art, dazu Beilage",
-          "price": "29.50",
-          "allergens": ["S"]
-        },
-        {
-          "name": "Tagliata di Rib-Eye servita su rucola, pomodorini e scaglie di Grana",
-          "description": "Gegrilltes Rib-Eye (Dry Aged) serviert auf Rucola-Bett, mit Kirschtomaten und Granakäse-Raspeln, dazu Beilage",
+          "name": "Tagliata di fianchetto di manzo aromatizzata al Bourbon Whisky e servita su rucola, pomodorini e scaglie di Grana",
+          "description": "Gegrilltes Rinder-Flank-Steak (Dry Aged), in Bourbon Whisky eingelegt, serviert auf Rucola-Bett mit Kirschtomaten und Granakäse-Raspeln, dazu Beilage",
           "price": "35.50",
-          "allergens": ["G"]
+          "allergens": ["G", "S"]
         },
         {
-          "name": "Tomahawk (1400 g) alla griglia frollata 21 giorni servita con rucola e scaglie di grana",
-          "description": "Dry Aged Tomahawk (1400 g für 2 Personen) vom Lavastein-Grill, serviert mit Rucola und Granakäse-Raspeln",
+          "name": "Tomahawk (1400 g) al forno frollata 21 giorni servita con contorno",
+          "description": "Dry Aged Tomahawk (1400 g für 2 Personen) aus dem Ofen, dazu Beilage",
           "price": "110.00",
           "allergens": ["G"]
         },
@@ -91,10 +85,10 @@
           "allergens": ["D"]
         },
         {
-          "name": "Filetti di orata reale alla griglia",
-          "description": "Frische Goldbrassenfilets vom Lavastein-Grill, dazu Beilage",
-          "price": "33.00",
-          "allergens": ["D"]
+          "name": "Freschissimi calamari marinati alla mediterranea preparati sulla plancia",
+          "description": "Frische Calamari vom Lavastein-Grill, dazu Beilage",
+          "price": "30.00",
+          "allergens": ["D", "N"]
         }
       ]
     },
