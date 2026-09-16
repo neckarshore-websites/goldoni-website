@@ -16,6 +16,8 @@ import { ZEILEN, istBelegt, type Zeile } from "@/lib/bild-herkunft";
  * Auftrag an den DPO vorgemerkt. Diese Tabelle liefert die Tatsachen dafür.
  */
 
+const OFFEN = ZEILEN.filter((z) => z.herkunft === "offen").length;
+
 const LABEL: Record<Zeile["herkunft"], string> = {
   ki: "KI-erzeugt",
   foto: "Echtes Foto",
@@ -142,15 +144,26 @@ export function BildHerkunftInventur() {
         className="mt-4 max-w-3xl text-sm leading-relaxed"
         style={{ color: "var(--color-text-muted)" }}
       >
-        <strong style={{ color: "var(--color-text)" }}>
-          Der Fund sind die fünf offenen Zeilen.
-        </strong>{" "}
-        Sie stehen nicht in der Asset-Liste unten und tragen deshalb weder
-        Prompt noch Notiz — darunter die gesamte Startseiten-Bildfolge und das
-        Bild, das beim Teilen der Seite als Vorschau erscheint. Ihre Herkunft
-        ist damit aus dem Repository nicht rekonstruierbar. Sie hier zu raten
-        wäre schlimmer als die Lücke: die Frage, die beantwortet werden soll,
-        lautet gerade, welche Bilder KI-erzeugt sind.
+        {OFFEN === 0 ? (
+          <>
+            <strong style={{ color: "var(--color-text)" }}>
+              Keine offene Zeile.
+            </strong>{" "}
+            Jedes Bild auf den Inhaltsseiten ist als Foto oder KI-Bild
+            eingeordnet. Bilder, deren Herkunft sich nicht klären ließ, wurden
+            ersetzt statt geraten.
+          </>
+        ) : (
+          <>
+            <strong style={{ color: "var(--color-text)" }}>
+              Der Fund sind die {OFFEN} offenen Zeilen.
+            </strong>{" "}
+            Ihre Herkunft ist aus dem Repository nicht rekonstruierbar. Sie
+            hier zu raten wäre schlimmer als die Lücke: die Frage, die
+            beantwortet werden soll, lautet gerade, welche Bilder KI-erzeugt
+            sind.
+          </>
+        )}
       </p>
     </section>
   );

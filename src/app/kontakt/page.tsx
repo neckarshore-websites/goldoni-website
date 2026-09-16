@@ -19,8 +19,9 @@ export default function KontaktPage() {
         data={breadcrumbJsonLd([{ name: "Kontakt", path: "/kontakt" }])}
       />
       <PageHero
-        src="/images/hero-kontakt-pizzo.webp"
-        alt="Küstenstadt Pizzo in Kalabrien — Italiens Süden, Inspirationsquelle der Goldoni-Küche"
+        src="/images/hero-goldoni-angel.webp"
+        alt="Goldoni Visitenkarte vor goldener Engelsfigur auf einem Tisch"
+        objectPosition="center 80%"
       />
       <div className="px-6 pb-20 pt-12 sm:px-12 sm:pb-24">
       <div className="mx-auto max-w-3xl">
