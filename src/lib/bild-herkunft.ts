@@ -54,10 +54,13 @@ export type Zeile = {
 };
 
 /**
- * Die fünf `offen`-Zeilen sind der eigentliche Fund. Sie sind NICHT
- * "vermutlich KI" — sie sind undokumentiert, und dazu gehört ausgerechnet
- * die Startseiten-Bildfolge und das Vorschaubild, das beim Teilen der Seite
- * erscheint. Ein Rateergebnis hier einzutragen wäre schlimmer als die Lücke.
+ * Eine `offen`-Zeile ist NICHT "vermutlich KI" — sie ist undokumentiert.
+ * Ein Rateergebnis hier einzutragen wäre schlimmer als die Lücke.
+ *
+ * STAND 2026-09-16: keine offene Zeile mehr. Die drei Startseiten-Bilder sind
+ * per Founder-Auskunft Fotos aus dem Lokal; die zwei Bilder ohne klärbare
+ * Herkunft (Trauben auf /impressum, Küste auf /kontakt) wurden nicht
+ * nachträglich eingeordnet, sondern durch belegte Fotos ersetzt und gelöscht.
  *
  * SO WIRD EINE OFFENE ZEILE GESCHLOSSEN: `herkunft` auf "ki" oder "foto"
  * setzen UND einen `nachweis` mit mindestens einem Feld ergänzen. Beides
@@ -65,17 +68,15 @@ export type Zeile = {
  * Behauptung, und Behauptungen sind hier der Fehlerfall.
  */
 export const ZEILEN: Zeile[] = [
-  { datei: "feiern-kandelaber-rosen-lilien.webp", seite: "Feste feiern (Galerie)", herkunft: "foto" },
+  { datei: "feiern-kandelaber-rosen-lilien.webp", seite: "Feste feiern (Galerie) + Impressum", herkunft: "foto" },
   { datei: "feiern-saal-bogenfenster-tafel.webp", seite: "Feste feiern (Galerie)", herkunft: "foto" },
   { datei: "feiern-saal-historische-banner.webp", seite: "Feste feiern (Galerie)", herkunft: "foto" },
   { datei: "feiern-tafel-aus-naehe.webp", seite: "Feste feiern (Galerie)", herkunft: "foto" },
   { datei: "hero-empfehlungen-overhead-tafel.webp", seite: "Empfehlungskarte", herkunft: "ki" },
   { datei: "hero-feiern-saal.webp", seite: "Feste feiern (Hero)", herkunft: "foto" },
-  { datei: "hero-goldoni-angel.webp", seite: "Startseite (Bildfolge)", herkunft: "offen" },
-  { datei: "hero-goldoni-interior.webp", seite: "Startseite (Bildfolge) + Über uns + strukturierte Daten", herkunft: "offen" },
-  { datei: "hero-goldoni-velvet.webp", seite: "Startseite (Bildfolge) + Vorschaubild beim Teilen", herkunft: "offen" },
-  { datei: "hero-impressum-trauben.webp", seite: "Impressum", herkunft: "offen" },
-  { datei: "hero-kontakt-pizzo.webp", seite: "Kontakt", herkunft: "offen" },
+  { datei: "hero-goldoni-angel.webp", seite: "Startseite (Bildfolge) + Kontakt", herkunft: "foto", nachweis: { rechte: "Ristorante Goldoni", notiz: "Foto aus dem Lokal; Founder-Auskunft 2026-09-16" } },
+  { datei: "hero-goldoni-interior.webp", seite: "Startseite (Bildfolge) + Über uns + strukturierte Daten", herkunft: "foto", nachweis: { rechte: "Ristorante Goldoni", notiz: "Foto aus dem Lokal; Founder-Auskunft 2026-09-16" } },
+  { datei: "hero-goldoni-velvet.webp", seite: "Startseite (Bildfolge) + Vorschaubild beim Teilen", herkunft: "foto", nachweis: { rechte: "Ristorante Goldoni", notiz: "Foto aus dem Lokal; Founder-Auskunft 2026-09-16" } },
   { datei: "hero-menu-dishes.webp", seite: "Speisekarte + strukturierte Daten", herkunft: "ki" },
 ];
 

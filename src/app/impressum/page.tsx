@@ -19,8 +19,9 @@ export default function ImpressumPage() {
         data={breadcrumbJsonLd([{ name: "Impressum", path: "/impressum" }])}
       />
       <PageHero
-        src="/images/hero-impressum-trauben.webp"
-        alt="Hände halten frisch geerntete dunkle Weintrauben — Symbol für italienische Gastfreundschaft"
+        src="/images/feiern-kandelaber-rosen-lilien.webp"
+        alt="Goldener Kandelaber mit weißen Kerzen, Lilien und gelben Rosen auf einer festlich gedeckten Tafel im Goldoni-Saal"
+        objectPosition="center 22%"
       />
       <div className="px-6 pb-20 pt-12 sm:px-12 sm:pb-24">
         <div className="mx-auto max-w-3xl">

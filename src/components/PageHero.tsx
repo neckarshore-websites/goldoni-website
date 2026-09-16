@@ -11,9 +11,11 @@ import Image from "next/image";
 interface PageHeroProps {
   src: string;
   alt: string;
+  /** CSS object-position for the crop, e.g. "center 80%". Defaults to centre. */
+  objectPosition?: string;
 }
 
-export function PageHero({ src, alt }: PageHeroProps) {
+export function PageHero({ src, alt, objectPosition }: PageHeroProps) {
   return (
     <div className="relative h-[30vh] min-h-[180px] w-full sm:h-[38vh] sm:min-h-[240px]">
       <Image
@@ -24,6 +26,7 @@ export function PageHero({ src, alt }: PageHeroProps) {
         fetchPriority="high"
         sizes="100vw"
         className="object-cover"
+        style={objectPosition ? { objectPosition } : undefined}
       />
       {/* Soft bottom fade into page background */}
       <div
