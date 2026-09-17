@@ -1,6 +1,6 @@
 import { Fragment, type ReactNode } from "react";
 import type { Menu, MenuCategory, MenuItem } from "@/lib/menu";
-import { LMIV_ALLERGENS, ZZULV_ADDITIVES, HOUSE_CODES } from "@/lib/codes";
+import { ALLERGENS, ADDITIVES } from "@/lib/codes";
 import type { Code } from "@/lib/codes";
 import { MenuQuickJump, type ExtraPill } from "@/components/MenuQuickJump";
 
@@ -190,10 +190,9 @@ export function MenuLegend({
         </p>
       ) : null}
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <CodeLegend title="Allergene (LMIV)" codes={LMIV_ALLERGENS} />
-        <CodeLegend title="Zusatzstoffe (ZZulV)" codes={ZZULV_ADDITIVES} />
-        <CodeLegend title="Hauseigene Codes" codes={HOUSE_CODES} />
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <CodeLegend title="Allergene" codes={ALLERGENS} />
+        <CodeLegend title="Zusatzstoffe" codes={ADDITIVES} />
       </div>
 
       {menu.footnote ? (

@@ -63,22 +63,17 @@ Italienische Speisenamen bleiben unverändert (Original-Sprache).
 
 ### 2. Allergen-Codes validieren
 
-Lies `src/lib/codes.ts`. Jeder im PDF referenzierte Code (Buchstabe oder Zahl) muss in `LMIV_ALLERGENS`, `ZZULV_ADDITIVES` oder `HOUSE_CODES` aufgelöst sein. Wenn nicht: **dem User explizit melden** und nachfragen, statt zu raten.
+Lies `src/lib/codes.ts`. Jeder im PDF referenzierte Code (Buchstabe oder Zahl) muss in `ALLERGENS` oder `ADDITIVES` aufgelöst sein. Wenn nicht: **dem User explizit melden** und nachfragen, statt zu raten. `npm run test:codes:unit` prüft das nach dem Eintragen mechanisch.
 
-Aktueller Stand der Goldoni-Codes (Stand 2026-04-29):
+Codes übernimmst du **genau so, wie sie auf der Karte stehen** — nicht umschlüsseln. Die Legende folgt der gedruckten Karte (Stand 2026-09-17, vom Inhaber als offizielle Bezeichnungen bestätigt):
 
-**LMIV-Allergene** (Buchstaben):
-- A Glutenhaltiges Getreide · B Krebstiere · C Eier · D Fische · E Erdnüsse · F Sojabohnen
-- G Milch (Laktose) · H Schalenfrüchte · N Sesam · P Lupinen · R Weichtiere
+**Allergene** (Buchstaben): A Glutenhaltig · B Krebstiere · C Eier · D Fisch · E Erdnüsse · F Soja · G Milch · H Schalenfrüchte · I Sellerie · J Senf · K Sesamsamen · L Schwefeldioxid · M Lupinen · N Weichtiere · S Sulfite
 
-**Goldoni-Hauseigene Allergen-Codes** (statt LMIV-Standard L/M/O):
-- I Sellerie (LMIV-Standard wäre L)
-- J Senf (LMIV-Standard wäre M)
-- S Sulfite (LMIV-Standard wäre O)
+**Zusatzstoffe** (Zahlen): 1 Farbstoff · 2 Konservierungsstoff · 3 Antioxidationsmittel · 4 Geschmacksverstärker · 5 Geschwefelt · 6 Geschwärzt · 7 Phosphat · 8 Milcheiweiß · 9 Koffeinhaltig · 10 Chininhaltig · 11 Süßungsmittel · 12 Phenylalaninquelle · 13 Gewachst · 14 Taurin · 15 Nitritpökelsalz
 
-**ZZulV-Zusatzstoffe** (Zahlen): 1 Farbstoff · 2 Konservierungsstoff · 3 Antioxidationsmittel · 4 Geschmacksverstärker · 5 Geschwefelt · 6 Geschwärzt · 7 Gewachst · 8 Phosphat · 9 Süßungsmittel · 10 Phenylalaninquelle · 11 Süßungsmittel+Zucker · 12 Chininhaltig · 13 Coffeinhaltig
+> **Achtung:** Bis 2026-09-17 stand hier ein anderes Schema (N Sesam, P Lupinen, R Weichtiere, „hauseigene Codes“ I/J/S, Zusatzstoffe 7–13 verschoben). Das war falsch. Die Codes an den Gerichten stimmten, die Legende nicht.
 
-Wenn das PDF einen Code referenziert der nicht in dieser Liste steht (z.B. "K"): nicht raten — User fragen.
+Wenn das PDF einen Code referenziert der nicht in dieser Liste steht (z.B. "T" oder "16"): nicht raten — User fragen.
 
 ### 3. Speisen → `empfehlungskarte.json`
 
@@ -235,7 +230,7 @@ PR mit `gh pr create --base main` öffnen.
 |---|---|---|
 | Weine in `empfehlungskarte.json` zusätzlich anlegen | Live-Site zeigt zwei Weinlisten untereinander, eine im falschen Layout | Weine ausschliesslich in `weinempfehlungen.json`. Vor Edit: `grep -rln "<wein-name>" src/` |
 | Per-Person-Preis als zweiter Price | Schema kennt nur ein `price`-Feld | Hauptpreis in `price`, Per-Person-Hinweis in `description`-String mitführen |
-| Allergen-Code "K" oder ähnlich Unbekanntes | Build grün (Type ist `string`), aber Legend zeigt "Hauseigener Code (Bedeutung folgt)" | Vor JSON-Write: User fragen welche Bedeutung der Code hat. Niemals raten. |
+| Allergen-Code "T" oder ähnlich Unbekanntes | Build grün (Type ist `string`), aber `npm run test:codes:unit` wird rot und die Legende erklärt den Code nicht | Vor JSON-Write: User fragen welche Bedeutung der Code hat. Niemals raten. |
 | Decimal-Trenner-Mismatch | Speisen-Preis `"15,00"` statt `"15.00"` | Speisen: PUNKT als Decimal. Weine: KOMMA als Decimal (verschiedene Renderer-Konventionen). |
 | Halbgeviertstrich `–` vs. Bindestrich `-` bei Wein-Preisen | Inkonsistente Live-Anzeige `28,-` vs `28,–` | Halbgeviertstrich (U+2013) für glatte Preise: `"28,–"`. Komma + Dezimalstellen: `"7,50"`. |
 | Codes-Comment in `src/lib/menu.ts` ist stale | Skill nennt L/M/O, codes.ts hat I/J/S | Nicht im Skill-Workflow korrigieren — separater Doc-Update-PR. Aber dem User melden falls auffällig. |
