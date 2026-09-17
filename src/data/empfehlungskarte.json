@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-09-16",
+  "updated": "2026-09-17",
   "categories": [
     {
       "id": "antipasti",
@@ -48,10 +48,10 @@
           "allergens": ["A", "C", "H", "I"]
         },
         {
-          "name": "Sombreri ripieni con menta e zucchini al sughetto di capesante e pomodorini",
-          "description": "Gefüllte Pasta mit Zucchini und Minze, serviert mit Jakobsmuschelfleisch und Kirschtomaten",
-          "price": "25.50",
-          "allergens": ["A", "B", "D"]
+          "name": "Sombreri ripieni con menta e zucchini al sughetto di capesante e cantarelli",
+          "description": "Gefüllte Pasta mit Zucchini und Minze, serviert mit Jakobsmuschelfleisch und Pfifferlingen",
+          "price": "23.50",
+          "allergens": ["A", "D", "N"]
         },
         {
           "name": "Pizza con la creme fraiche il salmone affumicato incoronato da burrata su letto di valeriana",
