@@ -20,6 +20,7 @@
     "test:allergene:unit": "tsx tests/delivery/allergen-rules.test.ts",
     "test:bildherkunft:unit": "tsx tests/delivery/bild-herkunft.test.ts",
     "test:codes:unit": "tsx tests/delivery/menu-codes.test.ts",
+    "test:kartenabgleich:unit": "tsx tests/delivery/kartenabgleich.test.ts",
     "test:delivery:unit": "tsx tests/delivery/channel-model.test.ts",
     "test:druck:unit": "tsx tests/delivery/print-assets.test.ts",
     "test:e2e": "playwright test",
