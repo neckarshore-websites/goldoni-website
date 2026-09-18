@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "categories": [
     {
       "id": "antipasti",
@@ -16,10 +16,10 @@
           "diet": ["vegetarian"]
         },
         {
-          "name": "Tagliere di affettato misto alla calabrese per 2 persone",
-          "description": "Auswahl verschiedener Salamis für 2 Personen",
-          "price": "20.00",
-          "allergens": ["A", "G", "H"]
+          "name": "Crema di zucca servita con crostini di pane e capesante",
+          "description": "Cremige Suppe vom Muskatkürbis, serviert mit Jakobsmuscheln und warmen Crostini",
+          "price": "15.00",
+          "allergens": ["A", "D", "G", "H", "N"]
         },
         {
           "name": "Affettato di porchetta tonnata con scaglie di radicchio",
@@ -48,9 +48,9 @@
           "allergens": ["A", "C", "H", "I"]
         },
         {
-          "name": "Sombreri ripieni con menta e zucchini al sughetto di capesante e cantarelli",
-          "description": "Gefüllte Pasta mit Zucchini und Minze, serviert mit Jakobsmuschelfleisch und Pfifferlingen",
-          "price": "23.50",
+          "name": "Linguine con le cozze ed i funghi canterelli",
+          "description": "Linguine mit Miesmuscheln (Premium Quality) und Pfifferlingen in einer leichten Weißweinsoße",
+          "price": "21.50",
           "allergens": ["A", "D", "N"]
         },
         {
@@ -80,7 +80,7 @@
         },
         {
           "name": "Filetti di rombo al sughetto di limone e rosmarino",
-          "description": "Steinbuttfilets aus der Pfanne an Zitronen-Rosmarin-Creme, mit Beilage",
+          "description": "Duett von Dorade und Steinbutt an Zitronen-Rosmarin-Creme, mit Beilage",
           "price": "35.00",
           "allergens": ["D"]
         },
@@ -100,6 +100,12 @@
         {
           "name": "Soufflé al cioccolato con gelato alla vaniglia",
           "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
+          "price": "8.50",
+          "allergens": ["A", "C", "G", "H"],
+          "diet": ["vegetarian"]
+        },
+        {
+          "name": "Gefüllte Windbeutel umhüllt mit weißer Milchcreme",
           "price": "8.50",
           "allergens": ["A", "C", "G", "H"],
           "diet": ["vegetarian"]
