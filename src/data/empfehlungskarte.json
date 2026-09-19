@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-09-18",
+  "updated": "2026-09-19",
   "categories": [
     {
       "id": "antipasti",
@@ -12,20 +12,39 @@
           "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
           "description": "Frittierte Auberginentürmchen mit geräuchertem Scamorzakäse und Mozzarella",
           "price": "15.50",
-          "allergens": ["A", "G", "2", "3", "5"],
-          "diet": ["vegetarian"]
+          "allergens": [
+            "A",
+            "G",
+            "2",
+            "3",
+            "5"
+          ],
+          "diet": [
+            "vegetarian"
+          ]
         },
         {
           "name": "Crema di zucca servita con crostini di pane e capesante",
           "description": "Cremige Suppe vom Muskatkürbis, serviert mit Jakobsmuscheln und warmen Crostini",
           "price": "15.00",
-          "allergens": ["A", "D", "G", "H", "N"]
+          "allergens": [
+            "A",
+            "D",
+            "G",
+            "H",
+            "N"
+          ]
         },
         {
           "name": "Affettato di porchetta tonnata con scaglie di radicchio",
           "description": "Saftige Spanferkelscheiben an Thunfischcreme und Radicchiosalat",
           "price": "15.50",
-          "allergens": ["D", "G", "I", "J"]
+          "allergens": [
+            "D",
+            "G",
+            "I",
+            "J"
+          ]
         }
       ]
     },
@@ -35,29 +54,53 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Tortellacci ripieni al tartufo in sughetto di burro",
-          "description": "Nudeln mit Trüffelfüllung an Butter-Creme",
+          "name": "Ventagli ripieni alla caprese in crema di pesto di basilico",
+          "description": "Nudeln mit Caprese-Füllung an Basilikumpesto",
           "price": "19.50",
-          "allergens": ["A", "F", "G", "I", "J", "N", "2", "3"],
-          "diet": ["vegetarian"]
+          "allergens": [
+            "A",
+            "B",
+            "F",
+            "G",
+            "I",
+            "J",
+            "N",
+            "2",
+            "3"
+          ]
         },
         {
           "name": "Pappardelle con la bolognese della nonna e pinoli",
           "description": "Breite Bandnudeln mit frischer Bolognesesoße und Pinienkernen",
           "price": "21.00",
-          "allergens": ["A", "C", "H", "I"]
+          "allergens": [
+            "A",
+            "C",
+            "H",
+            "I"
+          ]
         },
         {
           "name": "Linguine con le cozze ed i funghi canterelli",
           "description": "Linguine mit Miesmuscheln (Premium Quality) und Pfifferlingen in einer leichten Weißweinsoße",
           "price": "21.50",
-          "allergens": ["A", "D", "N"]
+          "allergens": [
+            "A",
+            "D",
+            "N"
+          ]
         },
         {
           "name": "Pizza con la creme fraiche il salmone affumicato incoronato da burrata su letto di valeriana",
           "description": "Pizza (weiße Basis) mit Crème fraîche, geräuchertem Lachs und Feldsalat, mit Burratakäse gekrönt",
           "price": "18.50",
-          "allergens": ["A", "D", "G", "1", "2"]
+          "allergens": [
+            "A",
+            "D",
+            "G",
+            "1",
+            "2"
+          ]
         }
       ]
     },
@@ -67,28 +110,37 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Tagliata di fianchetto di manzo aromatizzata al Bourbon Whisky e servita su rucola, pomodorini e scaglie di Grana",
-          "description": "Gegrilltes Rinder-Flank-Steak (Dry Aged), in Bourbon Whisky eingelegt, serviert auf Rucola-Bett mit Kirschtomaten und Granakäse-Raspeln, dazu Beilage",
+          "name": "Tagliata di Entrecote servita su rucola, pomodorini e scaglie di Grana",
+          "description": "Gegrilltes Entrecote, serviert auf Rucola-Bett mit Kirschtomaten und Granakäse-Raspeln, dazu Beilage",
           "price": "35.50",
-          "allergens": ["G", "S"]
+          "allergens": [
+            "G"
+          ]
         },
         {
           "name": "Tomahawk (1400 g) al forno frollata 21 giorni servita con contorno",
           "description": "Dry Aged Tomahawk (1400 g für 2 Personen) aus dem Ofen, dazu Beilage",
           "price": "110.00",
-          "allergens": ["G"]
+          "allergens": [
+            "G"
+          ]
         },
         {
-          "name": "Filetti di rombo al sughetto di limone e rosmarino",
-          "description": "Duett von Dorade und Steinbutt an Zitronen-Rosmarin-Creme, mit Beilage",
+          "name": "Medaglioni di rana pescatrice al vino bianco e pomodorini",
+          "description": "Seeteufelmedaillons an Weißweinsoße und Kirschtomaten, mit Beilage",
           "price": "35.00",
-          "allergens": ["D"]
+          "allergens": [
+            "D",
+            "S"
+          ]
         },
         {
-          "name": "Freschissimi calamari marinati alla mediterranea preparati sulla plancia",
-          "description": "Frische Calamari vom Lavastein-Grill, dazu Beilage",
-          "price": "30.00",
-          "allergens": ["D", "N"]
+          "name": "Freschissimi filetti di orata reale marinati alla mediterranea preparati sulla plancia",
+          "description": "Frische Royal-Goldbrassefilets vom Lavastein-Grill, dazu Beilage",
+          "price": "32.00",
+          "allergens": [
+            "D"
+          ]
         }
       ]
     },
@@ -101,20 +153,54 @@
           "name": "Soufflé al cioccolato con gelato alla vaniglia",
           "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
           "price": "8.50",
-          "allergens": ["A", "C", "G", "H"],
-          "diet": ["vegetarian"]
+          "allergens": [
+            "A",
+            "C",
+            "G",
+            "H"
+          ],
+          "diet": [
+            "vegetarian"
+          ]
         },
         {
           "name": "Gefüllte Windbeutel umhüllt mit weißer Milchcreme",
           "price": "8.50",
-          "allergens": ["A", "C", "G", "H"],
-          "diet": ["vegetarian"]
+          "allergens": [
+            "A",
+            "C",
+            "G",
+            "H"
+          ],
+          "diet": [
+            "vegetarian"
+          ]
+        },
+        {
+          "name": "Hausgemachte Himbeer-Pannacotta",
+          "price": "8.50",
+          "allergens": [
+            "A",
+            "C",
+            "G",
+            "H"
+          ],
+          "diet": [
+            "vegetarian"
+          ]
         },
         {
           "name": "Pistazieneis umhüllt mit gehackten Mandeln",
           "price": "9.00",
-          "allergens": ["A", "C", "G", "H"],
-          "diet": ["vegetarian"]
+          "allergens": [
+            "A",
+            "C",
+            "G",
+            "H"
+          ],
+          "diet": [
+            "vegetarian"
+          ]
         }
       ]
     }
