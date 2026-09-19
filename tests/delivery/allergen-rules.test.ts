@@ -39,7 +39,7 @@ const RULES: Rule[] = [
   { code: "C", why: "Nr. 3 — Eier",
     words: ["uova", "frittata", "zabaione", "soufflé", "tiramisù", "tiramisu"] },
   { code: "D", why: "Nr. 4 — Fische",
-    words: ["salmone", "tonno", "tonnata", "tonnato", "acciughe", "rombo", "branzino", "baccalà", "lachs", "thunfisch"] },
+    words: ["salmone", "tonno", "tonnata", "tonnato", "acciughe", "rombo", "branzino", "baccalà", "orata", "pescatrice", "lachs", "thunfisch", "seeteufel", "goldbrassefilets"] },
   { code: "E", why: "Nr. 5 — Erdnuesse", words: ["arachidi", "erdnuss", "erdnüsse"] },
   { code: "F", why: "Nr. 6 — Sojabohnen", words: ["soia", "soja"] },
   { code: "G", why: "Nr. 7 — Milch",
