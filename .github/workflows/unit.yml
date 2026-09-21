@@ -49,6 +49,15 @@ jobs:
           npm run test:codes:unit
           npm run test:allergene:unit
           npm run test:kartenabgleich:unit
+          # Agent-file drift gate (#2360). Reads the REAL AGENTS.md and CLAUDE.md in the
+          # checkout — not a fixture, not node_modules — and fails when the foreign
+          # nextjs-agent-rules block differs from scripts/nextjs-agent-rules.expected.md,
+          # when it vanishes from AGENTS.md, or when it turns up in CLAUDE.md. The unit
+          # test covers the pure logic and would go green without ever opening AGENTS.md,
+          # so BOTH lines have to stand here. No `next dev` runs in this job, so the
+          # generator cannot repair the very deviation being measured.
+          npm run test:agent-files:unit
+          npm run check:agent-files
 
       # NOT COVERED HERE, stated rather than left to be assumed: whether the printed QR
       # codes actually SCAN. That needs Apple's Vision decoder, which does not exist on

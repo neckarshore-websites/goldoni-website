@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "check:agent-files": "node scripts/check-agent-files.mjs",
     "dev": "next dev -p 3002",
     "druck:sync": "node scripts/sync-print-assets.mjs",
     "lighthouse": "node scripts/lighthouse.mjs",
@@ -17,6 +18,7 @@
     "qr:storefront": "tsx scripts/generate-storefront-qr.ts",
     "signaturen": "tsx scripts/generate-signatures.ts",
     "start": "next start -p 3002",
+    "test:agent-files:unit": "node --test scripts/check-agent-files.test.mjs",
     "test:allergene:unit": "tsx tests/delivery/allergen-rules.test.ts",
     "test:bildherkunft:unit": "tsx tests/delivery/bild-herkunft.test.ts",
     "test:codes:unit": "tsx tests/delivery/menu-codes.test.ts",
