@@ -397,14 +397,12 @@
         {
           "name": "Orangensaft",
           "volume": "0,2 l",
-          "price": "3.80",
-          "allergens": ["2", "3"]
+          "price": "3.80"
         },
         {
           "name": "Apfelsaftschorle",
           "volume": "0,3 l",
-          "price": "3.50",
-          "allergens": ["2", "3"]
+          "price": "3.50"
         },
         {
           "name": "Bitter Lemon",
@@ -421,8 +419,7 @@
         {
           "name": "Kirschnektar",
           "volume": "0,2 l",
-          "price": "3.80",
-          "allergens": ["1", "2", "3", "11"]
+          "price": "3.80"
         },
         {
           "name": "Sanpellegrino",
@@ -445,25 +442,25 @@
           "name": "Pils",
           "volume": "0,33 l",
           "price": "4.00",
-          "allergens": ["2", "A"]
+          "allergens": ["A"]
         },
         {
           "name": "Italienisches Bier",
           "volume": "0,33 l",
           "price": "4.50",
-          "allergens": ["2", "A"]
+          "allergens": ["A"]
         },
         {
           "name": "Hefeweizen Hell",
           "volume": "0,5 l",
           "price": "4.90",
-          "allergens": ["2", "A"]
+          "allergens": ["A"]
         },
         {
           "name": "Kristallweizen",
           "volume": "0,5 l",
           "price": "4.90",
-          "allergens": ["2", "A"]
+          "allergens": ["A"]
         }
       ]
     },
