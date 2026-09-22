@@ -73,4 +73,8 @@ check(`every code on a dish resolves in the legend (${refs} references)`, () => 
   assert.deepEqual(unresolved, [], `unresolved codes:\n${unresolved.join("\n")}`);
 });
 
+// Zwei Zeilen: die lesbare fuer Menschen, die kanonische fuer den Estate-Zaehler.
+// Der tsx-Handler von test-stats-action liest ausschliesslich "<N> passed, <M> failed";
+// "N checks passed" erkennt er nicht, die Suite floss damit still mit 0 ein (#145).
 console.log(`\n${pass} checks passed`);
+console.log(`${pass} passed, 0 failed`);

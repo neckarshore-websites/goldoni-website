@@ -59,4 +59,6 @@ check("identische Legenden ergeben keine Abweichung", () => {
   assert.equal(ab.length, 0);
 });
 
+// Kanonische Zeile fuer den Estate-Zaehler, siehe menu-codes.test.ts (#145).
 console.log(`\n${checks} checks passed`);
+console.log(`${checks} passed, 0 failed`);
