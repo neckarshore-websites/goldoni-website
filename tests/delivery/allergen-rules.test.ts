@@ -63,8 +63,18 @@ const OFFEN: { item: string; code: string; seit: string; frage: string }[] = [
     frage: "Klassisch mit rohem Ei zubereitet? Dann fehlt C." },
 ];
 
+/** Benannte Pruefungen, damit die Suite zaehlbar ist (#145) und Fehlschlaege einen Namen tragen. */
+let checks = 0;
+function check(name: string, fn: () => void): void {
+  fn();
+  checks++;
+  console.log(`ok - ${name}`);
+}
+
 const known = new Set(ALLERGENS.map((c) => c.code));
-for (const r of RULES) assert.ok(known.has(r.code), `Regel nutzt unbekannten Code ${r.code}`);
+check("jede Regel nutzt einen Code, den die Legende kennt", () => {
+  for (const r of RULES) assert.ok(known.has(r.code), `Regel nutzt unbekannten Code ${r.code}`);
+});
 
 type Found = { item: string; code: string; word: string; why: string; file: string };
 const items: { name: string; codes: string[]; file: string }[] = [];
@@ -104,15 +114,25 @@ for (const o of OFFEN) console.log(`offen  - ${o.item}: Code ${o.code} fehlt (se
 console.log(`offene Fragen an die Kueche: ${OFFEN.length}`);
 
 const stale = OFFEN.filter((o) => !hits.some((h) => key(h) === key(o)));
-assert.deepEqual(
-  stale.map(key), [],
-  `OFFEN-Eintraege ohne Fund — erledigt, bitte aus der Liste nehmen:\n${stale.map(key).join("\n")}`,
-);
-assert.ok(items.length > 40, "zu wenige Gerichte gelesen — Datenformat geaendert?");
-assert.ok(erfuellt > 30, "Regeln greifen kaum — Wortlisten oder Datenformat pruefen");
-assert.deepEqual(
-  neu.map((h) => `${h.file}: ${h.item} -> Code ${h.code} fehlt (Wort "${h.word}", ${h.why})`),
-  [],
-  "neue Kennzeichnungsluecke gefunden",
-);
-console.log("\nok - keine neuen Luecken");
+check("kein OFFEN-Eintrag ohne Fund (erledigte gehoeren aus der Liste)", () => {
+  assert.deepEqual(
+    stale.map(key), [],
+    `OFFEN-Eintraege ohne Fund — erledigt, bitte aus der Liste nehmen:\n${stale.map(key).join("\n")}`,
+  );
+});
+check("genug Gerichte gelesen (Datenformat unveraendert)", () => {
+  assert.ok(items.length > 40, "zu wenige Gerichte gelesen — Datenformat geaendert?");
+});
+check("die Regeln greifen ueberhaupt", () => {
+  assert.ok(erfuellt > 30, "Regeln greifen kaum — Wortlisten oder Datenformat pruefen");
+});
+check("keine neue Kennzeichnungsluecke", () => {
+  assert.deepEqual(
+    neu.map((h) => `${h.file}: ${h.item} -> Code ${h.code} fehlt (Wort "${h.word}", ${h.why})`),
+    [],
+    "neue Kennzeichnungsluecke gefunden",
+  );
+});
+
+console.log(`\n${checks} checks passed`);
+console.log(`${checks} passed, 0 failed`);
