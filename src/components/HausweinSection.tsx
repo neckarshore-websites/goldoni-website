@@ -29,7 +29,7 @@ function HausweinRow({ wine }: { wine: Hauswein }) {
       <div className="flex flex-wrap items-baseline gap-2">
         <p
           className="font-medium"
-          style={{ color: "var(--color-text)" }}
+          style={{ color: "var(--color-text)", fontFamily: "var(--font-display)" }}
         >
           {wine.name}
         </p>
@@ -44,7 +44,7 @@ function HausweinRow({ wine }: { wine: Hauswein }) {
       </div>
       <div
         className="shrink-0 text-right text-sm tabular-nums"
-        style={{ color: "var(--color-text)" }}
+        style={{ color: "var(--color-text)", fontFamily: "var(--font-display)" }}
       >
         <span style={{ color: "var(--color-text-muted)" }}>
           {wine.volume}
