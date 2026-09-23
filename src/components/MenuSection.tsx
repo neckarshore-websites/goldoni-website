@@ -22,7 +22,21 @@ const DIET_LABEL: Record<NonNullable<MenuItem["diet"]>[number], string> = {
   spicy: "scharf",
 };
 
-function MenuItemRow({ item }: { item: MenuItem }) {
+/**
+ * `displayNames` (2026-09-23, Founder trial on /empfehlungen): Italian dish
+ * names in Playfair Display. "Italian" is read from the data shape — an item
+ * with a German `description` line carries an Italian `name`; items without
+ * one (e.g. "Gefüllte Windbeutel") are German and stay in Inter. Off by
+ * default, so /menu is unchanged. Revert = drop the prop on the page.
+ */
+function MenuItemRow({
+  item,
+  displayNames = false,
+}: {
+  item: MenuItem;
+  displayNames?: boolean;
+}) {
+  const display = displayNames && Boolean(item.description);
   return (
     <li
       className="flex flex-col gap-1 border-b py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
@@ -34,7 +48,7 @@ function MenuItemRow({ item }: { item: MenuItem }) {
             className="text-base font-medium"
             style={{
               color: "var(--color-text)",
-              fontFamily: "var(--font-sans)",
+              fontFamily: display ? "var(--font-display)" : "var(--font-sans)",
             }}
           >
             {item.name}
@@ -87,7 +101,13 @@ function MenuItemRow({ item }: { item: MenuItem }) {
   );
 }
 
-function CategoryBlock({ category }: { category: MenuCategory }) {
+function CategoryBlock({
+  category,
+  displayNames = false,
+}: {
+  category: MenuCategory;
+  displayNames?: boolean;
+}) {
   return (
     <section
       id={category.id}
@@ -124,7 +144,7 @@ function CategoryBlock({ category }: { category: MenuCategory }) {
       </header>
       <ul>
         {category.items.map((item) => (
-          <MenuItemRow key={item.name} item={item} />
+          <MenuItemRow key={item.name} item={item} displayNames={displayNames} />
         ))}
       </ul>
     </section>
@@ -220,6 +240,7 @@ export function MenuSection({
   extraPills = [],
   slots = [],
   quickJumpOrderCta,
+  displayNames = false,
 }: {
   menu: Menu;
   hideLegend?: boolean;
@@ -227,6 +248,8 @@ export function MenuSection({
   slots?: MenuSlot[];
   /** Prototyp-Durchreiche (2026-08-25) — siehe MenuQuickJump `orderCta`. */
   quickJumpOrderCta?: { label: string; href: string };
+  /** Italian dish names in Playfair Display — see MenuItemRow. */
+  displayNames?: boolean;
 }) {
   // No wrapping <div> here — render as Fragment so the sticky pill bar's
   // containing block becomes the parent page wrapper. Otherwise the bar
@@ -256,7 +279,7 @@ export function MenuSection({
           const matchingSlots = slots.filter((s) => s.afterId === cat.id);
           return (
             <Fragment key={cat.id}>
-              <CategoryBlock category={cat} />
+              <CategoryBlock category={cat} displayNames={displayNames} />
               {matchingSlots.map((s, idx) => (
                 <Fragment key={`${cat.id}-slot-${idx}`}>{s.node}</Fragment>
               ))}
