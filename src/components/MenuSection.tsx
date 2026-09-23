@@ -23,20 +23,30 @@ const DIET_LABEL: Record<NonNullable<MenuItem["diet"]>[number], string> = {
 };
 
 /**
- * `displayNames` (2026-09-23, Founder trial on /empfehlungen): Italian dish
- * names in Playfair Display. "Italian" is read from the data shape — an item
- * with a German `description` line carries an Italian `name`; items without
- * one (e.g. "Gefüllte Windbeutel") are German and stay in Inter. Off by
- * default, so /menu is unchanged. Revert = drop the prop on the page.
+ * `displayNames` — dish names AND their prices in Playfair Display.
+ * 2026-09-23: trialled on the weekly menu (names), then extended by the
+ * Founder to prices and to the main menu.
+ *
+ * Which rows: on the weekly menu every dish with a German description line
+ * (that line marks an Italian dish name; the German-named desserts without
+ * one stay in Inter). On /menu the page passes the FOOD category ids — the
+ * drinks (Coca-Cola, Pils, Averna …) stay in Inter, because half of them
+ * have no description and a mixed category reads as a mistake.
+ *
+ * `true` = description rule on every category; `string[]` = every item in
+ * those categories. Off by default.
  */
+export type DisplayNames = boolean | readonly string[];
+
 function MenuItemRow({
   item,
   displayNames = false,
 }: {
   item: MenuItem;
+  /** Already resolved per row by CategoryBlock. */
   displayNames?: boolean;
 }) {
-  const display = displayNames && Boolean(item.description);
+  const display = displayNames;
   return (
     <li
       className="flex flex-col gap-1 border-b py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
@@ -93,7 +103,10 @@ function MenuItemRow({
       </div>
       <div
         className="shrink-0 font-medium tabular-nums"
-        style={{ color: "var(--color-text)" }}
+        style={{
+          color: "var(--color-text)",
+          ...(display ? { fontFamily: "var(--font-display)" } : {}),
+        }}
       >
         {item.price.replace(".", ",")}&nbsp;&euro;
       </div>
@@ -106,8 +119,12 @@ function CategoryBlock({
   displayNames = false,
 }: {
   category: MenuCategory;
-  displayNames?: boolean;
+  displayNames?: DisplayNames;
 }) {
+  const rowDisplay = (item: MenuItem): boolean =>
+    Array.isArray(displayNames)
+      ? displayNames.includes(category.id)
+      : displayNames === true && Boolean(item.description);
   return (
     <section
       id={category.id}
@@ -144,7 +161,7 @@ function CategoryBlock({
       </header>
       <ul>
         {category.items.map((item) => (
-          <MenuItemRow key={item.name} item={item} displayNames={displayNames} />
+          <MenuItemRow key={item.name} item={item} displayNames={rowDisplay(item)} />
         ))}
       </ul>
     </section>
@@ -248,8 +265,8 @@ export function MenuSection({
   slots?: MenuSlot[];
   /** Prototyp-Durchreiche (2026-08-25) — siehe MenuQuickJump `orderCta`. */
   quickJumpOrderCta?: { label: string; href: string };
-  /** Italian dish names in Playfair Display — see MenuItemRow. */
-  displayNames?: boolean;
+  /** Dish names + prices in Playfair Display — see DisplayNames. */
+  displayNames?: DisplayNames;
 }) {
   // No wrapping <div> here — render as Fragment so the sticky pill bar's
   // containing block becomes the parent page wrapper. Otherwise the bar

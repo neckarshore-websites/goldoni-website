@@ -85,6 +85,7 @@ export default function MenuPage() {
 
         <MenuSection
           menu={menu}
+          displayNames={["antipasti", "primi", "pizze", "carne-pesce", "dolci"]}
           extraPills={[
             { id: "hauswein", name: "Hausweine", insertAfter: "benvenuti" },
           ]}
