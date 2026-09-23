@@ -33,7 +33,7 @@ import type { MenuCategory } from "@/lib/menu";
  * from real geometry, every scroll frame.
  *
  * extraPills: optional additional pills appended after menu categories.
- * Used on /empfehlungen to add Weiß / Rot wine-section anchors without
+ * Used on /wochenkarte to add Weiß / Rot wine-section anchors without
  * coupling WeinSection into the menu data model.
  */
 const ROW_DESKTOP = 7;
@@ -47,7 +47,7 @@ export interface ExtraPill {
    * Optional anchor: insert this pill directly after the named category
    * in the pill bar. Mirrors MenuSection's `slots[]` mechanism so pill
    * order matches the rendered page order. Omit to append at the end
-   * (legacy behavior, kept for backwards-compat with /empfehlungen).
+   * (legacy behavior, kept for backwards-compat with /wochenkarte).
    */
   insertAfter?: string;
 }

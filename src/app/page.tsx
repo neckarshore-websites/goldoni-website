@@ -203,7 +203,7 @@ export default function Home() {
             className="mb-6 text-3xl sm:text-4xl"
             style={{ color: "var(--color-heading-italian)" }}
           >
-            Aktuelle Empfehlungen
+            Aktuelle Wochenkarte
           </h2>
           <p
             className="mx-auto mb-8 max-w-xl"
@@ -213,14 +213,14 @@ export default function Home() {
             Küche heute besonders empfiehlt.
           </p>
           <Link
-            href="/empfehlungen"
+            href="/wochenkarte"
             className="inline-block rounded-md px-6 py-3 text-base font-medium transition-opacity hover:opacity-90"
             style={{
               backgroundColor: "var(--color-accent)",
               color: "#FAFAFA",
             }}
           >
-            Zu den Empfehlungen &rarr;
+            Zur Wochenkarte &rarr;
           </Link>
         </div>
       </section>

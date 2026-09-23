@@ -33,7 +33,7 @@ const MOBILE = { width: 390, height: 844 };
 // 2026-08-25 nach dem Prototyp-Vergleich. Er ersetzte den Knopf neben der
 // Ueberschrift und die Streifen in der Karte, die am selben Tag kurz live
 // waren. Steigt diese Zahl wieder, war das eine Entscheidung und kein Zufall.
-const PAGES = ["/menu", "/empfehlungen"];
+const PAGES = ["/menu", "/wochenkarte"];
 
 for (const path of PAGES) {
   test(`${path}: desktop shows the floating order button`, async ({ page }) => {

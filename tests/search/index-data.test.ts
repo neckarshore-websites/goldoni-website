@@ -22,7 +22,7 @@ check("covers every content type", () => {
   }
 });
 check("page docs include the key routes", () => {
-  for (const url of ["/", "/menu", "/empfehlungen", "/feiern", "/ueber-uns", "/kontakt", "/impressum", "/datenschutz"]) {
+  for (const url of ["/", "/menu", "/wochenkarte", "/feiern", "/ueber-uns", "/kontakt", "/impressum", "/datenschutz"]) {
     assert.ok(docs.find((d) => d.type === "page" && d.url === url), `missing page ${url}`);
   }
 });
@@ -30,9 +30,9 @@ check("menu items deep-link to /menu#<category>", () => {
   const item = docs.find((d) => d.type === "menu");
   assert.ok(item && /^\/menu#[a-z0-9-]+$/.test(item.url), item?.url);
 });
-check("empfehlung items deep-link to /empfehlungen#<category>", () => {
+check("empfehlung items deep-link to /wochenkarte#<category>", () => {
   const item = docs.find((d) => d.type === "empfehlung");
-  assert.ok(item && /^\/empfehlungen#[a-z0-9-]+$/.test(item.url), item?.url);
+  assert.ok(item && /^\/wochenkarte#[a-z0-9-]+$/.test(item.url), item?.url);
 });
 check("faq url is /#<slug> matching slugify(question)", () => {
   const faq = docs.find((d) => d.type === "faq");

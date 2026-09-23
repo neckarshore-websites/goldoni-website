@@ -72,7 +72,7 @@ export const ZEILEN: Zeile[] = [
   { datei: "feiern-saal-bogenfenster-tafel.webp", seite: "Feste feiern (Galerie)", herkunft: "foto" },
   { datei: "feiern-saal-historische-banner.webp", seite: "Feste feiern (Galerie)", herkunft: "foto" },
   { datei: "feiern-tafel-aus-naehe.webp", seite: "Feste feiern (Galerie)", herkunft: "foto" },
-  { datei: "hero-empfehlungen-overhead-tafel.webp", seite: "Empfehlungskarte", herkunft: "ki" },
+  { datei: "hero-empfehlungen-overhead-tafel.webp", seite: "Wochenkarte", herkunft: "ki" },
   { datei: "hero-feiern-saal.webp", seite: "Feste feiern (Hero)", herkunft: "foto" },
   { datei: "hero-goldoni-angel.webp", seite: "Startseite (Bildfolge) + Kontakt", herkunft: "foto", nachweis: { rechte: "Ristorante Goldoni", notiz: "Foto aus dem Lokal; Founder-Auskunft 2026-09-16" } },
   { datei: "hero-goldoni-interior.webp", seite: "Startseite (Bildfolge) + Über uns + strukturierte Daten", herkunft: "foto", nachweis: { rechte: "Ristorante Goldoni", notiz: "Foto aus dem Lokal; Founder-Auskunft 2026-09-16" } },

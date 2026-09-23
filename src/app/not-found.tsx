@@ -35,8 +35,8 @@ interface QuickLink {
 
 const QUICK_LINKS: QuickLink[] = [
   {
-    href: "/empfehlungen",
-    label: "Empfehlungen der Woche",
+    href: "/wochenkarte",
+    label: "Wochenkarte",
     helper: "Was die Küche derzeit besonders empfiehlt",
   },
   {

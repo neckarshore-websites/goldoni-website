@@ -24,8 +24,8 @@ type NavLink = {
 
 const NAV_LINKS: NavLink[] = [
   {
-    href: "/empfehlungen",
-    label: "Empfehlungskarte",
+    href: "/wochenkarte",
+    label: "Wochenkarte",
     activeBg: "var(--color-bg-marinara)",
     activeFg: "var(--color-on-marinara)",
   },

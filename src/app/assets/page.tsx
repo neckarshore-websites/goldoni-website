@@ -48,7 +48,7 @@ const ASSETS: AssetEntry[] = [
   },
   {
     id: "hero-empfehlungen",
-    context: "Empfehlungskarte — Hero (aktiv)",
+    context: "Wochenkarte — Hero (aktiv)",
     origin: "ki",
     target: "public/images/hero-empfehlungen-overhead-tafel.webp",
     prompt:
@@ -56,7 +56,7 @@ const ASSETS: AssetEntry[] = [
   },
   {
     id: "hero-empfehlungen-alt",
-    context: "Empfehlungskarte — Hero (Alternative, ungenutzt)",
+    context: "Wochenkarte — Hero (Alternative, ungenutzt)",
     origin: "ki",
     target: "public/images/empfehlungen-tagliatelle-tartufo-kerze.png",
     prompt:

@@ -4,7 +4,7 @@
  * **Why this exists (F1 from 2026-05-15 post-live SEO audit):**
  * Next.js Metadata API *replaces* (not merges) `openGraph` and `twitter`
  * blocks when a child segment defines any field inside them. Without per-page
- * openGraph, social-card previews on `/menu`, `/empfehlungen`, etc. fall back
+ * openGraph, social-card previews on `/menu`, `/wochenkarte`, etc. fall back
  * to the layout's generic "Ristorante Goldoni — Bella Italia in Stuttgart"
  * og:title for every route, instead of the route-specific title.
  *

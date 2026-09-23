@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${SITE.url}/empfehlungen`,
+      url: `${SITE.url}/wochenkarte`,
       lastModified: empfehlungskarte.updated,
       changeFrequency: "weekly",
       priority: 0.8,

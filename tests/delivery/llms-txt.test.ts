@@ -68,7 +68,7 @@ check("no hand-written public/llms.txt shadows the generated route", () => {
 
 check("sitemap: lastmod only on the weekly menu, and it is the card's date", () => {
   for (const e of sitemap()) {
-    if (e.url.endsWith("/empfehlungen")) assert.equal(e.lastModified, empfehlungskarte.updated);
+    if (e.url.endsWith("/wochenkarte")) assert.equal(e.lastModified, empfehlungskarte.updated);
     else assert.equal(e.lastModified, undefined, `${e.url} carries a lastmod without a maintained date`);
   }
 });

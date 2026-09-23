@@ -16,10 +16,10 @@ import { pageMetadata } from "@/lib/page-metadata";
 const menu = empfehlungskarte as Menu;
 
 export const metadata = pageMetadata({
-  title: "Empfehlungskarte — Speisekarte der Woche",
+  title: "Wochenkarte — Speisekarte der Woche",
   description:
     "Die Speisekarte der Woche im Ristorante Goldoni in Stuttgart: wöchentlich wechselnde Vorspeisen, Pasta, Pizza, Hauptgerichte und Desserts, dazu Weinempfehlungen.",
-  path: "/empfehlungen",
+  path: "/wochenkarte",
 });
 
 /**
@@ -30,17 +30,17 @@ export const metadata = pageMetadata({
  */
 export const revalidate = 21600;
 
-export default function EmpfehlungenPage() {
+export default function WochenkartePage() {
   const geschlossen = isSummerClosureWindow();
 
   return (
     <main>
       <StructuredData
         data={breadcrumbJsonLd([
-          { name: "Empfehlungen", path: "/empfehlungen" },
+          { name: "Wochenkarte", path: "/wochenkarte" },
         ])}
       />
-      <StructuredData data={menuJsonLd(menu, "/empfehlungen")} />
+      <StructuredData data={menuJsonLd(menu, "/wochenkarte")} />
       {/*
         Genau EIN Streifen ueber dem Hero, und welcher, entscheidet die
         Schliessung.
@@ -70,7 +70,7 @@ export default function EmpfehlungenPage() {
       {geschlossen ? <HolidayBanner /> : <SundayBanner />}
       <PageHero
         src="/images/hero-empfehlungen-overhead-tafel.webp"
-        alt="Gedeckter Tisch von oben: Pappardelle, Risotto ai funghi e tartufo, Burrata e prosciutto, Weingläser und Brot — wöchentliche Empfehlungen im Ristorante Goldoni"
+        alt="Gedeckter Tisch von oben: Pappardelle, Risotto ai funghi e tartufo, Burrata e prosciutto, Weingläser und Brot — die Wochenkarte im Ristorante Goldoni"
       />
       <div className="px-6 pb-20 pt-12 sm:px-12 sm:pb-24">
         <div className="mx-auto max-w-3xl">
@@ -105,7 +105,7 @@ export default function EmpfehlungenPage() {
             menu={menu}
             notice={
               <>
-                * Manchmal kann sich das Update unserer Empfehlungskarte ein
+                * Manchmal kann sich das Update unserer Wochenkarte ein
                 wenig verspäten — dann sehen Sie hier vielleicht noch die Karte
                 der Vorwoche. Wir bitten um <em>un po&rsquo; di pazienza</em>{" "}
                 oder fragen Sie einfach bei uns nach: Wir verraten Ihnen gern,

@@ -168,7 +168,7 @@ export function MenuLegend({
   menu: Menu;
   /**
    * Optional friendly note rendered above the allergen legend. Used on
-   * /empfehlungen to explain that the weekly card may briefly lag behind.
+   * /wochenkarte to explain that the weekly card may briefly lag behind.
    * Omitted on /menu, so the standard Speisekarte legend stays untouched.
    */
   notice?: ReactNode;
@@ -230,7 +230,7 @@ export function MenuSection({
 }) {
   // No wrapping <div> here — render as Fragment so the sticky pill bar's
   // containing block becomes the parent page wrapper. Otherwise the bar
-  // unsticks the moment MenuSection ends, which is wrong on /empfehlungen
+  // unsticks the moment MenuSection ends, which is wrong on /wochenkarte
   // where <WeinSection /> follows MenuSection in the same page wrapper:
   // users scrolling into Weiß/Rot wine sections expect the pill bar
   // (which contains "Weißweine" / "Rotweine" pills) to remain available.

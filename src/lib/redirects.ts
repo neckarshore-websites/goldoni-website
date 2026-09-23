@@ -45,6 +45,9 @@ export const LEGACY_REDIRECTS: readonly LegacyRedirect[] = [
   { from: "/kontakt", to: "/kontakt" },
   { from: "/impressum", to: "/impressum" },
   { from: "/infos", to: "/" },
+  // 2026-09-23 — Empfehlungskarte renamed to Wochenkarte (owner decision).
+  // Old path stays reachable for links, bookmarks and Google's index.
+  { from: "/empfehlungen", to: "/wochenkarte" },
 ] as const;
 
 /**

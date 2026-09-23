@@ -144,7 +144,7 @@ export default function UeberUns() {
             className="mb-6 text-2xl sm:text-3xl"
             style={{ color: "var(--color-heading-italian)" }}
           >
-            Küche, Wein & Empfehlungen
+            Küche, Wein & Wochenkarte
           </h2>
           <div
             className="space-y-4 text-base leading-relaxed sm:text-lg"
@@ -152,7 +152,7 @@ export default function UeberUns() {
           >
             <p>
               Das Goldoni steht für gehobene italienische Küche zu angemessenen
-              Preisen. Ihr Herzstück ist die <strong>Empfehlungskarte</strong>:
+              Preisen. Ihr Herzstück ist die <strong>Wochenkarte</strong>:
               Jede Woche stellt Silvio wechselnde Gerichte zusammen — was gerade
               saisonal und frisch eingekauft ist, ausgewählt von seiner Hand.
               Viele Gäste kommen eigens hierher, um Neues zu entdecken.
@@ -165,11 +165,11 @@ export default function UeberUns() {
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/empfehlungen"
+              href="/wochenkarte"
               className="inline-block rounded-md px-6 py-3 text-center text-base font-medium transition-opacity hover:opacity-90"
               style={{ backgroundColor: "var(--color-accent)", color: "#FAFAFA" }}
             >
-              Aktuelle Empfehlungen
+              Aktuelle Wochenkarte
             </Link>
             <Link
               href="/menu"

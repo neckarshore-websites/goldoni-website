@@ -10,7 +10,7 @@ type Hit = SearchDoc;
 const TYPE_LABEL: Record<SearchType, string> = {
   page: "Seite",
   menu: "Speisekarte",
-  empfehlung: "Empfehlung",
+  empfehlung: "Wochenkarte",
   wine: "Wein",
   faq: "FAQ",
 };
@@ -142,7 +142,7 @@ function SearchPalette({
         <ul id="search-results" role="listbox" className="max-h-[55vh] overflow-y-auto">
           {!q && (
             <li className="px-5 py-6 text-sm" style={{ color: "var(--color-text-muted)" }}>
-              Tippe, um Speisekarte, Empfehlungen, Weine, FAQ &amp; Seiten zu durchsuchen.
+              Tippe, um Speisekarte, Wochenkarte, Weine, FAQ &amp; Seiten zu durchsuchen.
             </li>
           )}
           {q && results.length === 0 && mini && (
