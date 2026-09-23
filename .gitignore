@@ -59,3 +59,7 @@ tmp/
 # Erzeugte Andruck-Artefakte (docs/postkarte/build.mjs)
 docs/postkarte/proof.html
 docs/postkarte/print.html
+
+# /brag launch-video output (brag plugin, trial run 2026-09-23) -- generated, never committed
+brag-output/
+brag-output-*/
