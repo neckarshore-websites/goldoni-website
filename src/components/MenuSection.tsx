@@ -2,6 +2,7 @@ import { Fragment, type ReactNode } from "react";
 import type { Menu, MenuCategory, MenuItem } from "@/lib/menu";
 import { ALLERGENS, ADDITIVES } from "@/lib/codes";
 import type { Code } from "@/lib/codes";
+import { formatPrice } from "@/lib/price";
 import { MenuQuickJump, type ExtraPill } from "@/components/MenuQuickJump";
 
 /**
@@ -109,7 +110,7 @@ function MenuItemRow({
           ...(display ? { fontFamily: "var(--font-display)" } : {}),
         }}
       >
-        {item.price.replace(".", ",")}&nbsp;&euro;
+        {formatPrice(item.price)}
       </div>
     </li>
   );

@@ -7,6 +7,7 @@
  */
 
 import weinData from "@/data/weinempfehlungen.json";
+import { formatPrice } from "@/lib/price";
 
 interface Wine {
   name: string;
@@ -62,11 +63,11 @@ function WineRow({ wine }: { wine: Wine }) {
       >
         <p>
           <span style={{ color: "var(--color-text-muted)" }}>0,75 l</span>
-          {"  "}€&thinsp;{wine.priceBottle}
+          {" "}{formatPrice(wine.priceBottle)}
         </p>
         <p>
           <span style={{ color: "var(--color-text-muted)" }}>0,2 l</span>
-          {"  "}€&thinsp;{wine.priceGlass}
+          {" "}{formatPrice(wine.priceGlass)}
         </p>
       </div>
     </li>

@@ -50,6 +50,7 @@ jobs:
           npm run test:allergene:unit
           npm run test:kartenabgleich:unit
           npm run test:llms:unit
+          npm run test:preise:unit
           # Agent-file drift gate (#2360). Reads the REAL AGENTS.md and CLAUDE.md in the
           # checkout — not a fixture, not node_modules — and fails when the foreign
           # nextjs-agent-rules block differs from scripts/nextjs-agent-rules.expected.md,

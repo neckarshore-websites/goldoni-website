@@ -15,6 +15,7 @@
  */
 import { SITE } from "@/lib/site";
 import type { Menu } from "@/lib/menu";
+import { formatPrice } from "@/lib/price";
 import empfehlungskarte from "@/data/empfehlungskarte.json";
 import weine from "@/data/weinempfehlungen.json";
 
@@ -51,9 +52,9 @@ export function hoursLine(lang: LlmsLang): string {
     .join("; ");
 }
 
-/** "15.50" -> "15,50 €" (de) / "EUR 15.50" (en). */
+/** "15.50" -> "15,50 €" (de, same formatter as the pages) / "EUR 15.50" (en). */
 function price(p: string, lang: LlmsLang): string {
-  return lang === "de" ? `${p.replace(".", ",")} €` : `EUR ${p}`;
+  return lang === "de" ? formatPrice(p) : `EUR ${p}`;
 }
 
 function isoToDe(iso: string): string {
@@ -79,8 +80,8 @@ function wineLines(lang: LlmsLang): string[] {
   const all = [...weine.weiss, ...weine.rot];
   return all.map((w) => {
     const label = [w.producer, w.name].filter((s) => s && s !== "").join(" ");
-    const glass = lang === "de" ? `0,2 l ${w.priceGlass} €` : `0.2 l EUR ${w.priceGlass.replace(",", ".")}`;
-    const bottle = lang === "de" ? `0,75 l ${w.priceBottle} €` : `0.75 l EUR ${w.priceBottle.replace(",", ".")}`;
+    const glass = lang === "de" ? `0,2 l ${price(w.priceGlass, lang)}` : `0.2 l ${price(w.priceGlass, lang)}`;
+    const bottle = lang === "de" ? `0,75 l ${price(w.priceBottle, lang)}` : `0.75 l ${price(w.priceBottle, lang)}`;
     return `- ${label} ${w.classification} ${w.year} (${w.region}, ${w.grapes}): ${bottle}, ${glass}`;
   });
 }
