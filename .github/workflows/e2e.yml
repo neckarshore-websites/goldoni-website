@@ -142,11 +142,11 @@ jobs:
           npm run test:lighthouse:unit > /tmp/lighthouse-unit.out 2>&1 || true
           npm run test:agent-files:unit > /tmp/agent-files-unit.out 2>&1 || true
 
-      # Dreizehn tsx-Suiten haengen in EINE Datei an; der tsx-Handler liest jede
+      # Vierzehn tsx-Suiten haengen in EINE Datei an; der tsx-Handler liest jede
       # "<N> passed, <M> failed"-Zeile einzeln und summiert, Log-Rauschen dazwischen ignoriert er.
       - name: Capture tsx reporter (gated unit suites)
         run: |
-          for s in delivery schema qr search druck qr:print redirect bildherkunft hinweis codes allergene kartenabgleich llms; do
+          for s in delivery schema qr search druck qr:print redirect bildherkunft hinweis codes allergene kartenabgleich llms preise; do
             npm run "test:${s}:unit" >> /tmp/tsx-unit.out 2>&1 || true
           done
 
