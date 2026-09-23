@@ -16,9 +16,9 @@ import { pageMetadata } from "@/lib/page-metadata";
 const menu = empfehlungskarte as Menu;
 
 export const metadata = pageMetadata({
-  title: "Empfehlungskarte",
+  title: "Empfehlungskarte — Speisekarte der Woche",
   description:
-    "Saisonale Gerichte, Wochenangebote und Wein-Tipps aus der Küche im Ristorante Goldoni in Stuttgart.",
+    "Die Speisekarte der Woche im Ristorante Goldoni in Stuttgart: wöchentlich wechselnde Vorspeisen, Pasta, Pizza, Hauptgerichte und Desserts, dazu Weinempfehlungen.",
   path: "/empfehlungen",
 });
 

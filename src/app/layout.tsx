@@ -36,12 +36,12 @@ export const metadata: Metadata = {
     template: "%s — Ristorante Goldoni",
   },
   description:
-    "Italienisch verliebte Kueche im Stuttgarter Westen. Neu: sonntags durchgehend 12:00-22:30 Uhr. Mi-Sa ab 18:00. Reinsburgstrasse 151.",
+    "Italienisch verliebte Küche im Stuttgarter Westen. Neu: sonntags durchgehend 12:00–22:30 Uhr. Mi–Sa ab 18:00. Reinsburgstraße 151.",
   metadataBase: new URL("https://ristorante-goldoni.de"),
   openGraph: {
     title: "Ristorante Goldoni — Bella Italia in Stuttgart",
     description:
-      "Italienisch verliebte Kueche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht.",
+      "Italienisch verliebte Küche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht.",
     // Relative URL — Next resolves it against `metadataBase` so the
     // domain isn't duplicated in code. Per-page metadata can override
     // this with its own canonical-shaped relative URL.
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ristorante Goldoni — Bella Italia in Stuttgart",
     description:
-      "Italienisch verliebte Kueche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht.",
+      "Italienisch verliebte Küche im Stuttgarter Westen. Frische Zutaten, mit Liebe gemacht.",
     images: ["/images/hero-goldoni-velvet.webp"],
   },
   alternates: {

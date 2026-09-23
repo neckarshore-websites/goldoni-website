@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
+import empfehlungskarte from "@/data/empfehlungskarte.json";
 
 /**
  * sitemap.xml — generated at build time.
@@ -10,56 +11,57 @@ import { SITE } from "@/lib/site";
  *
  * Legal pages (impressum, datenschutz) are included so Google knows
  * they exist (DSGVO discoverability), with low priority.
+ *
+ * lastModified: ONLY where a maintained date exists. Until 2026-09-23 every
+ * URL carried the build time, so all eight changed on every deploy — Google
+ * learns to ignore a lastmod like that, and the one page that genuinely
+ * changes weekly (the weekly menu) sent no freshness signal at all. The
+ * weekly menu now carries its card's `updated` date; the others carry none,
+ * because an omitted lastmod is honest and a guessed one is not.
+ * (speisekarte.json's `updated` is NOT used: it still says 2026-04-28 although
+ * the menu has changed since.)
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
 
   return [
     {
       url: `${SITE.url}/`,
-      lastModified: now,
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${SITE.url}/menu`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${SITE.url}/empfehlungen`,
-      lastModified: now,
+      lastModified: empfehlungskarte.updated,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${SITE.url}/feiern`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${SITE.url}/ueber-uns`,
-      lastModified: now,
       changeFrequency: "yearly",
       priority: 0.7,
     },
     {
       url: `${SITE.url}/kontakt`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${SITE.url}/impressum`,
-      lastModified: now,
       changeFrequency: "yearly",
       priority: 0.2,
     },
     {
       url: `${SITE.url}/datenschutz`,
-      lastModified: now,
       changeFrequency: "yearly",
       priority: 0.2,
     },
