@@ -1,0 +1,50 @@
+# Reminder: review the technical frame pages every two months.
+#
+# Founder request 2026-09-23. The hand-written llms.txt of 2026-04-29 stated
+# wrong opening hours for five months because nobody was asked to look. The
+# generated parts are now guarded by tests (tests/delivery/llms-txt.test.ts);
+# what no test can judge — is the wording still true, is a page missing, did
+# Google Search Console flag something — needs a person, on a clock.
+#
+# Opens one issue on the 1st of Jan/Mar/May/Jul/Sep/Nov, 07:00 UTC.
+# No third-party action: the gh CLI on the runner with the job token.
+name: Rahmenseiten-Review (alle 2 Monate)
+
+on:
+  schedule:
+    - cron: "0 7 1 */2 *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  open-issue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Open review issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          title="Rahmenseiten-Review $(date -u +%Y-%m)"
+          if gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number' | grep -q .; then
+            echo "already open: $title"; exit 0
+          fi
+          gh issue create --title "$title" --body-file - <<'BODY'
+          Zweimonatliche Pruefung der technischen Rahmenseiten von ristorante-goldoni.de.
+          Automatisch geoeffnet von `.github/workflows/rahmenseiten-review.yml`.
+
+          Generiertes ist durch Tests gebunden (`npm run test:llms:unit`). Hier geht es um das,
+          was kein Test beurteilen kann: Stimmt der Wortlaut noch, fehlt eine Seite, meldet Google etwas?
+
+          - [ ] `/llms.txt` und `/llms-en.txt` live lesen — Beschreibung, Seitenliste, Wochenkarte aktuell?
+          - [ ] `/sitemap.xml` — alle oeffentlichen Seiten drin, keine internen; lastmod der Wochenkarte = Datum der Karte
+          - [ ] `/robots.txt` — Disallow-Liste passt zu den internen Seiten
+          - [ ] `src/lib/site.ts` — Oeffnungszeiten, Telefon, Bestellwege, Social-Links mit dem Inhaber abgleichen
+          - [ ] Titel + Meta-Descriptions aller Seiten — Umlaute, veraltete Hinweise ("Neu: ...")
+          - [ ] Strukturierte Daten (Restaurant, Menu) — Rich Results Test ohne Fehler
+          - [ ] Google Search Console — Indexierung, Fehler, Sitelinks, Suchanfragen zur Wochenkarte
+          - [ ] Google-Unternehmensprofil — Oeffnungszeiten und Links deckungsgleich mit site.ts
+          BODY
