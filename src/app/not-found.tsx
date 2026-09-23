@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   // Inhaltsseiten.
   title: "Seite nicht gefunden — Ristorante Goldoni",
   description:
-    "Diese Seite haben wir nicht — vielleicht wurde sie verschoben oder gibt es nicht mehr. Hier geht's zurück zur Speisekarte, zu unseren wöchentlichen Empfehlungen oder direkt zum Kontakt.",
+    "Diese Seite haben wir nicht — vielleicht wurde sie verschoben oder gibt es nicht mehr. Hier geht's zurück zur Speisekarte, zur Wochenkarte oder direkt zum Kontakt.",
   robots: { index: false, follow: true },
 };
 
