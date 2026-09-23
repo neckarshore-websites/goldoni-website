@@ -1,7 +1,7 @@
 /**
  * HausweinSection — Vini della Casa for the main Speisekarte (/menu).
  *
- * Visually mirrors WeinSection (used on /empfehlungen) but renders a
+ * Visually mirrors WeinSection (used on /wochenkarte) but renders a
  * simpler schema: house wines have no producer, no year, no
  * classification, no bottle price. Just name + glass-volume + glass-price
  * + Sulfite-pill. Three subgroups with the same colored-dot treatment

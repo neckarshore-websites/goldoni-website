@@ -40,10 +40,10 @@ const PAGES: { title: string; description: string; url: string }[] = [
     url: "/menu",
   },
   {
-    title: "Empfehlungskarte",
+    title: "Wochenkarte",
     description:
-      "Saisonale Gerichte, Wochenangebote und Wein-Tipps aus der Küche im Ristorante Goldoni.",
-    url: "/empfehlungen",
+      "Die Speisekarte der Woche: wöchentlich wechselnde Gerichte und Weinempfehlungen im Ristorante Goldoni.",
+    url: "/wochenkarte",
   },
   {
     title: "Feiern bei Goldoni",
@@ -120,7 +120,7 @@ function wineDoc(w: Wine, label: string, hauswein: boolean): SearchDoc {
       .filter(Boolean)
       .join(" "),
     category: `Wein · ${label}`,
-    url: "/empfehlungen",
+    url: "/wochenkarte",
   };
 }
 
@@ -140,7 +140,7 @@ export function buildSearchDocs(): SearchDoc[] {
   }
 
   docs.push(...menuDocs(speisekarte as Menu, "menu", "/menu"));
-  docs.push(...menuDocs(empfehlungskarte as Menu, "empfehlung", "/empfehlungen"));
+  docs.push(...menuDocs(empfehlungskarte as Menu, "empfehlung", "/wochenkarte"));
 
   const wineData = wines as WineData;
   for (const w of wineData.weiss ?? []) docs.push(wineDoc(w, "Weißwein", false));

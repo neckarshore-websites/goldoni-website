@@ -7,7 +7,7 @@
  * component called …LunchBanner announcing something that is not lunch is the
  * same class of stale label as the copy it renders.
  *
- * Placement: top of the homepage AND /empfehlungen, directly under the header
+ * Placement: top of the homepage AND /wochenkarte, directly under the header
  * and ABOVE the cream DeliveryBanner.
  *
  * Design: white field, near-black text, RED key words ("jeden Sonntag",

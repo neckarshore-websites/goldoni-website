@@ -50,7 +50,7 @@ export default function MenuPage() {
             #A69B00 was the dark-mode olive used in light-mode bg, which
             failed the 4.5 contrast ratio against #FAFAFA. */}
         <Link
-          href="/empfehlungen"
+          href="/wochenkarte"
           className="mb-12 flex items-center justify-between gap-4 rounded-lg p-5 transition-opacity hover:opacity-90"
           style={{
             backgroundColor: "var(--color-bg-olive)",
@@ -65,7 +65,7 @@ export default function MenuPage() {
               Diese Woche
             </p>
             <p className="font-medium">
-              Aktuelle Empfehlungskarte ansehen
+              Aktuelle Wochenkarte ansehen
             </p>
             <p
               className="mt-1 text-sm"
