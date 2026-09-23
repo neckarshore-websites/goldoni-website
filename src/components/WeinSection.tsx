@@ -29,7 +29,7 @@ function WineRow({ wine }: { wine: Wine }) {
       {/* Left — name + meta */}
       <div className="min-w-0">
         <p className="font-medium" style={{ color: "var(--color-text)" }}>
-          {wine.name}
+          <span style={{ fontFamily: "var(--font-display)" }}>{wine.name}</span>
           {badge ? (
             <span
               className="ml-2 text-xs font-normal"
@@ -58,7 +58,7 @@ function WineRow({ wine }: { wine: Wine }) {
       {/* Right — prices */}
       <div
         className="shrink-0 text-right text-sm tabular-nums"
-        style={{ color: "var(--color-text)" }}
+        style={{ color: "var(--color-text)", fontFamily: "var(--font-display)" }}
       >
         <p>
           <span style={{ color: "var(--color-text-muted)" }}>0,75 l</span>

@@ -157,7 +157,8 @@
           ]
         },
         {
-          "name": "Gefüllte Windbeutel umhüllt mit weißer Milchcreme",
+          "name": "Profiteroles bianchi con crema al latte",
+          "description": "Gefüllte Windbeutel umhüllt mit weißer Milchcreme",
           "price": "8.50",
           "allergens": [
             "A",
@@ -170,7 +171,8 @@
           ]
         },
         {
-          "name": "Hausgemachte Himbeer-Pannacotta",
+          "name": "Panna cotta ai lamponi fatta in casa",
+          "description": "Hausgemachte Himbeer-Pannacotta",
           "price": "8.50",
           "allergens": [
             "A",
@@ -183,7 +185,8 @@
           ]
         },
         {
-          "name": "Pistazieneis umhüllt mit gehackten Mandeln",
+          "name": "Gelato al pistacchio in crosta di mandorle",
+          "description": "Pistazieneis umhüllt mit gehackten Mandeln",
           "price": "9.00",
           "allergens": [
             "A",

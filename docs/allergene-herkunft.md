@@ -79,7 +79,11 @@ und Fanta gemischt. **Für die Codes führt beides zum selben Ergebnis** — ein
 Handmischung bringt Farbstoff, Ascorbinsäure und Koffein mit, also `1 3 9`, und
 das ist auch die Paulaner-Liste.
 
-### Entwurf: italienische Dessertnamen (Abnahme steht aus)
+### Italienische Dessertnamen — online seit 2026-09-23
+
+Auf Founder-Anweisung live gestellt; der deutsche Name steht jetzt als
+Beschreibungszeile darunter. Die Abnahme des Wortlauts durch den Inhaber
+(Frage 34) steht weiter aus.
 
 | # | Heute | Entwurf |
 |---|-------|---------|

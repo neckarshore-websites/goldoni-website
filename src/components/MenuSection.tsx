@@ -30,8 +30,9 @@ const DIET_LABEL: Record<NonNullable<MenuItem["diet"]>[number], string> = {
  * Which rows: on the weekly menu every row. (Until 2026-09-23 the rows
  * without a description — the German-named desserts — stayed in Inter; the
  * Founder read that as a missed spot, rightly: one category, two fonts.)
- * On /menu the page passes the FOOD category ids — the drinks (Coca-Cola,
- * Pils, Averna …) stay in Inter as a whole.
+ * Same on /menu since 2026-09-23 — drinks included (Founder: names and
+ * prices in Playfair also where there is no German subtitle). The string[]
+ * form stays for a page that wants only some categories.
  *
  * `true` = every row; `string[]` = every row in those categories. Off by
  * default.
