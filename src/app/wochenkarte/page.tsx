@@ -95,6 +95,7 @@ export default function WochenkartePage() {
           <MenuSection
             menu={menu}
             hideLegend
+            displayNames
             extraPills={[
               { id: "weine-weiss", name: "Weißweine" },
               { id: "weine-rot", name: "Rotweine" },
