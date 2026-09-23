@@ -1,7 +1,7 @@
 {
   "title": "Empfehlungskarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-09-19",
+  "updated": "2026-09-23",
   "categories": [
     {
       "id": "antipasti",
@@ -24,26 +24,20 @@
           ]
         },
         {
-          "name": "Crema di zucca servita con crostini di pane e capesante",
-          "description": "Cremige Suppe vom Muskatkürbis, serviert mit Jakobsmuscheln und warmen Crostini",
-          "price": "15.00",
+          "name": "Carpaccio di vitello con rucola e formaggio pecorino",
+          "description": "Kalbsfilet-Carpaccio auf Rucolasalat-Bett und Ziegenkäse",
+          "price": "16.00",
           "allergens": [
-            "A",
             "D",
-            "G",
-            "H",
-            "N"
+            "G"
           ]
         },
         {
-          "name": "Affettato di porchetta tonnata con scaglie di radicchio",
-          "description": "Saftige Spanferkelscheiben an Thunfischcreme und Radicchiosalat",
+          "name": "Salmone affumicato marinato con agrumi calabresi e radicchio",
+          "description": "Marinierte geräucherte Lachsscheiben mit Zitrusvinaigrette auf Radicchiosalat",
           "price": "15.50",
           "allergens": [
-            "D",
-            "G",
-            "I",
-            "J"
+            "D"
           ]
         }
       ]
@@ -54,12 +48,11 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Ventagli ripieni alla caprese in crema di pesto di basilico",
-          "description": "Fächernudeln mit Caprese-Füllung an Basilikumpesto",
-          "price": "19.50",
+          "name": "Tortellacci ripieni al tartufo in crema di Grana Padano",
+          "description": "Nudeln mit Trüffelfüllung an Granakäse-Creme",
+          "price": "20.50",
           "allergens": [
             "A",
-            "B",
             "F",
             "G",
             "I",
@@ -70,33 +63,29 @@
           ]
         },
         {
-          "name": "Pappardelle con la bolognese della nonna e pinoli",
-          "description": "Breite Bandnudeln mit frischer Bolognesesoße und Pinienkernen",
-          "price": "21.00",
+          "name": "Linguine con la rana pescatrice ed i funghi cantarelli",
+          "description": "Linguine mit Seeteufelstücken und Pfifferlingen",
+          "price": "23.00",
           "allergens": [
             "A",
-            "C",
-            "H",
-            "I"
+            "D"
           ]
         },
         {
-          "name": "Linguine con le cozze ed i funghi canterelli",
-          "description": "Linguine mit Miesmuscheln (Premium Quality) und Pfifferlingen in einer leichten Weißweinsoße",
-          "price": "21.50",
+          "name": "Risotto con la Nduja e pecorino silano",
+          "description": "Risotto an Nduja-Tomaten-Creme (leicht scharf) mit kalabresischen Pecorinokäse-Raspeln",
+          "price": "19.50",
           "allergens": [
             "A",
-            "D",
-            "N"
+            "G"
           ]
         },
         {
-          "name": "Pizza con la creme fraiche il salmone affumicato incoronato da burrata su letto di valeriana",
-          "description": "Pizza (weiße Basis) mit Crème fraîche, geräuchertem Lachs und Feldsalat, mit Burratakäse gekrönt",
+          "name": "Pizza con la porchetta incoronata da burrata e patate al rosmarino",
+          "description": "Pizza mit Spanferkelscheiben und Rosmarinkartoffeln, mit Burratakäse gekrönt",
           "price": "18.50",
           "allergens": [
             "A",
-            "D",
             "G",
             "1",
             "2"
@@ -110,11 +99,15 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Tagliata di Entrecote servita su rucola, pomodorini e scaglie di Grana",
-          "description": "Gegrilltes Entrecote, serviert auf Rucola-Bett mit Kirschtomaten und Granakäse-Raspeln, dazu Beilage",
-          "price": "35.50",
+          "name": "Piccata al limone servita con contorno di pasta",
+          "description": "Kalbsschnitzel an Zitronensoße, mit Pastabeilage",
+          "price": "32.00",
           "allergens": [
-            "G"
+            "A",
+            "G",
+            "S",
+            "2",
+            "3"
           ]
         },
         {
@@ -126,8 +119,8 @@
           ]
         },
         {
-          "name": "Medaglioni di rana pescatrice al vino bianco e pomodorini",
-          "description": "Seeteufelmedaillons an Weißweinsoße und Kirschtomaten, mit Beilage",
+          "name": "Bistecche di pesce spada in sughetto di capperi, origano fresco e olive",
+          "description": "Schwertfischsteak aus der Pfanne mit Oliven, Kapern und Oregano, mit Beilage",
           "price": "35.00",
           "allergens": [
             "D",
