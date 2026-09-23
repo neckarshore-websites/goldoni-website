@@ -27,14 +27,14 @@ const DIET_LABEL: Record<NonNullable<MenuItem["diet"]>[number], string> = {
  * 2026-09-23: trialled on the weekly menu (names), then extended by the
  * Founder to prices and to the main menu.
  *
- * Which rows: on the weekly menu every dish with a German description line
- * (that line marks an Italian dish name; the German-named desserts without
- * one stay in Inter). On /menu the page passes the FOOD category ids — the
- * drinks (Coca-Cola, Pils, Averna …) stay in Inter, because half of them
- * have no description and a mixed category reads as a mistake.
+ * Which rows: on the weekly menu every row. (Until 2026-09-23 the rows
+ * without a description — the German-named desserts — stayed in Inter; the
+ * Founder read that as a missed spot, rightly: one category, two fonts.)
+ * On /menu the page passes the FOOD category ids — the drinks (Coca-Cola,
+ * Pils, Averna …) stay in Inter as a whole.
  *
- * `true` = description rule on every category; `string[]` = every item in
- * those categories. Off by default.
+ * `true` = every row; `string[]` = every row in those categories. Off by
+ * default.
  */
 export type DisplayNames = boolean | readonly string[];
 
@@ -121,10 +121,9 @@ function CategoryBlock({
   category: MenuCategory;
   displayNames?: DisplayNames;
 }) {
-  const rowDisplay = (item: MenuItem): boolean =>
-    Array.isArray(displayNames)
-      ? displayNames.includes(category.id)
-      : displayNames === true && Boolean(item.description);
+  const rowDisplay = Array.isArray(displayNames)
+    ? displayNames.includes(category.id)
+    : displayNames === true;
   return (
     <section
       id={category.id}
@@ -161,7 +160,7 @@ function CategoryBlock({
       </header>
       <ul>
         {category.items.map((item) => (
-          <MenuItemRow key={item.name} item={item} displayNames={rowDisplay(item)} />
+          <MenuItemRow key={item.name} item={item} displayNames={rowDisplay} />
         ))}
       </ul>
     </section>
