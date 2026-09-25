@@ -34,7 +34,7 @@ Snapshot taken 2026-04-17 as groundwork for a dedicated Goldoni session. No buil
 |---|---|
 | Name | Ristorante Goldoni |
 | Tagline | "Bella Italia" / "Italienisch verliebte Küche" |
-| Adresse | Reinsburgstrasse 151, 70197 Stuttgart |
+| Adresse | Reinsburgstraße 151, 70197 Stuttgart |
 | Telefon | +49 (711) 659 98 89 |
 | Email | info@goldoni-online.de |
 | Öffnungszeiten | Mi-So 18:00 - 23:00 · Mo + Di geschlossen |

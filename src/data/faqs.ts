@@ -43,7 +43,7 @@ export const FAQS: readonly Faq[] = [
   },
   {
     question: "Wo liegt das Ristorante Goldoni?",
-    answer: `Reinsburgstrasse 151, ${SITE.address.postalCode} ${SITE.address.city}, Stuttgart-West. Die Bus-Haltestelle (Linie 92) ist direkt vor der Tür.`,
+    answer: `${SITE.address.street}, ${SITE.address.postalCode} ${SITE.address.city}, Stuttgart-West. Die Bus-Haltestelle (Linie 92) ist direkt vor der Tür.`,
   },
   {
     question: "Wie sind Allergene auf der Speisekarte gekennzeichnet?",
