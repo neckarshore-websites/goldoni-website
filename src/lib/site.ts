@@ -100,7 +100,7 @@ export const SITE = {
 
   // Contact
   address: {
-    street: "Reinsburgstrasse 151",
+    street: "Reinsburgstraße 151",
     postalCode: "70197",
     city: "Stuttgart",
     country: "DE",
