@@ -1,19 +1,6 @@
 {
   "weiss": [
     {
-      "name": "Tenaci",
-      "producer": "Zorzettig",
-      "classification": "DOC",
-      "year": 2025,
-      "region": "Friaul",
-      "grapes": "100 % Sauvignon Blanc",
-      "priceBottle": "30.00",
-      "priceGlass": "8.50",
-      "allergens": [
-        "S"
-      ]
-    },
-    {
       "name": "Bianco",
       "producer": "Tasca d'Almerita",
       "classification": "DOC",
@@ -35,6 +22,32 @@
       "grapes": "100 % Greco Bianco",
       "priceBottle": "30.00",
       "priceGlass": "8.50",
+      "allergens": [
+        "S"
+      ]
+    },
+    {
+      "name": "Tenaci",
+      "producer": "Zorzettig",
+      "classification": "DOC",
+      "year": 2025,
+      "region": "Friaul",
+      "grapes": "100 % Sauvignon Blanc",
+      "priceBottle": "32.00",
+      "priceGlass": "9.00",
+      "allergens": [
+        "S"
+      ]
+    },
+    {
+      "name": "Ischia Forastera",
+      "producer": "Costa delle Parricine",
+      "classification": "DOC",
+      "year": 2024,
+      "region": "Kampanien",
+      "grapes": "100 % Forastera",
+      "priceBottle": "32.00",
+      "priceGlass": "9.00",
       "allergens": [
         "S"
       ]

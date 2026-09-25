@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-09-23",
+  "updated": "2026-09-25",
   "categories": [
     {
       "id": "antipasti",
@@ -48,8 +48,8 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Tortellacci ripieni al tartufo in crema di Grana Padano",
-          "description": "Nudeln mit Trüffelfüllung an Granakäse-Creme",
+          "name": "Tortellacci ripieni al tartufo in crema di zucca moscata",
+          "description": "Nudeln mit Trüffelfüllung an Kürbiscremesuppe",
           "price": "20.50",
           "allergens": [
             "A",
@@ -63,8 +63,8 @@
           ]
         },
         {
-          "name": "Linguine con la rana pescatrice ed i funghi cantarelli",
-          "description": "Linguine mit Seeteufelstücken und Pfifferlingen",
+          "name": "Linguine con il rombo e funghi cantarelli",
+          "description": "Linguine mit Steinbuttstücken und Pfifferlingen",
           "price": "23.00",
           "allergens": [
             "A",
@@ -72,12 +72,13 @@
           ]
         },
         {
-          "name": "Risotto con la Nduja e pecorino silano",
-          "description": "Risotto an Nduja-Tomaten-Creme (leicht scharf) mit kalabresischen Pecorinokäse-Raspeln",
+          "name": "Risotto con lo stracotto di manzo ed il pecorino silano",
+          "description": "Risotto an Rindergulasch nach Laune des Chefs mit kalabresischen Pecorinokäse-Raspeln",
           "price": "19.50",
           "allergens": [
             "A",
-            "G"
+            "G",
+            "I"
           ]
         },
         {
@@ -159,20 +160,6 @@
         {
           "name": "Profiteroles bianchi con crema al latte",
           "description": "Gefüllte Windbeutel umhüllt mit weißer Milchcreme",
-          "price": "8.50",
-          "allergens": [
-            "A",
-            "C",
-            "G",
-            "H"
-          ],
-          "diet": [
-            "vegetarian"
-          ]
-        },
-        {
-          "name": "Panna cotta ai lamponi fatta in casa",
-          "description": "Hausgemachte Himbeer-Pannacotta",
           "price": "8.50",
           "allergens": [
             "A",
