@@ -3,6 +3,10 @@ import { buildLegacyRedirects } from "./src/lib/redirects";
 import { ORDER_PATH, storefrontUrl } from "./src/lib/site";
 
 const nextConfig: NextConfig = {
+  // Next 16 writes AGENTS.md / CLAUDE.md on `next dev` when it detects an AI
+  // coding agent. We keep our own instruction file instead (see CLAUDE.md);
+  // `npm run check:agent-files` fails if this switch is removed (#2360).
+  agentRules: false,
   images: {
     // Prefer AVIF over WebP for clients that support it.
     // AVIF compresses ~30% smaller than WebP at equal perceptual quality,
