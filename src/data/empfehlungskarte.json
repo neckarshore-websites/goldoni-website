@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-09-25",
+  "updated": "2026-09-30",
   "categories": [
     {
       "id": "antipasti",
@@ -33,12 +33,20 @@
           ]
         },
         {
-          "name": "Salmone affumicato marinato con agrumi calabresi e radicchio",
-          "description": "Marinierte geräucherte Lachsscheiben mit Zitrusvinaigrette auf Radicchiosalat",
-          "price": "15.50",
+          "name": "Tagliere di affettato misto alla calabrese per 2 persone",
+          "description": "Auswahl verschiedener Salamis und Burratakäse für 2 Personen",
+          "price": "20.00",
           "allergens": [
-            "D"
+            "A",
+            "D",
+            "G",
+            "H"
           ]
+        },
+        {
+          "name": "Cozze al vino bianco con bruschettone",
+          "description": "Miesmuscheln „Premium Quality“ an Weißweinsoße mit geröstetem Brot",
+          "price": "15.00"
         }
       ]
     },
@@ -63,33 +71,32 @@
           ]
         },
         {
-          "name": "Linguine con il rombo e funghi cantarelli",
-          "description": "Linguine mit Steinbuttstücken und Pfifferlingen",
+          "name": "Linguine con le vongole veraci ed i pomodorini",
+          "description": "Linguine mit Venusmuscheln und Kirschtomaten",
           "price": "23.00",
           "allergens": [
             "A",
-            "D"
+            "N"
           ]
         },
         {
-          "name": "Risotto con lo stracotto di manzo ed il pecorino silano",
-          "description": "Risotto an Rindergulasch nach Laune des Chefs mit kalabresischen Pecorinokäse-Raspeln",
-          "price": "19.50",
+          "name": "Strozzapreti con le punte di filetto al vino rosso e funghi cantarelli",
+          "description": "Priesterwürger mit Rinderfiletspitzen an Rotweinsoße und Pfifferlingen",
+          "price": "21.00",
           "allergens": [
             "A",
-            "G",
             "I"
           ]
         },
         {
-          "name": "Pizza con la porchetta incoronata da burrata e patate al rosmarino",
-          "description": "Pizza mit Spanferkelscheiben und Rosmarinkartoffeln, mit Burratakäse gekrönt",
+          "name": "Pizza mare",
+          "description": "Pizza mit Oktopus, Seppia und Venus-Miesmuscheln, mit frischen Waren",
           "price": "18.50",
           "allergens": [
             "A",
+            "D",
             "G",
-            "1",
-            "2"
+            "N"
           ]
         }
       ]
@@ -100,15 +107,11 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Piccata al limone servita con contorno di pasta",
-          "description": "Kalbsschnitzel an Zitronensoße, mit Pastabeilage",
-          "price": "32.00",
+          "name": "Fegato di vitello alla veneziana",
+          "description": "Kalbslebermedaillons nach venezianischer Art, dazu Beilage",
+          "price": "29.50",
           "allergens": [
-            "A",
-            "G",
-            "S",
-            "2",
-            "3"
+            "S"
           ]
         },
         {
@@ -158,8 +161,8 @@
           ]
         },
         {
-          "name": "Profiteroles bianchi con crema al latte",
-          "description": "Gefüllte Windbeutel umhüllt mit weißer Milchcreme",
+          "name": "Tartufo bianco al cuore di caffè",
+          "description": "Weißes Trüffeleis mit Kaffeefüllung",
           "price": "8.50",
           "allergens": [
             "A",

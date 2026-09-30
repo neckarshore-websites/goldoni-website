@@ -1,19 +1,6 @@
 {
   "weiss": [
     {
-      "name": "Bianco",
-      "producer": "Tasca d'Almerita",
-      "classification": "DOC",
-      "year": 2024,
-      "region": "Sizilien",
-      "grapes": "Inzolia, Catarratto, Grecanico",
-      "priceBottle": "30.00",
-      "priceGlass": "8.50",
-      "allergens": [
-        "S"
-      ]
-    },
-    {
       "name": "Greco",
       "producer": "Statti",
       "classification": "IGT",
@@ -55,6 +42,19 @@
   ],
   "rot": [
     {
+      "name": "Bracciarolo Rosso P.",
+      "producer": "Velenosi",
+      "classification": "DOC",
+      "year": 2022,
+      "region": "Marken",
+      "grapes": "Cuvée Montepulciano, Sangiovese",
+      "priceBottle": "30.00",
+      "priceGlass": "8.50",
+      "allergens": [
+        "S"
+      ]
+    },
+    {
       "name": "Fabius",
       "producer": "Poggio al Drago",
       "classification": "IGT",
@@ -74,19 +74,6 @@
       "year": 2023,
       "region": "Venetien",
       "grapes": "Corvina, Corvinone, Rondinella",
-      "priceBottle": "35.00",
-      "priceGlass": "10.00",
-      "allergens": [
-        "S"
-      ]
-    },
-    {
-      "name": "DUEDIDUE",
-      "producer": "Bonfante",
-      "classification": "DOC",
-      "year": 2018,
-      "region": "Piemont",
-      "grapes": "Cuvée Barbera, Cabernet Sauvignon",
       "priceBottle": "35.00",
       "priceGlass": "10.00",
       "allergens": [
