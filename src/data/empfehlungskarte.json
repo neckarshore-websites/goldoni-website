@@ -24,7 +24,7 @@
           ]
         },
         {
-          "name": "Carpaccio di vitello con rucola e formaggio pecorino",
+          "name": "Carpaccio di vitello con rucola e formaggio caprino",
           "description": "Kalbsfilet-Carpaccio auf Rucolasalat-Bett und Ziegenkäse",
           "price": "16.00",
           "allergens": [
@@ -38,7 +38,6 @@
           "price": "20.00",
           "allergens": [
             "A",
-            "D",
             "G",
             "H"
           ]
@@ -46,7 +45,11 @@
         {
           "name": "Cozze al vino bianco con bruschettone",
           "description": "Miesmuscheln „Premium Quality“ an Weißweinsoße mit geröstetem Brot",
-          "price": "15.00"
+          "price": "15.00",
+          "allergens": [
+            "A",
+            "N"
+          ]
         }
       ]
     },
@@ -90,7 +93,7 @@
         },
         {
           "name": "Pizza mare",
-          "description": "Pizza mit Oktopus, Seppia und Venus-Miesmuscheln, mit frischen Waren",
+          "description": "Pizza mit Oktopus, Seppia, Venus- und Miesmuscheln, mit frischen Waren",
           "price": "18.50",
           "allergens": [
             "A",
