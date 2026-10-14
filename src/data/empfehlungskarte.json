@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-10-07",
+  "updated": "2026-10-14",
   "categories": [
     {
       "id": "antipasti",
@@ -21,16 +21,6 @@
           ],
           "diet": [
             "vegetarian"
-          ]
-        },
-        {
-          "name": "Crema di patate e verza servita con crostini di pane",
-          "description": "Cremige Suppe von Wirsing und Kartoffeln, serviert mit Crostini",
-          "price": "15.00",
-          "allergens": [
-            "A",
-            "G",
-            "H"
           ]
         },
         {
@@ -60,8 +50,8 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Quadrati ripieni al tartufo e porcini in sughetto di burro",
-          "description": "Nudeln mit Trüffel-Steinpilz-Füllung an Buttercreme",
+          "name": "Quadrati ripieni con cacio e pepe in sughetto di burro",
+          "description": "Nudeln mit Käse-Pfeffer-Füllung an Buttercreme",
           "price": "19.50",
           "allergens": [
             "A",
@@ -75,27 +65,26 @@
           ]
         },
         {
-          "name": "Linguine con le vongole ed i pomodorini",
-          "description": "Linguine mit Venusmuscheln und Kirschtomaten",
+          "name": "Linguine con la rana pescatrice ed i pomodorini",
+          "description": "Linguine mit Seeteufelstücken und Kirschtomaten",
           "price": "23.00",
           "allergens": [
             "A",
-            "N"
+            "D"
           ]
         },
         {
-          "name": "Pappardelle con il pollo „Bio“ e cantarelli in sughetto di pomodoro",
-          "description": "Breite Bandnudeln mit „Bio“-Hähnchenunterkeulen und Pfifferlingen in einer Tomatensoße",
-          "price": "19.50",
+          "name": "Strozzapreti con le punte di filetto al vino rosso e funghi di paglia",
+          "description": "Priesterwürger mit Rinderfiletspitzen an Rotweinsoße und Austernpilzen",
+          "price": "21.00",
           "allergens": [
             "A",
-            "C",
             "I"
           ]
         },
         {
-          "name": "Pizza con la porchetta, patate al rosmarino e burrata",
-          "description": "Pizza mit Rosmarinkartoffeln und Scheiben vom Spanferkel, mit Burratakäse gekrönt",
+          "name": "Pizza bianca con la salsiccia calabrese, gorgonzola e crema di zucca",
+          "description": "Pizza (weiße Basis) mit kalabresischer Bratwurst (leicht scharf), Gorgonzolakäse und Kürbiscreme",
           "price": "17.50",
           "allergens": [
             "A",
@@ -112,8 +101,8 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Piccata in padella coi funghi cantarelli",
-          "description": "Kalbsschnitzel aus der Pfanne mit Pfifferlingen, dazu Beilage",
+          "name": "Piccata al limone",
+          "description": "Kalbsschnitzel an Zitronensoße, dazu Beilage",
           "price": "32.00",
           "allergens": [
             "A",
@@ -123,18 +112,10 @@
         {
           "name": "Tagliata di Rib-Eye marinata nel Whiskey",
           "description": "Gegrillte Rib-Eye-Scheiben, in Whiskey mariniert, auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
-          "price": "36.50",
+          "price": "35.00",
           "allergens": [
             "G",
             "S"
-          ]
-        },
-        {
-          "name": "Filetti di rombo in umido",
-          "description": "Steinbutt aus der Pfanne mit Kirschtomaten, dazu Beilage",
-          "price": "35.00",
-          "allergens": [
-            "D"
           ]
         },
         {
@@ -144,6 +125,15 @@
           "allergens": [
             "D"
           ]
+        },
+        {
+          "name": "Tentacolo di piovra alla griglia marinato alla calabrese",
+          "description": "Gegrillter Oktopustentakel, dazu Beilage",
+          "price": "32.00",
+          "allergens": [
+            "D",
+            "N"
+          ]
         }
       ]
     },
@@ -152,17 +142,6 @@
       "name": "Dolci",
       "subtitle": "Desserts",
       "items": [
-        {
-          "name": "Profiteroles bianchi",
-          "description": "Gefüllte Windbeutel, umhüllt mit weißer Milchcreme",
-          "price": "8.50",
-          "allergens": [
-            "A",
-            "C",
-            "G",
-            "H"
-          ]
-        },
         {
           "name": "Soufflé al cioccolato con gelato alla vaniglia",
           "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
