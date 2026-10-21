@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-10-14",
+  "updated": "2026-10-21",
   "categories": [
     {
       "id": "antipasti",
@@ -24,8 +24,8 @@
           ]
         },
         {
-          "name": "Carpaccio di spada marinato agli agrumi calabresi su cicoria rossa",
-          "description": "Mariniertes Schwertfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
+          "name": "Carpaccio di tonno marinato agli agrumi calabresi su cicoria rossa",
+          "description": "Mariniertes Thunfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
           "price": "16.00",
           "allergens": [
             "D",
@@ -65,32 +65,33 @@
           ]
         },
         {
-          "name": "Linguine con la rana pescatrice ed i pomodorini",
-          "description": "Linguine mit Seeteufelstücken und Kirschtomaten",
+          "name": "Linguine con le vongole veraci ed i pomodorini",
+          "description": "Linguine mit Venusmuscheln und Kirschtomaten",
           "price": "23.00",
           "allergens": [
             "A",
-            "D"
+            "N"
           ]
         },
         {
-          "name": "Strozzapreti con le punte di filetto al vino rosso e funghi ostrica",
-          "description": "Priesterwürger mit Rinderfiletspitzen an Rotweinsoße und Austernpilzen",
-          "price": "21.00",
+          "name": "Strozzapreti con la bolognese ed i pinoli",
+          "description": "Priesterwürger in Tomatensoße mit Fleischbällchen aus Schweine- und Rinderhackfleisch und Pinienkernen",
+          "price": "19.50",
           "allergens": [
             "A",
+            "H",
             "I"
           ]
         },
         {
-          "name": "Pizza bianca con la salsiccia calabrese, gorgonzola e crema di zucca",
-          "description": "Pizza (weiße Basis) mit kalabresischer Bratwurst (leicht scharf), Gorgonzolakäse und Kürbiscreme",
+          "name": "Pizza bianca con la salsiccia calabrese, funghi di paglia e uovo",
+          "description": "Pizza (weiße Basis) mit kalabresischer Bratwurst (leicht scharf), Austernpilzen und Ei",
           "price": "17.50",
           "allergens": [
             "A",
-            "G",
+            "C",
             "H",
-            "3"
+            "I"
           ]
         }
       ]
@@ -101,21 +102,20 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Piccata al limone",
-          "description": "Kalbsschnitzel an Zitronensoße, dazu Beilage",
-          "price": "32.00",
+          "name": "Fegato alla veneziana",
+          "description": "Kalbsleber nach venezianischer Art, dazu Beilage",
+          "price": "29.00",
           "allergens": [
             "A",
             "G"
           ]
         },
         {
-          "name": "Tagliata di Rib-Eye marinata nel Whiskey",
-          "description": "Gegrillte Rib-Eye-Scheiben, in Whiskey mariniert, auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
+          "name": "Tagliata di Rib-Eye (carne frollata) alla toscana",
+          "description": "Gegrillte Dry-Aged-Rib-Eye-Scheiben auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
           "price": "35.00",
           "allergens": [
-            "G",
-            "S"
+            "G"
           ]
         },
         {
@@ -127,10 +127,11 @@
           ]
         },
         {
-          "name": "Tentacolo di piovra alla griglia marinato alla calabrese",
-          "description": "Gegrillter Oktopustentakel, dazu Beilage",
-          "price": "32.00",
+          "name": "Freschissimi calamari grigliati",
+          "description": "Frische Calamari vom Lavastein-Grill, dazu Beilage",
+          "price": "30.00",
           "allergens": [
+            "D",
             "N"
           ]
         }
@@ -156,6 +157,20 @@
           ]
         },
         {
+          "name": "Gelato al pistacchio in crosta di mandorle",
+          "description": "Pistazieneis umhüllt mit gehackten Mandeln",
+          "price": "9.00",
+          "allergens": [
+            "A",
+            "C",
+            "G",
+            "H"
+          ],
+          "diet": [
+            "vegetarian"
+          ]
+        },
+        {
           "name": "Tartufo bianco al cuore di caffè",
           "description": "Weißes Trüffeleis mit Kaffeefüllung",
           "price": "8.50",
@@ -170,9 +185,9 @@
           ]
         },
         {
-          "name": "Gelato al pistacchio in crosta di mandorle",
-          "description": "Pistazieneis umhüllt mit gehackten Mandeln",
-          "price": "9.00",
+          "name": "Gefüllte Windbeutel",
+          "description": "Gefüllte Windbeutel, umhüllt mit weißer Milchcreme",
+          "price": "8.50",
           "allergens": [
             "A",
             "C",
