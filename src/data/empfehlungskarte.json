@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-10-21",
+  "updated": "2026-10-24",
   "categories": [
     {
       "id": "antipasti",
@@ -65,11 +65,12 @@
           ]
         },
         {
-          "name": "Linguine con le vongole veraci ed i pomodorini",
-          "description": "Linguine mit Venusmuscheln und Kirschtomaten",
+          "name": "Scialatielli con le vongole veraci, cannolicchi ed i pomodorini",
+          "description": "Scialatielli-Eiernudeln mit Venus- und Schwertmuscheln an Weißwein-Kirschtomatensoße",
           "price": "23.00",
           "allergens": [
             "A",
+            "C",
             "N"
           ]
         },
