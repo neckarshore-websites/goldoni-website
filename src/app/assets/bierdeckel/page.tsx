@@ -13,7 +13,7 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Bierdeckel"
       intro="Soll im Restaurant auf dem Tisch liegen, unter dem Glas, und dort minutenlang angesehen werden — er würde damit andere Gäste treffen als die Postkarte: Leute, die gerade da sind und beim nächsten Mal vielleicht bestellen. Im Konjunktiv, und das ist keine Vorsicht: Goldoni verwendet heute keine Bierdeckel. Ob dieser einen Platz auf den Tischen bekommt, ist die eigentliche offene Frage dieser Seite — nicht die Auflage."
-      status="Sechseck 93 × 81 mm — Texte vom Betreiber freigegeben (28.08.2026). Als Testballon bestellbereit: 25 Stück für 15,00 €, um ihn einmal in der Hand und auf dem Tisch zu sehen"
+      status="Sechseck 93 × 81 mm — Texte vom Betreiber freigegeben (28.08.2026). Als Testballon bestellt am 27.10.2026: 25 Stück für 10,17 € netto, um ihn einmal in der Hand und auf dem Tisch zu sehen"
       aspect={{ w: 1200, h: 1048 }}
       sides={[
         {
@@ -84,13 +84,13 @@ Saemtlicher Inhalt liegt innerhalb des Sicherheitsabstands von 6 mm.`}
         "Olive als Proof prüfen: vollflächig auf saugender Bierdeckelpappe fällt jeder Ton dunkler und stumpfer aus als auf gestrichenem Papier.",
         "Stanzkontur als eigene Ebene liefern, nicht als gedruckte Linie.",
         "Der eigentliche offene Punkt ist nicht die Auflage, sondern die Platzierung: Goldoni verwendet heute keine Bierdeckel. Der Testballon beantwortet zwei Fragen auf einmal — wie Oliv auf saugender Pappe wirklich aussieht, und ob das Stück auf einem gedeckten Tisch überhaupt funktioniert. Erst danach ist eine Auflage sinnvoll.",
-        "Auflage entschieden am 28.08.2026: 25 Stück für 15,00 € als Test. Bewusst gegen die wirtschaftlichere Stufe — 100 kosten 24,94 € und damit 24,9 statt 60 ct pro Stück, aber 75 davon läge niemand aus, solange die Platzierung nicht entschieden ist. Bei einem Testballon zählt der Gesamtbetrag, nicht der Stückpreis.",
+        "Auflage entschieden am 28.08.2026: 25 Stück für 15,00 € als Test (bestellt am 27.10.2026 zum Tagespreis von 10,17 €). Bewusst gegen die wirtschaftlichere Stufe — 100 kosten 24,94 € und damit 24,9 statt 60 ct pro Stück, aber 75 davon läge niemand aus, solange die Platzierung nicht entschieden ist. Bei einem Testballon zählt der Gesamtbetrag, nicht der Stückpreis.",
       ]}
       prices={{
         caption:
-          "Netto. Die Stufen ab 100 mit Stand 25. August 2026; die 25er-Stufe am 28. August im Shop nachgesehen. Ein Bierdeckel wird verbraucht, nicht aufgehoben — sobald er tatsächlich auf den Tischen liegt, entscheidet die Auflage, wie lange nicht nachbestellt werden muss.",
+          "Netto. Die 25er-Stufe ist der Preis der Bestellung vom 27. Oktober 2026 (im August: 15,00 €); die Stufen ab 100 mit Stand 25. August 2026, seither nicht nachgemessen. Ein Bierdeckel wird verbraucht, nicht aufgehoben — sobald er tatsächlich auf den Tischen liegt, entscheidet die Auflage, wie lange nicht nachbestellt werden muss.",
         rows: [
-          { qty: 25, net: 15.0, pick: true },
+          { qty: 25, net: 10.17, pick: true },
           { qty: 100, net: 24.94 },
           { qty: 250, net: 54.47 },
           { qty: 500, net: 90.56 },
@@ -100,7 +100,7 @@ Saemtlicher Inhalt liegt innerhalb des Sicherheitsabstands von 6 mm.`}
           { qty: 7500, net: 641.68 },
           { qty: 10000, net: 642.32 },
         ],
-        note: "Gewählt sind 25 Stück für 15,00 €, und das ist bewusst die unwirtschaftlichste Zeile der Tabelle: 60 Cent pro Stück gegenüber 24,9 Cent bei 100. Der Grund steht in den offenen Punkten — solange nicht entschieden ist, ob der Deckel überhaupt auf die Tische kommt, ist jede grössere Menge Vorrat für eine Verwendung, die es noch nicht gibt. Wenn er sich bewährt, ist 500 für 90,56 € der vernünftige erste echte Lauf. Zwei Fallen weiter oben in der Staffel, für später: 7.500 Stück kosten 641,68 €, 10.000 kosten 642,32 € — 2.500 Deckel mehr für 64 Cent, und wer 7.500 bestellt, zahlt pro Stück mehr als bei 5.000.",
+        note: "Gewählt sind 25 Stück für 10,17 €, und das ist bewusst die unwirtschaftlichste Zeile der Tabelle: rund 41 Cent pro Stück gegenüber 24,9 Cent bei 100 (Stand August). Der Grund steht in den offenen Punkten — solange nicht entschieden ist, ob der Deckel überhaupt auf die Tische kommt, ist jede grössere Menge Vorrat für eine Verwendung, die es noch nicht gibt. Wenn er sich bewährt, ist 500 für 90,56 € der vernünftige erste echte Lauf. Zwei Fallen weiter oben in der Staffel, für später: 7.500 Stück kosten 641,68 €, 10.000 kosten 642,32 € — 2.500 Deckel mehr für 64 Cent, und wer 7.500 bestellt, zahlt pro Stück mehr als bei 5.000.",
       }}
       downloads={[
         {

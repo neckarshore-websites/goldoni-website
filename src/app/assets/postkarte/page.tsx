@@ -13,7 +13,7 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Postkarte"
       intro="Liegt jeder Lieferung bei und im Restaurant aus. Sie hat eine Aufgabe: Gäste beim nächsten Mal direkt bei uns bestellen lassen statt über den Marktplatz."
-      status="Entwurf A (Olive), A6 quer — Texte vom Betreiber freigegeben, bestellbereit: 500 Stück mit Mattfolie auf Seite 2"
+      status="Entwurf A (Olive), A6 quer — Texte vom Betreiber freigegeben, bestellt am 27.10.2026: 500 Stück mit Mattfolie für 38,97 € netto; die Folienseite hat der Betreiber am 28.10. mit der Druckerei geklärt, Lieferung angekündigt für den 04.11.2026"
       aspect={{ w: 1600, h: 1154 }}
       sides={[
         {
@@ -88,7 +88,7 @@ Fertigungsbedingt liegt das Seitenformat 0,18 mm ueber dem Sollmass. Bitte auf
 148 x 105 mm mittig schneiden.`}
       prices={{
         caption:
-          "Stand 25. August 2026, netto, ohne Veredelung; seither nicht nachgemessen. Die Mattfolie kommt dazu. Die einmalige Qualitätskontrolle (14,00 € netto) wird nicht mitbestellt.",
+          "Stand 25. August 2026, netto, ohne Veredelung; seither nicht nachgemessen. Die Mattfolie kommt dazu: bestellt wurden am 27. Oktober 2026 500 Stück mit Folie für 38,97 € netto, Tagespreis des Shops. Die einmalige Qualitätskontrolle (14,00 € netto) wird nicht mitbestellt.",
         rows: [
           { qty: 100, net: 17.74 },
           { qty: 250, net: 24.21 },
