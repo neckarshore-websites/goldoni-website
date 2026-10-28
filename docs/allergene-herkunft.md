@@ -99,7 +99,7 @@ Beschreibungszeile darunter. Die Abnahme des Wortlauts durch den Inhaber
 
 | # | Punkt | Wer klärt es | Warum es zählt |
 |---|-------|--------------|----------------|
-| 1 | **Löffelbiskuit im Tiramisù** | Packung im Haus | Die Website sagt wörtlich "ohne Ei". Savoiardi enthalten praktisch immer Ei. Ist der Biskuit zugekauft, steht dort eine **falsche Allergen-Aussage als ausgeschriebener Satz**, nicht bloß ein fehlender Code. |
+| 1 | **Löffelbiskuit im Tiramisù** | Packung im Haus | Die Website sagte wörtlich "ohne Ei"; am 2026-10-28 auf Founder-Entscheid entfernt, bis der Inhaber den Biskuit bestätigt. Savoiardi enthalten praktisch immer Ei. Ist der Biskuit zugekauft, steht dort eine **falsche Allergen-Aussage als ausgeschriebener Satz**, nicht bloß ein fehlender Code. |
 | 2 | **Amaretto-Etikett** | Flasche im Haus | Disaronno und viele andere Amaretti werden aus Aprikosenkernen gemacht, nicht aus Mandeln. Aprikosenkern ist kein Anhang-II-Allergen. Dann wäre H eine freiwillige Vorsichtsangabe statt einer Pflichtangabe. |
 | 3 | **Flasche oder Postmix** | Tresen | Gilt für Cola, Fanta, Spezi, Sprite. Entscheidet vier Zeilen der Änderungsliste. |
 | 4 | **sechs Digestivi** | Etiketten | Averna, Ramazzotti, Cynar, Amaro del Capo, Sambuca, Fernet tragen heute gar keinen Code. Erwartung (ungemessen): Zuckerkulör und damit Code 1 bei fünf von sechs. |
