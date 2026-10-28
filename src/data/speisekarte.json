@@ -231,7 +231,7 @@
         },
         {
           "name": "Tiramisù",
-          "description": "Hausgemacht nach Goldoni-Art, ohne Ei",
+          "description": "Hausgemacht nach Goldoni-Art",
           "price": "7.50",
           "allergens": ["A", "G", "H", "9"]
         },
