@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-10-24",
+  "updated": "2026-10-28",
   "categories": [
     {
       "id": "antipasti",
@@ -9,27 +9,21 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
-          "description": "Frittierte Auberginentürmchen mit geräuchertem Scamorzakäse und Mozzarella",
-          "price": "15.50",
+          "name": "Crema di zucca trombetta",
+          "description": "Kürbiscremesuppe vom Trombetta-Kürbis",
+          "price": "13.50",
           "allergens": [
-            "A",
-            "G",
-            "2",
-            "3",
-            "5"
-          ],
-          "diet": [
-            "vegetarian"
+            "G"
           ]
         },
         {
-          "name": "Carpaccio di tonno marinato agli agrumi calabresi su cicoria rossa",
-          "description": "Mariniertes Thunfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
-          "price": "16.00",
+          "name": "Cozze al vino bianco servite con bruschettone",
+          "description": "Miesmuscheln an Weißweinsoße, dazu geröstetes Brot",
+          "price": "14.50",
           "allergens": [
+            "A",
             "D",
-            "H"
+            "N"
           ]
         },
         {
@@ -75,12 +69,12 @@
           ]
         },
         {
-          "name": "Strozzapreti con la bolognese ed i pinoli",
-          "description": "Priesterwürger in Tomatensoße mit Fleischbällchen aus Schweine- und Rinderhackfleisch und Pinienkernen",
-          "price": "19.50",
+          "name": "Strozzapreti con coda di vitello alla maniera „Vaccinara“",
+          "description": "Priesterwürger in Tomatensoße mit Ochsenschwanz, nach altem römischem Rezept",
+          "price": "19.00",
           "allergens": [
             "A",
-            "H",
+            "C",
             "I"
           ]
         },
@@ -103,11 +97,10 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Fegato alla veneziana",
-          "description": "Kalbsleber nach venezianischer Art, dazu Beilage",
+          "name": "Anatra in padella al sughetto di arancia",
+          "description": "Entenbrust aus der Pfanne an Orangensoße, dazu Beilage",
           "price": "29.00",
           "allergens": [
-            "A",
             "G"
           ]
         },
@@ -128,12 +121,14 @@
           ]
         },
         {
-          "name": "Freschissimi calamari grigliati",
-          "description": "Frische Calamari vom Lavastein-Grill, dazu Beilage",
-          "price": "30.00",
+          "name": "Trancio di pescespada alla pizzaiola",
+          "description": "Schwertfischsteak mit Oliven und Kapern in Tomatensoße, dazu Beilage",
+          "price": "35.00",
           "allergens": [
             "D",
-            "N"
+            "1",
+            "2",
+            "3"
           ]
         }
       ]
