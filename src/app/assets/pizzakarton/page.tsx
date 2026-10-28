@@ -14,7 +14,7 @@ export default function Page() {
       eyebrow="Drucksachen"
       title="Pizzakarton"
       intro="32 × 32 × 4 cm, aussen vierfarbig bedruckt. Der Deckel ist mit Abstand die grösste Markenfläche im ganzen Satz — grösser als Postkarte, Bierdeckel und Briefumschlag zusammen, und der Gast schaut ihn an, während er wartet."
-      status="Druckdaten liegen vor, Texte vom Betreiber freigegeben (28.08.2026). Entschieden: 32 × 32 cm, Aufteilung A, weisser Karton, 250 Stück — zuerst ein einzelner Probekarton"
+      status="Druckdaten liegen vor, Texte vom Betreiber freigegeben (28.08.2026). Entschieden: 32 × 32 cm, Aufteilung A, weisser Karton, 250 Stück — zuerst ein einzelner Probekarton, bestellt am 27.10.2026"
       aspect={{ w: 1200, h: 2376 }}
       sides={[
         {
@@ -76,7 +76,7 @@ export default function Page() {
       openPoints={[
         "Farbmodus: die Druckerei fordert CMYK, unsere Datei entsteht im Browser und ist RGB. Sie wandelt automatisch. Genau dort, wo der Deckel vollflächig Espresso und vollflächig Oliv ist, entscheidet diese Wandlung über den Eindruck — auf weisser Wellpappe, die stark saugt, stärker als auf gestrichenem Papier. Die Hinweise für die Druckerei weiter unten setzen deshalb Zielwerte für die beiden Vollton-Flächen, den QR-Code und die helle Schrift. Sie ersetzen keinen Andruck — dafür ist der Probekarton da.",
         "Die Vorschau oben zeigt den Deckel weiterhin 327 mm hoch, die Druckdaten 322,7 mm. Die Bildschirmfassung ist damit 1,3 Prozent zu hoch — physisch sind alle Schriftgrössen identisch, nur der Rahmen ist es nicht. Die Korrektur ist eine Zahl in einer Zeile, aber sie verschiebt die am 25. August abgenommene Aufteilung um 4,3 mm und braucht deshalb eine Entscheidung des Betreibers, keine stille Änderung.",
-        "Ein einzelner Probekarton für 13,50 € netto wird zuerst bestellt (Betreiber-Entscheidung 2026-08-26). Er ist zugleich die Abnahme, die ein Bildschirm nicht leisten kann: Farbe auf Wellpappe, Lesbarkeit des Codes auf saugendem Material, Wirkung der Schriftgrössen in echter Grösse.",
+        "Ein einzelner Probekarton für 13,50 € netto wird zuerst bestellt (Betreiber-Entscheidung 2026-08-26) — bestellt am 27.10.2026. Er ist zugleich die Abnahme, die ein Bildschirm nicht leisten kann: Farbe auf Wellpappe, Lesbarkeit des Codes auf saugendem Material, Wirkung der Schriftgrössen in echter Grösse.",
         "Beschaffung entschieden: selbst bestellen, 250 Stück nach dem Probekarton. Offen bleibt nur, ob die bisherigen 26er-Kartons vom Lieferanten weiterlaufen, solange der Vorrat reicht.",
       ]}
       prices={{
