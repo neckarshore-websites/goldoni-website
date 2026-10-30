@@ -1,6 +1,6 @@
 {
   "repo": "neckarshore-websites/goldoni-website",
-  "audited_sha": "3d910a65b8c0e10cc5f62b357fd3f12536704030",
+  "audited_sha": "9ddfc88fdd6132efacd0cd781c0ee680d555da88",
   "red": false,
   "red_detail": null,
   "tests": {
@@ -12,5 +12,5 @@
     "declared": {},
     "lenses": {}
   },
-  "updatedAt": "2026-10-28T16:48:32Z"
+  "updatedAt": "2026-10-30T18:18:42Z"
 }
