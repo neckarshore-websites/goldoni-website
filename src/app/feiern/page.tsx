@@ -1,5 +1,6 @@
 import { SITE } from "@/lib/site";
 import { FeiernForm } from "@/components/forms/FeiernForm";
+import { captchaSitekey } from "@/lib/captcha/verify";
 import { PageHero } from "@/components/PageHero";
 import { SaalGalerie, type GalleryImage } from "@/components/SaalGalerie";
 import { StructuredData } from "@/components/StructuredData";
@@ -159,7 +160,7 @@ export default function FeiernPage() {
             Aufschlag &mdash; wir rufen zurück und besprechen Karte und
             Details persönlich.
           </p>
-          <FeiernForm />
+          <FeiernForm turnstileSitekey={captchaSitekey()} />
         </section>
 
         {/* Phone fallback for visitors who prefer voice contact */}

@@ -3,7 +3,7 @@ import type { Page } from "@playwright/test";
 /**
  * Wait for the Cloudflare Turnstile token before submitting a form.
  *
- * When the captcha is ENABLED (NEXT_PUBLIC_CAPTCHA_ENABLED=true + sitekey
+ * When the captcha is ENABLED (TURNSTILE_SECRET_KEY set, so a sitekey is
  * set — e.g. the local prod-build validation with Cloudflare TEST keys),
  * the widget injects a hidden `cf-turnstile-response` input asynchronously.
  * Happy-path specs click submit instantly and would race that token-load →

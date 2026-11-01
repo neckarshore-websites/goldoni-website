@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import nodemailer from "nodemailer";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
+import { KONTAKT } from "@/lib/kontakt-config";
 
 /**
  * Token-gated SMTP diagnostics endpoint.
@@ -12,7 +13,7 @@ import type SMTPTransport from "nodemailer/lib/smtp-transport";
  *       535 EAUTH and similar failures without sending real mail.
  *
  *   GET /api/smtp-verify?token=<...>&action=send
- *     → also sends a real test email to INQUIRY_EMAIL_TO. Use sparingly.
+ *     → also sends a real test email to KONTAKT.empfaenger. Use sparingly.
  *
  * Token mismatch / missing token / unset SMTP_VERIFY_TOKEN env all return
  * 404 to avoid endpoint enumeration. The token must be set in Vercel
@@ -92,23 +93,20 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
   const wantSend = request.nextUrl.searchParams.get("action") === "send";
 
-  const host = process.env.SMTP_HOST ?? null;
-  const portRaw = process.env.SMTP_PORT;
-  const user = process.env.SMTP_USER ?? null;
+  const host = KONTAKT.smtpHost;
+  const port = KONTAKT.smtpPort;
+  const user = KONTAKT.smtpUser;
   const pass = process.env.SMTP_PASS ?? null;
-  const from = process.env.SMTP_FROM ?? null;
-  const to = process.env.INQUIRY_EMAIL_TO ?? null;
-  const cc = process.env.INQUIRY_EMAIL_CC ?? null;
-  const portParsed = portRaw ? Number(portRaw) : NaN;
-  const portValid =
-    Number.isFinite(portParsed) && portParsed > 0 && portParsed <= 65535;
+  const from = KONTAKT.absender;
+  const to = KONTAKT.empfaenger;
+  const cc = KONTAKT.kopieAn;
 
   const result: DiagResult = {
     ok: false,
     config: {
       host,
-      port: portValid ? portParsed : null,
-      secure: portValid ? portParsed === 465 : null,
+      port,
+      secure: port === 465,
       userPreview: preview(user),
       userLength: user?.length ?? null,
       passLength: pass?.length ?? null,
@@ -120,14 +118,14 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     },
   };
 
-  if (!host || !portValid || !user || !pass || !from || !to) {
+  if (!pass) {
     return NextResponse.json(result);
   }
 
   const transportOptions: SMTPTransport.Options = {
     host,
-    port: portParsed,
-    secure: portParsed === 465,
+    port,
+    secure: port === 465,
     auth: { user, pass },
   };
   const transporter = nodemailer.createTransport(transportOptions);

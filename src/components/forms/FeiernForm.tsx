@@ -16,7 +16,12 @@ import { LIMITS } from "@/lib/limits";
  * Wraps the same `sendInquiry` Server Action with `type=feiern`; the
  * action validates the celebration-specific fields server-side.
  */
-export function FeiernForm() {
+export function FeiernForm({
+  turnstileSitekey,
+}: {
+  /** From the server page (`captchaSitekey()`); null = no widget. */
+  turnstileSitekey: string | null;
+}) {
   const [state, formAction, pending] = useActionState(
     sendInquiry,
     INQUIRY_INITIAL_STATE,
@@ -138,7 +143,7 @@ export function FeiernForm() {
         error={state.fieldErrors?.message}
       />
 
-      <Turnstile />
+      <Turnstile sitekey={turnstileSitekey} />
 
       {state.status === "error" && state.message ? (
         <p
