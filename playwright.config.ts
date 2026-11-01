@@ -37,7 +37,7 @@ export default defineConfig({
    * `reuseExistingServer` keeps local iteration fast — first `npm run
    * test:e2e` boots the server, subsequent runs reuse it.
    *
-   * Force NODE_ENV=development + clear SMTP_* so the action stays in
+   * Force NODE_ENV=development + clear the secrets so the action stays in
    * dry-run mode even if the developer has values in their .env.local.
    * That way these tests never accidentally send real mail.
    */
@@ -48,12 +48,8 @@ export default defineConfig({
     timeout: 120_000,
     env: {
       NODE_ENV: "development",
-      SMTP_HOST: "",
-      SMTP_PORT: "",
-      SMTP_USER: "",
       SMTP_PASS: "",
-      SMTP_FROM: "",
-      INQUIRY_EMAIL_TO: "",
+      TURNSTILE_SECRET_KEY: "",
     },
   },
 });

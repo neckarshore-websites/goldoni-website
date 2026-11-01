@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/forms/ContactForm";
+import { captchaSitekey } from "@/lib/captcha/verify";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
 import { SITE } from "@/lib/site";
@@ -99,7 +100,7 @@ export default function KontaktPage() {
             </a>{" "}
             ein spezialisiertes Formular mit Datum und Gästeanzahl.
           </p>
-          <ContactForm />
+          <ContactForm turnstileSitekey={captchaSitekey()} />
         </section>
       </div>
       </div>

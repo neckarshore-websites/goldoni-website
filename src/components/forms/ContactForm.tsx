@@ -12,7 +12,12 @@ import { LIMITS } from "@/lib/limits";
  * Nachricht. Wraps the shared `sendInquiry` Server Action with
  * `type=kontakt`.
  */
-export function ContactForm() {
+export function ContactForm({
+  turnstileSitekey,
+}: {
+  /** From the server page (`captchaSitekey()`); null = no widget. */
+  turnstileSitekey: string | null;
+}) {
   const [state, formAction, pending] = useActionState(
     sendInquiry,
     INQUIRY_INITIAL_STATE,
@@ -83,7 +88,7 @@ export function ContactForm() {
         error={state.fieldErrors?.message}
       />
 
-      <Turnstile />
+      <Turnstile sitekey={turnstileSitekey} />
 
       {state.status === "error" && state.message ? (
         <p

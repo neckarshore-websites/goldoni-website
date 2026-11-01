@@ -1,5 +1,6 @@
 "use server";
 
+import { KONTAKT } from "@/lib/kontakt-config";
 import nodemailer from "nodemailer";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
 import { LEGAL } from "@/lib/legal";
@@ -28,18 +29,9 @@ import type {
  * including hidden inputs; humans don't see it. If filled, we silently
  * return success without sending mail.
  *
- * Mail transport: SMTP (DomainFactory) via nodemailer.
- *
- * Env vars (all required in production; missing in production → hard error):
- *   SMTP_HOST          — DomainFactory SMTP host, e.g. `sslout.df.eu`
- *   SMTP_PORT          — `465` for SSL/TLS (default), `587` for STARTTLS
- *   SMTP_USER          — full mailbox address, e.g. `kontakt@goldoni-online.de`
- *   SMTP_PASS          — mailbox password
- *   SMTP_FROM          — From-header, e.g. `Goldoni <kontakt@goldoni-online.de>`.
- *                        The user-part MUST be a real account on the
- *                        authenticated mailbox; otherwise DomainFactory
- *                        rejects with `550 sender not allowed`.
- *   INQUIRY_EMAIL_TO   — recipient mailbox (where the owner reads inquiries)
+ * Mail transport: SMTP via nodemailer. Host, port, user, sender and recipients
+ * stand in src/lib/kontakt-config.ts (#2879). The only env var is the secret:
+ *   SMTP_PASS          — mailbox password (missing in production → hard error)
  *
  * In development (`NODE_ENV !== "production"`) the action falls back to a
  * dry-run that logs the would-be mail and returns success — useful for
@@ -144,29 +136,28 @@ interface SmtpConfig {
   pass: string;
   from: string;
   to: string;
-  /** Optional CC address (e.g. operator copy to german@rauhut.com). Omitted if env var is unset. */
+  /** Operator copy, KONTAKT.kopieAn. */
   cc?: string;
 }
 
 /**
- * Read SMTP config from env. Returns null if any required value is
- * missing (caller decides how to handle: dry-run in dev, error in prod).
+ * SMTP config: settings from src/lib/kontakt-config.ts, password from env.
+ * Returns null when the password is missing (caller decides how to handle:
+ * dry-run in dev, error in prod).
  */
 function readSmtpConfig(): SmtpConfig | null {
-  const host = process.env.SMTP_HOST;
-  const portRaw = process.env.SMTP_PORT;
-  const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  const from = process.env.SMTP_FROM;
-  const to = process.env.INQUIRY_EMAIL_TO;
+  if (!pass) return null;
 
-  if (!host || !portRaw || !user || !pass || !from || !to) return null;
-
-  const port = Number(portRaw);
-  if (!Number.isFinite(port) || port <= 0 || port > 65535) return null;
-
-  const cc = process.env.INQUIRY_EMAIL_CC || undefined;
-  return { host, port, user, pass, from, to, cc };
+  return {
+    host: KONTAKT.smtpHost,
+    port: KONTAKT.smtpPort,
+    user: KONTAKT.smtpUser,
+    pass,
+    from: KONTAKT.absender,
+    to: KONTAKT.empfaenger,
+    cc: KONTAKT.kopieAn,
+  };
 }
 
 export async function sendInquiry(
@@ -328,8 +319,7 @@ export async function sendInquiry(
       // Tell the user to call. Owner sees the env-var gap on next deploy
       // log.
       console.error(
-        "[Goldoni Inquiry] SMTP not configured in production — " +
-          "set SMTP_HOST/SMTP_PORT/SMTP_USER/SMTP_PASS/SMTP_FROM/INQUIRY_EMAIL_TO",
+        "[Goldoni Inquiry] SMTP not configured in production — set SMTP_PASS",
       );
       return {
         status: "error",
@@ -353,6 +343,7 @@ export async function sendInquiry(
     port: config.port,
     // Port 465 is implicit-SSL; 587 starts plain and upgrades via STARTTLS.
     secure: config.port === 465,
+    requireTLS: true,
     auth: { user: config.user, pass: config.pass },
   };
   const transporter = nodemailer.createTransport(transportOptions);

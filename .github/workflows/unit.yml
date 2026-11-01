@@ -51,6 +51,7 @@ jobs:
           npm run test:kartenabgleich:unit
           npm run test:llms:unit
           npm run test:preise:unit
+          npm run test:kontakt:unit
           # agentRules guard (#2360, revised 2026-09-25). Imports the REAL next.config.ts
           # and reads the real checkout: fails when `agentRules: false` is gone, when an
           # AGENTS.md is committed, or when CLAUDE.md carries the generated block. The unit
