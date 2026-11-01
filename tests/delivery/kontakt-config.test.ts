@@ -89,6 +89,15 @@ async function main(): Promise<void> {
     }
   });
 
+  await check("both mail transports refuse to log in without TLS", () => {
+    // Port 587 starts unencrypted. Without requireTLS a stripped STARTTLS would send
+    // the mailbox password in the clear.
+    for (const datei of ["src/app/actions/inquiry.ts", "src/app/api/smtp-verify/route.ts"]) {
+      const text = readFileSync(join(process.cwd(), datei), "utf8");
+      assert.match(text, /requireTLS: true/, `${datei} sends without requireTLS`);
+    }
+  });
+
   await check("captcha widget appears only where its secret exists", () => {
     assert.equal(CAPTCHA_AKTIV, true);
     assert.equal(captchaSitekey({}), null);

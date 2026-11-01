@@ -126,6 +126,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     host,
     port,
     secure: port === 465,
+    requireTLS: true,
     auth: { user, pass },
   };
   const transporter = nodemailer.createTransport(transportOptions);

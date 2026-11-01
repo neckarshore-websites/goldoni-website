@@ -343,6 +343,7 @@ export async function sendInquiry(
     port: config.port,
     // Port 465 is implicit-SSL; 587 starts plain and upgrades via STARTTLS.
     secure: config.port === 465,
+    requireTLS: true,
     auth: { user: config.user, pass: config.pass },
   };
   const transporter = nodemailer.createTransport(transportOptions);
