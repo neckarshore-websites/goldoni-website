@@ -9,6 +9,7 @@
 
 import type { ReactNode } from "react";
 import { CountedTextarea } from "@/components/forms/CountedTextarea";
+import { HONEYPOT_FELD } from "@/lib/honeypot";
 
 type CommonProps = {
   name: string;
@@ -230,13 +231,17 @@ export function Honeypot() {
         overflow: "hidden",
       }}
     >
-      <label htmlFor="field-website">Website (bitte leer lassen)</label>
+      <label htmlFor="field-nicht-ausfuellen">Bitte leer lassen</label>
       <input
-        id="field-website"
+        id="field-nicht-ausfuellen"
         type="text"
-        name="website"
+        name={HONEYPOT_FELD}
         tabIndex={-1}
         autoComplete="off"
+        data-1p-ignore
+        data-lpignore="true"
+        data-bwignore
+        data-form-type="other"
       />
     </div>
   );

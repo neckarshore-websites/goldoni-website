@@ -3,6 +3,7 @@ import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { CAPTCHA_AKTIV, KONTAKT, TURNSTILE_SITEKEY } from "../../src/lib/kontakt-config";
 import { captchaSitekey, verifyCaptchaToken } from "../../src/lib/captcha/verify";
+import { HONEYPOT_FELD, honeypotAusgeloest } from "../../src/lib/honeypot";
 
 /**
  * Guards for src/lib/kontakt-config.ts, the readable contact settings (planning #2879).
@@ -67,6 +68,41 @@ async function main(): Promise<void> {
     assert.match(KONTAKT.empfaenger, /^[a-z0-9._-]+@ristorante-goldoni\.de$/);
     assert.ok(KONTAKT.smtpPort > 0 && KONTAKT.smtpPort < 65536);
     assert.match(TURNSTILE_SITEKEY, /^0x4[A-Za-z0-9_-]+$/, "not a production site key");
+  });
+
+  await check("the trap field carries no word autofill looks for", () => {
+    assert.doesNotMatch(
+      HONEYPOT_FELD,
+      /url|web|site|home|name|mail|phone|tel|fon|firm|company|addr|adress|city|zip|plz|user|login/i,
+    );
+    const feld = readFileSync(join(process.cwd(), "src/components/forms/FormField.tsx"), "utf8");
+    assert.match(feld, /name=\{HONEYPOT_FELD\}/);
+    assert.doesNotMatch(feld, /[Ww]ebsite/);
+  });
+
+  await check("a filled trap is dropped and logged, without anything the guest typed", () => {
+    const leer = new FormData();
+    leer.set(HONEYPOT_FELD, "   ");
+    const gefuellt = new FormData();
+    gefuellt.set(HONEYPOT_FELD, "http://geheim.example");
+    const zeilen: string[] = [];
+    const warn = console.warn;
+    console.warn = (zeile: string) => zeilen.push(zeile);
+    try {
+      assert.equal(honeypotAusgeloest(new FormData(), "kontakt"), false);
+      assert.equal(honeypotAusgeloest(leer, "kontakt"), false);
+      assert.equal(zeilen.length, 0);
+      assert.equal(honeypotAusgeloest(gefuellt, "kontakt"), true);
+    } finally {
+      console.warn = warn;
+    }
+    assert.deepEqual(zeilen, ["[inquiry] honeypot drop form=kontakt"]);
+  });
+
+  await check("the action asks the trap through the logged path", () => {
+    const aktion = readFileSync(join(process.cwd(), "src/app/actions/inquiry.ts"), "utf8");
+    assert.match(aktion, /if \(honeypotAusgeloest\(formData,/);
+    assert.doesNotMatch(aktion, /clean\(formData, "website"\)/);
   });
 
   await check("no source file reads the old non-secret variables", () => {
