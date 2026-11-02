@@ -69,6 +69,12 @@ async function main(): Promise<void> {
     assert.match(TURNSTILE_SITEKEY, /^0x4[A-Za-z0-9_-]+$/, "not a production site key");
   });
 
+  await check("guest inquiries go to the restaurant alone, no copy", () => {
+    assert.equal("kopieAn" in KONTAKT, false);
+    const aktion = readFileSync(join(process.cwd(), "src/app/actions/inquiry.ts"), "utf8");
+    assert.doesNotMatch(aktion, /\b(cc|bcc)\s*:/);
+  });
+
   await check("no source file reads the old non-secret variables", () => {
     const ALT = [
       "SMTP_HOST",

@@ -136,8 +136,6 @@ interface SmtpConfig {
   pass: string;
   from: string;
   to: string;
-  /** Operator copy, KONTAKT.kopieAn. */
-  cc?: string;
 }
 
 /**
@@ -156,7 +154,6 @@ function readSmtpConfig(): SmtpConfig | null {
     pass,
     from: KONTAKT.absender,
     to: KONTAKT.empfaenger,
-    cc: KONTAKT.kopieAn,
   };
 }
 
@@ -352,7 +349,6 @@ export async function sendInquiry(
     const info = await transporter.sendMail({
       from: config.from,
       to: config.to,
-      ...(config.cc ? { cc: config.cc } : {}),
       replyTo: email,
       subject,
       text: textBody,
