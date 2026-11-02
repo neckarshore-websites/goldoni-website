@@ -43,7 +43,6 @@ interface DiagResult {
     passHasTrailingWhitespace: boolean | null;
     fromPreview: string | null;
     toPreview: string | null;
-    ccPreview: string | null;
   };
   verify?: {
     ok: boolean;
@@ -99,7 +98,6 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   const pass = process.env.SMTP_PASS ?? null;
   const from = KONTAKT.absender;
   const to = KONTAKT.empfaenger;
-  const cc = KONTAKT.kopieAn;
 
   const result: DiagResult = {
     ok: false,
@@ -114,7 +112,6 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       passHasTrailingWhitespace: pass !== null ? pass !== pass.trimEnd() : null,
       fromPreview: preview(from),
       toPreview: preview(to),
-      ccPreview: preview(cc),
     },
   };
 

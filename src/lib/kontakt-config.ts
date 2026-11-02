@@ -27,15 +27,15 @@ export interface KontaktEinstellungen {
   smtpUser: string;
   absender: string;
   empfaenger: string;
-  kopieAn: string;
 }
 
 /**
+ * No copy of guest inquiries to the Founder: decided 2026-11-02 (Dr. Sommer report
+ * 2026-11-02, question 4). Do not add one back without naming it on the privacy page.
+ *
  * Sources, measured 2026-10-30 and 2026-11-01:
  * - absender, empfaenger: headers of two delivered Feieranfrage mails (2026-09-03,
  *   2026-10-22): From goldoni@rauhut.com, To info@ristorante-goldoni.de.
- * - kopieAn: those two mails arrived in the Founder's rauhut.com account, and the
- *   action sets no other copy path. Report 2026-05-07-linus-fe-b names the value.
  * - smtpHost, smtpPort, smtpUser, display name: report 2026-05-07-linus-fe-b, the
  *   IONOS mailbox that answered 250 OK. Vercel shows no edit of these variables
  *   since that day (updatedAt), and smtp.ionos.de:587 answers with STARTTLS.
@@ -49,7 +49,6 @@ export const KONTAKT: KontaktEinstellungen = {
   smtpUser: "goldoni@rauhut.com",
   absender: "Goldoni <goldoni@rauhut.com>",
   empfaenger: "info@ristorante-goldoni.de",
-  kopieAn: "german@rauhut.com",
 };
 
 /**
