@@ -24,7 +24,7 @@ const fields = (page: Page) => ({
   email: page.locator('input[name="email"]'),
   phone: page.locator('input[name="phone"]'),
   message: page.locator('textarea[name="message"]'),
-  honeypot: page.locator('input[name="website"]'),
+  honeypot: page.locator('input[name="nicht_ausfuellen"]'),
   submit: page.getByRole("button", { name: /nachricht senden/i }),
 });
 
@@ -184,7 +184,7 @@ test.describe("/kontakt — ContactForm", () => {
     page,
   }) => {
     // Bots fill every input including hidden ones. We mimic that by
-    // populating the off-screen `website` input and submitting an
+    // populating the off-screen trap input and submitting an
     // otherwise complete form. The action returns success without
     // actually queuing mail — UX-wise indistinguishable from a real
     // success so the bot doesn't retry differently.

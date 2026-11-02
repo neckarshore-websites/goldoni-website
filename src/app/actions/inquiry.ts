@@ -3,6 +3,7 @@
 import { KONTAKT } from "@/lib/kontakt-config";
 import nodemailer from "nodemailer";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
+import { honeypotAusgeloest } from "@/lib/honeypot";
 import { LEGAL } from "@/lib/legal";
 import {
   buildCustomerHtmlMail,
@@ -25,7 +26,7 @@ import type {
  * One action, two payload shapes (discriminated by `type`). Validation
  * happens server-side; client-side `required` is only for UX hints.
  *
- * Anti-spam: a hidden `website` honeypot field. Bots fill in everything
+ * Anti-spam: a hidden honeypot field (lib/honeypot.ts). Bots fill in everything
  * including hidden inputs; humans don't see it. If filled, we silently
  * return success without sending mail.
  *
@@ -162,7 +163,7 @@ export async function sendInquiry(
   formData: FormData,
 ): Promise<InquiryState> {
   // ----- Honeypot ---------------------------------------------------
-  if (clean(formData, "website")) {
+  if (honeypotAusgeloest(formData, clean(formData, "type"))) {
     // Bot detected — pretend success so they don't retry differently.
     return { status: "success" };
   }
