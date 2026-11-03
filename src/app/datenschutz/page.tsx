@@ -1,4 +1,5 @@
 import { StructuredData } from "@/components/StructuredData";
+import { KONTAKT } from "@/lib/kontakt-config";
 import { LEGAL } from "@/lib/legal";
 import { SITE } from "@/lib/site";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
@@ -228,15 +229,42 @@ export default function DatenschutzPage() {
               das im Hintergrund prüft, ob die Eingabe von einem Menschen stammt.
               Dabei verarbeitet Cloudflare technische Daten Ihres Browsers
               (u.&nbsp;a. IP-Adresse, Browser-Eigenschaften) sowie das
-              Prüf-Ergebnis (einen Token). Turnstile arbeitet{" "}
-              <strong>ohne Cookies</strong> und ohne Cross-Site-Tracking; die
-              Daten werden nicht für Werbezwecke verwendet.
+              Prüf-Ergebnis (einen Token). Turnstile setzt keine Cookies, legt
+              aber im lokalen Speicher Ihres Browsers einen Eintrag von
+              Cloudflare an (cf.turnstile.u). Ihre Eingaben im Formular erhält
+              Cloudflare nicht.
             </p>
             <p className="mt-3">
               <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO
               (berechtigtes Interesse an der Abwehr von Spam und missbräuchlichen
-              Formular-Einsendungen). Cloudflare agiert als Auftragsverarbeiter
-              nach Art. 28 DSGVO.
+              Formular-Einsendungen). Das Speichern im und das Auslesen aus dem
+              Browser beruhen auf § 25 Abs. 2 Nr. 2 TDDDG.
+            </p>
+            <p className="mt-3">
+              <strong>Rollen und Speicherdauer:</strong> Nach Angaben von
+              Cloudflare erfolgt die Prüfung im Auftrag des Websitebetreibers.
+              Zur Verbesserung seiner Bot-Erkennung verarbeitet Cloudflare diese
+              Daten außerdem in eigener Verantwortung und stützt sich dafür auf
+              sein berechtigtes Interesse. Für die Prüfung im Auftrag sehen die
+              Bedingungen von Cloudflare vor, dass die Daten gespeichert werden,
+              bis der Vertrag mit dem Websitebetreiber endet oder sie zur
+              Vertragserfüllung nicht mehr nötig sind, je nachdem, was früher
+              eintritt. Für die Verarbeitung in eigener Verantwortung richtet
+              sich die Dauer nach den Zwecken und nach gesetzlichen Pflichten.
+              Cloudflare berücksichtigt dabei den Erhebungszweck, Umfang, Art und
+              Sensibilität der Daten, das Risiko bei unbefugter Nutzung, ob der
+              Zweck auch mit weniger Daten erreichbar ist, und rechtliche
+              Vorgaben wie Verjährungsfristen. Näheres:{" "}
+              <a
+                href="https://www.cloudflare.com/turnstile-privacy-policy/"
+                className="underline"
+                style={{ color: "var(--color-accent)" }}
+                rel="nofollow noopener"
+                target="_blank"
+              >
+                Turnstile Privacy Addendum
+              </a>{" "}
+              (cloudflare.com/turnstile-privacy-policy).
             </p>
             <p className="mt-3">
               <strong>Drittlandübermittlung:</strong> Cloudflare ist ein
@@ -261,23 +289,23 @@ export default function DatenschutzPage() {
           {/* 5. E-Mail-Versand der Formular-Eingaben */}
           <Section title="5. E-Mail-Versand der Formular-Eingaben">
             <p>
-              Für den technischen Versand der Formular-Eingaben an unser
-              Postfach nutzen wir den E-Mail-Dienst von{" "}
+              Ihre Formular-Eingaben werden als E-Mail an unser Postfach{" "}
+              {KONTAKT.empfaenger} übermittelt. Der Versand erfolgt
+              verschlüsselt (SMTP über TLS) über den E-Mail-Dienst der{" "}
               <strong>{LEGAL.dataProtection.mailService.name}</strong>,{" "}
-              {LEGAL.dataProtection.mailService.address}. Die Übermittlung
-              erfolgt verschlüsselt (SMTP über TLS) an unser bei
-              DomainFactory gehostetes Postfach und wird dort zur
-              Bearbeitung Ihrer Anfrage gespeichert.
+              {LEGAL.dataProtection.mailService.address}. Empfangen und
+              gespeichert wird Ihre Anfrage in unserem Postfach bei Microsoft
+              365. Sie selbst erhalten eine Bestätigung an die angegebene
+              E-Mail-Adresse.
             </p>
             <p className="mt-3">
               <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b bzw.
               lit. f DSGVO (siehe oben).
             </p>
             <p className="mt-3">
-              <strong>Standort der Verarbeitung:</strong> Die DomainFactory
-              GmbH ist ein deutsches Unternehmen mit Sitz in Ismaning. Eine
-              Drittlandübermittlung findet beim E-Mail-Versand selbst nicht
-              statt. Datenschutzhinweise des E-Mail-Anbieters:{" "}
+              <strong>Standort der Verarbeitung:</strong> Die IONOS SE ist ein
+              deutsches Unternehmen mit Sitz in Montabaur.
+              Datenschutzhinweise des E-Mail-Anbieters:{" "}
               <a
                 href={LEGAL.dataProtection.mailService.privacyUrl}
                 className="underline"
