@@ -120,17 +120,14 @@ export const LEGAL = {
     /**
      * E-Mail-Versand für Formularanfragen.
      *
-     * Routing läuft über das bestehende DomainFactory-SMTP-Postfach des
-     * Inhabers (kein zusätzlicher US-Auftragsverarbeiter, kein Drittland-
-     * Transfer für den Mail-Pfad). DomainFactory ist bereits als Hoster
-     * der Mail-Infrastruktur vertraglich gebunden — DSGVO-Vertrag liegt
-     * über das Hosting-Konto vor.
+     * Versand über das IONOS-Postfach goldoni@rauhut.com (kontakt-config.ts), Empfang
+     * im Microsoft-365-Postfach des Restaurants (MX gemessen 2026-11-02). DomainFactory
+     * ist an diesem Weg nicht beteiligt.
      */
     mailService: {
-      name: "DomainFactory GmbH",
-      address: "Oskar-Messter-Str. 33, 85737 Ismaning, Deutschland",
-      privacyUrl: "https://www.df.eu/de/datenschutz/",
-      dpaUrl: "https://www.df.eu/de/agb/",
+      name: "IONOS SE",
+      address: "Elgendorfer Straße 57, 56410 Montabaur, Deutschland",
+      privacyUrl: "https://www.ionos.de/terms-gtc/datenschutzerklaerung",
     },
   },
 
@@ -143,8 +140,11 @@ export const LEGAL = {
    * Resend auf DomainFactory-SMTP umgestellt (PR-30).
    * 2026-06-12: Cloudflare Turnstile als Formular-Spam-Schutz ergänzt
    * (US-Auftragsverarbeiter, §4 Datenschutz).
+   * 2026-11-03: §5 nennt den tatsächlichen Mailweg (IONOS statt DomainFactory),
+   * §4 Turnstile mit Speichereintrag, § 25 TDDDG und beiden Rollen von Cloudflare
+   * (Texte Dr. Sommer, Bericht 2026-11-02-dr-sommer-25tinx-turnstile).
    */
-  lastUpdated: "2026-08-27",
+  lastUpdated: "2026-11-03",
 } as const;
 
 export type LegalConfig = typeof LEGAL;
