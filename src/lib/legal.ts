@@ -125,7 +125,7 @@ export const LEGAL = {
      * ist an diesem Weg nicht beteiligt.
      */
     mailService: {
-      name: "DomainFactory GmbH",
+      name: "IONOS SE",
       address: "Elgendorfer Straße 57, 56410 Montabaur, Deutschland",
       privacyUrl: "https://www.ionos.de/terms-gtc/datenschutzerklaerung",
     },
