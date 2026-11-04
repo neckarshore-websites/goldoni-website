@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-10-28",
+  "updated": "2026-11-04",
   "categories": [
     {
       "id": "antipasti",
@@ -9,17 +9,9 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Crema di zucca trombetta",
-          "description": "Kürbiscremesuppe vom Trombetta-Kürbis",
-          "price": "13.50",
-          "allergens": [
-            "G"
-          ]
-        },
-        {
-          "name": "Cozze al vino bianco servite con bruschettone",
-          "description": "Miesmuscheln an Weißweinsoße, dazu geröstetes Brot",
-          "price": "14.50",
+          "name": "Cozze al vino bianco",
+          "description": "Miesmuscheln (Premium-Qualität) an Weißweinsoße",
+          "price": "15.00",
           "allergens": [
             "A",
             "D",
@@ -27,13 +19,27 @@
           ]
         },
         {
-          "name": "Tagliere di affettato misto alla calabrese per 2 persone",
-          "description": "Auswahl verschiedener Salamis und Burratakäse für 2 Personen",
-          "price": "20.00",
+          "name": "Parmigiana di melanzane fatta con mozzarella e scamorza affumicata",
+          "description": "Frittierte Auberginentürmchen mit geräuchertem Scamorzakäse und Mozzarella",
+          "price": "15.50",
           "allergens": [
             "A",
             "G",
-            "H"
+            "2",
+            "3",
+            "5"
+          ],
+          "diet": [
+            "vegetarian"
+          ]
+        },
+        {
+          "name": "Crema di zucca moscata servito con bruschettone",
+          "description": "Muskatkürbis-Creme, dazu geröstetes Brot",
+          "price": "14.00",
+          "allergens": [
+            "A",
+            "G"
           ]
         }
       ]
@@ -44,13 +50,14 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Quadrati ripieni con cacio e pepe in sughetto di burro",
-          "description": "Nudeln mit Käse-Pfeffer-Füllung an Buttercreme",
+          "name": "Mezzelune ripiene con fichi e noci in cremetta di Gorgonzola",
+          "description": "Nudeln mit Feigen-Walnuss-Füllung an Gorgonzola-Creme",
           "price": "19.50",
           "allergens": [
             "A",
             "F",
             "G",
+            "H",
             "I",
             "J",
             "N",
@@ -59,12 +66,13 @@
           ]
         },
         {
-          "name": "Scialatielli con le vongole veraci, cannolicchi ed i pomodorini",
-          "description": "Scialatielli-Eiernudeln mit Venus- und Schwertmuscheln an Weißwein-Kirschtomatensoße",
+          "name": "Linguine con il pescespada alla pizzaiola",
+          "description": "Linguine mit Schwertfischstücken, schwarzen Oliven, Kapern und Oregano",
           "price": "23.00",
           "allergens": [
             "A",
             "C",
+            "D",
             "N"
           ]
         },
@@ -79,8 +87,8 @@
           ]
         },
         {
-          "name": "Pizza bianca con la salsiccia calabrese, funghi ostrica e uovo",
-          "description": "Pizza (weiße Basis) mit kalabresischer Bratwurst (leicht scharf), Austernpilzen und Ei",
+          "name": "Pizza bianca con la salsiccia calabrese, friarielli e pesto di pomodorini",
+          "description": "Pizza (weiße Basis) mit kalabresischer Bratwurst, Wintergemüse und Kirschtomatenpesto",
           "price": "17.50",
           "allergens": [
             "A",
@@ -97,18 +105,19 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Anatra in padella al sughetto di arancia",
-          "description": "Entenbrust aus der Pfanne an Orangensoße, dazu Beilage",
-          "price": "29.00",
+          "name": "Tagliata di Rib-Eye (carne frollata) alla toscana",
+          "description": "Gegrillte Dry-Aged-Rib-Eye-Scheiben auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
+          "price": "35.00",
           "allergens": [
             "G"
           ]
         },
         {
-          "name": "Tagliata di Rib-Eye (carne frollata) alla toscana",
-          "description": "Gegrillte Dry-Aged-Rib-Eye-Scheiben auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
-          "price": "35.00",
+          "name": "Piccata al limone",
+          "description": "Kalbsschnitzel an Zitronensoße, dazu Beilage",
+          "price": "33.00",
           "allergens": [
+            "A",
             "G"
           ]
         },
@@ -121,14 +130,11 @@
           ]
         },
         {
-          "name": "Trancio di pescespada alla pizzaiola",
-          "description": "Schwertfischsteak mit Oliven und Kapern in Tomatensoße, dazu Beilage",
+          "name": "Filetti di rombo al sughetto di limone e rosmarino",
+          "description": "Steinbuttfilets aus dem Ofen an Zitronen-Rosmarin-Creme, dazu Beilage",
           "price": "35.00",
           "allergens": [
-            "D",
-            "1",
-            "2",
-            "3"
+            "D"
           ]
         }
       ]
