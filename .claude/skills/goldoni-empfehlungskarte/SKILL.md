@@ -125,17 +125,16 @@ Schema (siehe `src/components/WeinSection.tsx`):
       "year": 2024,                   // Number, kein String
       "region": "<Region z.B. 'Sizilien'>",
       "grapes": "<Rebsorten als String, z.B. 'Inzolia, Cataratto, Grecanico'>",
-      "priceBottle": "30,–",          // String mit Komma + Halbgeviertstrich (–) für Glatte
-      "priceGlass": "8,50"            // String mit Komma
+      "priceBottle": "30.00",         // Decimal-String mit PUNKT, wie bei den Speisen
+      "priceGlass": "8.50"            // Decimal-String mit PUNKT
     }
   ],
   "rot": [ /* gleiches Schema */ ]
 }
 ```
 
-**Schreibweise-Konventionen** (auf der Live-Site sichtbar):
-- Halbgeviertstrich `–` (U+2013) statt Bindestrich `-` für glatte Preise: `"28,–"`, `"30,–"`, `"40,–"`
-- Komma als Dezimaltrenner: `"7,50"`, `"8,50"`
+**Schreibweise-Konventionen:**
+- **Preise sind überall Decimal-Strings mit Punkt und zwei Stellen** (`"30.00"`, `"8.50"`), für Speisen wie für Weine. Was der Gast liest (`30,00 €`), macht ausschließlich `formatPrice` in `src/lib/price.ts` (Founder-Entscheid 2026-09-23). Steht auf der Karte `30,–` oder `8,50`, wird daraus `"30.00"` und `"8.50"`. `tests/delivery/preise.test.ts` weist jede andere Form ab.
 - Producer und Wein-Name getrennt — der Renderer zeigt sie zweizeilig
 - Grapes als kommaseparierter String — der Renderer setzt sie kursiv
 - Year als JSON-Number, nicht String
@@ -190,8 +189,8 @@ Weine (weinempfehlungen.json):
 - Weiß: <welche neu, welche raus, welche unverändert>
 - Rot: <dito>
 
-Allergen-Codes referenzieren codes.ts: A, C, D, ... (LMIV) + I, J, S (Goldoni)
-+ 1, 2, 3 (ZZulV).
+Allergen-Codes referenzieren codes.ts: A, C, D, ... (Allergene)
++ 1, 2, 3 (Zusatzstoffe).
 ```
 
 **PR-Body-Template** (passe Inhalte an, nicht Struktur):
@@ -231,8 +230,7 @@ PR mit `gh pr create --base main` öffnen.
 | Weine in `empfehlungskarte.json` zusätzlich anlegen | Live-Site zeigt zwei Weinlisten untereinander, eine im falschen Layout | Weine ausschliesslich in `weinempfehlungen.json`. Vor Edit: `grep -rln "<wein-name>" src/` |
 | Per-Person-Preis als zweiter Price | Schema kennt nur ein `price`-Feld | Hauptpreis in `price`, Per-Person-Hinweis in `description`-String mitführen |
 | Allergen-Code "T" oder ähnlich Unbekanntes | Build grün (Type ist `string`), aber `npm run test:codes:unit` wird rot und die Legende erklärt den Code nicht | Vor JSON-Write: User fragen welche Bedeutung der Code hat. Niemals raten. |
-| Decimal-Trenner-Mismatch | Speisen-Preis `"15,00"` statt `"15.00"` | Speisen: PUNKT als Decimal. Weine: KOMMA als Decimal (verschiedene Renderer-Konventionen). |
-| Halbgeviertstrich `–` vs. Bindestrich `-` bei Wein-Preisen | Inkonsistente Live-Anzeige `28,-` vs `28,–` | Halbgeviertstrich (U+2013) für glatte Preise: `"28,–"`. Komma + Dezimalstellen: `"7,50"`. |
+| Preis in Kartenschreibweise übernommen | `"15,00"`, `"30,–"` oder `"8,50"` in einer JSON; `npm run test:preise:unit` bzw. der Build wird rot | Speisen UND Weine: Decimal-String mit Punkt, zwei Stellen (`"30.00"`). Bis 2026-11-05 stand hier für Weine fälschlich Komma + Halbgeviertstrich — das galt nur bis zum Founder-Entscheid 2026-09-23. |
 | Codes-Comment in `src/lib/menu.ts` ist stale | Skill nennt L/M/O, codes.ts hat I/J/S | Nicht im Skill-Workflow korrigieren — separater Doc-Update-PR. Aber dem User melden falls auffällig. |
 | ASCII-Transliteration in deutscher Beschreibung (`Kaese`, `Sosse`, `fuer` …) | Sieht aus wie 1998-OCR; User-Catch 2026-04-30 | Vor PR-Open: Konsistenz-Check unten ausführen. Jeder Hit muss vor Push gefixt sein. Italienische Speisenamen bleiben Original. |
 
