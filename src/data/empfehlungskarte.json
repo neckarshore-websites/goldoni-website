@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-11-04",
+  "updated": "2026-11-05",
   "categories": [
     {
       "id": "antipasti",
@@ -9,13 +9,12 @@
       "subtitle": "Vorspeisen",
       "items": [
         {
-          "name": "Cozze al vino bianco",
-          "description": "Miesmuscheln (Premium-Qualität) an Weißweinsoße",
-          "price": "15.00",
+          "name": "Carpaccio di tonno marinato agli agrumi calabresi su cicoria rossa",
+          "description": "Mariniertes Thunfischcarpaccio mit Zitrusvinaigrette auf rotem Chicoréebett",
+          "price": "16.00",
           "allergens": [
-            "A",
             "D",
-            "N"
+            "H"
           ]
         },
         {
@@ -72,8 +71,7 @@
           "allergens": [
             "A",
             "C",
-            "D",
-            "N"
+            "D"
           ]
         },
         {
@@ -105,20 +103,12 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Tagliata di Rib-Eye (carne frollata) alla toscana",
-          "description": "Gegrillte Dry-Aged-Rib-Eye-Scheiben auf einem Rucolabett mit Granakäseraspeln, dazu Beilage",
-          "price": "35.00",
-          "allergens": [
-            "G"
-          ]
-        },
-        {
-          "name": "Piccata al limone",
-          "description": "Kalbsschnitzel an Zitronensoße, dazu Beilage",
-          "price": "33.00",
+          "name": "Coniglio alla cacciatora",
+          "description": "Kaninchenstücke nach Jägerart, dazu Beilage",
+          "price": "28.00",
           "allergens": [
             "A",
-            "G"
+            "I"
           ]
         },
         {
