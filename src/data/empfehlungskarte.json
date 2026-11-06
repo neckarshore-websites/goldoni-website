@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-11-05",
+  "updated": "2026-11-06",
   "categories": [
     {
       "id": "antipasti",
@@ -75,8 +75,8 @@
           ]
         },
         {
-          "name": "Strozzapreti con coda di vitello alla maniera „Vaccinara“",
-          "description": "Priesterwürger in Tomatensoße mit Ochsenschwanz, nach altem römischem Rezept",
+          "name": "Gnocchi di patate al sughetto di pomodoro con lo stracotto di toro",
+          "description": "Kartoffelgnocchi in leichter Tomatensoße mit geschmortem Stierfleisch",
           "price": "19.00",
           "allergens": [
             "A",
@@ -109,6 +109,24 @@
           "allergens": [
             "A",
             "I"
+          ]
+        },
+        {
+          "name": "Anatra in padella al sughetto di arancia",
+          "description": "Entenbrust aus der Pfanne an Orangensoße, dazu Beilage",
+          "price": "29.00",
+          "allergens": [
+            "A",
+            "G"
+          ]
+        },
+        {
+          "name": "Tomahawk (ca. 1600 g per 3 persone) servita alla maniera toscana",
+          "description": "Dry Aged Tomahawk (ca. 1600 g für 3 Personen) aus dem Ofen nach toskanischer Art",
+          "price": "120.00",
+          "allergens": [
+            "A",
+            "G"
           ]
         },
         {
