@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
 import { Header } from "@/components/Header";
@@ -79,6 +79,14 @@ export const metadata: Metadata = {
   verification: {
     google: "Yw31pISC-ruYUPrDLlTvM1Hqzc1Ho0QPhRhwg8juFhw",
   },
+};
+
+// Browser chrome tint (Safari tab bar, mobile address bar): the sticky
+// Header's noir, which does not flip with the theme, so one value without a
+// media query (Founder 2026-11-06). Mirrors `--color-noir-bg` in
+// globals.css; tests/e2e/theme-color.spec.ts fails when the two drift.
+export const viewport: Viewport = {
+  themeColor: "#1A1612",
 };
 
 export default function RootLayout({
