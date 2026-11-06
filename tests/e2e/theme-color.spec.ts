@@ -20,7 +20,9 @@ for (const theme of ["light", "dark"] as const) {
       }
     }, theme);
     for (const path of PAGES) {
-      await page.goto(path);
+      // A 404 page carries the same layout and would pass the checks below.
+      const res = await page.goto(path);
+      expect(res?.status(), `${path}: status`).toBe(200);
       await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
 
       const tags = page.locator('meta[name="theme-color"]');
