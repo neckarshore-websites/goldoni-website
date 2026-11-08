@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-11-06",
+  "updated": "2026-11-08",
   "categories": [
     {
       "id": "antipasti",
@@ -65,13 +65,13 @@
           ]
         },
         {
-          "name": "Linguine con il pescespada alla pizzaiola",
-          "description": "Linguine mit Schwertfischstücken, schwarzen Oliven, Kapern und Oregano",
+          "name": "Linguine con mezzo astice",
+          "description": "Linguine mit halbem Hummer",
           "price": "23.00",
           "allergens": [
             "A",
-            "C",
-            "D"
+            "B",
+            "C"
           ]
         },
         {
@@ -86,14 +86,14 @@
           ]
         },
         {
-          "name": "Pizza bianca con la salsiccia calabrese, friarielli e pesto di pomodorini",
-          "description": "Pizza (weiße Basis) mit kalabresischer Bratwurst, Wintergemüse und Kirschtomatenpesto",
-          "price": "17.50",
+          "name": "Pizza scura al nero di seppia con salmone affumicato e foglie di spinaci",
+          "description": "Schwarze Pizza (Tintenfischtinte) mit geräucherten Lachsscheiben und frischem Spinat",
+          "price": "18.50",
           "allergens": [
             "A",
             "C",
-            "H",
-            "I"
+            "D",
+            "N"
           ]
         }
       ]
@@ -131,9 +131,9 @@
           ]
         },
         {
-          "name": "Freschissimi filetti di orata reale marinati alla mediterranea preparati sulla plancia",
-          "description": "Frische Royal-Goldbrassefilets vom Lavastein-Grill, dazu Beilage",
-          "price": "32.00",
+          "name": "Freschissima orata rosé al forno di 5 kg per 8 persone",
+          "description": "Frische Dorade rosé (5 kg) aus dem Ofen für 8 Personen, dazu Beilage",
+          "price": "200.00",
           "allergens": [
             "D"
           ]
