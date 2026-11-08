@@ -66,6 +66,19 @@
       "allergens": [
         "S"
       ]
+    },
+    {
+      "name": "Salassà",
+      "producer": "Rosso Veronese",
+      "classification": "IGT",
+      "year": 2020,
+      "region": "Venetien",
+      "grapes": "Cuvée Rondinella, Corvina",
+      "priceBottle": "40.00",
+      "priceGlass": "13.50",
+      "allergens": [
+        "S"
+      ]
     }
   ],
   "hauswein": {
