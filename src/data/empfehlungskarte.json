@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-11-11",
+  "updated": "2026-11-13",
   "categories": [
     {
       "id": "antipasti",
@@ -56,8 +56,8 @@
           ]
         },
         {
-          "name": "Linguine con orata rosé e pomodorini",
-          "description": "Linguine mit Stücken von der Dorade rosé und Kirschtomaten",
+          "name": "Linguine con il pescespada alla pizzaiola",
+          "description": "Linguine mit Schwertfischstücken, Oliven, Kapern und Oregano",
           "price": "21.00",
           "allergens": [
             "A",
@@ -73,6 +73,18 @@
             "A",
             "C",
             "I"
+          ]
+        },
+        {
+          "name": "Pizza scura al nero di seppia con salmone affumicato, foglie di spinaci e burrata",
+          "description": "Schwarze Pizza (Tintenfischtinte) mit geräucherten Lachsscheiben, Burrata und frischem Spinat",
+          "price": "18.50",
+          "allergens": [
+            "A",
+            "C",
+            "D",
+            "G",
+            "N"
           ]
         }
       ]
@@ -109,16 +121,18 @@
           ]
         },
         {
-          "name": "Freschissima bistecca di pescespada alla griglia",
-          "description": "Frisches Schwertfischsteak vom Lavastein-Grill, dazu Beilage",
-          "price": "33.00",
+          "name": "Freschissima sogliola alla mugnaia",
+          "description": "Frische Seezunge aus dem Ofen mit Butter, Zitrone und Petersilie, dazu Beilage",
+          "price": "35.00",
           "allergens": [
-            "D"
+            "A",
+            "D",
+            "G"
           ]
         },
         {
-          "name": "Filetti di rombo al sughetto di limone e rosmarino",
-          "description": "Steinbuttfilets aus dem Ofen an Zitronen-Rosmarin-Creme, dazu Beilage",
+          "name": "Filetti di branzino alla griglia lavica",
+          "description": "Wolfsbarschfilets vom Lavastein-Grill, dazu Beilage",
           "price": "32.00",
           "allergens": [
             "D"
