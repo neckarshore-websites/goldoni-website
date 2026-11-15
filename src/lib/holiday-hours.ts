@@ -143,3 +143,20 @@ export function upcomingGroups(today: string): { group: HolidayGroup; days: Holi
     days: HOLIDAY_DAYS.filter((d) => d.group === group.id && (d.until ?? d.date) >= today),
   })).filter((g) => g.days.length > 0);
 }
+
+/**
+ * One-line summary for the thin strip on /menu and /wochenkarte (Founder
+ * 2026-11-15). Built from what is still ahead, so it never announces a
+ * closure that has already passed. Null when nothing is left to say.
+ */
+export function stripSummary(today: string): string | null {
+  if (!isHolidayBannerWindow(today)) return null;
+  const closed: string[] = [];
+  if (today <= "2026-12-25") closed.push("24.–25.12.");
+  if (today <= "2027-01-01") closed.push("31.12.–1.1.");
+  const parts: string[] = [];
+  if (closed.length) parts.push(`${closed.join(" und ")} geschlossen`);
+  if (today <= "2026-12-29") parts.push("im Dezember auch dienstags geöffnet");
+  if (parts.length === 0) parts.push("4.–5.1. Ruhetage, 6.1. geöffnet");
+  return parts.join(" · ");
+}

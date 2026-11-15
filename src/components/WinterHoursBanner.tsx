@@ -92,8 +92,7 @@ export function WinterHoursBanner({
                 {days.map((day) => (
                   <li
                     key={day.date}
-                    className="flex justify-between gap-3 pb-1.5 last:pb-0"
-                    style={{ borderBottom: "1px dashed rgba(254, 241, 165, 0.18)" }}
+                    className="flex justify-between gap-3 border-b border-dashed border-[#FEF1A5]/20 pb-1.5 last:border-b-0 last:pb-0"
                   >
                     <span className="whitespace-nowrap">
                       {dayLabel(day)}
