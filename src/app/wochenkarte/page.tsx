@@ -4,7 +4,7 @@ import { OrderFab } from "@/components/OrderFab";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
 import { SundayBanner } from "@/components/SundayBanner";
-import { WinterHoursBanner } from "@/components/WinterHoursBanner";
+import { HolidayStrip } from "@/components/HolidayStrip";
 import {
   HolidayBanner,
   isSummerClosureWindow,
@@ -69,7 +69,7 @@ export default function WochenkartePage() {
         gegen genau das bereits abgesichert; diese war es nicht.
       */}
       {geschlossen ? <HolidayBanner /> : <SundayBanner />}
-      <WinterHoursBanner />
+      <HolidayStrip />
       <PageHero
         src="/images/hero-empfehlungen-overhead-tafel.webp"
         alt="Gedeckter Tisch von oben: Pappardelle, Risotto ai funghi e tartufo, Burrata e prosciutto, Weingläser und Brot — die Wochenkarte im Ristorante Goldoni"

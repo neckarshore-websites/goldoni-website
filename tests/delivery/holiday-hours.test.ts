@@ -8,6 +8,7 @@ import {
   isHolidayBannerWindow,
   longLabel,
   shortLabel,
+  stripSummary,
   upcomingGroups,
 } from "../../src/lib/holiday-hours";
 
@@ -84,6 +85,14 @@ check("past days drop out and emptied groups disappear", () => {
 check("Berlin day, not UTC: 23:30 UTC on 10 Jan is already 11 Jan in Berlin", () => {
   assert.equal(berlinToday(new Date("2027-01-10T23:30:00Z")), "2027-01-11");
   assert.equal(berlinToday(new Date("2027-01-10T22:30:00Z")), "2027-01-10");
+});
+
+check("strip summary only announces what is still ahead", () => {
+  assert.equal(stripSummary("2026-11-15"), "24.–25.12. und 31.12.–1.1. geschlossen · im Dezember auch dienstags geöffnet");
+  assert.equal(stripSummary("2026-12-26"), "31.12.–1.1. geschlossen · im Dezember auch dienstags geöffnet");
+  assert.equal(stripSummary("2026-12-30"), "31.12.–1.1. geschlossen");
+  assert.equal(stripSummary("2027-01-02"), "4.–5.1. Ruhetage, 6.1. geöffnet");
+  assert.equal(stripSummary("2027-01-11"), null);
 });
 
 console.log(`\n${checks} checks passed`);

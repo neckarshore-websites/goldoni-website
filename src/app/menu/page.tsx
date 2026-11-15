@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MenuSection } from "@/components/MenuSection";
 import { HausweinSection } from "@/components/HausweinSection";
+import { HolidayStrip } from "@/components/HolidayStrip";
 import { OrderFab } from "@/components/OrderFab";
 import { PageHero } from "@/components/PageHero";
 import { StructuredData } from "@/components/StructuredData";
@@ -18,9 +19,16 @@ export const metadata = pageMetadata({
   path: "/menu",
 });
 
+/**
+ * ISR every 6h so the temporary HolidayStrip drops past days and hides
+ * after 10 January 2027 without a deploy.
+ */
+export const revalidate = 21600;
+
 export default function MenuPage() {
   return (
     <main>
+      <HolidayStrip />
       <StructuredData
         data={breadcrumbJsonLd([{ name: "Speisekarte", path: "/menu" }])}
       />
