@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SIGNATURES, signatureDocument } from "@/lib/email-signatures";
 import { HolidayBanner } from "@/components/HolidayBanner";
+import { WinterHoursBanner } from "@/components/WinterHoursBanner";
 
 /**
  * /sandbox — interne Werkzeug- und Dokumentationsseite. DAUERHAFT, nicht
@@ -131,6 +132,17 @@ export default function SandboxPage() {
         </div>
         <HolidayBanner forcePreview />
       </section>
+
+      <section className="mx-auto max-w-6xl px-6 sm:px-12">
+        <h2 className="text-xl font-semibold" style={{ color: "var(--color-text)" }}>
+          Feiertagsbanner Winter 2026/27
+        </h2>
+        <p className="mt-2 text-sm" style={{ color: "var(--color-text-muted)" }}>
+          Hier immer im Stand vom 20. November, mit allen drei Blöcken. Auf der Startseite und der
+          Wochenkarte fallen vergangene Tage weg; ab Montag, 11. Januar 2027 ist das Banner dort weg.
+        </p>
+      </section>
+      <WinterHoursBanner forcePreview previewDay="2026-11-20" />
 
       <section className="mx-auto max-w-6xl px-6 sm:px-12">
         <h2
