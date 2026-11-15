@@ -6,6 +6,7 @@ import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { PhoneIcon } from "@/components/PhoneIcon";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { HolidayBanner, isSummerClosureWindow } from "@/components/HolidayBanner";
+import { WinterHoursBanner } from "@/components/WinterHoursBanner";
 import { StructuredData } from "@/components/StructuredData";
 import { SundayBanner } from "@/components/SundayBanner";
 import { FAQS } from "@/data/faqs";
@@ -56,6 +57,9 @@ export default function Home() {
           component. Deliberately NOT one shared start: the strips below key
           off the closure, not off the announcement. */}
       <HolidayBanner />
+      {/* Winter holiday hours 2026/27 (Founder 2026-11-15, variant B). Visible
+          until Sunday 10 January 2027; past days drop out on regeneration. */}
+      <WinterHoursBanner />
       {/*
         Sunday announcement only. The order button USED to be suppressed here
         as well (owner decision 2026-07-26: a shut kitchen cannot take an

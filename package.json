@@ -29,6 +29,7 @@
     "test:e2e:ci": "playwright test --grep-invert @external",
     "test:e2e:install": "playwright install chromium",
     "test:e2e:ui": "playwright test --ui",
+    "test:feiertage:unit": "tsx tests/delivery/holiday-hours.test.ts",
     "test:hinweis:unit": "tsx tests/delivery/printer-note.test.ts",
     "test:llms:unit": "tsx tests/delivery/llms-txt.test.ts",
     "test:preise:unit": "tsx tests/delivery/preise.test.ts",
