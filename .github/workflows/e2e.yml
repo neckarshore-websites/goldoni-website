@@ -145,12 +145,11 @@ jobs:
           npm run test:lighthouse:unit > /tmp/lighthouse-unit.out 2>&1 || true
           npm run test:agent-files:unit > /tmp/agent-files-unit.out 2>&1 || true
 
-      # Fifteen tsx suites append to ONE file; the tsx handler reads each
+      # Sixteen tsx suites append to ONE file; the tsx handler reads each
       # "<N> passed, <M> failed" line on its own and sums them, ignoring log noise in between.
-      # kontakt runs in unit.yml but is not counted here: it prints no "<N> passed, <M> failed" line.
       - name: Capture tsx reporter (gated unit suites)
         run: |
-          for s in delivery schema qr search druck qr:print redirect bildherkunft hinweis codes allergene kartenabgleich llms preise feiertage; do
+          for s in delivery schema qr search druck qr:print redirect bildherkunft hinweis codes allergene kartenabgleich llms preise feiertage kontakt; do
             npm run "test:${s}:unit" >> /tmp/tsx-unit.out 2>&1 || true
           done
 
