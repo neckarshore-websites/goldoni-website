@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-11-13",
+  "updated": "2026-11-18",
   "categories": [
     {
       "id": "antipasti",
@@ -24,12 +24,12 @@
           ]
         },
         {
-          "name": "Cozze al vino bianco con bruschettone",
-          "description": "Miesmuscheln an Weißweinsoße mit geröstetem Brot",
-          "price": "15.00",
+          "name": "Crema di zucca moscata servita con bruschettone",
+          "description": "Muskat-Kürbis-Creme mit geröstetem Brot serviert",
+          "price": "14.00",
           "allergens": [
             "A",
-            "N"
+            "G"
           ]
         }
       ]
@@ -40,14 +40,13 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Mezzelune ripiene con fichi e noci in cremetta di Gorgonzola",
-          "description": "Nudeln mit Feigen-Walnuss-Füllung an Gorgonzola-Creme",
+          "name": "Mezzelune ripiene con crema di burrata e pomodoro in salsetta di spinaci",
+          "description": "Nudeln mit Burrata-Tomatenfüllung an Spinat-Creme",
           "price": "19.50",
           "allergens": [
             "A",
             "F",
             "G",
-            "H",
             "I",
             "J",
             "N",
@@ -56,19 +55,20 @@
           ]
         },
         {
-          "name": "Linguine con il pescespada alla pizzaiola",
-          "description": "Linguine mit Schwertfischstücken, Oliven, Kapern und Oregano",
-          "price": "21.00",
+          "name": "Linguine con mezzo astice",
+          "description": "Linguine mit einem halben Hummer",
+          "price": "22.50",
           "allergens": [
             "A",
-            "C",
-            "D"
+            "B",
+            "D",
+            "N"
           ]
         },
         {
-          "name": "Strozzapreti con salsiccia fresca e broccoli bergamaschi",
-          "description": "Strozzapreti (Priesterwürger) mit kalabresischer Bratwurst und Brokkoli",
-          "price": "19.50",
+          "name": "Strozzapreti con la guancia di vitello",
+          "description": "Strozzapreti (Priesterwürger) mit Kalbsbäckle in feiner Tomatensoße",
+          "price": "21.00",
           "allergens": [
             "A",
             "C",
@@ -76,15 +76,14 @@
           ]
         },
         {
-          "name": "Pizza scura al nero di seppia con salmone affumicato, foglie di spinaci e burrata",
-          "description": "Schwarze Pizza (Tintenfischtinte) mit geräucherten Lachsscheiben, Burrata und frischem Spinat",
-          "price": "18.50",
+          "name": "Pizza con la porchetta, patate al rosmarino e burrata",
+          "description": "Pizza mit Rosmarinkartoffeln, Scheiben vom Spanferkel und Burratakäse",
+          "price": "17.50",
           "allergens": [
             "A",
-            "C",
-            "D",
             "G",
-            "N"
+            "H",
+            "3"
           ]
         }
       ]
@@ -95,20 +94,21 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Coniglio alla cacciatora",
-          "description": "Kaninchenstücke nach Jägerart, dazu Beilage",
-          "price": "28.00",
+          "name": "Cosce di anatra al balsamico di Modena",
+          "description": "Entenkeulen an Balsamico-Essig-Creme, dazu Beilage",
+          "price": "28.50",
           "allergens": [
             "A",
-            "I"
+            "G"
           ]
         },
         {
-          "name": "Fegato di vitello alla veneziana",
-          "description": "Kalbslebermedaillons nach venezianischer Art, dazu Beilage",
-          "price": "29.00",
+          "name": "Piccata di vitello in padella in sughetto di limone e pinoli",
+          "description": "Kalbsschnitzel aus der Pfanne an Zitronen-Pinienkern-Soße, dazu Beilage",
+          "price": "32.00",
           "allergens": [
-            "S"
+            "A",
+            "H"
           ]
         },
         {
@@ -131,11 +131,12 @@
           ]
         },
         {
-          "name": "Filetti di branzino alla griglia lavica",
-          "description": "Wolfsbarschfilets vom Lavastein-Grill, dazu Beilage",
-          "price": "32.00",
+          "name": "Bistecche di pesce spada in sughetto di capperi, origano fresco e olive",
+          "description": "Schwertfischsteak aus der Pfanne mit Oliven, Kapern und Oregano, dazu Beilage",
+          "price": "33.00",
           "allergens": [
-            "D"
+            "D",
+            "S"
           ]
         }
       ]
@@ -176,20 +177,6 @@
         {
           "name": "Tartufo bianco al cuore di caffè",
           "description": "Weißes Trüffeleis mit Kaffeefüllung",
-          "price": "8.50",
-          "allergens": [
-            "A",
-            "C",
-            "G",
-            "H"
-          ],
-          "diet": [
-            "vegetarian"
-          ]
-        },
-        {
-          "name": "Nuvole di bignè in manto di crema di latte",
-          "description": "Gefüllte Windbeutel, umhüllt mit weißer Milchcreme",
           "price": "8.50",
           "allergens": [
             "A",
