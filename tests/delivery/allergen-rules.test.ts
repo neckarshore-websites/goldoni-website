@@ -35,7 +35,7 @@ const RULES: Rule[] = [
   { code: "A", why: "LMIV Anhang II Nr. 1 — glutenhaltiges Getreide",
     words: ["pizza", "pasta", "linguine", "tagliatelle", "ravioli", "lasagna", "tortellacci", "pappardelle", "sombreri", "gnocchi", "weizen", "brot"] },
   { code: "B", why: "Nr. 2 — Krebstiere",
-    words: ["gamberoni", "gamberi", "scampi", "aragosta", "granchio", "garnele", "garnelen"] },
+    words: ["gamberoni", "gamberi", "scampi", "aragosta", "astice", "hummer", "granchio", "garnele", "garnelen"] },
   { code: "C", why: "Nr. 3 — Eier",
     words: ["uova", "frittata", "zabaione", "soufflé", "tiramisù", "tiramisu"] },
   { code: "D", why: "Nr. 4 — Fische",
