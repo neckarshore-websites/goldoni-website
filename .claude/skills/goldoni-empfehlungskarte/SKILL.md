@@ -7,6 +7,14 @@ description: Arbeitet eine neue wöchentliche Empfehlungskarte des Ristorante Go
 
 Wöchentlicher Workflow für das Update der Empfehlungskarte. Inhaber liefert PDF (oder Foto/Text), du übersetzt das in zwei separate JSON-Quellen + öffnest einen PR.
 
+## Live first: PR 1 und PR 2
+
+Die Karte geht live, wie der Inhaber sie liefert, Korrekturen folgen in einem zweiten PR (Founder 2026-11-04, geschärft 2026-11-20). Die Regel steht an **einer** Stelle, in Linus' Agentendatei: `~/.claude/agents/linus.md`, Abschnitt `GOLDONI WEEKLY CARD — LIVE FIRST` (Quelle: `neckarshore-ai/dev-environment`, `claude/agents/linus.md`). Dieser Skill kopiert sie nicht, er verweist nur darauf. Was sie für die Schritte unten bedeutet:
+
+- **PR 1** enthält die Karte des Inhabers, auch mit seinen Fehlern. Der Titel beginnt mit `wochenkarte:`. Sobald die Pflicht-Checks grün sind, mergst du ihn selbst. Eine offene Frage hält ihn nicht auf.
+- **PR 2** öffnest du direkt danach. Er enthält jede Korrektur und die Fragen an Silvio, und er wartet auf den Founder.
+- Überall, wo dieser Skill unten „nicht raten“ oder „User fragen“ sagt, gilt: Die Frage gehört in PR 2, nicht vor PR 1. Welche Lesart PR 1 nimmt, regelt linus.md, Punkt 2.
+
 ## Working Directory
 
 Jeder Bash-Call beginnt mit:
@@ -34,7 +42,7 @@ Bevor du etwas schreibst, prüfe immer mit `grep -rln "<wein-name-aus-pdf>" src/
 
 ### 1. Quelle einlesen
 
-Wenn der User ein PDF liefert: mit `Read` oder dem entsprechenden PDF-Reader-Tool öffnen. Wenn nur Text/Foto: User um Klärung bei Mehrdeutigkeiten bitten.
+Wenn der User ein PDF liefert: mit `Read` oder dem entsprechenden PDF-Reader-Tool öffnen. Wenn nur Text/Foto: Mehrdeutigkeiten halten die Karte nicht auf. PR 1 nimmt die Lesart nach linus.md, Punkt 2, und die Frage kommt in PR 2.
 
 Pro Item zerlegen in:
 - **Speise:** italienischer Name, deutsche Beschreibung, Preis, Allergen-Codes, optional `volume` (z.B. "ca. 1 kg / 2 Personen"), optional `diet` (vegetarian/vegan/spicy)
@@ -63,7 +71,7 @@ Italienische Speisenamen bleiben unverändert (Original-Sprache).
 
 ### 2. Allergen-Codes validieren
 
-Lies `src/lib/codes.ts`. Jeder im PDF referenzierte Code (Buchstabe oder Zahl) muss in `ALLERGENS` oder `ADDITIVES` aufgelöst sein. Wenn nicht: **dem User explizit melden** und nachfragen, statt zu raten. `npm run test:codes:unit` prüft das nach dem Eintragen mechanisch.
+Lies `src/lib/codes.ts`. Jeder im PDF referenzierte Code (Buchstabe oder Zahl) muss in `ALLERGENS` oder `ADDITIVES` aufgelöst sein. Wenn nicht, gilt linus.md, Punkt 2c: Ein verstümmelter Code, der sich als bekannte Codes lesen lässt, bekommt die Lesart mit mehr Codes, nie die mit weniger. Was sich gar nicht lesen lässt, bleibt in PR 1 weg. Beides meldest du in PR 2 **ausdrücklich** als Frage. `npm run test:codes:unit` prüft das nach dem Eintragen mechanisch.
 
 Codes übernimmst du **genau so, wie sie auf der Karte stehen** — nicht umschlüsseln. Die Legende folgt der gedruckten Karte (Stand 2026-09-17, vom Inhaber als offizielle Bezeichnungen bestätigt):
 
@@ -73,7 +81,9 @@ Codes übernimmst du **genau so, wie sie auf der Karte stehen** — nicht umschl
 
 > **Achtung:** Bis 2026-09-17 stand hier ein anderes Schema (N Sesam, P Lupinen, R Weichtiere, „hauseigene Codes“ I/J/S, Zusatzstoffe 7–13 verschoben). Das war falsch. Die Codes an den Gerichten stimmten, die Legende nicht.
 
-Wenn das PDF einen Code referenziert der nicht in dieser Liste steht (z.B. "T" oder "16"): nicht raten — User fragen.
+Wenn das PDF einen Code referenziert, der nicht in dieser Liste steht (z.B. "T" oder "16"), wird nicht geraten: In PR 1 bleibt der Code weg, und in PR 2 steht die Frage an Silvio.
+
+Nennt der Gerichtsname eine Zutat, für die `tests/delivery/allergen-rules.test.ts` einen Code verlangt, und die Karte gibt ihn nicht an (Beispiel #254: Hummer ohne B), dann bleibt die Karte so, wie sie gedruckt ist. PR 1 trägt in dieser Datei einen datierten Eintrag in die Liste `OFFEN` ein. Die Korrektur kommt in PR 2 (linus.md, Punkt 2a).
 
 ### 3. Speisen → `empfehlungskarte.json`
 
@@ -221,7 +231,7 @@ Komplettes Content-Update der Empfehlungskarte vom Inhaber (Quelle: `<dateiname>
 - [ ] Footnote + "Stand: YYYY-MM-DD" korrekt
 ```
 
-PR mit `gh pr create --base main` öffnen.
+PR 1 mit `gh pr create --base main` öffnen, der Titel beginnt mit `wochenkarte:`. Danach zeigst du die geänderten Dateien (`gh pr diff <n> --name-only`) und wartest auf die Pflicht-Checks (`gh pr checks <n> --watch --required`). Dann mergst du selbst mit `gh pr merge <n> --squash`, nie mit `--admin`. Anschließend öffnest du PR 2 mit den Korrekturen und den Fragen an Silvio.
 
 ## Pitfalls — Lessons Learned
 
@@ -229,7 +239,7 @@ PR mit `gh pr create --base main` öffnen.
 |---|---|---|
 | Weine in `empfehlungskarte.json` zusätzlich anlegen | Live-Site zeigt zwei Weinlisten untereinander, eine im falschen Layout | Weine ausschliesslich in `weinempfehlungen.json`. Vor Edit: `grep -rln "<wein-name>" src/` |
 | Per-Person-Preis als zweiter Price | Schema kennt nur ein `price`-Feld | Hauptpreis in `price`, Per-Person-Hinweis in `description`-String mitführen |
-| Allergen-Code "T" oder ähnlich Unbekanntes | Build grün (Type ist `string`), aber `npm run test:codes:unit` wird rot und die Legende erklärt den Code nicht | Vor JSON-Write: User fragen welche Bedeutung der Code hat. Niemals raten. |
+| Allergen-Code "T" oder ähnlich Unbekanntes | Build grün (Type ist `string`), aber `npm run test:codes:unit` wird rot und die Legende erklärt den Code nicht | Niemals raten. In PR 1 bleibt der Code weg, in PR 2 steht die Frage, was er bedeutet (linus.md, Punkt 2c). |
 | Preis in Kartenschreibweise übernommen | `"15,00"`, `"30,–"` oder `"8,50"` in einer JSON; `npm run test:preise:unit` bzw. der Build wird rot | Speisen UND Weine: Decimal-String mit Punkt, zwei Stellen (`"30.00"`). Bis 2026-11-05 stand hier für Weine fälschlich Komma + Halbgeviertstrich — das galt nur bis zum Founder-Entscheid 2026-09-23. |
 | Codes-Comment in `src/lib/menu.ts` ist stale | Skill nennt L/M/O, codes.ts hat I/J/S | Nicht im Skill-Workflow korrigieren — separater Doc-Update-PR. Aber dem User melden falls auffällig. |
 | ASCII-Transliteration in deutscher Beschreibung (`Kaese`, `Sosse`, `fuer` …) | Sieht aus wie 1998-OCR; User-Catch 2026-04-30 | Vor PR-Open: Konsistenz-Check unten ausführen. Jeder Hit muss vor Push gefixt sein. Italienische Speisenamen bleiben Original. |
@@ -263,5 +273,6 @@ Sollte zeigen:
 - [ ] Konsistenz-Check (oben) zeigt: erwartete Counts + nur whitelisted Codes + "OK — keine ASCII-Transliteration"
 - [ ] Branch gepusht
 - [ ] PR auf `main` geöffnet, Test-Plan + Body-Template gefüllt
-- [ ] Vercel Preview-Deploy auf dem PR sichtbar — User kann reviewen
-- [ ] User-Bestätigung: "PASS" oder Merge → erst dann ist die Session abgeschlossen
+- [ ] PR 1 ist auf grünen Pflicht-Checks selbst gemergt, die Karte ist live (linus.md, `GOLDONI WEEKLY CARD — LIVE FIRST`)
+- [ ] PR 2 mit allen Korrekturen, Abweichungen und Fragen an Silvio ist geöffnet und wartet auf den Founder
+- [ ] Wird der Merge von PR 1 verweigert, wird das nicht umgangen: die Verweigerung kommt in den Report, der Founder mergt
