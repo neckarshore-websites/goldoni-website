@@ -14,7 +14,8 @@
       utility CSS variables (--color-bg, --color-text, etc.). These map
       onto Tavola swatches and are what components should use day-to-day.
 
-   Default theme = LIGHT (Restaurant warmth). Dark mode applies via
+   Theme follows the device setting (prefers-color-scheme) unless the
+   visitor chose one via the toggle; light is the fallback. Dark applies via
    :root[data-theme="dark"] override.
    =================================================================== */
 
