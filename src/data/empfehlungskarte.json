@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-11-18",
+  "updated": "2026-11-21",
   "categories": [
     {
       "id": "antipasti",
@@ -24,12 +24,23 @@
           ]
         },
         {
-          "name": "Crema di zucca moscata servita con bruschettone",
-          "description": "Muskat-Kürbis-Creme mit geröstetem Brot serviert",
+          "name": "Minestrone della nonna servito con crostini",
+          "description": "Gemüsesuppe-Creme mit geröstetem Brot serviert",
           "price": "14.00",
           "allergens": [
             "A",
-            "G"
+            "G",
+            "I"
+          ]
+        },
+        {
+          "name": "Cozze al vino bianco servito con bruschettone",
+          "description": "Miesmuscheln an Weißweinsoße mit geröstetem Brot serviert",
+          "price": "15.50",
+          "allergens": [
+            "A",
+            "D",
+            "N"
           ]
         }
       ]
@@ -45,29 +56,28 @@
           "price": "19.50",
           "allergens": [
             "A",
-            "F",
             "G",
             "I",
             "J",
             "N",
+            "F",
             "2",
             "3"
           ]
         },
         {
-          "name": "Linguine con mezzo astice",
-          "description": "Linguine mit halbem Hummer",
-          "price": "22.50",
+          "name": "Linguine con le vongole veraci, i cannolicchi ed i pomodorini",
+          "description": "Linguine mit Venus und Schwertmuscheln und Kirschtomate",
+          "price": "23.00",
           "allergens": [
             "A",
-            "B",
             "D",
             "N"
           ]
         },
         {
           "name": "Strozzapreti con la guancia di vitello",
-          "description": "Strozzapreti (Priesterwürger) mit Kalbsbäckle in feiner Tomatensoße",
+          "description": "Priesterwürger mit „Kalbsbäckle“ in einer Feine Tomatensoße",
           "price": "21.00",
           "allergens": [
             "A",
@@ -94,7 +104,7 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Cosce di anatra al balsamico di Modena",
+          "name": "Coscie di anatra al balsamico di Modena",
           "description": "Entenkeulen an Balsamico-Essig-Creme, dazu Beilage",
           "price": "28.50",
           "allergens": [
@@ -103,17 +113,16 @@
           ]
         },
         {
-          "name": "Piccata di vitello in padella in sughetto di limone e pinoli",
-          "description": "Kalbsschnitzel aus der Pfanne an Zitronen-Pinienkern-Soße, dazu Beilage",
-          "price": "32.00",
+          "name": "Schiena di agnello alla griglia servita alla maniera toscana",
+          "description": "Gegrillte Lammrücker serviert nach toskanischer Art, mit Beilage",
+          "price": "34.00",
           "allergens": [
-            "A",
-            "H"
+            "G"
           ]
         },
         {
-          "name": "Tomahawk (ca. 1600 g per 3 persone) servita alla maniera toscana",
-          "description": "Dry Aged Tomahawk (ca. 1600 g für 3 Personen) aus dem Ofen nach toskanischer Art",
+          "name": "Tomawak ( ca. 1600 g per 3 persone ) servita alla maniera toscana",
+          "description": "Dry Aged Tomawak ( ca. 1600 g für 3 Personen) aus dem Ofen nach Toskanischer Art",
           "price": "120.00",
           "allergens": [
             "A",
@@ -121,9 +130,9 @@
           ]
         },
         {
-          "name": "Freschissima sogliola alla mugnaia",
-          "description": "Frische Seezunge aus dem Ofen mit Butter, Zitrone und Petersilie, dazu Beilage",
-          "price": "35.00",
+          "name": "Filetti di orata alla plancia",
+          "description": "Doradefilets vom Lavastein-Grill, mit Beilage",
+          "price": "30.00",
           "allergens": [
             "A",
             "D",
@@ -132,7 +141,7 @@
         },
         {
           "name": "Bistecche di pesce spada in sughetto di capperi, origano fresco e olive",
-          "description": "Schwertfischsteak aus der Pfanne mit Oliven, Kapern und Oregano, dazu Beilage",
+          "description": "Schwertfischsteak aus der Pfanne mit Oliven, Kapern und origano, mit Beilage",
           "price": "33.00",
           "allergens": [
             "D",
@@ -147,8 +156,7 @@
       "subtitle": "Desserts",
       "items": [
         {
-          "name": "Soufflé al cioccolato con gelato alla vaniglia",
-          "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
+          "name": "Schokoladensouffle mit einer Kugel Vanilleeis",
           "price": "8.50",
           "allergens": [
             "A",
@@ -161,8 +169,7 @@
           ]
         },
         {
-          "name": "Gelato al pistacchio in crosta di mandorle",
-          "description": "Pistazieneis umhüllt mit gehackten Mandeln",
+          "name": "Pistazieneis umhüllt mit gehackten Mandeln",
           "price": "9.00",
           "allergens": [
             "A",
@@ -175,8 +182,7 @@
           ]
         },
         {
-          "name": "Tartufo bianco al cuore di caffè",
-          "description": "Weißes Trüffeleis mit Kaffeefüllung",
+          "name": "Weißes Trüffel-Eis mit Kaffee-Füllung",
           "price": "8.50",
           "allergens": [
             "A",
