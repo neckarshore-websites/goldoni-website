@@ -350,6 +350,12 @@ export default function DatenschutzPage() {
               löschen.
             </p>
             <p className="mt-3">
+              Solange Sie keine Auswahl treffen, richtet sich die Darstellung
+              nach der Einstellung Ihres Geräts (hell&nbsp;/&nbsp;dunkel).
+              Diese Einstellung wird nur in Ihrem Browser ausgewertet; sie wird
+              weder gespeichert noch an uns oder Dritte übertragen.
+            </p>
+            <p className="mt-3">
               <strong>Rechtsgrundlage:</strong> § 25 Abs. 2 Nr. 2 TDDDG
               (technisch unbedingt erforderlich für die vom Nutzer ausdrücklich
               gewünschte Funktion).
