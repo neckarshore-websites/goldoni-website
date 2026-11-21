@@ -44,3 +44,10 @@ test("toggle stores the choice and the device switch no longer overrides it", as
   await page.emulateMedia({ colorScheme: "dark" });
   await expect(html(page)).toHaveAttribute("data-theme", "light");
 });
+
+test("dark device: dark already before hydration (app chunks blocked)", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.route(/\/_next\/static\/chunks\//, (route) => route.abort());
+  await page.goto("/");
+  await expect(html(page)).toHaveAttribute("data-theme", "dark");
+});

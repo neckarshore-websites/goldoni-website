@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import Script from "next/script";
+import { THEME_INIT } from "@/lib/theme-init";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SearchProvider } from "@/components/search/SearchProvider";
@@ -104,9 +104,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Anti-flash: runs before first paint. Trusted static asset
-            from /public — no user input, no XSS vector. */}
-        <Script src="/theme-init.js" strategy="beforeInteractive" />
+        {/* Anti-flash: theme before first paint, see src/lib/theme-init.ts.
+            Fixed text, no user input, no XSS vector. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
       </head>
       <body>
         {/* Restaurant + LocalBusiness JSON-LD — drives Google rich
