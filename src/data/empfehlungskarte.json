@@ -67,7 +67,7 @@
         },
         {
           "name": "Linguine con le vongole veraci, i cannolicchi ed i pomodorini",
-          "description": "Linguine mit Venus und Schwertmuscheln und Kirschtomate",
+          "description": "Linguine mit Venus- und Schwertmuscheln und Kirschtomaten",
           "price": "23.00",
           "allergens": [
             "A",
@@ -77,7 +77,7 @@
         },
         {
           "name": "Strozzapreti con la guancia di vitello",
-          "description": "Priesterwürger mit „Kalbsbäckle“ in einer Feine Tomatensoße",
+          "description": "Strozzapreti (Priesterwürger) mit Kalbsbäckle in feiner Tomatensoße",
           "price": "21.00",
           "allergens": [
             "A",
@@ -104,7 +104,7 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Coscie di anatra al balsamico di Modena",
+          "name": "Cosce di anatra al balsamico di Modena",
           "description": "Entenkeulen an Balsamico-Essig-Creme, dazu Beilage",
           "price": "28.50",
           "allergens": [
@@ -114,15 +114,15 @@
         },
         {
           "name": "Schiena di agnello alla griglia servita alla maniera toscana",
-          "description": "Gegrillte Lammrücker serviert nach toskanischer Art, mit Beilage",
+          "description": "Gegrillter Lammrücken nach toskanischer Art, mit Beilage",
           "price": "34.00",
           "allergens": [
             "G"
           ]
         },
         {
-          "name": "Tomawak ( ca. 1600 g per 3 persone ) servita alla maniera toscana",
-          "description": "Dry Aged Tomawak ( ca. 1600 g für 3 Personen) aus dem Ofen nach Toskanischer Art",
+          "name": "Tomahawk (ca. 1600 g per 3 persone) servita alla maniera toscana",
+          "description": "Dry Aged Tomahawk (ca. 1600 g für 3 Personen) aus dem Ofen nach toskanischer Art",
           "price": "120.00",
           "allergens": [
             "A",
@@ -141,7 +141,7 @@
         },
         {
           "name": "Bistecche di pesce spada in sughetto di capperi, origano fresco e olive",
-          "description": "Schwertfischsteak aus der Pfanne mit Oliven, Kapern und origano, mit Beilage",
+          "description": "Schwertfischsteak aus der Pfanne mit Oliven, Kapern und Oregano, mit Beilage",
           "price": "33.00",
           "allergens": [
             "D",
@@ -156,7 +156,8 @@
       "subtitle": "Desserts",
       "items": [
         {
-          "name": "Schokoladensouffle mit einer Kugel Vanilleeis",
+          "name": "Soufflé al cioccolato con gelato alla vaniglia",
+          "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
           "price": "8.50",
           "allergens": [
             "A",
@@ -169,7 +170,8 @@
           ]
         },
         {
-          "name": "Pistazieneis umhüllt mit gehackten Mandeln",
+          "name": "Gelato al pistacchio in crosta di mandorle",
+          "description": "Pistazieneis umhüllt mit gehackten Mandeln",
           "price": "9.00",
           "allergens": [
             "A",
@@ -182,7 +184,8 @@
           ]
         },
         {
-          "name": "Weißes Trüffel-Eis mit Kaffee-Füllung",
+          "name": "Tartufo bianco al cuore di caffè",
+          "description": "Weißes Trüffeleis mit Kaffeefüllung",
           "price": "8.50",
           "allergens": [
             "A",
