@@ -52,7 +52,7 @@
       "items": [
         {
           "name": "Mezzelune ripiene con crema di burrata e pomodoro in salsetta di zucca",
-          "description": "Nudeln mit Burrata-Tomatenfüllung an Kurbis-Creme",
+          "description": "Nudeln mit Burrata-Tomatenfüllung an Kürbis-Creme",
           "price": "19.50",
           "allergens": [
             "A",
@@ -67,7 +67,7 @@
         },
         {
           "name": "Linguine con le vongole veraci, i cannolicchi ed i pomodorini",
-          "description": "Linguine mit Venus und Schwertmuscheln und Kirschtomate",
+          "description": "Linguine mit Venus- und Schwertmuscheln und Kirschtomaten",
           "price": "23.00",
           "allergens": [
             "A",
@@ -77,12 +77,13 @@
         },
         {
           "name": "Strozzapreti alla Amatriciana",
-          "description": "Priesterwürger mit Schweinebacke, Tomaten und Granakäse",
+          "description": "Strozzapreti (Priesterwürger) mit Schweinebacke, Tomaten und Granakäse",
           "price": "20.00",
           "allergens": [
             "A",
-            "D",
             "C",
+            "D",
+            "G",
             "I",
             "1",
             "2"
@@ -117,7 +118,7 @@
         },
         {
           "name": "Schiena di agnello alla griglia servita alla maniera toscana",
-          "description": "Gegrillte Lammrücker serviert nach toskanischer Art, mit Beilage",
+          "description": "Gegrillter Lammrücken nach toskanischer Art, mit Beilage",
           "price": "34.00",
           "allergens": [
             "G"
@@ -135,7 +136,7 @@
         },
         {
           "name": "Gamberoni „Black Tiger“ in sughetto di capperi, origano fresco e olive",
-          "description": "„Black Tiger“ Riesengarnelenaus der Pfanne mit Oliven, Kapern und origano, mit Beilage",
+          "description": "„Black Tiger“-Riesengarnelen aus der Pfanne mit Oliven, Kapern und Oregano, mit Beilage",
           "price": "36.00",
           "allergens": [
             "D",
@@ -152,7 +153,8 @@
       "subtitle": "Desserts",
       "items": [
         {
-          "name": "Schokoladensouffle mit einer Kugel Vanilleeis",
+          "name": "Soufflé al cioccolato con gelato alla vaniglia",
+          "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
           "price": "8.50",
           "allergens": [
             "A",
@@ -165,7 +167,8 @@
           ]
         },
         {
-          "name": "Pistazieneis umhüllt mit gehackten Mandeln",
+          "name": "Gelato al pistacchio in crosta di mandorle",
+          "description": "Pistazieneis umhüllt mit gehackten Mandeln",
           "price": "9.00",
           "allergens": [
             "A",
@@ -178,7 +181,8 @@
           ]
         },
         {
-          "name": "Weißes Trüffel-Eis mit Kaffee-Füllung",
+          "name": "Tartufo bianco al cuore di caffè",
+          "description": "Weißes Trüffeleis mit Kaffeefüllung",
           "price": "8.50",
           "allergens": [
             "A",
