@@ -6,7 +6,7 @@
       "classification": "IGT",
       "year": 2025,
       "region": "Kalabrien",
-      "grapes": "100 % Greco Bianco",
+      "grapes": "100% Greco Bianco",
       "priceBottle": "30.00",
       "priceGlass": "8.50",
       "allergens": [
@@ -14,12 +14,12 @@
       ]
     },
     {
-      "name": "Tenaci",
-      "producer": "Zorzettig",
+      "name": "Zorzettig",
+      "producer": "Tenaci",
       "classification": "DOC",
       "year": 2025,
       "region": "Friaul",
-      "grapes": "100 % Sauvignon Blanc",
+      "grapes": "100% Sauvignon Blanc",
       "priceBottle": "32.00",
       "priceGlass": "9.00",
       "allergens": [
@@ -32,7 +32,7 @@
       "classification": "DOC",
       "year": 2024,
       "region": "Kampanien",
-      "grapes": "100 % Forastera",
+      "grapes": "100% Ischia Forestera",
       "priceBottle": "32.00",
       "priceGlass": "9.00",
       "allergens": [
@@ -46,8 +46,8 @@
       "producer": "Basilisco",
       "classification": "DOC",
       "year": 2021,
-      "region": "Basilikata",
-      "grapes": "100 % Aglianico",
+      "region": "Basilicata",
+      "grapes": "100% Aglianico",
       "priceBottle": "30.00",
       "priceGlass": "8.50",
       "allergens": [
@@ -60,7 +60,7 @@
       "classification": "IGT",
       "year": 2021,
       "region": "Toskana",
-      "grapes": "Cuvée Sangiovese, Cabernet Sauvignon",
+      "grapes": "Cuvée von Sangiovese-Cabernet S.",
       "priceBottle": "32.00",
       "priceGlass": "9.00",
       "allergens": [
@@ -68,12 +68,12 @@
       ]
     },
     {
-      "name": "Salassà",
-      "producer": "Rosso Veronese",
-      "classification": "IGT",
+      "name": "Salassá",
+      "producer": "Rosso veronese",
+      "classification": "IGP-IGT",
       "year": 2020,
       "region": "Venetien",
-      "grapes": "Cuvée Rondinella, Corvina",
+      "grapes": "Cuvée von Rondinella-Corvina S.",
       "priceBottle": "40.00",
       "priceGlass": "13.50",
       "allergens": [
