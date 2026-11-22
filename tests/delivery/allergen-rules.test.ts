@@ -51,7 +51,7 @@ const RULES: Rule[] = [
   { code: "K", why: "Nr. 11 — Sesamsamen", words: ["sesamo", "sesam"] },
   { code: "M", why: "Nr. 13 — Lupinen", words: ["lupini", "lupinen"] },
   { code: "N", why: "Nr. 14 — Weichtiere",
-    words: ["vongole", "cozze", "capesante", "polpo", "seppia", "muscheln", "jakobsmuscheln", "tintenfisch"] },
+    words: ["vongole", "cozze", "capesante", "ostriche", "polpo", "seppia", "austern", "muscheln", "jakobsmuscheln", "tintenfisch"] },
 ];
 
 /** Geklaert: Regel trifft hier nicht zu. */
