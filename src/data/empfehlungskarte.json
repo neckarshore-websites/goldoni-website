@@ -39,7 +39,6 @@
           "price": "15.50",
           "allergens": [
             "A",
-            "D",
             "N"
           ]
         }
@@ -71,7 +70,6 @@
           "price": "23.00",
           "allergens": [
             "A",
-            "D",
             "N"
           ]
         },
@@ -139,7 +137,6 @@
           "description": "„Black Tiger“-Riesengarnelen aus der Pfanne mit Oliven, Kapern und Oregano, mit Beilage",
           "price": "36.00",
           "allergens": [
-            "D",
             "B",
             "1",
             "2"
