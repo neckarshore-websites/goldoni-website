@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "categories": [
     {
       "id": "antipasti",
@@ -34,8 +34,8 @@
           ]
         },
         {
-          "name": "Cozze al vino bianco servito con bruschettone",
-          "description": "Miesmuscheln an Weißweinsoße mit geröstetem Brot serviert",
+          "name": "3 Ostriche francesi e coppa di prosecco",
+          "description": "3 Austern serviert mit einem gekühlten Glas Prosecco",
           "price": "15.50",
           "allergens": [
             "A",
@@ -51,8 +51,8 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Mezzelune ripiene con crema di burrata e pomodoro in salsetta di spinaci",
-          "description": "Nudeln mit Burrata-Tomatenfüllung an Spinat-Creme",
+          "name": "Mezzelune ripiene con crema di burrata e pomodoro in salsetta di zucca",
+          "description": "Nudeln mit Burrata-Tomatenfüllung an Kurbis-Creme",
           "price": "19.50",
           "allergens": [
             "A",
@@ -67,7 +67,7 @@
         },
         {
           "name": "Linguine con le vongole veraci, i cannolicchi ed i pomodorini",
-          "description": "Linguine mit Venus- und Schwertmuscheln und Kirschtomaten",
+          "description": "Linguine mit Venus und Schwertmuscheln und Kirschtomate",
           "price": "23.00",
           "allergens": [
             "A",
@@ -76,18 +76,21 @@
           ]
         },
         {
-          "name": "Strozzapreti con la guancia di vitello",
-          "description": "Strozzapreti (Priesterwürger) mit Kalbsbäckle in feiner Tomatensoße",
-          "price": "21.00",
+          "name": "Strozzapreti alla Amatriciana",
+          "description": "Priesterwürger mit Schweinebacke, Tomaten und Granakäse",
+          "price": "20.00",
           "allergens": [
             "A",
+            "D",
             "C",
-            "I"
+            "I",
+            "1",
+            "2"
           ]
         },
         {
-          "name": "Pizza con la porchetta, patate al rosmarino e burrata",
-          "description": "Pizza mit Rosmarinkartoffeln, Scheiben vom Spanferkel und Burratakäse",
+          "name": "Pizza con la porchetta, cime di rapa e burrata",
+          "description": "Pizza mit Winterbrokkoli, Scheiben vom Spanferkel und Burratakäse",
           "price": "17.50",
           "allergens": [
             "A",
@@ -104,9 +107,9 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Cosce di anatra al balsamico di Modena",
-          "description": "Entenkeulen an Balsamico-Essig-Creme, dazu Beilage",
-          "price": "28.50",
+          "name": "Piccata al limone",
+          "description": "Kalbsschnitzel an Zitronensoße, dazu Beilage",
+          "price": "33.00",
           "allergens": [
             "A",
             "G"
@@ -114,18 +117,9 @@
         },
         {
           "name": "Schiena di agnello alla griglia servita alla maniera toscana",
-          "description": "Gegrillter Lammrücken nach toskanischer Art, mit Beilage",
+          "description": "Gegrillte Lammrücker serviert nach toskanischer Art, mit Beilage",
           "price": "34.00",
           "allergens": [
-            "G"
-          ]
-        },
-        {
-          "name": "Tomahawk (ca. 1600 g per 3 persone) servita alla maniera toscana",
-          "description": "Dry Aged Tomahawk (ca. 1600 g für 3 Personen) aus dem Ofen nach toskanischer Art",
-          "price": "120.00",
-          "allergens": [
-            "A",
             "G"
           ]
         },
@@ -140,12 +134,14 @@
           ]
         },
         {
-          "name": "Bistecche di pesce spada in sughetto di capperi, origano fresco e olive",
-          "description": "Schwertfischsteak aus der Pfanne mit Oliven, Kapern und Oregano, mit Beilage",
-          "price": "33.00",
+          "name": "Gamberoni „Black Tiger“ in sughetto di capperi, origano fresco e olive",
+          "description": "„Black Tiger“ Riesengarnelenaus der Pfanne mit Oliven, Kapern und origano, mit Beilage",
+          "price": "36.00",
           "allergens": [
             "D",
-            "S"
+            "B",
+            "1",
+            "2"
           ]
         }
       ]
@@ -156,8 +152,7 @@
       "subtitle": "Desserts",
       "items": [
         {
-          "name": "Soufflé al cioccolato con gelato alla vaniglia",
-          "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
+          "name": "Schokoladensouffle mit einer Kugel Vanilleeis",
           "price": "8.50",
           "allergens": [
             "A",
@@ -170,8 +165,7 @@
           ]
         },
         {
-          "name": "Gelato al pistacchio in crosta di mandorle",
-          "description": "Pistazieneis umhüllt mit gehackten Mandeln",
+          "name": "Pistazieneis umhüllt mit gehackten Mandeln",
           "price": "9.00",
           "allergens": [
             "A",
@@ -184,8 +178,7 @@
           ]
         },
         {
-          "name": "Tartufo bianco al cuore di caffè",
-          "description": "Weißes Trüffeleis mit Kaffeefüllung",
+          "name": "Weißes Trüffel-Eis mit Kaffee-Füllung",
           "price": "8.50",
           "allergens": [
             "A",
