@@ -61,10 +61,6 @@ const AUSNAHMEN: { item: string; code: string; grund: string }[] = [];
 const OFFEN: { item: string; code: string; seit: string; frage: string }[] = [
   { item: "Tiramisù", code: "C", seit: "2026-09-17",
     frage: "Klassisch mit rohem Ei zubereitet? Dann fehlt C." },
-  { item: "Cozze al Vino bianco con crostini", code: "N", seit: "2026-11-25",
-    frage: "Miesmuscheln sind Weichtiere; auf der Karte stehen nur A, G, I. Fehlt N?" },
-  { item: "Pizza bianca con il salmone affumicato, creme freche e spinaci", code: "D", seit: "2026-11-25",
-    frage: "Räucherlachs ist Fisch; auf der Karte stehen A, G, H, 3. Fehlt D?" },
 ];
 
 /** Benannte Pruefungen, damit die Suite zaehlbar ist (#145) und Fehlschlaege einen Namen tragen. */
