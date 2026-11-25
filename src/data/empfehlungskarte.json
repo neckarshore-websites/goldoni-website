@@ -1,7 +1,7 @@
 {
   "title": "Wochenkarte",
   "intro": "Saisonal und frisch — was die Küche derzeit besonders empfiehlt. Die Karte ändert sich; sprechen Sie uns gerne an, wenn Sie Fragen zu einem Gericht haben.",
-  "updated": "2026-11-22",
+  "updated": "2026-11-25",
   "categories": [
     {
       "id": "antipasti",
@@ -24,8 +24,8 @@
           ]
         },
         {
-          "name": "Minestrone della nonna servito con crostini",
-          "description": "Gemüsesuppe-Creme mit geröstetem Brot serviert",
+          "name": "Cozze al Vino bianco con crostini",
+          "description": "Miesmuscheln in Weißweinsoße mit warmen Crostini",
           "price": "14.00",
           "allergens": [
             "A",
@@ -39,6 +39,7 @@
           "price": "15.50",
           "allergens": [
             "A",
+            "D",
             "N"
           ]
         }
@@ -70,26 +71,24 @@
           "price": "23.00",
           "allergens": [
             "A",
+            "D",
             "N"
           ]
         },
         {
-          "name": "Strozzapreti alla Amatriciana",
-          "description": "Strozzapreti (Priesterwürger) mit Schweinebacke, Tomaten und Granakäse",
-          "price": "20.00",
+          "name": "Strozzapreti con lo spezzatino di cervo al vino rosso",
+          "description": "Priesterwürger mit Hirshgulasch an Rotweinsoße",
+          "price": "22.00",
           "allergens": [
             "A",
-            "C",
             "D",
-            "G",
-            "I",
-            "1",
-            "2"
+            "C",
+            "I"
           ]
         },
         {
-          "name": "Pizza con la porchetta, cime di rapa e burrata",
-          "description": "Pizza mit Winterbrokkoli, Scheiben vom Spanferkel und Burratakäse",
+          "name": "Pizza bianca con il salmone affumicato, creme freche e spinaci",
+          "description": "Pizza (weiße Basis) mit geräuchertem Laschscheiben, Creme Freche und Spinat",
           "price": "17.50",
           "allergens": [
             "A",
@@ -106,9 +105,9 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Piccata al limone",
-          "description": "Kalbsschnitzel an Zitronensoße, dazu Beilage",
-          "price": "33.00",
+          "name": "Fegato alla veneziane",
+          "description": "Kalbsleber nach venezianischer Art, mit Beilage",
+          "price": "29.00",
           "allergens": [
             "A",
             "G"
@@ -123,9 +122,9 @@
           ]
         },
         {
-          "name": "Filetti di orata alla plancia",
-          "description": "Doradefilets vom Lavastein-Grill, mit Beilage",
-          "price": "30.00",
+          "name": "Trance di tonno rosso alla plancia",
+          "description": "Thunfischsteak vom Lavastein-Grill, mit Beilage",
+          "price": "33.00",
           "allergens": [
             "A",
             "D",
@@ -133,13 +132,11 @@
           ]
         },
         {
-          "name": "Gamberoni „Black Tiger“ in sughetto di capperi, origano fresco e olive",
-          "description": "„Black Tiger“-Riesengarnelen aus der Pfanne mit Oliven, Kapern und Oregano, mit Beilage",
-          "price": "36.00",
+          "name": "Filetti di rombo al sughetto di limone e rosmarino",
+          "description": "Steinbuttfilets aus dem Ofen an Zitronen-Rosmarin-Creme, mit Beilage",
+          "price": "35.00",
           "allergens": [
-            "B",
-            "1",
-            "2"
+            "D"
           ]
         }
       ]
@@ -149,6 +146,16 @@
       "name": "Dolci",
       "subtitle": "Desserts",
       "items": [
+        {
+          "name": "gefüllte Windbeutel umhüllt mit weißer Milchcreme",
+          "price": "8.50",
+          "allergens": [
+            "A",
+            "C",
+            "G",
+            "H"
+          ]
+        },
         {
           "name": "Soufflé al cioccolato con gelato alla vaniglia",
           "description": "Schokoladensoufflé mit einer Kugel Vanilleeis",
@@ -167,20 +174,6 @@
           "name": "Gelato al pistacchio in crosta di mandorle",
           "description": "Pistazieneis umhüllt mit gehackten Mandeln",
           "price": "9.00",
-          "allergens": [
-            "A",
-            "C",
-            "G",
-            "H"
-          ],
-          "diet": [
-            "vegetarian"
-          ]
-        },
-        {
-          "name": "Tartufo bianco al cuore di caffè",
-          "description": "Weißes Trüffeleis mit Kaffeefüllung",
-          "price": "8.50",
           "allergens": [
             "A",
             "C",
