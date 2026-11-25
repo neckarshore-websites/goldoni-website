@@ -24,13 +24,14 @@
           ]
         },
         {
-          "name": "Cozze al Vino bianco con crostini",
+          "name": "Cozze al vino bianco con crostini",
           "description": "Miesmuscheln in Weißweinsoße mit warmen Crostini",
           "price": "14.00",
           "allergens": [
             "A",
             "G",
-            "I"
+            "I",
+            "N"
           ]
         },
         {
@@ -39,7 +40,6 @@
           "price": "15.50",
           "allergens": [
             "A",
-            "D",
             "N"
           ]
         }
@@ -71,13 +71,12 @@
           "price": "23.00",
           "allergens": [
             "A",
-            "D",
             "N"
           ]
         },
         {
           "name": "Strozzapreti con lo spezzatino di cervo al vino rosso",
-          "description": "Priesterwürger mit Hirshgulasch an Rotweinsoße",
+          "description": "Strozzapreti (Priesterwürger) mit Hirschgulasch an Rotweinsoße",
           "price": "22.00",
           "allergens": [
             "A",
@@ -87,11 +86,12 @@
           ]
         },
         {
-          "name": "Pizza bianca con il salmone affumicato, creme freche e spinaci",
-          "description": "Pizza (weiße Basis) mit geräuchertem Laschscheiben, Creme Freche und Spinat",
+          "name": "Pizza bianca con il salmone affumicato, crème fraîche e spinaci",
+          "description": "Pizza (weiße Basis) mit geräucherten Lachsscheiben, Crème fraîche und Spinat",
           "price": "17.50",
           "allergens": [
             "A",
+            "D",
             "G",
             "H",
             "3"
@@ -105,7 +105,7 @@
       "subtitle": "Hauptgerichte",
       "items": [
         {
-          "name": "Fegato alla veneziane",
+          "name": "Fegato alla veneziana",
           "description": "Kalbsleber nach venezianischer Art, mit Beilage",
           "price": "29.00",
           "allergens": [
@@ -147,13 +147,16 @@
       "subtitle": "Desserts",
       "items": [
         {
-          "name": "gefüllte Windbeutel umhüllt mit weißer Milchcreme",
+          "name": "Gefüllte Windbeutel umhüllt mit weißer Milchcreme",
           "price": "8.50",
           "allergens": [
             "A",
             "C",
             "G",
             "H"
+          ],
+          "diet": [
+            "vegetarian"
           ]
         },
         {
