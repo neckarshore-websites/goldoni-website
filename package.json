@@ -40,7 +40,9 @@
     "test:redirect:unit": "tsx tests/delivery/order-redirect.test.ts",
     "test:schema:unit": "tsx tests/delivery/order-action.test.ts",
     "test:search:unit": "NODE_ENV=production tsx tests/search/index-data.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:unit-suites": "node scripts/check-unit-suites.mjs",
+    "test:unit-suites:unit": "node --test scripts/check-unit-suites.test.mjs"
   },
   "dependencies": {
     "minisearch": "7.2.0",
