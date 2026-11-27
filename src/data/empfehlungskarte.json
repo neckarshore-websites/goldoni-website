@@ -24,7 +24,7 @@
           ]
         },
         {
-          "name": "Cozze al Vino bianco con crostini",
+          "name": "Cozze al vino bianco con crostini",
           "description": "Miesmuscheln in Weißweinsoße mit warmen Crostini",
           "price": "14.50",
           "allergens": [
@@ -36,7 +36,7 @@
         },
         {
           "name": "Minestrone della nonna servito con crostini",
-          "description": "Gemüsesuppe-Creme mit geröstetem Brot serviert",
+          "description": "Gemüsecremesuppe mit geröstetem Brot",
           "price": "14.00",
           "allergens": [
             "A",
@@ -52,8 +52,8 @@
       "subtitle": "Pasta & Pizza",
       "items": [
         {
-          "name": "Mezzelune ripiene con crema di burrata e pomodoro in ragú di carciofi",
-          "description": "Nudeln mit Burrata-Tomatenfüllung an frischem Artiscocken Ragout",
+          "name": "Mezzelune ripiene con crema di burrata e pomodoro in ragù di carciofi",
+          "description": "Nudeln mit Burrata-Tomatenfüllung an frischem Artischocken-Ragout",
           "price": "19.50",
           "allergens": [
             "A",
@@ -72,7 +72,6 @@
           "price": "23.00",
           "allergens": [
             "A",
-            "D",
             "N"
           ]
         },
@@ -116,7 +115,7 @@
         },
         {
           "name": "Spezzatino di cervo servito con tagliolini ai porcini",
-          "description": "Hirschragout an Rotweinsoße dazu Nudel mit Steinpilzen",
+          "description": "Hirschragout an Rotweinsoße, dazu Tagliolini mit Steinpilzen",
           "price": "34.00",
           "allergens": [
             "I",
