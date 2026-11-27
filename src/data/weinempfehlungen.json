@@ -55,6 +55,19 @@
       ]
     },
     {
+      "name": "Terre Siciliane",
+      "producer": "Caruso-Minini",
+      "classification": "IGP",
+      "year": 2021,
+      "region": "Sizilien",
+      "grapes": "Frappato-Nerello Mascslesen",
+      "priceBottle": "30.00",
+      "priceGlass": "8.50",
+      "allergens": [
+        "S"
+      ]
+    },
+    {
       "name": "Fabius",
       "producer": "Poggio al Drago",
       "classification": "IGT",
